@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">QuanLyNhaHangKhachSan</string>
+    <string name="taikhoan">Tài khoản</string>
+    <string name="matkhau">Mật khẩu</string>
+    <string name="dangnhap">ĐĂNG NHẬP</string>
+    <string name="tennhahang">NOBLE LOTUS</string>
+</resources>

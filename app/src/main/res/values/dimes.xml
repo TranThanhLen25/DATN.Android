@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <dimen name="height_toolbar">70dp</dimen>
+    <dimen name="btn_textsize_dn">20dp</dimen>
+    <dimen name="padding_dn">8dp</dimen>
+    <dimen name="tenlogo">30dp</dimen>
+    <dimen name="textview_tk_mk">15dp</dimen>
+    <dimen name="margintop_tenlogo">13dp</dimen>
+    <dimen name="marginleft_tenlogo">55dp</dimen>
+
+    <dimen name="marginleft_logo">40dp</dimen>
+    <dimen name="margintop_logo">8dp</dimen>
+
+    <dimen name="width_logo">50dp</dimen>
+    <dimen name="height_logo">50dp</dimen>
+
+
+</resources>
