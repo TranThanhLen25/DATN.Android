@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Bottom_nav">
+    android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -16,7 +15,19 @@
 
         app:layout_constraintTop_toTopOf="parent">
 
-         <TextView
+        <ImageButton
+            android:id="@+id/ic_menu"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="15dp"
+            android:background="@color/white"
+            android:src="@drawable/baseline_menu_24"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar"
+            app:layout_constraintStart_toStartOf="@id/toolbar"
+            app:layout_constraintTop_toTopOf="@id/toolbar"
+            tools:ignore="MissingConstraints,SpeakableTextPresentCheck"></ImageButton>
+
+        <TextView
             android:id="@+id/tv_tennhahang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,7 +36,7 @@
             android:textSize="@dimen/heading_1"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/toolbar"
-
+            app:layout_constraintStart_toEndOf="@id/ic_menu"
             app:layout_constraintEnd_toStartOf="@id/img_logo"
             app:layout_constraintTop_toTopOf="@id/toolbar">
 
@@ -43,23 +54,5 @@
 
         </ImageView>
     </androidx.constraintlayout.widget.ConstraintLayout>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    >
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:menu="@menu/menu_nav"
-        android:background="@color/blue_mo"
-        tools:ignore="MissingConstraints">
 
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
-</androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

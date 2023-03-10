@@ -24,4 +24,8 @@
     <string name="action_thongke">Thống kê</string>
     <string name="action_thongtincanhan">Thông tin cá nhân</string>
     <string name="action_dangxguat">Đăng xuất</string>
+
+<!-- Chi tiết phòng   -->
+    <string name="tv_chitietphong">Chi tiết phòng</string>
+    <string name="tv_sophong">Số phòng: </string>
 </resources>
