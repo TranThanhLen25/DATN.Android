@@ -28,15 +28,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_bottom_nav);
 
-        Job job = new Job(id:1, job:Coder)
-        List<Favorite> favorites = new ArrayList<>();
-        favorites.add(new Favorite(id:1, favorites:"foodball"));
-        favorites.add(new Favorite(id:2, favorites "go fishing"));
-        DangNhap dangnhap = new DangNhap(id:1, name:"ThanhLEN", isActive:true, job, favorites);
-        Gson gson=new Gson();
-        String AtrJson=gson.toJson(dangnhap);
-        Log.e(tag:"String Json",AtrJson);
+
     }
 }

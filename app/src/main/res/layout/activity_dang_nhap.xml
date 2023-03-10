@@ -10,79 +10,112 @@
     <ImageView
         android:id="@+id/img_logo_full"
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+
+        tools:layout_editor_absoluteY="70dp" />
+
+    <TextView
+        android:id="@+id/tv_taikhoan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+
+
+        android:text="@string/tv_taikhoan"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textview_tk_mk"
+        app:layout_constraintBottom_toTopOf="@id/ctl_taikhoan"
+        app:layout_constraintStart_toStartOf="parent"
+
+        ></TextView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ctl_taikhoan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="70dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_logo_full"
-        tools:ignore="MissingConstraints">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/taikhoan"
-            android:textColor="@color/black"
-            android:textSize="@dimen/textview_tk_mk"
-            android:textStyle="bold"></TextView>
+        app:layout_constraintTop_toBottomOf="@id/img_logo_full"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="361dp"
+        >
 
         <EditText
+            android:id="@+id/et_taikhoan"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="15dp"></EditText>
+            android:layout_height="48dp"
+            android:background="@drawable/bg_edittext"
+            android:drawableLeft="@drawable/user"
+            android:paddingStart="15dp"
+
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/ctl_matkhau"
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/tv_matkhau"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp"
+        android:text="@string/tv_matkhau"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textview_tk_mk"
+        app:layout_constraintBottom_toTopOf="@id/ctl_matkhau"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ctl_taikhoan"
         tools:ignore="MissingConstraints">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/matkhau"
-            android:textColor="@color/black"
-            android:textSize="@dimen/textview_tk_mk"
-            android:textStyle="bold"></TextView>
+    </TextView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctl_matkhau"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_matkhau">
 
         <EditText
-            android:id="@+id/txt_matkhau"
+            android:id="@+id/et_matkhau"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="15dp"
-            tools:ignore="InvalidId">
-        </EditText>
+            android:layout_height="48dp"
+            android:background="@drawable/bg_edittext"
+            android:drawableLeft="@drawable/password"
+           android:paddingStart="15dp"
 
+            tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-<Button
-    android:id="@+id/btn_dangnhap"
-    android:layout_marginTop="70dp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    android:text="@string/dangnhap"
-    android:textSize="@dimen/btn_textsize_dn"
-    android:padding="@dimen/padding_dn"
-    android:gravity="center"
-    android:backgroundTint="@color/bluenhat"
-    app:layout_constraintTop_toBottomOf="@+id/ctl_matkhau"
-    tools:ignore="MissingConstraints">
-</Button>
+
+    <Button
+        android:id="@+id/btn_dangnhap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/bluenhat"
+        android:gravity="center"
+        android:padding="@dimen/padding_dn"
+        android:text="@string/btn_dangnhap"
+        android:textSize="@dimen/btn_textsize_dn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ctl_matkhau"
+        tools:ignore="MissingConstraints"
+
+        ></Button>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

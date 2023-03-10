@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/btn_menu"
+        android:icon="@drawable/baseline_menu_24"
+        tools:ignore="MenuTitle"></item>
+    <item  android:id="@+id/_tv_tennhahang"
+        android:title="@string/tennhahang"></item>
+    <item android:id="@+id/img_logo"
+        android:icon="@drawable/logokoten"></item>
+
+</menu>

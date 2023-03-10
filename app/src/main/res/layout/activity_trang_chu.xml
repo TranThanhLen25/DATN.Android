@@ -1,72 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/bg_nhahang_khachsan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
 
 
-   <androidx.appcompat.widget.LinearLayoutCompat
-       android:id="@+id/toolbar"
-       android:layout_width="match_parent"
-       android:layout_height="70dp"
-       android:background="@drawable/duongvien"
-       android:orientation="horizontal"
-       tools:ignore="MissingConstraints" >
+        app:layout_constraintTop_toTopOf="parent">
 
+        <ImageButton
+            android:id="@+id/ic_menu"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
 
+            android:layout_marginStart="15dp"
+            android:background="@color/white"
+            android:src="@drawable/baseline_menu_24"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar"
+            app:layout_constraintStart_toStartOf="@id/toolbar"
+            app:layout_constraintTop_toTopOf="@id/toolbar"
+            tools:ignore="MissingConstraints,SpeakableTextPresentCheck"></ImageButton>
 
-      <ImageButton
-          android:id="@+id/icon_menu"
-         android:layout_marginTop="15dp"
-         android:layout_marginLeft="15dp"
-          android:layout_width="40dp"
-          android:layout_height="40dp"
-         android:background="@drawable/baseline_menu_24">
-
-      </ImageButton>
-         <TextView
-             android:id="@+id/tenlogo"
-            android:layout_marginTop="@dimen/margintop_tenlogo"
-            android:layout_marginLeft="@dimen/marginleft_tenlogo"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/tv_tennhahang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/tennhahang"
             android:textColor="@color/bluenhat"
-            android:textSize="@dimen/tenlogo"
-            android:textStyle="bold">
-         </TextView>
-      <ImageView
-          android:id="@+id/logo"
-         android:layout_marginTop="@dimen/margintop_logo"
-         android:layout_marginLeft="@dimen/marginleft_logo"
-          android:layout_width="@dimen/width_logo"
-          android:layout_height="@dimen/height_logo"
-         android:src="@drawable/logokoten">
+            android:textSize="@dimen/heading_1"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar"
+            app:layout_constraintStart_toEndOf="@id/ic_menu"
+            app:layout_constraintEnd_toStartOf="@id/img_logo"
+            app:layout_constraintTop_toTopOf="@id/toolbar">
 
-      </ImageView>
-   </androidx.appcompat.widget.LinearLayoutCompat>
+        </TextView>
 
-   <androidx.appcompat.widget.LinearLayoutCompat
-       android:id="@+id/chucnangtrangchu"
-       android:layout_marginTop="@dimen/height_toolbar"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:background="@color/white"
-       android:gravity="center"
-       android:orientation="vertical">
-      
-      <ImageView
-          android:id="@+id/khachsan"
-          android:layout_width="@dimen/height_logo"
-          android:layout_height="@dimen/height_logo"
-         android:src="@drawable/home"></ImageView>
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-         android:text="hihi">
+        <ImageView
+            android:id="@+id/img_logo"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/logokoten"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar"
+            app:layout_constraintEnd_toEndOf="@id/toolbar"
+            app:layout_constraintStart_toEndOf="@id/tv_tennhahang"
+            app:layout_constraintTop_toTopOf="@id/toolbar">
 
-      </TextView>
-   </androidx.appcompat.widget.LinearLayoutCompat>
+        </ImageView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+
+        >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_khachsan"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_nhahang_khachsan"
+            app:layout_constraintBottom_toTopOf="@id/ctl_nhahang"
+            app:layout_constraintEnd_toEndOf="@id/container"
+            app:layout_constraintStart_toStartOf="@id/container"
+            app:layout_constraintTop_toTopOf="@id/container"
+            tools:ignore="NotSibling">
+
+            <ImageView
+                android:id="@+id/img_khachsan"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/home"
+                app:layout_constraintBottom_toBottomOf="@id/ctl_khachsan"
+                app:layout_constraintEnd_toEndOf="@+id/ctl_khachsan"
+                app:layout_constraintStart_toStartOf="@+id/ctl_khachsan"
+                app:layout_constraintTop_toTopOf="@id/ctl_khachsan">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/tv_khachsan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_khachsan"
+                android:textColor="@color/black"
+                android:textSize="@dimen/heading_2"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@id/ctl_khachsan"
+                app:layout_constraintStart_toStartOf="@id/ctl_khachsan"
+                app:layout_constraintTop_toBottomOf="@id/img_khachsan"></TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_nhahang"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_nhahang_khachsan"
+            app:layout_constraintBottom_toBottomOf="@id/container"
+            app:layout_constraintEnd_toEndOf="@id/container"
+            app:layout_constraintStart_toStartOf="@id/container"
+            app:layout_constraintTop_toBottomOf="@id/ctl_khachsan">
+
+            <ImageView
+                android:id="@+id/img_nhahang"
+                android:layout_width="80dp"
+                android:layout_height="90dp"
+                android:src="@drawable/restaurant"
+                app:layout_constraintBottom_toBottomOf="@id/ctl_nhahang"
+                app:layout_constraintEnd_toEndOf="@id/ctl_nhahang"
+                app:layout_constraintStart_toStartOf="@id/ctl_nhahang"
+                app:layout_constraintTop_toTopOf="@id/ctl_nhahang"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/tv_nhahang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_nhahang"
+                android:textColor="@color/black"
+                android:textSize="@dimen/heading_2"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@id/ctl_nhahang"
+                app:layout_constraintStart_toStartOf="@id/ctl_nhahang"
+                app:layout_constraintTop_toBottomOf="@id/img_nhahang"
+
+                tools:ignore="DuplicateIds"></TextView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:headerLayout="@layout/drawer_layout"
+        app:menu="@menu/drawer_playout"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

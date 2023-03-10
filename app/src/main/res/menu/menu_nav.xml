@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_danhsach"
+        android:icon="@drawable/ic_danhsachphong"
+        android:title="@string/action_danhsachphong"></item>
+    <item
+        android:id="@+id/nav_datphong"
+        android:icon="@drawable/ic_datphong"
+        android:title="@string/action_datphong"></item>
+    <item
+        android:id="@+id/nav_trangchu"
+        android:icon="@drawable/ic_trangchu"
+        android:title="@string/action_trangchu"></item>
+    <item
+        android:id="@+id/nav_nhanphong"
+        android:icon="@drawable/ic_nhanphong"
+        android:title="@string/action_nhanphong"></item>
+    <item
+        android:id="@+id/nav_them"
+        android:icon="@drawable/ic_menu"
+        android:title="@string/action_them"></item>
+</menu>

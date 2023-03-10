@@ -9,5 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#C0C0C0</color>
     <color name="bluenhat">#FF00AEEE</color>
+    <color name="blueteal">#69A9C1</color>
+    <color name="blue_mo">#F4FFFD</color>
 
 </resources>

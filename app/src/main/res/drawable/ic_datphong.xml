@@ -1,0 +1,36 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="512dp"
+    android:height="512dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+  <path
+      android:fillColor="#FF000000"
+      android:pathData="m8,19h8c0.552,0 1,-0.448 1,-1v-3h-2v2h-6v-6h3v-2h-4c-0.552,0 -1,0.448 -1,1v8c0,0.552 0.448,1 1,1z"/>
+  <path
+      android:fillColor="@color/bluenhat"
+      android:pathData="m12,13.586 l-1.293,-1.293 -1.414,1.414 2,2c0.195,0.195 0.451,0.293 0.707,0.293s0.512,-0.098 0.707,-0.293l6,-6 -1.414,-1.414z"/>
+  <path
+      android:fillColor="#FF000000"
+      android:pathData="m15,30h-6v-6h3v-2h-4c-0.552,0 -1,0.448 -1,1v8c0,0.552 0.448,1 1,1h8c0.552,0 1,-0.448 1,-1v-3h-2z"/>
+  <path
+      android:fillColor="@color/bluenhat"
+      android:pathData="m12,26.586 l-1.293,-1.293 -1.414,1.414 2,2c0.195,0.195 0.451,0.293 0.707,0.293s0.512,-0.098 0.707,-0.293l6,-6 -1.414,-1.414z"/>
+  <path
+      android:fillColor="@color/bluenhat"
+      android:pathData="m16,35h-8c-0.552,0 -1,0.448 -1,1v8c0,0.552 0.448,1 1,1h8c0.552,0 1,-0.448 1,-1v-8c0,-0.552 -0.448,-1 -1,-1zM15,43h-6v-6h6z"/>
+  <path
+      android:fillColor="@color/bluenhat"
+      android:pathData="m16,48h-8c-0.552,0 -1,0.448 -1,1v8c0,0.552 0.448,1 1,1h8c0.552,0 1,-0.448 1,-1v-8c0,-0.552 -0.448,-1 -1,-1zM15,56h-6v-6h6z"/>
+  <path
+      android:fillColor="@color/bluenhat"
+      android:pathData="m57.707,5.293c-0.391,-0.391 -1.023,-0.391 -1.414,0l-6.293,6.293 -9.293,-9.293c-0.188,-0.188 -0.442,-0.293 -0.707,-0.293h-37c-0.552,0 -1,0.448 -1,1v58c0,0.552 0.448,1 1,1h47c0.552,0 1,-0.448 1,-1v-39.586l10.707,-10.707c0.391,-0.391 0.391,-1.023 0,-1.414zM49,60h-45v-56h35.586l8,8h-6.586v-5h-2v6c0,0.552 0.448,1 1,1h7.586l-23.293,23.293c-0.11,0.11 -0.192,0.244 -0.242,0.391l-2,6c-0.12,0.359 -0.026,0.756 0.242,1.023 0.19,0.191 0.446,0.293 0.707,0.293 0.106,0 0.212,-0.017 0.316,-0.051l6,-2c0.147,-0.049 0.281,-0.132 0.391,-0.242l19.293,-19.293zM25.437,39.851 L27.149,41.563 24.581,42.419zM29,40.586 L26.414,38 57,7.414 59.586,10z"/>
+  <path
+      android:fillColor="@color/bluenhat"
+      android:pathData="m45,56h2v2h-2z"/>
+  <path
+      android:fillColor="@color/bluenhat"
+      android:pathData="m41,56h2v2h-2z"/>
+  <path
+      android:fillColor="@color/bluenhat"
+      android:pathData="m37,56h2v2h-2z"/>
+</vector>
