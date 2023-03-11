@@ -28,4 +28,12 @@
 <!-- Chi tiết phòng   -->
     <string name="tv_chitietphong">Chi tiết phòng</string>
     <string name="tv_sophong">Số phòng: </string>
+<!--    Phiếu đặt phòng-->
+    <string name="tv_phieudatphong">Phiếu đặt phòng</string>
+    <string name="tv_sochungtu">Số chứng từ:</string>
+    <string name="tv_hoten">Họ tên:</string>
+    <string name="tv_cccd">CCCD:</string>
+    <string name="tv_sdt">SĐT:</string>
+    <string name="tv_songuoi">Số người:</string>
+    <string name="tv_thoigiannhan">Thời gian nhân:</string>
 </resources>
