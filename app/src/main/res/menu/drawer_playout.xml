@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/dra_nhaphang"
+    android:icon="@drawable/ic_nhaphang"
+    android:title="@string/tv_nhahang"></item>
+    <item android:id="@+id/dra_kho"
+        android:title="@string/action_kho"
+        android:icon="@drawable/ic_kho"></item>
+    <item android:icon="@drawable/ic_bieudo"
+        android:title="@string/action_thongke"
+        android:id="@+id/thongke"></item>
+    <item android:id="@+id/thongtincanha"
+        android:icon="@drawable/ic_infor"
+        android:title="@string/action_thongtincanhan"></item>
+    <item
+        android:id="@+id/dangxuat"
+        android:title="@string/action_dangxguat"
+        android:icon="@drawable/ic_logout"></item>
+</menu>

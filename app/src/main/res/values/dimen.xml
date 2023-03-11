@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--    đăng nhập    -->
+    <dimen name="btn_textsize_dn">20dp</dimen>
+    <dimen name="textview_tk_mk">16dp</dimen>
+    <dimen name="padding_dn">8dp</dimen>
+
+    <!--  Toolbar  -->
+    <dimen name="height_toolbar">70dp</dimen>
+
+    <dimen name="heading_1">30dp</dimen>
+
+    <dimen name="margintop_tenlogo">15dp</dimen>
+    <dimen name="marginleft_tenlogo">45dp</dimen>
+    <dimen name="marginleft_logo">30dp</dimen>
+    <dimen name="margintop_logo">8dp</dimen>
+    <dimen name="width_logo">50dp</dimen>
+    <dimen name="height_logo">50dp</dimen>
+
+<!--  Trang chủ -->
+    <dimen name="heading_2">20dp</dimen>
+
+
+
+    <dimen name="edittext_padding">20dp</dimen>
+    <dimen name="edittext_textsize">20dp</dimen>
+</resources>

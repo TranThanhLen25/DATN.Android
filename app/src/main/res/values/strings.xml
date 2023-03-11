@@ -1,7 +1,31 @@
 <resources>
     <string name="app_name">QuanLyNhaHangKhachSan</string>
-    <string name="taikhoan">Tài khoản</string>
-    <string name="matkhau">Mật khẩu</string>
-    <string name="dangnhap">ĐĂNG NHẬP</string>
+<!--  đăng nhập  -->
+    <string name="tv_taikhoan">Tài khoản</string>
+    <string name="tv_matkhau">Mật khẩu</string>
+    <string name="btn_dangnhap">ĐĂNG NHẬP</string>
+<!--    Toolbar-->
     <string name="tennhahang">NOBLE LOTUS</string>
+
+<!--  bottom_nav -->
+    <string name="action_danhsachphong">Danh sách</string>
+    <string name="action_datphong">Đặt phòng</string>
+    <string name="action_trangchu">Trang chủ</string>
+    <string name="action_nhanphong">Nhận phòng</string>
+    <string name="action_them">Thêm</string>
+
+<!--  Trang chủ  -->
+    <string name="tv_nhahang">Nhà Hàng</string>
+    <string name="tv_khachsan">Khách sạn</string>
+    
+<!--  Drawer_layout  -->
+    <string name="action_phieunha">Nhập hàng</string>
+    <string name="action_kho">Quản lý kho</string>
+    <string name="action_thongke">Thống kê</string>
+    <string name="action_thongtincanhan">Thông tin cá nhân</string>
+    <string name="action_dangxguat">Đăng xuất</string>
+
+<!-- Chi tiết phòng   -->
+    <string name="tv_chitietphong">Chi tiết phòng</string>
+    <string name="tv_sophong">Số phòng: </string>
 </resources>
