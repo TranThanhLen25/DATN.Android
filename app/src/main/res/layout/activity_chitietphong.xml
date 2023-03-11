@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_toolbar"
+        android:background="@drawable/duongvien"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent" >
+
+
+
+        <ImageButton
+            android:id="@+id/icon_menu"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/baseline_menu_24">
+
+        </ImageButton>
+        <TextView
+            android:id="@+id/tenlogo"
+            android:layout_marginTop="@dimen/margintop_tenlogo"
+            android:layout_marginLeft="@dimen/marginleft_tenlogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tennhahang"
+            android:textColor="@color/bluenhat"
+            android:textSize="@dimen/tenlogo"
+            android:textStyle="bold">
+        </TextView>
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_marginTop="@dimen/margintop_logo"
+            android:layout_marginLeft="@dimen/marginleft_logo"
+            android:layout_width="@dimen/width_logo"
+            android:layout_height="@dimen/height_logo"
+            android:src="@drawable/logokoten">
+
+        </ImageView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+        <EditText
+            android:id="@+id/tv_search"
+            android:background="@drawable/bg_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/search"
+            android:padding="15dp"
+            android:layout_margin="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints"></EditText>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,7 +12,9 @@
        android:layout_height="70dp"
        android:background="@drawable/duongvien"
        android:orientation="horizontal"
-       tools:ignore="MissingConstraints" >
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent">
 
 
 
@@ -47,26 +49,78 @@
       </ImageView>
    </androidx.appcompat.widget.LinearLayoutCompat>
 
-   <androidx.appcompat.widget.LinearLayoutCompat
-       android:id="@+id/chucnangtrangchu"
-       android:layout_marginTop="@dimen/height_toolbar"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:background="@color/white"
-       android:gravity="center"
-       android:orientation="vertical">
-      
-      <ImageView
-          android:id="@+id/khachsan"
-          android:layout_width="@dimen/height_logo"
-          android:layout_height="@dimen/height_logo"
-         android:src="@drawable/home"></ImageView>
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-         android:text="hihi">
 
-      </TextView>
-   </androidx.appcompat.widget.LinearLayoutCompat>
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:orientation="vertical"
+       android:id="@+id/layouttrangchu"
+       app:layout_constraintTop_toBottomOf="@+id/toolbar"
+       app:layout_constraintBottom_toBottomOf="parent"
+       >
+         <androidx.appcompat.widget.LinearLayoutCompat
+             android:id="@+id/ButtonTrangChuKhachSan"
+             android:layout_width="match_parent"
+             android:layout_height="350dp"
+             android:background="@color/white"
+             android:gravity="center"
+             android:orientation="vertical"
+             app:layout_constraintTop_toTopOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintEnd_toEndOf="parent">
+
+               <ImageView
+                   android:id="@+id/ImgTrangChuKhachSan"
+                   android:layout_width="@dimen/height_logo"
+                   android:layout_height="@dimen/height_logo"
+                   android:src="@drawable/home"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent"
+                   app:layout_constraintBottom_toBottomOf="parent"></ImageView>
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Khách Sạn"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toBottomOf="@+id/ImgTrangChuKhachSan"
+                   android:padding="10dp"></TextView>
+
+         </androidx.appcompat.widget.LinearLayoutCompat>
+
+         <androidx.appcompat.widget.LinearLayoutCompat
+             android:id="@+id/ButtonTrangChuNhaHang"
+             android:layout_width="match_parent"
+             android:layout_height="350dp"
+             android:background="@color/white"
+             android:gravity="center"
+             android:orientation="vertical"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/ImgTrangChuNhaHang"
+                android:layout_width="@dimen/height_logo"
+                android:layout_height="@dimen/height_logo"
+                android:src="@drawable/home"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Khách Sạn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ImgTrangChuNhaHang"
+                android:padding="10dp"></TextView>
+
+         </androidx.appcompat.widget.LinearLayoutCompat>
+   </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
