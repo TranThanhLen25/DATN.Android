@@ -38,4 +38,6 @@
     <string name="tv_thoigiannhan">Thời gian nhân:</string>
     <string name="tv_phong_phieudatphong">Phòng:</string>
     <string name="tv_gia_phieudatphong">Giá:</string>
+<!--    phiếu nhận phòng-->
+    <string name="tv_phieunhanphong">Phiếu nhận phòng</string>
 </resources>

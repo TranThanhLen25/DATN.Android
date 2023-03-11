@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include
+        android:id="@+id/toolbar_phiedatphong"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        layout="@layout/activiti_appbar"></include>
+
+    <ScrollView
+        android:id="@+id/scr_phieudatphong"
+        app:layout_constraintBottom_toTopOf="@+id/footer_phieudatphong"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_phiedatphong"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/phieudatphong"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/scr_phieudatphong"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/headderphieudatphong"
+                app:layout_constraintEnd_toEndOf="@id/phieudatphong"
+                app:layout_constraintStart_toStartOf="@id/phieudatphong"
+                app:layout_constraintTop_toTopOf="@+id/phieudatphong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/chitietheaderphieudatphong"
+                    app:layout_constraintStart_toStartOf="@id/headderphieudatphong"
+                    app:layout_constraintTop_toTopOf="@+id/headderphieudatphong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_phieudatphong"
+                        app:layout_constraintStart_toStartOf="@id/chitietheaderphieudatphong"
+                        app:layout_constraintTop_toTopOf="@id/chitietheaderphieudatphong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_tenphieu"
+                        android:padding="10dp"
+                        android:text="@string/tv_phieunhanphong"
+                        android:textSize="@dimen/heading_2"
+                        android:textStyle="bold"></TextView>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/tv_sochungtu_phieudatphong"
+                        app:layout_constraintStart_toStartOf="@id/chitietheaderphieudatphong"
+                        app:layout_constraintTop_toBottomOf="@id/tv_phieudatphong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_sochungtu"
+                            app:layout_constraintStart_toStartOf="@id/tv_sochungtu_phieudatphong"
+                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_phieudatphong"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:text="@string/tv_sochungtu"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/heading_2"
+                            android:textStyle="bold"></TextView>
+
+                        <TextView
+                            android:id="@+id/tv_sochungtu_data"
+                            app:layout_constraintStart_toEndOf="@+id/tv_sochungtu"
+                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_phieudatphong"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:text="PNP1"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/heading_2"
+                            android:textStyle="bold"></TextView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageButton
+                    app:layout_constraintEnd_toEndOf="@id/headderphieudatphong"
+                    app:layout_constraintStart_toEndOf="@id/chitietheaderphieudatphong"
+                    app:layout_constraintTop_toTopOf="@id/headderphieudatphong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@color/white"
+                    android:src="@drawable/ic_qrcode"></ImageButton>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mainphieudatphong"
+                app:layout_constraintEnd_toEndOf="@id/phieudatphong"
+                app:layout_constraintStart_toStartOf="@id/phieudatphong"
+                app:layout_constraintTop_toBottomOf="@id/headderphieudatphong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_hoten"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
+                    app:layout_constraintTop_toTopOf="@+id/mainphieudatphong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="@string/tv_hoten"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textview_tk_mk"></TextView>
+
+                <EditText
+                    android:id="@+id/et_hoten_phieudatphong"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_hoten"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_edittext"
+                    android:paddingStart="15dp" />
+
+                <TextView
+                    android:id="@+id/tv_cccd_phieudatphong"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
+                    app:layout_constraintTop_toBottomOf="@+id/et_hoten_phieudatphong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="@string/tv_cccd"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textview_tk_mk"></TextView>
+
+                <EditText
+                    android:id="@+id/et_cccd_phieudatphong"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_cccd_phieudatphong"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_edittext"
+                    android:paddingStart="15dp" />
+
+                <TextView
+                    android:id="@+id/tv_sdt_phieudatphong"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
+                    app:layout_constraintTop_toBottomOf="@+id/et_cccd_phieudatphong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="@string/tv_sdt"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textview_tk_mk"></TextView>
+
+                <EditText
+                    android:id="@+id/et_sdt_phieudatphong"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_sdt_phieudatphong"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_edittext"
+                    android:paddingStart="15dp" />
+
+                <TextView
+                    android:id="@+id/tv_songuoi_phieudatphong"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
+                    app:layout_constraintTop_toBottomOf="@+id/et_sdt_phieudatphong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="@string/tv_songuoi"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textview_tk_mk"></TextView>
+
+                <EditText
+                    android:id="@+id/et_songuoi_phieudatphong"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_songuoi_phieudatphong"
+                    android:layout_width="100dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_edittext"
+                    android:paddingStart="15dp" />
+
+                <TextView
+                    android:id="@+id/tv_thoigiannhan_phieudatphong"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
+                    app:layout_constraintTop_toBottomOf="@+id/et_songuoi_phieudatphong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="@string/tv_thoigiannhan"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textview_tk_mk"></TextView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/thoigiannhan_phieudatphong"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_thoigiannhan_phieudatphong"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/et_thoigiannhan_phieudatphong"
+                        app:layout_constraintBottom_toBottomOf="@+id/thoigiannhan_phieudatphong"
+                        app:layout_constraintStart_toStartOf="@+id/thoigiannhan_phieudatphong"
+                        app:layout_constraintTop_toTopOf="@+id/thoigiannhan_phieudatphong"
+                        android:layout_width="350dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_edittext"
+                        android:inputType="time"
+                        android:paddingStart="15dp" />
+
+                    <ImageButton
+                        app:layout_constraintEnd_toEndOf="@+id/thoigiannhan_phieudatphong"
+                        app:layout_constraintStart_toEndOf="@id/et_thoigiannhan_phieudatphong"
+                        app:layout_constraintTop_toTopOf="@+id/thoigiannhan_phieudatphong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:src="@drawable/ic_calendar"></ImageButton>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_thoigiantra_phieudatphong"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
+                    app:layout_constraintTop_toBottomOf="@+id/thoigiannhan_phieudatphong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="@string/tv_thoigiannhan"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/textview_tk_mk"></TextView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/thoigiantra_phieudatphong"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_thoigiantra_phieudatphong"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/et_thoigiantra_phieudatphong"
+                        app:layout_constraintBottom_toBottomOf="@+id/thoigiantra_phieudatphong"
+                        app:layout_constraintStart_toStartOf="@+id/thoigiantra_phieudatphong"
+                        app:layout_constraintTop_toTopOf="@+id/thoigiantra_phieudatphong"
+                        android:layout_width="350dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_edittext"
+                        android:inputType="time"
+                        android:paddingStart="15dp" />
+
+                    <ImageButton
+                        app:layout_constraintEnd_toEndOf="@+id/thoigiantra_phieudatphong"
+                        app:layout_constraintStart_toEndOf="@id/et_thoigiantra_phieudatphong"
+                        app:layout_constraintTop_toTopOf="@+id/thoigiantra_phieudatphong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:src="@drawable/ic_calendar"></ImageButton>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/chonphong_phieudatphong"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/thoigiantra_phieudatphong"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/themphong_phieudatphong"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/chonphong_phieudatphong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:padding="15dp"
+                        android:src="@drawable/ic_additem" />
+
+                    <TextView
+                        android:id="@+id/tv_phong_phieudatphong"
+                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieudatphong"
+                        app:layout_constraintStart_toEndOf="@+id/themphong_phieudatphong"
+                        app:layout_constraintTop_toTopOf="@+id/chonphong_phieudatphong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="15dp"
+                        android:text="@string/tv_phong_phieudatphong"
+                        android:textSize="20dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/tv_phong_data_phieudatphong"
+                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieudatphong"
+                        app:layout_constraintStart_toEndOf="@+id/tv_phong_phieudatphong"
+                        app:layout_constraintTop_toTopOf="@+id/chonphong_phieudatphong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="101"
+                        android:textSize="20dp"></TextView>
+
+                    <TextView
+                        android:id="@+id/dongia"
+                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieudatphong"
+                        app:layout_constraintStart_toEndOf="@+id/themphong_phieudatphong"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_phong_phieudatphong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="15dp"
+                        android:text="@string/tv_gia_phieudatphong"
+                        android:textColor="@color/red"
+                        android:textSize="20dp"></TextView>
+
+                    <TextView
+                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieudatphong"
+                        app:layout_constraintStart_toEndOf="@+id/dongia"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_phong_phieudatphong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="300.000đ"
+                        android:textColor="@color/red"
+                        android:textSize="20dp"></TextView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/footer_phieudatphong"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="14dp">
+
+        <Button
+            app:layout_constraintBottom_toBottomOf="@+id/footer_phieudatphong"
+            app:layout_constraintEnd_toEndOf="@+id/footer_phieudatphong"
+            app:layout_constraintTop_toTopOf="@+id/footer_phieudatphong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/action_nhanphong"></Button>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
