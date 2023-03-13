@@ -60,7 +60,28 @@
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@id/chitietheaderchitietphong"
                         app:layout_constraintTop_toTopOf="@id/chitietheaderchitietphong"></TextView>
+                    <TextView
+                        android:id="@+id/tv_sophong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="@string/tv_sophong"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/heading_2"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/tv_chitietphong"
+                        app:layout_constraintTop_toTopOf="@id/chitietheaderchitietphong"></TextView>
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="101"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/heading_2"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/tv_sophong"
+                        app:layout_constraintTop_toTopOf="@id/chitietheaderchitietphong"></TextView>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/tv_sochungtu_chitietphong"
@@ -119,28 +140,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/tv_sophong"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="@string/tv_sophong"
-                    android:textColor="@color/red"
-                    android:textSize="@dimen/heading_2"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@id/chitietheaderchitietphong"
-                    app:layout_constraintTop_toTopOf="@id/headderchitietphong"></TextView>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp"
-                    android:text="101"
-                    android:textColor="@color/red"
-                    android:textSize="@dimen/heading_2"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/tv_sophong"
-                    app:layout_constraintTop_toTopOf="@id/headderchitietphong"></TextView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -168,7 +168,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@drawable/bg_edittext"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_hoten" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_hoten"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
                     android:id="@+id/tv_cccd_chitietphong"
@@ -186,7 +187,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@drawable/bg_edittext"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_cccd_chitietphong" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_cccd_chitietphong"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
                     android:id="@+id/tv_csvc_chitietphong"
