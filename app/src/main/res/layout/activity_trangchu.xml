@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <include layout="@layout/activiti_appbar"></include>
+    <include layout="@layout/activiti_appbar_chinh"></include>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
@@ -34,13 +34,15 @@
 
             <ImageView
                 android:id="@+id/img_khachsan"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:src="@drawable/home"
                 app:layout_constraintBottom_toBottomOf="@id/ctl_khachsan"
                 app:layout_constraintEnd_toEndOf="@+id/ctl_khachsan"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="@+id/ctl_khachsan"
-                app:layout_constraintTop_toTopOf="@id/ctl_khachsan">
+                app:layout_constraintTop_toTopOf="@id/ctl_khachsan"
+                app:layout_constraintVertical_bias="0.416">
 
             </ImageView>
 
@@ -70,16 +72,19 @@
 
             <ImageView
                 android:id="@+id/img_nhahang"
-                android:layout_width="80dp"
-                android:layout_height="90dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:src="@drawable/restaurant"
                 app:layout_constraintBottom_toBottomOf="@id/ctl_nhahang"
                 app:layout_constraintEnd_toEndOf="@id/ctl_nhahang"
+                app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="@id/ctl_nhahang"
                 app:layout_constraintTop_toTopOf="@id/ctl_nhahang"
+                app:layout_constraintVertical_bias="0.404"
                 tools:ignore="MissingConstraints" />
 
             <TextView
+                android:layout_marginTop="10dp"
                 android:id="@+id/tv_nhahang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

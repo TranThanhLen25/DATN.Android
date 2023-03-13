@@ -12,9 +12,6 @@
         android:theme="@style/Theme.DATNAndroidQuanLyNhaHangKhachSan"
         tools:targetApi="31">
         <activity
-            android:name=".Bottom_nav"
-            android:exported="false" />
-        <activity
             android:name=".DangNhap"
             android:exported="false" />
         <activity
