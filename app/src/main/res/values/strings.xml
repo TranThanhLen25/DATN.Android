@@ -13,6 +13,7 @@
     <string name="action_trangchu">Trang chủ</string>
     <string name="action_nhanphong">Nhận phòng</string>
     <string name="action_them">Thêm</string>
+    <string name="action_luu">Lưu</string>
 
 <!--  Trang chủ  -->
     <string name="tv_nhahang">Nhà Hàng</string>
@@ -28,6 +29,10 @@
 <!-- Chi tiết phòng   -->
     <string name="tv_chitietphong">Chi tiết phòng</string>
     <string name="tv_sophong">Số phòng: </string>
+    <string name="tv_loaiphong">Loại phòng: </string>
+    <string name="tv_ghichu">Ghi chú: </string>
+    <string name="tv_csvc">Cơ sở vật chất: </string>
+    <string name="tv_menu">Menu sử dụng: </string>
 <!--    Phiếu đặt phòng-->
     <string name="tv_phieudatphong">Phiếu đặt phòng</string>
     <string name="tv_sochungtu">Số chứng từ:</string>
@@ -36,8 +41,10 @@
     <string name="tv_sdt">SĐT:</string>
     <string name="tv_songuoi">Số người:</string>
     <string name="tv_thoigiannhan">Thời gian nhân:</string>
-    <string name="tv_phong_phieudatphong">Phòng:</string>
-    <string name="tv_gia_phieudatphong">Giá:</string>
+    <string name="tv_phong">Phòng:</string>
+    <string name="tv_gia">Giá:</string>
+    <string name="tv_PDP1">PDP1</string>
 <!--    phiếu nhận phòng-->
     <string name="tv_phieunhanphong">Phiếu nhận phòng</string>
+<!--    chi tiết phòng-->
 </resources>

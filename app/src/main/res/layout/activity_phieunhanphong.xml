@@ -1,356 +1,372 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <include
-        android:id="@+id/toolbar_phiedatphong"
+        android:id="@+id/toolbar_chitietphong"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        layout="@layout/activiti_appbar"></include>
+        layout="@layout/activiti_appbar"/>
 
     <ScrollView
-        android:id="@+id/scr_phieudatphong"
-        app:layout_constraintBottom_toTopOf="@+id/footer_phieudatphong"
+        android:id="@+id/scr_chitietphong"
+        app:layout_constraintBottom_toTopOf="@+id/footer_phieunhanphong"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_phiedatphong"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_chitietphong"
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/phieudatphong"
+            android:id="@+id/chitietphong"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/scr_phieudatphong"
+            app:layout_constraintTop_toTopOf="@+id/scr_chitietphong"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/headderphieudatphong"
-                app:layout_constraintEnd_toEndOf="@id/phieudatphong"
-                app:layout_constraintStart_toStartOf="@id/phieudatphong"
-                app:layout_constraintTop_toTopOf="@+id/phieudatphong"
+                android:id="@+id/headderchitietphong"
+                app:layout_constraintEnd_toEndOf="@id/chitietphong"
+                app:layout_constraintStart_toStartOf="@id/chitietphong"
+                app:layout_constraintTop_toTopOf="@+id/chitietphong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/chitietheaderphieudatphong"
-                    app:layout_constraintStart_toStartOf="@id/headderphieudatphong"
-                    app:layout_constraintTop_toTopOf="@+id/headderphieudatphong"
+                    android:id="@+id/chitietheaderphieunhanphong"
+                    app:layout_constraintStart_toStartOf="@id/headderchitietphong"
+                    app:layout_constraintTop_toTopOf="@+id/headderchitietphong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tv_phieudatphong"
-                        app:layout_constraintStart_toStartOf="@id/chitietheaderphieudatphong"
-                        app:layout_constraintTop_toTopOf="@id/chitietheaderphieudatphong"
+                        android:id="@+id/tv_chitietphong"
+                        app:layout_constraintStart_toStartOf="@id/chitietheaderphieunhanphong"
+                        app:layout_constraintTop_toTopOf="@id/chitietheaderphieunhanphong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_tenphieu"
                         android:padding="10dp"
                         android:text="@string/tv_phieunhanphong"
                         android:textSize="@dimen/heading_2"
-                        android:textStyle="bold"></TextView>
+                        android:textStyle="bold"/>
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/tv_sochungtu_phieudatphong"
-                        app:layout_constraintStart_toStartOf="@id/chitietheaderphieudatphong"
-                        app:layout_constraintTop_toBottomOf="@id/tv_phieudatphong"
+                        android:id="@+id/tv_sochungtu_chitietphong"
+                        app:layout_constraintStart_toStartOf="@id/chitietheaderphieunhanphong"
+                        app:layout_constraintTop_toBottomOf="@id/tv_chitietphong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/tv_sochungtu"
-                            app:layout_constraintStart_toStartOf="@id/tv_sochungtu_phieudatphong"
-                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_phieudatphong"
+                            app:layout_constraintStart_toStartOf="@id/tv_sochungtu_chitietphong"
+                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_chitietphong"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:text="@string/tv_sochungtu"
                             android:textColor="@color/red"
                             android:textSize="@dimen/heading_2"
-                            android:textStyle="bold"></TextView>
+                            android:textStyle="bold"/>
 
                         <TextView
                             android:id="@+id/tv_sochungtu_data"
                             app:layout_constraintStart_toEndOf="@+id/tv_sochungtu"
-                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_phieudatphong"
+                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_chitietphong"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:text="PNP1"
                             android:textColor="@color/red"
                             android:textSize="@dimen/heading_2"
-                            android:textStyle="bold"></TextView>
+                            android:textStyle="bold"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageButton
-                    app:layout_constraintEnd_toEndOf="@id/headderphieudatphong"
-                    app:layout_constraintStart_toEndOf="@id/chitietheaderphieudatphong"
-                    app:layout_constraintTop_toTopOf="@id/headderphieudatphong"
+                    android:id="@+id/btn_quetqr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:background="@color/white"
-                    android:src="@drawable/ic_qrcode"></ImageButton>
+                    android:src="@drawable/ic_qrcode"
+                    app:layout_constraintEnd_toEndOf="@id/headderchitietphong"
+                    app:layout_constraintStart_toEndOf="@id/chitietheaderphieunhanphong"
+                    app:layout_constraintTop_toTopOf="@id/headderchitietphong"
+                    tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/mainphieudatphong"
-                app:layout_constraintEnd_toEndOf="@id/phieudatphong"
-                app:layout_constraintStart_toStartOf="@id/phieudatphong"
-                app:layout_constraintTop_toBottomOf="@id/headderphieudatphong"
+                android:id="@+id/mainphieunhanphong"
+                app:layout_constraintEnd_toEndOf="@id/chitietphong"
+                app:layout_constraintStart_toStartOf="@id/chitietphong"
+                app:layout_constraintTop_toBottomOf="@id/headderchitietphong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tv_hoten"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
-                    app:layout_constraintTop_toTopOf="@+id/mainphieudatphong"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
+                    app:layout_constraintTop_toTopOf="@+id/mainphieunhanphong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/tv_hoten"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textview_tk_mk"></TextView>
+                    android:textSize="@dimen/textview_tk_mk"
+                    tools:ignore="SpUsage" />
 
                 <EditText
-                    android:id="@+id/et_hoten_phieudatphong"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_hoten"
+                    android:id="@+id/et_hoten_phieunhanphong"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@drawable/bg_edittext"
-                    android:paddingStart="15dp" />
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_hoten"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
-                    android:id="@+id/tv_cccd_phieudatphong"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
-                    app:layout_constraintTop_toBottomOf="@+id/et_hoten_phieudatphong"
+                    android:id="@+id/tv_cccd_phieunhanphong"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
+                    app:layout_constraintTop_toBottomOf="@+id/et_hoten_phieunhanphong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/tv_cccd"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textview_tk_mk"></TextView>
+                    android:textSize="@dimen/textview_tk_mk"/>
 
                 <EditText
-                    android:id="@+id/et_cccd_phieudatphong"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_cccd_phieudatphong"
+                    android:id="@+id/et_cccd_phieunhanphong"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@drawable/bg_edittext"
-                    android:paddingStart="15dp" />
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_cccd_phieunhanphong"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
-                    android:id="@+id/tv_sdt_phieudatphong"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
-                    app:layout_constraintTop_toBottomOf="@+id/et_cccd_phieudatphong"
+                    android:id="@+id/tv_sdt_phieunhanphong"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
+                    app:layout_constraintTop_toBottomOf="@+id/et_cccd_phieunhanphong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/tv_sdt"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textview_tk_mk"></TextView>
+                    android:textSize="@dimen/textview_tk_mk"/>
 
                 <EditText
-                    android:id="@+id/et_sdt_phieudatphong"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_sdt_phieudatphong"
+                    android:id="@+id/et_sdt_phieunhanphong"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@drawable/bg_edittext"
-                    android:paddingStart="15dp" />
+                    android:inputType="phone"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_sdt_phieunhanphong"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
-                    android:id="@+id/tv_songuoi_phieudatphong"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
-                    app:layout_constraintTop_toBottomOf="@+id/et_sdt_phieudatphong"
+                    android:id="@+id/tv_songuoi_phieunhanphong"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
+                    app:layout_constraintTop_toBottomOf="@+id/et_sdt_phieunhanphong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/tv_songuoi"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textview_tk_mk"></TextView>
+                    android:textSize="@dimen/textview_tk_mk"/>
 
                 <EditText
-                    android:id="@+id/et_songuoi_phieudatphong"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_songuoi_phieudatphong"
+                    android:id="@+id/et_songuoi_phieunhanphong"
                     android:layout_width="100dp"
                     android:layout_height="48dp"
                     android:background="@drawable/bg_edittext"
-                    android:paddingStart="15dp" />
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_songuoi_phieunhanphong"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
-                    android:id="@+id/tv_thoigiannhan_phieudatphong"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
-                    app:layout_constraintTop_toBottomOf="@+id/et_songuoi_phieudatphong"
+                    android:id="@+id/tv_thoigiannhan_phieunhanphong"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
+                    app:layout_constraintTop_toBottomOf="@+id/et_songuoi_phieunhanphong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/tv_thoigiannhan"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textview_tk_mk"></TextView>
+                    android:textSize="@dimen/textview_tk_mk"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/thoigiannhan_phieudatphong"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_thoigiannhan_phieudatphong"
+                    android:id="@+id/thoigiannhan_phieunhanphong"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_thoigiannhan_phieunhanphong"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/et_thoigiannhan_phieudatphong"
-                        app:layout_constraintBottom_toBottomOf="@+id/thoigiannhan_phieudatphong"
-                        app:layout_constraintStart_toStartOf="@+id/thoigiannhan_phieudatphong"
-                        app:layout_constraintTop_toTopOf="@+id/thoigiannhan_phieudatphong"
+                        android:id="@+id/et_thoigiannhan_phieunhanphong"
                         android:layout_width="350dp"
                         android:layout_height="48dp"
                         android:background="@drawable/bg_edittext"
                         android:inputType="time"
-                        android:paddingStart="15dp" />
+                        app:layout_constraintBottom_toBottomOf="@+id/thoigiannhan_phieunhanphong"
+                        app:layout_constraintStart_toStartOf="@+id/thoigiannhan_phieunhanphong"
+                        app:layout_constraintTop_toTopOf="@+id/thoigiannhan_phieunhanphong"
+                        tools:ignore="SpeakableTextPresentCheck" />
 
                     <ImageButton
-                        app:layout_constraintEnd_toEndOf="@+id/thoigiannhan_phieudatphong"
-                        app:layout_constraintStart_toEndOf="@id/et_thoigiannhan_phieudatphong"
-                        app:layout_constraintTop_toTopOf="@+id/thoigiannhan_phieudatphong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:src="@drawable/ic_calendar"></ImageButton>
+                        android:minWidth="48dp"
+                        android:minHeight="48dp"
+                        android:src="@drawable/ic_calendar"
+                        app:layout_constraintEnd_toEndOf="@+id/thoigiannhan_phieunhanphong"
+                        app:layout_constraintStart_toEndOf="@id/et_thoigiannhan_phieunhanphong"
+                        app:layout_constraintTop_toTopOf="@+id/thoigiannhan_phieunhanphong"
+                        tools:ignore="SpeakableTextPresentCheck" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
-                    android:id="@+id/tv_thoigiantra_phieudatphong"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
-                    app:layout_constraintTop_toBottomOf="@+id/thoigiannhan_phieudatphong"
+                    android:id="@+id/tv_thoigiantra_phieunhanphong"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
+                    app:layout_constraintTop_toBottomOf="@+id/thoigiannhan_phieunhanphong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/tv_thoigiannhan"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textview_tk_mk"></TextView>
+                    android:textSize="@dimen/textview_tk_mk"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/thoigiantra_phieudatphong"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_thoigiantra_phieudatphong"
+                    android:id="@+id/thoigiantra_phieunhanphong"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_thoigiantra_phieunhanphong"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/et_thoigiantra_phieudatphong"
-                        app:layout_constraintBottom_toBottomOf="@+id/thoigiantra_phieudatphong"
-                        app:layout_constraintStart_toStartOf="@+id/thoigiantra_phieudatphong"
-                        app:layout_constraintTop_toTopOf="@+id/thoigiantra_phieudatphong"
+                        android:id="@+id/et_thoigiantra_phieunhanphong"
                         android:layout_width="350dp"
                         android:layout_height="48dp"
                         android:background="@drawable/bg_edittext"
                         android:inputType="time"
-                        android:paddingStart="15dp" />
+                        android:paddingStart="15dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/thoigiantra_phieunhanphong"
+                        app:layout_constraintStart_toStartOf="@+id/thoigiantra_phieunhanphong"
+                        app:layout_constraintTop_toTopOf="@+id/thoigiantra_phieunhanphong"
+                        tools:ignore="SpeakableTextPresentCheck" />
 
                     <ImageButton
-                        app:layout_constraintEnd_toEndOf="@+id/thoigiantra_phieudatphong"
-                        app:layout_constraintStart_toEndOf="@id/et_thoigiantra_phieudatphong"
-                        app:layout_constraintTop_toTopOf="@+id/thoigiantra_phieudatphong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:src="@drawable/ic_calendar"></ImageButton>
+                        android:minWidth="48dp"
+                        android:minHeight="48dp"
+                        android:src="@drawable/ic_calendar"
+                        app:layout_constraintEnd_toEndOf="@+id/thoigiantra_phieunhanphong"
+                        app:layout_constraintStart_toEndOf="@id/et_thoigiantra_phieunhanphong"
+                        app:layout_constraintTop_toTopOf="@+id/thoigiantra_phieunhanphong"
+                        tools:ignore="SpeakableTextPresentCheck" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/chonphong_phieudatphong"
+                    android:id="@+id/chonphong_phieunhanphong"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/thoigiantra_phieudatphong"
+                    app:layout_constraintTop_toBottomOf="@+id/thoigiantra_phieunhanphong"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <ImageButton
-                        android:id="@+id/themphong_phieudatphong"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/chonphong_phieudatphong"
+                        android:id="@+id/themphong_phieunhanphong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:padding="15dp"
-                        android:src="@drawable/ic_additem" />
+                        android:src="@drawable/ic_additem"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/chonphong_phieunhanphong"
+                        tools:ignore="SpeakableTextPresentCheck" />
 
                     <TextView
-                        android:id="@+id/tv_phong_phieudatphong"
-                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieudatphong"
-                        app:layout_constraintStart_toEndOf="@+id/themphong_phieudatphong"
-                        app:layout_constraintTop_toTopOf="@+id/chonphong_phieudatphong"
+                        android:id="@+id/tv_phong_phieunhanphong"
+                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieunhanphong"
+                        app:layout_constraintStart_toEndOf="@+id/themphong_phieunhanphong"
+                        app:layout_constraintTop_toTopOf="@+id/chonphong_phieunhanphong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingRight="15dp"
-                        android:text="@string/tv_phong_phieudatphong"
-                        android:textSize="20dp"></TextView>
+                        android:text="@string/tv_phong"
+                        android:textSize="20dp"/>
 
                     <TextView
-                        android:id="@+id/tv_phong_data_phieudatphong"
-                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieudatphong"
-                        app:layout_constraintStart_toEndOf="@+id/tv_phong_phieudatphong"
-                        app:layout_constraintTop_toTopOf="@+id/chonphong_phieudatphong"
+                        android:id="@+id/tv_phong_data_phieunhanphong"
+                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieunhanphong"
+                        app:layout_constraintStart_toEndOf="@+id/tv_phong_phieunhanphong"
+                        app:layout_constraintTop_toTopOf="@+id/chonphong_phieunhanphong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="101"
-                        android:textSize="20dp"></TextView>
+                        android:textSize="20sp"/>
 
                     <TextView
                         android:id="@+id/dongia"
-                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieudatphong"
-                        app:layout_constraintStart_toEndOf="@+id/themphong_phieudatphong"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_phong_phieudatphong"
+                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieunhanphong"
+                        app:layout_constraintStart_toEndOf="@+id/themphong_phieunhanphong"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_phong_phieunhanphong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingRight="15dp"
-                        android:text="@string/tv_gia_phieudatphong"
+                        android:text="@string/tv_gia"
                         android:textColor="@color/red"
-                        android:textSize="20dp"></TextView>
+                        android:textSize="20sp"/>
 
                     <TextView
-                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieudatphong"
+                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieunhanphong"
                         app:layout_constraintStart_toEndOf="@+id/dongia"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_phong_phieudatphong"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_phong_phieunhanphong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="300.000đ"
                         android:textColor="@color/red"
-                        android:textSize="20dp"></TextView>
+                        android:textSize="20sp"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/footer_phieudatphong"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/footer_phieunhanphong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:padding="14dp">
+        android:padding="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            app:layout_constraintBottom_toBottomOf="@+id/footer_phieudatphong"
-            app:layout_constraintEnd_toEndOf="@+id/footer_phieudatphong"
-            app:layout_constraintTop_toTopOf="@+id/footer_phieudatphong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/action_nhanphong"></Button>
+            android:text="@string/action_nhanphong"
+            app:layout_constraintBottom_toBottomOf="@+id/footer_phieunhanphong"
+            app:layout_constraintEnd_toEndOf="@+id/footer_phieunhanphong"
+            app:layout_constraintTop_toTopOf="@+id/footer_phieunhanphong" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
