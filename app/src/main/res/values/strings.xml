@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">QuanLyNhaHangKhachSan</string>
-<!--  đăng nhập  -->
+    <!--  đăng nhập  -->
     <string name="tv_taikhoan">Tài khoản</string>
     <string name="tv_matkhau">Mật khẩu</string>
     <string name="btn_dangnhap">ĐĂNG NHẬP</string>
-<!--    Toolbar-->
+    <!--    Toolbar-->
     <string name="tennhahang">NOBLE LOTUS</string>
 
-<!--  bottom_nav -->
+    <!--  bottom_nav -->
     <string name="action_danhsachphong">Danh sách</string>
     <string name="action_datphong">Đặt phòng</string>
     <string name="action_trangchu">Trang chủ</string>
@@ -15,25 +15,25 @@
     <string name="action_them">Thêm</string>
     <string name="action_luu">Lưu</string>
 
-<!--  Trang chủ  -->
+    <!--  Trang chủ  -->
     <string name="tv_nhahang">Nhà Hàng</string>
     <string name="tv_khachsan">Khách sạn</string>
-    
-<!--  Drawer_layout  -->
+
+    <!--  Drawer_layout  -->
     <string name="action_phieunha">Nhập hàng</string>
     <string name="action_kho">Quản lý kho</string>
     <string name="action_thongke">Thống kê</string>
     <string name="action_thongtincanhan">Thông tin cá nhân</string>
     <string name="action_dangxguat">Đăng xuất</string>
 
-<!-- Chi tiết phòng   -->
+    <!-- Chi tiết phòng   -->
     <string name="tv_chitietphong">Chi tiết phòng</string>
     <string name="tv_sophong">Số phòng: </string>
     <string name="tv_loaiphong">Loại phòng: </string>
     <string name="tv_ghichu">Ghi chú: </string>
     <string name="tv_csvc">Cơ sở vật chất: </string>
     <string name="tv_menu">Menu sử dụng: </string>
-<!--    Phiếu đặt phòng-->
+    <!--    Phiếu đặt phòng-->
     <string name="tv_phieudatphong">Phiếu đặt phòng</string>
     <string name="tv_sochungtu">Số chứng từ:</string>
     <string name="tv_hoten">Họ tên:</string>
@@ -44,7 +44,9 @@
     <string name="tv_phong">Phòng:</string>
     <string name="tv_gia">Giá:</string>
     <string name="tv_PDP1">PDP1</string>
-<!--    phiếu nhận phòng-->
+    <!--    phiếu nhận phòng-->
     <string name="tv_phieunhanphong">Phiếu nhận phòng</string>
-<!--    chi tiết phòng-->
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--    chi tiết phòng-->
 </resources>

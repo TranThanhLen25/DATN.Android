@@ -17,7 +17,7 @@
         android:icon="@drawable/ic_nhanphong"
         android:title="@string/action_nhanphong"></item>
     <item
-        android:id="@+id/nav_them"
-        android:icon="@drawable/ic_menu"
+        android:id="@+id/nav_lichsu"
+        android:icon="@drawable/ic_history"
         android:title="@string/action_them"></item>
 </menu>
