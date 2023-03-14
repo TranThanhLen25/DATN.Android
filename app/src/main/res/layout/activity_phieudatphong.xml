@@ -149,7 +149,7 @@
                     android:padding="8dp"
                     android:text="@string/tv_cccd"
                     android:textColor="@color/black"
-                    
+
                     app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
                     app:layout_constraintTop_toBottomOf="@+id/et_hoten_phieudatphong"/>
 
@@ -170,7 +170,7 @@
                     android:padding="8dp"
                     android:text="@string/tv_sdt"
                     android:textColor="@color/black"
-                    
+
                     app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
                     app:layout_constraintTop_toBottomOf="@+id/et_cccd_phieudatphong"/>
 
@@ -181,7 +181,8 @@
                     android:background="@drawable/bg_edittext"
                     android:inputType="phone"
                     app:layout_constraintTop_toBottomOf="@+id/tv_sdt_phieudatphong"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck"
+                    tools:layout_editor_absoluteX="0dp" />
 
                 <TextView
                     android:id="@+id/tv_songuoi_phieudatphong"
@@ -190,7 +191,7 @@
                     android:padding="8dp"
                     android:text="@string/tv_songuoi"
                     android:textColor="@color/black"
-                    
+
                     app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
                     app:layout_constraintTop_toBottomOf="@+id/et_sdt_phieudatphong"/>
 
@@ -211,7 +212,7 @@
                     android:padding="8dp"
                     android:text="@string/tv_thoigiannhan"
                     android:textColor="@color/black"
-                    
+
                     app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
                     app:layout_constraintTop_toBottomOf="@+id/et_songuoi_phieudatphong"/>
 
@@ -252,7 +253,7 @@
                     android:padding="8dp"
                     android:text="@string/tv_thoigiannhan"
                     android:textColor="@color/black"
-                    
+
                     app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
                     app:layout_constraintTop_toBottomOf="@+id/thoigiannhan_phieudatphong"/>
 
