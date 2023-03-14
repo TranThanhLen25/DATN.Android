@@ -14,6 +14,7 @@
     <string name="action_nhanphong">Nhận phòng</string>
     <string name="action_them">Lịch sử</string>
     <string name="action_luu">Lưu</string>
+    <string name="action_traphong">Trả phòng</string>
 
     <!--  Trang chủ  -->
     <string name="tv_nhahang">Nhà Hàng</string>
@@ -33,6 +34,7 @@
     <string name="tv_ghichu">Ghi chú: </string>
     <string name="tv_csvc">Cơ sở vật chất: </string>
     <string name="tv_menu">Menu sử dụng: </string>
+    <string name="tv_tongtien">Tổng tiền: </string>
     <!--    Phiếu đặt phòng-->
     <string name="tv_phieudatphong">Phiếu đặt phòng</string>
     <string name="tv_sochungtu">Số chứng từ:</string>
@@ -41,12 +43,13 @@
     <string name="tv_sdt">SĐT:</string>
     <string name="tv_songuoi">Số người:</string>
     <string name="tv_thoigiannhan">Thời gian nhân:</string>
-    <string name="tv_phong">Phòng:</string>
+    <string name="tv_phong">Phòng: </string>
     <string name="tv_gia">Giá:</string>
     <string name="tv_PDP1">PDP1</string>
     <!--    phiếu nhận phòng-->
     <string name="tv_phieunhanphong">Phiếu nhận phòng</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <!--    chi tiết phòng-->
+    <!--    phiếu trả phòng-->
+    <string name="tv_phieutraphong">Phiếu trả phòng</string>
 </resources>

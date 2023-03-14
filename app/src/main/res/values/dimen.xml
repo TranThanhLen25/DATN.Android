@@ -3,7 +3,7 @@
 
     <!--    đăng nhập    -->
     <dimen name="btn_textsize_dn">20dp</dimen>
-    <dimen name="textview_tk_mk">16sp</dimen>
+    <dimen name="textview_tk_mk">16dp</dimen>
     <dimen name="padding_dn">8dp</dimen>
 
     <!--  Toolbar  -->
@@ -19,7 +19,7 @@
     <dimen name="height_logo">50dp</dimen>
 
 <!--  Trang chủ -->
-    <dimen name="heading_2">20sp</dimen>
+    <dimen name="heading_2">20dp</dimen>
 
 
 

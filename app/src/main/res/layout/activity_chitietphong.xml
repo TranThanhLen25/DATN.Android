@@ -60,6 +60,7 @@
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@id/chitietheaderchitietphong"
                         app:layout_constraintTop_toTopOf="@id/chitietheaderchitietphong"></TextView>
+
                     <TextView
                         android:id="@+id/tv_sophong"
                         android:layout_width="wrap_content"
@@ -269,19 +270,19 @@
                         app:layout_constraintTop_toTopOf="@+id/layout_gachngang_2"></View>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    app:layout_constraintStart_toStartOf="@+id/mainchitietphong"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/layout_gachngang_2">-->
+                <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    app:layout_constraintStart_toStartOf="@+id/mainchitietphong"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/layout_gachngang_2">-->
 
-<!--                    <androidx.recyclerview.widget.RecyclerView-->
-<!--                        android:id="@+id/rscv_dichvu"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toTopOf="parent" />-->
-<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+                <!--                    <androidx.recyclerview.widget.RecyclerView-->
+                <!--                        android:id="@+id/rscv_dichvu"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        app:layout_constraintStart_toStartOf="parent"-->
+                <!--                        app:layout_constraintTop_toTopOf="parent" />-->
+                <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -309,6 +310,26 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tv_tongtien_chitietphong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_tongtien"
+            android:textColor="@color/red"
+            android:textSize="@dimen/heading_2"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="@+id/footer_chitietphong"
+            app:layout_constraintStart_toStartOf="@+id/footer_chitietphong"/>
+        <TextView
+            android:id="@+id/tv_tongtien_data_chitietphong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="500.000đ"
+            android:textSize="@dimen/heading_2"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="@+id/footer_chitietphong"
+            app:layout_constraintStart_toEndOf="@+id/tv_tongtien_chitietphong"/>
 
         <Button
             android:layout_width="wrap_content"
