@@ -13,6 +13,7 @@ import com.example.datnandroidquanlynhahangkhachsan.Fragment_dsPhieuDatPhong;
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.model.PhieuDat;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class PhieuDatPhongAdapter extends RecyclerView.Adapter<PhieuDatPhongAdapter.PhieuDatPhongViewHolder> {
@@ -42,7 +43,8 @@ public class PhieuDatPhongAdapter extends RecyclerView.Adapter<PhieuDatPhongAdap
         holder.tvtenkhachhangphieudatphongdata.setText(String.valueOf(PhieuDat.getTrangThai()));
         holder.tvsdtitemphieudatphongdata.setText(String.valueOf(PhieuDat.getGhiChu()));
         holder.tvsochungtuphieudatphongdata.setText(PhieuDat.getSoChungTu());
-        holder.tvthoigianlapphieuitemphieudatphongdata.setText(PhieuDat.getNgayLap().toString());
+        SimpleDateFormat day1 = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
+        holder.tvthoigianlapphieuitemphieudatphongdata.setText(String.valueOf(day1.format(PhieuDat.getNgayLap())));
         holder.tvphongitemphieudatphongdata.setText(String.valueOf(PhieuDat.getKhachHangID()));
     }
 

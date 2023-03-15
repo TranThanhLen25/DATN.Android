@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuDatPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.model.PhieuDat;
 
-import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -75,9 +77,12 @@ public class Fragment_dsPhieuDatPhong extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ds_phieu_dat_phong, container, false);
         rscvPhieuDatPhong = view.findViewById(R.id.rscv_dsphieudatphong);
         lsPhieuDat = new ArrayList<>();
-        Timestamp day=new Timestamp(2000,10,04,12,12,12,0);
-        PhieuDat pd1 = new PhieuDat(1L,  "1",  day , 1,1, day, day, "abc", 101L, "Đang đặt");
-        PhieuDat pd2 = new PhieuDat(2L,  "2",  day , 2,1, day, day, "abc", 101L, "Đang đặt");
+        //Timestamp day=new Timestamp(2000-1900,10-1,04,12,12,12,0);
+
+        Date day =  Calendar.getInstance().getTime();
+
+        PhieuDat pd1 = new PhieuDat(1L,  "1",  day, 1,1, day, day, "abc", 101L, "Đang đặt");
+        PhieuDat pd2 = new PhieuDat(2L,  "2",  day, 2,1, day, day, "abc", 101L, "Đang đặt");
         lsPhieuDat.add(pd1);
         lsPhieuDat.add(pd2);
         phieuDatPhongAdapter = new PhieuDatPhongAdapter(lsPhieuDat);
