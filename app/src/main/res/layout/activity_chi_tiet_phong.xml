@@ -315,7 +315,7 @@
             android:id="@+id/tv_tongtien_chitietphong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tv_tongtien"
+            android:text="@string/tv_tong"
             android:textColor="@color/red"
             android:textSize="@dimen/heading_2"
             android:textStyle="bold"
