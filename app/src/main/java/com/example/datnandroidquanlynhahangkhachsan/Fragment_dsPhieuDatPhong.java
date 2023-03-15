@@ -1,12 +1,21 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuDatPhongAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.model.PhieuDat;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +23,9 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class Fragment_dsPhieuDatPhong extends Fragment {
+    private RecyclerView rscvPhieuDatPhong;
+    private List<PhieuDat> lsPhieuDat;
+    private PhieuDatPhongAdapter phieuDatPhongAdapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +70,23 @@ public class Fragment_dsPhieuDatPhong extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ds_phieu_dat_phong, container, false);
+        super.onCreate(savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_ds_phieu_dat_phong, container, false);
+        rscvPhieuDatPhong = view.findViewById(R.id.rscv_dsphieudatphong);
+        lsPhieuDat = new ArrayList<>();
+        Date day =  Calendar.getInstance().getTime();
+        PhieuDat pd1 = new PhieuDat(1L,  "1",  day, 1,1, day, day, "abc", 101L, "Đang đặt");
+        PhieuDat pd2 = new PhieuDat(2L,  "2",  day, 2,1, day, day, "abc", 101L, "Đang đặt");
+        lsPhieuDat.add(pd1);
+        lsPhieuDat.add(pd2);
+        phieuDatPhongAdapter = new PhieuDatPhongAdapter(lsPhieuDat);
+        LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
+        rscvPhieuDatPhong.setLayoutManager(LinearLayoutManager);
+//        RecyclerView.ItemDecoration decoration = new DividerItemDecoration(this.getActivity(), DividerItemDecoration.VERTICAL);
+//        rscvPhieuDatPhong.addItemDecoration(decoration);
+        rscvPhieuDatPhong.setAdapter(phieuDatPhongAdapter);
+        return view;
     }
 }
