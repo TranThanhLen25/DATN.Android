@@ -37,6 +37,7 @@
     <string name="tv_tongtien">Tổng tiền: </string>
     <!--    Phiếu đặt phòng-->
     <string name="tv_phieudatphong">Phiếu đặt phòng</string>
+    <string name="tv_dsphieudatphong">Danh sách phiếu đặt phòng</string>
     <string name="tv_sochungtu">Số chứng từ:</string>
     <string name="tv_hoten">Họ tên:</string>
     <string name="tv_cccd">CCCD:</string>
@@ -46,6 +47,7 @@
     <string name="tv_phong">Phòng: </string>
     <string name="tv_gia">Giá:</string>
     <string name="tv_PDP1">PDP1</string>
+    <string name="tv_thoigianlapphieu">Thời gian: </string>
     <!--    phiếu nhận phòng-->
     <string name="tv_phieunhanphong">Phiếu nhận phòng</string>
     <!-- TODO: Remove or change this placeholder text -->

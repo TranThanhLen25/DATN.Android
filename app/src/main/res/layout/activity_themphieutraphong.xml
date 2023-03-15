@@ -244,7 +244,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="4dp"
                         android:background="@color/grey"
-                        app:layout_constraintTop_toTopOf="@+id/layout_gachngang_1"></View>
+                        app:layout_constraintTop_toTopOf="@+id/layout_gachngang_1"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -337,8 +337,8 @@
             android:textColor="@color/red"
             android:textSize="@dimen/heading_2"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="@+id/footer_phieunhanphong"
-            app:layout_constraintStart_toStartOf="@+id/footer_phieunhanphong"/>
+            app:layout_constraintTop_toTopOf="@+id/footer_phieutraphong"
+            app:layout_constraintStart_toStartOf="@+id/footer_phieutraphong"/>
         <TextView
             android:id="@+id/tv_tongtien_data_phieunhanphong"
             android:layout_width="wrap_content"
@@ -346,7 +346,7 @@
             android:text="500.000đ"
             android:textSize="@dimen/heading_2"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="@+id/footer_phieunhanphong"
+            app:layout_constraintTop_toTopOf="@+id/footer_phieutraphong"
             app:layout_constraintStart_toEndOf="@+id/tv_tongtien_phieunhanphong"/>
 
         <Button
@@ -355,6 +355,6 @@
             android:text="@string/action_traphong"
             app:layout_constraintBottom_toBottomOf="@+id/footer_phieutraphong"
             app:layout_constraintEnd_toEndOf="@+id/footer_phieutraphong"
-            app:layout_constraintTop_toTopOf="@+id/footer_phieutraphong"></Button>
+            app:layout_constraintTop_toTopOf="@+id/footer_phieutraphong"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
