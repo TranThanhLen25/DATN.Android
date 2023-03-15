@@ -659,7 +659,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:background="@color/white"
-                android:src="@drawable/add"
+                android:src="@drawable/ic_plusvip"
                 app:layout_constraintBottom_toTopOf="@id/ctl_bottom"
                 app:layout_constraintEnd_toEndOf="@id/ctl_phieunhaphang"
                 app:layout_constraintStart_toStartOf="@id/ctl_phieunhaphang"

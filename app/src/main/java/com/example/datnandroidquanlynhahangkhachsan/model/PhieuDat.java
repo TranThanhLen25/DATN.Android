@@ -14,17 +14,20 @@ public class PhieuDat {
     private Long KhachHangID;
     private String TrangThai;
 
-    public PhieuDat(String phieuDatID, String soChungTu, String ngayLap, String nguoiDungID, int loaiPhieuID, String thoiGianNhanDuKien, String thoiGianTraDuKien, String ghiChu, char khachHangID, String trangThai) {
-        PhieuDatID = Long.valueOf(phieuDatID);
+    public PhieuDat(Long phieuDatID, String soChungTu, Timestamp ngayLap, int nguoiDungID, int loaiPhieuID, Timestamp thoiGianNhanDuKien, Timestamp thoiGianTraDuKien, String ghiChu, Long khachHangID, String trangThai) {
+        PhieuDatID = phieuDatID;
         SoChungTu = soChungTu;
-        NgayLap = Timestamp.valueOf(ngayLap);
-        NguoiDungID = Integer.parseInt(nguoiDungID);
+        NgayLap = ngayLap;
+        NguoiDungID = nguoiDungID;
         LoaiPhieuID = loaiPhieuID;
-        ThoiGianNhanDuKien = Timestamp.valueOf(thoiGianNhanDuKien);
-        ThoiGianTraDuKien = Timestamp.valueOf(thoiGianTraDuKien);
+        ThoiGianNhanDuKien = thoiGianNhanDuKien;
+        ThoiGianTraDuKien = thoiGianTraDuKien;
         GhiChu = ghiChu;
-        KhachHangID = Long.valueOf(khachHangID);
+        KhachHangID = khachHangID;
         TrangThai = trangThai;
+    }
+
+    public PhieuDat(int i, String soChungTu, String s, int nguoiDungID, int loaiPhieuID, String s1, String s2, String abc, int i1, String đang_đặt) {
     }
 
     public Long getPhieuDatID() {
