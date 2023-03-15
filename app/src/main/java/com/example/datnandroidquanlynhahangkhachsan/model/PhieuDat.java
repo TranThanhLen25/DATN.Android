@@ -1,20 +1,20 @@
 package com.example.datnandroidquanlynhahangkhachsan.model;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 public class PhieuDat {
     private Long PhieuDatID;
     private String SoChungTu;
-    private Timestamp NgayLap;
+    private Date NgayLap;
     private int NguoiDungID;
     private int LoaiPhieuID;
-    private Timestamp ThoiGianNhanDuKien;
-    private Timestamp ThoiGianTraDuKien;
+    private Date ThoiGianNhanDuKien;
+    private Date ThoiGianTraDuKien;
     private String GhiChu;
     private Long KhachHangID;
     private String TrangThai;
 
-    public PhieuDat(Long phieuDatID, String soChungTu, Timestamp ngayLap, int nguoiDungID, int loaiPhieuID, Timestamp thoiGianNhanDuKien, Timestamp thoiGianTraDuKien, String ghiChu, Long khachHangID, String trangThai) {
+    public PhieuDat(Long phieuDatID, String soChungTu, Date ngayLap, int nguoiDungID, int loaiPhieuID, Date thoiGianNhanDuKien, Date thoiGianTraDuKien, String ghiChu, Long khachHangID, String trangThai) {
         PhieuDatID = phieuDatID;
         SoChungTu = soChungTu;
         NgayLap = ngayLap;
@@ -46,11 +46,11 @@ public class PhieuDat {
         SoChungTu = soChungTu;
     }
 
-    public Timestamp getNgayLap() {
+    public Date getNgayLap() {
         return NgayLap;
     }
 
-    public void setNgayLap(Timestamp ngayLap) {
+    public void setNgayLap(Date ngayLap) {
         NgayLap = ngayLap;
     }
 
@@ -70,19 +70,19 @@ public class PhieuDat {
         LoaiPhieuID = loaiPhieuID;
     }
 
-    public Timestamp getThoiGianNhanDuKien() {
+    public Date getThoiGianNhanDuKien() {
         return ThoiGianNhanDuKien;
     }
 
-    public void setThoiGianNhanDuKien(Timestamp thoiGianNhanDuKien) {
+    public void setThoiGianNhanDuKien(Date thoiGianNhanDuKien) {
         ThoiGianNhanDuKien = thoiGianNhanDuKien;
     }
 
-    public Timestamp getThoiGianTraDuKien() {
+    public Date getThoiGianTraDuKien() {
         return ThoiGianTraDuKien;
     }
 
-    public void setThoiGianTraDuKien(Timestamp thoiGianTraDuKien) {
+    public void setThoiGianTraDuKien(Date thoiGianTraDuKien) {
         ThoiGianTraDuKien = thoiGianTraDuKien;
     }
 
