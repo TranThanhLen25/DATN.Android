@@ -1,5 +1,6 @@
 package com.example.datnandroidquanlynhahangkhachsan.adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,49 +9,41 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.datnandroidquanlynhahangkhachsan.Fragment_dsPhieuDatPhong;
 import com.example.datnandroidquanlynhahangkhachsan.R;
-import com.example.datnandroidquanlynhahangkhachsan.model.KhachHang;
 import com.example.datnandroidquanlynhahangkhachsan.model.PhieuDat;
-import com.example.datnandroidquanlynhahangkhachsan.model.PhieuDatPhongChiTiet;
-import com.example.datnandroidquanlynhahangkhachsan.model.Phong;
 
 import java.util.List;
 
 public class PhieuDatPhongAdapter extends RecyclerView.Adapter<PhieuDatPhongAdapter.PhieuDatPhongViewHolder> {
     private List<PhieuDat> lsPhieuDat;
-    private List<PhieuDatPhongChiTiet> lsPhieuDatPhongChiTiet;
-    private List<Phong> lsPhong;
-    private List<KhachHang> lsKhachHang;
 
     public PhieuDatPhongAdapter(List<PhieuDat> lsPhieuDat) {
         this.lsPhieuDat = lsPhieuDat;
+    }
+
+    public PhieuDatPhongAdapter(Fragment_dsPhieuDatPhong fragment_dsPhieuDatPhong) {
     }
 
     @NonNull
     @Override
     public PhieuDatPhongViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_phieudatphong, parent, false);
-        return new PhieuDatPhongAdapter.PhieuDatPhongViewHolder(view);
+        return new PhieuDatPhongViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull PhieuDatPhongViewHolder holder, int position) {
         PhieuDat PhieuDat = lsPhieuDat.get((position));
-        PhieuDatPhongChiTiet PhieuDatPhongChiTiet = lsPhieuDatPhongChiTiet.get((position));
-        KhachHang KhachHang = lsKhachHang.get((position));
-        Phong Phong = lsPhong.get((position));
         if (PhieuDat == null) {
             return;
         }
-        if (KhachHang.getKhachHangID() == PhieuDat.getKhachHangID()) {
-            holder.tvtenkhachhangphieudatphongdata.setText(KhachHang.getTenKhachHang());
-            holder.tvsdtitemphieudatphongdata.setText(KhachHang.getSdt());
-        }
+        holder.tvtenkhachhangphieudatphongdata.setText(String.valueOf(PhieuDat.getTrangThai()));
+        holder.tvsdtitemphieudatphongdata.setText(String.valueOf(PhieuDat.getGhiChu()));
         holder.tvsochungtuphieudatphongdata.setText(PhieuDat.getSoChungTu());
         holder.tvthoigianlapphieuitemphieudatphongdata.setText(PhieuDat.getNgayLap().toString());
-        if (PhieuDat.getPhieuDatID() == PhieuDatPhongChiTiet.getPhongID()) {
-            holder.tvphongitemphieudatphongdata.setText(PhieuDatPhongChiTiet.getPhongID());
-        }
+        holder.tvphongitemphieudatphongdata.setText(String.valueOf(PhieuDat.getKhachHangID()));
     }
 
     @Override
