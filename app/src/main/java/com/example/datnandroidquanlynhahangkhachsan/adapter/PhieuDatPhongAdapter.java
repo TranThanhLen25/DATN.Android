@@ -12,12 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.datnandroidquanlynhahangkhachsan.Fragment_dsPhieuDatPhong;
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.model.PhieuDat;
+import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class PhieuDatPhongAdapter extends RecyclerView.Adapter<PhieuDatPhongAdapter.PhieuDatPhongViewHolder> {
     private List<PhieuDat> lsPhieuDat;
+    private AppUtils ac;
 
     public PhieuDatPhongAdapter(List<PhieuDat> lsPhieuDat) {
         this.lsPhieuDat = lsPhieuDat;
@@ -43,8 +44,9 @@ public class PhieuDatPhongAdapter extends RecyclerView.Adapter<PhieuDatPhongAdap
         holder.tvtenkhachhangphieudatphongdata.setText(String.valueOf(PhieuDat.getTrangThai()));
         holder.tvsdtitemphieudatphongdata.setText(String.valueOf(PhieuDat.getGhiChu()));
         holder.tvsochungtuphieudatphongdata.setText(PhieuDat.getSoChungTu());
-        SimpleDateFormat day1 = new SimpleDateFormat("dd/MM/YYYY HH:mm:ss");
-        holder.tvthoigianlapphieuitemphieudatphongdata.setText(String.valueOf(day1.format(PhieuDat.getNgayLap())));
+//        SimpleDateFormat day1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+//        holder.tvthoigianlapphieuitemphieudatphongdata.setText(String.valueOf(day1.format(PhieuDat.getNgayLap())));
+        holder.tvthoigianlapphieuitemphieudatphongdata.setText(ac.formatDateToString(PhieuDat.getNgayLap(),"dd/MM/yyyy HH:mm:ss"));
         holder.tvphongitemphieudatphongdata.setText(String.valueOf(PhieuDat.getKhachHangID()));
     }
 
