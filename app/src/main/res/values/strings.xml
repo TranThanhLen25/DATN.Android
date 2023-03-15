@@ -33,8 +33,10 @@
     <string name="tv_ghichu">Ghi chú: </string>
     <string name="tv_csvc">Cơ sở vật chất: </string>
     <string name="tv_menu">Menu sử dụng: </string>
+    <string name="tv_tongtien">Tổng tiền: </string>
     <!--    Phiếu đặt phòng-->
     <string name="tv_phieudatphong">Phiếu đặt phòng</string>
+    <string name="tv_dsphieudatphong">Danh sách phiếu đặt phòng</string>
     <string name="tv_sochungtu">Số chứng từ:</string>
     <string name="tv_hoten">Họ tên:</string>
     <string name="tv_cccd">CCCD:</string>
