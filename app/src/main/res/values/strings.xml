@@ -33,7 +33,6 @@
     <string name="tv_ghichu">Ghi chú: </string>
     <string name="tv_csvc">Cơ sở vật chất: </string>
     <string name="tv_menu">Menu sử dụng: </string>
-
     <!--    Phiếu đặt phòng-->
     <string name="tv_phieudatphong">Phiếu đặt phòng</string>
     <string name="tv_sochungtu">Số chứng từ:</string>
@@ -44,9 +43,7 @@
     <string name="tv_thoigiannhan">Thời gian nhân:</string>
     <string name="tv_phong">Phòng:</string>
     <string name="tv_gia">Giá:</string>
-    <string name="tv_thoigianlapphieu">Thời gian lập phiếu</string>
     <string name="tv_PDP1">PDP1</string>
-    <string name="tv_dsphieudatphong">Danh sách phiếu đặt phòng</string>
     <!--    phiếu nhận phòng-->
     <string name="tv_phieunhanphong">Phiếu nhận phòng</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -73,6 +70,5 @@
     <string name="text_chitiet">Chi tiết</string>
     <string name="text_doiphong">Đổi phòng</string>
     <string name="text_baotri">Bảo trì</string>
-
     
 </resources>
