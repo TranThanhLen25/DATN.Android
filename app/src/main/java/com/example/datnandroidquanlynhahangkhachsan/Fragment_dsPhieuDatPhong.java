@@ -81,6 +81,10 @@ public class Fragment_dsPhieuDatPhong extends Fragment {
         PhieuDat pd2 = new PhieuDat(2L,  "2",  day, 2,1, day, day, "abc", 101L, "Đang đặt");
         lsPhieuDat.add(pd1);
         lsPhieuDat.add(pd2);
+        lsPhieuDat.add(pd2);
+        lsPhieuDat.add(pd2);
+        lsPhieuDat.add(pd2);
+        lsPhieuDat.add(pd2);
         phieuDatPhongAdapter = new PhieuDatPhongAdapter(lsPhieuDat);
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
         rscvPhieuDatPhong.setLayoutManager(LinearLayoutManager);
