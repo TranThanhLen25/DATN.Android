@@ -74,6 +74,7 @@ public class Fragment_dsPhieuDatPhong extends Fragment {
         // Inflate the layout for this fragment
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_ds_phieu_dat_phong, container, false);
+
         rscvPhieuDatPhong = view.findViewById(R.id.rscv_dsphieudatphong);
         lsPhieuDat = new ArrayList<>();
         Date day =  Calendar.getInstance().getTime();

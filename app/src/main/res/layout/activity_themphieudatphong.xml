@@ -225,7 +225,7 @@
 
                     <EditText
                         android:id="@+id/et_thoigiannhan_phieudatphong"
-                        android:layout_width="350dp"
+                        android:layout_width="320dp"
                         android:layout_height="48dp"
                         android:background="@drawable/bg_edittext"
                         app:layout_constraintBottom_toBottomOf="@+id/thoigiannhan_phieudatphong"
@@ -266,7 +266,7 @@
 
                     <EditText
                         android:id="@+id/et_thoigiantra_phieudatphong"
-                        android:layout_width="350dp"
+                        android:layout_width="320dp"
                         android:layout_height="48dp"
                         android:background="@drawable/bg_edittext"
                         app:layout_constraintBottom_toBottomOf="@+id/thoigiantra_phieudatphong"

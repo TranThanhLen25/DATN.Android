@@ -223,7 +223,7 @@
 
                     <EditText
                         android:id="@+id/et_thoigiannhan_phieunhanphong"
-                        android:layout_width="350dp"
+                        android:layout_width="320dp"
                         android:layout_height="48dp"
                         android:background="@drawable/bg_edittext"
                         android:inputType="time"
@@ -265,7 +265,7 @@
 
                     <EditText
                         android:id="@+id/et_thoigiantra_phieunhanphong"
-                        android:layout_width="350dp"
+                        android:layout_width="320dp"
                         android:layout_height="48dp"
                         android:background="@drawable/bg_edittext"
                         android:inputType="time"
