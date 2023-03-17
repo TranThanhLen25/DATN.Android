@@ -3,10 +3,24 @@ package com.example.datnandroidquanlynhahangkhachsan;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.datnandroidquanlynhahangkhachsan.adapter.DsPhongAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.adapter.DsPhongAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuNhanPhongAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.model.PhieuNhan;
+import com.example.datnandroidquanlynhahangkhachsan.model.Phong;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +37,11 @@ public class Fragment_dsPhong extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private RecyclerView rscvDsPhong;
+    private List<Phong> lsPhong;
+    private DsPhongAdapter dsPhongAdapter;
+
 
     public Fragment_dsPhong() {
         // Required empty public constructor
@@ -55,10 +74,25 @@ public class Fragment_dsPhong extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ds_phong, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_ds_phong, container, false);
+        rscvDsPhong = view.findViewById(R.id.rscv_dsphong);
+        lsPhong = new ArrayList<>();
+
+        for (int i = 0; i < 100; i++) {
+            Phong pn = new Phong(11, 100+(i+1), 300000);
+            lsPhong.add(pn);
+        }
+
+
+        dsPhongAdapter = new DsPhongAdapter(lsPhong);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this.getActivity(), 3);
+        rscvDsPhong.setLayoutManager(gridLayoutManager);
+        rscvDsPhong.setAdapter(dsPhongAdapter);
+        return view;
     }
 }

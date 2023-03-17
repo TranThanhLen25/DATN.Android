@@ -21,7 +21,7 @@
     <string name="tv_khachsan">Khách sạn</string>
 
     <!--  Drawer_layout  -->
-    <string name="action_phieunha">Nhập hàng</string>
+    <string name="action_nhaphang">Nhập hàng</string>
     <string name="action_kho">Quản lý kho</string>
     <string name="action_thongke">Thống kê</string>
     <string name="action_thongtincanhan">Thông tin cá nhân</string>
@@ -51,6 +51,7 @@
     <string name="tv_thoigianlapphieu">Thời gian</string>
     <!--    phiếu nhận phòng-->
     <string name="tv_phieunhanphong">Phiếu nhận phòng</string>
+    <string name="tv_dsphieunhanphong">Danh sách phiếu nhận phòng</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <!--    Phiếu nhập hàng-->
@@ -76,8 +77,8 @@
     <string name="text_doiphong">Đổi phòng</string>
     <string name="text_baotri">Bảo trì</string>
 
-    <!--    menu-->
-    <string name="fragment_menu_page1_title">Dịch vụ</string>
-    <string name="fragment_menu_page2_title">Gọi món</string>
-    <string name="fragment_menu_page3_title">Dịch vụ</string>
+    <!--    Drawer-->
+    <string name="dra_open">Open</string>
+    <string name="dra_close">Close</string>
+
 </resources>

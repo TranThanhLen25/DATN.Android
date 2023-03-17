@@ -1,14 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Fragment_dsPhieuNhanPhong">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headderphieunhanphong"
+        android:layout_marginTop="3dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="nhan phong" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
 
-</FrameLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+       >
+
+
+        <TextView
+            android:id="@+id/tv_phieunhanphong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_tenphieu"
+            android:padding="10dp"
+            android:text="@string/tv_dsphieunhanphong"
+            android:textSize="@dimen/heading_2"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/headderphieunhanphong"
+
+            app:layout_constraintTop_toTopOf="@id/headderphieunhanphong" />
+
+        <include
+            layout="@layout/search"
+            android:id="@+id/icl_search_phieudatphong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content "
+
+
+            app:layout_constraintStart_toStartOf="@id/headderphieunhanphong"
+            app:layout_constraintTop_toBottomOf="@+id/tv_phieunhanphong"
+            app:layout_constraintEnd_toEndOf="@id/headderphieunhanphong"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/scr_phieunhanphong"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headderphieunhanphong">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/phieunhanphong"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/scr_phieunhanphong">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mainphieunhanphong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                app:layout_constraintEnd_toEndOf="@id/phieunhanphong"
+                app:layout_constraintStart_toStartOf="@id/phieunhanphong"
+                app:layout_constraintTop_toTopOf="@id/phieunhanphong">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
+                    app:layout_constraintTop_toTopOf="@+id/mainphieunhanphong"
+                    app:layout_constraintEnd_toEndOf="@+id/mainphieunhanphong">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rscv_dsphieunhanphong"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+
+                        />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fl_btn_themphieunhan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:maxImageSize="56dp"
+        app:tint="@color/bluenhat"
+
+        tools:ignore="SpeakableTextPresentCheck" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

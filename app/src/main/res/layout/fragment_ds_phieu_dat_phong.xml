@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/dsphieudatphong"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/toolbar_phieudatphong"
-        layout="@layout/activiti_appbar_back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+   
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginTop="3dp"
         android:id="@+id/headderphieudatphong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_phieudatphong"
-        app:layout_constraintStart_toStartOf="@+id/toolbar_phieudatphong">
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/scr_phieudatphong"
+        app:layout_constraintStart_toStartOf="parent"
+        >
 
 
         <TextView
+
             android:id="@+id/tv_phieudatphong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,21 +33,23 @@
             app:layout_constraintStart_toStartOf="@id/headderphieudatphong"
             app:layout_constraintTop_toTopOf="@id/headderphieudatphong" />
 
-        <EditText
-            android:id="@+id/et_hoten_phieudatphong"
+        <include
+            layout="@layout/search"
+            android:id="@+id/icl_search_phieudatphong"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/bg_edittext"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_phieudatphong" />
+            android:layout_height="wrap_content "
+
+
+            app:layout_constraintStart_toStartOf="@id/headderphieudatphong"
+            app:layout_constraintTop_toBottomOf="@+id/tv_phieudatphong"
+            app:layout_constraintEnd_toEndOf="@id/headderphieudatphong"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
     <ScrollView
         android:id="@+id/scr_phieudatphong"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/footer_phieudatphong"
+     
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headderphieudatphong">
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp"
+
                 app:layout_constraintEnd_toEndOf="@id/phieudatphong"
                 app:layout_constraintStart_toStartOf="@id/phieudatphong"
                 app:layout_constraintTop_toTopOf="@id/phieudatphong">
@@ -95,25 +95,20 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/footer_phieudatphong"
-        android:layout_width="match_parent"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fl_btn_themphieudat"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:padding="14dp"
+        app:maxImageSize="56dp"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/add"
+        app:tint="@color/bluenhat"
+        android:layout_margin="30dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
 
-        <ImageButton
-            android:id="@+id/btn_themphieudatphong"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:src="@drawable/ic_plusvip"
-            android:background="@color/white"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

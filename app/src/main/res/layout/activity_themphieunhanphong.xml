@@ -10,7 +10,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        layout="@layout/activiti_appbar_back"/>
+        layout="@layout/activity_appar_back"/>
 
     <ScrollView
         android:id="@+id/scr_chitietphong"
@@ -223,7 +223,7 @@
 
                     <EditText
                         android:id="@+id/et_thoigiannhan_phieunhanphong"
-                        android:layout_width="350dp"
+                        android:layout_width="320dp"
                         android:layout_height="48dp"
                         android:background="@drawable/bg_edittext"
                         android:inputType="time"
@@ -265,7 +265,7 @@
 
                     <EditText
                         android:id="@+id/et_thoigiantra_phieunhanphong"
-                        android:layout_width="350dp"
+                        android:layout_width="320dp"
                         android:layout_height="48dp"
                         android:background="@drawable/bg_edittext"
                         android:inputType="time"

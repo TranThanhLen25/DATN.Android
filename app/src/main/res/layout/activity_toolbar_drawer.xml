@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".Toolbar_Drawer_Activity">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_drawer"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:paddingStart="5dp"
+
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/white"
+            android:gravity="center"
+            android:minHeight="60dp"
+            app:title="@string/tennhahang"
+            app:titleMarginStart="50dp"
+            app:titleTextAppearance="@style/Toolbar.TitleText"
+            app:titleTextColor="@color/bluenhat"
+
+            >
+
+
+            <ImageView
+                android:id="@+id/img_logo_toolbar"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="40dp"
+                android:src="@drawable/logokoten">
+
+            </ImageView>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="62dp"
+            android:background="@color/bluenhat">
+
+        </View>
+
+        <FrameLayout
+            android:id="@+id/fra_draw"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="62dp"
+            >
+
+        </FrameLayout>
+    </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/Nav_Draw"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/draw_header"
+
+        app:menu="@menu/drawer_playout">
+
+    </com.google.android.material.navigation.NavigationView>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
