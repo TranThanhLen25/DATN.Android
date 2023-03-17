@@ -81,4 +81,10 @@
     <string name="dra_open">Open</string>
     <string name="dra_close">Close</string>
 
+
+    <!--    menu-->
+    <string name="fragment_menu_page1_title">Dịch vụ</string>
+    <string name="fragment_menu_page2_title">Gọi món</string>
+    <string name="fragment_menu_page3_title">Đồ uống</string>
+
 </resources>
