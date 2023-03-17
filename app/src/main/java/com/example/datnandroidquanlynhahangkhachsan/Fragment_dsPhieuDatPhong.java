@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -58,6 +60,7 @@ public class Fragment_dsPhieuDatPhong extends Fragment {
         return fragment;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,11 +77,12 @@ public class Fragment_dsPhieuDatPhong extends Fragment {
         // Inflate the layout for this fragment
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_ds_phieu_dat_phong, container, false);
+
         rscvPhieuDatPhong = view.findViewById(R.id.rscv_dsphieudatphong);
         lsPhieuDat = new ArrayList<>();
-        Date day =  Calendar.getInstance().getTime();
-        PhieuDat pd1 = new PhieuDat(1L,  "1",  day, 1,1, day, day, "abc", 101L, "Đang đặt");
-        PhieuDat pd2 = new PhieuDat(2L,  "2",  day, 2,1, day, day, "abc", 101L, "Đang đặt");
+        Date day = Calendar.getInstance().getTime();
+        PhieuDat pd1 = new PhieuDat(1L, "1", day, 1, 1, day, day, "abc", 101L, "Đang đặt");
+        PhieuDat pd2 = new PhieuDat(2L, "2", day, 2, 1, day, day, "abc", 101L, "Đang đặt");
         lsPhieuDat.add(pd1);
         lsPhieuDat.add(pd2);
         lsPhieuDat.add(pd2);
@@ -93,4 +97,5 @@ public class Fragment_dsPhieuDatPhong extends Fragment {
         rscvPhieuDatPhong.setAdapter(phieuDatPhongAdapter);
         return view;
     }
+
 }

@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 //    private List<DichVu> lsdichvu;
 //    private MenuAdapter menuAdapter;
     ActivityMainBinding binding;
+    Fragment fragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,20 +41,25 @@ public class MainActivity extends AppCompatActivity {
 // xử lý của bottom_nav
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        replaceFragment(new Fragment_dsPhong());
+        fragment = new  Fragment_dsPhong();
+        replaceFragment(fragment);
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_danhsach:
-                    replaceFragment(new Fragment_dsPhong());
+                    fragment = new  Fragment_dsPhong();
+                    replaceFragment(fragment);
                     break;
                 case R.id.nav_datphong:
-                    replaceFragment(new Fragment_dsPhieuDatPhong());
+                    fragment = new  Fragment_dsPhieuDatPhong();
+                    replaceFragment(fragment);
                     break;
                 case R.id.nav_nhanphong:
-                    replaceFragment(new Fragment_dsPhieuNhanPhong());
+                    fragment = new  Fragment_dsPhieuNhanPhong();
+                    replaceFragment(fragment);
                     break;
                 case R.id.nav_lichsu:
-                    replaceFragment(new Fragment_dsLichSu());
+                    fragment = new Fragment_dsLichSu();
+                    replaceFragment(fragment);
                     break;
             }
             return true;

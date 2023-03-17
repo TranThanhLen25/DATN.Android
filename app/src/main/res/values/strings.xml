@@ -75,5 +75,9 @@
     <string name="text_chitiet">Chi tiết</string>
     <string name="text_doiphong">Đổi phòng</string>
     <string name="text_baotri">Bảo trì</string>
-    
+
+    <!--    menu-->
+    <string name="fragment_menu_page1_title">Dịch vụ</string>
+    <string name="fragment_menu_page2_title">Gọi món</string>
+    <string name="fragment_menu_page3_title">Dịch vụ</string>
 </resources>
