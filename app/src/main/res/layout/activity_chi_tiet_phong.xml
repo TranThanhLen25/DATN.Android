@@ -7,7 +7,7 @@
 
     <include
         android:id="@+id/toolbar_chitietphong"
-        layout="@layout/activiti_appbar_back"
+        layout="@layout/activity_appar_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

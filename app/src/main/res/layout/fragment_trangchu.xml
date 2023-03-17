@@ -3,20 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
-<include layout="@layout/activity_toolbar_drawer"></include>
-
-
-
+    android:layout_height="match_parent"
+    tools:context=".Fragment_trangchu"
+    android:id="@+id/fragment_trangchu"
+    >
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="62dp"
+
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -105,11 +102,11 @@
                 tools:ignore="DuplicateIds"></TextView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-<!--    <com.google.android.material.navigation.NavigationView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="match_parent"-->
-<!--        app:headerLayout="@layout/drawer_layout"-->
-<!--        android:layout_gravity="start"-->
-<!--        app:menu="@menu/drawer_playout"-->
-<!--        tools:ignore="MissingConstraints" />-->
+    <!--    <com.google.android.material.navigation.NavigationView-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        app:headerLayout="@layout/drawer_layout"-->
+    <!--        android:layout_gravity="start"-->
+    <!--        app:menu="@menu/drawer_playout"-->
+    <!--        tools:ignore="MissingConstraints" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

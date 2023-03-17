@@ -27,7 +27,7 @@ import java.util.List;
 public class Fragment_dsPhieuNhanPhong extends Fragment {
 
     private RecyclerView rscvPhieuNhanPhong;
-    private List<PhieuNhan> lsPhieuNhan;
+    private List<PhieuNhan>     lsPhieuNhan;
     private PhieuNhanPhongAdapter phieuNhanPhongAdapter;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -85,12 +85,12 @@ public class Fragment_dsPhieuNhanPhong extends Fragment {
         }
 
 
-        phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(lsPhieuNhan);
-        LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
-        rscvPhieuNhanPhong.setLayoutManager(LinearLayoutManager);
-//        RecyclerView.ItemDecoration decoration = new DividerItemDecoration(this.getActivity(), DividerItemDecoration.VERTICAL);
-//        rscvPhieuDatPhong.addItemDecoration(decoration);
-        rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);
-        return view;
+            phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(lsPhieuNhan);
+            LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
+            rscvPhieuNhanPhong.setLayoutManager(LinearLayoutManager);
+    //        RecyclerView.ItemDecoration decoration = new DividerItemDecoration(this.getActivity(), DividerItemDecoration.VERTICAL);
+    //        rscvPhieuDatPhong.addItemDecoration(decoration);
+            rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);
+            return view;
     }
 }

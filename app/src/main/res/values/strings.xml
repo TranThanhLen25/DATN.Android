@@ -21,7 +21,7 @@
     <string name="tv_khachsan">Khách sạn</string>
 
     <!--  Drawer_layout  -->
-    <string name="action_phieunha">Nhập hàng</string>
+    <string name="action_nhaphang">Nhập hàng</string>
     <string name="action_kho">Quản lý kho</string>
     <string name="action_thongke">Thống kê</string>
     <string name="action_thongtincanhan">Thông tin cá nhân</string>
@@ -76,5 +76,9 @@
     <string name="text_chitiet">Chi tiết</string>
     <string name="text_doiphong">Đổi phòng</string>
     <string name="text_baotri">Bảo trì</string>
-    
+
+    <!--    Drawer-->
+    <string name="dra_open">Open</string>
+    <string name="dra_close">Close</string>
+
 </resources>
