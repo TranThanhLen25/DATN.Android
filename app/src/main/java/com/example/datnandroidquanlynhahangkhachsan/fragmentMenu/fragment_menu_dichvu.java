@@ -1,14 +1,23 @@
 package com.example.datnandroidquanlynhahangkhachsan.fragmentMenu;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.datnandroidquanlynhahangkhachsan.R;
+import com.example.datnandroidquanlynhahangkhachsan.adapter.HangHoaAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.model.HangHoa;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +25,10 @@ import com.example.datnandroidquanlynhahangkhachsan.R;
  * create an instance of this fragment.
  */
 public class fragment_menu_dichvu extends Fragment {
+    private RecyclerView rscvHangHoaDichVu;
+    private List<HangHoa> lsHangHoa;
+    private HangHoaAdapter hangHoaAdapter;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +74,24 @@ public class fragment_menu_dichvu extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu_dichvu, container, false);
+        //return inflater.inflate(R.layout.fragment_menu_dichvu, container, false);
+        super.onCreate(savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_menu_dichvu, container, false);
+
+        rscvHangHoaDichVu = view.findViewById(R.id.rscv_hanghoa_dichvu);
+        lsHangHoa = new ArrayList<>();
+        Date day = Calendar.getInstance().getTime();
+        for (int i = 1; i < 10; i++) {
+            float temp = (float) (i * 3.14);
+            HangHoa hh = new HangHoa(i, "HH" + i, "Hàng Hóa " + i, temp, "aduvjp", "DichVu");
+            lsHangHoa.add(hh);
+        }
+        hangHoaAdapter = new HangHoaAdapter(lsHangHoa);
+        LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
+        rscvHangHoaDichVu.setLayoutManager(LinearLayoutManager);
+        RecyclerView.ItemDecoration decoration = new DividerItemDecoration(this.getActivity(), DividerItemDecoration.VERTICAL);
+        rscvHangHoaDichVu.addItemDecoration(decoration);
+        rscvHangHoaDichVu.setAdapter(hangHoaAdapter);
+        return view;
     }
 }

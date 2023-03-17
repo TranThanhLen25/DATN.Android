@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".fragmentMenu.fragment_menu_dichvu">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <ImageView
+            android:id="@+id/img_itemdichvu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_laundry_machine"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            android:id="@+id/tv_tendichvu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giặt ủi"
+            android:textColor="@color/red"
+            android:textSize="@dimen/heading_2"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_itemdichvu"
+            android:layout_marginLeft="20dp"
+            />
+        <TextView
+            android:id="@+id/tv_dongia_hanghoa_dichvu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100.000đ"
+            android:textSize="@dimen/heading_2"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/tv_tendichvu"
+            app:layout_constraintStart_toEndOf="@+id/img_itemdichvu"
+            android:layout_marginLeft="20dp"
+            />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

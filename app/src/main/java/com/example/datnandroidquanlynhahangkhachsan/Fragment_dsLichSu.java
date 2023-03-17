@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -61,7 +62,7 @@ public class Fragment_dsLichSu extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_test:
+            case R.id.btn_imgtest:
                 fragment = new fragment_menu();
                 replaceFragment(fragment);
                 break;
@@ -77,7 +78,7 @@ public class Fragment_dsLichSu extends Fragment implements View.OnClickListener 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ds_lich_su, container, false);
-        Button btnthemphieudatphong = (Button) view.findViewById(R.id.btn_test);
+        ImageButton btnthemphieudatphong = (ImageButton) view.findViewById(R.id.btn_imgtest);
         btnthemphieudatphong.setOnClickListener(this);
         return view;
     }
