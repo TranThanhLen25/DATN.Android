@@ -47,8 +47,7 @@
         app:layout_constraintTop_toBottomOf="@id/img_logo_full"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="361dp"
-        >
+        tools:layout_editor_absoluteY="361dp">
 
         <EditText
             android:id="@+id/et_taikhoan"
@@ -79,6 +78,7 @@
         tools:ignore="MissingConstraints">
 
     </TextView>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ctl_matkhau"
         android:layout_width="match_parent"
@@ -93,7 +93,7 @@
             android:layout_height="48dp"
             android:background="@drawable/bg_edittext"
             android:drawableLeft="@drawable/password"
-           android:paddingStart="15dp"
+            android:paddingStart="15dp"
 
             tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
@@ -108,8 +108,9 @@
         android:gravity="center"
         android:padding="@dimen/padding_dn"
         android:text="@string/btn_dangnhap"
-        android:textSize="@dimen/btn_textsize_dn"
+   
         android:textColor="@color/white"
+        android:textSize="@dimen/btn_textsize_dn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

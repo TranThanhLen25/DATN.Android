@@ -1,6 +1,9 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -8,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityMainBinding;
+import com.example.datnandroidquanlynhahangkhachsan.ui.DangNhapActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new  Fragment_dsPhieuDatPhong();
                     replaceFragment(fragment);
                     break;
+                case R.id.nav_trangchu:
+
+
+
+
                 case R.id.nav_nhanphong:
                     fragment = new  Fragment_dsPhieuNhanPhong();
                     replaceFragment(fragment);
@@ -53,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
+
+
 }
 
 

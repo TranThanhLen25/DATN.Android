@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.datnandroidquanlynhahangkhachsan.Fragment_dsLichSu;
@@ -23,17 +24,21 @@ import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityMainBind
 
 public class ApparBackActivity extends AppCompatActivity {
 
-    Button btn_back;
+
+    ImageButton img_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appar_back);
-        btn_back=(Button) findViewById(R.id.ic_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+
+        img_btn = (ImageButton) findViewById(R.id.btn_img);
+
+        img_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(ApparBackActivity.this, Toolbar_Drawer_Activity.class);
+                Intent intent;
+                intent = new Intent(ApparBackActivity.this, Toolbar_Drawer_Activity.class);
                 startActivity(intent);
             }
         });

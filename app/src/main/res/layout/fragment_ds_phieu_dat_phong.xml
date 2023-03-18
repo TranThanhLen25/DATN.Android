@@ -5,19 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-   
+
+    <include
+        android:id="@id/icl_appbackpdp"
+        layout="@layout/activity_appar_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_marginTop="3dp"
         android:id="@+id/headderphieudatphong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
 
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/scr_phieudatphong"
+
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/icl_appbackpdp">
 
 
         <TextView
@@ -34,22 +40,25 @@
             app:layout_constraintTop_toTopOf="@id/headderphieudatphong" />
 
         <include
-            layout="@layout/search"
             android:id="@+id/icl_search_phieudatphong"
+            layout="@layout/search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content "
 
 
+            app:layout_constraintEnd_toEndOf="@id/headderphieudatphong"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@id/headderphieudatphong"
-            app:layout_constraintTop_toBottomOf="@+id/tv_phieudatphong"
-            app:layout_constraintEnd_toEndOf="@id/headderphieudatphong"/>
+            app:layout_constraintTop_toBottomOf="@+id/tv_phieudatphong" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ScrollView
         android:id="@+id/scr_phieudatphong"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="10dp"
-     
+
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headderphieudatphong">
@@ -62,7 +71,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/scr_phieudatphong">
-
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -78,9 +86,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    app:layout_constraintEnd_toEndOf="@+id/mainphieudatphong"
                     app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
-                    app:layout_constraintTop_toTopOf="@+id/mainphieudatphong"
-                    app:layout_constraintEnd_toEndOf="@+id/mainphieudatphong">
+                    app:layout_constraintTop_toTopOf="@+id/mainphieudatphong">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rscv_dsphieudatphong"
@@ -99,16 +107,16 @@
         android:id="@+id/fl_btn_themphieudat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:maxImageSize="56dp"
+        android:layout_margin="30dp"
         android:backgroundTint="@color/white"
         android:src="@drawable/add"
-        app:tint="@color/bluenhat"
-        android:layout_margin="30dp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
-        />
+        app:maxImageSize="56dp"
+        app:tint="@color/bluenhat"
+
+        tools:ignore="SpeakableTextPresentCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

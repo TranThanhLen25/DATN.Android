@@ -13,7 +13,7 @@ import com.example.datnandroidquanlynhahangkhachsan.Toolbar_Drawer_Activity;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityMainBinding;
 
 public class DangNhapActivity extends AppCompatActivity {
-    ActivityMainBinding binding;
+
 
 Button btnDN;
     @Override
