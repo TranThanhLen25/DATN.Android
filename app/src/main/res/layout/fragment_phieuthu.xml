@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment_phieuthu">
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar_chitietphong"
+            layout="@layout/activity_appar_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:id="@+id/scr_chitietphong"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/footer_chitietphong"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_chitietphong">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/chitietphong"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/scr_chitietphong">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/headderchitietphong"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="@id/chitietphong"
+                    app:layout_constraintStart_toStartOf="@id/chitietphong"
+                    app:layout_constraintTop_toTopOf="@+id/chitietphong">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/chitietheaderchitietphong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintStart_toStartOf="@id/headderchitietphong"
+                        app:layout_constraintTop_toTopOf="@+id/headderchitietphong">
+
+                        <TextView
+                            android:id="@+id/tv_chitietphong"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_tenphieu"
+                            android:padding="10dp"
+                            android:text="@string/tv_chitietphong"
+                            android:textSize="@dimen/heading_2"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@id/chitietheaderchitietphong"
+                            app:layout_constraintTop_toTopOf="@id/chitietheaderchitietphong"/>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/tv_sochungtu_chitietphong"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintStart_toStartOf="@id/chitietheaderchitietphong"
+                            app:layout_constraintTop_toBottomOf="@id/tv_chitietphong">
+
+                            <TextView
+                                android:id="@+id/tv_sochungtu"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:text="@string/tv_sochungtu"
+                                android:textSize="@dimen/heading_2"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="@id/tv_sochungtu_chitietphong"
+                                app:layout_constraintTop_toTopOf="@id/tv_sochungtu_chitietphong"/>
+
+                            <TextView
+                                android:id="@+id/tv_sochungtu_data"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="10dp"
+                                android:text="300.000đ"
+                                android:textColor="@color/red"
+                                android:textSize="@dimen/heading_2"
+                                android:textStyle="bold"
+                                app:layout_constraintTop_toTopOf="@id/tv_sochungtu_chitietphong"
+                                app:layout_constraintStart_toEndOf="@+id/tv_sochungtu"
+                                tools:layout_editor_absoluteX="131dp" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/mainchitietphong"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="@id/chitietphong"
+                    app:layout_constraintStart_toStartOf="@id/chitietphong"
+                    app:layout_constraintTop_toBottomOf="@id/headderchitietphong">
+
+                    <TextView
+                        android:id="@+id/tv_hoten"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/tv_hoten"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textview_tk_mk"
+                        app:layout_constraintStart_toStartOf="@+id/mainchitietphong"
+                        app:layout_constraintTop_toTopOf="@+id/mainchitietphong"/>
+
+                    <EditText
+                        android:id="@+id/et_hoten_chitietphong"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_edittext"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_hoten"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_sotiencanthanhtoan_phiethu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/tv_sotiencanthanhtoan"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textview_tk_mk"
+                        app:layout_constraintStart_toStartOf="@+id/mainchitietphong"
+                        app:layout_constraintTop_toBottomOf="@+id/et_hoten_chitietphong"/>
+
+                    <EditText
+                        android:id="@+id/et_sotiencanthanhtoan_phiethu"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_edittext"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_sotiencanthanhtoan_phiethu"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                    <TextView
+                        android:id="@+id/tv_sotienkhachdua_chitietphong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/tv_sotienkhachdua"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/textview_tk_mk"
+                        app:layout_constraintStart_toStartOf="@+id/mainchitietphong"
+                        app:layout_constraintTop_toBottomOf="@+id/et_sotiencanthanhtoan_phiethu"/>
+
+                    <EditText
+                        android:id="@+id/et_sotienkhachdua_chitietphong"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_edittext"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_sotienkhachdua_chitietphong"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/rad_cachthanhtoan"
+                        app:layout_constraintTop_toBottomOf="@+id/et_sotienkhachdua_chitietphong"
+                        app:layout_constraintStart_toStartOf="parent">
+                        <RadioButton android:id="@+id/radio_pirates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rad_thanhtoanbangtienmat"
+                            android:onClick="onRadioButtonClicked"/>
+                        <RadioButton android:id="@+id/rad_thanhtoanbangchuyenkhoan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rad_thanhtoanbangchuyenkhoan"
+                            android:onClick="onRadioButtonClicked"/>
+                    </RadioGroup>
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_sotienkhachdua_chitietphong"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:padding="8dp"-->
+<!--                        android:text="@string/tv_sotienkhachdua"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="@dimen/textview_tk_mk"-->
+<!--                        app:layout_constraintStart_toStartOf="@+id/mainchitietphong"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/et_sotiencanthanhtoan_phiethu"/>-->
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/et_sotienkhachdua_chitietphong"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="48dp"-->
+<!--                        android:background="@drawable/bg_edittext"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/tv_sotienkhachdua_chitietphong"-->
+<!--                        tools:ignore="SpeakableTextPresentCheck" />-->
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/footer_chitietphong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/tv_tongtien_chitietphong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_tong"
+                android:textColor="@color/red"
+                android:textSize="@dimen/heading_2"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="@+id/footer_chitietphong"
+                app:layout_constraintStart_toStartOf="@+id/footer_chitietphong"/>
+            <TextView
+                android:id="@+id/tv_tongtien_data_chitietphong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="500.000đ"
+                android:textSize="@dimen/heading_2"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="@+id/footer_chitietphong"
+                app:layout_constraintStart_toEndOf="@+id/tv_tongtien_chitietphong"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/action_luu"
+                app:layout_constraintBottom_toBottomOf="@+id/footer_chitietphong"
+                app:layout_constraintEnd_toEndOf="@+id/footer_chitietphong"
+                app:layout_constraintTop_toTopOf="@+id/footer_chitietphong"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
