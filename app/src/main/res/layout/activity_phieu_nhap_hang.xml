@@ -7,6 +7,8 @@
     tools:context=".ui.PhieuNhapHangActivity">
 
     <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/toolbar_phieunhaphang"
         layout="@layout/activity_appar_back"
         app:layout_constraintEnd_toEndOf="parent"
