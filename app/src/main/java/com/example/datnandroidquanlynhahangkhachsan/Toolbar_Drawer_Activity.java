@@ -8,8 +8,11 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -39,7 +42,7 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fra_draw,new Fragment_nhaphang()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fra_draw,new Fragment_trangchu()).commit();
         navigationView.setCheckedItem(R.id.dra_trangchu);
 
 
