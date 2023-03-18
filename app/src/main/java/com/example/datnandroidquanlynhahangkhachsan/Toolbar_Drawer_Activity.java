@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -62,6 +63,8 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
                     case R.id.dra_kho:
                         temp = new Fragment_quanlykho();
                         break;
+
+
                     case R.id.dra_thongke:
                         temp = new Fragment_thongke();
                         break;
@@ -77,6 +80,9 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
                 return true;
             }
         });
+
+
+
 
     }
 

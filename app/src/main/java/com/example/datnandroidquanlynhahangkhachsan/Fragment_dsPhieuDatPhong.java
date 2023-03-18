@@ -78,6 +78,17 @@ public class Fragment_dsPhieuDatPhong extends Fragment {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_ds_phieu_dat_phong, container, false);
 
+        View btnView=view.findViewById(R.id.icl_appbackpdp);
+        Button btn_back=btnView.findViewById(R.id.ic_back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+            }
+        });
+
+
+
         rscvPhieuDatPhong = view.findViewById(R.id.rscv_dsphieudatphong);
         lsPhieuDat = new ArrayList<>();
         Date day = Calendar.getInstance().getTime();
@@ -96,6 +107,9 @@ public class Fragment_dsPhieuDatPhong extends Fragment {
 //        rscvPhieuDatPhong.addItemDecoration(decoration);
         rscvPhieuDatPhong.setAdapter(phieuDatPhongAdapter);
         return view;
+
+
+
     }
 
 }

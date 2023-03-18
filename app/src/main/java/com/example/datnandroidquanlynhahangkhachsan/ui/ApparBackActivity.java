@@ -25,24 +25,21 @@ import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityMainBind
 public class ApparBackActivity extends AppCompatActivity {
 
 
-    ImageButton img_btn;
+    Button btn_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appar_back);
 
-        img_btn = (ImageButton) findViewById(R.id.btn_img);
+        btn_back = (Button) findViewById(R.id.ic_back);
 
-        img_btn.setOnClickListener(new View.OnClickListener() {
+        btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(ApparBackActivity.this, Toolbar_Drawer_Activity.class);
-                startActivity(intent);
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
-
 
     }
 }

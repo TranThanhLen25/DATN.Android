@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -39,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(fragment);
                     break;
                 case R.id.nav_trangchu:
-
+                    Intent intent=new Intent(this,Fragment_trangchu.class);
+                    startActivity(intent);
+                 break;
 
 
 

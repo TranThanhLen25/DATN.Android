@@ -86,5 +86,15 @@
     <string name="fragment_menu_page1_title">Dịch vụ</string>
     <string name="fragment_menu_page2_title">Gọi món</string>
     <string name="fragment_menu_page3_title">Đồ uống</string>
+    <!-- Thong tin ca nhan-->
+    <string name="tv_tai_khoan">Tài khoản: </string>
+    <string name="tv_so_dien_thoai">Số điện thoại: </string>
+    <string name="tv_que_quan">Quê quán: </string>
+    <string name="tv_gioi_tinh">Giới tính: </string>
+    <string name="tv_can_cuoc_cong_dan">CCCD: </string>
+    <string name="tv_chuc_vu">Chức vụ: </string>
+    <string name="btn_sua_thongtincanhan">Chỉnh sửa</string>
+    <string name="btn_doi_mat_khau">Đổi mật khẩu</string>
+
 
 </resources>

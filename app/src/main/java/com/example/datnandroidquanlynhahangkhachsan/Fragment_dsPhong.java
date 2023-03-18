@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.datnandroidquanlynhahangkhachsan.adapter.DsPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.DsPhongAdapter;
@@ -87,6 +88,17 @@ public class Fragment_dsPhong extends Fragment {
             Phong pn = new Phong(11, 100+(i+1), 300000);
             lsPhong.add(pn);
         }
+
+
+        View btnView=view.findViewById(R.id.icl_appback);
+        Button btn_back=btnView.findViewById(R.id.ic_back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+            }
+        });
+
 
 
         dsPhongAdapter = new DsPhongAdapter(lsPhong);

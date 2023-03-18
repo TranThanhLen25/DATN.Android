@@ -1,7 +1,9 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -58,7 +60,19 @@ public class Fragment_trangchu extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view=inflater.inflate(R.layout.fragment_trangchu, container, false);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_trangchu, container, false);
+
+
+
+        ConstraintLayout btn_khachsan=view.findViewById(R.id.ctl_khachsan);
+        btn_khachsan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        return view;
     }
 }

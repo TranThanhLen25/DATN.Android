@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuNhanPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.model.PhieuNhan;
@@ -84,7 +85,14 @@ public class Fragment_dsPhieuNhanPhong extends Fragment {
         lsPhieuNhan.add(pn);
         }
 
-
+View btn_view=view.findViewById(R.id.icl_appbackpnp);
+        Button btn_back=view.findViewById(R.id.ic_back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+            }
+        });
             phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(lsPhieuNhan);
             LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
             rscvPhieuNhanPhong.setLayoutManager(LinearLayoutManager);
