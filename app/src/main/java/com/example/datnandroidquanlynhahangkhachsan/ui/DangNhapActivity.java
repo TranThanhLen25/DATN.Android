@@ -26,7 +26,7 @@ Button btnDN;
         btnDN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(DangNhapActivity.this, MainActivity.class);
+                Intent intent=new Intent(DangNhapActivity.this, Toolbar_Drawer_Activity.class);
                 startActivity(intent);
             }
         });

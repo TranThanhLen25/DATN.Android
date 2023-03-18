@@ -25,7 +25,7 @@
                 app:layout_constraintStart_toStartOf="@id/toolbar1"
                 app:layout_constraintTop_toTopOf="@id/toolbar1"
 
-                tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck" />
             <TextView
                 android:id="@+id/tv_tennhahang"
                 android:layout_width="wrap_content"

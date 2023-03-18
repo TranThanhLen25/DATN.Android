@@ -30,14 +30,16 @@
             >
 
 
-            <ImageView
-                android:id="@+id/img_logo_toolbar"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+            <ImageButton
+                android:id="@+id/btn_img"
+                android:layout_width="42dp"
+                android:layout_height="44dp"
                 android:layout_marginStart="40dp"
-                android:src="@drawable/logokoten">
+                android:adjustViewBounds="true"
+                android:background="@drawable/logokoten"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck">
 
-            </ImageView>
+            </ImageButton>
 
         </androidx.appcompat.widget.Toolbar>
 
