@@ -36,6 +36,9 @@
     <string name="tv_csvc">Cơ sở vật chất: </string>
     <string name="tv_menu">Menu sử dụng: </string>
     <string name="tv_tongtien">Tổng tiền: </string>
+
+
+
     <!--    Phiếu đặt phòng-->
     <string name="tv_phieudatphong">Phiếu đặt phòng</string>
     <string name="tv_dsphieudatphong">Danh sách phiếu đặt phòng</string>
@@ -49,11 +52,17 @@
     <string name="tv_gia">Giá:</string>
     <string name="tv_PDP1">PDP1</string>
     <string name="tv_thoigianlapphieu">Thời gian</string>
+
+
+
     <!--    phiếu nhận phòng-->
     <string name="tv_phieunhanphong">Phiếu nhận phòng</string>
     <string name="tv_dsphieunhanphong">Danh sách phiếu nhận phòng</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+
     <!--    Phiếu nhập hàng-->
     <string name="tv_phieunhaphang">Phiếu nhập hàng</string>
     <string name="tv_ncc">Tên ncc</string>
@@ -86,6 +95,9 @@
     <string name="fragment_menu_page1_title">Dịch vụ</string>
     <string name="fragment_menu_page2_title">Gọi món</string>
     <string name="fragment_menu_page3_title">Đồ uống</string>
+
+
+
     <!-- Thong tin ca nhan-->
     <string name="tv_tai_khoan">Tài khoản: </string>
     <string name="tv_so_dien_thoai">Số điện thoại: </string>
@@ -95,6 +107,16 @@
     <string name="tv_chuc_vu">Chức vụ: </string>
     <string name="btn_sua_thongtincanhan">Chỉnh sửa</string>
     <string name="btn_doi_mat_khau">Đổi mật khẩu</string>
+
+
+
+<!--    dialog chuc nang-->
+    <string name="dialog_nhanphong">Nhận phòng</string>
+    <string name="dialog_datphong">Đặt phòng</string>
+    <string name="dialog_chitietphong">Chi tiết phòng</string>
+    <string name="dialog_traphong">Trả phòng</string>
+    <string name="dialog_doiphong">Đổi phòng</string>
+    <string name="dialog_baotri">Bảo trì</string>
 
 
 </resources>

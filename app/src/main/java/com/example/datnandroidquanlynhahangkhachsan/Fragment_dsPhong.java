@@ -85,7 +85,7 @@ public class Fragment_dsPhong extends Fragment {
         lsPhong = new ArrayList<>();
 
         for (int i = 0; i < 100; i++) {
-            Phong pn = new Phong(11, 100+(i+1), 300000);
+            Phong pn = new Phong(11,100+i, 300000);
             lsPhong.add(pn);
         }
 
