@@ -40,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                  break;
 
-
-
                 case R.id.nav_nhanphong:
                     fragment = new  Fragment_dsPhieuNhanPhong();
                     replaceFragment(fragment);

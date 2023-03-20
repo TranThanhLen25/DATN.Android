@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:id="@+id/item_dsphong"
+
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ctl_dsphong"
@@ -20,7 +23,7 @@
             android:id="@+id/tv_sophong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="XXX"
+            android:text="100"
             android:textSize="@dimen/heading_2"
             android:layout_marginTop="10dp"
             android:textStyle="bold"
