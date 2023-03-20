@@ -46,7 +46,7 @@ public class PhieuDatPhongAdapter extends RecyclerView.Adapter<PhieuDatPhongAdap
         holder.tvsochungtuphieudatphongdata.setText(PhieuDat.getSoChungTu());
 //        SimpleDateFormat day1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 //        holder.tvthoigianlapphieuitemphieudatphongdata.setText(String.valueOf(day1.format(PhieuDat.getNgayLap())));
-        holder.tvthoigianlapphieuitemphieudatphongdata.setText(ac.formatDateToString(PhieuDat.getNgayLap(),"dd/MM/yyyy HH:mm:ss"));
+        holder.tvthoigianlapphieuitemphieudatphongdata.setText(ac.formatDateToString(PhieuDat.getNgayLap(), "dd/MM/yyyy HH:mm:ss"));
         holder.tvphongitemphieudatphongdata.setText(String.valueOf(PhieuDat.getKhachHangID()));
     }
 

@@ -102,7 +102,7 @@
     <string name="tv_phieudoiphong">Phiếu đổi phòng</string>
     <string name="tv_vitribandau">Vị trí ban đầu:</string>
     <string name="tv_vitridoi">Vị trí đổi:</string>
-<!--    phiếu thu-->
+    <!--    phiếu thu-->
     <string name="tv_sotiencanthanhtoan">Số tiền cần thanh toán:</string>
     <string name="tv_sotienkhachdua">Số tiền khách đưa:</string>
     <string name="rad_thanhtoanbangtienmat">Tiền mặt</string>
