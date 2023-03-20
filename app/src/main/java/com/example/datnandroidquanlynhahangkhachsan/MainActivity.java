@@ -2,17 +2,13 @@ package com.example.datnandroidquanlynhahangkhachsan;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityMainBinding;
-import com.example.datnandroidquanlynhahangkhachsan.ui.DangNhapActivity;
 
 public class MainActivity extends AppCompatActivity {
 
