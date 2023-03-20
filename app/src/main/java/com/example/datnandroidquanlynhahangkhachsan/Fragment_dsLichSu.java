@@ -9,6 +9,8 @@ import android.widget.ImageButton;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsLichSuBinding;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Fragment_dsLichSu#newInstance} factory method to
@@ -26,6 +28,7 @@ public class Fragment_dsLichSu extends Fragment implements View.OnClickListener 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private FragmentDsLichSuBinding DsLichSuBinding;
 
     public Fragment_dsLichSu() {
         // Required empty public constructor
