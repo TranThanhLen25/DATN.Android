@@ -107,5 +107,11 @@
     <string name="tv_sotienkhachdua">Số tiền khách đưa:</string>
     <string name="rad_thanhtoanbangtienmat">Tiền mặt</string>
     <string name="rad_thanhtoanbangchuyenkhoan">Chuyển khoản</string>
-
+    <!--    dialog chuc nang-->
+    <string name="dialog_nhanphong">Nhận phòng</string>
+    <string name="dialog_datphong">Đặt phòng</string>
+    <string name="dialog_chitietphong">Chi tiết phòng</string>
+    <string name="dialog_traphong">Trả phòng</string>
+    <string name="dialog_doiphong">Đổi phòng</string>
+    <string name="dialog_baotri">Bảo trì</string>
 </resources>

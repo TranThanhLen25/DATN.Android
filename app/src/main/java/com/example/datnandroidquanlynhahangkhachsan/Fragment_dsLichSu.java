@@ -1,5 +1,6 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,9 @@ import android.widget.ImageButton;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityChiTietPhongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsLichSuBinding;
+import com.example.datnandroidquanlynhahangkhachsan.ui.ChiTietPhongActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -79,10 +82,19 @@ public class Fragment_dsLichSu extends Fragment implements View.OnClickListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_ds_lich_su, container, false);
-        ImageButton btnthemphieudatphong = (ImageButton) view.findViewById(R.id.btn_imgtest);
+        //View view = inflater.inflate(R.layout.fragment_ds_lich_su, container, false);
+        DsLichSuBinding = DsLichSuBinding.inflate(inflater, container, false);
+        ImageButton btnthemphieudatphong = (ImageButton) DsLichSuBinding.btnImgtest;
         btnthemphieudatphong.setOnClickListener(this);
-        return view;
+        //return view;
+        DsLichSuBinding.btnTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(), ChiTietPhongActivity.class);
+                startActivity(intent);
+            }
+        });
+        return DsLichSuBinding.getRoot();
     }
 
     public void replaceFragment(Fragment someFragment) {

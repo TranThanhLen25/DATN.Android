@@ -88,7 +88,7 @@
 
             <TextView
                 android:id="@+id/tv_tk"
-                android:layout_width="0dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:paddingStart="20dp"
                 android:text="@string/tv_tai_khoan"
@@ -124,7 +124,7 @@
 
             <TextView
                 android:id="@+id/tv_sdt"
-                android:layout_width="0dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:paddingStart="20dp"
                 android:text="@string/tv_so_dien_thoai"
@@ -169,7 +169,7 @@
 
             <TextView
                 android:id="@+id/tv_quequan"
-                android:layout_width="0dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:paddingStart="20dp"
                 android:text="@string/tv_que_quan"
@@ -214,7 +214,7 @@
 
             <TextView
                 android:id="@+id/tv_gioitinh"
-                android:layout_width="0dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:paddingStart="20dp"
                 android:text="@string/tv_gioi_tinh"
@@ -249,7 +249,7 @@
 
             <TextView
                 android:id="@+id/tv_cancuoccongdan"
-                android:layout_width="0dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:paddingStart="20dp"
                 android:text="@string/tv_can_cuoc_cong_dan"
@@ -284,7 +284,7 @@
 
             <TextView
                 android:id="@+id/tv_chucvu"
-                android:layout_width="0dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:paddingStart="20dp"
                 android:text="@string/tv_chuc_vu"

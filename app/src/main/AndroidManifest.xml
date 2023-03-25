@@ -25,6 +25,11 @@
             android:exported="true"
 
             />
+        <activity
+            android:name=".ui.ChiTietPhongActivity"
+            android:exported="true"
+
+            />
 
 
         <activity
