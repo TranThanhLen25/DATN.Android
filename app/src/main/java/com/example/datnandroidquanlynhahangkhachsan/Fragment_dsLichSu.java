@@ -10,9 +10,7 @@ import android.widget.ImageButton;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityChiTietPhongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsLichSuBinding;
-import com.example.datnandroidquanlynhahangkhachsan.ui.ChiTietPhongActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -90,10 +88,10 @@ public class Fragment_dsLichSu extends Fragment implements View.OnClickListener 
         DsLichSuBinding.btnTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent=new Intent(getActivity(), ChiTietPhongActivity.class);
-//                startActivity(intent);
-                fragment = new fragment_menu();
-                replaceFragment(fragment);
+                Intent intent=new Intent(getActivity(), themphieudatphong_activity.class);
+                startActivity(intent);
+//                fragment = new fragment_menu();
+//                replaceFragment(fragment);
             }
         });
         return DsLichSuBinding.getRoot();
