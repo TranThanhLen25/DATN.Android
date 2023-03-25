@@ -90,8 +90,10 @@ public class Fragment_dsLichSu extends Fragment implements View.OnClickListener 
         DsLichSuBinding.btnTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getActivity(), ChiTietPhongActivity.class);
-                startActivity(intent);
+//                Intent intent=new Intent(getActivity(), ChiTietPhongActivity.class);
+//                startActivity(intent);
+                fragment = new fragment_menu();
+                replaceFragment(fragment);
             }
         });
         return DsLichSuBinding.getRoot();

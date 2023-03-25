@@ -1,6 +1,8 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -9,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.MenuAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityChiTietPhongBinding;
+import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityMainBinding;
 import com.example.datnandroidquanlynhahangkhachsan.model.DichVu;
 
 import java.util.ArrayList;
@@ -18,10 +22,18 @@ public class ChiTietPhongActivity extends AppCompatActivity {
     private RecyclerView rscvDichVu;
     private List<DichVu> lsdichvu;
     private MenuAdapter menuAdapter;
+    private ActivityChiTietPhongBinding ChiTietPhongBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chi_tiet_phong);
+        //setContentView(R.layout.activity_chi_tiet_phong);
+
+        ChiTietPhongBinding = ChiTietPhongBinding.inflate(getLayoutInflater());
+        setContentView(ChiTietPhongBinding.getRoot());
+
+        ChiTietPhongBinding.toolbarChitietphong.icBack.setOnClickListener(view -> onBackPressed());
+
+
         rscvDichVu = findViewById(R.id.rscv_dichvu);
         lsdichvu = new ArrayList<>();
         DichVu dv1 = new DichVu( "dv1",  "1",  "1" , "1");
@@ -38,5 +50,8 @@ public class ChiTietPhongActivity extends AppCompatActivity {
         RecyclerView.ItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         rscvDichVu.addItemDecoration(decoration);
         rscvDichVu.setAdapter(menuAdapter);
+
+
+
     }
 }
