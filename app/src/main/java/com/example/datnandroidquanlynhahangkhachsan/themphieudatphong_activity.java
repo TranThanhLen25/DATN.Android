@@ -34,6 +34,12 @@ public class themphieudatphong_activity extends AppCompatActivity {
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
+                    String a= result.getContents().toString();
+                    String[] c=a.split("\\|");
+                    String HoTen = c[0];
+                    String CCCD = c[2];
+                    activityThemphieudatphongBinding.etCccdPhieudatphong.setText(HoTen);
+                    activityThemphieudatphongBinding.etHotenPhieudatphong.setText(CCCD);
                     dialogInterface.dismiss();
                 }
             }).show();
