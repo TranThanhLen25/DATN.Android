@@ -239,7 +239,7 @@
                     app:layout_constraintTop_toBottomOf="@id/layout_gachngang_1">
 
                     <ImageButton
-                        android:id="@+id/themphong_chitietphong"
+                        android:id="@+id/img_menu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
@@ -255,8 +255,8 @@
                         android:padding="8dp"
                         android:text="@string/tv_menu"
                         android:textSize="@dimen/textview_tk_mk"
-                        app:layout_constraintBottom_toBottomOf="@+id/themphong_chitietphong"
-                        app:layout_constraintStart_toEndOf="@+id/themphong_chitietphong"
+                        app:layout_constraintBottom_toBottomOf="@+id/img_menu"
+                        app:layout_constraintStart_toEndOf="@+id/img_menu"
                         app:layout_constraintTop_toTopOf="@+id/additem_dichvu"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -336,6 +336,7 @@
             app:layout_constraintStart_toEndOf="@+id/tv_tongtien_chitietphong"/>
 
         <Button
+            android:id="@+id/btn_luu_chitietphong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/action_luu"

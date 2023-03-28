@@ -1,5 +1,6 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +33,14 @@ public class ChiTietPhongActivity extends AppCompatActivity {
         setContentView(ChiTietPhongBinding.getRoot());
 
         ChiTietPhongBinding.toolbarChitietphong.icBack.setOnClickListener(view -> onBackPressed());
-
+        ChiTietPhongBinding.imgMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ChiTietPhongActivity.this,DanhSachMenuActivity.class);
+                startActivity(intent);
+            }
+        });
+        ChiTietPhongBinding.btnLuuChitietphong.setOnClickListener(view -> onBackPressed());
 
         rscvDichVu = findViewById(R.id.rscv_dichvu);
         lsdichvu = new ArrayList<>();
@@ -50,6 +58,8 @@ public class ChiTietPhongActivity extends AppCompatActivity {
         RecyclerView.ItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         rscvDichVu.addItemDecoration(decoration);
         rscvDichVu.setAdapter(menuAdapter);
+
+
 
 
 

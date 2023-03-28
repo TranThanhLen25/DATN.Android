@@ -127,7 +127,7 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
         TextView chitiet = dialog.findViewById(R.id.tv_dia_chitietphong);
         TextView doiphong = dialog.findViewById(R.id.tv_dia_doiphong);
         TextView baotri = dialog.findViewById(R.id.tv_dia_baotri);
-        TextView menu = dialog.findViewById(R.id.tv_dia_menu);
+
         // sự kiện khi nhấn vào text trong dialog
         nhanphong.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,19 +159,7 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
 
             }
         });
-        menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-
-
-                        dialog.dismiss();
-
-
-
-
-            }
-        });
         traphong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

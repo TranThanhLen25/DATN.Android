@@ -58,21 +58,7 @@
         android:text="@string/dialog_chitietphong"
         android:textColor="@color/black"
         android:textSize="@dimen/heading_2" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/blue_mo"></View>
 
-    <TextView
-        android:id="@+id/tv_dia_menu"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/white"
-        android:gravity="start"
-        android:padding="10dp"
-        android:text="@string/dialog_menu"
-        android:textColor="@color/black"
-        android:textSize="@dimen/heading_2" />
 
 
     <View
