@@ -1,101 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linea_dsphong"
     android:layout_width="180dp"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:background="@drawable/bg_dialog"
-    android:id="@+id/linea_dsphong"
-    tools:context=".DialogChucNang">
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    tools:context=".Fragment_dialog">
 
-    <Button
-        android:id="@+id/btn_nhanphong"
+
+    <TextView
+        android:id="@+id/tv_dia_nhanphong"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+
+        android:gravity="start"
+        android:padding="10dp"
         android:text="@string/dialog_nhanphong"
-        android:textAllCaps="false"
-        android:textSize="@dimen/heading_2"
-        android:gravity="start"
-        style="?actionModeCloseButtonStyle"
-      android:textColor="@color/black"
+        android:textColor="@color/black"
 
-        android:backgroundTint="@color/white"/>
+        android:textSize="@dimen/heading_2"
+        tools:ignore="MissingConstraints" />
+
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/blue_mo"></View>
+        android:background="@color/blue_mo"
 
-    <Button
-        android:id="@+id/btn_datphong"
+        ></View>
+
+    <TextView
+        android:id="@+id/tv_dia_datphong"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        android:gravity="start"
+        android:padding="10dp"
         android:text="@string/dialog_datphong"
-        android:textAllCaps="false"
-        style="?actionModeCloseButtonStyle"
-        android:textSize="@dimen/heading_2"
         android:textColor="@color/black"
-        android:gravity="start"
-        android:backgroundTint="@color/white"/>
+        android:textSize="@dimen/heading_2" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/blue_mo"></View>
-    <Button
-        android:id="@+id/btn_chitietphong"
+
+    <TextView
+        android:id="@+id/tv_dia_chitietphong"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        android:gravity="start"
+        android:padding="10dp"
         android:text="@string/dialog_chitietphong"
-        android:textAllCaps="false"
-        style="?actionModeCloseButtonStyle"
-        android:textSize="@dimen/heading_2"
-        android:gravity="start"
         android:textColor="@color/black"
-        android:backgroundTint="@color/white"/>
+        android:textSize="@dimen/heading_2" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/blue_mo"></View>
-    <Button
-        android:id="@+id/btn_traphong"
+
+    <TextView
+        android:id="@+id/tv_dia_traphong"
         android:layout_width="match_parent"
-        style="?actionModeCloseButtonStyle"
+
         android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        android:gravity="start"
+        android:padding="10dp"
         android:text="@string/dialog_traphong"
-        android:textAllCaps="false"
-        android:textSize="@dimen/heading_2"
         android:textColor="@color/black"
-        android:gravity="start"
-        android:backgroundTint="@color/white"/>
+        android:textSize="@dimen/heading_2" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/blue_mo"></View>
-    <Button
-        android:id="@+id/btn_doiphong"
+
+    <TextView
+        android:id="@+id/tv_dia_doiphong"
         android:layout_width="match_parent"
-        style="?actionModeCloseButtonStyle"
+
         android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        android:gravity="start"
+        android:padding="10dp"
         android:text="@string/dialog_doiphong"
-        android:textAllCaps="false"
-        android:gravity="start"
-        android:textSize="@dimen/heading_2"
         android:textColor="@color/black"
-        android:backgroundTint="@color/white"/>
+        android:textSize="@dimen/heading_2" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/blue_mo"></View>
-    <Button
-        android:id="@+id/btn_baotri"
+
+    <TextView
+        android:id="@+id/tv_dia_baotri"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="@string/dialog_baotri"
-        style="?actionModeCloseButtonStyle"
-        android:textAllCaps="false"
+        android:backgroundTint="@color/white"
         android:gravity="start"
-        android:textSize="@dimen/heading_2"
+        android:padding="10dp"
+        android:text="@string/dialog_baotri"
+        android:textAllCaps="false"
         android:textColor="@color/black"
-        android:backgroundTint="@color/white"/>
+        android:textSize="@dimen/heading_2" />
 
 
 </LinearLayout>

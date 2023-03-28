@@ -64,7 +64,6 @@ public class PhieuNhanPhongAdapter extends RecyclerView.Adapter<PhieuNhanPhongAd
                 tvsdtitemphieunhanphongdata,
                 tvthoigianlapphieuitemphieunhanphongdata,
                 tvphongitemphieunhanphongdata;
-
         public PhieuNhanPhongViewHolder(@NonNull View itemView) {
 
             super(itemView);

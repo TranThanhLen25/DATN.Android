@@ -4,23 +4,18 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.example.datnandroidquanlynhahangkhachsan.adapter.DsPhongAdapter;
-import com.example.datnandroidquanlynhahangkhachsan.adapter.DsPhongAdapter;
-import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuNhanPhongAdapter;
-import com.example.datnandroidquanlynhahangkhachsan.model.PhieuNhan;
+
+import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsPhongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.model.Phong;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -42,6 +37,7 @@ public class Fragment_dsPhong extends Fragment {
     private RecyclerView rscvDsPhong;
     private List<Phong> lsPhong;
     private DsPhongAdapter dsPhongAdapter;
+private FragmentDsPhongBinding fragmentDsPhongBinding;
 
 
     public Fragment_dsPhong() {
@@ -79,9 +75,8 @@ public class Fragment_dsPhong extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        fragmentDsPhongBinding = FragmentDsPhongBinding.inflate(inflater,container,false);
 
-        View view = inflater.inflate(R.layout.fragment_ds_phong, container, false);
-        rscvDsPhong = view.findViewById(R.id.rscv_dsphong);
         lsPhong = new ArrayList<>();
 
         for (int i = 0; i < 100; i++) {
@@ -89,10 +84,7 @@ public class Fragment_dsPhong extends Fragment {
             lsPhong.add(pn);
         }
 
-
-        View btnView=view.findViewById(R.id.icl_appback);
-        Button btn_back=btnView.findViewById(R.id.ic_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        fragmentDsPhongBinding.iclAppback.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getActivity().onBackPressed();
@@ -101,10 +93,12 @@ public class Fragment_dsPhong extends Fragment {
 
 
 
-        dsPhongAdapter = new DsPhongAdapter(lsPhong);
+
+        rscvDsPhong=fragmentDsPhongBinding.rscvDsphong;
+        dsPhongAdapter = new DsPhongAdapter(lsPhong,getContext());
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this.getActivity(), 3);
         rscvDsPhong.setLayoutManager(gridLayoutManager);
         rscvDsPhong.setAdapter(dsPhongAdapter);
-        return view;
+        return fragmentDsPhongBinding.getRoot();
     }
 }

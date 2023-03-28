@@ -12,26 +12,36 @@
         android:theme="@style/Theme.DATNAndroidQuanLyNhaHangKhachSan"
         tools:targetApi="31">
         <activity
+            android:name=".ui.ThemPhieuTraPhongActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.ThemPhieuDoiPhongActivity"
+            android:exported="true" />
+        <activity
             android:name=".Toolbar_Drawer_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.ApparBackActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.ChiTietPhongActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.ThemPhieuNhanPhongActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.ThemPhieuDatPhongActivity"
             android:exported="true" />
 
         <activity
-            android:name=".ui.ApparBackActivity"
-           android:exported="true"
-
-            />
+            android:name=".Fragment_dialog"
+            android:exported="true" />
         <activity
-            android:name=".MainActivity"
-            android:exported="true"
-
-            />
-        <activity
-            android:name=".ui.ChiTietPhongActivity"
-            android:exported="true"
-
-            />
-
-
+            android:name=".Fragment_dsPhong"
+            android:exported="true" />
         <activity
             android:name=".ui.DangNhapActivity"
             android:exported="true">
@@ -41,7 +51,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

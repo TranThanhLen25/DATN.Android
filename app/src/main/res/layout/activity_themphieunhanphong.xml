@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.ThemPhieuNhanPhongActivity"
+    >
 
     <include
         android:layout_width="match_parent"
@@ -115,23 +117,24 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/mainphieunhanphong"
-                app:layout_constraintEnd_toEndOf="@id/chitietphong"
-                app:layout_constraintStart_toStartOf="@id/chitietphong"
-                app:layout_constraintTop_toBottomOf="@id/headderchitietphong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/chitietphong"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@id/chitietphong"
+                app:layout_constraintTop_toBottomOf="@id/headderchitietphong">
 
                 <TextView
                     android:id="@+id/tv_hoten"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
-                    app:layout_constraintTop_toTopOf="@+id/mainphieunhanphong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/tv_hoten"
                     android:textColor="@color/black"
                     android:textSize="@dimen/textview_tk_mk"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
+                    app:layout_constraintTop_toTopOf="@+id/mainphieunhanphong"
                     tools:ignore="SpUsage" />
 
                 <EditText
@@ -146,14 +149,14 @@
 
                 <TextView
                     android:id="@+id/tv_cccd_phieunhanphong"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
-                    app:layout_constraintTop_toBottomOf="@+id/et_hoten_phieunhanphong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/tv_cccd"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textview_tk_mk"/>
+                    android:textSize="@dimen/textview_tk_mk"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
+                    app:layout_constraintTop_toBottomOf="@+id/et_hoten_phieunhanphong" />
 
                 <EditText
                     android:id="@+id/et_cccd_phieunhanphong"
@@ -167,14 +170,14 @@
 
                 <TextView
                     android:id="@+id/tv_sdt_phieunhanphong"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
-                    app:layout_constraintTop_toBottomOf="@+id/et_cccd_phieunhanphong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/tv_sdt"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textview_tk_mk"/>
+                    android:textSize="@dimen/textview_tk_mk"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
+                    app:layout_constraintTop_toBottomOf="@+id/et_cccd_phieunhanphong" />
 
                 <EditText
                     android:id="@+id/et_sdt_phieunhanphong"
@@ -187,14 +190,14 @@
 
                 <TextView
                     android:id="@+id/tv_songuoi_phieunhanphong"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
-                    app:layout_constraintTop_toBottomOf="@+id/et_sdt_phieunhanphong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/tv_songuoi"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textview_tk_mk"/>
+                    android:textSize="@dimen/textview_tk_mk"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
+                    app:layout_constraintTop_toBottomOf="@+id/et_sdt_phieunhanphong" />
 
                 <EditText
                     android:id="@+id/et_songuoi_phieunhanphong"
@@ -207,21 +210,21 @@
 
                 <TextView
                     android:id="@+id/tv_thoigiannhan_phieunhanphong"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
-                    app:layout_constraintTop_toBottomOf="@+id/et_songuoi_phieunhanphong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/tv_thoigiannhan"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textview_tk_mk"/>
+                    android:textSize="@dimen/textview_tk_mk"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
+                    app:layout_constraintTop_toBottomOf="@+id/et_songuoi_phieunhanphong" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/thoigiannhan_phieunhanphong"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_thoigiannhan_phieunhanphong"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_thoigiannhan_phieunhanphong">
 
                     <EditText
                         android:id="@+id/et_thoigiannhan_phieunhanphong"
@@ -249,21 +252,21 @@
 
                 <TextView
                     android:id="@+id/tv_thoigiantra_phieunhanphong"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
-                    app:layout_constraintTop_toBottomOf="@+id/thoigiannhan_phieunhanphong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/tv_thoigiannhan"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/textview_tk_mk"/>
+                    android:textSize="@dimen/textview_tk_mk"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
+                    app:layout_constraintTop_toBottomOf="@+id/thoigiannhan_phieunhanphong" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/thoigiantra_phieunhanphong"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_thoigiantra_phieunhanphong"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_thoigiantra_phieunhanphong">
 
                     <EditText
                         android:id="@+id/et_thoigiantra_phieunhanphong"
@@ -292,10 +295,10 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/chonphong_phieunhanphong"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/thoigiantra_phieunhanphong"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/thoigiantra_phieunhanphong">
 
                     <ImageButton
                         android:id="@+id/themphong_phieunhanphong"
@@ -310,44 +313,44 @@
 
                     <TextView
                         android:id="@+id/tv_phong_phieunhanphong"
-                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieunhanphong"
-                        app:layout_constraintStart_toEndOf="@+id/themphong_phieunhanphong"
-                        app:layout_constraintTop_toTopOf="@+id/chonphong_phieunhanphong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tv_phong"
-                        android:textSize="20dp"/>
+                        android:textSize="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieunhanphong"
+                        app:layout_constraintStart_toEndOf="@+id/themphong_phieunhanphong"
+                        app:layout_constraintTop_toTopOf="@+id/chonphong_phieunhanphong" />
 
                     <TextView
                         android:id="@+id/tv_phong_data_phieunhanphong"
-                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieunhanphong"
-                        app:layout_constraintStart_toEndOf="@+id/tv_phong_phieunhanphong"
-                        app:layout_constraintTop_toTopOf="@+id/chonphong_phieunhanphong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="101"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieunhanphong"
+                        app:layout_constraintStart_toEndOf="@+id/tv_phong_phieunhanphong"
+                        app:layout_constraintTop_toTopOf="@+id/chonphong_phieunhanphong" />
 
                     <TextView
                         android:id="@+id/dongia"
-                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieunhanphong"
-                        app:layout_constraintStart_toEndOf="@+id/themphong_phieunhanphong"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_phong_phieunhanphong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tv_gia"
                         android:textColor="@color/red"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieunhanphong"
+                        app:layout_constraintStart_toEndOf="@+id/themphong_phieunhanphong"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_phong_phieunhanphong" />
 
                     <TextView
-                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieunhanphong"
-                        app:layout_constraintStart_toEndOf="@+id/dongia"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_phong_phieunhanphong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="300.000đ"
                         android:textColor="@color/red"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieunhanphong"
+                        app:layout_constraintStart_toEndOf="@+id/dongia"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_phong_phieunhanphong" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
