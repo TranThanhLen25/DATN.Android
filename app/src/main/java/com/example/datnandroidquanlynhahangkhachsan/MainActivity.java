@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(fragment);
                     break;
                 case R.id.nav_trangchu:
-                    Intent intent=new Intent(this,Fragment_trangchu.class);
+                    Intent intent=new Intent(this,Toolbar_Drawer_Activity.class);
                     startActivity(intent);
                  break;
 
