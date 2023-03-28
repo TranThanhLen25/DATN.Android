@@ -147,14 +147,16 @@
             <!--                app:layout_constraintTop_toTopOf="@id/ctl_sodienthoai" />-->
             <EditText
                 android:id="@+id/et_sdt_chinhsuathogtincanhan"
-                android:layout_width="200dp"
+                android:layout_width="190dp"
                 android:layout_height="40dp"
+                android:layout_marginEnd="5dp"
                 android:autofillHints=""
                 android:background="@drawable/bg_edittext"
                 android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="@id/ctl_sodienthoai"
                 app:layout_constraintStart_toEndOf="@id/tv_sdt"
                 app:layout_constraintTop_toTopOf="@id/ctl_sodienthoai"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -192,14 +194,16 @@
             <!--                app:layout_constraintTop_toTopOf="@id/ctl_quequan" />-->
             <EditText
                 android:id="@+id/et_quequan_chinhsuathongtincanhan"
-                android:layout_width="200dp"
+                android:layout_width="190dp"
                 android:layout_height="40dp"
+                android:layout_marginEnd="5dp"
                 android:autofillHints=""
                 android:background="@drawable/bg_edittext"
                 android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="@id/ctl_quequan"
                 app:layout_constraintStart_toEndOf="@id/tv_quequan"
                 app:layout_constraintTop_toTopOf="@id/ctl_quequan"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -324,7 +328,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="@string/btn_sua_thongtincanhan"
+            android:text="@string/action_luu"
             android:textAllCaps="false"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="@id/ctl_btn_thongtincanhan"
@@ -337,7 +341,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="@string/btn_doi_mat_khau"
+            android:text="Thoát"
             android:textAllCaps="false"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="@id/ctl_btn_thongtincanhan"

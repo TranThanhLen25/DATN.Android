@@ -36,7 +36,7 @@
             android:name=".ui.ChiTietPhongActivity"
             android:exported="false" />
         <activity
-            android:name=".themphieudatphong_activity"
+            android:name=".ui.ThemPhieuDatphongActivity"
             android:exported="false" />
         <activity
             android:name=".CaptureAct"

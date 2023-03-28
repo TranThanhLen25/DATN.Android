@@ -3,10 +3,15 @@ package com.example.datnandroidquanlynhahangkhachsan;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentThongtincanhanBinding;
+import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuTraPhongActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,7 +28,8 @@ public class Fragment_thongtincanhan extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+FragmentThongtincanhanBinding thongtincanhanBinding;
+Fragment fragment;
     public Fragment_thongtincanhan() {
         // Required empty public constructor
     }
@@ -59,6 +65,21 @@ public class Fragment_thongtincanhan extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_thongtincanhan, container, false);
+        thongtincanhanBinding= FragmentThongtincanhanBinding.inflate(inflater,container,false);
+        thongtincanhanBinding.btnSuathongtincanhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment=new fragment_chinhsuathongtincanhan();
+                replaceFragment(fragment);
+            }
+        });
+
+        return thongtincanhanBinding.getRoot();
+    }
+    public void replaceFragment(Fragment someFragment) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fra_draw, someFragment ); // give your fragment container id in first parameter
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
     }
 }

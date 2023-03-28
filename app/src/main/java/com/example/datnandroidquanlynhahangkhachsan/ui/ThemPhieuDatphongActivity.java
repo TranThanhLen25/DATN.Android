@@ -1,4 +1,4 @@
-package com.example.datnandroidquanlynhahangkhachsan;
+package com.example.datnandroidquanlynhahangkhachsan.ui;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -11,6 +11,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.datnandroidquanlynhahangkhachsan.CaptureAct;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemphieudatphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 import com.journeyapps.barcodescanner.ScanContract;
@@ -19,7 +20,7 @@ import com.journeyapps.barcodescanner.ScanOptions;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class themphieudatphong_activity extends AppCompatActivity {
+public class ThemPhieuDatphongActivity extends AppCompatActivity {
     private ActivityThemphieudatphongBinding activityThemphieudatphongBinding;
     private String thoiGianNhan;
     private String thoiGianTra;
@@ -133,7 +134,7 @@ public class themphieudatphong_activity extends AppCompatActivity {
     }
     ActivityResultLauncher<ScanOptions> barLaucher = registerForActivityResult(new ScanContract(), result -> {
         if ((result.getContents() != null)) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(themphieudatphong_activity.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(ThemPhieuDatphongActivity.this);
             builder.setTitle("Dữ liệu");
             builder.setMessage(result.getContents());
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {

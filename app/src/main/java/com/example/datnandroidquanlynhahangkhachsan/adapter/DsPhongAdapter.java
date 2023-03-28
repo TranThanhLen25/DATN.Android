@@ -12,24 +12,19 @@ import android.view.Window;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
-import androidx.fragment.app.FragmentManager;
 
 
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.R;
 
 
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemDanhsachphongBinding;
-import com.example.datnandroidquanlynhahangkhachsan.fragment_menu;
 import com.example.datnandroidquanlynhahangkhachsan.model.Phong;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ChiTietPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDoiPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuTraPhongActivity;
-import com.example.datnandroidquanlynhahangkhachsan.themphieudatphong_activity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDatphongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuNhanPhongActivity;
 
 import java.util.List;
@@ -142,7 +137,7 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
         datphong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(dialog.getContext(),themphieudatphong_activity.class);
+                Intent intent = new Intent(dialog.getContext(), ThemPhieuDatphongActivity.class);
                 context.startActivity(intent);
 
                 dialog.dismiss();
