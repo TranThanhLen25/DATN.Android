@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsLichSuBinding;
+import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuNhanPhongActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -88,7 +89,7 @@ public class Fragment_dsLichSu extends Fragment implements View.OnClickListener 
         DsLichSuBinding.btnTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getActivity(), themphieudatphong_activity.class);
+                Intent intent=new Intent(getActivity(), ThemPhieuNhanPhongActivity.class);
                 startActivity(intent);
 //                fragment = new fragment_menu();
 //                replaceFragment(fragment);
