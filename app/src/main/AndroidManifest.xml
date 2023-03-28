@@ -20,7 +20,7 @@
         <activity
             android:name=".Toolbar_Drawer_Activity"
             android:exported="true" />
-<<<<<<< HEAD
+
         <activity
             android:name=".ui.ApparBackActivity"
             android:exported="true" />
@@ -38,16 +38,9 @@
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"
             android:theme="@style/zxing_CaptureTheme"/>
-=======
-        <activity
-            android:name=".ui.ApparBackActivity"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.ChiTietPhongActivity"
-            android:exported="true" />
+
+
+
         <activity
             android:name=".ui.ThemPhieuNhanPhongActivity"
             android:exported="true" />
@@ -61,7 +54,7 @@
         <activity
             android:name=".Fragment_dsPhong"
             android:exported="true" />
->>>>>>> len
+
         <activity
             android:name=".ui.DangNhapActivity"
             android:exported="true">
