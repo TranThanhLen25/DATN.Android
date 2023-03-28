@@ -42,6 +42,8 @@ public class themphieudatphong_activity extends AppCompatActivity {
         activityThemphieudatphongBinding.imgbtnThoigiantraThemphieudatphong.setOnClickListener(view -> {
             openDialogDateThoiGianTra();
         });
+
+        activityThemphieudatphongBinding.toolbarPhieudatphong.icBack.setOnClickListener(view -> onBackPressed());
     }
 
     private void openDialogDateThoiGianNhan() {
@@ -148,4 +150,6 @@ public class themphieudatphong_activity extends AppCompatActivity {
             }).show();
         }
     });
+
+
 }

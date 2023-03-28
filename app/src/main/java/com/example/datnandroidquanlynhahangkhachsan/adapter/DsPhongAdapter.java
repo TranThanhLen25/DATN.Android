@@ -12,12 +12,19 @@ import android.view.Window;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
+import androidx.fragment.app.FragmentManager;
+
+
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.R;
 
 
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemDanhsachphongBinding;
+import com.example.datnandroidquanlynhahangkhachsan.fragment_menu;
 import com.example.datnandroidquanlynhahangkhachsan.model.Phong;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ChiTietPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDoiPhongActivity;
@@ -120,6 +127,7 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
         TextView chitiet = dialog.findViewById(R.id.tv_dia_chitietphong);
         TextView doiphong = dialog.findViewById(R.id.tv_dia_doiphong);
         TextView baotri = dialog.findViewById(R.id.tv_dia_baotri);
+        TextView menu = dialog.findViewById(R.id.tv_dia_menu);
         // sự kiện khi nhấn vào text trong dialog
         nhanphong.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,6 +156,19 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
                 context.startActivity(intent);
 
                 dialog.dismiss();
+
+            }
+        });
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                        dialog.dismiss();
+
+
+
 
             }
         });
@@ -181,6 +202,10 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
             }
         });
         dialog.show();
+
+
     }
+
+
 }
 

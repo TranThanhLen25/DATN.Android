@@ -85,6 +85,7 @@
 
 
     <!--    menu-->
+
     <string name="fragment_menu_page1_title">Dịch vụ</string>
     <string name="fragment_menu_page2_title">Gọi món</string>
     <string name="fragment_menu_page3_title">Đồ uống</string>
@@ -115,4 +116,5 @@
     <string name="dialog_traphong">Trả phòng</string>
     <string name="dialog_doiphong">Đổi phòng</string>
     <string name="dialog_baotri">Bảo trì</string>
+    <string name="dialog_menu">Menu</string>
 </resources>

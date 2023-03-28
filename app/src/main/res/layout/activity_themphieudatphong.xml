@@ -9,40 +9,40 @@
     <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/toolbar_chitietphong"
+        android:id="@+id/toolbar_phieudatphong"
         layout="@layout/activity_appar_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <ScrollView
-        android:id="@+id/scr_chitietphong"
+        android:id="@+id/scr_phieudatphong"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_chitietphong"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_phieudatphong"
         app:layout_constraintBottom_toTopOf="@+id/footer_phieudatphong"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/chitietphong"
+            android:id="@+id/phieudatphong"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/scr_chitietphong">
+            app:layout_constraintTop_toTopOf="@+id/scr_phieudatphong">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/headderchitietphong"
+                android:id="@+id/headderphieudatphong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="@id/chitietphong"
-                app:layout_constraintStart_toStartOf="@id/chitietphong"
-                app:layout_constraintTop_toTopOf="@+id/chitietphong">
+                app:layout_constraintEnd_toEndOf="@id/phieudatphong"
+                app:layout_constraintStart_toStartOf="@id/phieudatphong"
+                app:layout_constraintTop_toTopOf="@+id/phieudatphong">
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,11 +50,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintStart_toStartOf="@id/headderchitietphong"
-                    app:layout_constraintTop_toTopOf="@+id/headderchitietphong">
+                    app:layout_constraintStart_toStartOf="@id/headderphieudatphong"
+                    app:layout_constraintTop_toTopOf="@+id/headderphieudatphong">
 
                     <TextView
-                        android:id="@+id/tv_chitietphong"
+                        android:id="@+id/tv_phieudatphong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_tenphieu"
@@ -67,12 +67,12 @@
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/tv_sochungtu_chitietphong"
+                        android:id="@+id/tv_sochungtu_phieudatphong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         app:layout_constraintStart_toStartOf="@id/chitietheaderphieudatphong"
-                        app:layout_constraintTop_toBottomOf="@id/tv_chitietphong">
+                        app:layout_constraintTop_toBottomOf="@id/tv_phieudatphong">
 
                         <TextView
                             android:id="@+id/tv_sochungtu"
@@ -83,8 +83,8 @@
                             android:textColor="@color/red"
                             android:textSize="@dimen/heading_2"
                             android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="@id/tv_sochungtu_chitietphong"
-                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_chitietphong"/>
+                            app:layout_constraintStart_toStartOf="@id/tv_sochungtu_phieudatphong"
+                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_phieudatphong"/>
 
                         <TextView
                             android:id="@+id/tv_sochungtu_data"
@@ -96,7 +96,7 @@
                             android:textSize="@dimen/heading_2"
                             android:textStyle="bold"
                             app:layout_constraintStart_toEndOf="@+id/tv_sochungtu"
-                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_chitietphong"/>
+                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_phieudatphong"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -108,9 +108,9 @@
                     android:layout_margin="20dp"
                     android:background="@color/white"
                     android:src="@drawable/ic_qrcode"
-                    app:layout_constraintEnd_toEndOf="@id/headderchitietphong"
+                    app:layout_constraintEnd_toEndOf="@id/headderphieudatphong"
                     app:layout_constraintStart_toEndOf="@id/chitietheaderphieudatphong"
-                    app:layout_constraintTop_toTopOf="@id/headderchitietphong"
+                    app:layout_constraintTop_toTopOf="@id/headderphieudatphong"
                     tools:ignore="SpeakableTextPresentCheck"
                     android:contentDescription="TODO" />
 
@@ -121,9 +121,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="@id/chitietphong"
-                app:layout_constraintStart_toStartOf="@id/chitietphong"
-                app:layout_constraintTop_toBottomOf="@id/headderchitietphong">
+                app:layout_constraintEnd_toEndOf="@id/phieudatphong"
+                app:layout_constraintStart_toStartOf="@id/phieudatphong"
+                app:layout_constraintTop_toBottomOf="@id/headderphieudatphong">
 
                 <TextView
                     android:id="@+id/tv_hoten"
@@ -247,7 +247,7 @@
                         app:layout_constraintEnd_toEndOf="@+id/thoigiannhan_phieudatphong"
                         app:layout_constraintStart_toEndOf="@id/et_thoigiannhan_phieudatphong"
                         app:layout_constraintTop_toTopOf="@+id/thoigiannhan_phieudatphong"
-                         />
+                        tools:ignore="SpeakableTextPresentCheck" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
@@ -289,7 +289,7 @@
                         app:layout_constraintEnd_toEndOf="@+id/thoigiantra_phieudatphong"
                         app:layout_constraintStart_toEndOf="@id/et_thoigiantra_phieudatphong"
                         app:layout_constraintTop_toTopOf="@+id/thoigiantra_phieudatphong"
-                         />
+                        tools:ignore="SpeakableTextPresentCheck" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
