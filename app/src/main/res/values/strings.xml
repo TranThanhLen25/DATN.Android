@@ -46,6 +46,7 @@
     <string name="tv_sdt">SĐT:</string>
     <string name="tv_songuoi">Số người:</string>
     <string name="tv_thoigiannhan">Thời gian nhân:</string>
+    <string name="tv_thoigiantra">Thời gian trả:</string>
     <string name="tv_phong">Phòng:</string>
     <string name="tv_gia">Giá:</string>
     <string name="tv_PDP1">PDP1</string>
