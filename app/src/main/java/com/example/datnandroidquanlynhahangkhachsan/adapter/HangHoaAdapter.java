@@ -1,5 +1,6 @@
 package com.example.datnandroidquanlynhahangkhachsan.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,15 +10,27 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.R;
+import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
+import com.example.datnandroidquanlynhahangkhachsan.fragmentMenu.fragment_menu_dichvu;
 import com.example.datnandroidquanlynhahangkhachsan.model.HangHoa;
 
 import java.util.List;
 
 public class HangHoaAdapter extends RecyclerView.Adapter<HangHoaAdapter.HangHoaViewHolder> {
-    private List<HangHoa> lsHangHoa;
+    private List<HangHoaDTO> lsHangHoa;
+    private Context context;
 
-    public HangHoaAdapter(List<HangHoa> lsHangHoa) {
+    public HangHoaAdapter(List<HangHoaDTO> lsHangHoa) {
         this.lsHangHoa = lsHangHoa;
+    }
+
+    public HangHoaAdapter(fragment_menu_dichvu fragment_menu_dichvu) {
+    }
+
+    public void setData(Context context, List<HangHoaDTO> lsHangHoa) {
+        this.lsHangHoa = lsHangHoa;
+        this.context = context;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -29,7 +42,7 @@ public class HangHoaAdapter extends RecyclerView.Adapter<HangHoaAdapter.HangHoaV
 
     @Override
     public void onBindViewHolder(@NonNull HangHoaViewHolder holder, int position) {
-        HangHoa HangHoa = lsHangHoa.get((position));
+        HangHoaDTO HangHoa = lsHangHoa.get((position));
         if (HangHoa == null) {
             return;
         }

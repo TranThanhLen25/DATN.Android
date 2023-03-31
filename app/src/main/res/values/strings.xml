@@ -117,4 +117,16 @@
     <string name="dialog_doiphong">Đổi phòng</string>
     <string name="dialog_baotri">Bảo trì</string>
     <string name="dialog_menu">Menu</string>
+
+    <string name="error_msg_unknown">Đã xảy ra lỗi không mong muốn</string>
+    <string name="error_msg_no_internet">Vui lòng kiểm tra kết nối và thử lại.</string>
+    <string name="title_error_msg">Thông báo</string>
+
+
+    <string name="floating_action_button_description">Tạo mới</string>
+
+
+    <!--    Dialog-->
+    <string name="dialog_btn_ok">ĐỒNG Ý</string>
+    <string name="dialog_btn_cancel">HỦY</string>
 </resources>

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.HangHoaAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.HangHoa;
 
 import java.util.ArrayList;
@@ -24,10 +26,11 @@ import java.util.List;
  * Use the {@link fragment_menu_dichvu#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragment_menu_dichvu extends Fragment {
+public class fragment_menu_dichvu extends Fragment implements MenuDichVuContract.View {
     private RecyclerView rscvHangHoaDichVu;
-    private List<HangHoa> lsHangHoa;
+    private List<HangHoaDTO> lsHangHoa;
     private HangHoaAdapter hangHoaAdapter;
+    private MenuDichVuPresenter menuDichVuPresenter;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -81,17 +84,35 @@ public class fragment_menu_dichvu extends Fragment {
         rscvHangHoaDichVu = view.findViewById(R.id.rscv_hanghoa_dichvu);
         lsHangHoa = new ArrayList<>();
         Date day = Calendar.getInstance().getTime();
-        for (int i = 1; i < 10; i++) {
-            float temp = (float) (i * 3.14);
-            HangHoa hh = new HangHoa(i, "HH" + i, "Hàng Hóa " + i, temp, "aduvjp", "DichVu");
-            lsHangHoa.add(hh);
-        }
-        hangHoaAdapter = new HangHoaAdapter(lsHangHoa);
+//        for (int i = 1; i < 10; i++) {
+//            float temp = (float) (i * 3.14);
+//            HangHoaDTO hh = new HangHoaDTO(i, "HH" + i, "Hàng Hóa " + i, temp, "aduvjp", "DichVu");
+//            lsHangHoa.add(hh);
+//        }
+        menuDichVuPresenter = new MenuDichVuPresenter(this);
+        menuDichVuPresenter.LayDanhSachHangHoa2();
+        //hangHoaAdapter = new HangHoaAdapter(lsHangHoa);
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
         rscvHangHoaDichVu.setLayoutManager(LinearLayoutManager);
         RecyclerView.ItemDecoration decoration = new DividerItemDecoration(this.getActivity(), DividerItemDecoration.VERTICAL);
         rscvHangHoaDichVu.addItemDecoration(decoration);
-        rscvHangHoaDichVu.setAdapter(hangHoaAdapter);
+        //rscvHangHoaDichVu.setAdapter(hangHoaAdapter);
+
+
         return view;
+    }
+
+    @Override
+
+    public void onLayDanhSachHangHoaSuccess(List<HangHoaDTO> list) {
+        lsHangHoa = list;
+        hangHoaAdapter = new HangHoaAdapter(this);
+        hangHoaAdapter.setData(getContext(), lsHangHoa);
+        rscvHangHoaDichVu.setAdapter(hangHoaAdapter);
+    }
+
+    @Override
+    public void onLayDanhSachHangHoaError(String error) {
+        Toast.makeText(getContext(), "Lay du lieu that bai", Toast.LENGTH_LONG).show();
     }
 }

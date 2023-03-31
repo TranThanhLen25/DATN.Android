@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.HangHoaAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.HangHoa;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
  */
 public class fragment_menu_goimon extends Fragment {
     private RecyclerView rscvHangHoaGoiMon;
-    private List<HangHoa> lsHangHoa;
+    private List<HangHoaDTO> lsHangHoa;
     private HangHoaAdapter hangHoaAdapter;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -82,7 +83,7 @@ public class fragment_menu_goimon extends Fragment {
         Date day = Calendar.getInstance().getTime();
         for (int i = 1; i < 10; i++) {
             float temp = (float) (i * 3.14);
-            HangHoa hh = new HangHoa(i, "HH" + i, "Hàng Hóa " + i, temp, "aduvjp", "GoiMon");
+            HangHoaDTO hh = new HangHoaDTO(i, "HH" + i, "Hàng Hóa " + i, temp, "aduvjp", "GoiMon");
             lsHangHoa.add(hh);
         }
         hangHoaAdapter = new HangHoaAdapter(lsHangHoa);
