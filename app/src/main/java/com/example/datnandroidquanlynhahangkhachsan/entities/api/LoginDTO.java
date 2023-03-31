@@ -2,7 +2,7 @@ package com.example.datnandroidquanlynhahangkhachsan.entities.api;
 
 public class LoginDTO {
     private String userName;
-    private String password;
+    private String pass;
 
     public String getUserName() {
         return userName;
@@ -12,21 +12,21 @@ public class LoginDTO {
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getpass() {
+        return pass;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setpass(String pass) {
+        this.pass = pass;
     }
 
     public LoginDTO() {
         this.userName = "";
-        this.password = "";
+        this.pass = "";
     }
 
-    public LoginDTO(String userName, String password) {
+    public LoginDTO(String userName, String pass) {
         this.userName = userName;
-        this.password = password;
+        this.pass = pass;
     }
 }

@@ -18,6 +18,6 @@ public interface IAPIServiceRetrofit {
     @GET("/api/hanghoa/danhsach-hanghoa")
     Call<ResponseDTO<List<HangHoaDTO>>> layDanhSachHangHoa(@Body DieuKienLocHangHoaDTO dieuKienLoc);
 
-    @GET("/api/HangHoa/danhsach-HangHoa")
+    @GET("/api/hanghoa/danhsach-hanghoa")
     Call<ResponseDTO<List<HangHoaDTO>>> layDanhSachHangHoa2();
 }

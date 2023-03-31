@@ -30,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIService {
     String userName = "admin";
-    String passWord = "123456";
+    String pass = "123456";
 
     int MY_SOCKET_TIMEOUT_MS = 10000;
     public IAPIServiceRetrofit apiServiceRetrofit;
@@ -54,7 +54,7 @@ public class APIService {
         iapiServiceTokenRetrofit = getClientToken(PublicVariables.url_server).create(IAPIServiceTokenRetrofit.class);
 
 
-        LoginDTO requestToken = new LoginDTO(userName, passWord);
+        LoginDTO requestToken = new LoginDTO(userName, pass);
         iapiServiceTokenRetrofit.getAccessToken(requestToken).enqueue(new Callback<ResponseTokenDTO>() {
             //Thanh cong
             @Override

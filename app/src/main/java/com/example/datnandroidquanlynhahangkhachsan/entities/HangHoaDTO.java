@@ -4,72 +4,53 @@ import com.google.gson.annotations.SerializedName;
 
 public class HangHoaDTO {
     @SerializedName("hangHoaId")
-    private int HangHoaID;
+    private int hangHoaId;
+
     @SerializedName("maHangHoa")
-    private String MaHangHoa;
+    private String maHangHoa;
+
     @SerializedName("tenHangHoa")
-    private String TenHangHoa;
+    private String tenHangHoa;
+
     @SerializedName("donGia")
-    private float DonGia;
+    private float donGia;
+
     @SerializedName("trangThai")
-    private String TrangThai;
+    private String trangThai;
+
     @SerializedName("nhomHangHoa")
-    private String NhomHangHoa;
+    private String nhomHangHoa;
 
-    public HangHoaDTO(int hangHoaID, String maHangHoa, String tenHangHoa, float donGia, String trangThai, String nhomHangHoa) {
-        HangHoaID = hangHoaID;
-        MaHangHoa = maHangHoa;
-        TenHangHoa = tenHangHoa;
-        DonGia = donGia;
-        TrangThai = trangThai;
-        NhomHangHoa = nhomHangHoa;
+    public HangHoaDTO(int hangHoaId, String maHangHoa, String tenHangHoa, float donGia, String trangThai, String nhomHangHoa) {
+        this.hangHoaId = hangHoaId;
+        this.maHangHoa = maHangHoa;
+        this.tenHangHoa = tenHangHoa;
+        this.donGia = donGia;
+        this.trangThai = trangThai;
+        this.nhomHangHoa = nhomHangHoa;
     }
 
-    public int getHangHoaID() {
-        return HangHoaID;
-    }
-
-    public void setHangHoaID(int hangHoaID) {
-        HangHoaID = hangHoaID;
+    public int getHangHoaId() {
+        return hangHoaId;
     }
 
     public String getMaHangHoa() {
-        return MaHangHoa;
-    }
-
-    public void setMaHangHoa(String maHangHoa) {
-        MaHangHoa = maHangHoa;
+        return maHangHoa;
     }
 
     public String getTenHangHoa() {
-        return TenHangHoa;
-    }
-
-    public void setTenHangHoa(String tenHangHoa) {
-        TenHangHoa = tenHangHoa;
+        return tenHangHoa;
     }
 
     public float getDonGia() {
-        return DonGia;
-    }
-
-    public void setDonGia(float donGia) {
-        DonGia = donGia;
+        return donGia;
     }
 
     public String getTrangThai() {
-        return TrangThai;
-    }
-
-    public void setTrangThai(String trangThai) {
-        TrangThai = trangThai;
+        return trangThai;
     }
 
     public String getNhomHangHoa() {
-        return NhomHangHoa;
-    }
-
-    public void setNhomHangHoa(String nhomHangHoa) {
-        NhomHangHoa = nhomHangHoa;
+        return nhomHangHoa;
     }
 }
