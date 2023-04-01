@@ -1,4 +1,4 @@
-package com.example.datnandroidquanlynhahangkhachsan.fragmentMenu;
+package com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu;
 
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.DieuKienLocHangHoaDTO;
@@ -16,6 +16,6 @@ public interface MenuDichVuContract {
     interface Presenter {
         //void LayDanhSachHangHoa(DieuKienLocHangHoaDTO dieuKienLoc);
 
-        void LayDanhSachHangHoa2();
+        void LayDanhSachHangHoa2(String NhomHangHoa);
     }
 }

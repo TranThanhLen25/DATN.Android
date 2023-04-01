@@ -64,7 +64,7 @@ public class HangHoaModel implements IHangHoaModel{
     }
 
     @Override
-    public void LayDanhSachHangHoa2(IOnLayDanhSachHangHoa2FinishedListener listener) {
+    public void LayDanhSachHangHoa2(String NhomHangHoa, IOnLayDanhSachHangHoa2FinishedListener listener) {
         //Truoc khi goi api lay du lieu can phai dang nhap api de lay token
         //Sau khi co duoc token moi goi api lay du lieu
         service = new APIService();
@@ -73,7 +73,7 @@ public class HangHoaModel implements IHangHoaModel{
             public void onSuccess(ResponseTokenDTO token) {
                 //Lay token thanh cong => goi api lay du lieu
 
-                service.apiServiceRetrofit.layDanhSachHangHoa2().enqueue(new Callback<ResponseDTO<List<HangHoaDTO>>>() {
+                service.apiServiceRetrofit.layDanhSachHangHoa2(NhomHangHoa).enqueue(new Callback<ResponseDTO<List<HangHoaDTO>>>() {
                     @Override
                     public void onResponse(Call<ResponseDTO<List<HangHoaDTO>>> call, Response<ResponseDTO<List<HangHoaDTO>>> response) {
                         //lay loi api tra ve (neu co)

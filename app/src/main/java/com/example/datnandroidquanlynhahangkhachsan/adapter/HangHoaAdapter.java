@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
-import com.example.datnandroidquanlynhahangkhachsan.fragmentMenu.fragment_menu_dichvu;
-import com.example.datnandroidquanlynhahangkhachsan.model.HangHoa;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.fragment_menu_dichvu;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.fragment_menu_douong;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.fragment_menu_goimon;
 
 import java.util.List;
 
@@ -25,6 +26,12 @@ public class HangHoaAdapter extends RecyclerView.Adapter<HangHoaAdapter.HangHoaV
     }
 
     public HangHoaAdapter(fragment_menu_dichvu fragment_menu_dichvu) {
+    }
+
+    public HangHoaAdapter(fragment_menu_douong fragment_menu_douong) {
+    }
+
+    public HangHoaAdapter(fragment_menu_goimon fragment_menu_goimon) {
     }
 
     public void setData(Context context, List<HangHoaDTO> lsHangHoa) {

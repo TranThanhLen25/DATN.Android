@@ -1,8 +1,7 @@
-package com.example.datnandroidquanlynhahangkhachsan.fragmentMenu;
+package com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu;
 
 
 
-import com.example.datnandroidquanlynhahangkhachsan.entities.DieuKienLocHangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.hanghoa.HangHoaModel;
 import com.example.datnandroidquanlynhahangkhachsan.model.hanghoa.IHangHoaModel;
@@ -34,8 +33,8 @@ public class MenuDichVuPresenter implements MenuDichVuContract.Presenter {
 //        });
 //    }
     @Override
-    public void LayDanhSachHangHoa2() {
-        hangHoaModel.LayDanhSachHangHoa2(new IHangHoaModel.IOnLayDanhSachHangHoa2FinishedListener() {
+    public void LayDanhSachHangHoa2(String NhomHangHoa) {
+        hangHoaModel.LayDanhSachHangHoa2(NhomHangHoa, new IHangHoaModel.IOnLayDanhSachHangHoa2FinishedListener() {
             @Override
             public void onSuccess(List<HangHoaDTO> listResult) {
                 view.onLayDanhSachHangHoaSuccess(listResult);

@@ -12,12 +12,13 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface IAPIServiceRetrofit {
 
     @GET("/api/hanghoa/danhsach-hanghoa")
     Call<ResponseDTO<List<HangHoaDTO>>> layDanhSachHangHoa(@Body DieuKienLocHangHoaDTO dieuKienLoc);
 
-    @GET("/api/hanghoa/danhsach-hanghoa")
-    Call<ResponseDTO<List<HangHoaDTO>>> layDanhSachHangHoa2();
+    @GET("/api/hanghoa/danhsach-hanghoa?")
+    Call<ResponseDTO<List<HangHoaDTO>>> layDanhSachHangHoa2(@Query("NhomHangHoa") String NhomHangHoa);
 }
