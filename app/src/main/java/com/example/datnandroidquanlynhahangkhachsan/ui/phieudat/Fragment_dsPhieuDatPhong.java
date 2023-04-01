@@ -1,18 +1,23 @@
-package com.example.datnandroidquanlynhahangkhachsan;
+package com.example.datnandroidquanlynhahangkhachsan.ui.phieudat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.datnandroidquanlynhahangkhachsan.adapter.HangHoaAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuDatPhongAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsPhieuDatPhongBinding;
+import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.PhieuDat;
+import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDatphongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.MenuDichVuPresenter;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -24,10 +29,12 @@ import java.util.List;
  * Use the {@link Fragment_dsPhieuDatPhong#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_dsPhieuDatPhong extends Fragment {
+public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhongContract.View{
     private RecyclerView rscvPhieuDatPhong;
-    private List<PhieuDat> lsPhieuDat;
+    private List<PhieuDatDTO> lsPhieuDat;
     private PhieuDatPhongAdapter phieuDatPhongAdapter;
+    private DsPhieuDatPhongPresenter dsPhieuDatPhongPresenter;
+    private FragmentDsPhieuDatPhongBinding fragmentDsPhieuDatPhongBinding;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -73,43 +80,55 @@ public class Fragment_dsPhieuDatPhong extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        // Inflate the layout for this fragment
         super.onCreate(savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_ds_phieu_dat_phong, container, false);
-
-        View btnView=view.findViewById(R.id.icl_appbackpdp);
-        Button btn_back=btnView.findViewById(R.id.ic_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
+        fragmentDsPhieuDatPhongBinding = fragmentDsPhieuDatPhongBinding.inflate(inflater, container, false);
+        fragmentDsPhieuDatPhongBinding.iclAppbackpdp.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getActivity().onBackPressed();
             }
         });
+        fragmentDsPhieuDatPhongBinding.flBtnThemphieudat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ThemPhieuDatphongActivity.class);
+                startActivity(intent);
+            }
+        });
+        rscvPhieuDatPhong = fragmentDsPhieuDatPhongBinding.rscvDsphieudatphong;
 
-
-
-        rscvPhieuDatPhong = view.findViewById(R.id.rscv_dsphieudatphong);
         lsPhieuDat = new ArrayList<>();
         Date day = Calendar.getInstance().getTime();
-        PhieuDat pd1 = new PhieuDat(1L, "1", day, 1, 1, day, day, "abc", 101L, "Đang đặt");
-        PhieuDat pd2 = new PhieuDat(2L, "2", day, 2, 1, day, day, "abc", 101L, "Đang đặt");
-        lsPhieuDat.add(pd1);
-        lsPhieuDat.add(pd2);
-        lsPhieuDat.add(pd2);
-        lsPhieuDat.add(pd2);
-        lsPhieuDat.add(pd2);
-        lsPhieuDat.add(pd2);
-        phieuDatPhongAdapter = new PhieuDatPhongAdapter(lsPhieuDat);
+        dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
+        dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(1);
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
         rscvPhieuDatPhong.setLayoutManager(LinearLayoutManager);
-//        RecyclerView.ItemDecoration decoration = new DividerItemDecoration(this.getActivity(), DividerItemDecoration.VERTICAL);
-//        rscvPhieuDatPhong.addItemDecoration(decoration);
-        rscvPhieuDatPhong.setAdapter(phieuDatPhongAdapter);
-        return view;
-
+        return fragmentDsPhieuDatPhongBinding.getRoot();
 
 
     }
 
+    @Override
+    public void onLayDanhSachPhieuDatSuccess(List<PhieuDatDTO> list) {
+        lsPhieuDat = list;
+        phieuDatPhongAdapter = new PhieuDatPhongAdapter(this);
+        phieuDatPhongAdapter.setData(getContext(), lsPhieuDat);
+        rscvPhieuDatPhong.setAdapter(phieuDatPhongAdapter);
+        Toast.makeText(getContext(), "Lấy danh sách phiếu đặt phòng thành công", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onLayDanhSachPhieuDatError(String error) {
+        Toast.makeText(getContext(),"Lấy danh sách phiếu đặt phòng thất bại",Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onThemPhieuDatPhongSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuDatPhongError(String error) {
+
+    }
 }
