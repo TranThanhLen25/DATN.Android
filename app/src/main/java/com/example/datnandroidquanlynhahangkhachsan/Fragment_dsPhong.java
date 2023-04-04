@@ -9,11 +9,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import com.example.datnandroidquanlynhahangkhachsan.adapter.DsPhongAdapter;
-
+import com.example.datnandroidquanlynhahangkhachsan.adapter.HangHoaAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.phong.DanhSachPhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.phong.DsPhongAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.phong.DanhSachPhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsPhongBinding;
-import com.example.datnandroidquanlynhahangkhachsan.model.Phong;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +27,7 @@ import java.util.List;
  * Use the {@link Fragment_dsPhong#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_dsPhong extends Fragment {
+public class Fragment_dsPhong extends Fragment implements DanhSachPhongContract.View {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,9 +39,10 @@ public class Fragment_dsPhong extends Fragment {
     private String mParam2;
 
     private RecyclerView rscvDsPhong;
-    private List<Phong> lsPhong;
+    private List<PhongDTO> lsPhong;
     private DsPhongAdapter dsPhongAdapter;
-private FragmentDsPhongBinding fragmentDsPhongBinding;
+    private DanhSachPhongPresenter danhSachPhongPresenter;
+    private FragmentDsPhongBinding fragmentDsPhongBinding;
 
 
     public Fragment_dsPhong() {
@@ -75,14 +80,10 @@ private FragmentDsPhongBinding fragmentDsPhongBinding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        fragmentDsPhongBinding = FragmentDsPhongBinding.inflate(inflater,container,false);
 
+        fragmentDsPhongBinding = FragmentDsPhongBinding.inflate(inflater, container, false);
         lsPhong = new ArrayList<>();
 
-        for (int i = 0; i < 100; i++) {
-            Phong pn = new Phong(11,100+i, 300000);
-            lsPhong.add(pn);
-        }
 
         fragmentDsPhongBinding.iclAppback.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,15 +91,28 @@ private FragmentDsPhongBinding fragmentDsPhongBinding;
                 getActivity().onBackPressed();
             }
         });
+        rscvDsPhong = fragmentDsPhongBinding.rscvDsphong;
+        danhSachPhongPresenter = new DanhSachPhongPresenter(this);
+        danhSachPhongPresenter.LayDanhSachPhong();
 
 
-
-
-        rscvDsPhong=fragmentDsPhongBinding.rscvDsphong;
-        dsPhongAdapter = new DsPhongAdapter(lsPhong,getContext());
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this.getActivity(), 3);
         rscvDsPhong.setLayoutManager(gridLayoutManager);
-        rscvDsPhong.setAdapter(dsPhongAdapter);
+
+//        rscvDsPhong.setAdapter(dsPhongAdapter);
         return fragmentDsPhongBinding.getRoot();
+    }
+
+    @Override
+    public void onLayDanhSachPhongSuccess(List<PhongDTO> list) {
+        lsPhong = list;
+        dsPhongAdapter = new DsPhongAdapter(this);
+        dsPhongAdapter.setData(lsPhong, getContext());
+        rscvDsPhong.setAdapter(dsPhongAdapter);
+    }
+
+    @Override
+    public void onLayDanhSachPhongError(String error) {
+        Toast.makeText(getContext(), "Lay du lieu that bai", Toast.LENGTH_LONG).show();
     }
 }

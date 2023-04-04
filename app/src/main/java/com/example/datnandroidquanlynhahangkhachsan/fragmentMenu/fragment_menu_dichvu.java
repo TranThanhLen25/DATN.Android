@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.HangHoaAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
-import com.example.datnandroidquanlynhahangkhachsan.model.HangHoa;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -75,7 +74,7 @@ public class fragment_menu_dichvu extends Fragment implements MenuDichVuContract
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle     savedInstanceState) {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_menu_dichvu, container, false);
         super.onCreate(savedInstanceState);
@@ -84,13 +83,9 @@ public class fragment_menu_dichvu extends Fragment implements MenuDichVuContract
         rscvHangHoaDichVu = view.findViewById(R.id.rscv_hanghoa_dichvu);
         lsHangHoa = new ArrayList<>();
         Date day = Calendar.getInstance().getTime();
-//        for (int i = 1; i < 10; i++) {
-//            float temp = (float) (i * 3.14);
-//            HangHoaDTO hh = new HangHoaDTO(i, "HH" + i, "Hàng Hóa " + i, temp, "aduvjp", "DichVu");
-//            lsHangHoa.add(hh);
-//        }
+
         menuDichVuPresenter = new MenuDichVuPresenter(this);
-        menuDichVuPresenter.LayDanhSachHangHoa2();
+        menuDichVuPresenter.    LayDanhSachHangHoa2();
         //hangHoaAdapter = new HangHoaAdapter(lsHangHoa);
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
         rscvHangHoaDichVu.setLayoutManager(LinearLayoutManager);

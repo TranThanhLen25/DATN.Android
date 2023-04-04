@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.fragmentMenu.fragment_menu_dichvu;
-import com.example.datnandroidquanlynhahangkhachsan.model.HangHoa;
 
 import java.util.List;
 

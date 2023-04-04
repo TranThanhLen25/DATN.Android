@@ -1,4 +1,4 @@
-package com.example.datnandroidquanlynhahangkhachsan.adapter;
+package com.example.datnandroidquanlynhahangkhachsan.phong;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -16,11 +16,12 @@ import androidx.annotation.NonNull;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.datnandroidquanlynhahangkhachsan.Fragment_dsPhong;
 import com.example.datnandroidquanlynhahangkhachsan.R;
 
 
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemDanhsachphongBinding;
-import com.example.datnandroidquanlynhahangkhachsan.model.Phong;
+import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ChiTietPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDoiPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuTraPhongActivity;
@@ -31,15 +32,25 @@ import java.util.List;
 
 
 public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongViewHolder> {
-    private List<Phong> lsPhong;
+    private List<PhongDTO> lsPhong;
     private Context context;
 
 
-    public DsPhongAdapter(List<Phong> lsPhong, Context context) {
+    public DsPhongAdapter(List<PhongDTO> lsPhong) {
         this.lsPhong = lsPhong;
-        this.context = context;
+
+    }
+    public  DsPhongAdapter(Fragment_dsPhong fragment_dsPhong)
+    {
+
     }
 
+    public void setData(List<PhongDTO> lsPhong, Context context)
+    {
+        this.lsPhong= lsPhong;
+        this.context=context;
+        notifyDataSetChanged();
+    }
     @NonNull
     @Override
     public PhongViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -53,16 +64,7 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
                 openDialog();
             }
         });
-        //        final Dialog mDialog = new Dialog(context);
-//        mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        mDialog.setContentView(R.layout.activity_dialog_chuc_nang_phong);
-//        mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));//
-//        itemDanhsachphongBinding.itemDsphong.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                mDialog.show();
-//            }
-//        });
+
 
 
         return new PhongViewHolder(itemDanhsachphongBinding);
@@ -71,12 +73,12 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
 
     @Override
     public void onBindViewHolder(@NonNull PhongViewHolder holder, int position) {
-        Phong phong = lsPhong.get((position));
+        PhongDTO phong = lsPhong.get((position));
         if (phong == null) {
             return;
         }
         holder.itemDanhsachphongBinding.tvSophong.setText(String.valueOf(phong.getSoPhong()));
-        holder.itemDanhsachphongBinding.tvGiaTien.setText(String.valueOf(phong.getLoaiPhongID()));
+        holder.itemDanhsachphongBinding.tvGiaTien.setText(String.valueOf(phong.getLoaiPhongId()));
         holder.itemDanhsachphongBinding.tvGiuong.setText(String.valueOf(phong.getTang()));
 
 
@@ -92,13 +94,13 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
 
     class PhongViewHolder extends RecyclerView.ViewHolder {
 
-        private final ItemDanhsachphongBinding itemDanhsachphongBinding;
+        private  ItemDanhsachphongBinding itemDanhsachphongBinding;
 
-        public PhongViewHolder(@NonNull ItemDanhsachphongBinding itemDanhsachphongBinding) {
+        public PhongViewHolder(@NonNull ItemDanhsachphongBinding dsPhong) {
 
 
-            super(itemDanhsachphongBinding.getRoot());
-            this.itemDanhsachphongBinding = itemDanhsachphongBinding;
+            super(dsPhong.getRoot());
+            this.itemDanhsachphongBinding = dsPhong;
 
 
         }
