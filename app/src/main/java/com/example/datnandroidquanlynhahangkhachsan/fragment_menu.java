@@ -4,15 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.datnandroidquanlynhahangkhachsan.fragmentMenu.FragmentMenuPagerAdapter;
-import com.example.datnandroidquanlynhahangkhachsan.fragmentMenu.fragment_menu_dichvu;
-import com.example.datnandroidquanlynhahangkhachsan.fragmentMenu.fragment_menu_douong;
-import com.example.datnandroidquanlynhahangkhachsan.fragmentMenu.fragment_menu_goimon;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.FragmentMenuPagerAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.fragment_menu_dichvu;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.fragment_menu_douong;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.fragment_menu_goimon;
 import com.google.android.material.tabs.TabLayout;
 
 /**

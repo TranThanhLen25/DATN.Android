@@ -17,7 +17,7 @@ public interface IHangHoaModel {
         void onError(String error);
     }
 
-    void LayDanhSachHangHoa2(IOnLayDanhSachHangHoa2FinishedListener listener);
+    void LayDanhSachHangHoa2(String NhomHangHoa, IOnLayDanhSachHangHoa2FinishedListener listener);
 
     interface IOnLayDanhSachHangHoa2FinishedListener {
         void onSuccess(List<HangHoaDTO> listResult);
