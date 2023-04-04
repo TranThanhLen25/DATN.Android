@@ -28,7 +28,7 @@ import java.util.List;
 public class Fragment_dsPhieuNhanPhong extends Fragment {
 
     private RecyclerView rscvPhieuNhanPhong;
-    private List<PhieuNhan>     lsPhieuNhan;
+    private List<PhieuNhan> lsPhieuNhan;
     private PhieuNhanPhongAdapter phieuNhanPhongAdapter;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,26 +79,25 @@ public class Fragment_dsPhieuNhanPhong extends Fragment {
         rscvPhieuNhanPhong = view.findViewById(R.id.rscv_dsphieunhanphong);
         lsPhieuNhan = new ArrayList<>();
         Date day = Calendar.getInstance().getTime();
-        for (int i=0;i<10;i++)
-        {
-        PhieuNhan pn = new PhieuNhan(1L, "PN"+(i+1), day, 1, 1, day, (i+1L), "abc", "Đã nhận");
-        lsPhieuNhan.add(pn);
+        for (int i = 0; i < 10; i++) {
+            PhieuNhan pn = new PhieuNhan(1L, "PN" + (i + 1), day, 1, 1, day, (i + 1L), "abc", "Đã nhận");
+            lsPhieuNhan.add(pn);
         }
 
-View btn_view=view.findViewById(R.id.icl_appbackpnp);
-        Button btn_back=view.findViewById(R.id.ic_back);
+        View btn_view = view.findViewById(R.id.icl_appbackpnp);
+        Button btn_back = view.findViewById(R.id.ic_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getActivity().onBackPressed();
             }
         });
-            phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(lsPhieuNhan);
-            LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
-            rscvPhieuNhanPhong.setLayoutManager(LinearLayoutManager);
-    //        RecyclerView.ItemDecoration decoration = new DividerItemDecoration(this.getActivity(), DividerItemDecoration.VERTICAL);
-    //        rscvPhieuDatPhong.addItemDecoration(decoration);
-            rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);
-            return view;
+        phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(lsPhieuNhan);
+        LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
+        rscvPhieuNhanPhong.setLayoutManager(LinearLayoutManager);
+        //        RecyclerView.ItemDecoration decoration = new DividerItemDecoration(this.getActivity(), DividerItemDecoration.VERTICAL);
+        //        rscvPhieuDatPhong.addItemDecoration(decoration);
+        rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);
+        return view;
     }
 }

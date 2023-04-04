@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         fragment = new  Fragment_dsPhong();
         replaceFragment(fragment);
+
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_danhsach:

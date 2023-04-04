@@ -8,10 +8,18 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+<<<<<<< Updated upstream
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.FragmentMenuPagerAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.fragment_menu_dichvu;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.fragment_menu_douong;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.fragment_menu_goimon;
+=======
+import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentMenuBinding;
+import com.example.datnandroidquanlynhahangkhachsan.fragmentMenu.FragmentMenuPagerAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.fragmentMenu.fragment_menu_dichvu;
+import com.example.datnandroidquanlynhahangkhachsan.fragmentMenu.fragment_menu_douong;
+import com.example.datnandroidquanlynhahangkhachsan.fragmentMenu.fragment_menu_goimon;
+>>>>>>> Stashed changes
 import com.google.android.material.tabs.TabLayout;
 
 /**
@@ -34,6 +42,7 @@ public class fragment_menu extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    FragmentMenuBinding menuBinding;
 
     public fragment_menu() {
         // Required empty public constructor
@@ -69,6 +78,7 @@ public class fragment_menu extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+<<<<<<< Updated upstream
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 //        View btnView=view.findViewById(R.id.icl_appbackpdp_menu);
 //        Button btn_back=btnView.findViewById(R.id.ic_back);
@@ -80,9 +90,17 @@ public class fragment_menu extends Fragment {
 //        });
         viewPager = view.findViewById(R.id.viewPager);
         tabLayout = view.findViewById(R.id.tabLayout);
+=======
+        menuBinding=FragmentMenuBinding.inflate(inflater,container,false);
+
+
+
+        viewPager =menuBinding.viewPager;
+        tabLayout =menuBinding.tabLayout;
+>>>>>>> Stashed changes
 
         setupViewPager();
-        return view;
+        return menuBinding.getRoot();
     }
     private void setupViewPager() {
         int tabCount = 3;

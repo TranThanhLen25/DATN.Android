@@ -58,7 +58,10 @@
         android:text="@string/dialog_chitietphong"
         android:textColor="@color/black"
         android:textSize="@dimen/heading_2" />
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 
     <View

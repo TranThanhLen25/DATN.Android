@@ -34,7 +34,7 @@ import java.util.List;
 public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongViewHolder> {
     private List<PhongDTO> lsPhong;
     private Context context;
-
+Fragment fragment=null;
 
     public DsPhongAdapter(List<PhongDTO> lsPhong) {
         this.lsPhong = lsPhong;
