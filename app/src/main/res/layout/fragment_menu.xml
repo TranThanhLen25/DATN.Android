@@ -6,18 +6,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 
 tools:context=".fragment_menu">
-<<<<<<< Updated upstream
-<!--    <include-->
-<!--        android:id="@id/icl_appbackpdp_menu"-->
-<!--        layout="@layout/activity_appar_back"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-=======
 
->>>>>>> Stashed changes
 <com.google.android.material.appbar.AppBarLayout
     android:id="@+id/appBarLayout"
     android:layout_width="match_parent"

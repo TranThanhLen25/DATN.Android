@@ -74,28 +74,15 @@ public class fragment_menu_dichvu extends Fragment implements MenuDichVuContract
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-<<<<<<< HEAD:app/src/main/java/com/example/datnandroidquanlynhahangkhachsan/fragmentMenu/fragment_menu_dichvu.java
-                             Bundle     savedInstanceState) {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_menu_dichvu, container, false);
-=======
                              Bundle savedInstanceState) {
->>>>>>> develop:app/src/main/java/com/example/datnandroidquanlynhahangkhachsan/ui/fragmentMenu/fragment_menu_dichvu.java
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_menu_dichvu, container, false);
 
         rscvHangHoaDichVu = view.findViewById(R.id.rscv_hanghoa_dichvu);
         lsHangHoa = new ArrayList<>();
         Date day = Calendar.getInstance().getTime();
-<<<<<<< HEAD:app/src/main/java/com/example/datnandroidquanlynhahangkhachsan/fragmentMenu/fragment_menu_dichvu.java
-
-        menuDichVuPresenter = new MenuDichVuPresenter(this);
-        menuDichVuPresenter.    LayDanhSachHangHoa2();
-        //hangHoaAdapter = new HangHoaAdapter(lsHangHoa);
-=======
         menuDichVuPresenter = new MenuDichVuPresenter(this);
         menuDichVuPresenter.LayDanhSachHangHoa2("Dịch vụ");
->>>>>>> develop:app/src/main/java/com/example/datnandroidquanlynhahangkhachsan/ui/fragmentMenu/fragment_menu_dichvu.java
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
         rscvHangHoaDichVu.setLayoutManager(LinearLayoutManager);
         RecyclerView.ItemDecoration decoration = new DividerItemDecoration(this.getActivity(), DividerItemDecoration.VERTICAL);

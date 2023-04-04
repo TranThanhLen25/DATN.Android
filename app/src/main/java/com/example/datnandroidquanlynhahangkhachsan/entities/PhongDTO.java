@@ -1,6 +1,6 @@
 package com.example.datnandroidquanlynhahangkhachsan.entities;
 
-import com.example.datnandroidquanlynhahangkhachsan.fragmentMenu.MenuDichVuContract;
+
 import com.example.datnandroidquanlynhahangkhachsan.model.hanghoa.HangHoaModel;
 import com.example.datnandroidquanlynhahangkhachsan.model.hanghoa.IHangHoaModel;
 

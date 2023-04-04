@@ -3,12 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.CAMERA" />
-<<<<<<< Updated upstream
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-=======
-
->>>>>>> Stashed changes
     <application
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,24 +13,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.DATNAndroidQuanLyNhaHangKhachSan"
-<<<<<<< Updated upstream
         tools:targetApi="31"
         android:usesCleartextTraffic="true">
 
-=======
-        tools:targetApi="31">
-
-
-        <activity
-            android:name=".ui.ThemPhieuTraPhongActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.ThemPhieuDoiPhongActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Toolbar_Drawer_Activity"
-            android:exported="true" />
->>>>>>> Stashed changes
         <activity
             android:name=".ui.DanhSachMenuActivity"
             android:exported="false" />
@@ -57,36 +38,18 @@
             android:name=".ui.ChiTietPhongActivity"
             android:exported="false" />
         <activity
-            android:name=".fragment_menu"
-            android:exported="true" />
-        <activity
             android:name=".CaptureAct"
             android:screenOrientation="portrait"
-<<<<<<< Updated upstream
             android:stateNotNeeded="false"
-=======
-            android:stateNotNeeded="true"
->>>>>>> Stashed changes
             android:theme="@style/zxing_CaptureTheme" />
         <activity
             android:name=".ui.ThemPhieuNhanPhongActivity"
             android:exported="false" />
         <activity
-<<<<<<< Updated upstream
             android:name=".ui.ThemPhieuDatphongActivity"
             android:exported="false" />
 
 
-=======
-            android:name=".ui.ThemPhieuDatPhongActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Fragment_dialog"
-            android:exported="true" />
-        <activity
-            android:name=".Fragment_dsPhong"
-            android:exported="true" />
->>>>>>> Stashed changes
         <activity
             android:name=".ui.DangNhapActivity"
             android:exported="true">

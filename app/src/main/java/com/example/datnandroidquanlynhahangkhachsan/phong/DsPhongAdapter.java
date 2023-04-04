@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.Fragment_dsPhong;
@@ -34,7 +35,7 @@ import java.util.List;
 public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongViewHolder> {
     private List<PhongDTO> lsPhong;
     private Context context;
-Fragment fragment=null;
+    Fragment fragment=null;
 
     public DsPhongAdapter(List<PhongDTO> lsPhong) {
         this.lsPhong = lsPhong;

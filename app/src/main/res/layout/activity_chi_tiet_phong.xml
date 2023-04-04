@@ -226,7 +226,7 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="4dp"
                         android:background="@color/grey"
                         app:layout_constraintTop_toTopOf="@+id/layout_gachngang_1"></View>
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -239,11 +239,7 @@
                     app:layout_constraintTop_toBottomOf="@id/layout_gachngang_1">
 
                     <ImageButton
-<<<<<<< Updated upstream
                         android:id="@+id/img_menu"
-=======
-                        android:id="@+id/img_listmenu"
->>>>>>> Stashed changes
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
@@ -259,13 +255,8 @@
                         android:padding="8dp"
                         android:text="@string/tv_menu"
                         android:textSize="@dimen/textview_tk_mk"
-<<<<<<< Updated upstream
                         app:layout_constraintBottom_toBottomOf="@+id/img_menu"
                         app:layout_constraintStart_toEndOf="@+id/img_menu"
-=======
-                        app:layout_constraintBottom_toBottomOf="@+id/img_listmenu"
-                        app:layout_constraintStart_toEndOf="@+id/img_listmenu"
->>>>>>> Stashed changes
                         app:layout_constraintTop_toTopOf="@+id/additem_dichvu"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -278,7 +269,7 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2dp"
+                        android:layout_height="4dp"
                         android:background="@color/grey"
                         app:layout_constraintTop_toTopOf="@+id/layout_gachngang_2"></View>
                 </androidx.constraintlayout.widget.ConstraintLayout>

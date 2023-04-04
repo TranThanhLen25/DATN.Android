@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
-<<<<<<< HEAD
-import com.example.datnandroidquanlynhahangkhachsan.fragmentMenu.fragment_menu_dichvu;
-=======
+
+
+
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.fragment_menu_dichvu;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.fragment_menu_douong;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.fragment_menu_goimon;
->>>>>>> develop
+
 
 import java.util.List;
 
