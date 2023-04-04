@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
@@ -32,6 +33,7 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         themphieunhanphongBinding = themphieunhanphongBinding.inflate(getLayoutInflater());
         setContentView(themphieunhanphongBinding.getRoot());
+        themphieunhanphongBinding.toolbarThemphieunhanphong.icBack.setOnClickListener(view -> onBackPressed());
         themphieunhanphongBinding.btnQuetqr.setOnClickListener(view -> {
             ScanOptions options = new ScanOptions();
             options.setCaptureActivity(CaptureAct.class);

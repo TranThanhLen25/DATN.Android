@@ -4,26 +4,42 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.datnandroidquanlynhahangkhachsan.CaptureAct;
+import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuDatPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemphieudatphongBinding;
+import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.DsPhieuDatPhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.DsPhieuDatPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
-public class ThemPhieuDatphongActivity extends AppCompatActivity {
+public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPhieuDatPhongContract.View {
     private ActivityThemphieudatphongBinding activityThemphieudatphongBinding;
+    private List<PhieuDatDTO> lsPhieuDat;
+    private PhieuDatPhongAdapter phieuDatPhongAdapter;
+    private DsPhieuDatPhongPresenter dsPhieuDatPhongPresenter;
     private String thoiGianNhan;
     private String thoiGianTra;
+
+
+    PhieuDatDTO phieuDatDTO;
     private AppUtils ac;
     Calendar statcal = Calendar.getInstance(Locale.CHINESE);
 
@@ -45,6 +61,27 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity {
         });
 
         activityThemphieudatphongBinding.toolbarPhieudatphong.icBack.setOnClickListener(view -> onBackPressed());
+        activityThemphieudatphongBinding.btnThemphieudatphong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OnclickThemPhieuDatPhong();
+            }
+        });
+    }
+
+    private void OnclickThemPhieuDatPhong() {
+        Date day = Calendar.getInstance().getTime();
+        Date thoiGianNhanPhong= Calendar.getInstance().getTime();
+        Date thoiGianTraPhong;
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        try {
+            thoiGianNhanPhong = format.parse(thoiGianNhan);
+        } catch (ParseException e) {
+        }
+//        dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(1);
+        phieuDatDTO = new PhieuDatDTO("PDP", thoiGianNhanPhong, 1, 1, day, day, day.toString(), 1L, "đang đặt");
+        dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
+        dsPhieuDatPhongPresenter.ThemPhieuDatPhong(phieuDatDTO);
     }
 
     private void openDialogDateThoiGianNhan() {
@@ -132,6 +169,7 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity {
         }, 15, 00, true);
         timePickerDialog.show();
     }
+
     ActivityResultLauncher<ScanOptions> barLaucher = registerForActivityResult(new ScanContract(), result -> {
         if ((result.getContents() != null)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(ThemPhieuDatphongActivity.this);
@@ -153,4 +191,25 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity {
     });
 
 
+    @Override
+    public void onLayDanhSachPhieuDatSuccess(List<PhieuDatDTO> list) {
+//        lsPhieuDat = list;
+//        phieuDatPhongAdapter = new PhieuDatPhongAdapter(this);
+//        phieuDatPhongAdapter.setData(this, lsPhieuDat);
+    }
+
+    @Override
+    public void onLayDanhSachPhieuDatError(String error) {
+//        Toast.makeText(this, "Lấy danh sách phiếu đặt phòng thất bại", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onThemPhieuDatPhongSuccess() {
+        Toast.makeText(this, "Thêm phiếu đặt phòng thành công", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onThemPhieuDatPhongError(String error) {
+        Toast.makeText(this, "Thêm phiếu đặt phòng thất bại", Toast.LENGTH_LONG).show();
+    }
 }

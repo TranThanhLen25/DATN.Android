@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.adapter;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.datnandroidquanlynhahangkhachsan.Fragment_dsPhieuDatPhong;
+import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDatphongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.Fragment_dsPhieuDatPhong;
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.model.PhieuDat;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
@@ -17,14 +21,24 @@ import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 import java.util.List;
 
 public class PhieuDatPhongAdapter extends RecyclerView.Adapter<PhieuDatPhongAdapter.PhieuDatPhongViewHolder> {
-    private List<PhieuDat> lsPhieuDat;
+    private List<PhieuDatDTO> lsPhieuDat;
     private AppUtils ac;
+    private Context context;
 
-    public PhieuDatPhongAdapter(List<PhieuDat> lsPhieuDat) {
+    public PhieuDatPhongAdapter(List<PhieuDatDTO> lsPhieuDat) {
         this.lsPhieuDat = lsPhieuDat;
     }
 
     public PhieuDatPhongAdapter(Fragment_dsPhieuDatPhong fragment_dsPhieuDatPhong) {
+    }
+
+    public PhieuDatPhongAdapter(ThemPhieuDatphongActivity themPhieuDatphongActivity) {
+    }
+
+    public void setData(Context context, List<PhieuDatDTO> lsPhieuDat) {
+        this.lsPhieuDat = lsPhieuDat;
+        this.context = context;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -37,15 +51,13 @@ public class PhieuDatPhongAdapter extends RecyclerView.Adapter<PhieuDatPhongAdap
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull PhieuDatPhongViewHolder holder, int position) {
-        PhieuDat PhieuDat = lsPhieuDat.get((position));
+        PhieuDatDTO PhieuDat = lsPhieuDat.get((position));
         if (PhieuDat == null) {
             return;
         }
         holder.tvtenkhachhangphieudatphongdata.setText(String.valueOf(PhieuDat.getTrangThai()));
         holder.tvsdtitemphieudatphongdata.setText(String.valueOf(PhieuDat.getGhiChu()));
         holder.tvsochungtuphieudatphongdata.setText(PhieuDat.getSoChungTu());
-//        SimpleDateFormat day1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-//        holder.tvthoigianlapphieuitemphieudatphongdata.setText(String.valueOf(day1.format(PhieuDat.getNgayLap())));
         holder.tvthoigianlapphieuitemphieudatphongdata.setText(ac.formatDateToString(PhieuDat.getNgayLap(), "dd/MM/yyyy HH:mm:ss"));
         holder.tvphongitemphieudatphongdata.setText(String.valueOf(PhieuDat.getKhachHangID()));
     }

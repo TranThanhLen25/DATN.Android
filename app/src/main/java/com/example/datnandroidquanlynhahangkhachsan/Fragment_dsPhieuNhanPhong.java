@@ -1,5 +1,6 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,8 +13,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuNhanPhongAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsPhieuNhanPhongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.model.PhieuNhan;
 import com.example.datnandroidquanlynhahangkhachsan.model.PhieuNhan;
+import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDatphongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuNhanPhongActivity;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,6 +34,7 @@ public class Fragment_dsPhieuNhanPhong extends Fragment {
     private RecyclerView rscvPhieuNhanPhong;
     private List<PhieuNhan> lsPhieuNhan;
     private PhieuNhanPhongAdapter phieuNhanPhongAdapter;
+    private FragmentDsPhieuNhanPhongBinding fragmentDsPhieuNhanPhongBinding;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -73,31 +78,32 @@ public class Fragment_dsPhieuNhanPhong extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
-        View view = inflater.inflate(R.layout.fragment_ds_phieu_nhan_phong, container, false);
-        rscvPhieuNhanPhong = view.findViewById(R.id.rscv_dsphieunhanphong);
+        super.onCreate(savedInstanceState);
+        fragmentDsPhieuNhanPhongBinding = fragmentDsPhieuNhanPhongBinding.inflate(inflater, container, false);
+        fragmentDsPhieuNhanPhongBinding.iclAppbackpnp.icBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+            }
+        });
+        fragmentDsPhieuNhanPhongBinding.flBtnThemphieunhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ThemPhieuNhanPhongActivity.class);
+                startActivity(intent);
+            }
+        });
+        rscvPhieuNhanPhong = fragmentDsPhieuNhanPhongBinding.rscvDsphieunhanphong;
         lsPhieuNhan = new ArrayList<>();
         Date day = Calendar.getInstance().getTime();
         for (int i = 0; i < 10; i++) {
             PhieuNhan pn = new PhieuNhan(1L, "PN" + (i + 1), day, 1, 1, day, (i + 1L), "abc", "Đã nhận");
             lsPhieuNhan.add(pn);
         }
-
-        View btn_view = view.findViewById(R.id.icl_appbackpnp);
-        Button btn_back = view.findViewById(R.id.ic_back);
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().onBackPressed();
-            }
-        });
         phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(lsPhieuNhan);
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
         rscvPhieuNhanPhong.setLayoutManager(LinearLayoutManager);
-        //        RecyclerView.ItemDecoration decoration = new DividerItemDecoration(this.getActivity(), DividerItemDecoration.VERTICAL);
-        //        rscvPhieuDatPhong.addItemDecoration(decoration);
         rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);
-        return view;
+        return fragmentDsPhieuNhanPhongBinding.getRoot();
     }
 }
