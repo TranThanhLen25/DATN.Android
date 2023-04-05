@@ -58,7 +58,13 @@ public class ChiTietPhongActivity extends AppCompatActivity {
         RecyclerView.ItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         rscvDichVu.addItemDecoration(decoration);
         rscvDichVu.setAdapter(menuAdapter);
-
+//ChiTietPhongBinding.imgListmenu.setOnClickListener(new View.OnClickListener() {
+//    @Override
+//    public void onClick(View view) {
+//        Intent intent= new Intent(ChiTietPhongActivity.this,ListMenuActivity.class );
+//        startActivity(intent);
+//    }
+//});
 
 
 

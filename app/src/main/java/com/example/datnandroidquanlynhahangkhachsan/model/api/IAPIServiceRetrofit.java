@@ -4,6 +4,7 @@ package com.example.datnandroidquanlynhahangkhachsan.model.api;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DieuKienLocHangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
 
@@ -14,6 +15,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
+
 
 public interface IAPIServiceRetrofit {
 
@@ -29,6 +31,10 @@ public interface IAPIServiceRetrofit {
     @POST("/api/PhieuDat/them-PhieuDat")
     Call<ResponseInfo> ThemPhieuDatPhong(@Body PhieuDatDTO phieuDatDTO);
 
-    @POST("/api/PhieuNhan/danhsach-PhieuNhan")
-    Call<ResponseInfo> LayDanhSachPhieuNhan(@Body PhieuDatDTO phieuDatDTO);
+    @POST("/api/Phong/danhsach-Phong")
+    Call<ResponseDTO<List<PhongDTO>>> layDanhSachPhong();
+
+//    @POST("/api/LoaiPhong/danhsach-LoaiPhong")
+//    Call<ResponseDTO<List<PhongDTO>>> layLoaiPhong();
+
 }
