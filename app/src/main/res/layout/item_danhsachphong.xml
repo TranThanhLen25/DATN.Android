@@ -53,7 +53,7 @@
             app:layout_constraintTop_toBottomOf="@id/view_dsphong">
 
             <TextView
-                android:id="@+id/tv_giuong"
+                android:id="@+id/tv_loaiphong"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1 giuong"
@@ -70,8 +70,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="300.000"
-                android:id="@+id/tv_gia_tien"
-                app:layout_constraintTop_toBottomOf="@id/tv_giuong"
+                android:id="@+id/tv_giatien"
+                app:layout_constraintTop_toBottomOf="@id/tv_loaiphong"
                 app:layout_constraintStart_toStartOf="@id/ctl_chitiet"
                 app:layout_constraintEnd_toEndOf="@id/ctl_chitiet"
                 android:textSize="@dimen/heading_2"

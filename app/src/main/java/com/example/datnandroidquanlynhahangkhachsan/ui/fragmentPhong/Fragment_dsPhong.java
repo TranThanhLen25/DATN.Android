@@ -14,10 +14,11 @@ import android.widget.Toast;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.HangHoaAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
-import com.example.datnandroidquanlynhahangkhachsan.phong.DanhSachPhongPresenter;
-import com.example.datnandroidquanlynhahangkhachsan.phong.DsPhongAdapter;
-import com.example.datnandroidquanlynhahangkhachsan.phong.DanhSachPhongContract;
+
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsPhongBinding;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DanhSachPhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DanhSachPhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DsPhongAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

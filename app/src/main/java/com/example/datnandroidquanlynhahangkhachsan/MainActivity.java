@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityMainBinding;
+
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.Fragment_dsPhieuDatPhong;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 // xử lý của bottom_nav
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        fragment = new  Fragment_dsPhong();
+        fragment = new Fragment_dsPhong();
         replaceFragment(fragment);
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {

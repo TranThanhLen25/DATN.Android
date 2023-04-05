@@ -1,4 +1,4 @@
-package com.example.datnandroidquanlynhahangkhachsan.phong;
+package com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong;
 
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.ErrorMessageDTO;
@@ -8,7 +8,6 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseTokenDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.APIService;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.IAPIServiceTokenRetrofit;
-import com.example.datnandroidquanlynhahangkhachsan.model.hanghoa.IHangHoaModel;
 
 import java.util.List;
 

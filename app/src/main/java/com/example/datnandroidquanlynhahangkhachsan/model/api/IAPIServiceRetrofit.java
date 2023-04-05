@@ -34,4 +34,7 @@ public interface IAPIServiceRetrofit {
     @POST("/api/Phong/danhsach-Phong")
     Call<ResponseDTO<List<PhongDTO>>> layDanhSachPhong();
 
+//    @POST("/api/LoaiPhong/danhsach-LoaiPhong")
+//    Call<ResponseDTO<List<PhongDTO>>> layLoaiPhong();
+
 }

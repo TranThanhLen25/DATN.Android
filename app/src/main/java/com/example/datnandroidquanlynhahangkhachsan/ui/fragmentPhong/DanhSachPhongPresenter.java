@@ -1,4 +1,4 @@
-package com.example.datnandroidquanlynhahangkhachsan.phong;
+package com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong;
 
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;

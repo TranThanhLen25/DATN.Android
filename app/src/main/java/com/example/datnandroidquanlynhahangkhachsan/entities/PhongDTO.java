@@ -56,7 +56,6 @@ public class PhongDTO {
     public PhongDTO(int phongId, int loaiPhongId, int trangThaiId, int soPhong, int tang) {
 
         this.loaiPhongId = loaiPhongId;
-
         this.soPhong = soPhong;
         this.tang = tang;
     }

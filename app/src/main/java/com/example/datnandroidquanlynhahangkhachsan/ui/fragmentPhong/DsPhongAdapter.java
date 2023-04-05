@@ -1,4 +1,4 @@
-package com.example.datnandroidquanlynhahangkhachsan.phong;
+package com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 import com.example.datnandroidquanlynhahangkhachsan.Fragment_dsPhong;
 import com.example.datnandroidquanlynhahangkhachsan.R;
@@ -35,23 +36,23 @@ import java.util.List;
 public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongViewHolder> {
     private List<PhongDTO> lsPhong;
     private Context context;
-    Fragment fragment=null;
+    Fragment fragment = null;
 
     public DsPhongAdapter(List<PhongDTO> lsPhong) {
         this.lsPhong = lsPhong;
 
     }
-    public  DsPhongAdapter(Fragment_dsPhong fragment_dsPhong)
-    {
+
+    public DsPhongAdapter(Fragment_dsPhong fragment_dsPhong) {
 
     }
 
-    public void setData(List<PhongDTO> lsPhong, Context context)
-    {
-        this.lsPhong= lsPhong;
-        this.context=context;
+    public void setData(List<PhongDTO> lsPhong, Context context) {
+        this.lsPhong = lsPhong;
+        this.context = context;
         notifyDataSetChanged();
     }
+
     @NonNull
     @Override
     public PhongViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -67,7 +68,6 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
         });
 
 
-
         return new PhongViewHolder(itemDanhsachphongBinding);
     }
 
@@ -79,8 +79,8 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
             return;
         }
         holder.itemDanhsachphongBinding.tvSophong.setText(String.valueOf(phong.getSoPhong()));
-        holder.itemDanhsachphongBinding.tvGiaTien.setText(String.valueOf(phong.getLoaiPhongId()));
-        holder.itemDanhsachphongBinding.tvGiuong.setText(String.valueOf(phong.getTang()));
+        holder.itemDanhsachphongBinding.tvGiatien.setText(String.valueOf(phong.getLoaiPhongId()));
+        holder.itemDanhsachphongBinding.tvLoaiphong.setText(String.valueOf(phong.getTang()));
 
 
     }
@@ -95,7 +95,7 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
 
     class PhongViewHolder extends RecyclerView.ViewHolder {
 
-        private  ItemDanhsachphongBinding itemDanhsachphongBinding;
+        private ItemDanhsachphongBinding itemDanhsachphongBinding;
 
         public PhongViewHolder(@NonNull ItemDanhsachphongBinding dsPhong) {
 

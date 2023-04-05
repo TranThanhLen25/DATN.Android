@@ -1,4 +1,4 @@
-package com.example.datnandroidquanlynhahangkhachsan.phong;
+package com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong;
 
 
 
@@ -13,7 +13,7 @@ public interface    IDanhSachPhongModel {
 
 
 
-    void LayDanhSachPhong(IDanhSachPhongModel.IOnLayDanhSachPhongFinishedListener listener);
+    void LayDanhSachPhong(IOnLayDanhSachPhongFinishedListener listener);
 
     interface IOnLayDanhSachPhongFinishedListener {
         void onSuccess(List<PhongDTO> listResult);
