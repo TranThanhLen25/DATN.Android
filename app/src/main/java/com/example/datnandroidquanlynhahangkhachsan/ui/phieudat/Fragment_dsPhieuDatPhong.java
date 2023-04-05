@@ -11,13 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.datnandroidquanlynhahangkhachsan.adapter.HangHoaAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuDatPhongAdapter;
-import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsPhieuDatPhongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuDatDTO;
-import com.example.datnandroidquanlynhahangkhachsan.model.PhieuDat;
-import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDatphongActivity;
-import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.MenuDichVuPresenter;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -29,7 +24,7 @@ import java.util.List;
  * Use the {@link Fragment_dsPhieuDatPhong#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhongContract.View{
+public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhongContract.View {
     private RecyclerView rscvPhieuDatPhong;
     private List<PhieuDatDTO> lsPhieuDat;
     private PhieuDatPhongAdapter phieuDatPhongAdapter;
@@ -96,7 +91,6 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
             }
         });
         rscvPhieuDatPhong = fragmentDsPhieuDatPhongBinding.rscvDsphieudatphong;
-
         lsPhieuDat = new ArrayList<>();
         Date day = Calendar.getInstance().getTime();
         dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
@@ -119,7 +113,7 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
 
     @Override
     public void onLayDanhSachPhieuDatError(String error) {
-        Toast.makeText(getContext(),"Lấy danh sách phiếu đặt phòng thất bại",Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), "Lấy danh sách phiếu đặt phòng thất bại", Toast.LENGTH_LONG).show();
     }
 
     @Override

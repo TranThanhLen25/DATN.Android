@@ -19,12 +19,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.datnandroidquanlynhahangkhachsan.R;
 
 
-import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemDanhsachphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.model.Phong;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ChiTietPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDoiPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuTraPhongActivity;
-import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDatphongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.ThemPhieuDatphongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuNhanPhongActivity;
 
 import java.util.List;

@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.datnandroidquanlynhahangkhachsan.Fragment_dsPhieuNhanPhong;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.Fragment_dsPhieuNhanPhong;
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.model.PhieuNhan;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;

@@ -1,4 +1,4 @@
-package com.example.datnandroidquanlynhahangkhachsan;
+package com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,13 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuNhanPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsPhieuNhanPhongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.model.PhieuNhan;
-import com.example.datnandroidquanlynhahangkhachsan.model.PhieuNhan;
-import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDatphongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuNhanPhongActivity;
 
 import java.util.ArrayList;

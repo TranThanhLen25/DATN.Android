@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityMainBinding;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.Fragment_dsPhieuDatPhong;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.Fragment_dsPhieuNhanPhong;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                  break;
 
                 case R.id.nav_nhanphong:
-                    fragment = new  Fragment_dsPhieuNhanPhong();
+                    fragment = new Fragment_dsPhieuNhanPhong();
                     replaceFragment(fragment);
                     break;
                 case R.id.nav_lichsu:

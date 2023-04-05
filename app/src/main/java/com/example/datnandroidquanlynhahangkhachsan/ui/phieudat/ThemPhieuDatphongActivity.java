@@ -1,9 +1,11 @@
-package com.example.datnandroidquanlynhahangkhachsan.ui;
+package com.example.datnandroidquanlynhahangkhachsan.ui.phieudat;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -17,14 +19,11 @@ import com.example.datnandroidquanlynhahangkhachsan.CaptureAct;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuDatPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemphieudatphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuDatDTO;
-import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.DsPhieuDatPhongContract;
-import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.DsPhieuDatPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -35,10 +34,8 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
     private List<PhieuDatDTO> lsPhieuDat;
     private PhieuDatPhongAdapter phieuDatPhongAdapter;
     private DsPhieuDatPhongPresenter dsPhieuDatPhongPresenter;
-    private String thoiGianNhan;
-    private String thoiGianTra;
-
-
+    private String thoiGianNhan = "";
+    private String thoiGianTra = "";
     PhieuDatDTO phieuDatDTO;
     private AppUtils ac;
     Calendar statcal = Calendar.getInstance(Locale.CHINESE);
@@ -67,21 +64,96 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
                 OnclickThemPhieuDatPhong();
             }
         });
+        dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
+        KiemTraDuLieuDauVao();
+        lsPhieuDat = new ArrayList<>();
+        dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(1);
+    }
+
+    private void KiemTraDuLieuDauVao() {
+        activityThemphieudatphongBinding.etHotenPhieudatphong.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String input = charSequence.toString();
+                if (input.length() > 0) {
+                    activityThemphieudatphongBinding.inputlayoutHotenPhieudatphong.setError("");
+//                    Pattern pattern = Pattern.compile("abc");
+//                    Matcher matcher = pattern.matcher(input);
+//                    boolean hahaha= matcher.find();
+//                    if (hahaha){
+//                        activityThemphieudatphongBinding.inputlayoutHotenPhieudatphong.setHelperText("tốt");
+//                        activityThemphieudatphongBinding.inputlayoutHotenPhieudatphong.setError("");
+//                    }
+//                    else {
+//                        activityThemphieudatphongBinding.inputlayoutHotenPhieudatphong.setHelperText("");
+//                        activityThemphieudatphongBinding.inputlayoutHotenPhieudatphong.setError(":(");
+//                    }
+                } else {
+                    activityThemphieudatphongBinding.inputlayoutHotenPhieudatphong.setHelperText("");
+                    activityThemphieudatphongBinding.inputlayoutHotenPhieudatphong.setError("vui lòng nhập họ tên");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        activityThemphieudatphongBinding.etCccdPhieudatphong.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                String abc = String.valueOf(activityThemphieudatphongBinding.etCccdPhieudatphong.getText());
+                if (hasFocus) {
+
+                } else {
+                    if (abc.length() < 12) {
+                        activityThemphieudatphongBinding.inputlayoutCccdPhieudatphong.setHelperText("");
+                        activityThemphieudatphongBinding.inputlayoutCccdPhieudatphong.setError("vui lòng nhập đủ cccd");
+                    } else {
+                        activityThemphieudatphongBinding.inputlayoutCccdPhieudatphong.setHelperText("");
+                        activityThemphieudatphongBinding.inputlayoutCccdPhieudatphong.setError("");
+                    }
+                }
+            }
+        });
+        activityThemphieudatphongBinding.etSdtPhieudatphong.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                String abc = String.valueOf(activityThemphieudatphongBinding.etSdtPhieudatphong.getText());
+                if (b) {
+
+                } else {
+                    if (abc.length() < 10) {
+                        activityThemphieudatphongBinding.inputlayoutSdtPhieudatphong.setHelperText("");
+                        activityThemphieudatphongBinding.inputlayoutSdtPhieudatphong.setError("vui lòng nhập đủ số điện thoại");
+                    } else {
+                        activityThemphieudatphongBinding.inputlayoutSdtPhieudatphong.setHelperText("");
+                        activityThemphieudatphongBinding.inputlayoutSdtPhieudatphong.setError("");
+                    }
+                }
+            }
+        });
+
     }
 
     private void OnclickThemPhieuDatPhong() {
         Date day = Calendar.getInstance().getTime();
-        Date thoiGianNhanPhong= Calendar.getInstance().getTime();
-        Date thoiGianTraPhong;
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-        try {
-            thoiGianNhanPhong = format.parse(thoiGianNhan);
-        } catch (ParseException e) {
+        //thoiGianNhan=ac.formatDateToString(day,"dd-MM-yyyy HH:mm:ss");
+        Date thoiGianNhanPhong = ac.formatStringToDateUtil(thoiGianNhan, "dd/MM/yyyy HH:mm");
+        Date thoiGianTraPhong = null;
+        if (thoiGianTra != null || thoiGianTra != "") {
+
+            thoiGianTraPhong = ac.formatStringToDateUtil(thoiGianTra, "dd/MM/yyyy HH:mm");
         }
 //        dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(1);
-        phieuDatDTO = new PhieuDatDTO("PDP", thoiGianNhanPhong, 1, 1, day, day, day.toString(), 1L, "đang đặt");
-        dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
+        phieuDatDTO = new PhieuDatDTO("PDP" + (lsPhieuDat.size()+1), day, 1, 1, thoiGianNhanPhong, thoiGianTraPhong, "ghi chu", 1L, "đang đặt");
         dsPhieuDatPhongPresenter.ThemPhieuDatPhong(phieuDatDTO);
+
     }
 
     private void openDialogDateThoiGianNhan() {
@@ -193,9 +265,8 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
 
     @Override
     public void onLayDanhSachPhieuDatSuccess(List<PhieuDatDTO> list) {
-//        lsPhieuDat = list;
-//        phieuDatPhongAdapter = new PhieuDatPhongAdapter(this);
-//        phieuDatPhongAdapter.setData(this, lsPhieuDat);
+        lsPhieuDat = list;
+        //Toast.makeText(this, "abc", Toast.LENGTH_LONG).show();
     }
 
     @Override

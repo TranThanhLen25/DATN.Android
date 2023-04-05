@@ -46,7 +46,7 @@
             android:name=".ui.ThemPhieuNhanPhongActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.ThemPhieuDatphongActivity"
+            android:name=".ui.phieudat.ThemPhieuDatphongActivity"
             android:exported="false" />
 
 

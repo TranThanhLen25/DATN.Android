@@ -10,12 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuDatDTO;
-import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDatphongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.ThemPhieuDatphongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.Fragment_dsPhieuDatPhong;
 import com.example.datnandroidquanlynhahangkhachsan.R;
-import com.example.datnandroidquanlynhahangkhachsan.model.PhieuDat;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 
 import java.util.List;
