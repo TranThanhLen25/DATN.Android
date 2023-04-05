@@ -32,6 +32,8 @@ import java.util.Locale;
 public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPhieuDatPhongContract.View {
     private ActivityThemphieudatphongBinding activityThemphieudatphongBinding;
     private List<PhieuDatDTO> lsPhieuDat;
+
+    private List<Integer> lsPhong;
     private PhieuDatPhongAdapter phieuDatPhongAdapter;
     private DsPhieuDatPhongPresenter dsPhieuDatPhongPresenter;
     private String thoiGianNhan = "";
@@ -68,6 +70,9 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
         KiemTraDuLieuDauVao();
         lsPhieuDat = new ArrayList<>();
         dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(1);
+        lsPhong = new ArrayList<>();
+        lsPhong.add(100);
+        lsPhong.add(101);
     }
 
     private void KiemTraDuLieuDauVao() {
@@ -151,7 +156,7 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
             thoiGianTraPhong = ac.formatStringToDateUtil(thoiGianTra, "dd/MM/yyyy HH:mm");
         }
 //        dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(1);
-        phieuDatDTO = new PhieuDatDTO("PDP" + (lsPhieuDat.size()+1), day, 1, 1, thoiGianNhanPhong, thoiGianTraPhong, "ghi chu", 1L, "đang đặt");
+        phieuDatDTO = new PhieuDatDTO("PDP" + (lsPhieuDat.size() + 1), day, 1, 1, thoiGianNhanPhong, thoiGianTraPhong, "ghi chu", 1L, "đang đặt");
         dsPhieuDatPhongPresenter.ThemPhieuDatPhong(phieuDatDTO);
 
     }

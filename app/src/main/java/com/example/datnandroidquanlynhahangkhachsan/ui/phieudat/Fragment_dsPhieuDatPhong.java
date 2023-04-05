@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuDatPhongAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsPhieuDatPhongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuDatDTO;
 
 import java.util.ArrayList;

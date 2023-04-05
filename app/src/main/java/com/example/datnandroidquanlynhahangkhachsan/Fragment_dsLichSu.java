@@ -68,8 +68,8 @@ public class Fragment_dsLichSu extends Fragment implements View.OnClickListener 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_imgtest:
-                fragment = new fragment_menu();
-                replaceFragment(fragment);
+//                fragment = new fragment_menu();
+//                replaceFragment(fragment);
                 break;
             default:
                 fragment = new Fragment_dsPhieuNhanPhong();

@@ -2,37 +2,50 @@ package com.example.datnandroidquanlynhahangkhachsan.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.widget.Button;
 
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityDanhsachmenuBinding;
-import com.example.datnandroidquanlynhahangkhachsan.fragment_menu;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.FragmentMenuPagerAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.fragment_menu_dichvu;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.fragment_menu_douong;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.fragment_menu_goimon;
+import com.google.android.material.tabs.TabLayout;
 
 public class DanhSachMenuActivity extends AppCompatActivity {
 
     ActivityDanhsachmenuBinding danhsachmenuBinding;
     Fragment fragment = null;
+    FragmentMenuPagerAdapter viewPageAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         danhsachmenuBinding = ActivityDanhsachmenuBinding.inflate(getLayoutInflater());
-
         setContentView(danhsachmenuBinding.getRoot());
-        fragment = new fragment_menu();
-        replaceFragment(fragment);
         danhsachmenuBinding.incluMenu.icBack.setOnClickListener(view -> onBackPressed());
-
+        setupViewPager();
     }
 
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_menu, fragment);
-        fragmentTransaction.commit();
+    private void setupViewPager() {
+        int tabCount = 3;
+
+        viewPageAdapter = new FragmentMenuPagerAdapter(this, getSupportFragmentManager());
+        danhsachmenuBinding.viewPager.setOffscreenPageLimit(tabCount);
+
+        viewPageAdapter.addFragment(new fragment_menu_dichvu(),
+                getResources().getString(R.string.fragment_menu_page1_title), 0);
+
+        viewPageAdapter.addFragment(new fragment_menu_goimon(),
+                getResources().getString(R.string.fragment_menu_page2_title), 1);
+
+        viewPageAdapter.addFragment(new fragment_menu_douong(),
+                getResources().getString(R.string.fragment_menu_page3_title), 2);
+
+
+        danhsachmenuBinding.viewPager.setAdapter(viewPageAdapter);
+        danhsachmenuBinding.tabLayout.setupWithViewPager(danhsachmenuBinding.viewPager);
+        danhsachmenuBinding.viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(danhsachmenuBinding.tabLayout));
     }
 }

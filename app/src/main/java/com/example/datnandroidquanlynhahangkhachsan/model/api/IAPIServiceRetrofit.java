@@ -28,4 +28,7 @@ public interface IAPIServiceRetrofit {
 
     @POST("/api/PhieuDat/them-PhieuDat")
     Call<ResponseInfo> ThemPhieuDatPhong(@Body PhieuDatDTO phieuDatDTO);
+
+    @POST("/api/PhieuNhan/danhsach-PhieuNhan")
+    Call<ResponseInfo> LayDanhSachPhieuNhan(@Body PhieuDatDTO phieuDatDTO);
 }
