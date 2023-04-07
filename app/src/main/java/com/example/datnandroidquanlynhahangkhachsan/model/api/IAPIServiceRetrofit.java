@@ -3,6 +3,7 @@ package com.example.datnandroidquanlynhahangkhachsan.model.api;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.DieuKienLocHangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
@@ -39,7 +40,13 @@ public interface IAPIServiceRetrofit {
     @POST("/api/Phong/danhsach-Phong")
     Call<ResponseDTO<List<PhongDTO>>> layDanhSachPhong();
 
-//    @POST("/api/LoaiPhong/danhsach-LoaiPhong")
-//    Call<ResponseDTO<List<PhongDTO>>> layLoaiPhong();
+    @POST("/api/LoaiPhong/danhsach-LoaiPhong")
+    Call<ResponseDTO<List<LoaiPhongDTO>>> layLoaiPhong();
+
+
+
+    @POST("/api/Phong/danhsach-phongthuong1g?")
+    Call<ResponseDTO<List<PhongDTO>>>layDanhSachPhong1g (@Query("id") int id);
+
 
 }
