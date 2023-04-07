@@ -59,4 +59,8 @@ public class PhongDTO {
         this.soPhong = soPhong;
         this.tang = tang;
     }
+
+    public PhongDTO(int soPhong) {
+        this.soPhong = soPhong;
+    }
 }

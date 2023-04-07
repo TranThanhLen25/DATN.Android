@@ -13,9 +13,12 @@ import android.widget.Toast;
 
 import com.example.datnandroidquanlynhahangkhachsan.adapter.HangHoaAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsPhongBinding;
+import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.LoaiPhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.LoaiPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DanhSachPhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DanhSachPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DsPhongAdapter;
@@ -28,7 +31,7 @@ import java.util.List;
  * Use the {@link Fragment_dsPhong#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_dsPhong extends Fragment implements DanhSachPhongContract.View {
+public class Fragment_dsPhong extends Fragment implements DanhSachPhongContract.View , LoaiPhongContract.View {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,8 +44,10 @@ public class Fragment_dsPhong extends Fragment implements DanhSachPhongContract.
 
     private RecyclerView rscvDsPhong;
     private List<PhongDTO> lsPhong;
+    private List<LoaiPhongDTO> lsLoaiPhong;
     private DsPhongAdapter dsPhongAdapter;
     private DanhSachPhongPresenter danhSachPhongPresenter;
+    private LoaiPhongPresenter loaiPhongPresenter;
     private FragmentDsPhongBinding fragmentDsPhongBinding;
 
 
@@ -84,7 +89,17 @@ public class Fragment_dsPhong extends Fragment implements DanhSachPhongContract.
 
         fragmentDsPhongBinding = FragmentDsPhongBinding.inflate(inflater, container, false);
         lsPhong = new ArrayList<>();
+        rscvDsPhong = fragmentDsPhongBinding.rscvDsphong;
+        danhSachPhongPresenter = new DanhSachPhongPresenter(this);
+        danhSachPhongPresenter.LayDanhSachPhong();
 
+
+//        loaiPhongPresenter=new LoaiPhongPresenter(this);
+//        loaiPhongPresenter.LayLoaiPhong();
+
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this.getActivity(), 3);
+        rscvDsPhong.setLayoutManager(gridLayoutManager);
 
         fragmentDsPhongBinding.iclAppback.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,28 +107,48 @@ public class Fragment_dsPhong extends Fragment implements DanhSachPhongContract.
                 getActivity().onBackPressed();
             }
         });
-        rscvDsPhong = fragmentDsPhongBinding.rscvDsphong;
-        danhSachPhongPresenter = new DanhSachPhongPresenter(this);
-        danhSachPhongPresenter.LayDanhSachPhong();
-
-
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this.getActivity(), 3);
-        rscvDsPhong.setLayoutManager(gridLayoutManager);
-
-//        rscvDsPhong.setAdapter(dsPhongAdapter);
         return fragmentDsPhongBinding.getRoot();
+
+
     }
 
     @Override
     public void onLayDanhSachPhongSuccess(List<PhongDTO> list) {
         lsPhong = list;
+
         dsPhongAdapter = new DsPhongAdapter(this);
         dsPhongAdapter.setData(lsPhong, getContext());
+
         rscvDsPhong.setAdapter(dsPhongAdapter);
+    }
+    @Override
+    public void onLayDanhSachPhongError(String error) {
+
+        Toast.makeText(getContext(), "Lay du lieu that bai", Toast.LENGTH_LONG).show();
+    }
+    @Override
+    public void onLayLoaiPhongSuccess(List<LoaiPhongDTO> list) {
+//        lsLoaiPhong=list;
+//        dsPhongAdapter = new DsPhongAdapter(this);
+//        dsPhongAdapter.setData(lsPhong, getContext(),lsLoaiPhong);
+//
+//        rscvDsPhong.setAdapter(dsPhongAdapter);
+//        Toast.makeText(getContext(), "hao han", Toast.LENGTH_LONG).show();
     }
 
     @Override
-    public void onLayDanhSachPhongError(String error) {
-        Toast.makeText(getContext(), "Lay du lieu that bai", Toast.LENGTH_LONG).show();
+    public void onLayLoaiPhongError(String error) {
+
     }
+
+    @Override
+    public void onLayDanhSachPhong1gSuccess(List<PhongDTO> list) {
+
+    }
+
+    @Override
+    public void onLayDanhSachPhong1gError(String error) {
+
+    }
+
 }

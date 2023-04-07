@@ -3,6 +3,7 @@ package com.example.datnandroidquanlynhahangkhachsan.ui.phieudat;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -19,6 +20,7 @@ import com.example.datnandroidquanlynhahangkhachsan.CaptureAct;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuDatPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemphieudatphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.ChonPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
@@ -73,6 +75,14 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
         lsPhong = new ArrayList<>();
         lsPhong.add(100);
         lsPhong.add(101);
+
+        activityThemphieudatphongBinding.themphongPhieudatphong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ThemPhieuDatphongActivity.this, ChonPhongActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void KiemTraDuLieuDauVao() {
@@ -145,6 +155,7 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
         });
 
     }
+
 
     private void OnclickThemPhieuDatPhong() {
         Date day = Calendar.getInstance().getTime();
@@ -288,4 +299,5 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
     public void onThemPhieuDatPhongError(String error) {
         Toast.makeText(this, "Thêm phiếu đặt phòng thất bại", Toast.LENGTH_LONG).show();
     }
+
 }

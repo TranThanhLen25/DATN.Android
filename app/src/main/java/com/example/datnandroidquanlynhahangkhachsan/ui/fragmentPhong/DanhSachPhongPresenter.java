@@ -1,8 +1,9 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong;
 
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
-
+import com.example.datnandroidquanlynhahangkhachsan.model.hanghoa.IHangHoaModel;
 
 
 import java.util.List;
@@ -17,9 +18,9 @@ public class DanhSachPhongPresenter implements DanhSachPhongContract.Presenter {
         this.danhSachPhongModel = new DanhSachPhongModel();
     }
 
-@Override
+    @Override
     public void LayDanhSachPhong() {
-        danhSachPhongModel.LayDanhSachPhong(new IDanhSachPhongModel.IOnLayDanhSachPhongFinishedListener(){
+        danhSachPhongModel.LayDanhSachPhong(new IDanhSachPhongModel.IOnLayDanhSachPhongFinishedListener() {
             @Override
             public void onSuccess(List<PhongDTO> listResult) {
                 view.onLayDanhSachPhongSuccess(listResult);
@@ -31,4 +32,21 @@ public class DanhSachPhongPresenter implements DanhSachPhongContract.Presenter {
             }
         });
     }
+
+    @Override
+    public void LayDanhSachPhong1g(int id) {
+        danhSachPhongModel.LayDanhSachPhong1g(id,new IDanhSachPhongModel.IOnLayDanhSachPhong1gFinishedListener() {
+            @Override
+            public void onSuccess(List<PhongDTO> listResult) {
+                view.onLayDanhSachPhong1gSuccess(listResult);
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onLayDanhSachPhong1gError(error);
+            }
+        });
+    }
+
+
 }

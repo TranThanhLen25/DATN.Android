@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -22,24 +24,31 @@ import com.example.datnandroidquanlynhahangkhachsan.Fragment_dsPhong;
 import com.example.datnandroidquanlynhahangkhachsan.R;
 
 
+import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemChonphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemDanhsachphongBinding;
+import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ChiTietPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDoiPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuTraPhongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.LoaiPhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.ThemPhieuDatphongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuNhanPhongActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongViewHolder> {
     private List<PhongDTO> lsPhong;
+
     private Context context;
+    private List<LoaiPhongDTO> lsLoaiPhong;
     Fragment fragment = null;
 
     public DsPhongAdapter(List<PhongDTO> lsPhong) {
         this.lsPhong = lsPhong;
+       // this.lsLoaiPhong=lsLoaiPhong;
 
     }
 
@@ -50,6 +59,7 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
     public void setData(List<PhongDTO> lsPhong, Context context) {
         this.lsPhong = lsPhong;
         this.context = context;
+      //  this.lsLoaiPhong=lsLoaiPhong;
         notifyDataSetChanged();
     }
 
@@ -75,27 +85,35 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
     @Override
     public void onBindViewHolder(@NonNull PhongViewHolder holder, int position) {
         PhongDTO phong = lsPhong.get((position));
-        if (phong == null) {
+      //  LoaiPhongDTO loaiPhong=lsLoaiPhong.get(position);
+        if (phong == null ) {
             return;
         }
+
         holder.itemDanhsachphongBinding.tvSophong.setText(String.valueOf(phong.getSoPhong()));
         holder.itemDanhsachphongBinding.tvGiatien.setText(String.valueOf(phong.getLoaiPhongId()));
-        holder.itemDanhsachphongBinding.tvLoaiphong.setText(String.valueOf(phong.getTang()));
+        holder.itemDanhsachphongBinding.tvLoaiphong.setText(String.valueOf(phong.getLoaiPhongId()));
 
 
     }
 
     @Override
     public int getItemCount() {
-        if ((lsPhong != null)) {
+        if ((lsPhong != null )) {
             return lsPhong.size();
+
         }
         return 0;
     }
 
+
+
+
+
     class PhongViewHolder extends RecyclerView.ViewHolder {
 
         private ItemDanhsachphongBinding itemDanhsachphongBinding;
+        private ItemChonphongBinding chonphongBinding;
 
         public PhongViewHolder(@NonNull ItemDanhsachphongBinding dsPhong) {
 
@@ -106,6 +124,7 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
 
         }
     }
+
 
     /// tạo dialog chức năng
     private void openDialog() {
