@@ -22,6 +22,7 @@ import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemphie
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.ChonPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
@@ -54,6 +55,15 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
         super.onCreate(savedInstanceState);
         activityThemphieudatphongBinding = activityThemphieudatphongBinding.inflate(getLayoutInflater());
         setContentView(activityThemphieudatphongBinding.getRoot());
+        activityThemphieudatphongBinding.btnThemphongPhieudatphong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ThemPhieuDatphongActivity.this, ChonPhongActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         activityThemphieudatphongBinding.BtnScanQRPhieudatphong.setOnClickListener(view -> {
             ScanOptions options = new ScanOptions();
             options.setCaptureActivity(CaptureAct.class);

@@ -42,13 +42,14 @@ import java.util.List;
 public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongViewHolder> {
     private List<PhongDTO> lsPhong;
 
+
     private Context context;
     private List<LoaiPhongDTO> lsLoaiPhong;
     Fragment fragment = null;
 
     public DsPhongAdapter(List<PhongDTO> lsPhong) {
         this.lsPhong = lsPhong;
-       // this.lsLoaiPhong=lsLoaiPhong;
+        this.lsLoaiPhong=lsLoaiPhong;
 
     }
 
@@ -59,7 +60,7 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
     public void setData(List<PhongDTO> lsPhong, Context context) {
         this.lsPhong = lsPhong;
         this.context = context;
-      //  this.lsLoaiPhong=lsLoaiPhong;
+       this.lsLoaiPhong=lsLoaiPhong;
         notifyDataSetChanged();
     }
 
@@ -85,7 +86,7 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
     @Override
     public void onBindViewHolder(@NonNull PhongViewHolder holder, int position) {
         PhongDTO phong = lsPhong.get((position));
-      //  LoaiPhongDTO loaiPhong=lsLoaiPhong.get(position);
+       LoaiPhongDTO loaiPhong=lsLoaiPhong.get(position);
         if (phong == null ) {
             return;
         }
