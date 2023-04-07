@@ -13,7 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuDatPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsPhieuDatPhongBinding;
-import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -31,6 +32,7 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
     private PhieuDatPhongAdapter phieuDatPhongAdapter;
     private DsPhieuDatPhongPresenter dsPhieuDatPhongPresenter;
     private FragmentDsPhieuDatPhongBinding fragmentDsPhieuDatPhongBinding;
+    DieuKienLocPhieuDatDTO dieuKienLocPhieuDatDTO;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -95,7 +97,9 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
         lsPhieuDat = new ArrayList<>();
         Date day = Calendar.getInstance().getTime();
         dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
-        dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(1);
+        dieuKienLocPhieuDatDTO = new DieuKienLocPhieuDatDTO();
+        dieuKienLocPhieuDatDTO.setLoaiPhieu(1);
+        dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
         rscvPhieuDatPhong.setLayoutManager(LinearLayoutManager);
         return fragmentDsPhieuDatPhongBinding.getRoot();
@@ -109,7 +113,7 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
         phieuDatPhongAdapter = new PhieuDatPhongAdapter(this);
         phieuDatPhongAdapter.setData(getContext(), lsPhieuDat);
         rscvPhieuDatPhong.setAdapter(phieuDatPhongAdapter);
-        Toast.makeText(getContext(), "Lấy danh sách phiếu đặt phòng thành công", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(), "Lấy danh sách phiếu đặt phòng thành công", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -124,6 +128,16 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
 
     @Override
     public void onThemPhieuDatPhongError(String error) {
+
+    }
+
+    @Override
+    public void onThemPhieuDatPhongChiTietSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuDatPhongChiTietError(String error) {
 
     }
 }

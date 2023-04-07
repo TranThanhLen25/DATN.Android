@@ -1,6 +1,8 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.phieudat;
 
-import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 
 import java.util.List;
 
@@ -15,13 +17,20 @@ public interface DsPhieuDatPhongContract {
         void onThemPhieuDatPhongSuccess();
 
         void onThemPhieuDatPhongError(String error);
+
+        //thêm phiếu đặt phòng chi tiết
+        void onThemPhieuDatPhongChiTietSuccess();
+
+        void onThemPhieuDatPhongChiTietError(String error);
     }
 
     interface Presenter {
         //void LayDanhSachPhieuDat(DieuKienLocPhieuDatDTO dieuKienLoc);
 
-        void LayDanhSachPhieuDat(int LoaiPhieu);
+        void LayDanhSachPhieuDat(DieuKienLocPhieuDatDTO dieuKienLocPhieuDatDTO);
 
         void ThemPhieuDatPhong(PhieuDatDTO phieuDatDTO);
+
+        void ThemPhieuDatPhongChiTiet(PhieuDatPhongChiTietDTO phieuDatPhongChiTietDTO);
     }
 }

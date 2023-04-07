@@ -137,6 +137,7 @@
                     android:id="@+id/inputlayout_hoten_phieudatphong"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:boxBackgroundMode="none"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_hoten">
 
@@ -166,6 +167,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:counterEnabled="true"
+                    app:boxBackgroundMode="none"
                     app:counterMaxLength="12"
                     app:layout_constraintTop_toBottomOf="@+id/tv_cccd_phieudatphong">
 
@@ -199,6 +201,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:counterEnabled="true"
                     app:counterMaxLength="10"
+                    app:boxBackgroundMode="none"
                     app:layout_constraintTop_toBottomOf="@+id/tv_sdt_phieudatphong">
 
                     <EditText
@@ -331,7 +334,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/thoigiantra_phieudatphong">
 
                     <ImageButton
-                        android:id="@+id/themphong_phieudatphong"
+                        android:id="@+id/btn_themphong_phieudatphong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
@@ -347,7 +350,7 @@
                         android:text="@string/tv_phong"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieudatphong"
-                        app:layout_constraintStart_toEndOf="@+id/themphong_phieudatphong"
+                        app:layout_constraintStart_toEndOf="@+id/btn_themphong_phieudatphong"
                         app:layout_constraintTop_toTopOf="@+id/chonphong_phieudatphong" />
 
                     <TextView
@@ -368,7 +371,7 @@
                         android:textColor="@color/red"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieudatphong"
-                        app:layout_constraintStart_toEndOf="@+id/themphong_phieudatphong"
+                        app:layout_constraintStart_toEndOf="@+id/btn_themphong_phieudatphong"
                         app:layout_constraintTop_toBottomOf="@+id/tv_phong_phieudatphong" />
 
                     <TextView

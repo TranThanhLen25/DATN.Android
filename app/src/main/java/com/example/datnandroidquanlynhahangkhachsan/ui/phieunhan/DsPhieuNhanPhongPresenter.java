@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan;
 
-import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.phieudat.IPhieuDatModel;
 import com.example.datnandroidquanlynhahangkhachsan.model.phieudat.PhieuDatModel;
 
@@ -17,8 +18,8 @@ public class DsPhieuNhanPhongPresenter implements DsPhieuNhanPhongContract.Prese
 
 
     @Override
-    public void LayDanhSachPhieuDat(int LoaiPhieu) {
-        phieuDatModel.LayDanhSachPhieuDat(LoaiPhieu, new IPhieuDatModel.IOnLayDanhSachPhieuDatFinishedListener() {
+    public void LayDanhSachPhieuDat(DieuKienLocPhieuDatDTO dieuKienLocPhieuDatDTO) {
+        phieuDatModel.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO, new IPhieuDatModel.IOnLayDanhSachPhieuDatFinishedListener() {
             @Override
             public void onSuccess(List<PhieuDatDTO> listResult) {
                 view.onLayDanhSachPhieuDatSuccess(listResult);

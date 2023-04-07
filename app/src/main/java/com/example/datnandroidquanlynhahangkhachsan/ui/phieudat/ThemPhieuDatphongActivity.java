@@ -3,6 +3,7 @@ package com.example.datnandroidquanlynhahangkhachsan.ui.phieudat;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,7 +19,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.datnandroidquanlynhahangkhachsan.CaptureAct;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuDatPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemphieudatphongBinding;
-import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
@@ -39,8 +42,12 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
     private String thoiGianNhan = "";
     private String thoiGianTra = "";
     PhieuDatDTO phieuDatDTO;
+
+    PhieuDatPhongChiTietDTO phieuDatPhongChiTietDTO;
+    List<PhieuDatPhongChiTietDTO> lsPhieuDatPhongChiTiet;
     private AppUtils ac;
     Calendar statcal = Calendar.getInstance(Locale.CHINESE);
+    DieuKienLocPhieuDatDTO dieuKienLocPhieuDatDTO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,15 +71,37 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
             @Override
             public void onClick(View view) {
                 OnclickThemPhieuDatPhong();
+                onBackPressed();
             }
         });
-        dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
-        KiemTraDuLieuDauVao();
         lsPhieuDat = new ArrayList<>();
-        dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(1);
         lsPhong = new ArrayList<>();
-        lsPhong.add(100);
-        lsPhong.add(101);
+        lsPhieuDatPhongChiTiet = new ArrayList<>();
+        lsPhong.add(7);
+        lsPhong.add(8);
+        dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
+        dieuKienLocPhieuDatDTO = new DieuKienLocPhieuDatDTO();
+        dieuKienLocPhieuDatDTO.setLoaiPhieu(1);
+        dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
+        KiemTraDuLieuDauVao();
+    }
+
+    private void OnclickThemPhieuDatPhong() {
+        dieuKienLocPhieuDatDTO.setLoaiPhieu(1);
+        dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
+        Date day = Calendar.getInstance().getTime();
+        Date thoiGianNhanPhong = ac.formatStringToDateUtil(thoiGianNhan, "dd/MM/yyyy HH:mm");
+        Date thoiGianTraPhong = null;
+        if (thoiGianTra != null || thoiGianTra != "") {
+            thoiGianTraPhong = ac.formatStringToDateUtil(thoiGianTra, "dd/MM/yyyy HH:mm");
+        }
+        phieuDatDTO = new PhieuDatDTO("PDP" + (lsPhieuDat.size() + 1), day, 1, 1, thoiGianNhanPhong, thoiGianTraPhong, "ghi chu", 1L, "đang đặt");
+        dsPhieuDatPhongPresenter.ThemPhieuDatPhong(phieuDatDTO);
+        for (int i = 0; i < lsPhong.size(); i++) {
+            phieuDatPhongChiTietDTO = new PhieuDatPhongChiTietDTO(lsPhieuDat.get(lsPhieuDat.size() - 1).getPhieuDatID() + 1, lsPhong.get(i), 56);
+            dsPhieuDatPhongPresenter.ThemPhieuDatPhongChiTiet(phieuDatPhongChiTietDTO);
+        }
+
     }
 
     private void KiemTraDuLieuDauVao() {
@@ -146,20 +175,6 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
 
     }
 
-    private void OnclickThemPhieuDatPhong() {
-        Date day = Calendar.getInstance().getTime();
-        //thoiGianNhan=ac.formatDateToString(day,"dd-MM-yyyy HH:mm:ss");
-        Date thoiGianNhanPhong = ac.formatStringToDateUtil(thoiGianNhan, "dd/MM/yyyy HH:mm");
-        Date thoiGianTraPhong = null;
-        if (thoiGianTra != null || thoiGianTra != "") {
-
-            thoiGianTraPhong = ac.formatStringToDateUtil(thoiGianTra, "dd/MM/yyyy HH:mm");
-        }
-//        dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(1);
-        phieuDatDTO = new PhieuDatDTO("PDP" + (lsPhieuDat.size() + 1), day, 1, 1, thoiGianNhanPhong, thoiGianTraPhong, "ghi chu", 1L, "đang đặt");
-        dsPhieuDatPhongPresenter.ThemPhieuDatPhong(phieuDatDTO);
-
-    }
 
     private void openDialogDateThoiGianNhan() {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
@@ -271,7 +286,6 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
     @Override
     public void onLayDanhSachPhieuDatSuccess(List<PhieuDatDTO> list) {
         lsPhieuDat = list;
-        //Toast.makeText(this, "abc", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -281,11 +295,21 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
 
     @Override
     public void onThemPhieuDatPhongSuccess() {
-        Toast.makeText(this, "Thêm phiếu đặt phòng thành công", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "Thêm phiếu đặt phòng thành công", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onThemPhieuDatPhongError(String error) {
-        Toast.makeText(this, "Thêm phiếu đặt phòng thất bại", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "Thêm phiếu đặt phòng thất bại", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onThemPhieuDatPhongChiTietSuccess() {
+        Toast.makeText(this, "Thêm phiếu đặt phòng chi tiết thành công", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onThemPhieuDatPhongChiTietError(String error) {
+        Toast.makeText(this, "Thêm phiếu đặt phòng chi tiết thất bại", Toast.LENGTH_LONG).show();
     }
 }

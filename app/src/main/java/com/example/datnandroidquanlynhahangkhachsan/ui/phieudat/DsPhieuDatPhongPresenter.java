@@ -1,8 +1,8 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.phieudat;
 
-import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuDatDTO;
-import com.example.datnandroidquanlynhahangkhachsan.model.hanghoa.IHangHoaModel;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.phieudat.IPhieuDatModel;
 import com.example.datnandroidquanlynhahangkhachsan.model.phieudat.PhieuDatModel;
 
@@ -19,8 +19,8 @@ public class DsPhieuDatPhongPresenter implements DsPhieuDatPhongContract.Present
 
 
     @Override
-    public void LayDanhSachPhieuDat(int LoaiPhieu) {
-        phieuDatModel.LayDanhSachPhieuDat(LoaiPhieu, new IPhieuDatModel.IOnLayDanhSachPhieuDatFinishedListener() {
+    public void LayDanhSachPhieuDat(DieuKienLocPhieuDatDTO dieuKienLocPhieuDatDTO) {
+        phieuDatModel.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO, new IPhieuDatModel.IOnLayDanhSachPhieuDatFinishedListener() {
             @Override
             public void onSuccess(List<PhieuDatDTO> listResult) {
                 view.onLayDanhSachPhieuDatSuccess(listResult);
@@ -44,6 +44,21 @@ public class DsPhieuDatPhongPresenter implements DsPhieuDatPhongContract.Present
             @Override
             public void onError(String error) {
                 view.onThemPhieuDatPhongError(error);
+            }
+        });
+    }
+
+    @Override
+    public void ThemPhieuDatPhongChiTiet(PhieuDatPhongChiTietDTO phieuDatPhongChiTietDTO) {
+        phieuDatModel.ThemPhieuDatPhongChiTiet(phieuDatPhongChiTietDTO, new IPhieuDatModel.IOnThemPhieuDatPhongChiTietFinishedListener() {
+            @Override
+            public void onSuccess() {
+                view.onThemPhieuDatPhongChiTietSuccess();
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onThemPhieuDatPhongChiTietError(error);
             }
         });
     }

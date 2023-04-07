@@ -1,4 +1,4 @@
-package com.example.datnandroidquanlynhahangkhachsan.entities;
+package com.example.datnandroidquanlynhahangkhachsan.entities.phieudat;
 
 import com.google.gson.annotations.SerializedName;
 

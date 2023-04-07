@@ -1,11 +1,13 @@
 package com.example.datnandroidquanlynhahangkhachsan.model.phieudat;
 
-import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 
 import java.util.List;
 
 public interface IPhieuDatModel {
-    void LayDanhSachPhieuDat(int LoaiPhieu, IPhieuDatModel.IOnLayDanhSachPhieuDatFinishedListener listener);
+    void LayDanhSachPhieuDat(DieuKienLocPhieuDatDTO dieuKienLocPhieuDatDTO, IPhieuDatModel.IOnLayDanhSachPhieuDatFinishedListener listener);
 
     interface IOnLayDanhSachPhieuDatFinishedListener {
         void onSuccess(List<PhieuDatDTO> listResult);
@@ -16,6 +18,14 @@ public interface IPhieuDatModel {
     void ThemPhieuDatPhong(PhieuDatDTO phieuDatDTO, IPhieuDatModel.IOnThemPhieuDatPhongFinishedListener listener);
 
     interface IOnThemPhieuDatPhongFinishedListener {
+        void onSuccess();
+
+        void onError(String error);
+    }
+
+    void ThemPhieuDatPhongChiTiet(PhieuDatPhongChiTietDTO phieuDatPhongChiTietDTO, IPhieuDatModel.IOnThemPhieuDatPhongChiTietFinishedListener listener);
+
+    interface IOnThemPhieuDatPhongChiTietFinishedListener {
         void onSuccess();
 
         void onError(String error);
