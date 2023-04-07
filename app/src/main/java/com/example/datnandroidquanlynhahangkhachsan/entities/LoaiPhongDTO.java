@@ -6,6 +6,8 @@ public class LoaiPhongDTO {
     public  String tenLoaiPhong;
     public int soNguoiToiDa;
 
+    public int donGia;
+
     public int getLoaiPhongId() {
         return loaiPhongId;
     }
@@ -46,13 +48,14 @@ public class LoaiPhongDTO {
         this.donGia = donGia;
     }
 
-    public LoaiPhongDTO(int loaiPhongId, String maLoaiPhong, String tenLoaiPhong, int soNguoiToiDa, int donGia) {
-        this.loaiPhongId = loaiPhongId;
-        this.maLoaiPhong = maLoaiPhong;
+    public LoaiPhongDTO(String tenLoaiPhong) {
+
         this.tenLoaiPhong = tenLoaiPhong;
-        this.soNguoiToiDa = soNguoiToiDa;
-        this.donGia = donGia;
+
     }
 
-    public int donGia;
+    @Override
+    public String toString() {
+        return tenLoaiPhong ;
+    }
 }

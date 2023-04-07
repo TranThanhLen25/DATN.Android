@@ -4,41 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.DanhSachMenuActivity">
+    tools:context=".ui.chonphong.ChonPhongActivity">
 
     <include
 
-        android:id="@+id/inclu_menu"
+        android:id="@+id/inclu_chonphong"
         layout="@layout/activity_appar_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <!--    <FrameLayout-->
-    <!--        android:id="@+id/frame_menu"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        app:layout_constraintTop_toBottomOf="@id/inclu_menu"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"/>-->
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+
+    <Spinner
+        android:id="@+id/sp_chonphong"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/inclu_menu"
+        app:layout_constraintTop_toBottomOf="@id/inclu_chonphong"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
+    <View
+        android:id="@+id/view_chonphong"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sp_chonphong" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rscv_chonphong"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toBottomOf="@id/view_chonphong" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
