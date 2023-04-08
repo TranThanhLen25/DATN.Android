@@ -13,6 +13,7 @@
         android:layout_height="110dp"
         android:layout_width="120dp"
         android:layout_margin="6dp"
+        android:layout_gravity="center"
 
         android:background="@drawable/bg_item"
 
@@ -47,8 +48,9 @@
             android:id="@+id/ctl_chitiet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
 
+
+app:layout_constraintEnd_toEndOf="@id/ctl_dsphong"
             app:layout_constraintStart_toStartOf="@id/ctl_dsphong"
             app:layout_constraintTop_toBottomOf="@id/view_dsphong">
 
@@ -58,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:text="1 giuong"
                 android:textColor="@color/red"
-                android:textSize="@dimen/heading_2"
+                android:textSize="17dp"
 
                 app:layout_constraintStart_toStartOf="@id/ctl_chitiet"
                 app:layout_constraintEnd_toEndOf="@id/ctl_chitiet"
@@ -70,6 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="300.000"
+                android:layout_marginTop="5dp"
                 android:id="@+id/tv_giatien"
                 app:layout_constraintTop_toBottomOf="@id/tv_loaiphong"
                 app:layout_constraintStart_toStartOf="@id/ctl_chitiet"

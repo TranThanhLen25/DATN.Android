@@ -92,8 +92,8 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
         }
 
         holder.itemDanhsachphongBinding.tvSophong.setText(String.valueOf(phong.getSoPhong()));
-        holder.itemDanhsachphongBinding.tvGiatien.setText(String.valueOf(phong.getLoaiPhongId()));
-        holder.itemDanhsachphongBinding.tvLoaiphong.setText(String.valueOf(phong.getLoaiPhongId()));
+        holder.itemDanhsachphongBinding.tvGiatien.setText(String.valueOf(phong.getDonGia()));
+        holder.itemDanhsachphongBinding.tvLoaiphong.setText(String.valueOf(phong.getTenLoaiPhong()));
 
 
     }

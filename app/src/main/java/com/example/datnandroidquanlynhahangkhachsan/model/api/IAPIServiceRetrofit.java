@@ -37,8 +37,11 @@ public interface IAPIServiceRetrofit {
     @POST("/api/PhieuDatPhongChiTiet/them-PhieuDatPhongChiTiet")
     Call<ResponseInfo> ThemPhieuDatPhongChiTiet(@Body PhieuDatPhongChiTietDTO phieuDatPhongChiTietDTO);
 
-    @POST("/api/Phong/danhsach-Phong")
+    @POST("/api/Phong/danhsach-phong-proc")
     Call<ResponseDTO<List<PhongDTO>>> layDanhSachPhong();
+//
+//    @POST("/api/Phong/danhsach-Phong")
+//    Call<ResponseDTO<List<PhongDTO>>> layDanhSachPhong();
 
     ///lấy danh sách loại phòng
     @POST("/api/LoaiPhong/danhsach-LoaiPhong")
