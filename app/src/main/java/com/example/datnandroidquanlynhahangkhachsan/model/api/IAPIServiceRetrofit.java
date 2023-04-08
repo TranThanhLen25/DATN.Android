@@ -51,7 +51,7 @@ public interface IAPIServiceRetrofit {
     ///lấy danh sach theo loại phòng
     ///biến trong query phải trùng với biến trong api
     @POST("/api/Phong/danhsach-phongthuong1g?")
-    Call<ResponseDTO<List<PhongDTO>>> layDanhSachPhong1g(@Query("id") int id);
+    Call<ResponseDTO<List<PhongDTO>>> layDanhSachPhong1g(@Query("id") int id, @Query("trangThaiId")int trangThaiId);
 
 
 }

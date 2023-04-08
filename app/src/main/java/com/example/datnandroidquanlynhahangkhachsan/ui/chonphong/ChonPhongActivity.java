@@ -65,7 +65,7 @@ public class ChonPhongActivity extends AppCompatActivity implements DanhSachPhon
                     lschonphong = new ArrayList<>();
                     rscv = chonPhongBinding.rscvChonphong;
                     danhSachPhongPresenter = new DanhSachPhongPresenter(ChonPhongActivity.this);
-                    danhSachPhongPresenter.LayDanhSachPhong1g(1);
+                    danhSachPhongPresenter.LayDanhSachPhong1g(1,1);
                     GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 3);
                     rscv.setLayoutManager(gridLayoutManager);
                }
@@ -77,7 +77,7 @@ public class ChonPhongActivity extends AppCompatActivity implements DanhSachPhon
                    lschonphong = new ArrayList<>();
                    rscv = chonPhongBinding.rscvChonphong;
                    danhSachPhongPresenter = new DanhSachPhongPresenter(ChonPhongActivity.this);
-                   danhSachPhongPresenter.LayDanhSachPhong1g(2);
+                   danhSachPhongPresenter.LayDanhSachPhong1g(2,1);
                    GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 3);
                    rscv.setLayoutManager(gridLayoutManager);
 
@@ -90,7 +90,7 @@ public class ChonPhongActivity extends AppCompatActivity implements DanhSachPhon
                     lschonphong = new ArrayList<>();
                     rscv = chonPhongBinding.rscvChonphong;
                     danhSachPhongPresenter = new DanhSachPhongPresenter(ChonPhongActivity.this);
-                    danhSachPhongPresenter.LayDanhSachPhong1g(3);
+                    danhSachPhongPresenter.LayDanhSachPhong1g(3,1);
                     GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 3);
                     rscv.setLayoutManager(gridLayoutManager);
 
@@ -103,7 +103,7 @@ public class ChonPhongActivity extends AppCompatActivity implements DanhSachPhon
                     lschonphong = new ArrayList<>();
                     rscv = chonPhongBinding.rscvChonphong;
                     danhSachPhongPresenter = new DanhSachPhongPresenter(ChonPhongActivity.this);
-                    danhSachPhongPresenter.LayDanhSachPhong1g(4);
+                    danhSachPhongPresenter.LayDanhSachPhong1g(4,1);
                     GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 3);
                     rscv.setLayoutManager(gridLayoutManager);
 

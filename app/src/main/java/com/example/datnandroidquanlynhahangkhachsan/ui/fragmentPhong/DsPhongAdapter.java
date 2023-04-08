@@ -47,6 +47,8 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
     private List<LoaiPhongDTO> lsLoaiPhong;
     Fragment fragment = null;
 
+
+
     public DsPhongAdapter(List<PhongDTO> lsPhong) {
         this.lsPhong = lsPhong;
       //  this.lsLoaiPhong=lsLoaiPhong;
@@ -90,7 +92,18 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
         if (phong == null ) {
             return;
         }
-
+        if(phong.getTrangThaiId()==4)
+        {
+            holder.itemDanhsachphongBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_color_conguoi);
+        }
+        else if(phong.getTrangThaiId()==3)
+        {
+            holder.itemDanhsachphongBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_color_baotri);
+        }
+        else if(phong.getTrangThaiId()==2)
+        {
+            holder.itemDanhsachphongBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_color_dat);
+        }
         holder.itemDanhsachphongBinding.tvSophong.setText(String.valueOf(phong.getSoPhong()));
         holder.itemDanhsachphongBinding.tvGiatien.setText(String.valueOf(phong.getDonGia()));
         holder.itemDanhsachphongBinding.tvLoaiphong.setText(String.valueOf(phong.getTenLoaiPhong()));

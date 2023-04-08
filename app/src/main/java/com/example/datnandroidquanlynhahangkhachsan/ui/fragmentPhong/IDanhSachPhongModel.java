@@ -18,7 +18,7 @@ public interface IDanhSachPhongModel {
     }
 
 
-    void LayDanhSachPhong1g(int id, IDanhSachPhongModel.IOnLayDanhSachPhong1gFinishedListener listener);
+    void LayDanhSachPhong1g(int id,int trangThaiId, IDanhSachPhongModel.IOnLayDanhSachPhong1gFinishedListener listener);
 
     interface IOnLayDanhSachPhong1gFinishedListener {
         void onSuccess(List<PhongDTO> listResult);

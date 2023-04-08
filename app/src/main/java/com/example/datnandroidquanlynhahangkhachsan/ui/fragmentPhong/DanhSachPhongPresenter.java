@@ -34,8 +34,8 @@ public class DanhSachPhongPresenter implements DanhSachPhongContract.Presenter {
     }
 
     @Override
-    public void LayDanhSachPhong1g(int id) {
-        danhSachPhongModel.LayDanhSachPhong1g(id,new IDanhSachPhongModel.IOnLayDanhSachPhong1gFinishedListener() {
+    public void LayDanhSachPhong1g(int id,int trangThaiId) {
+        danhSachPhongModel.LayDanhSachPhong1g(id,trangThaiId,new IDanhSachPhongModel.IOnLayDanhSachPhong1gFinishedListener() {
             @Override
             public void onSuccess(List<PhongDTO> listResult) {
                 view.onLayDanhSachPhong1gSuccess(listResult);

@@ -63,7 +63,7 @@ public class DanhSachPhongModel implements IDanhSachPhongModel {
     }
 
  @Override
-    public void LayDanhSachPhong1g(int id,IOnLayDanhSachPhong1gFinishedListener listener) {
+    public void LayDanhSachPhong1g(int id,int trangThaiId,IOnLayDanhSachPhong1gFinishedListener listener) {
         //Truoc khi goi api lay du lieu can phai dang nhap api de lay token
         //Sau khi co duoc token moi goi api lay du lieu
         service = new APIService();
@@ -72,7 +72,7 @@ public class DanhSachPhongModel implements IDanhSachPhongModel {
             public void onSuccess(ResponseTokenDTO token) {
                 //Lay token thanh cong => goi api lay du lieu
 
-                service.apiServiceRetrofit.layDanhSachPhong1g(id).enqueue(new Callback<ResponseDTO<List<PhongDTO>>>() {
+                service.apiServiceRetrofit.layDanhSachPhong1g(id,trangThaiId).enqueue(new Callback<ResponseDTO<List<PhongDTO>>>() {
                     @Override
                     public void onResponse(Call<ResponseDTO<List<PhongDTO>>> call, Response<ResponseDTO<List<PhongDTO>>> response) {
                         //lay loi api tra ve (neu co)

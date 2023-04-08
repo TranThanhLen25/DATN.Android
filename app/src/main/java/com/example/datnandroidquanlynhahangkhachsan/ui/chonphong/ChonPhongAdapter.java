@@ -60,15 +60,19 @@ public class ChonPhongAdapter extends RecyclerView.Adapter<ChonPhongAdapter.Chon
         if (phong == null) {
             return;
         }
+
+
         holder.chonphongBinding.tvSoChonphong.setText(String.valueOf(phong.getSoPhong()));
 
-            ////hiển thị dấu tick ở item
+        ////hiển thị dấu tick ở item
         holder.chonphongBinding.ctlItemchonphong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 isClick = !isClick;
                 if (isClick) {
                     holder.chonphongBinding.imgChonphong.setVisibility(View.VISIBLE);
+
+
                 } else {
                     holder.chonphongBinding.imgChonphong.setVisibility(View.GONE);
                 }
