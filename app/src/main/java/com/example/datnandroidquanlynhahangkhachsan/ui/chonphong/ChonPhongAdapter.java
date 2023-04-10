@@ -14,7 +14,9 @@ import com.example.datnandroidquanlynhahangkhachsan.Fragment_dsPhong;
 
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemChonphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemDanhsachphongBinding;
+import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.tempData.lsChonPhong;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DanhSachPhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DsPhongAdapter;
 
@@ -24,6 +26,7 @@ public class ChonPhongAdapter extends RecyclerView.Adapter<ChonPhongAdapter.Chon
 
     private List<PhongDTO> lsPhong;
     private Context context;
+    private List<LoaiPhongDTO> lsLoaiPhong;
     Fragment fragment = null;
     private boolean isClick;
 
@@ -36,9 +39,10 @@ public class ChonPhongAdapter extends RecyclerView.Adapter<ChonPhongAdapter.Chon
 
     }
 
-    public void setData(List<PhongDTO> lsPhong, Context context) {
+    public void setData(List<PhongDTO> lsPhong, List<LoaiPhongDTO> lsLoaiPhong, Context context) {
         this.lsPhong = lsPhong;
         this.context = context;
+        this.lsLoaiPhong = lsLoaiPhong;
         notifyDataSetChanged();
     }
 
@@ -61,16 +65,26 @@ public class ChonPhongAdapter extends RecyclerView.Adapter<ChonPhongAdapter.Chon
             return;
         }
         holder.chonphongBinding.tvSoChonphong.setText(String.valueOf(phong.getSoPhong()));
-
-            ////hiển thị dấu tick ở item
+        for (int i = 0; i < lsLoaiPhong.size(); i++) {
+            if (phong.getLoaiPhongId() == lsLoaiPhong.get(i).getLoaiPhongId()) {
+                holder.chonphongBinding.tvLoaiphong.setText(lsLoaiPhong.get(i).getTenLoaiPhong());
+            }
+        }
+        ////hiển thị dấu tick ở item
         holder.chonphongBinding.ctlItemchonphong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 isClick = !isClick;
                 if (isClick) {
                     holder.chonphongBinding.imgChonphong.setVisibility(View.VISIBLE);
+                    lsChonPhong.lsChonPhongDataInt.add(phong.getSoPhong());
                 } else {
                     holder.chonphongBinding.imgChonphong.setVisibility(View.GONE);
+//                    for (int i = 0; i < lsChonPhong.lsChonPhongDataInt.size(); i++) {
+//                        if (phong.getSoPhong() == lsChonPhong.lsChonPhongDataInt.get(i)) {
+//                            lsChonPhong.lsChonPhongDataInt.remove(i);
+//                        }
+//                    }
                 }
             }
         });

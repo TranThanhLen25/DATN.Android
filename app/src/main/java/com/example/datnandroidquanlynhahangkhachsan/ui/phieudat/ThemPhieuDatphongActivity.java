@@ -22,6 +22,7 @@ import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemphie
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.tempData.lsChonPhong;
 import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.ChonPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 import com.journeyapps.barcodescanner.ScanContract;
@@ -81,14 +82,13 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
             @Override
             public void onClick(View view) {
                 OnclickThemPhieuDatPhong();
-                onBackPressed();
+                //onBackPressed();
             }
         });
         lsPhieuDat = new ArrayList<>();
         lsPhong = new ArrayList<>();
         lsPhieuDatPhongChiTiet = new ArrayList<>();
-        lsPhong.add(7);
-        lsPhong.add(8);
+
         dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
         dieuKienLocPhieuDatDTO = new DieuKienLocPhieuDatDTO();
         dieuKienLocPhieuDatDTO.setLoaiPhieu(1);
@@ -97,6 +97,11 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
     }
 
     private void OnclickThemPhieuDatPhong() {
+//        lsPhong.add(7);
+//        lsPhong.add(8);
+//        lsPhong.add(9);
+//        lsPhong.add(10);
+//        lsPhong.add(11);
         dieuKienLocPhieuDatDTO.setLoaiPhieu(1);
         dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
         Date day = Calendar.getInstance().getTime();
@@ -107,8 +112,8 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
         }
         phieuDatDTO = new PhieuDatDTO("PDP" + (lsPhieuDat.size() + 1), day, 1, 1, thoiGianNhanPhong, thoiGianTraPhong, "ghi chu", 1L, "đang đặt");
         dsPhieuDatPhongPresenter.ThemPhieuDatPhong(phieuDatDTO);
-        for (int i = 0; i < lsPhong.size(); i++) {
-            phieuDatPhongChiTietDTO = new PhieuDatPhongChiTietDTO(lsPhieuDat.get(lsPhieuDat.size() - 1).getPhieuDatID() + 1, lsPhong.get(i), 56);
+        for (int i = 0; i < lsChonPhong.lsChonPhongDataInt.size(); i++) {
+            phieuDatPhongChiTietDTO = new PhieuDatPhongChiTietDTO(lsPhieuDat.get(lsPhieuDat.size() - 1).getPhieuDatID() + 1, lsChonPhong.lsChonPhongDataInt.get(i), 56);
             dsPhieuDatPhongPresenter.ThemPhieuDatPhongChiTiet(phieuDatPhongChiTietDTO);
         }
 

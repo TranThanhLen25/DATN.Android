@@ -16,16 +16,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/sp_chonphong"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="5dp"
+<!--    <Spinner-->
+<!--        android:id="@+id/sp_chonphong"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_margin="5dp"-->
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/inclu_chonphong"
-        tools:ignore="SpeakableTextPresentCheck" />
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/inclu_chonphong"-->
+<!--        tools:ignore="SpeakableTextPresentCheck" />-->
 
     <View
         android:id="@+id/view_chonphong"
@@ -36,7 +36,7 @@
         android:background="@color/grey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sp_chonphong" />
+        app:layout_constraintTop_toBottomOf="@id/inclu_chonphong" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rscv_chonphong"
