@@ -1,58 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_chonphong"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="100dp"
+        android:id="@+id/ctl_itemchonphong"
+        android:layout_width="105dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_tenphieu"
         android:layout_margin="15dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/bg_tenphieu"
+        android:padding="5dp"
         app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/ctl_itemchonphong">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/img_chonphong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="22dp"
-            android:layout_marginBottom="26dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="18dp"
             android:src="@drawable/check"
-            android:layout_margin="10dp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_so_chonphong"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="gone"
-            />
+            app:layout_constraintStart_toStartOf="@id/ctl_itemchonphong"
+            app:layout_constraintTop_toTopOf="@id/ctl_itemchonphong" />
 
 
         <TextView
             android:id="@+id/tv_so_chonphong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_marginEnd="4dp"
+            android:layout_margin="8dp"
+
             android:text="101"
             android:textColor="@color/red"
             android:textSize="@dimen/heading_2"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintEnd_toEndOf="@id/ctl_itemchonphong"
+            app:layout_constraintTop_toTopOf="@id/ctl_itemchonphong" />
+
         <TextView
+            android:id="@+id/tv_loaiphong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_loaiphong"
+
+            android:layout_marginTop="3dp"
+
+
             android:text="loại phòng"
-            android:layout_margin="4dp"
             android:textSize="@dimen/heading_3"
-            app:layout_constraintTop_toBottomOf="@+id/tv_so_chonphong"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
+            app:layout_constraintEnd_toEndOf="@id/ctl_itemchonphong"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_so_chonphong" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

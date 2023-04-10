@@ -37,21 +37,25 @@ public interface IAPIServiceRetrofit {
     @POST("/api/PhieuDatPhongChiTiet/them-PhieuDatPhongChiTiet")
     Call<ResponseInfo> ThemPhieuDatPhongChiTiet(@Body PhieuDatPhongChiTietDTO phieuDatPhongChiTietDTO);
 
-    @POST("/api/Phong/danhsach-phong-proc")
-    Call<ResponseDTO<List<PhongDTO>>> layDanhSachPhong();
-//
-//    @POST("/api/Phong/danhsach-Phong")
+    //lấy danh sách phòng với bảng tạm mới bên api_bên android chỉ cần thêm trường dữ liệu vào PhongDTO
+
+//    @POST("/api/Phong/danhsach-phong-proc")
 //    Call<ResponseDTO<List<PhongDTO>>> layDanhSachPhong();
+
+    ///lấy danh sách phòng
+
+    @POST("/api/Phong/danhsach-Phong")
+    Call<ResponseDTO<List<PhongDTO>>> layDanhSachPhong();
 
     ///lấy danh sách loại phòng
     @POST("/api/LoaiPhong/danhsach-LoaiPhong")
     Call<ResponseDTO<List<LoaiPhongDTO>>> layLoaiPhong();
 
 
-    ///lấy danh sach theo loại phòng
+    ///lấy danh sach theo id loại phòng_và trạng thái phòng( trống hay có người ...)
     ///biến trong query phải trùng với biến trong api
     @POST("/api/Phong/danhsach-phongthuong1g?")
-    Call<ResponseDTO<List<PhongDTO>>> layDanhSachPhong1g(@Query("id") int id);
+    Call<ResponseDTO<List<PhongDTO>>> layDanhSachPhong1g(@Query("id") int id, @Query("trangThaiId")int trangThaiId);
 
 
 }

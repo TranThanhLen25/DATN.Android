@@ -2,18 +2,18 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_dsphong"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:id="@+id/item_dsphong"
 
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ctl_dsphong"
-        android:layout_height="110dp"
         android:layout_width="120dp"
-        android:layout_margin="6dp"
+        android:layout_height="110dp"
         android:layout_gravity="center"
+        android:layout_margin="6dp"
 
         android:background="@drawable/bg_item"
 
@@ -24,11 +24,11 @@
             android:id="@+id/tv_sophong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
             android:text="100"
             android:textSize="@dimen/heading_2"
-            android:layout_marginTop="10dp"
             android:textStyle="bold"
-            android:gravity="center"
             app:layout_constraintEnd_toEndOf="@id/ctl_dsphong"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"></TextView>
@@ -37,8 +37,8 @@
             android:id="@+id/view_dsphong"
             android:layout_width="wrap_content"
             android:layout_height="1dp"
-            android:background="@color/black"
             android:layout_marginTop="10dp"
+            android:background="@color/black"
             app:layout_constraintStart_toStartOf="@id/ctl_dsphong"
             app:layout_constraintTop_toBottomOf="@id/tv_sophong">
 
@@ -48,9 +48,9 @@
             android:id="@+id/ctl_chitiet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+android:layout_marginTop="3dp"
 
-
-app:layout_constraintEnd_toEndOf="@id/ctl_dsphong"
+            app:layout_constraintEnd_toEndOf="@id/ctl_dsphong"
             app:layout_constraintStart_toStartOf="@id/ctl_dsphong"
             app:layout_constraintTop_toBottomOf="@id/view_dsphong">
 
@@ -58,27 +58,28 @@ app:layout_constraintEnd_toEndOf="@id/ctl_dsphong"
                 android:id="@+id/tv_loaiphong"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:text="1 giuong"
                 android:textColor="@color/red"
-                android:textSize="17dp"
+                android:textSize="@dimen/heading_2"
 
-                app:layout_constraintStart_toStartOf="@id/ctl_chitiet"
                 app:layout_constraintEnd_toEndOf="@id/ctl_chitiet"
+                app:layout_constraintStart_toStartOf="@id/ctl_chitiet"
                 tools:ignore="MissingConstraints">
 
             </TextView>
 
             <TextView
+                android:id="@+id/tv_giatien"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
                 android:text="300.000"
-                android:layout_marginTop="5dp"
-                android:id="@+id/tv_giatien"
-                app:layout_constraintTop_toBottomOf="@id/tv_loaiphong"
-                app:layout_constraintStart_toStartOf="@id/ctl_chitiet"
-                app:layout_constraintEnd_toEndOf="@id/ctl_chitiet"
+                android:textColor="@color/bluenhat"
                 android:textSize="@dimen/heading_2"
-                android:textColor="@color/bluenhat">
+                app:layout_constraintEnd_toEndOf="@id/ctl_chitiet"
+                app:layout_constraintStart_toStartOf="@id/ctl_chitiet"
+                app:layout_constraintTop_toBottomOf="@id/tv_loaiphong">
 
             </TextView>
         </androidx.constraintlayout.widget.ConstraintLayout>

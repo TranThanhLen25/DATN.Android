@@ -26,7 +26,7 @@ public interface DanhSachPhongContract {
 
         void LayDanhSachPhong();
 
-        void LayDanhSachPhong1g(int id);
+        void LayDanhSachPhong1g(int id,int trangThaiId);
 
     }
 }
