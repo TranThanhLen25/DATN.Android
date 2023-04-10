@@ -77,7 +77,7 @@ public class ChonPhongAdapter extends RecyclerView.Adapter<ChonPhongAdapter.Chon
                 isClick = !isClick;
                 if (isClick) {
                     holder.chonphongBinding.imgChonphong.setVisibility(View.VISIBLE);
-                    lsChonPhong.lsChonPhongDataInt.add(phong.getSoPhong());
+                    lsChonPhong.lsChonPhongDataInt.add(phong.getPhongId());
                 } else {
                     holder.chonphongBinding.imgChonphong.setVisibility(View.GONE);
 //                    for (int i = 0; i < lsChonPhong.lsChonPhongDataInt.size(); i++) {

@@ -116,7 +116,8 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
             phieuDatPhongChiTietDTO = new PhieuDatPhongChiTietDTO(lsPhieuDat.get(lsPhieuDat.size() - 1).getPhieuDatID() + 1, lsChonPhong.lsChonPhongDataInt.get(i), 56);
             dsPhieuDatPhongPresenter.ThemPhieuDatPhongChiTiet(phieuDatPhongChiTietDTO);
         }
-
+//        Toast.makeText(this,  lsChonPhong.lsChonPhongDataInt.size(), Toast.LENGTH_LONG).show();
+        lsChonPhong.lsChonPhongDataInt.clear();
     }
 
     private void KiemTraDuLieuDauVao() {
