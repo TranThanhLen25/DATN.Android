@@ -70,6 +70,7 @@ public class ChonPhongAdapter extends RecyclerView.Adapter<ChonPhongAdapter.Chon
                 holder.chonphongBinding.tvLoaiphong.setText(lsLoaiPhong.get(i).getTenLoaiPhong());
             }
         }
+        
         holder.chonphongBinding.imgChonphong.setVisibility(View.GONE);
 
         // xét trạng thái dấu tick
@@ -77,7 +78,7 @@ public class ChonPhongAdapter extends RecyclerView.Adapter<ChonPhongAdapter.Chon
             @Override
             public void onClick(View view) {
 
-                if (holder.chonphongBinding.imgChonphong.getVisibility()== View.GONE) {
+                if (holder.chonphongBinding.imgChonphong.getVisibility() == View.GONE ) {
                     holder.chonphongBinding.imgChonphong.setVisibility(View.VISIBLE);
                     lsChonPhong.lsChonPhongDataInt.add(phong.getSoPhong());
 
