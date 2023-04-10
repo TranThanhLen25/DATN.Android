@@ -11,7 +11,7 @@
         android:layout_width="105dp"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:background="@drawable/bg_tenphieu"
+        android:background="@drawable/bg_item"
         android:padding="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
