@@ -20,6 +20,7 @@
 
 <!--  Trang chủ -->
     <dimen name="heading_2">20dp</dimen>
+    <dimen name="heading_3">19dp</dimen>
 
 
 
