@@ -28,7 +28,7 @@ public class ChonPhongAdapter extends RecyclerView.Adapter<ChonPhongAdapter.Chon
     private Context context;
     private List<LoaiPhongDTO> lsLoaiPhong;
     Fragment fragment = null;
-    private boolean isClick;
+
 
     public ChonPhongAdapter(List<PhongDTO> lsPhong) {
         this.lsPhong = lsPhong;
@@ -70,14 +70,18 @@ public class ChonPhongAdapter extends RecyclerView.Adapter<ChonPhongAdapter.Chon
                 holder.chonphongBinding.tvLoaiphong.setText(lsLoaiPhong.get(i).getTenLoaiPhong());
             }
         }
-        ////hiển thị dấu tick ở item
+        holder.chonphongBinding.imgChonphong.setVisibility(View.GONE);
+
+        // xét trạng thái dấu tick
         holder.chonphongBinding.ctlItemchonphong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                isClick = !isClick;
-                if (isClick) {
+
+                if (holder.chonphongBinding.imgChonphong.getVisibility()== View.GONE) {
                     holder.chonphongBinding.imgChonphong.setVisibility(View.VISIBLE);
                     lsChonPhong.lsChonPhongDataInt.add(phong.getSoPhong());
+
+
                 } else {
                     holder.chonphongBinding.imgChonphong.setVisibility(View.GONE);
 //                    for (int i = 0; i < lsChonPhong.lsChonPhongDataInt.size(); i++) {
@@ -88,6 +92,7 @@ public class ChonPhongAdapter extends RecyclerView.Adapter<ChonPhongAdapter.Chon
                 }
             }
         });
+
 
 
     }
