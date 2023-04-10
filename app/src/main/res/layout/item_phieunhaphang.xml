@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:id="@+id/item_phieunhaphang"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctl_sanpham"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@id/scr_phieunhaphang"
+        app:layout_constraintTop_toBottomOf="@id/view1"
+        tools:ignore="NotSibling">
+
+        <TextView
+            android:id="@+id/tv_sp1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_sp01"
+            android:textColor="@color/red"
+            android:layout_marginTop="10dp"
+            android:textSize="@dimen/heading_2"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/ctl_sanpham"
+            app:layout_constraintTop_toTopOf="@id/ctl_sanpham">
+
+        </TextView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_tsp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@id/ctl_sanpham"
+            app:layout_constraintTop_toBottomOf="@id/tv_sp1">
+
+            <TextView
+                android:id="@+id/tv_tsp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_tensp"
+                android:textSize="@dimen/heading_2"
+                app:layout_constraintBottom_toBottomOf="@id/ctl_tsp"
+                app:layout_constraintStart_toStartOf="@id/ctl_tsp"
+                app:layout_constraintTop_toTopOf="@id/ctl_tsp"
+                tools:ignore="MissingConstraints">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/et_tensanpham"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edittext"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/ctl_tsp"
+                app:layout_constraintEnd_toEndOf="@id/ctl_tsp"
+
+                app:layout_constraintTop_toTopOf="@id/ctl_tsp"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck">
+
+            </EditText>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_dongia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@id/ctl_tsp"
+            app:layout_constraintTop_toBottomOf="@id/ctl_tsp">
+
+            <TextView
+                android:id="@+id/tv_don_gia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_dongia"
+                android:textSize="@dimen/heading_2"
+                app:layout_constraintBottom_toBottomOf="@id/ctl_dongia"
+                app:layout_constraintStart_toStartOf="@id/ctl_dongia"
+                app:layout_constraintTop_toTopOf="@id/ctl_dongia"
+                tools:ignore="DuplicateIds,MissingConstraints">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/ed_dongia"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edittext"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/ctl_dongia"
+                app:layout_constraintEnd_toEndOf="@id/ctl_dongia"
+
+                app:layout_constraintTop_toTopOf="@id/ctl_dongia"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck">
+
+            </EditText>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_donvitinh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@id/ctl_dongia"
+            app:layout_constraintTop_toBottomOf="@id/ctl_dongia">
+
+            <TextView
+                android:id="@+id/tv_don_vi_tinh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_donvitinh"
+                android:textSize="@dimen/heading_2"
+                app:layout_constraintBottom_toBottomOf="@id/ctl_donvitinh"
+                app:layout_constraintStart_toStartOf="@id/ctl_donvitinh"
+                app:layout_constraintTop_toTopOf="@id/ctl_donvitinh"
+                tools:ignore="MissingConstraints">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/ed_donvitinh"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edittext"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/ctl_donvitinh"
+                app:layout_constraintEnd_toEndOf="@id/ctl_donvitinh"
+
+                app:layout_constraintTop_toTopOf="@id/ctl_donvitinh"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck">
+
+            </EditText>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_soluong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@id/ctl_donvitinh"
+            app:layout_constraintTop_toBottomOf="@id/ctl_donvitinh">
+
+            <TextView
+                android:id="@+id/tv_so_luong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_soluong"
+                android:textSize="@dimen/heading_2"
+                app:layout_constraintBottom_toBottomOf="@id/ctl_soluong"
+                app:layout_constraintStart_toStartOf="@id/ctl_soluong"
+                app:layout_constraintTop_toTopOf="@id/ctl_soluong"
+                tools:ignore="DuplicateIds,MissingConstraints">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/ed_soluong"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edittext"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/ctl_soluong"
+                app:layout_constraintEnd_toEndOf="@id/ctl_soluong"
+
+                app:layout_constraintTop_toTopOf="@id/ctl_soluong"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck">
+
+            </EditText>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_loaihanghoa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@id/ctl_soluong"
+            app:layout_constraintTop_toBottomOf="@id/ctl_soluong">
+
+            <TextView
+                android:id="@+id/tv_loai_hang_hoa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_loaihanghoa"
+                android:textSize="@dimen/heading_2"
+                app:layout_constraintBottom_toBottomOf="@id/ctl_loaihanghoa"
+                app:layout_constraintStart_toStartOf="@id/ctl_loaihanghoa"
+                app:layout_constraintTop_toTopOf="@id/ctl_loaihanghoa"
+                tools:ignore="MissingConstraints">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/ed_loaihanghoa"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edittext"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/ctl_loaihanghoa"
+                app:layout_constraintEnd_toEndOf="@id/ctl_loaihanghoa"
+
+                app:layout_constraintTop_toTopOf="@id/ctl_loaihanghoa"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck">
+
+            </EditText>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_kho"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@id/ctl_loaihanghoa"
+            app:layout_constraintTop_toBottomOf="@id/ctl_loaihanghoa">
+
+            <TextView
+                android:id="@+id/tv_kho_"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_kho"
+                android:textSize="@dimen/heading_2"
+                app:layout_constraintBottom_toBottomOf="@id/ctl_kho"
+                app:layout_constraintStart_toStartOf="@id/ctl_kho"
+                app:layout_constraintTop_toTopOf="@id/ctl_kho"
+                tools:ignore="MissingConstraints">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/ed_kho"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edittext"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/ctl_kho"
+                app:layout_constraintEnd_toEndOf="@id/ctl_kho"
+
+                app:layout_constraintTop_toTopOf="@id/ctl_kho"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck">
+
+            </EditText>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/grey"
+        app:layout_constraintTop_toBottomOf="@id/ctl_sanpham"></View>
+</androidx.cardview.widget.CardView>
