@@ -89,19 +89,20 @@ public class Fragment_dsPhong extends Fragment implements DanhSachPhongContract.
                              Bundle savedInstanceState) {
 
         fragmentDsPhongBinding = FragmentDsPhongBinding.inflate(inflater, container, false);
-        lsPhong = new ArrayList<>();
+
         rscvDsPhong = fragmentDsPhongBinding.rscvDsphong;
+        //lấy danh sách phòng
+        lsPhong = new ArrayList<>();
         danhSachPhongPresenter = new DanhSachPhongPresenter(this);
         danhSachPhongPresenter.LayDanhSachPhong();
-
-
-//        loaiPhongPresenter=new LoaiPhongPresenter(this);
-//        loaiPhongPresenter.LayLoaiPhong();
+        // lấy loại phòng
+        lsLoaiPhong=new ArrayList<>();
+       loaiPhongPresenter=new LoaiPhongPresenter(this);
+       loaiPhongPresenter.LayLoaiPhong();
 
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this.getActivity(), 3);
         rscvDsPhong.setLayoutManager(gridLayoutManager);
-
         fragmentDsPhongBinding.iclAppback.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,10 +117,8 @@ public class Fragment_dsPhong extends Fragment implements DanhSachPhongContract.
     @Override
     public void onLayDanhSachPhongSuccess(List<PhongDTO> list) {
         lsPhong = list;
-
         dsPhongAdapter = new DsPhongAdapter(this);
-        dsPhongAdapter.setData(lsPhong, getContext());
-
+        dsPhongAdapter.setData(lsPhong, getContext(),lsLoaiPhong);
         rscvDsPhong.setAdapter(dsPhongAdapter);
     }
     @Override
