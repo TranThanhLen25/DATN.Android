@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -63,6 +64,10 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
     Calendar statcal = Calendar.getInstance(Locale.CHINESE);
     DieuKienLocPhieuDatDTO dieuKienLocPhieuDatDTO;
     String danhSachPhongDangChon = "";
+    private String[] duLieuKhachHang;
+    Handler handler = new Handler();
+    Runnable runnable;
+    int delay = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,11 +127,19 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
         dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
         KiemTraDuLieuDauVao();
 
+        //lấy dữ liệu phiếu đặt mỗi giây
+        handler.postDelayed(runnable = new Runnable() {
+            public void run() {
+                handler.postDelayed(runnable, delay);
+                dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
+            }
+        }, delay);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
         danhSachPhongDangChon = "";
         activityThemphieudatphongBinding.tvPhongDataPhieudatphong.setText("abc");
         //lsChonPhong.lsChonPhongDataInt.clear();
@@ -148,10 +161,9 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
                 || activityThemphieudatphongBinding.etCccdPhieudatphong.length() < 12
                 || activityThemphieudatphongBinding.etSdtPhieudatphong.length() < 10
                 || activityThemphieudatphongBinding.etSonguoiPhieudatphong.length() < 1
-                || thoiGianNhan=="") {
+                || thoiGianNhan == "") {
             Toast.makeText(this, "vui lòng nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
         } else {
-            dieuKienLocPhieuDatDTO.setLoaiPhieu(1);
             dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
             Date day = Calendar.getInstance().getTime();
             Date thoiGianNhanPhong = ac.formatStringToDateUtil(thoiGianNhan, "dd/MM/yyyy HH:mm");
@@ -161,6 +173,10 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
             }
             phieuDatDTO = new PhieuDatDTO("PDP" + (lsPhieuDat.size() + 1), day, 1, 1, thoiGianNhanPhong, thoiGianTraPhong, "ghi chu", 1L, "đang đặt");
             dsPhieuDatPhongPresenter.ThemPhieuDatPhong(phieuDatDTO);
+
+
+
+
             for (int i = 0; i < lsChonPhong.lsChonPhongDataInt.size(); i++) {
                 phieuDatPhongChiTietDTO = new PhieuDatPhongChiTietDTO(lsPhieuDat.get(lsPhieuDat.size() - 1).getPhieuDatID() + 1, lsChonPhong.lsChonPhongDataInt.get(i), 56);
                 dsPhieuDatPhongPresenter.ThemPhieuDatPhongChiTiet(phieuDatPhongChiTietDTO);
@@ -170,6 +186,7 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
             onBackPressed();
         }
     }
+
 
     private void KiemTraDuLieuDauVao() {
         activityThemphieudatphongBinding.etHotenPhieudatphong.addTextChangedListener(new TextWatcher() {
@@ -340,6 +357,7 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
                 public void onClick(DialogInterface dialogInterface, int i) {
                     String a = result.getContents().toString();
                     String[] c = a.split("\\|");
+                    duLieuKhachHang = c;
                     String HoTen = c[0];
                     String CCCD = c[2];
                     activityThemphieudatphongBinding.etCccdPhieudatphong.setText(HoTen);
