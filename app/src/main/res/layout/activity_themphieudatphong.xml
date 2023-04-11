@@ -137,7 +137,7 @@
                     android:id="@+id/inputlayout_hoten_phieudatphong"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:boxBackgroundMode="none"
+                    app:boxBackgroundMode="outline"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_hoten">
 
@@ -167,7 +167,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:counterEnabled="true"
-                    app:boxBackgroundMode="none"
+                    app:boxBackgroundMode="outline"
                     app:counterMaxLength="12"
                     app:layout_constraintTop_toBottomOf="@+id/tv_cccd_phieudatphong">
 
@@ -201,7 +201,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:counterEnabled="true"
                     app:counterMaxLength="10"
-                    app:boxBackgroundMode="none"
+                    app:boxBackgroundMode="outline"
                     app:layout_constraintTop_toBottomOf="@+id/tv_sdt_phieudatphong">
 
                     <EditText
