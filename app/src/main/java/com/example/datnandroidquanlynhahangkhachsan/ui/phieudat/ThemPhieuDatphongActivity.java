@@ -4,8 +4,6 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -22,12 +20,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.datnandroidquanlynhahangkhachsan.CaptureAct;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuDatPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemphieudatphongBinding;
+import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.lsChonPhong;
+import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.ChonPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.LoaiPhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.LoaiPhongPresenter;
@@ -43,7 +44,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPhieuDatPhongContract.View, DanhSachPhongContract.View, LoaiPhongContract.View {
+public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPhieuDatPhongContract.View, DanhSachPhongContract.View, LoaiPhongContract.View, KhachHangContract.View {
     private ActivityThemphieudatphongBinding activityThemphieudatphongBinding;
     private List<PhieuDatDTO> lsPhieuDat;
 
@@ -68,6 +69,8 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
     Handler handler = new Handler();
     Runnable runnable;
     int delay = 1000;
+    private KhachHangDTO khachHangDTO;
+    private KhachHangPresenter khachHangPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,11 +105,14 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
         lsloaiPhong = new ArrayList<>();
         loaiPhongPresenter = new LoaiPhongPresenter(this);
         loaiPhongPresenter.LayLoaiPhong();
-        activityThemphieudatphongBinding.tvPhongDataPhieudatphong.setText("abc");
+        activityThemphieudatphongBinding.tvPhongDataPhieudatphong.setText("");
+        lsChonPhong.lsChonPhongDataInt = new ArrayList<>();
+        //khai báo presenter khách hàng
+        khachHangPresenter = new KhachHangPresenter(this);
         activityThemphieudatphongBinding.toolbarPhieudatphong.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lsChonPhong.lsChonPhongDataInt.clear();
+                //lsChonPhong.lsChonPhongDataInt.clear();
                 onBackPressed();
             }
         });
@@ -134,6 +140,9 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
                 dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
             }
         }, delay);
+
+        //khai báo khách hàng
+        khachHangDTO = new KhachHangDTO();
     }
 
     @Override
@@ -161,7 +170,8 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
                 || activityThemphieudatphongBinding.etCccdPhieudatphong.length() < 12
                 || activityThemphieudatphongBinding.etSdtPhieudatphong.length() < 10
                 || activityThemphieudatphongBinding.etSonguoiPhieudatphong.length() < 1
-                || thoiGianNhan == "") {
+                || thoiGianNhan == ""
+                || lsChonPhong.lsChonPhongDataInt.size() < 1) {
             Toast.makeText(this, "vui lòng nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
         } else {
             dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
@@ -174,19 +184,70 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
             phieuDatDTO = new PhieuDatDTO("PDP" + (lsPhieuDat.size() + 1), day, 1, 1, thoiGianNhanPhong, thoiGianTraPhong, "ghi chu", 1L, "đang đặt");
             dsPhieuDatPhongPresenter.ThemPhieuDatPhong(phieuDatDTO);
 
+//            Date abc = Calendar.getInstance().getTime();
+//            Date xyz = ac.formatStringToDateSQL(thoiGianNhan, "dd/MM/yyyy HH:mm");
+//            khachHangDTO = new KhachHangDTO("123","123","123", xyz,"nam","123");
 
+//            String CCCD = duLieuKhachHang[0];
+            String sdt = String.valueOf(activityThemphieudatphongBinding.etSdtPhieudatphong.getText());
+//            String HoTen = duLieuKhachHang[2];
+//            Date NgaySinh = ac.formatStringToDateSQL(duLieuKhachHang[3], "ddMMyyyy");
+//            String GioiTinh = duLieuKhachHang[4];
+//            String NoiThuongTru = duLieuKhachHang[5];
+//            khachHangDTO = new KhachHangDTO(CCCD, sdt, HoTen, NgaySinh, GioiTinh, NoiThuongTru);
 
+            String CCCD = String.valueOf(activityThemphieudatphongBinding.etCccdPhieudatphong.getText());
+            String Hoten = String.valueOf(activityThemphieudatphongBinding.etHotenPhieudatphong.getText());
+
+            khachHangDTO.setCccd(CCCD);
+            khachHangDTO.setTenKhachHang(Hoten);
+            khachHangDTO.setSdt(sdt);
+//            if (!duLieuKhachHang[0].isEmpty()) {
+//                NgaySinh = ac.formatStringToDateSQL(duLieuKhachHang[3], "ddMMyyyy");
+//                GioiTinh = duLieuKhachHang[4];
+//                NoiThuongTru = duLieuKhachHang[5];
+//                khachHangDTO.setNgaySinh(NgaySinh);
+//                khachHangDTO.setGioiTinh(GioiTinh);
+//                khachHangDTO.setNoiThuongTru(NoiThuongTru);
+//            }
+            khachHangPresenter.ThemKhachHang(khachHangDTO);
 
             for (int i = 0; i < lsChonPhong.lsChonPhongDataInt.size(); i++) {
                 phieuDatPhongChiTietDTO = new PhieuDatPhongChiTietDTO(lsPhieuDat.get(lsPhieuDat.size() - 1).getPhieuDatID() + 1, lsChonPhong.lsChonPhongDataInt.get(i), 56);
                 dsPhieuDatPhongPresenter.ThemPhieuDatPhongChiTiet(phieuDatPhongChiTietDTO);
             }
 //        Toast.makeText(this,  lsChonPhong.lsChonPhongDataInt.size(), Toast.LENGTH_LONG).show();
-            lsChonPhong.lsChonPhongDataInt.clear();
+//            lsChonPhong.lsChonPhongDataInt.clear();
             onBackPressed();
         }
     }
 
+    ActivityResultLauncher<ScanOptions> barLaucher = registerForActivityResult(new ScanContract(), result -> {
+        if ((result.getContents() != null)) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(ThemPhieuDatphongActivity.this);
+            builder.setTitle("Dữ liệu");
+            builder.setMessage(result.getContents());
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    String a = result.getContents().toString();
+                    String[] c = a.split("\\|");
+                    duLieuKhachHang = c;
+                    String CCCD = c[0];
+                    String HoTen = c[2];
+                    Date NgaySinh = ac.formatStringToDateSQL(c[3], "ddMMyyyy");
+                    String GioiTinh = c[4];
+                    String NoiThuongTru = c[5];
+                    activityThemphieudatphongBinding.etCccdPhieudatphong.setText(CCCD);
+                    activityThemphieudatphongBinding.etHotenPhieudatphong.setText(HoTen);
+                    khachHangDTO.setNgaySinh(NgaySinh);
+                    khachHangDTO.setGioiTinh(GioiTinh);
+                    khachHangDTO.setNoiThuongTru(NoiThuongTru);
+                    dialogInterface.dismiss();
+                }
+            }).show();
+        }
+    });
 
     private void KiemTraDuLieuDauVao() {
         activityThemphieudatphongBinding.etHotenPhieudatphong.addTextChangedListener(new TextWatcher() {
@@ -223,6 +284,26 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
 
             }
         });
+        activityThemphieudatphongBinding.etCccdPhieudatphong.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String abc = String.valueOf(activityThemphieudatphongBinding.etCccdPhieudatphong.getText());
+                if (abc.length() == 12) {
+                    activityThemphieudatphongBinding.inputlayoutCccdPhieudatphong.setHelperText("");
+                    activityThemphieudatphongBinding.inputlayoutCccdPhieudatphong.setError("");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         activityThemphieudatphongBinding.etCccdPhieudatphong.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
@@ -238,6 +319,27 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
                         activityThemphieudatphongBinding.inputlayoutCccdPhieudatphong.setError("");
                     }
                 }
+
+            }
+        });
+        activityThemphieudatphongBinding.etSdtPhieudatphong.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String abc = String.valueOf(activityThemphieudatphongBinding.etSdtPhieudatphong.getText());
+                if (abc.length() == 10) {
+                    activityThemphieudatphongBinding.inputlayoutSdtPhieudatphong.setHelperText("");
+                    activityThemphieudatphongBinding.inputlayoutSdtPhieudatphong.setError("");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
         activityThemphieudatphongBinding.etSdtPhieudatphong.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -347,27 +449,6 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
         timePickerDialog.show();
     }
 
-    ActivityResultLauncher<ScanOptions> barLaucher = registerForActivityResult(new ScanContract(), result -> {
-        if ((result.getContents() != null)) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(ThemPhieuDatphongActivity.this);
-            builder.setTitle("Dữ liệu");
-            builder.setMessage(result.getContents());
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    String a = result.getContents().toString();
-                    String[] c = a.split("\\|");
-                    duLieuKhachHang = c;
-                    String HoTen = c[0];
-                    String CCCD = c[2];
-                    activityThemphieudatphongBinding.etCccdPhieudatphong.setText(HoTen);
-                    activityThemphieudatphongBinding.etHotenPhieudatphong.setText(CCCD);
-                    dialogInterface.dismiss();
-                }
-            }).show();
-        }
-    });
-
 
     @Override
     public void onLayDanhSachPhieuDatSuccess(List<PhieuDatDTO> list) {
@@ -381,12 +462,12 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
 
     @Override
     public void onThemPhieuDatPhongSuccess() {
-        Toast.makeText(this, "Thêm phiếu đặt phòng thành công", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "Thêm phiếu đặt phòng thành công", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onThemPhieuDatPhongError(String error) {
-        Toast.makeText(this, "Thêm phiếu đặt phòng thất bại", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "Thêm phiếu đặt phòng thất bại", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -427,5 +508,15 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
     @Override
     public void onLayDanhSachPhong1gError(String error) {
 
+    }
+
+    @Override
+    public void onThemKhachHangSuccess() {
+        Toast.makeText(this, "Thêm khách hàng thành công", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onThemKhachHangError(String error) {
+        Toast.makeText(this, "Thêm khách hàng thất bại", Toast.LENGTH_LONG).show();
     }
 }
