@@ -117,6 +117,7 @@
     <string name="dialog_doiphong">Đổi phòng</string>
     <string name="dialog_baotri">Bảo trì</string>
     <string name="dialog_menu">Menu</string>
+    <string name="dialog_dangxuat">Bạn thực sự muốn đăng xuất?</string>
 
     <string name="error_msg_unknown">Đã xảy ra lỗi không mong muốn</string>
     <string name="error_msg_no_internet">Vui lòng kiểm tra kết nối và thử lại.</string>

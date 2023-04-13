@@ -53,7 +53,6 @@ public class ChonPhongActivity extends AppCompatActivity implements DanhSachPhon
         loaiPhongPresenter = new LoaiPhongPresenter(this);
         loaiPhongPresenter.LayLoaiPhong();
         //lấy phòng
-        chonPhongBinding.incluChonphong.icBack.setOnClickListener(view -> onBackPressed());
         lsphong = new ArrayList<>();
         rscv = chonPhongBinding.rscvChonphong;
         danhSachPhongPresenter = new DanhSachPhongPresenter(ChonPhongActivity.this);
@@ -62,7 +61,7 @@ public class ChonPhongActivity extends AppCompatActivity implements DanhSachPhon
         rscv.setLayoutManager(gridLayoutManager);
         setContentView(chonPhongBinding.getRoot());
 
-
+        chonPhongBinding.incluChonphong.icBack.setOnClickListener(view -> onBackPressed());
     }
 
    @Override

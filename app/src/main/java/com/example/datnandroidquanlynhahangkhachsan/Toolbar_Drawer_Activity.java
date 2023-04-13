@@ -1,5 +1,17 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,20 +20,15 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.Toast;
-
+import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityDangNhapBinding;
+import com.example.datnandroidquanlynhahangkhachsan.ui.DangNhapActivity;
 import com.google.android.material.navigation.NavigationView;
 
 public class Toolbar_Drawer_Activity extends AppCompatActivity {
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle toggle;
+    ActivityDangNhapBinding dangNhapBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +41,13 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.drawer_layout);
-
+        dangNhapBinding = ActivityDangNhapBinding.inflate(getLayoutInflater());
 
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.dra_open, R.string.dra_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         // nút trở về
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fra_draw,new Fragment_trangchu()).commit();
         navigationView.setCheckedItem(R.id.dra_trangchu);
@@ -50,6 +56,7 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
             Fragment temp;
+            Activity tamp;
 
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -63,8 +70,6 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
                     case R.id.dra_kho:
                         temp = new Fragment_quanlykho();
                         break;
-
-
                     case R.id.dra_thongke:
                         temp = new Fragment_thongke();
                         break;
@@ -72,7 +77,7 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
                         temp = new Fragment_thongtincanhan();
                         break;
                     case R.id.dra_dangxuat:
-                        Toast.makeText(getApplicationContext(), "Đăng xuất", Toast.LENGTH_LONG).show();
+                        DiaLogout();
                         break;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fra_draw, temp).commit();
@@ -82,8 +87,20 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
         });
 
 
+    }
+    private void DiaLogout(){
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.fragment_dialog_dangxuat);
+        Window window = dialog.getWindow();
+        if (window == null) {
+            return;
+        }
+        window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
 
     }
+
 
 }

@@ -48,10 +48,9 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
     Fragment fragment = null;
 
 
-
     public DsPhongAdapter(List<PhongDTO> lsPhong) {
         this.lsPhong = lsPhong;
-      //  this.lsLoaiPhong=lsLoaiPhong;
+        //  this.lsLoaiPhong=lsLoaiPhong;
 
     }
 
@@ -59,10 +58,10 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
 
     }
 
-    public void setData(List<PhongDTO> lsPhong, Context context,List<LoaiPhongDTO>lsLoaiPhong) {
+    public void setData(List<PhongDTO> lsPhong, Context context, List<LoaiPhongDTO> lsLoaiPhong) {
         this.lsPhong = lsPhong;
         this.context = context;
-       this.lsLoaiPhong=lsLoaiPhong;
+        this.lsLoaiPhong = lsLoaiPhong;
         notifyDataSetChanged();
     }
 
@@ -88,48 +87,46 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
     @Override
     public void onBindViewHolder(@NonNull PhongViewHolder holder, int position) {
         PhongDTO phong = lsPhong.get((position));
-      // LoaiPhongDTO loaiPhong=lsLoaiPhong.get(position);
-        if (phong == null ) {
+        // LoaiPhongDTO loaiPhong=lsLoaiPhong.get(position);
+        if (phong == null) {
             return;
         }
-        if(phong.getTrangThaiId()==4)
+
+        ///xét trạng thái phòng theo màu
+        if (phong.getTrangThaiId() == 4)
         {
             holder.itemDanhsachphongBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_color_conguoi);
-        }
-        else if(phong.getTrangThaiId()==3)
+        } else if (phong.getTrangThaiId() == 3)
         {
             holder.itemDanhsachphongBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_color_baotri);
-        }
-        else if(phong.getTrangThaiId()==2)
+        } else if (phong.getTrangThaiId() == 2)
         {
             holder.itemDanhsachphongBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_color_dat);
+        } else
+        {
+            holder.itemDanhsachphongBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_item);
         }
+
         holder.itemDanhsachphongBinding.tvSophong.setText(String.valueOf(phong.getSoPhong()));
 
-        for(int i=0; i<lsLoaiPhong.size();i++)
-        {
-            if(phong.getLoaiPhongId()==lsLoaiPhong.get(i).getLoaiPhongId())
-            {
+        for (int i = 0; i < lsLoaiPhong.size(); i++) {
+            if (phong.getLoaiPhongId() == lsLoaiPhong.get(i).getLoaiPhongId()) {
                 holder.itemDanhsachphongBinding.tvGiatien.setText(String.valueOf(lsLoaiPhong.get(i).getDonGia()));
-                holder.itemDanhsachphongBinding.tvLoaiphong.setText(String.valueOf(lsLoaiPhong.get(i).getTenLoaiPhong()));
+                holder.itemDanhsachphongBinding.tvLoaiphong.setText(lsLoaiPhong.get(i).getTenLoaiPhong());
             }
         }
-
 
 
     }
 
     @Override
     public int getItemCount() {
-        if ((lsPhong != null )) {
+        if ((lsPhong != null)) {
             return lsPhong.size();
 
         }
         return 0;
     }
-
-
-
 
 
     class PhongViewHolder extends RecyclerView.ViewHolder {
