@@ -61,4 +61,7 @@ public interface IAPIServiceRetrofit {
 //    Call<ResponseDTO<List<NguoiDungDTO>>> layNguoiDung(@Query("username") String username, @Query("password") String password);
     @POST("/api/NguoiDung/danhsach-NguoiDung")
     Call<ResponseDTO<List<NguoiDungDTO>>> layNguoiDung();
+
+    @POST("/api/KhachHang/Them-KhachHang")
+    Call<ResponseInfo> themKhachHang(@Body KhachHangDTO khachHangDTO);
 }
