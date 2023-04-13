@@ -4,6 +4,7 @@ package com.example.datnandroidquanlynhahangkhachsan.model.api;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DieuKienLocHangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
@@ -36,11 +37,9 @@ public interface IAPIServiceRetrofit {
 
     @POST("/api/PhieuDatPhongChiTiet/them-PhieuDatPhongChiTiet")
     Call<ResponseInfo> ThemPhieuDatPhongChiTiet(@Body PhieuDatPhongChiTietDTO phieuDatPhongChiTietDTO);
-
-    //lấy danh sách phòng với bảng tạm mới bên api_bên android chỉ cần thêm trường dữ liệu vào PhongDTO
-
-//    @POST("/api/Phong/danhsach-phong-proc")
-//    Call<ResponseDTO<List<PhongDTO>>> layDanhSachPhong();
+    //   lấy danh sách phòng với bảng tạm mới bên api_bên android chỉ cần thêm trường dữ liệu vào PhongDTO
+    //    @POST("/api/Phong/danhsach-phong-proc")
+    //    Call<ResponseDTO<List<PhongDTO>>> layDanhSachPhong();
 
     ///lấy danh sách phòng
 
@@ -55,7 +54,11 @@ public interface IAPIServiceRetrofit {
     ///lấy danh sach theo id loại phòng_và trạng thái phòng( trống hay có người ...)
     ///biến trong query phải trùng với biến trong api
     @POST("/api/Phong/danhsach-phongthuong1g?")
-    Call<ResponseDTO<List<PhongDTO>>> layDanhSachPhong1g(@Query("id") int id, @Query("trangThaiId")int trangThaiId);
+    Call<ResponseDTO<List<PhongDTO>>> layDanhSachPhong1g(@Query("id") int id, @Query("trangThaiId") int trangThaiId);
 
-
+    ///đăng nhập
+//    @POST("/api/NguoiDung/laynguoidung?")
+//    Call<ResponseDTO<List<NguoiDungDTO>>> layNguoiDung(@Query("username") String username, @Query("password") String password);
+    @POST("/api/NguoiDung/danhsach-NguoiDung")
+    Call<ResponseDTO<List<NguoiDungDTO>>> layNguoiDung();
 }

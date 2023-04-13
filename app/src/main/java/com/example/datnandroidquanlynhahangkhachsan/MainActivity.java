@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityMainBinding;
 
+import com.example.datnandroidquanlynhahangkhachsan.ui.DangNhapActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.Fragment_dsPhieuDatPhong;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.Fragment_dsPhieuNhanPhong;
 
@@ -17,12 +19,15 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     Fragment fragment = null;
-
+    String username = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        if (check()<0){
+            Intent intent = new Intent(MainActivity.this, DangNhapActivity.class);
+            startActivity(intent);
+        }
 // xử lý của bottom_nav
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -63,7 +68,14 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
-
+    public int check() {
+        SharedPreferences sharedPreferences = getSharedPreferences("NGUOI_DUNG", MODE_PRIVATE);
+        boolean check = sharedPreferences.getBoolean("REMEMBER", false);
+        if (check) {
+            username = sharedPreferences.getString("USERNAME", "");
+            return 1;
+        } else return -1;
+    }
 
 }
 

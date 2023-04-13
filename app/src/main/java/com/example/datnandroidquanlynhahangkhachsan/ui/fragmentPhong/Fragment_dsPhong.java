@@ -128,12 +128,11 @@ public class Fragment_dsPhong extends Fragment implements DanhSachPhongContract.
     }
     @Override
     public void onLayLoaiPhongSuccess(List<LoaiPhongDTO> list) {
-//        lsLoaiPhong=list;
-//        dsPhongAdapter = new DsPhongAdapter(this);
-//        dsPhongAdapter.setData(lsPhong, getContext(),lsLoaiPhong);
-//
-//        rscvDsPhong.setAdapter(dsPhongAdapter);
-//        Toast.makeText(getContext(), "hao han", Toast.LENGTH_LONG).show();
+        lsLoaiPhong=list;
+        dsPhongAdapter = new DsPhongAdapter(this);
+        dsPhongAdapter.setData(lsPhong, getContext(),lsLoaiPhong);
+        rscvDsPhong.setAdapter(dsPhongAdapter);
+
     }
 
     @Override

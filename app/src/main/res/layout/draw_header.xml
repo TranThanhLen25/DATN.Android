@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ctl_draw"
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:background="@drawable/nen"
-    android:padding="20dp"
+
+    tools:context=".draw_header_avtivity"
+
 
     >
+
 
     <ImageView
         android:id="@+id/img_avt"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="25dp"
         android:src="@drawable/man"
         app:layout_constraintBottom_toBottomOf="@id/ctl_draw"
         app:layout_constraintStart_toStartOf="@id/ctl_draw"
@@ -23,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:text="Tran Thanh Len"
         android:textSize="@dimen/heading_2"
         android:textStyle="bold"
@@ -40,6 +46,7 @@
 
         android:textSize="15dp"
         app:layout_constraintStart_toEndOf="@id/img_avt"
-        app:layout_constraintTop_toBottomOf="@id/tv_avt"></TextView>
+        app:layout_constraintTop_toBottomOf="@id/tv_avt"
+        tools:ignore="TextSizeCheck"></TextView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

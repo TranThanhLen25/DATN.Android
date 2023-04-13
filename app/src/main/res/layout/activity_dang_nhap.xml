@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
+    android:padding="30dp"
     tools:context=".DangNhap">
 
     <ImageView
@@ -13,6 +13,7 @@
 
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,29 +26,25 @@
         android:id="@+id/tv_taikhoan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:padding="8dp"
-
-
         android:text="@string/tv_taikhoan"
+
         android:textColor="@color/black"
+
         android:textSize="@dimen/textview_tk_mk"
-        app:layout_constraintBottom_toTopOf="@id/ctl_taikhoan"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo_full"></TextView>
 
-        ></TextView>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/ctl_taikhoan"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/title_tk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:orientation="vertical"
+        app:boxBackgroundMode="outline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/img_logo_full"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="361dp">
+        app:layout_constraintTop_toBottomOf="@+id/tv_taikhoan">
 
         <EditText
             android:id="@+id/et_taikhoan"
@@ -56,48 +53,64 @@
             android:background="@drawable/bg_edittext"
             android:drawableLeft="@drawable/user"
             android:paddingStart="15dp"
+            android:inputType="text"
+           android:padding="0dp"
+            android:maxLength="20"
+            android:maxLines="1"
 
-            tools:ignore="SpeakableTextPresentCheck"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintEnd_toEndOf="@id/title_tk"
+            app:layout_constraintStart_toStartOf="@id/title_tk"
+            app:layout_constraintTop_toTopOf="@id/title_tk"
+
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <TextView
         android:id="@+id/tv_matkhau"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:padding="8dp"
+        android:layout_marginTop="35dp"
         android:text="@string/tv_matkhau"
         android:textColor="@color/black"
         android:textSize="@dimen/textview_tk_mk"
-        app:layout_constraintBottom_toTopOf="@id/ctl_matkhau"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ctl_taikhoan"
+        app:layout_constraintTop_toBottomOf="@id/title_tk"
         tools:ignore="MissingConstraints">
 
     </TextView>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/ctl_matkhau"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/title_mk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:boxBackgroundMode="outline"
+        app:layout_constraintTop_toBottomOf="@+id/tv_matkhau"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_matkhau">
+        app:passwordToggleEnabled="true">
+
 
         <EditText
             android:id="@+id/et_matkhau"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/bg_edittext"
-            android:drawableLeft="@drawable/password"
+            android:drawableStart="@drawable/password"
             android:paddingStart="15dp"
+            android:maxLength="20"
+            android:padding="0dp"
+            android:inputType="textPassword"
 
+            android:maxLines="1"
             tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <Button
@@ -106,15 +119,16 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/bluenhat"
         android:gravity="center"
-        android:padding="@dimen/padding_dn"
+        android:layout_marginTop="60dp"
+
         android:text="@string/btn_dangnhap"
-   
+
         android:textColor="@color/white"
-        android:textSize="@dimen/btn_textsize_dn"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="10dp"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ctl_matkhau"
+        app:layout_constraintTop_toBottomOf="@id/title_mk"
         tools:ignore="MissingConstraints"
 
         ></Button>
