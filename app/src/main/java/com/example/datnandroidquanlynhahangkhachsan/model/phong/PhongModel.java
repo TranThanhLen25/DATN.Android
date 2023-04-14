@@ -1,9 +1,10 @@
-package com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong;
+package com.example.datnandroidquanlynhahangkhachsan.model.phong;
 
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.ErrorMessageDTO;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseTokenDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.APIService;
@@ -15,7 +16,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DanhSachPhongModel implements IDanhSachPhongModel {
+public class PhongModel implements IPhongModel {
     APIService service;
     private ErrorMessageDTO errorKiemTra;
 
@@ -100,6 +101,32 @@ public class DanhSachPhongModel implements IDanhSachPhongModel {
             public void onError(String error) {
                 //Lay token loi => thong bao loi
                 listener.onError(error);
+            }
+        });
+    }
+
+    @Override
+    public void CapNhatTrangThaiPhong(PhongDTO phongDTO, IOnCapNhatTrangThaiPhongFinishedListener listener) {
+        service = new APIService();
+        service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
+            @Override
+            public void onSuccess(ResponseTokenDTO itemToken) {
+                service.apiServiceRetrofit.capNhatTrangThaiPhong(phongDTO).enqueue(new Callback<ResponseInfo>() {
+                    @Override
+                    public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseInfo> call, Throwable t) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+
             }
         });
     }

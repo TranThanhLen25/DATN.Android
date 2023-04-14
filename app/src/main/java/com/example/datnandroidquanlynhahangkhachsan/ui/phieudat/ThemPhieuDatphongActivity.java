@@ -32,8 +32,8 @@ import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresen
 import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.ChonPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.LoaiPhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.LoaiPhongPresenter;
-import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DanhSachPhongContract;
-import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DanhSachPhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
@@ -44,7 +44,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPhieuDatPhongContract.View, DanhSachPhongContract.View, LoaiPhongContract.View, KhachHangContract.View {
+public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPhieuDatPhongContract.View, PhongContract.View, LoaiPhongContract.View, KhachHangContract.View {
     private ActivityThemphieudatphongBinding activityThemphieudatphongBinding;
     private List<PhieuDatDTO> lsPhieuDat;
 
@@ -56,7 +56,7 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
     private String thoiGianTra = "";
     PhieuDatDTO phieuDatDTO;
     private List<PhongDTO> lsphong;
-    private DanhSachPhongPresenter danhSachPhongPresenter;
+    private PhongPresenter phongPresenter;
     private LoaiPhongPresenter loaiPhongPresenter;
 
     PhieuDatPhongChiTietDTO phieuDatPhongChiTietDTO;
@@ -71,6 +71,7 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
     int delay = 1000;
     private KhachHangDTO khachHangDTO;
     private KhachHangPresenter khachHangPresenter;
+    private PhongDTO phongDTO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,8 +100,8 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
         });
         //lấy danh sách phòng
         lsphong = new ArrayList<>();
-        danhSachPhongPresenter = new DanhSachPhongPresenter(this);
-        danhSachPhongPresenter.LayDanhSachPhong();
+        phongPresenter = new PhongPresenter(this);
+        phongPresenter.LayDanhSachPhong();
         //lấy danh sách loại phòng
         lsloaiPhong = new ArrayList<>();
         loaiPhongPresenter = new LoaiPhongPresenter(this);
@@ -213,8 +214,15 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
             khachHangPresenter.ThemKhachHang(khachHangDTO);
 
             for (int i = 0; i < lsChonPhong.lsChonPhongDataInt.size(); i++) {
+                //thêm phiếu đặt phòng chi tiết
                 phieuDatPhongChiTietDTO = new PhieuDatPhongChiTietDTO(lsPhieuDat.get(lsPhieuDat.size() - 1).getPhieuDatID() + 1, lsChonPhong.lsChonPhongDataInt.get(i), 56);
                 dsPhieuDatPhongPresenter.ThemPhieuDatPhongChiTiet(phieuDatPhongChiTietDTO);
+
+                //cập nhật trạng thái phòng
+                phongDTO = new PhongDTO();
+                phongDTO.setPhongId(lsChonPhong.lsChonPhongDataInt.get(i));
+                phongDTO.setTrangThaiId(2);
+                phongPresenter.CapNhatTrangThaiPhong(phongDTO);
             }
 //        Toast.makeText(this,  lsChonPhong.lsChonPhongDataInt.size(), Toast.LENGTH_LONG).show();
 //            lsChonPhong.lsChonPhongDataInt.clear();
@@ -507,6 +515,16 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
 
     @Override
     public void onLayDanhSachPhong1gError(String error) {
+
+    }
+
+    @Override
+    public void onCapNhatTrangThaiPhongSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatTrangThaiPhongError(String error) {
 
     }
 
