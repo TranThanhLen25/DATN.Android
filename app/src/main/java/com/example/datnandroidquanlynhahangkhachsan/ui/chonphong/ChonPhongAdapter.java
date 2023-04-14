@@ -9,16 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.datnandroidquanlynhahangkhachsan.Fragment_dsPhong;
-
 
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemChonphongBinding;
-import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemDanhsachphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.lsChonPhong;
-import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DanhSachPhongContract;
-import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DsPhongAdapter;
 
 import java.util.List;
 

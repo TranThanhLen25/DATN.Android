@@ -5,7 +5,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 
 import java.util.List;
 
-public interface DanhSachPhongContract {
+public interface PhongContract {
 
     interface View {
         ////lấy danh sách phòng
@@ -18,6 +18,10 @@ public interface DanhSachPhongContract {
 
         void onLayDanhSachPhong1gError(String error);
 
+        void onCapNhatTrangThaiPhongSuccess();
+
+        void onCapNhatTrangThaiPhongError(String error);
+
 
     }
 
@@ -26,7 +30,9 @@ public interface DanhSachPhongContract {
 
         void LayDanhSachPhong();
 
-        void LayDanhSachPhong1g(int id,int trangThaiId);
+        void LayDanhSachPhong1g(int id, int trangThaiId);
+
+        void CapNhatTrangThaiPhong(PhongDTO phongDTO);
 
     }
 }

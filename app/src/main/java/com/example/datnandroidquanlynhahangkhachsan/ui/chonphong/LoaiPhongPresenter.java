@@ -1,10 +1,6 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.chonphong;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
-import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DanhSachPhongContract;
-import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DanhSachPhongModel;
-import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.IDanhSachPhongModel;
 
 import java.util.List;
 

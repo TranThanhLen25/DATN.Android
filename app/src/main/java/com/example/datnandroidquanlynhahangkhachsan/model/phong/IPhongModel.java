@@ -1,4 +1,4 @@
-package com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong;
+package com.example.datnandroidquanlynhahangkhachsan.model.phong;
 
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
@@ -6,7 +6,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 
 import java.util.List;
 
-public interface IDanhSachPhongModel {
+public interface IPhongModel {
 
 
     void LayDanhSachPhong(IOnLayDanhSachPhongFinishedListener listener);
@@ -18,7 +18,7 @@ public interface IDanhSachPhongModel {
     }
 
 
-    void LayDanhSachPhong1g(int id,int trangThaiId, IDanhSachPhongModel.IOnLayDanhSachPhong1gFinishedListener listener);
+    void LayDanhSachPhong1g(int id,int trangThaiId, IPhongModel.IOnLayDanhSachPhong1gFinishedListener listener);
 
     interface IOnLayDanhSachPhong1gFinishedListener {
         void onSuccess(List<PhongDTO> listResult);
@@ -26,5 +26,11 @@ public interface IDanhSachPhongModel {
         void onError(String error);
     }
 
+    void CapNhatTrangThaiPhong(PhongDTO phongDTO, IPhongModel.IOnCapNhatTrangThaiPhongFinishedListener listener);
 
+    interface IOnCapNhatTrangThaiPhongFinishedListener {
+        void onSuccess();
+
+        void onError(String error);
+    }
 }
