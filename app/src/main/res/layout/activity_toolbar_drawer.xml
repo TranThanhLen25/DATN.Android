@@ -5,6 +5,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:openDrawer="start"
 
     tools:context=".Toolbar_Drawer_Activity">
 
@@ -57,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="63dp"
+
             >
 
         </FrameLayout>
@@ -68,7 +70,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        app:itemBackground="@color/cl_drawer"
         app:headerLayout="@layout/draw_header"
+
 
         app:menu="@menu/drawer_playout">
 
