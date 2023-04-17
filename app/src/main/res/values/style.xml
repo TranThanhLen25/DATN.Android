@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+    <style name="Toolbar.TitleText" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:textSize">30dp</item>
+        <item name="colorPrimary">@color/bluenhat</item>
+        <item name="colorPrimaryDark">@color/yellow_kem</item>
+        <item name="colorAccent">@color/black</item>
     </style>
 </resources>
