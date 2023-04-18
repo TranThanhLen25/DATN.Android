@@ -33,6 +33,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLo
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.lsChonPhong;
+import com.example.datnandroidquanlynhahangkhachsan.tempData.soLuongLoaiPhong;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.ChonPhongActivity;
@@ -125,7 +126,7 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
         activityThemphieudatphongBinding.toolbarPhieudatphong.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //lsChonPhong.lsChonPhongDataInt.clear();
+                soLuongLoaiPhong.soLuong.clear();
                 onBackPressed();
             }
         });
@@ -210,17 +211,20 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
             khachHangDTO.setSdt(sdt);
             khachHangPresenter.ThemKhachHang(khachHangDTO);
 
-            for (int i = 0; i < lsChonPhong.lsChonPhongDataInt.size(); i++) {
+            for (int i = 0; i < soLuongLoaiPhong.soLuong.size(); i++) {
                 //thêm phiếu đặt phòng chi tiết
-                phieuDatPhongChiTietDTO = new PhieuDatPhongChiTietDTO(lsPhieuDat.get(lsPhieuDat.size() - 1).getPhieuDatID() + 1, 1, 2);
-                dsPhieuDatPhongPresenter.ThemPhieuDatPhongChiTiet(phieuDatPhongChiTietDTO);
-
+                if (soLuongLoaiPhong.soLuong.get(i) > 0) {
+                    phieuDatPhongChiTietDTO = new PhieuDatPhongChiTietDTO(lsPhieuDat.get(lsPhieuDat.size() - 1).getPhieuDatID() + 1,
+                            i + 1, soLuongLoaiPhong.soLuong.get(i));
+                    dsPhieuDatPhongPresenter.ThemPhieuDatPhongChiTiet(phieuDatPhongChiTietDTO);
+                }
                 //cập nhật trạng thái phòng
-                phongDTO = new PhongDTO();
-                phongDTO.setPhongId(lsChonPhong.lsChonPhongDataInt.get(i));
-                phongDTO.setTrangThaiId(2);
-                phongPresenter.CapNhatTrangThaiPhong(phongDTO);
+//                phongDTO = new PhongDTO();
+//                phongDTO.setPhongId(lsChonPhong.lsChonPhongDataInt.get(i));
+//                phongDTO.setTrangThaiId(2);
+//                phongPresenter.CapNhatTrangThaiPhong(phongDTO);
             }
+            soLuongLoaiPhong.soLuong.clear();
             onBackPressed();
         }
     }
