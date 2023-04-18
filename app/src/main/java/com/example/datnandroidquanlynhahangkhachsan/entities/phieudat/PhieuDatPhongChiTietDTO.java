@@ -7,30 +7,46 @@ public class PhieuDatPhongChiTietDTO {
     public long PhieuDatPhongChiTietId;
     @SerializedName("phieuDatId")
     public long PhieuDatId;
-    @SerializedName("phongId")
-    public int PhongId;
-    @SerializedName("soNguoi")
-    public int SoNguoi;
+    @SerializedName("loaiPhongId")
+    public int LoaiPhongId;
+    @SerializedName("soLuong")
+    public int SoLuong;
 
-    public PhieuDatPhongChiTietDTO(long phieuDatId, int phongId, int soNguoi) {
+    public PhieuDatPhongChiTietDTO(long phieuDatId, int loaiPhongId, int soLuong) {
         PhieuDatId = phieuDatId;
-        PhongId = phongId;
-        SoNguoi = soNguoi;
+        LoaiPhongId = loaiPhongId;
+        SoLuong = soLuong;
     }
 
     public long getPhieuDatPhongChiTietId() {
         return PhieuDatPhongChiTietId;
     }
 
+    public void setPhieuDatPhongChiTietId(long phieuDatPhongChiTietId) {
+        PhieuDatPhongChiTietId = phieuDatPhongChiTietId;
+    }
+
     public long getPhieuDatId() {
         return PhieuDatId;
     }
 
-    public int getPhongId() {
-        return PhongId;
+    public void setPhieuDatId(long phieuDatId) {
+        PhieuDatId = phieuDatId;
     }
 
-    public int getSoNguoi() {
-        return SoNguoi;
+    public int getLoaiPhongId() {
+        return LoaiPhongId;
+    }
+
+    public void setLoaiPhongId(int loaiPhongId) {
+        LoaiPhongId = loaiPhongId;
+    }
+
+    public int getSoLuong() {
+        return SoLuong;
+    }
+
+    public void setSoLuong(int soLuong) {
+        SoLuong = soLuong;
     }
 }

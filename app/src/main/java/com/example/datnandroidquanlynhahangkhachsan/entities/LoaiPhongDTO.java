@@ -8,6 +8,17 @@ public class LoaiPhongDTO {
 
     public int donGia;
 
+    public LoaiPhongDTO(int loaiPhongId, String maLoaiPhong, String tenLoaiPhong, int soNguoiToiDa, int donGia) {
+        this.loaiPhongId = loaiPhongId;
+        this.maLoaiPhong = maLoaiPhong;
+        this.tenLoaiPhong = tenLoaiPhong;
+        this.soNguoiToiDa = soNguoiToiDa;
+        this.donGia = donGia;
+    }
+
+    public LoaiPhongDTO() {
+    }
+
     public int getLoaiPhongId() {
         return loaiPhongId;
     }

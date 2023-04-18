@@ -1,5 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.phieudat;
 
+import static java.security.AccessController.getContext;
+
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
@@ -16,8 +18,12 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.CaptureAct;
+import com.example.datnandroidquanlynhahangkhachsan.adapter.LoaiPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuDatPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemphieudatphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
@@ -47,15 +53,10 @@ import java.util.Locale;
 public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPhieuDatPhongContract.View, PhongContract.View, LoaiPhongContract.View, KhachHangContract.View {
     private ActivityThemphieudatphongBinding activityThemphieudatphongBinding;
     private List<PhieuDatDTO> lsPhieuDat;
-
-    //private List<Integer> lsPhong;
-    private List<LoaiPhongDTO> lsloaiPhong;
-    private PhieuDatPhongAdapter phieuDatPhongAdapter;
     private DsPhieuDatPhongPresenter dsPhieuDatPhongPresenter;
     private String thoiGianNhan = "";
     private String thoiGianTra = "";
     PhieuDatDTO phieuDatDTO;
-    private List<PhongDTO> lsphong;
     private PhongPresenter phongPresenter;
     private LoaiPhongPresenter loaiPhongPresenter;
 
@@ -64,49 +65,60 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
     private AppUtils ac;
     Calendar statcal = Calendar.getInstance(Locale.CHINESE);
     DieuKienLocPhieuDatDTO dieuKienLocPhieuDatDTO;
-    String danhSachPhongDangChon = "";
-    private String[] duLieuKhachHang;
     Handler handler = new Handler();
     Runnable runnable;
     int delay = 1000;
     private KhachHangDTO khachHangDTO;
     private KhachHangPresenter khachHangPresenter;
     private PhongDTO phongDTO;
+    private List<LoaiPhongDTO> loaiPhongDTOList;
+    private LoaiPhongAdapter loaiPhongAdapter;
+    private RecyclerView rcv_LoaiPhong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityThemphieudatphongBinding = activityThemphieudatphongBinding.inflate(getLayoutInflater());
         setContentView(activityThemphieudatphongBinding.getRoot());
-        activityThemphieudatphongBinding.btnThemphongPhieudatphong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ThemPhieuDatphongActivity.this, ChonPhongActivity.class);
-                startActivity(intent);
-            }
-        });
+
+        //chọn phòng để đặt
+//        activityThemphieudatphongBinding.btnThemphongPhieudatphong.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(ThemPhieuDatphongActivity.this, ChonPhongActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
+        //quét qrcode
         activityThemphieudatphongBinding.BtnScanQRPhieudatphong.setOnClickListener(view -> {
             ScanOptions options = new ScanOptions();
             options.setCaptureActivity(CaptureAct.class);
             barLaucher.launch(options);
         });
+
+        //mở dialog chọn thời gian nhận bắt buộc
         activityThemphieudatphongBinding.imgbtnThoigiannhanThemphieudatphong.setOnClickListener(view -> {
             openDialogDateThoiGianNhan();
         });
+
+        //mở dialog chọn thời gian trả không bắt buộc
         activityThemphieudatphongBinding.imgbtnThoigiantraThemphieudatphong.setOnClickListener(view -> {
             openDialogDateThoiGianTra();
         });
-        //lấy danh sách phòng
-        lsphong = new ArrayList<>();
-        phongPresenter = new PhongPresenter(this);
-        phongPresenter.LayDanhSachPhong();
+
         //lấy danh sách loại phòng
-        lsloaiPhong = new ArrayList<>();
+        loaiPhongDTOList = new ArrayList<>();
         loaiPhongPresenter = new LoaiPhongPresenter(this);
         loaiPhongPresenter.LayLoaiPhong();
-        activityThemphieudatphongBinding.tvPhongDataPhieudatphong.setText("");
+
+        //hiện loại phòng
+        rcv_LoaiPhong = activityThemphieudatphongBinding.rscvDsloaiphong;
+        LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this);
+        rcv_LoaiPhong.setLayoutManager(LinearLayoutManager);
+
+        //activityThemphieudatphongBinding.tvPhongDataPhieudatphong.setText("");
         lsChonPhong.lsChonPhongDataInt = new ArrayList<>();
         //khai báo presenter khách hàng
         khachHangPresenter = new KhachHangPresenter(this);
@@ -118,20 +130,27 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
             }
         });
 
+        //thêm phiếu đặt phòng
         activityThemphieudatphongBinding.btnThemphieudatphong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 OnclickThemPhieuDatPhong();
             }
         });
-        lsPhieuDat = new ArrayList<>();
-        lsphong = new ArrayList<>();
-        lsPhieuDatPhongChiTiet = new ArrayList<>();
 
+        //khởi tạo list phiếu đặt và phiếu đặt phòng chi tiết
+        lsPhieuDat = new ArrayList<>();
+        lsPhieuDatPhongChiTiet = new ArrayList<>();
+        //khai báo biến khách hàng
+        khachHangDTO = new KhachHangDTO();
+
+        //lấy phiếu đặt phòng
         dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
         dieuKienLocPhieuDatDTO = new DieuKienLocPhieuDatDTO();
         dieuKienLocPhieuDatDTO.setLoaiPhieu(1);
         dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
+
+        //kiểm tra dữ liệu người dùng nhập vào
         KiemTraDuLieuDauVao();
 
         //lấy dữ liệu phiếu đặt mỗi giây
@@ -142,37 +161,34 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
             }
         }, delay);
 
-        //khai báo khách hàng
-        khachHangDTO = new KhachHangDTO();
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
-        danhSachPhongDangChon = "";
-        activityThemphieudatphongBinding.tvPhongDataPhieudatphong.setText("abc");
-        //lsChonPhong.lsChonPhongDataInt.clear();
-        for (int i = 0; i < lsChonPhong.lsChonPhongDataInt.size(); i++) {
-            for (int j = 0; j < lsphong.size(); j++) {
-                if (lsChonPhong.lsChonPhongDataInt.get(i) == lsphong.get(j).getPhongId()) {
-                    danhSachPhongDangChon += lsphong.get(j).getSoPhong();
-                    if (i + 1 < lsChonPhong.lsChonPhongDataInt.size()) {
-                        danhSachPhongDangChon += ", ";
-                    }
-                    activityThemphieudatphongBinding.tvPhongDataPhieudatphong.setText(danhSachPhongDangChon);
-                }
-            }
-        }
+//        dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
+//        danhSachPhongDangChon = "";
+//        activityThemphieudatphongBinding.tvPhongDataPhieudatphong.setText("abc");
+//        //lsChonPhong.lsChonPhongDataInt.clear();
+//        for (int i = 0; i < lsChonPhong.lsChonPhongDataInt.size(); i++) {
+//            for (int j = 0; j < lsphong.size(); j++) {
+//                if (lsChonPhong.lsChonPhongDataInt.get(i) == lsphong.get(j).getPhongId()) {
+//                    danhSachPhongDangChon += lsphong.get(j).getSoPhong();
+//                    if (i + 1 < lsChonPhong.lsChonPhongDataInt.size()) {
+//                        danhSachPhongDangChon += ", ";
+//                    }
+//                    activityThemphieudatphongBinding.tvPhongDataPhieudatphong.setText(danhSachPhongDangChon);
+//                }
+//            }
+//        }
     }
 
     private void OnclickThemPhieuDatPhong() {
         if (activityThemphieudatphongBinding.etHotenPhieudatphong.length() < 1
                 || activityThemphieudatphongBinding.etCccdPhieudatphong.length() < 12
                 || activityThemphieudatphongBinding.etSdtPhieudatphong.length() < 10
-                || activityThemphieudatphongBinding.etSonguoiPhieudatphong.length() < 1
-                || thoiGianNhan == ""
-                || lsChonPhong.lsChonPhongDataInt.size() < 1) {
+                || thoiGianNhan == "") {
             Toast.makeText(this, "vui lòng nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
         } else {
             dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
@@ -184,18 +200,7 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
             }
             phieuDatDTO = new PhieuDatDTO("PDP" + (lsPhieuDat.size() + 1), day, 1, 1, thoiGianNhanPhong, thoiGianTraPhong, "ghi chu", 1L, "đang đặt");
             dsPhieuDatPhongPresenter.ThemPhieuDatPhong(phieuDatDTO);
-
-//            Date abc = Calendar.getInstance().getTime();
-//            Date xyz = ac.formatStringToDateSQL(thoiGianNhan, "dd/MM/yyyy HH:mm");
-//            khachHangDTO = new KhachHangDTO("123","123","123", xyz,"nam","123");
-
-//            String CCCD = duLieuKhachHang[0];
             String sdt = String.valueOf(activityThemphieudatphongBinding.etSdtPhieudatphong.getText());
-//            String HoTen = duLieuKhachHang[2];
-//            Date NgaySinh = ac.formatStringToDateSQL(duLieuKhachHang[3], "ddMMyyyy");
-//            String GioiTinh = duLieuKhachHang[4];
-//            String NoiThuongTru = duLieuKhachHang[5];
-//            khachHangDTO = new KhachHangDTO(CCCD, sdt, HoTen, NgaySinh, GioiTinh, NoiThuongTru);
 
             String CCCD = String.valueOf(activityThemphieudatphongBinding.etCccdPhieudatphong.getText());
             String Hoten = String.valueOf(activityThemphieudatphongBinding.etHotenPhieudatphong.getText());
@@ -203,19 +208,11 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
             khachHangDTO.setCccd(CCCD);
             khachHangDTO.setTenKhachHang(Hoten);
             khachHangDTO.setSdt(sdt);
-//            if (!duLieuKhachHang[0].isEmpty()) {
-//                NgaySinh = ac.formatStringToDateSQL(duLieuKhachHang[3], "ddMMyyyy");
-//                GioiTinh = duLieuKhachHang[4];
-//                NoiThuongTru = duLieuKhachHang[5];
-//                khachHangDTO.setNgaySinh(NgaySinh);
-//                khachHangDTO.setGioiTinh(GioiTinh);
-//                khachHangDTO.setNoiThuongTru(NoiThuongTru);
-//            }
             khachHangPresenter.ThemKhachHang(khachHangDTO);
 
             for (int i = 0; i < lsChonPhong.lsChonPhongDataInt.size(); i++) {
                 //thêm phiếu đặt phòng chi tiết
-                phieuDatPhongChiTietDTO = new PhieuDatPhongChiTietDTO(lsPhieuDat.get(lsPhieuDat.size() - 1).getPhieuDatID() + 1, lsChonPhong.lsChonPhongDataInt.get(i), 56);
+                phieuDatPhongChiTietDTO = new PhieuDatPhongChiTietDTO(lsPhieuDat.get(lsPhieuDat.size() - 1).getPhieuDatID() + 1, 1, 2);
                 dsPhieuDatPhongPresenter.ThemPhieuDatPhongChiTiet(phieuDatPhongChiTietDTO);
 
                 //cập nhật trạng thái phòng
@@ -224,8 +221,6 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
                 phongDTO.setTrangThaiId(2);
                 phongPresenter.CapNhatTrangThaiPhong(phongDTO);
             }
-//        Toast.makeText(this,  lsChonPhong.lsChonPhongDataInt.size(), Toast.LENGTH_LONG).show();
-//            lsChonPhong.lsChonPhongDataInt.clear();
             onBackPressed();
         }
     }
@@ -240,7 +235,6 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
                 public void onClick(DialogInterface dialogInterface, int i) {
                     String a = result.getContents().toString();
                     String[] c = a.split("\\|");
-                    duLieuKhachHang = c;
                     String CCCD = c[0];
                     String HoTen = c[2];
                     Date NgaySinh = ac.formatStringToDateSQL(c[3], "ddMMyyyy");
@@ -490,22 +484,27 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
 
     @Override
     public void onLayLoaiPhongSuccess(List<LoaiPhongDTO> lsLoaiPhong) {
+        loaiPhongDTOList = lsLoaiPhong;
+        loaiPhongAdapter = new LoaiPhongAdapter(this);
+        loaiPhongAdapter.setData(this, loaiPhongDTOList);
+        RecyclerView.ItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        rcv_LoaiPhong.addItemDecoration(decoration);
+        rcv_LoaiPhong.setAdapter(loaiPhongAdapter);
 
+        Toast.makeText(this, "lấy loại phòng thành công", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onLayLoaiPhongError(String error) {
-
+        Toast.makeText(this, "lấy loại phòng thất bại", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onLayDanhSachPhongSuccess(List<PhongDTO> lsDanhSachPhong) {
-        lsphong = lsDanhSachPhong;
     }
 
     @Override
     public void onLayDanhSachPhongError(String error) {
-
     }
 
     @Override

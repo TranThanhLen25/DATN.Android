@@ -9,9 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -24,18 +22,15 @@ import com.example.datnandroidquanlynhahangkhachsan.Fragment_dsPhong;
 import com.example.datnandroidquanlynhahangkhachsan.R;
 
 
-import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemChonphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemDanhsachphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
-import com.example.datnandroidquanlynhahangkhachsan.ui.ChiTietPhongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.chitietphong.ChiTietPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDoiPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuTraPhongActivity;
-import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.LoaiPhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.ThemPhieuDatphongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuNhanPhongActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

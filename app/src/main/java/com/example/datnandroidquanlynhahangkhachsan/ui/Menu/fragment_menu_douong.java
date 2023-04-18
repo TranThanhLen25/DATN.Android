@@ -1,4 +1,4 @@
-package com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu;
+package com.example.datnandroidquanlynhahangkhachsan.ui.Menu;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,15 +22,14 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link fragment_menu_dichvu#newInstance} factory method to
+ * Use the {@link fragment_menu_douong#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragment_menu_dichvu extends Fragment implements MenuDichVuContract.View {
-    private RecyclerView rscvHangHoaDichVu;
+public class fragment_menu_douong extends Fragment implements MenuDichVuContract.View {
+    private RecyclerView rscvHangHoaDoUong;
     private List<HangHoaDTO> lsHangHoa;
     private HangHoaAdapter hangHoaAdapter;
     private MenuDichVuPresenter menuDichVuPresenter;
-
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,7 +40,7 @@ public class fragment_menu_dichvu extends Fragment implements MenuDichVuContract
     private String mParam1;
     private String mParam2;
 
-    public fragment_menu_dichvu() {
+    public fragment_menu_douong() {
         // Required empty public constructor
     }
 
@@ -51,11 +50,11 @@ public class fragment_menu_dichvu extends Fragment implements MenuDichVuContract
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment_menu_dichvu.
+     * @return A new instance of fragment fragment_menu_douong.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragment_menu_dichvu newInstance(String param1, String param2) {
-        fragment_menu_dichvu fragment = new fragment_menu_dichvu();
+    public static fragment_menu_douong newInstance(String param1, String param2) {
+        fragment_menu_douong fragment = new fragment_menu_douong();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -75,18 +74,20 @@ public class fragment_menu_dichvu extends Fragment implements MenuDichVuContract
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        //return inflater.inflate(R.layout.fragment_menu_douong, container, false);
         super.onCreate(savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_menu_dichvu, container, false);
+        View view = inflater.inflate(R.layout.fragment_menu_douong, container, false);
 
-        rscvHangHoaDichVu = view.findViewById(R.id.rscv_hanghoa_dichvu);
+        rscvHangHoaDoUong = view.findViewById(R.id.rscv_hanghoa_douong);
         lsHangHoa = new ArrayList<>();
         Date day = Calendar.getInstance().getTime();
         menuDichVuPresenter = new MenuDichVuPresenter(this);
-        menuDichVuPresenter.LayDanhSachHangHoa2("Dịch vụ");
+        menuDichVuPresenter.LayDanhSachHangHoa2("Đồ uống");
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
-        rscvHangHoaDichVu.setLayoutManager(LinearLayoutManager);
+        rscvHangHoaDoUong.setLayoutManager(LinearLayoutManager);
         RecyclerView.ItemDecoration decoration = new DividerItemDecoration(this.getActivity(), DividerItemDecoration.VERTICAL);
-        rscvHangHoaDichVu.addItemDecoration(decoration);
+        rscvHangHoaDoUong.addItemDecoration(decoration);
         return view;
     }
 
@@ -96,7 +97,7 @@ public class fragment_menu_dichvu extends Fragment implements MenuDichVuContract
         lsHangHoa = list;
         hangHoaAdapter = new HangHoaAdapter(this);
         hangHoaAdapter.setData(getContext(), lsHangHoa);
-        rscvHangHoaDichVu.setAdapter(hangHoaAdapter);
+        rscvHangHoaDoUong.setAdapter(hangHoaAdapter);
     }
 
     @Override

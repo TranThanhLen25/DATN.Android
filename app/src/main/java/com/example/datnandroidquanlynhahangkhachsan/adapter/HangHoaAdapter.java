@@ -14,9 +14,9 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 
 
 
-import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.fragment_menu_dichvu;
-import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.fragment_menu_douong;
-import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu.fragment_menu_goimon;
+import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.fragment_menu_dichvu;
+import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.fragment_menu_douong;
+import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.fragment_menu_goimon;
 
 
 import java.util.List;
