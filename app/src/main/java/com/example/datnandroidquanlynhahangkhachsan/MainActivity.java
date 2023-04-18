@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+///nếu kiểm tra <0 thì phải đăng nhập
         if (check()<0){
             Intent intent = new Intent(MainActivity.this, DangNhapActivity.class);
             startActivity(intent);

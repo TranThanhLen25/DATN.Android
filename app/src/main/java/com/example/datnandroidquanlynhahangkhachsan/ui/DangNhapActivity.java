@@ -12,9 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.datnandroidquanlynhahangkhachsan.Toolbar_Drawer_Activity;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityDangNhapBinding;
+import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityToolbarDrawerBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.dangnhap.NguoiDungContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.dangnhap.NguoiDungPresenter;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,8 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
     private String LuuThongTin = "taikhoan and matkhau";
     private Boolean save = false;
     String username="";
+   ActivityToolbarDrawerBinding toolbarDrawerBinding;
+
 
 
     @Override
@@ -35,7 +39,7 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
         super.onCreate(savedInstanceState);
         lsNguoiDung = new ArrayList<>();
         dangNhapBinding = ActivityDangNhapBinding.inflate(getLayoutInflater());
-
+toolbarDrawerBinding=ActivityToolbarDrawerBinding.inflate(getLayoutInflater());
 
         nguoiDungPresenter = new NguoiDungPresenter(DangNhapActivity.this);
         nguoiDungPresenter.LayNguoiDung();
@@ -132,6 +136,7 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
                         startActivity(intent);
                         rememberUser(dangNhapBinding.etTaikhoan.getText().toString(), dangNhapBinding.etMatkhau.getText().toString(), true);
                         save = true;
+
                     }
                 }
                 if (save == false)
