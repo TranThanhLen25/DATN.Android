@@ -15,11 +15,11 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsPhongBinding;
-import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.LoaiPhongContract;
-import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.LoaiPhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongPresenter;
-import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DsPhongAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +43,7 @@ public class Fragment_dsPhong extends Fragment implements PhongContract.View , L
     private RecyclerView rscvDsPhong;
     private List<PhongDTO> lsPhong;
     private List<LoaiPhongDTO> lsLoaiPhong;
-    private DsPhongAdapter dsPhongAdapter;
+    private PhongAdapter dsPhongAdapter;
     private PhongPresenter danhSachPhongPresenter;
     private LoaiPhongPresenter loaiPhongPresenter;
     private FragmentDsPhongBinding fragmentDsPhongBinding;
@@ -114,7 +114,7 @@ public class Fragment_dsPhong extends Fragment implements PhongContract.View , L
     @Override
     public void onLayDanhSachPhongSuccess(List<PhongDTO> list) {
         lsPhong = list;
-        dsPhongAdapter = new DsPhongAdapter(this);
+        dsPhongAdapter = new PhongAdapter(this);
         dsPhongAdapter.setData(lsPhong, getContext(),lsLoaiPhong);
         rscvDsPhong.setAdapter(dsPhongAdapter);
     }
@@ -126,7 +126,7 @@ public class Fragment_dsPhong extends Fragment implements PhongContract.View , L
     @Override
     public void onLayLoaiPhongSuccess(List<LoaiPhongDTO> list) {
         lsLoaiPhong=list;
-        dsPhongAdapter = new DsPhongAdapter(this);
+        dsPhongAdapter = new PhongAdapter(this);
         dsPhongAdapter.setData(lsPhong, getContext(),lsLoaiPhong);
         rscvDsPhong.setAdapter(dsPhongAdapter);
 

@@ -7,6 +7,8 @@
     tools:context=".ui.Menu.fragment_menu_dichvu">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctl_item"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp">

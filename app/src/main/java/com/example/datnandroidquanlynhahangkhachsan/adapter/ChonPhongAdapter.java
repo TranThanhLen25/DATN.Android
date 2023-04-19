@@ -1,4 +1,4 @@
-package com.example.datnandroidquanlynhahangkhachsan.ui.chonphong;
+package com.example.datnandroidquanlynhahangkhachsan.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,6 +14,7 @@ import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemChonphongBin
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.lsChonPhong;
+import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.ChonPhongActivity;
 
 import java.util.List;
 

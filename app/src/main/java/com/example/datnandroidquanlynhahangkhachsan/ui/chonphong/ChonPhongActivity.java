@@ -10,17 +10,20 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.datnandroidquanlynhahangkhachsan.adapter.ChonPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityChonPhongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ChonPhongActivity extends AppCompatActivity implements PhongContract.View ,LoaiPhongContract.View {
+public class ChonPhongActivity extends AppCompatActivity implements PhongContract.View , LoaiPhongContract.View {
     private List<PhongDTO> lsphong;
 
     private List<LoaiPhongDTO> lsloaiPhong;

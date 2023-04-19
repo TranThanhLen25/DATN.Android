@@ -1,11 +1,8 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.phieudat;
 
-import static java.security.AccessController.getContext;
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -24,7 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.CaptureAct;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.LoaiPhongAdapter;
-import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuDatPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemphieudatphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
@@ -36,9 +32,8 @@ import com.example.datnandroidquanlynhahangkhachsan.tempData.lsChonPhong;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.soLuongLoaiPhong;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
-import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.ChonPhongActivity;
-import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.LoaiPhongContract;
-import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.LoaiPhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
@@ -126,12 +121,13 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
         activityThemphieudatphongBinding.toolbarPhieudatphong.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //nếu bấm thoát ra mà chưa thêm phiếu đặt phòng thì xóa dữ liệu tránh lỗi
                 soLuongLoaiPhong.soLuong.clear();
                 onBackPressed();
             }
         });
 
-        //thêm phiếu đặt phòng
+        //sự kiện thêm phiếu đặt phòng
         activityThemphieudatphongBinding.btnThemphieudatphong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -154,7 +150,7 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
         //kiểm tra dữ liệu người dùng nhập vào
         KiemTraDuLieuDauVao();
 
-        //lấy dữ liệu phiếu đặt mỗi giây
+        //lấy dữ liệu phiếu đặt mỗi giây để có số lượng phiếu mới nhất tránh bị trùng số chứng từ
         handler.postDelayed(runnable = new Runnable() {
             public void run() {
                 handler.postDelayed(runnable, delay);
@@ -186,33 +182,46 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
     }
 
     private void OnclickThemPhieuDatPhong() {
+
+        //kiểm tra dữ liệu trước khi thêm phiếu đặt phòng
         if (activityThemphieudatphongBinding.etHotenPhieudatphong.length() < 1
                 || activityThemphieudatphongBinding.etCccdPhieudatphong.length() < 12
                 || activityThemphieudatphongBinding.etSdtPhieudatphong.length() < 10
                 || thoiGianNhan == "") {
             Toast.makeText(this, "vui lòng nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
         } else {
+
+            //lấy danh sách phiếu đặt để có được số lượng phiếu mới nhất
+            // ->thêm id, số chứng từ vào phiếu đặt phòng chi tiết
             dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
             Date day = Calendar.getInstance().getTime();
+
+            //định dạng thời gian từ kiểu string sang kiểu date trong database
             Date thoiGianNhanPhong = ac.formatStringToDateUtil(thoiGianNhan, "dd/MM/yyyy HH:mm");
             Date thoiGianTraPhong = null;
             if (thoiGianTra != null || thoiGianTra != "") {
                 thoiGianTraPhong = ac.formatStringToDateUtil(thoiGianTra, "dd/MM/yyyy HH:mm");
             }
+
+            //thêm phiếu đặt phòng
             phieuDatDTO = new PhieuDatDTO("PDP" + (lsPhieuDat.size() + 1), day, 1, 1, thoiGianNhanPhong, thoiGianTraPhong, "ghi chu", 1L, "đang đặt");
             dsPhieuDatPhongPresenter.ThemPhieuDatPhong(phieuDatDTO);
-            String sdt = String.valueOf(activityThemphieudatphongBinding.etSdtPhieudatphong.getText());
 
+            //lấy dữ liệu khách hàng từ edittext
+            //nếu quét qr thì có thêm các thông tin khác còn không thì vẫn lấy ít nhất 3 thông tin của khách
+            String sdt = String.valueOf(activityThemphieudatphongBinding.etSdtPhieudatphong.getText());
             String CCCD = String.valueOf(activityThemphieudatphongBinding.etCccdPhieudatphong.getText());
             String Hoten = String.valueOf(activityThemphieudatphongBinding.etHotenPhieudatphong.getText());
 
+            //set dữ liệu khách hàng vào biến khách hàng và thêm khách hàng vào database
             khachHangDTO.setCccd(CCCD);
             khachHangDTO.setTenKhachHang(Hoten);
             khachHangDTO.setSdt(sdt);
             khachHangPresenter.ThemKhachHang(khachHangDTO);
 
+            //kiểm tra số lượng phòng của mỗi loại
+            //loại nào số lượng lớn hơn 0 thì tạo mới phiếu đặt phòng chi tiết rồi thêm vào database
             for (int i = 0; i < soLuongLoaiPhong.soLuong.size(); i++) {
-                //thêm phiếu đặt phòng chi tiết
                 if (soLuongLoaiPhong.soLuong.get(i) > 0) {
                     phieuDatPhongChiTietDTO = new PhieuDatPhongChiTietDTO(lsPhieuDat.get(lsPhieuDat.size() - 1).getPhieuDatID() + 1,
                             i + 1, soLuongLoaiPhong.soLuong.get(i));
@@ -224,17 +233,21 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
 //                phongDTO.setTrangThaiId(2);
 //                phongPresenter.CapNhatTrangThaiPhong(phongDTO);
             }
+
+            //sau khi thêm thì xóa dữ liệu của cái biến số lượng của mỗi loại phòng
             soLuongLoaiPhong.soLuong.clear();
             onBackPressed();
         }
     }
 
+    //xử lý quét qrcode
     ActivityResultLauncher<ScanOptions> barLaucher = registerForActivityResult(new ScanContract(), result -> {
         if ((result.getContents() != null)) {
             AlertDialog.Builder builder = new AlertDialog.Builder(ThemPhieuDatphongActivity.this);
             builder.setTitle("Dữ liệu");
             builder.setMessage(result.getContents());
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                //xử lý dữ liệu nhận được từ qrcode
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     String a = result.getContents().toString();
@@ -255,6 +268,7 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
         }
     });
 
+    //xử lý dữ liệu người dùng nhập vào
     private void KiemTraDuLieuDauVao() {
         activityThemphieudatphongBinding.etHotenPhieudatphong.addTextChangedListener(new TextWatcher() {
             @Override

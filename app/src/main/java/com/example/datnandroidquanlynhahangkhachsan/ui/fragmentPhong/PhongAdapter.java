@@ -34,7 +34,7 @@ import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuNhanPhongActivit
 import java.util.List;
 
 
-public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongViewHolder> {
+public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHolder> {
     private List<PhongDTO> lsPhong;
 
 
@@ -43,13 +43,13 @@ public class DsPhongAdapter extends RecyclerView.Adapter<DsPhongAdapter.PhongVie
     Fragment fragment = null;
 
 
-    public DsPhongAdapter(List<PhongDTO> lsPhong) {
+    public PhongAdapter(List<PhongDTO> lsPhong) {
         this.lsPhong = lsPhong;
         //  this.lsLoaiPhong=lsLoaiPhong;
 
     }
 
-    public DsPhongAdapter(Fragment_dsPhong fragment_dsPhong) {
+    public PhongAdapter(Fragment_dsPhong fragment_dsPhong) {
 
     }
 
