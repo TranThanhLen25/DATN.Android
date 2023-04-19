@@ -13,7 +13,7 @@ public class HangHoaDTO {
     private String tenHangHoa;
 
     @SerializedName("donGia")
-    private float donGia;
+    private int donGia;
 
     @SerializedName("trangThai")
     private String trangThai;
@@ -21,7 +21,7 @@ public class HangHoaDTO {
     @SerializedName("nhomHangHoa")
     private String nhomHangHoa;
 
-    public HangHoaDTO(int hangHoaId, String maHangHoa, String tenHangHoa, float donGia, String trangThai, String nhomHangHoa) {
+    public HangHoaDTO(int hangHoaId, String maHangHoa, String tenHangHoa, int donGia, String trangThai, String nhomHangHoa) {
         this.hangHoaId = hangHoaId;
         this.maHangHoa = maHangHoa;
         this.tenHangHoa = tenHangHoa;
@@ -42,7 +42,7 @@ public class HangHoaDTO {
         return tenHangHoa;
     }
 
-    public float getDonGia() {
+    public int getDonGia() {
         return donGia;
     }
 

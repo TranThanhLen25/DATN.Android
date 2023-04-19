@@ -20,7 +20,7 @@
             android:name=".Draw_header_Activity"
             android:exported="false" />
         <activity
-            android:name=".ui.DanhSachMenuActivity"
+            android:name=".ui.Menu.DanhSachMenuActivity"
             android:exported="false" />
         <activity
             android:name=".ui.ThemPhieuTraPhongActivity"
@@ -38,7 +38,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.ChiTietPhongActivity"
+            android:name=".ui.chitietphong.ChiTietPhongActivity"
             android:exported="false" />
         <activity
             android:name=".CaptureAct"

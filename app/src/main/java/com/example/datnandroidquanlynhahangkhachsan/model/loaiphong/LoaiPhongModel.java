@@ -1,4 +1,4 @@
-package com.example.datnandroidquanlynhahangkhachsan.ui.chonphong;
+package com.example.datnandroidquanlynhahangkhachsan.model.loaiphong;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.ErrorMessageDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;

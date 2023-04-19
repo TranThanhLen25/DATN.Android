@@ -1,7 +1,6 @@
-package com.example.datnandroidquanlynhahangkhachsan.ui.chonphong;
+package com.example.datnandroidquanlynhahangkhachsan.model.loaiphong;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu;
+package com.example.datnandroidquanlynhahangkhachsan.ui.Menu;
 
 import android.content.Context;
 

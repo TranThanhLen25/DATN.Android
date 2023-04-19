@@ -1,6 +1,5 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,17 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.datnandroidquanlynhahangkhachsan.adapter.HangHoaAdapter;
-import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsPhongBinding;
-import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.LoaiPhongContract;
-import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.LoaiPhongPresenter;
-import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DanhSachPhongContract;
-import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DanhSachPhongPresenter;
-import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DsPhongAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +29,7 @@ import java.util.List;
  * Use the {@link Fragment_dsPhong#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_dsPhong extends Fragment implements DanhSachPhongContract.View , LoaiPhongContract.View {
+public class Fragment_dsPhong extends Fragment implements PhongContract.View , LoaiPhongContract.View {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -46,8 +43,8 @@ public class Fragment_dsPhong extends Fragment implements DanhSachPhongContract.
     private RecyclerView rscvDsPhong;
     private List<PhongDTO> lsPhong;
     private List<LoaiPhongDTO> lsLoaiPhong;
-    private DsPhongAdapter dsPhongAdapter;
-    private DanhSachPhongPresenter danhSachPhongPresenter;
+    private PhongAdapter dsPhongAdapter;
+    private PhongPresenter danhSachPhongPresenter;
     private LoaiPhongPresenter loaiPhongPresenter;
     private FragmentDsPhongBinding fragmentDsPhongBinding;
 
@@ -93,7 +90,7 @@ public class Fragment_dsPhong extends Fragment implements DanhSachPhongContract.
         rscvDsPhong = fragmentDsPhongBinding.rscvDsphong;
         //lấy danh sách phòng
         lsPhong = new ArrayList<>();
-        danhSachPhongPresenter = new DanhSachPhongPresenter(this);
+        danhSachPhongPresenter = new PhongPresenter(this);
         danhSachPhongPresenter.LayDanhSachPhong();
         // lấy loại phòng
         lsLoaiPhong=new ArrayList<>();
@@ -117,7 +114,7 @@ public class Fragment_dsPhong extends Fragment implements DanhSachPhongContract.
     @Override
     public void onLayDanhSachPhongSuccess(List<PhongDTO> list) {
         lsPhong = list;
-        dsPhongAdapter = new DsPhongAdapter(this);
+        dsPhongAdapter = new PhongAdapter(this);
         dsPhongAdapter.setData(lsPhong, getContext(),lsLoaiPhong);
         rscvDsPhong.setAdapter(dsPhongAdapter);
     }
@@ -129,7 +126,7 @@ public class Fragment_dsPhong extends Fragment implements DanhSachPhongContract.
     @Override
     public void onLayLoaiPhongSuccess(List<LoaiPhongDTO> list) {
         lsLoaiPhong=list;
-        dsPhongAdapter = new DsPhongAdapter(this);
+        dsPhongAdapter = new PhongAdapter(this);
         dsPhongAdapter.setData(lsPhong, getContext(),lsLoaiPhong);
         rscvDsPhong.setAdapter(dsPhongAdapter);
 
@@ -147,6 +144,16 @@ public class Fragment_dsPhong extends Fragment implements DanhSachPhongContract.
 
     @Override
     public void onLayDanhSachPhong1gError(String error) {
+
+    }
+
+    @Override
+    public void onCapNhatTrangThaiPhongSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatTrangThaiPhongError(String error) {
 
     }
 

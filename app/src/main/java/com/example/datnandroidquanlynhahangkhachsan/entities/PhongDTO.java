@@ -16,6 +16,10 @@ public class PhongDTO {
     private String tenLoaiPhong;
     private String maLoaiPhong;
 
+    public PhongDTO() {
+
+    }
+
     public int getPhongId() {
         return phongId;
     }

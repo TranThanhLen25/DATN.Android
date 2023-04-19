@@ -3,6 +3,7 @@ package com.example.datnandroidquanlynhahangkhachsan.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,8 +48,9 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         return 0;
     }
 
-    class MenuViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvtenmenu, tvgiamenu, tvsoluongmenu, tvPrice;
+    public class MenuViewHolder extends RecyclerView.ViewHolder {
+        TextView tvtenmenu, tvgiamenu, tvsoluongmenu, tvPrice;
+        public LinearLayout linearLayout;
 
         public MenuViewHolder(@NonNull View itemView) {
 
@@ -57,6 +59,13 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             tvgiamenu = itemView.findViewById(R.id.tv_giamenu);
             tvsoluongmenu = itemView.findViewById(R.id.tv_soluongmenu);
             tvPrice = itemView.findViewById(R.id.tv_Price);
+            linearLayout = itemView.findViewById(R.id.lnl_itemmenu);
         }
+    }
+
+
+    public void removeItem(int index) {
+        lsdichvu.remove(index);
+        notifyItemRemoved(index);
     }
 }

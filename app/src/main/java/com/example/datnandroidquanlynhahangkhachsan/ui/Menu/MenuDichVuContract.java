@@ -1,7 +1,6 @@
-package com.example.datnandroidquanlynhahangkhachsan.ui.fragmentMenu;
+package com.example.datnandroidquanlynhahangkhachsan.ui.Menu;
 
 
-import com.example.datnandroidquanlynhahangkhachsan.entities.DieuKienLocHangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 
 import java.util.List;

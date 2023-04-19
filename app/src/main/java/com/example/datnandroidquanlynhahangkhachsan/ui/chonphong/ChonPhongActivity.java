@@ -1,36 +1,29 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.chonphong;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.datnandroidquanlynhahangkhachsan.R;
-import com.example.datnandroidquanlynhahangkhachsan.adapter.MenuAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.adapter.ChonPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityChonPhongBinding;
-import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsPhongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
-import com.example.datnandroidquanlynhahangkhachsan.model.DichVu;
-import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.ChonPhongAdapter;
-import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DanhSachPhongContract;
-import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DanhSachPhongPresenter;
-import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.DsPhongAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ChonPhongActivity extends AppCompatActivity implements DanhSachPhongContract.View ,LoaiPhongContract.View {
+public class ChonPhongActivity extends AppCompatActivity implements PhongContract.View , LoaiPhongContract.View {
     private List<PhongDTO> lsphong;
 
     private List<LoaiPhongDTO> lsloaiPhong;
@@ -39,7 +32,7 @@ public class ChonPhongActivity extends AppCompatActivity implements DanhSachPhon
     private ChonPhongAdapter chonPhongAdapter;
     private ArrayAdapter<LoaiPhongDTO> adapter;
     private Spinner spinner;
-    private DanhSachPhongPresenter danhSachPhongPresenter;
+    private PhongPresenter danhSachPhongPresenter;
     private LoaiPhongPresenter loaiPhongPresenter;
     Context context = this;
 
@@ -55,7 +48,7 @@ public class ChonPhongActivity extends AppCompatActivity implements DanhSachPhon
         //lấy phòng
         lsphong = new ArrayList<>();
         rscv = chonPhongBinding.rscvChonphong;
-        danhSachPhongPresenter = new DanhSachPhongPresenter(ChonPhongActivity.this);
+        danhSachPhongPresenter = new PhongPresenter(ChonPhongActivity.this);
         danhSachPhongPresenter.LayDanhSachPhong();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 3);
         rscv.setLayoutManager(gridLayoutManager);
@@ -73,6 +66,17 @@ public class ChonPhongActivity extends AppCompatActivity implements DanhSachPhon
     public void onLayDanhSachPhong1gError(String error) {
         Toast.makeText(this, "Lay du lieu that bai", Toast.LENGTH_LONG).show();
     }
+
+    @Override
+    public void onCapNhatTrangThaiPhongSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatTrangThaiPhongError(String error) {
+
+    }
+
     @Override
     public void onLayDanhSachPhongError(String error) {
 

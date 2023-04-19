@@ -99,6 +99,7 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
         dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
         dieuKienLocPhieuDatDTO = new DieuKienLocPhieuDatDTO();
         dieuKienLocPhieuDatDTO.setLoaiPhieu(1);
+        dieuKienLocPhieuDatDTO.setTrangThai("đang đặt");
         dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
         rscvPhieuDatPhong.setLayoutManager(LinearLayoutManager);

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsLichSuBinding;
+import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.DanhSachMenuActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuNhanPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.Fragment_dsPhieuNhanPhong;
 
@@ -70,6 +71,8 @@ public class Fragment_dsLichSu extends Fragment implements View.OnClickListener 
             case R.id.btn_imgtest:
 //                fragment = new fragment_menu();
 //                replaceFragment(fragment);
+                Intent intent=new Intent(getActivity(), DanhSachMenuActivity.class);
+                startActivity(intent);
                 break;
             default:
                 fragment = new Fragment_dsPhieuNhanPhong();
