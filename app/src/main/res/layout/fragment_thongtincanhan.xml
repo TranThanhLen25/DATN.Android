@@ -36,18 +36,19 @@
             android:text="Tran Thanh Len"
             android:textColor="@color/black"
             android:textSize="@dimen/heading_1"
-            app:layout_constraintEnd_toEndOf="@id/ctl_thongtincanhan"
+          android:layout_marginStart="20dp"
             app:layout_constraintStart_toEndOf="@id/img_thongtincanhan"
 
             app:layout_constraintTop_toTopOf="@id/ctl_thongtincanhan" />
 
         <TextView
+            android:id="@+id/tv_chucvutren"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="45dp"
             android:text="nhan vien le tan"
-            android:textSize="15dp"
-            app:layout_constraintEnd_toEndOf="@+id/ctl_thongtincanhan"
+            android:textSize="@dimen/heading_2"
+          android:layout_marginStart="25dp"
             app:layout_constraintStart_toEndOf="@+id/img_thongtincanhan"
 
 

@@ -1,17 +1,45 @@
 package com.example.datnandroidquanlynhahangkhachsan.entities;
 
+import com.google.gson.annotations.SerializedName;
+
 public class NguoiDungDTO {
 
+
+    @SerializedName("nguoiDungId")
     private int nguoiDungId;
+    @SerializedName("tenNguoiDung")
     private String tenNguoiDung;
+    @SerializedName("sdt")
     private String sdt;
+    @SerializedName("cccd")
     private String cccd;
+    @SerializedName("gioiTinh")
     private String gioiTinh;
+    @SerializedName("diaChi")
     private String diaChi;
-    private int loaiTaiKhoan;
+    @SerializedName("loaiTaiKhoan")
+    private String loaiTaiKhoan;
+    @SerializedName("taiKhoan")
     private String taiKhoan;
+    @SerializedName("matKhau")
     private String matKhau;
+
+
+    @SerializedName("trangThai")
     private int trangThai;
+
+    public NguoiDungDTO(int nguoiDungId, String tenNguoiDung, String sdt, String cccd, String gioiTinh, String diaChi, String loaiTaiKhoan, String taiKhoan, String matKhau, int trangThai) {
+        this.nguoiDungId = nguoiDungId;
+        this.tenNguoiDung = tenNguoiDung;
+        this.sdt = sdt;
+        this.cccd = cccd;
+        this.gioiTinh = gioiTinh;
+        this.diaChi = diaChi;
+        this.loaiTaiKhoan = loaiTaiKhoan;
+        this.taiKhoan = taiKhoan;
+        this.matKhau = matKhau;
+        this.trangThai = trangThai;
+    }
 
     public int getNguoiDungId() {
         return nguoiDungId;
@@ -61,11 +89,11 @@ public class NguoiDungDTO {
         this.diaChi = diaChi;
     }
 
-    public int getLoaiTaiKhoan() {
+    public String getLoaiTaiKhoan() {
         return loaiTaiKhoan;
     }
 
-    public void setLoaiTaiKhoan(int loaiTaiKhoan) {
+    public void setLoaiTaiKhoan(String loaiTaiKhoan) {
         this.loaiTaiKhoan = loaiTaiKhoan;
     }
 
@@ -97,4 +125,6 @@ public class NguoiDungDTO {
         this.taiKhoan = taiKhoan;
         this.matKhau = matKhau;
     }
+
+
 }

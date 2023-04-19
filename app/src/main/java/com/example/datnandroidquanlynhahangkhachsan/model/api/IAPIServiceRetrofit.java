@@ -6,6 +6,8 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuNhapChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuNhapDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
@@ -60,9 +62,23 @@ public interface IAPIServiceRetrofit {
     ///đăng nhập
 //    @POST("/api/NguoiDung/laynguoidung?")
 //    Call<ResponseDTO<List<NguoiDungDTO>>> layNguoiDung(@Query("username") String username, @Query("password") String password);
-    @POST("/api/NguoiDung/danhsach-NguoiDung")
-    Call<ResponseDTO<List<NguoiDungDTO>>> layNguoiDung();
+
 
     @POST("/api/KhachHang/Them-KhachHang")
     Call<ResponseInfo> themKhachHang(@Body KhachHangDTO khachHangDTO);
+
+
+
+    @POST("/api/PhieuNhap/them-phieunhap")
+    Call<ResponseInfo> ThemPhieuNhapPhong(@Body PhieuNhapDTO phieuNhapDTO);
+
+    @POST("api/PhieuNhapChiTiet/Them-PNCT")
+    Call<ResponseInfo> ThemPhieuNhapChiTiet(@Body PhieuNhapChiTietDTO phieuNhapChiTietDTO);
+
+
+    @POST("/api/NguoiDung/danhsach-NguoiDung")
+    Call<ResponseDTO<List<NguoiDungDTO>>> layNguoiDung();
+
+    @GET("/api/NguoiDung/timNguoiDung?")
+    Call<ResponseDTO<List<NguoiDungDTO>>> layNguoiDungID(@Query("nguoiDung") int nguoiDung);
 }

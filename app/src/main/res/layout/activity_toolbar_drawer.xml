@@ -5,11 +5,11 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:openDrawer="start"
 
     tools:context=".Toolbar_Drawer_Activity">
 
     <RelativeLayout
+        android:id="@+id/rlToobar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -17,8 +17,6 @@
             android:id="@+id/toolbar_drawer"
             android:layout_width="match_parent"
             android:layout_height="62dp"
-
-
             android:layout_centerHorizontal="true"
             android:backgroundTint="@color/white"
             android:gravity="center"
@@ -31,7 +29,7 @@
             >
 
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/btn_img"
                 android:layout_width="42dp"
                 android:layout_height="44dp"
@@ -39,9 +37,7 @@
                 android:layout_marginEnd="20dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/logokoten"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck">
-
-            </ImageButton>
+                tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck"/>
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -49,19 +45,13 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginTop="62dp"
-            android:background="@color/bluenhat">
-
-        </View>
+            android:background="@color/bluenhat"/>
 
         <FrameLayout
             android:id="@+id/fra_draw"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="63dp"
-
-            >
-
-        </FrameLayout>
+            android:layout_marginTop="63dp" />
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -70,13 +60,10 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:itemBackground="@color/cl_drawer"
+
         app:headerLayout="@layout/draw_header"
-
-
-        app:menu="@menu/drawer_playout">
-
-    </com.google.android.material.navigation.NavigationView>
+        app:menu="@menu/drawer_playout"
+        />
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

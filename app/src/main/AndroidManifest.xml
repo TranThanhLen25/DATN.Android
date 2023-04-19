@@ -16,7 +16,9 @@
         android:theme="@style/Theme.DATNAndroidQuanLyNhaHangKhachSan"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Draw_header_Activity"
+            android:exported="false" />
         <activity
             android:name=".ui.DanhSachMenuActivity"
             android:exported="false" />

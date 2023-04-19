@@ -34,9 +34,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="55dp"
             android:text="Tran Thanh Len"
+            android:layout_marginStart="20dp"
             android:textColor="@color/black"
             android:textSize="@dimen/heading_1"
-            app:layout_constraintEnd_toEndOf="@id/ctl_thongtincanhan"
             app:layout_constraintStart_toEndOf="@id/img_thongtincanhan"
 
             app:layout_constraintTop_toTopOf="@id/ctl_thongtincanhan" />
@@ -324,7 +324,7 @@
         app:layout_constraintTop_toBottomOf="@id/ctl_thongtin">
 
         <Button
-            android:id="@+id/btn_suathongtincanhan"
+            android:id="@+id/btn_luuthongtincanhan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -332,12 +332,12 @@
             android:textAllCaps="false"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="@id/ctl_btn_thongtincanhan"
-            app:layout_constraintEnd_toStartOf="@id/btn_doimatkhau"
+            app:layout_constraintEnd_toStartOf="@id/btn_thoat"
             app:layout_constraintStart_toStartOf="@id/ctl_btn_thongtincanhan"
             app:layout_constraintTop_toTopOf="@id/ctl_btn_thongtincanhan" />
 
         <Button
-            android:id="@+id/btn_doimatkhau"
+            android:id="@+id/btn_thoat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -346,7 +346,7 @@
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="@id/ctl_btn_thongtincanhan"
             app:layout_constraintEnd_toEndOf="@id/ctl_btn_thongtincanhan"
-            app:layout_constraintStart_toEndOf="@id/btn_suathongtincanhan"
+            app:layout_constraintStart_toEndOf="@id/btn_luuthongtincanhan"
             app:layout_constraintTop_toTopOf="@id/ctl_btn_thongtincanhan" />
 
 

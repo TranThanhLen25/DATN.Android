@@ -22,9 +22,15 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import com.example.datnandroidquanlynhahangkhachsan.databinding.DrawHeaderBinding;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDialogDangXuatBinding;
+import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.DangNhapActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.dangnhap.NguoiDungPresenter;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Toolbar_Drawer_Activity extends AppCompatActivity {
@@ -42,6 +48,8 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
 
     private Menu menu;
     private MenuItem vitri;
+
+    private List<NguoiDungDTO> lsNguoiDung;
 
 
     @Override
@@ -61,6 +69,8 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
         toggle.syncState();
 
         FragmentDialogDangXuatBinding dangXuatBinding = FragmentDialogDangXuatBinding.inflate(getLayoutInflater());
+
+
 
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fra_draw, new Fragment_trangchu()).commit();

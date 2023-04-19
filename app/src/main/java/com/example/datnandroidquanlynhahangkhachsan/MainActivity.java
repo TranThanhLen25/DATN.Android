@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
+
+    ///kiểm tra có lưu tài khoản ch
     public int check() {
         SharedPreferences sharedPreferences = getSharedPreferences("NGUOI_DUNG", MODE_PRIVATE);
         boolean check = sharedPreferences.getBoolean("REMEMBER", false);
