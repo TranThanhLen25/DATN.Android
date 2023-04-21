@@ -76,7 +76,7 @@ public class Fragment_thongtincanhan extends Fragment {
                              Bundle savedInstanceState) {
 
         thongtincanhanBinding = FragmentThongtincanhanBinding.inflate(inflater, container, false);
-//// lấy thông tin người dùng trong file tạm để hiển thị ra
+            //// lấy thông tin người dùng trong file tạm để hiển thị ra
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("NGUOI_DUNG", Context.MODE_PRIVATE);
 
         thongtincanhanBinding.tvTentk.setText(sharedPreferences.getString("USERNAME", ""));
@@ -92,6 +92,7 @@ public class Fragment_thongtincanhan extends Fragment {
         thongtincanhanBinding.tvCv.setText(sharedPreferences.getString("LOAITAIKHOAN", ""));
 
         thongtincanhanBinding.tvTenThongticanhan.setText(sharedPreferences.getString("TENNGUOIDUNG",""));
+
         thongtincanhanBinding.tvChucvutren.setText(sharedPreferences.getString("LOAITAIKHOAN", ""));
 
         thongtincanhanBinding.btnSuathongtincanhan.setOnClickListener(new View.OnClickListener() {

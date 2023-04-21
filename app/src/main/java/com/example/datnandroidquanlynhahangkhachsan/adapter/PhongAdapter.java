@@ -1,8 +1,9 @@
-package com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong;
+package com.example.datnandroidquanlynhahangkhachsan.adapter;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
@@ -12,30 +13,30 @@ import android.view.Window;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-
-
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-import com.example.datnandroidquanlynhahangkhachsan.Fragment_dsPhong;
+import com.example.datnandroidquanlynhahangkhachsan.Fragment_Phong;
 import com.example.datnandroidquanlynhahangkhachsan.R;
-
-
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemDanhsachphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
-import com.example.datnandroidquanlynhahangkhachsan.ui.chitietphong.ChiTietPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDoiPhongActivity;
-import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuTraPhongActivity;
-import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.ThemPhieuDatphongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuNhanPhongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuTraPhongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.chitietphong.ChiTietPhongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.ThemPhieuDatphongActivity;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.List;
 
 
 public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHolder> {
     private List<PhongDTO> lsPhong;
+    private int so;
+    private int gia;
+    private String loai;
 
 
     private Context context;
@@ -49,7 +50,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
 
     }
 
-    public PhongAdapter(Fragment_dsPhong fragment_dsPhong) {
+    public PhongAdapter(Fragment_Phong fragment_dsPhong) {
 
     }
 
@@ -66,13 +67,6 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
 
 
         ItemDanhsachphongBinding itemDanhsachphongBinding = ItemDanhsachphongBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        itemDanhsachphongBinding.itemDsphong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            ///gọi dialog
-            public void onClick(View view) {
-                openDialog();
-            }
-        });
 
 
         return new PhongViewHolder(itemDanhsachphongBinding);
@@ -82,7 +76,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
     @Override
     public void onBindViewHolder(@NonNull PhongViewHolder holder, int position) {
         PhongDTO phong = lsPhong.get((position));
-        // LoaiPhongDTO loaiPhong=lsLoaiPhong.get(position);
+
         if (phong == null) {
             return;
         }
@@ -106,10 +100,38 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
 
         for (int i = 0; i < lsLoaiPhong.size(); i++) {
             if (phong.getLoaiPhongId() == lsLoaiPhong.get(i).getLoaiPhongId()) {
-                holder.itemDanhsachphongBinding.tvGiatien.setText(String.valueOf(lsLoaiPhong.get(i).getDonGia()));
+
+
+
+
+
+                DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+
+                String formattedNumber = decimalFormat.format(lsLoaiPhong.get(i).getDonGia());
+
+                holder.itemDanhsachphongBinding.tvGiatien.setText(formattedNumber);
+
                 holder.itemDanhsachphongBinding.tvLoaiphong.setText(lsLoaiPhong.get(i).getTenLoaiPhong());
             }
         }
+
+
+        /// gán thông tin phòng vào biến khi bấm vào phòng
+        holder.itemDanhsachphongBinding.itemDsphong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                for (int i = 0; i < lsLoaiPhong.size(); i++) {
+                    if (phong.getLoaiPhongId() == lsLoaiPhong.get(i).getLoaiPhongId()) {
+                        so = phong.getSoPhong();
+                        gia = lsLoaiPhong.get(i).getDonGia();
+                        loai = lsLoaiPhong.get(i).getTenLoaiPhong().toString();
+                    }
+
+                }
+                openDialog();
+            }
+        });
 
 
     }
@@ -185,6 +207,14 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
             public void onClick(View view) {
                 Intent intent = new Intent(dialog.getContext(), ChiTietPhongActivity.class);
                 context.startActivity(intent);
+
+                //// lưu lại thông tin phòng cần xem chi tiết
+                SharedPreferences sharedPreferences = context.getSharedPreferences("PHONG", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("SOPHONG", so);
+                editor.putInt("GIA", gia);
+                editor.putString("LOAIPHONG", loai);
+                editor.commit();
 
                 dialog.dismiss();
 

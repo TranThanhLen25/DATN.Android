@@ -31,13 +31,13 @@ public class MainActivity extends AppCompatActivity {
 // xử lý của bottom_nav
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        fragment = new Fragment_dsPhong();
+        fragment = new Fragment_Phong();
         replaceFragment(fragment);
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_danhsach:
-                    fragment = new  Fragment_dsPhong();
+                    fragment = new Fragment_Phong();
                     replaceFragment(fragment);
                     break;
                 case R.id.nav_datphong:

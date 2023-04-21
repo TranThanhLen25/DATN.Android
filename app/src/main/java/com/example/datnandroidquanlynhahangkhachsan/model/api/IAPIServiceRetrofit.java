@@ -67,7 +67,7 @@ public interface IAPIServiceRetrofit {
     @POST("/api/KhachHang/Them-KhachHang")
     Call<ResponseInfo> themKhachHang(@Body KhachHangDTO khachHangDTO);
 
-<<<<<<< HEAD
+
 
 
     @POST("/api/PhieuNhap/them-phieunhap")
@@ -82,8 +82,8 @@ public interface IAPIServiceRetrofit {
 
     @GET("/api/NguoiDung/timNguoiDung?")
     Call<ResponseDTO<List<NguoiDungDTO>>> layNguoiDungID(@Query("nguoiDung") int nguoiDung);
-=======
+
     @POST("/api/Phong/CapNhat-Phong")
     Call<ResponseInfo> capNhatTrangThaiPhong(@Body PhongDTO phongDTO);
->>>>>>> develop
+
 }

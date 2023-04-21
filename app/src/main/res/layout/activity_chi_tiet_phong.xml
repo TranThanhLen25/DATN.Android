@@ -62,8 +62,8 @@
                         android:text="@string/tv_chitietphong"
                         android:textSize="@dimen/heading_2"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/chitietheaderchitietphong"
-                        app:layout_constraintTop_toTopOf="@id/chitietheaderchitietphong"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/chitietheaderchitietphong" />
 
                     <TextView
                         android:id="@+id/tv_sophong"
@@ -71,7 +71,7 @@
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:text="@string/tv_sophong"
-                        android:textColor="@color/red"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/heading_2"
                         android:textStyle="bold"
                         app:layout_constraintStart_toEndOf="@id/tv_chitietphong"
@@ -82,6 +82,7 @@
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:text="101"
+                        android:id="@+id/tv_so"
                         android:textColor="@color/red"
                         android:textSize="@dimen/heading_2"
                         android:textStyle="bold"
@@ -103,16 +104,18 @@
                             android:padding="10dp"
                             android:text="@string/tv_gia"
                             android:textSize="@dimen/heading_2"
+                            android:textColor="@color/black"
                             android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="@id/tv_sochungtu_chitietphong"
                             app:layout_constraintTop_toTopOf="@id/tv_sochungtu_chitietphong"/>
 
                         <TextView
-                            android:id="@+id/tv_sochungtu_data"
+                            android:id="@+id/tv_giachitiet"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:text="300.000đ"
+                            android:layout_marginStart="18dp"
                             android:textColor="@color/red"
                             android:textSize="@dimen/heading_2"
                             android:textStyle="bold"
@@ -127,20 +130,22 @@
                             android:text="@string/tv_loaiphong"
                             android:textSize="@dimen/heading_2"
                             android:textStyle="bold"
+                            android:textColor="@color/black"
                             app:layout_constraintStart_toStartOf="@+id/tv_sochungtu_chitietphong"
                             app:layout_constraintTop_toBottomOf="@+id/tv_sochungtu"/>
 
                         <TextView
-                            android:id="@+id/tv_loaiphong_data"
+                            android:id="@+id/tv_loaiphongchitiet"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:text="PDP1"
+                            android:layout_marginStart="18dp"
                             android:textColor="@color/red"
                             android:textSize="@dimen/heading_2"
                             android:textStyle="bold"
                             app:layout_constraintStart_toEndOf="@+id/tv_loaiphong"
-                            app:layout_constraintTop_toBottomOf="@+id/tv_sochungtu_data"/>
+                            app:layout_constraintTop_toBottomOf="@+id/tv_giachitiet"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -309,7 +314,7 @@
         android:id="@+id/footer_chitietphong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@drawable/bg_nhahang_khachsan"
         android:padding="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

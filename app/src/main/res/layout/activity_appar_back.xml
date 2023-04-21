@@ -35,8 +35,8 @@
                 android:textSize="@dimen/heading_1"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@id/toolbar1"
-                app:layout_constraintStart_toEndOf="@id/ic_back"
-                app:layout_constraintEnd_toStartOf="@id/img_btn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/toolbar1">
 
             </TextView>
@@ -45,13 +45,12 @@
                 android:id="@+id/img_btn"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:layout_marginEnd="30dp"
                 android:background="@drawable/logokoten"
                 app:layout_constraintBottom_toBottomOf="@id/toolbar1"
                 app:layout_constraintEnd_toEndOf="@id/toolbar1"
-                app:layout_constraintStart_toEndOf="@id/tv_tennhahang"
                 app:layout_constraintTop_toTopOf="@id/toolbar1"
-                tools:ignore="MissingConstraints"
-               />
+                tools:ignore="MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
         <View

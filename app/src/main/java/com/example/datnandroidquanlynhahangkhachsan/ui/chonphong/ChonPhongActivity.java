@@ -89,15 +89,15 @@ public class ChonPhongActivity extends AppCompatActivity implements PhongContrac
         rscv.setAdapter(chonPhongAdapter);
     }
     //lấy danh sách loại phòng hiển thị và spinner
-    @Override
-    public void onLayLoaiPhongSuccess(List<LoaiPhongDTO> list) {
-        lsloaiPhong=list;
-    }
+        @Override
+        public void onLayLoaiPhongSuccess(List<LoaiPhongDTO> list) {
+            lsloaiPhong=list;
+        }
 
-    @Override
-    public void onLayLoaiPhongError(String error) {
-        Toast.makeText(this, "Lay du lieu that bai", Toast.LENGTH_LONG).show();
-    }
+        @Override
+        public void onLayLoaiPhongError(String error) {
+            Toast.makeText(this, "Lay du lieu that bai", Toast.LENGTH_LONG).show();
+        }
 
 
 }

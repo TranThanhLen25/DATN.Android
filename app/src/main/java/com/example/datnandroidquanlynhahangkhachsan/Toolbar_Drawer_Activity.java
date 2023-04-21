@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -22,6 +23,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.Header;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.DrawHeaderBinding;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDialogDangXuatBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
@@ -71,6 +73,9 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
         FragmentDialogDangXuatBinding dangXuatBinding = FragmentDialogDangXuatBinding.inflate(getLayoutInflater());
 
 
+        DrawHeaderBinding headerBinding=DrawHeaderBinding.inflate(getLayoutInflater());
+        Toast.makeText(this,headerBinding.tvAvt.getText(), Toast.LENGTH_SHORT).show();
+
 
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fra_draw, new Fragment_trangchu()).commit();
@@ -79,12 +84,21 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
         menu = navigationView.getMenu();
         MenuItem menuItem = menu.findItem(R.id.dra_trangchu);
         menuItem.setChecked(true);
+
+
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+
+            SharedPreferences sharedPreferences=getSharedPreferences("NGUOI_DUNG",MODE_PRIVATE);
+
+
             ///cho đăng xuất khi vừa mới đăng nhập
             Fragment temp = new Fragment_trangchu();
             int vitri = R.id.dra_trangchu;
 
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
 
                 int id = item.getItemId();
 
