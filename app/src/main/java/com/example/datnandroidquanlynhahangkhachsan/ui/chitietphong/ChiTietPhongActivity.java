@@ -16,6 +16,7 @@ import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityChiTietP
 import com.example.datnandroidquanlynhahangkhachsan.entities.DichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.DichVu;
+import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.DanhSachMenuActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.MenuDichVuContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.MenuDichVuPresenter;
@@ -40,7 +41,13 @@ public class ChiTietPhongActivity extends AppCompatActivity implements MenuDichV
         ChiTietPhongBinding = ChiTietPhongBinding.inflate(getLayoutInflater());
         setContentView(ChiTietPhongBinding.getRoot());
 
-        ChiTietPhongBinding.toolbarChitietphong.icBack.setOnClickListener(view -> onBackPressed());
+        ChiTietPhongBinding.toolbarChitietphong.icBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tempData.lsDichVu.clear();
+                onBackPressed();
+            }
+        });
         ChiTietPhongBinding.imgMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,16 +58,18 @@ public class ChiTietPhongActivity extends AppCompatActivity implements MenuDichV
         ChiTietPhongBinding.btnLuuChitietphong.setOnClickListener(view -> onBackPressed());
 
         rscvDichVu = findViewById(R.id.rscv_dichvu);
+
+        //khởi tạo danh sách menu
+        tempData.lsDichVu = new ArrayList<>();
+
         //thêm dữ liệu dịch vụ
         lsdichvu = new ArrayList<>();
-        DichVu dv1 = new DichVu("dv1", "1", "1", "1");
-        DichVu dv2 = new DichVu("dv2", "2", "2", "2");
-        DichVu dv3 = new DichVu("dv3", "3", "3", "3");
-        DichVu dv4 = new DichVu("dv4", "4", "4", "4");
-        lsdichvu.add(dv1);
-        lsdichvu.add(dv2);
-        lsdichvu.add(dv3);
-        lsdichvu.add(dv4);
+        if (tempData.lsDichVu.size()>0){
+            for (int i=0;i<tempData.lsDichVu.size();i++){
+                DichVu dv1 = new DichVu("dv"+tempData.lsDichVu.get(i), "1", "1", "1");
+                lsdichvu.add(dv1);
+            }
+        }
 
         //lấy dữ liệu hàng hóa
         menuDichVuPresenter = new MenuDichVuPresenter(this);
@@ -76,6 +85,21 @@ public class ChiTietPhongActivity extends AppCompatActivity implements MenuDichV
         ItemTouchHelper.Callback callback = new RecycleViewItemTouchHelper(this);
         ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
         touchHelper.attachToRecyclerView(rscvDichVu);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        lsdichvu.clear();
+        for (int i=0;i<tempData.lsDichVu.size();i++){
+            for (int j=0;j<lsdichvu.size();j++){
+                if (lsdichvu.get(j).get)
+            }
+            DichVu dv1 = new DichVu("dv"+tempData.lsDichVu.get(i), "1", "1", "1");
+            lsdichvu.add(dv1);
+        }
+        menuAdapter = new MenuAdapter(lsdichvu);
+        rscvDichVu.setAdapter(menuAdapter);
     }
 
     @Override
