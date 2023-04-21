@@ -16,7 +16,7 @@ import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityToolbarD
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.dangnhap.NguoiDungContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.dangnhap.NguoiDungPresenter;
-import com.google.android.material.navigation.NavigationView;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -126,15 +126,28 @@ toolbarDrawerBinding=ActivityToolbarDrawerBinding.inflate(getLayoutInflater());
                 }
             }
         });
+
         dangNhapBinding.btnDangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 for (int i = 0; i < lsNguoiDung.size(); i++) {
                     if (dangNhapBinding.etTaikhoan.getText().toString().equals(lsNguoiDung.get(i).getTaiKhoan())
                             && dangNhapBinding.etMatkhau.getText().toString().equals(lsNguoiDung.get(i).getMatKhau())) {
+
                         Intent intent = new Intent(DangNhapActivity.this, Toolbar_Drawer_Activity.class);
                         startActivity(intent);
-                        rememberUser(dangNhapBinding.etTaikhoan.getText().toString(), dangNhapBinding.etMatkhau.getText().toString(), true);
+
+                        rememberUser(
+                                dangNhapBinding.etTaikhoan.getText().toString(),
+                                dangNhapBinding.etMatkhau.getText().toString(),
+                                lsNguoiDung.get(i).getNguoiDungId(),
+                                lsNguoiDung.get(i).getTenNguoiDung(),
+                                lsNguoiDung.get(i).getSdt(),
+                                lsNguoiDung.get(i).getCccd(),
+                                lsNguoiDung.get(i).getGioiTinh(),
+                                lsNguoiDung.get(i).getDiaChi(),
+                                lsNguoiDung.get(i).getLoaiTaiKhoan(),
+                                true);
                         save = true;
 
                     }
@@ -145,23 +158,42 @@ toolbarDrawerBinding=ActivityToolbarDrawerBinding.inflate(getLayoutInflater());
         });
 
 
-       if (check()==1){
-           Intent intent = new Intent(DangNhapActivity.this, Toolbar_Drawer_Activity.class);
-           startActivity(intent);
-       }
+        if (check() == 1) {
+            Intent intent = new Intent(DangNhapActivity.this, Toolbar_Drawer_Activity.class);
+            startActivity(intent);
+        }
         setContentView(dangNhapBinding.getRoot());
 
 
     }
 
-    public void rememberUser(String username, String password, boolean status) {
+    public void rememberUser(String username,
+                             String password,
+                             int id,
+                             String tennguoidung,
+                             String sdt,
+                             String cccd,
+                             String gioitinh,
+                             String diachi,
+                             String loaitaikhoan,
+                             boolean status) {
         SharedPreferences sharedPreferences = getSharedPreferences("NGUOI_DUNG", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+//        Gson gson = new Gson();
+//        gson.toJson()
 
         ///Thêm dữ liệu vào file
         editor.putString("USERNAME", username);
         editor.putString("PASSWORD", password);
+        editor.putInt("ID", id);
+        editor.putString("TENNGUOIDUNG", tennguoidung);
+        editor.putString("SDT", sdt);
+        editor.putString("CCCD", cccd);
+        editor.putString("GIOITINH", gioitinh);
+        editor.putString("DIACHI", diachi);
+        editor.putString("LOAITAIKHOAN", loaitaikhoan);
         editor.putBoolean("REMEMBER", status);
+
         Toast.makeText(DangNhapActivity.this, "luu usernam va pas", Toast.LENGTH_LONG).show();
         //Lưu lại
         editor.commit();
@@ -189,5 +221,15 @@ toolbarDrawerBinding=ActivityToolbarDrawerBinding.inflate(getLayoutInflater());
     @Override
     public void onLayNguoiDungError(String error) {
         Toast.makeText(this, "Lay du lieu that bai", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onLayNguoiDungIDSuccess(List<NguoiDungDTO> list) {
+
+    }
+
+    @Override
+    public void onLayNguoiDungIDError(String error) {
+
     }
 }

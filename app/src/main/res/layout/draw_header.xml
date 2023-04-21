@@ -6,13 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:background="@drawable/nen"
-
-    tools:context=".draw_header_avtivity"
-
-
     >
-
-
     <ImageView
         android:id="@+id/img_avt"
         android:layout_width="80dp"
@@ -22,7 +16,7 @@
         android:src="@drawable/man"
         app:layout_constraintBottom_toBottomOf="@id/ctl_draw"
         app:layout_constraintStart_toStartOf="@id/ctl_draw"
-        app:layout_constraintTop_toTopOf="@id/ctl_draw"></ImageView>
+        app:layout_constraintTop_toTopOf="@id/ctl_draw"/>
 
     <TextView
         android:id="@+id/tv_avt"
@@ -30,11 +24,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="65dp"
-        android:text="Tran Thanh Len"
+        android:text="@string/tv_sochungtu"
         android:textSize="@dimen/heading_2"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/img_avt"
-        app:layout_constraintTop_toTopOf="@id/ctl_draw"></TextView>
+        app:layout_constraintTop_toTopOf="@id/ctl_draw"/>
 
     <TextView
         android:id="@+id/tv_vitri"
@@ -42,11 +36,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
-        android:text="Nhan vien le taan"
+        android:text="@string/dialog_dangxuat"
 
         android:textSize="15dp"
         app:layout_constraintStart_toEndOf="@id/img_avt"
         app:layout_constraintTop_toBottomOf="@id/tv_avt"
-        tools:ignore="TextSizeCheck"></TextView>
+        tools:ignore="TextSizeCheck"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -92,7 +92,7 @@
     <!-- Thong tin ca nhan-->
     <string name="tv_tai_khoan">Tài khoản: </string>
     <string name="tv_so_dien_thoai">Số điện thoại: </string>
-    <string name="tv_que_quan">Quê quán: </string>
+    <string name="tv_que_quan">Địa chỉ: </string>
     <string name="tv_gioi_tinh">Giới tính: </string>
     <string name="tv_can_cuoc_cong_dan">CCCD: </string>
     <string name="tv_chuc_vu">Chức vụ: </string>

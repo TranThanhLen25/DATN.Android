@@ -8,7 +8,7 @@
     android:id="@+id/dialog_dangxuat"
     android:background="@drawable/bg_dialoglogout"
     android:orientation="vertical"
-    tools:context=".Fragment_dialogDangXuat"
+
     >
     <TextView
         android:id="@+id/tv_thongbao"

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class NguoiDungPresenter implements NguoiDungContract.Presenter {
     private final NguoiDungContract.View view;
-    private NguoiDungModel nguoiDungModel;
+    NguoiDungModel nguoiDungModel;
 
     public NguoiDungPresenter(NguoiDungContract.View view) {
         this.view = view;
@@ -24,6 +24,20 @@ public class NguoiDungPresenter implements NguoiDungContract.Presenter {
             @Override
             public void onError(String error) {
                 view.onLayNguoiDungError(error);
+            }
+        });
+    }
+    @Override
+    public void LayNguoiDungID(int nguoiDung) {
+        nguoiDungModel.LayNguoiDungID(nguoiDung,new INguoiDungModel.IOnLayNguoiDungIDFinishedListener() {
+            @Override
+            public void onSuccess(List<NguoiDungDTO> listResult) {
+                view.onLayNguoiDungIDSuccess(listResult);
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onLayNguoiDungIDError(error);
             }
         });
     }

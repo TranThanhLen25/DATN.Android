@@ -19,17 +19,17 @@ import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContra
 import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongPresenter;
-import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.adapter.PhongAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_dsPhong#newInstance} factory method to
+ * Use the {@link Fragment_Phong#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_dsPhong extends Fragment implements PhongContract.View , LoaiPhongContract.View {
+public class Fragment_Phong extends Fragment implements PhongContract.View , LoaiPhongContract.View {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,7 +49,7 @@ public class Fragment_dsPhong extends Fragment implements PhongContract.View , L
     private FragmentDsPhongBinding fragmentDsPhongBinding;
 
 
-    public Fragment_dsPhong() {
+    public Fragment_Phong() {
         // Required empty public constructor
     }
 
@@ -62,8 +62,8 @@ public class Fragment_dsPhong extends Fragment implements PhongContract.View , L
      * @return A new instance of fragment Fragment_dsPhong.
      */
     // TODO: Rename and change types and number of parameters
-    public static Fragment_dsPhong newInstance(String param1, String param2) {
-        Fragment_dsPhong fragment = new Fragment_dsPhong();
+    public static Fragment_Phong newInstance(String param1, String param2) {
+        Fragment_Phong fragment = new Fragment_Phong();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

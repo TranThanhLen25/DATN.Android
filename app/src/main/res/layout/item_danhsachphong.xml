@@ -10,11 +10,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ctl_dsphong"
-        android:layout_width="120dp"
-        android:layout_height="110dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="6dp"
-
+        android:padding="5dp"
         android:background="@drawable/bg_item"
 
 
@@ -24,10 +24,10 @@
             android:id="@+id/tv_sophong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_margin="5dp"
             android:gravity="center"
             android:text="100"
-            android:textSize="@dimen/heading_2"
+            android:textSize="25dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/ctl_dsphong"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
             android:id="@+id/view_dsphong"
             android:layout_width="wrap_content"
             android:layout_height="1dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:background="@color/black"
             app:layout_constraintStart_toStartOf="@id/ctl_dsphong"
             app:layout_constraintTop_toBottomOf="@id/tv_sophong">
@@ -48,7 +48,7 @@
             android:id="@+id/ctl_chitiet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-android:layout_marginTop="3dp"
+            android:layout_margin="5dp"
 
             app:layout_constraintEnd_toEndOf="@id/ctl_dsphong"
             app:layout_constraintStart_toStartOf="@id/ctl_dsphong"
@@ -61,8 +61,8 @@ android:layout_marginTop="3dp"
 
                 android:text="1 giuong"
                 android:textColor="@color/red"
-                android:textSize="@dimen/heading_2"
-
+                android:layout_margin="5dp"
+                android:textSize="20dp"
                 app:layout_constraintEnd_toEndOf="@id/ctl_chitiet"
                 app:layout_constraintStart_toStartOf="@id/ctl_chitiet"
                 tools:ignore="MissingConstraints">
@@ -73,10 +73,10 @@ android:layout_marginTop="3dp"
                 android:id="@+id/tv_giatien"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_margin="5dp"
                 android:text="300.000"
                 android:textColor="@color/bluenhat"
-                android:textSize="@dimen/heading_2"
+                android:textSize="20dp"
                 app:layout_constraintEnd_toEndOf="@id/ctl_chitiet"
                 app:layout_constraintStart_toStartOf="@id/ctl_chitiet"
                 app:layout_constraintTop_toBottomOf="@id/tv_loaiphong">

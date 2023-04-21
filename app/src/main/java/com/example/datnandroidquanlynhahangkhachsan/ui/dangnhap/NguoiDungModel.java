@@ -60,4 +60,47 @@ public class NguoiDungModel implements INguoiDungModel {
             }
         });
     }
+
+
+
+   @Override
+    public void LayNguoiDungID(int nguoiDung,IOnLayNguoiDungIDFinishedListener listener) {
+
+        service = new APIService();
+        service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
+            @Override
+            public void onSuccess(ResponseTokenDTO token) {
+                //Lay token thanh cong => goi api lay du lieu
+
+                service.apiServiceRetrofit.layNguoiDungID(nguoiDung).enqueue(new Callback<ResponseDTO<List<NguoiDungDTO>>>() {
+                    @Override
+                    public void onResponse(Call<ResponseDTO<List<NguoiDungDTO>>> call, Response<ResponseDTO<List<NguoiDungDTO>>> response) {
+                        //lay loi api tra ve (neu co)
+                        errorKiemTra = service.getMessageResponse(response);
+                        if (errorKiemTra.getFlagException() || !errorKiemTra.getFlagSuccess()) {
+                            listener.onError(errorKiemTra.getErrorMessage());
+                            return;
+                        }
+
+                        //trong phan response (tra ve) cua api co body (noi dung)
+                        //Ma o day minh quy uoc la tra ve ResponseDTO
+                        //Sau do response.body().getData() de lay ra du lieu o truong data
+                        List<NguoiDungDTO> listResult = response.body().getData();
+                        listener.onSuccess(listResult);
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseDTO<List<NguoiDungDTO>>> call, Throwable t) {
+                        listener.onError(t.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+                //Lay token loi => thong bao loi
+                listener.onError(error);
+            }
+        });
+    }
 }

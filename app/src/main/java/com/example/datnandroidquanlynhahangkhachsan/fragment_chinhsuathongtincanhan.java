@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentChinhsuathongtincanhanBinding;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link fragment_chinhsuathongtincanhan#newInstance} factory method to
@@ -23,6 +25,7 @@ public class fragment_chinhsuathongtincanhan extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    FragmentChinhsuathongtincanhanBinding chinhsuathongtincanhanBinding;
 
     public fragment_chinhsuathongtincanhan() {
         // Required empty public constructor
@@ -59,6 +62,13 @@ public class fragment_chinhsuathongtincanhan extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chinhsuathongtincanhan, container, false);
+        chinhsuathongtincanhanBinding=FragmentChinhsuathongtincanhanBinding.inflate(inflater,container,false);
+        chinhsuathongtincanhanBinding.btnThoat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
+            }
+        });
+        return chinhsuathongtincanhanBinding.getRoot();
     }
 }
