@@ -120,7 +120,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         holder.itemDanhsachphongBinding.itemDsphong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                /// gán thông tin phòng khi chọn phòng
                 for (int i = 0; i < lsLoaiPhong.size(); i++) {
                     if (phong.getLoaiPhongId() == lsLoaiPhong.get(i).getLoaiPhongId()) {
                         so = phong.getSoPhong();
