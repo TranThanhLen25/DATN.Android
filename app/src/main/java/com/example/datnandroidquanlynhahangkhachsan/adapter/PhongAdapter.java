@@ -37,7 +37,8 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
     private int so;
     private int gia;
     private String loai;
-
+    private int phongid;
+    private int loaiphongid;
 
     private Context context;
     private List<LoaiPhongDTO> lsLoaiPhong;
@@ -120,12 +121,14 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         holder.itemDanhsachphongBinding.itemDsphong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                /// gán thông tin phòng khi chọn phòng
                 for (int i = 0; i < lsLoaiPhong.size(); i++) {
                     if (phong.getLoaiPhongId() == lsLoaiPhong.get(i).getLoaiPhongId()) {
                         so = phong.getSoPhong();
                         gia = lsLoaiPhong.get(i).getDonGia();
                         loai = lsLoaiPhong.get(i).getTenLoaiPhong().toString();
+                        phongid=phong.getPhongId();
+                        loaiphongid=lsLoaiPhong.get(i).getLoaiPhongId();
                     }
 
                 }
@@ -214,6 +217,8 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                 editor.putInt("SOPHONG", so);
                 editor.putInt("GIA", gia);
                 editor.putString("LOAIPHONG", loai);
+                editor.putInt("PHONGID", phongid);
+                editor.putInt("LOAIPHONGID", loaiphongid);
                 editor.commit();
 
                 dialog.dismiss();

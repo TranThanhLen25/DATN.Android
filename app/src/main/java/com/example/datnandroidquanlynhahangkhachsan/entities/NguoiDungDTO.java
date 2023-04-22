@@ -28,7 +28,13 @@ public class NguoiDungDTO {
     @SerializedName("trangThai")
     private int trangThai;
 
-    public NguoiDungDTO(int nguoiDungId, String tenNguoiDung, String sdt, String cccd, String gioiTinh, String diaChi, String loaiTaiKhoan, String taiKhoan, String matKhau, int trangThai) {
+    public NguoiDungDTO() {
+    }
+
+    public NguoiDungDTO(int nguoiDungId, String tenNguoiDung,
+                        String sdt, String cccd, String gioiTinh,
+                        String diaChi, String loaiTaiKhoan,
+                        String taiKhoan, String matKhau, int trangThai) {
         this.nguoiDungId = nguoiDungId;
         this.tenNguoiDung = tenNguoiDung;
         this.sdt = sdt;
@@ -39,6 +45,11 @@ public class NguoiDungDTO {
         this.taiKhoan = taiKhoan;
         this.matKhau = matKhau;
         this.trangThai = trangThai;
+    }
+
+    public NguoiDungDTO(String sdt,String diaChi) {
+        this.sdt = sdt;
+        this.diaChi = diaChi;
     }
 
     public int getNguoiDungId() {
@@ -121,10 +132,11 @@ public class NguoiDungDTO {
         this.trangThai = trangThai;
     }
 
-    public NguoiDungDTO(String taiKhoan, String matKhau) {
-        this.taiKhoan = taiKhoan;
-        this.matKhau = matKhau;
-    }
+//    public NguoiDungDTO(String taiKhoan, String matKhau) {
+//        this.taiKhoan = taiKhoan;
+//        this.matKhau = matKhau;
+//    }
+
 
 
 }
