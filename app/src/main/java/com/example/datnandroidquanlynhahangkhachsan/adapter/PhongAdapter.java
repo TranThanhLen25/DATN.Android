@@ -98,13 +98,9 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         }
 
         holder.itemDanhsachphongBinding.tvSophong.setText(String.valueOf(phong.getSoPhong()));
-
+////lấy thông tin loại phòng theo loaiphongID
         for (int i = 0; i < lsLoaiPhong.size(); i++) {
             if (phong.getLoaiPhongId() == lsLoaiPhong.get(i).getLoaiPhongId()) {
-
-
-
-
 
                 DecimalFormat decimalFormat = new DecimalFormat("#,##0");
 

@@ -554,4 +554,13 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
     public void onThemKhachHangError(String error) {
         Toast.makeText(this, "Thêm khách hàng thất bại", Toast.LENGTH_LONG).show();
     }
+    @Override
+    public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
+        Toast.makeText(this, "Thêm khách hàng thành công", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onLayDanhSachKhachHangError(String error) {
+        Toast.makeText(this, "Thêm khách hàng thất bại", Toast.LENGTH_LONG).show();
+    }
 }

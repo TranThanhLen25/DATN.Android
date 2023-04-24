@@ -24,7 +24,7 @@
                 android:id="@+id/tv_tenkhachhang_phieunhanphong_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lê Văn Vỹ"
+                android:text="chưa lấy dc"
                 android:textSize="@dimen/heading_2"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/ctl_header_itemphieunhanphong"

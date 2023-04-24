@@ -3,6 +3,7 @@ package com.example.datnandroidquanlynhahangkhachsan.model.api;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.DieuKienLocHangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienLocKhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
@@ -14,6 +15,8 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
 
 import java.util.List;
 
@@ -35,11 +38,22 @@ public interface IAPIServiceRetrofit {
     @POST("/api/PhieuDat/danhsach-PhieuDat?")
     Call<ResponseDTO<List<PhieuDatDTO>>> LayDanhSachPhieuDat(@Body DieuKienLocPhieuDatDTO dieuKienLocPhieuDatDTO);
 
+    @POST("/api/PhieuNhan/danhsach-PhieuNhan?")
+    Call<ResponseDTO<List<PhieuNhanDTO>>> layDanhSachPhieuNhan(@Body DieuKienLocPhieuNhanDTO dieuKienLocPhieuNhanDTO);
+
+
+    @POST("/api/KhachHang/lay-KhachHang?")
+    Call<ResponseDTO<List<KhachHangDTO>>> layDanhSachKhachHang(@Body DieuKienLocKhachHangDTO dieuKienLocKhachHang);
+
+
+
     @POST("/api/PhieuDat/them-PhieuDat")
     Call<ResponseInfo> ThemPhieuDatPhong(@Body PhieuDatDTO phieuDatDTO);
 
     @POST("/api/PhieuDatPhongChiTiet/them-PhieuDatPhongChiTiet")
     Call<ResponseInfo> ThemPhieuDatPhongChiTiet(@Body PhieuDatPhongChiTietDTO phieuDatPhongChiTietDTO);
+
+
     //   lấy danh sách phòng với bảng tạm mới bên api_bên android chỉ cần thêm trường dữ liệu vào PhongDTO
     //    @POST("/api/Phong/danhsach-phong-proc")
     //    Call<ResponseDTO<List<PhongDTO>>> layDanhSachPhong();

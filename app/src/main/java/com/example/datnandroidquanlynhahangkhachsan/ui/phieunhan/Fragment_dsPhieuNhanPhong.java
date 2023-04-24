@@ -2,18 +2,22 @@ package com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuNhanPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsPhieuNhanPhongBinding;
-import com.example.datnandroidquanlynhahangkhachsan.model.PhieuNhan;
+import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienLocKhachHangDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuNhanPhongActivity;
 
 import java.util.ArrayList;
@@ -26,10 +30,11 @@ import java.util.List;
  * Use the {@link Fragment_dsPhieuNhanPhong#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_dsPhieuNhanPhong extends Fragment {
+public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPhongContract.View, KhachHangContract.View {
 
     private RecyclerView rscvPhieuNhanPhong;
-    private List<PhieuNhan> lsPhieuNhan;
+    private List<PhieuNhanDTO> lsPhieuNhan;
+    private List<KhachHangDTO> lsKhachHang;
     private PhieuNhanPhongAdapter phieuNhanPhongAdapter;
     private FragmentDsPhieuNhanPhongBinding fragmentDsPhieuNhanPhongBinding;
     // TODO: Rename parameter arguments, choose names that match
@@ -72,11 +77,28 @@ public class Fragment_dsPhieuNhanPhong extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         fragmentDsPhieuNhanPhongBinding = fragmentDsPhieuNhanPhongBinding.inflate(inflater, container, false);
+        lsPhieuNhan = new ArrayList<>();
+        ///lấy dữ liệu danh sách phiếu nhận
+        DsPhieuNhanPhongPresenter phieuNhanPhongPresenter = new DsPhieuNhanPhongPresenter(this);
+        DieuKienLocPhieuNhanDTO dieuKienLocPhieuNhanDTO = new DieuKienLocPhieuNhanDTO();
+
+        ////loại 3:phiếu nhận phòng
+        dieuKienLocPhieuNhanDTO.setLoaiPhieu(3);
+        phieuNhanPhongPresenter.LayDanhSachPhieuNhan(dieuKienLocPhieuNhanDTO);
+
+        ///lấy khách hàng
+        lsKhachHang = new ArrayList<>();
+        KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
+        DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
+        khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
+
+
         fragmentDsPhieuNhanPhongBinding.iclAppbackpnp.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,16 +113,50 @@ public class Fragment_dsPhieuNhanPhong extends Fragment {
             }
         });
         rscvPhieuNhanPhong = fragmentDsPhieuNhanPhongBinding.rscvDsphieunhanphong;
-        lsPhieuNhan = new ArrayList<>();
+
         Date day = Calendar.getInstance().getTime();
-        for (int i = 0; i < 10; i++) {
-            PhieuNhan pn = new PhieuNhan(1L, "PN" + (i + 1), day, 1, 1, day, (i + 1L), "abc", "Đã nhận");
-            lsPhieuNhan.add(pn);
-        }
-        phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(lsPhieuNhan);
+
+
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
         rscvPhieuNhanPhong.setLayoutManager(LinearLayoutManager);
-        rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);
+
         return fragmentDsPhieuNhanPhongBinding.getRoot();
     }
+
+    @Override
+    public void onLayDanhSachPhieuNhanSuccess(List<PhieuNhanDTO> list) {
+        lsPhieuNhan = list;
+        phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(this);
+        phieuNhanPhongAdapter.setData(lsPhieuNhan, lsKhachHang);
+        rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);
+        //Toast.makeText(getContext(), "Lấy danh sách phiếu đặt phòng thành công", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onLayDanhSachPhieuNhanError(String error) {
+    }
+
+    public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
+        lsKhachHang = list;
+        phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(this);
+        phieuNhanPhongAdapter.setData(lsPhieuNhan, lsKhachHang);
+        rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);
+
+        //Toast.makeText(getContext(), "Lấy danh sách phiếu đặt phòng thành công", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onLayDanhSachKhachHangError(String error) {
+    }
+
+    @Override
+    public void onThemKhachHangSuccess() {
+
+    }
+
+    @Override
+    public void onThemKhachHangError(String error) {
+
+    }
+
 }

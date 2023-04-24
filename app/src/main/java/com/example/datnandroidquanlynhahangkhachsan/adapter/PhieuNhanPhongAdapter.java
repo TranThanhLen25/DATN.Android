@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.adapter;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemPhieunhanphongBinding;
+import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuNhapDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.Fragment_dsPhieuNhanPhong;
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.model.PhieuNhan;
@@ -17,37 +23,51 @@ import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 import java.util.List;
 
 public class PhieuNhanPhongAdapter extends RecyclerView.Adapter<PhieuNhanPhongAdapter.PhieuNhanPhongViewHolder> {
-    private List<PhieuNhan> lsPhieuNhan;
+    private List<PhieuNhanDTO> lsPhieuNhan;
+    private List<KhachHangDTO>lsKhachHang;
     private AppUtils ac;
 
-    public PhieuNhanPhongAdapter(List<PhieuNhan> lsPhieuNhan) {
+    public PhieuNhanPhongAdapter(List<PhieuNhanDTO> lsPhieuNhan) {
+
         this.lsPhieuNhan = lsPhieuNhan;
     }
 
     public PhieuNhanPhongAdapter(Fragment_dsPhieuNhanPhong fragment_dsPhieuNhanPhong) {
     }
+    public void setData(List<PhieuNhanDTO> lsPhieuNhan,List<KhachHangDTO> lsKhachHang) {
+        this.lsPhieuNhan = lsPhieuNhan;
+        this.lsKhachHang=lsKhachHang;
+        notifyDataSetChanged();
+    }
 
     @NonNull
     @Override
     public PhieuNhanPhongViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_phieunhanphong, parent, false);
-        return new PhieuNhanPhongViewHolder(view);
+       ItemPhieunhanphongBinding phieunhanphongBinding=ItemPhieunhanphongBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new PhieuNhanPhongViewHolder(phieunhanphongBinding);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull PhieuNhanPhongViewHolder holder, int position) {
-        PhieuNhan PhieuNhan = lsPhieuNhan.get((position));
-        if (PhieuNhan == null) {
+      PhieuNhanDTO phieuNhanDTO=lsPhieuNhan.get(position);
+        if (phieuNhanDTO == null) {
             return;
         }
-        holder.tvtenkhachhangphieunhanphongdata.setText(String.valueOf(PhieuNhan.getKhachHangID()));
-        holder.tvsdtitemphieunhanphongdata.setText(String.valueOf(PhieuNhan.getGhiChu()));
-        holder.tvsochungtuphieunhanphongdata.setText(PhieuNhan.getSoChungTu());
-//        SimpleDateFormat day1 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-//        holder.tvthoigianlapphieuitemphieudatphongdata.setText(String.valueOf(day1.format(PhieuDat.getNgayLap())));
-        holder.tvthoigianlapphieuitemphieunhanphongdata.setText(ac.formatDateToString(PhieuNhan.getNgayLap(),"dd/MM/yyyy HH:mm:ss"));
-        holder.tvphongitemphieunhanphongdata.setText(String.valueOf(PhieuNhan.getKhachHangID()));
+        for (int i=0;i<lsKhachHang.size();i++)
+        {
+            if(phieuNhanDTO.getKhachHangId()==lsKhachHang.get(i).getKhachHangId())
+            {
+                holder.phieunhanphongBinding.tvTenkhachhangPhieunhanphongData.setText(lsKhachHang.get(i).getTenKhachHang());
+                holder.phieunhanphongBinding.tvSdtItemphieunhanphongData.setText(lsKhachHang.get(i).getSdt());
+            }
+        }
+
+        holder.phieunhanphongBinding.tvSochungtuPhieunhanphongData.setText(String.valueOf(phieuNhanDTO.getSoChungTu()));
+
+        holder.phieunhanphongBinding.tvThoigianlapphieuItemphieunhanphongData.setText(ac.formatDateToString(phieuNhanDTO.getNgayLap(),"dd/MM/yyyy HH:mm:ss"));
+        holder.phieunhanphongBinding.tvPhongItemphieunhanphongData.setText(phieuNhanDTO.getSoChungTu());
+
     }
 
     @Override
@@ -59,19 +79,11 @@ public class PhieuNhanPhongAdapter extends RecyclerView.Adapter<PhieuNhanPhongAd
     }
 
     class PhieuNhanPhongViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvtenkhachhangphieunhanphongdata,
-                tvsochungtuphieunhanphongdata,
-                tvsdtitemphieunhanphongdata,
-                tvthoigianlapphieuitemphieunhanphongdata,
-                tvphongitemphieunhanphongdata;
-        public PhieuNhanPhongViewHolder(@NonNull View itemView) {
+        private ItemPhieunhanphongBinding phieunhanphongBinding;
+        public PhieuNhanPhongViewHolder(@NonNull ItemPhieunhanphongBinding itemView) {
 
-            super(itemView);
-            tvtenkhachhangphieunhanphongdata = itemView.findViewById(R.id.tv_tenkhachhang_phieunhanphong_data);
-            tvsochungtuphieunhanphongdata = itemView.findViewById(R.id.tv_sochungtu_phieunhanphong_data);
-            tvsdtitemphieunhanphongdata = itemView.findViewById(R.id.tv_sdt_itemphieunhanphong_data);
-            tvthoigianlapphieuitemphieunhanphongdata = itemView.findViewById(R.id.tv_thoigianlapphieu_itemphieunhanphong_data);
-            tvphongitemphieunhanphongdata = itemView.findViewById(R.id.tv_phong_itemphieunhanphong_data);
+            super(itemView.getRoot());
+      this.phieunhanphongBinding=itemView;
         }
     }
 }
