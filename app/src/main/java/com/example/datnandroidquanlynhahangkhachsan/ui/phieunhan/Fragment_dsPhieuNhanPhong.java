@@ -127,7 +127,7 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
     public void onLayDanhSachPhieuNhanSuccess(List<PhieuNhanDTO> list) {
         lsPhieuNhan = list;
         phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(this);
-        phieuNhanPhongAdapter.setData(lsPhieuNhan, lsKhachHang);
+        phieuNhanPhongAdapter.setData(lsPhieuNhan, lsKhachHang,getContext());
         rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);
         //Toast.makeText(getContext(), "Lấy danh sách phiếu đặt phòng thành công", Toast.LENGTH_LONG).show();
     }
@@ -139,7 +139,7 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
         lsKhachHang = list;
         phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(this);
-        phieuNhanPhongAdapter.setData(lsPhieuNhan, lsKhachHang);
+        phieuNhanPhongAdapter.setData(lsPhieuNhan, lsKhachHang,getContext());
         rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);
 
         //Toast.makeText(getContext(), "Lấy danh sách phiếu đặt phòng thành công", Toast.LENGTH_LONG).show();

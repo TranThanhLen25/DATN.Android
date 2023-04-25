@@ -2,6 +2,7 @@ package com.example.datnandroidquanlynhahangkhachsan.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhan
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.Fragment_dsPhieuNhanPhong;
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.model.PhieuNhan;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatActivity;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 
 import java.util.List;
@@ -26,7 +28,7 @@ public class PhieuNhanPhongAdapter extends RecyclerView.Adapter<PhieuNhanPhongAd
     private List<PhieuNhanDTO> lsPhieuNhan;
     private List<KhachHangDTO>lsKhachHang;
     private AppUtils ac;
-
+private Context context;
     public PhieuNhanPhongAdapter(List<PhieuNhanDTO> lsPhieuNhan) {
 
         this.lsPhieuNhan = lsPhieuNhan;
@@ -34,9 +36,10 @@ public class PhieuNhanPhongAdapter extends RecyclerView.Adapter<PhieuNhanPhongAd
 
     public PhieuNhanPhongAdapter(Fragment_dsPhieuNhanPhong fragment_dsPhieuNhanPhong) {
     }
-    public void setData(List<PhieuNhanDTO> lsPhieuNhan,List<KhachHangDTO> lsKhachHang) {
+    public void setData(List<PhieuNhanDTO> lsPhieuNhan,List<KhachHangDTO> lsKhachHang,Context context) {
         this.lsPhieuNhan = lsPhieuNhan;
         this.lsKhachHang=lsKhachHang;
+        this.context=context;
         notifyDataSetChanged();
     }
 
@@ -64,9 +67,10 @@ public class PhieuNhanPhongAdapter extends RecyclerView.Adapter<PhieuNhanPhongAd
         }
 
         holder.phieunhanphongBinding.tvSochungtuPhieunhanphongData.setText(String.valueOf(phieuNhanDTO.getSoChungTu()));
-
         holder.phieunhanphongBinding.tvThoigianlapphieuItemphieunhanphongData.setText(ac.formatDateToString(phieuNhanDTO.getNgayLap(),"dd/MM/yyyy HH:mm:ss"));
         holder.phieunhanphongBinding.tvPhongItemphieunhanphongData.setText(phieuNhanDTO.getSoChungTu());
+
+
 
     }
 

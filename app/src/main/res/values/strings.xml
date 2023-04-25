@@ -126,6 +126,7 @@
 
 
     <string name="floating_action_button_description">Tạo mới</string>
+    <string name="textview_ls">Danh sách phiếu xuất</string>
 
 
     <!--    Dialog-->

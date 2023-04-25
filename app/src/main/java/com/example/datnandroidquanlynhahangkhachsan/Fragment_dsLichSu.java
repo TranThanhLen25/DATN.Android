@@ -6,21 +6,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuXuatAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsLichSuBinding;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.DanhSachMenuActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuNhanPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.Fragment_dsPhieuNhanPhong;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatConTract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatPresenter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Fragment_dsLichSu#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_dsLichSu extends Fragment implements View.OnClickListener {
+public class Fragment_dsLichSu extends Fragment implements PhieuXuatConTract.View {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,8 +43,10 @@ public class Fragment_dsLichSu extends Fragment implements View.OnClickListener 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private FragmentDsLichSuBinding DsLichSuBinding;
-
+    private FragmentDsLichSuBinding phieuXuatBinding;
+    private List<PhieuXuatDTO> phieuXuat;
+    private PhieuXuatAdapter phieuXuatAdapter;
+    private RecyclerView recyclerView;
     public Fragment_dsLichSu() {
         // Required empty public constructor
     }
@@ -65,47 +78,37 @@ public class Fragment_dsLichSu extends Fragment implements View.OnClickListener 
         }
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_imgtest:
-//                fragment = new fragment_menu();
-//                replaceFragment(fragment);
-                Intent intent=new Intent(getActivity(), DanhSachMenuActivity.class);
-                startActivity(intent);
-                break;
-            default:
-                fragment = new Fragment_dsPhieuNhanPhong();
-                replaceFragment(fragment);
-                break;
-        }
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        //View view = inflater.inflate(R.layout.fragment_ds_lich_su, container, false);
-        DsLichSuBinding = DsLichSuBinding.inflate(inflater, container, false);
-        ImageButton btnthemphieudatphong = (ImageButton) DsLichSuBinding.btnImgtest;
-        btnthemphieudatphong.setOnClickListener(this);
-        //return view;
-        DsLichSuBinding.btnTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getActivity(), ThemPhieuNhanPhongActivity.class);
-                startActivity(intent);
-//                fragment = new fragment_menu();
-//                replaceFragment(fragment);
-            }
-        });
-        return DsLichSuBinding.getRoot();
+        super.onCreate(savedInstanceState);
+        phieuXuatBinding=FragmentDsLichSuBinding.inflate(inflater,container,false);
+        phieuXuat = new ArrayList<>();
+
+        PhieuXuatPresenter phieuXuatPresenter = new PhieuXuatPresenter(this);
+        DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO = new DieuKienLocPhieuXuatDTO();
+        phieuXuatPresenter.LayDanhSachPhieuXuat(dieuKienLocPhieuXuatDTO);
+
+        recyclerView = phieuXuatBinding.rscvDslichsu;
+        LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
+        recyclerView.setLayoutManager(LinearLayoutManager);
+
+
+        return phieuXuatBinding.getRoot();
+    }
+    public void onLayDanhSachPhieuXuatSuccess(List<PhieuXuatDTO> list) {
+        phieuXuat = list;
+        phieuXuatAdapter = new PhieuXuatAdapter(this);
+        phieuXuatAdapter.setData(phieuXuat, getContext());
+        recyclerView.setAdapter(phieuXuatAdapter);
+        Toast.makeText(getContext(), "aaaaaaaaaaaaaaaaaaaaaaaaaaa", Toast.LENGTH_SHORT).show();
+
     }
 
-    public void replaceFragment(Fragment someFragment) {
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, someFragment ); // give your fragment container id in first parameter
-        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-        transaction.commit();
+
+    public void onLayDanhSachPhieuXuatError(String error) {
     }
+
 }

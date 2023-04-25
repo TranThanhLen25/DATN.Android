@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.phieuxuat.PhieuXuatActivity">
+
+    <include
+        android:id="@+id/icl_phieuxuat"
+        layout="@layout/activity_appar_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/icl_phieuxuat">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_phieuxuat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/icl_phieuxuat">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctl_ten"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:layout_constraintEnd_toEndOf="@id/ctl_phieuxuat"
+                app:layout_constraintStart_toStartOf="@id/ctl_phieuxuat"
+                app:layout_constraintTop_toTopOf="@id/ctl_phieuxuat"
+
+
+                >
+
+                <TextView
+                    android:id="@id/tv_ten"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Khách hàng: "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/heading_2"
+
+                    app:layout_constraintBottom_toBottomOf="@id/ctl_ten"
+                    app:layout_constraintStart_toStartOf="@id/ctl_ten"
+                    app:layout_constraintTop_toTopOf="@id/ctl_ten" />
+
+                <TextView
+                    android:id="@+id/tv_so"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="chưa lấy được"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/heading_2"
+                    app:layout_constraintBottom_toBottomOf="@id/ctl_ten"
+                    app:layout_constraintStart_toEndOf="@+id/tv_ten"
+                    app:layout_constraintTop_toTopOf="@id/ctl_ten" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctl_sdt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ctl_ten"
+
+
+                >
+
+                <TextView
+                    android:id="@id/tv_sdt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SDT: "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/heading_2"
+                    app:layout_constraintBottom_toBottomOf="@id/ctl_sdt"
+                    app:layout_constraintStart_toStartOf="@id/ctl_sdt"
+                    app:layout_constraintTop_toTopOf="@id/ctl_sdt" />
+
+                <TextView
+                    android:id="@+id/tv_sdt_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="0 lấy được"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/heading_2"
+                    app:layout_constraintBottom_toBottomOf="@id/ctl_sdt"
+                    app:layout_constraintStart_toEndOf="@+id/tv_sdt"
+                    app:layout_constraintTop_toTopOf="@id/ctl_sdt" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ctl_sdt" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rscv_phieuxuat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@id/ctl_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctl_btn"
+        android:layout_width="match_parent"
+        android:padding="6dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <Button
+            android:id="@+id/btn_thanhtoan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:text="Thanh toán"
+            android:textAllCaps="false"
+            android:textSize="@dimen/heading_2"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintBottom_toBottomOf="@id/ctl_btn"
+            app:layout_constraintEnd_toEndOf="@id/ctl_btn" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
