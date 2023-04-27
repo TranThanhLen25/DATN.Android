@@ -23,11 +23,10 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDoiPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuNhanPhongActivity;
-import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuTraPhongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.PhieuTraPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.chitietphong.ChiTietPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.ThemPhieuDatphongActivity;
 
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -225,9 +224,12 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         traphong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(dialog.getContext(), ThemPhieuTraPhongActivity.class);
+                Intent intent = new Intent(dialog.getContext(), PhieuTraPhongActivity.class);
                 context.startActivity(intent);
-
+                SharedPreferences sharedPreferences = context.getSharedPreferences("GET_PHONGID", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("PHONGID", phongid);
+                editor.commit();
                 dialog.dismiss();
 
             }

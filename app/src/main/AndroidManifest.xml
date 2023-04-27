@@ -29,7 +29,7 @@
             android:name=".ui.Menu.DanhSachMenuActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.ThemPhieuTraPhongActivity"
+            android:name=".ui.PhieuTraPhongActivity"
             android:exported="false" />
         <activity
             android:name=".ui.ThemPhieuDoiPhongActivity"

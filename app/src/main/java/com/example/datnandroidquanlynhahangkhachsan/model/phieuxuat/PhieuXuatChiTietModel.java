@@ -1,27 +1,30 @@
-package com.example.datnandroidquanlynhahangkhachsan.model.nguoidung;
+package com.example.datnandroidquanlynhahangkhachsan.model.phieuxuat;
+
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.ErrorMessageDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseTokenDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.APIService;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.IAPIServiceTokenRetrofit;
-import com.example.datnandroidquanlynhahangkhachsan.model.phong.IPhongModel;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class NguoiDungModel implements INguoiDungModel {
+public class PhieuXuatChiTietModel implements IPhieuXuatChiTietModel {
     APIService service;
     private ErrorMessageDTO errorKiemTra;
+
+
+
     @Override
-    public void CapNhatNguoiDung(NguoiDungDTO nguoiDungDTO, IPhongModel.IOnCapNhatNguoiDungFinishedListener listener) {
+    public void CapNhatPhieuXuatChiTiet(PhieuXuatChiTietDTO phieuXuatChiTietDTO, IOnCapNhatPhieuXuatChiTietFinishedListener listener) {
         service = new APIService();
         service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
             @Override
             public void onSuccess(ResponseTokenDTO itemToken) {
-                service.apiServiceRetrofit.capNhatNguoiDung(nguoiDungDTO).enqueue(new Callback<ResponseInfo>() {
+                service.apiServiceRetrofit.capNhatPhieuXuatChiTiet(phieuXuatChiTietDTO).enqueue(new Callback<ResponseInfo>() {
                     @Override
                     public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
 

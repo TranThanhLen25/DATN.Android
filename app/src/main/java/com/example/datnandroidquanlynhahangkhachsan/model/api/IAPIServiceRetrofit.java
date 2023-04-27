@@ -18,6 +18,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPh
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
 
 import java.util.List;
@@ -109,4 +110,7 @@ public interface IAPIServiceRetrofit {
     @POST("/api/PhieuXuat/danhsach-PhieuXuat?")
     Call<ResponseDTO<List<PhieuXuatDTO>>>   layPhieuXuat(@Body DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO);
 
+
+    @POST("/api/PhieuNhanPhongChiTiet/capnhat-PhieuNhanPhongChiTiet")
+    Call<ResponseInfo> capNhatPhieuXuatChiTiet(@Body PhieuXuatChiTietDTO phieuXuatChiTietDTO);
 }

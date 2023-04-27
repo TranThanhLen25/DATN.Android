@@ -1,25 +1,26 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.datnandroidquanlynhahangkhachsan.adapter.PhongAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsPhongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
-
-import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsPhongBinding;
-import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
-import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongPresenter;
-import com.example.datnandroidquanlynhahangkhachsan.adapter.PhongAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatChiTietContract;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ import java.util.List;
  * Use the {@link Fragment_Phong#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_Phong extends Fragment implements PhongContract.View , LoaiPhongContract.View {
+public class Fragment_Phong extends Fragment implements PhongContract.View, LoaiPhongContract.View, PhieuXuatChiTietContract.View {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -46,6 +47,7 @@ public class Fragment_Phong extends Fragment implements PhongContract.View , Loa
     private PhongAdapter dsPhongAdapter;
     private PhongPresenter danhSachPhongPresenter;
     private LoaiPhongPresenter loaiPhongPresenter;
+    ;
     private FragmentDsPhongBinding fragmentDsPhongBinding;
 
 
@@ -96,8 +98,6 @@ public class Fragment_Phong extends Fragment implements PhongContract.View , Loa
         lsLoaiPhong=new ArrayList<>();
        loaiPhongPresenter=new LoaiPhongPresenter(this);
        loaiPhongPresenter.LayLoaiPhong();
-
-
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this.getActivity(), 3);
         rscvDsPhong.setLayoutManager(gridLayoutManager);
         fragmentDsPhongBinding.iclAppback.icBack.setOnClickListener(new View.OnClickListener() {
@@ -150,11 +150,22 @@ public class Fragment_Phong extends Fragment implements PhongContract.View , Loa
     @Override
     public void onCapNhatTrangThaiPhongSuccess() {
 
+
     }
 
     @Override
     public void onCapNhatTrangThaiPhongError(String error) {
 
     }
+
+    @Override
+    public void onCapNhatPhieuXuatChiTietSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatPhieuXuatChiTietError(String error) {
+    }
+
 
 }
