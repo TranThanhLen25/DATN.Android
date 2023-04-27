@@ -3,6 +3,7 @@ package com.example.datnandroidquanlynhahangkhachsan.ui.chitietphong;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,18 +11,20 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.MenuAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityChiTietPhongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
-import com.example.datnandroidquanlynhahangkhachsan.model.DichVu;
+import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
+import com.example.datnandroidquanlynhahangkhachsan.ui.DichVu.DichVuContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.DichVu.DichVuPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.DanhSachMenuActivity;
-import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.MenuDichVuContract;
-import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.MenuDichVuPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.HangHoaContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.HangHoaPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
@@ -31,26 +34,33 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChiTietPhongActivity extends AppCompatActivity implements MenuDichVuContract.View, ItemTouchHelperListener, PhongContract.View, LoaiPhongContract.View {
+public class ChiTietPhongActivity extends AppCompatActivity implements DichVuContract.View, HangHoaContract.View, ItemTouchHelperListener, PhongContract.View, LoaiPhongContract.View {
     private RecyclerView rscvDichVu;
-    private List<DichVu> lsdichvu;
+
     private List<DichVuDTO> dichVuDTOList;
+    private List<DichVuDTO> listDichVuBanDau;
+    private List<DichVuDTO> listDichVuCapNhat;
+    private List<DichVuDTO> listDichVuThem;
     private List<HangHoaDTO> hangHoaDTOList;
     private List<PhongDTO> lsPhong;
     private List<LoaiPhongDTO> lsLoaiPhong;
     private MenuAdapter menuAdapter;
     private ActivityChiTietPhongBinding ChiTietPhongBinding;
-    private MenuDichVuPresenter menuDichVuPresenter;
+    private HangHoaPresenter hangHoaPresenter;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
+    private DichVuPresenter dichVuPresenter;
+
+    Handler handler = new Handler();
+    Runnable runnable;
+    int delay = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chi_tiet_phong);
-
         ChiTietPhongBinding = ChiTietPhongBinding.inflate(getLayoutInflater());
+        setContentView(ChiTietPhongBinding.getRoot());
 
 
         LoaiPhongPresenter loaiPhongPresenter = new LoaiPhongPresenter(this);
@@ -61,20 +71,21 @@ public class ChiTietPhongActivity extends AppCompatActivity implements MenuDichV
 
 
         ////gán thông tin vào textVIEW
-        sharedPreferences=getSharedPreferences("PHONG",MODE_PRIVATE);
-       ChiTietPhongBinding.tvLoaiphongchitiet.setText(sharedPreferences.getString("LOAIPHONG",""));
-       ChiTietPhongBinding.tvSo.setText(String.valueOf(sharedPreferences.getInt("SOPHONG", 0))  );
+        sharedPreferences = getSharedPreferences("PHONG", MODE_PRIVATE);
+        ChiTietPhongBinding.tvLoaiphongchitiet.setText(sharedPreferences.getString("LOAIPHONG", ""));
+        ChiTietPhongBinding.tvSo.setText(String.valueOf(sharedPreferences.getInt("SOPHONG", 0)));
 
         //// format lại giá tiền
         DecimalFormat decimalFormat = new DecimalFormat("#,##0");
         String formattedNumber = decimalFormat.format(sharedPreferences.getInt("GIA", 0));
-         ChiTietPhongBinding.tvGiachitiet.setText(formattedNumber+ " đồng");
-
+        ChiTietPhongBinding.tvGiachitiet.setText(formattedNumber + " đồng");
 
 
         ChiTietPhongBinding.toolbarChitietphong.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //xóa menu dư khi thoát
+                tempData.lsDichVu.clear();
                 /// xóa thông tin phòng khi thoát
                 SharedPreferences sharedPreferences = getSharedPreferences("PHONG", MODE_PRIVATE);
                 editor = sharedPreferences.edit();
@@ -83,6 +94,10 @@ public class ChiTietPhongActivity extends AppCompatActivity implements MenuDichV
                 onBackPressed();
             }
         });
+
+        //khởi tạo list hàng hóa id
+        tempData.lsDichVu = new ArrayList<>();
+
         ChiTietPhongBinding.imgMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,40 +107,157 @@ public class ChiTietPhongActivity extends AppCompatActivity implements MenuDichV
         });
 
 
-        ChiTietPhongBinding.btnLuuChitietphong.setOnClickListener(view -> onBackPressed());
+        ChiTietPhongBinding.btnLuuChitietphong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for (int i = 0; i < dichVuDTOList.size(); i++) {
+                    for (int j = 0; j < listDichVuBanDau.size(); j++) {
+                        if (dichVuDTOList.get(i).getHangHoaId() == listDichVuBanDau.get(j).getHangHoaId()) {
+                            listDichVuCapNhat.add(dichVuDTOList.get(i));
+                        } else {
+                            listDichVuThem.add(dichVuDTOList.get(i));
+                        }
+                    }
+                }
 
-        rscvDichVu = findViewById(R.id.rscv_dichvu);
-        //thêm dữ liệu dịch vụ
-        lsdichvu = new ArrayList<>();
-        DichVu dv1 = new DichVu("dv1", "1", "1", "1");
-        DichVu dv2 = new DichVu("dv2", "2", "2", "2");
-        DichVu dv3 = new DichVu("dv3", "3", "3", "3");
-        DichVu dv4 = new DichVu("dv4", "4", "4", "4");
-        lsdichvu.add(dv1);
-        lsdichvu.add(dv2);
-        lsdichvu.add(dv3);
-        lsdichvu.add(dv4);
 
-        //lấy dữ liệu hàng hóa
-        menuDichVuPresenter = new MenuDichVuPresenter(this);
-        menuDichVuPresenter.LayDanhSachHangHoa2("");
+                //xóa menu dư khi thoát
+                tempData.lsDichVu.clear();
+                onBackPressed();
+            }
+        });
 
-        menuAdapter = new MenuAdapter(lsdichvu);
+        rscvDichVu = ChiTietPhongBinding.rscvDichvu;
+
+        //khởi tạo list menu
+        dichVuDTOList = new ArrayList<>();
+
+        //lấy dữ liệu menu của phòng này;
+        dichVuPresenter = new DichVuPresenter(this);
+        DichVuDTO dichVuDTO = new DichVuDTO();
+        SharedPreferences sharedPreferences = getSharedPreferences("PHONG", MODE_PRIVATE);
+        int phongID = sharedPreferences.getInt("PHONGID", 0);
+        dichVuDTO.setPhongID(phongID);
+        dichVuDTO.setTrangThai("");
+
+        hangHoaPresenter = new HangHoaPresenter(this);
+
+        //lấy dữ liệu menu mỗi giây
+        handler.postDelayed(runnable = new Runnable() {
+            int count = 0;
+
+            public void run() {
+                count++;
+                handler.postDelayed(runnable, delay);
+
+                //lấy dữ liệu menu
+                dichVuPresenter.LayDanhSachDichVu(dichVuDTO);
+
+                //lấy dữ liệu hàng hóa
+                hangHoaPresenter.LayDanhSachHangHoa2("");
+                if (count == 3) {
+                    handler.removeCallbacks(runnable);
+                }
+            }
+        }, delay);
+
+
+//        menuAdapter = new MenuAdapter(dichVuDTOList, hangHoaDTOList);
+//        rscvDichVu.setAdapter(menuAdapter);
+
+
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this);
         rscvDichVu.setLayoutManager(LinearLayoutManager);
         RecyclerView.ItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         rscvDichVu.addItemDecoration(decoration);
-        rscvDichVu.setAdapter(menuAdapter);
+
 
         ItemTouchHelper.Callback callback = new RecycleViewItemTouchHelper(this);
         ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
         touchHelper.attachToRecyclerView(rscvDichVu);
-        setContentView(ChiTietPhongBinding.getRoot());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        //trường hợp menu trong chi tiết phòng đã có item
+        if (dichVuDTOList.size() > 0) {
+
+            //trong gọi menu có chọn ít nhất 1 item
+            if (tempData.lsDichVu.size() > 0) {
+                SharedPreferences sharedPreferences = getSharedPreferences("PHONG", MODE_PRIVATE);
+                int phongID = sharedPreferences.getInt("PHONGID", 0);
+                HangHoaDTO hangHoaDTO = new HangHoaDTO();
+
+                //kiểm tra menu được gọi đã có trong list menu trong chi tiết phòng hay chưa
+                //nếu đã có thì xóa trong list menu gọi và tăng menu trong chi tiết phòng thêm 1
+                for (int n = 0; n < dichVuDTOList.size(); n++) {
+                    for (int m = 0; m < tempData.lsDichVu.size(); m++) {
+                        if (dichVuDTOList.get(n).getHangHoaId() == tempData.lsDichVu.get(m)) {
+                            dichVuDTOList.get(n).setSoLuong(dichVuDTOList.get(n).getSoLuong() + 1);
+                            tempData.lsDichVu.remove(m);
+                        }
+                    }
+                }
+
+                //sau khi đã kiểm tra trùng menu ở trên
+                //thì thêm những menu chưa có trong menu chi tiết phòng vào
+                for (int i = 0; i < tempData.lsDichVu.size(); i++) {
+                    for (int j = 0; j < hangHoaDTOList.size(); j++) {
+                        if (hangHoaDTOList.get(j).getHangHoaId() == tempData.lsDichVu.get(i)) {
+                            hangHoaDTO = hangHoaDTOList.get(j);
+                            break;
+                        }
+                    }
+                    DichVuDTO dichVuDTO = new DichVuDTO(phongID, tempData.lsDichVu.get(i), 1);
+                    dichVuDTOList.add(dichVuDTO);
+                }
+                tempData.lsDichVu.clear();
+                menuAdapter = new MenuAdapter(dichVuDTOList, hangHoaDTOList);
+                rscvDichVu.setAdapter(menuAdapter);
+            } else {
+
+            }
+        } else {
+            //menu chi tiết phòng đang trống
+
+            //trường hợp trong gọi menu > 0
+            if (tempData.lsDichVu.size() > 0) {
+                //dichVuDTOList.clear();
+
+                //lấy phòng id
+                SharedPreferences sharedPreferences = getSharedPreferences("PHONG", MODE_PRIVATE);
+                int phongID = sharedPreferences.getInt("PHONGID", 0);
+
+                //khởi tạo hàng hóa, tìm lấy ra đơn giá
+                HangHoaDTO hangHoaDTO = new HangHoaDTO();
+                for (int i = 0; i < tempData.lsDichVu.size(); i++) {
+                    for (int j = 0; j < hangHoaDTOList.size(); j++) {
+                        if (hangHoaDTOList.get(j).getHangHoaId() == tempData.lsDichVu.get(i)) {
+                            hangHoaDTO = hangHoaDTOList.get(j);
+                            break;
+                        }
+                    }
+
+                    //thêm hàng hóa vào menu trong chi tiết phòng
+                    DichVuDTO dichVuDTO = new DichVuDTO(phongID, tempData.lsDichVu.get(i), 1);
+                    dichVuDTOList.add(dichVuDTO);
+                }
+                tempData.lsDichVu.clear();
+                menuAdapter = new MenuAdapter(dichVuDTOList, hangHoaDTOList);
+                rscvDichVu.setAdapter(menuAdapter);
+            } else {
+
+            }
+        }
     }
 
     @Override
     public void onLayDanhSachHangHoaSuccess(List<HangHoaDTO> list) {
         hangHoaDTOList = list;
+        menuAdapter = new MenuAdapter(dichVuDTOList, hangHoaDTOList);
+        rscvDichVu.setAdapter(menuAdapter);
     }
 
     @Override
@@ -142,16 +274,12 @@ public class ChiTietPhongActivity extends AppCompatActivity implements MenuDichV
 
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int position) {
-//        String menuDelete = lsdichvu.get(viewHolder.getAdapterPosition()).getTenHangHoa();
-//        DichVu dichVu = lsdichvu.get(viewHolder.getAdapterPosition());
-//        int indexDelete = viewHolder.getAdapterPosition();
         menuAdapter.removeItem(viewHolder.getAdapterPosition());
     }
 
 
     @Override
     public void onLayLoaiPhongSuccess(List<LoaiPhongDTO> list) {
-
         lsLoaiPhong = list;
     }
 
@@ -182,5 +310,16 @@ public class ChiTietPhongActivity extends AppCompatActivity implements MenuDichV
 
     @Override
     public void onCapNhatTrangThaiPhongError(String error) {
+    }
+
+    @Override
+    public void onLayDanhSachDichVuSuccess(List<DichVuDTO> list) {
+        dichVuDTOList = list;
+        listDichVuBanDau = dichVuDTOList;
+    }
+
+    @Override
+    public void onLayDanhSachDichVuError(String error) {
+
     }
 }

@@ -49,7 +49,8 @@
                 android:padding="5dp"
                 android:src="@drawable/ic_add"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/DetailMenu"
@@ -61,10 +62,11 @@
 
                 <TextView
                     android:id="@+id/tv_tenmenu"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="Giặt ủi"
                     android:textSize="@dimen/textview_tk_mk"
+                    android:inputType="textMultiLine"
                     app:layout_constraintStart_toStartOf="@+id/DetailMenu"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -94,7 +96,6 @@
                 android:layout_marginLeft="100dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/btn_MinusItemMenu"
-                app:layout_constraintStart_toEndOf="@+id/DetailMenu"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
@@ -117,7 +118,8 @@
                 android:padding="5dp"
                 android:src="@drawable/ic_minus"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 

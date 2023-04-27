@@ -1,40 +1,37 @@
 package com.example.datnandroidquanlynhahangkhachsan.entities;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class DichVuDTO {
+    @SerializedName("dichVuId")
     private long DichVuID;
+    @SerializedName("phongId")
     private int PhongID;
+    @SerializedName("banId")
     private int BanID;
+    @SerializedName("hangHoaId")
     private int HangHoaId;
+    @SerializedName("phieuNhanId")
     private long PhieuNhanID;
-    private float SoLuong;
-    private float DonGia;
-    private float ThanhTien;
+    @SerializedName("soLuong")
+    private int SoLuong;
+    @SerializedName("donGia")
+    private int DonGia;
+    @SerializedName("thanhTien")
+    private int ThanhTien;
+    @SerializedName("ghiChu")
     private String GhiChu;
-    private  String TrangThai;
+    @SerializedName("trangThai")
+    private String TrangThai;
+    @SerializedName("thoiGian")
     private Date ThoiGian;
 
-
-//    public DichVuDTO(int phongID, int banID, int hangHoaId, long phieuNhanID, float soLuong, float donGia, float thanhTien, String ghiChu, String trangThai, Date thoiGian) {
-//        PhongID = phongID;
-//        BanID = banID;
-//        HangHoaId = hangHoaId;
-//        PhieuNhanID = phieuNhanID;
-//        SoLuong = soLuong;
-//        DonGia = donGia;
-//        ThanhTien = thanhTien;
-//        GhiChu = ghiChu;
-//        TrangThai = trangThai;
-//        ThoiGian = thoiGian;
-//    }
-
-    public DichVuDTO(int phongID, int hangHoaId, float soLuong, float donGia, float thanhTien) {
+    public DichVuDTO(int phongID, int hangHoaId, int soLuong) {
         PhongID = phongID;
         HangHoaId = hangHoaId;
         SoLuong = soLuong;
-        DonGia = donGia;
-        ThanhTien = thanhTien;
     }
 
     public DichVuDTO() {
@@ -80,27 +77,27 @@ public class DichVuDTO {
         PhieuNhanID = phieuNhanID;
     }
 
-    public float getSoLuong() {
+    public int getSoLuong() {
         return SoLuong;
     }
 
-    public void setSoLuong(float soLuong) {
+    public void setSoLuong(int soLuong) {
         SoLuong = soLuong;
     }
 
-    public float getDonGia() {
+    public int getDonGia() {
         return DonGia;
     }
 
-    public void setDonGia(float donGia) {
+    public void setDonGia(int donGia) {
         DonGia = donGia;
     }
 
-    public float getThanhTien() {
+    public int getThanhTien() {
         return ThanhTien;
     }
 
-    public void setThanhTien(float thanhTien) {
+    public void setThanhTien(int thanhTien) {
         ThanhTien = thanhTien;
     }
 

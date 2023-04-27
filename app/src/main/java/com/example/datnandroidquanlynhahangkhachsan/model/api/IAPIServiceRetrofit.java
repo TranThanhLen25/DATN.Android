@@ -1,7 +1,9 @@
 package com.example.datnandroidquanlynhahangkhachsan.model.api;
 
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.DichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DieuKienLocHangHoaDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.GoiMonDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
@@ -89,5 +91,17 @@ public interface IAPIServiceRetrofit {
 
     @POST("/api/NguoiDung/CapNhat-NguoiDung")
     Call<ResponseInfo> capNhatNguoiDung(@Body NguoiDungDTO nguoiDungDTO);
+
+    @POST("/api/hanghoa/danhsach-GoiMon")
+    Call<ResponseDTO<List<GoiMonDTO>>> layDanhSachGoiMon(@Body GoiMonDTO goiMonDTO);
+
+    @POST("/api/hanghoa/danhsach-dichvu")
+    Call<ResponseDTO<List<DichVuDTO>>> layDanhSachDichVu(@Body DichVuDTO dichVuDTO);
+
+    @POST("/api/KhachHang/Them-KhachHang")
+    Call<ResponseInfo> themDichVu(@Body DichVuDTO dichVuDTO);
+
+    @POST("/api/KhachHang/Them-KhachHang")
+    Call<ResponseInfo> themGoiMon(@Body GoiMonDTO goiMonDTO);
 
 }

@@ -1,18 +1,31 @@
 package com.example.datnandroidquanlynhahangkhachsan.entities;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class GoiMonDTO {
+    @SerializedName("goiMonId")
     private long GoiMonID;
+    @SerializedName("phongId")
     private int PhongID;
+    @SerializedName("banId")
     private int BanID;
+    @SerializedName("hangHoaId")
     private int HangHoaId;
+    @SerializedName("phieuNhanId")
     private long PhieuNhanID;
+    @SerializedName("soLuong")
     private float SoLuong;
+    @SerializedName("donGia")
     private float DonGia;
+    @SerializedName("thanhTien")
     private float ThanhTien;
+    @SerializedName("ghiChu")
     private String GhiChu;
-    private  String TrangThai;
+    @SerializedName("trangThai")
+    private String TrangThai;
+    @SerializedName("thoiGian")
     private Date ThoiGian;
 
     public GoiMonDTO(int phongID, int banID, int hangHoaId, long phieuNhanID, float soLuong, float donGia, float thanhTien, String ghiChu, String trangThai, Date thoiGian) {
