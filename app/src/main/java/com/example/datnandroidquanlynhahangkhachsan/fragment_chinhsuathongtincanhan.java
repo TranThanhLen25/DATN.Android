@@ -3,13 +3,12 @@ package com.example.datnandroidquanlynhahangkhachsan;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentChinhsuathongtincanhanBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
@@ -23,7 +22,7 @@ import java.util.List;
  * Use the {@link fragment_chinhsuathongtincanhan#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragment_chinhsuathongtincanhan extends Fragment  {
+public class fragment_chinhsuathongtincanhan extends Fragment implements NguoiDungContract.View {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,6 +34,7 @@ public class fragment_chinhsuathongtincanhan extends Fragment  {
     private String mParam2;
 
     private NguoiDungDTO nguoiDungDTO;
+    private NguoiDungPresenter nguoiDungPresenter;
     FragmentChinhsuathongtincanhanBinding chinhsuathongtincanhanBinding;
 
     public fragment_chinhsuathongtincanhan() {
@@ -88,26 +88,79 @@ public class fragment_chinhsuathongtincanhan extends Fragment  {
 
         chinhsuathongtincanhanBinding.etQqchinhsua.setText(sharedPreferences.getString("DIACHI", ""));
 
+
         chinhsuathongtincanhanBinding.tvGtchinhsua.setText(sharedPreferences.getString("GIOITINH", ""));
 
         chinhsuathongtincanhanBinding.tvCccdchinhsua.setText(sharedPreferences.getString("CCCD", ""));
 
         chinhsuathongtincanhanBinding.tvCvchinhsua.setText(sharedPreferences.getString("LOAITAIKHOAN", ""));
 
-        chinhsuathongtincanhanBinding.tvTenThongticanhan.setText(sharedPreferences.getString("TENNGUOIDUNG",""));
+        chinhsuathongtincanhanBinding.tvTenThongticanhan.setText(sharedPreferences.getString("TENNGUOIDUNG", ""));
 
         chinhsuathongtincanhanBinding.tvChucvuthongtincanhan.setText(sharedPreferences.getString("LOAITAIKHOAN", ""));
 
 
-
+        nguoiDungPresenter = new NguoiDungPresenter(this);
+        nguoiDungDTO = new NguoiDungDTO();
         chinhsuathongtincanhanBinding.btnLuuthongtincanhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              getActivity().onBackPressed();
 
+                if (chinhsuathongtincanhanBinding.etSdtctchinhsua.getText().length() == 10 &&
+                        !(chinhsuathongtincanhanBinding.etQqchinhsua.getText().toString().equals(""))) {
+
+
+                    ///lấy người dùng id
+                    nguoiDungDTO.setNguoiDungId(sharedPreferences.getInt("ID", 0));
+                    ///lưu sdt lại và csdl
+                    nguoiDungDTO.setSdt(chinhsuathongtincanhanBinding.etSdtctchinhsua.getText().toString());
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    // gán địa chỉ vào file NGUOI_DUNG tạm
+                    editor.putString("SDT", chinhsuathongtincanhanBinding.etSdtctchinhsua.getText().toString());
+                    editor.putString("DIACHI", chinhsuathongtincanhanBinding.etQqchinhsua.getText().toString());
+                    editor.apply();
+                    editor.commit();
+                    ////lưu lại địa chỉ
+                    nguoiDungDTO.setDiaChi(chinhsuathongtincanhanBinding.etQqchinhsua.getText().toString());
+                    ///mật khẩu giữ nguyên
+                    nguoiDungDTO.setMatKhau(sharedPreferences.getString("PASSWORD", ""));
+
+
+                    nguoiDungPresenter.CapNhatNguoiDung(nguoiDungDTO);
+                    Toast.makeText(getContext(), "Chỉnh sửa thông tin thành công", Toast.LENGTH_SHORT).show();
+                    getActivity().onBackPressed();
+                } else {
+                    Toast.makeText(getContext(), "Vui lòng nhập thông tin", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
+
         return chinhsuathongtincanhanBinding.getRoot();
+    }
+
+    @Override
+    public void onLayNguoiDungSuccess(List<NguoiDungDTO> lsNguoiDung) {
+    }
+
+    @Override
+    public void onLayNguoiDungError(String error) {
+    }
+
+    /// lấy người dùng theo id
+    @Override
+    public void onLayNguoiDungIDSuccess(List<NguoiDungDTO> lsNguoiDungID) {
+    }
+
+    @Override
+    public void onLayNguoiDungIDError(String error) {
+    }
+
+    @Override
+    public void onCapNhatNguoiDungSuccess() {
+    }
+
+    @Override
+    public void onCapNhatNguoiDungError(String error) {
     }
 }

@@ -2,6 +2,7 @@ package com.example.datnandroidquanlynhahangkhachsan.ui.dangnhap;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.ErrorMessageDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseTokenDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.APIService;
@@ -100,6 +101,32 @@ public class NguoiDungModel implements INguoiDungModel {
             public void onError(String error) {
                 //Lay token loi => thong bao loi
                 listener.onError(error);
+            }
+        });
+    }
+
+    @Override
+    public void CapNhatNguoiDung(NguoiDungDTO NguoiDungDTO, INguoiDungModel.IOnCapNhatNguoiDungFinishedListener listener) {
+        service = new APIService();
+        service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
+            @Override
+            public void onSuccess(ResponseTokenDTO itemToken) {
+                service.apiServiceRetrofit.capNhatNguoiDung(NguoiDungDTO).enqueue(new Callback<ResponseInfo>() {
+                    @Override
+                    public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseInfo> call, Throwable t) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+
             }
         });
     }

@@ -225,7 +225,8 @@
                     android:layout_height="35dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="28dp"
-
+                    android:maxLength="10"
+                    android:maxLines="1"
                     android:background="@drawable/bg_edittext"
                     android:inputType="textPersonName"
                     android:paddingStart="5dp"
@@ -240,9 +241,10 @@
                     android:layout_marginTop="30dp"
                     android:autofillHints=""
                     android:background="@drawable/bg_edittext"
-                    android:inputType="textPersonName"
+                    android:inputType="text"
                     android:layout_marginStart="15dp"
                     android:paddingStart="5dp"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/ctl_chitietchinhsua"
                     app:layout_constraintTop_toBottomOf="@id/et_sdtctchinhsua"

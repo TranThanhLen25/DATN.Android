@@ -24,12 +24,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Header;
-import com.example.datnandroidquanlynhahangkhachsan.databinding.DrawHeaderBinding;
-import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDialogDangXuatBinding;
+
+
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.DangNhapActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.dangnhap.NguoiDungPresenter;
 import com.google.android.material.navigation.NavigationView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,11 +72,14 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
 
         toggle.syncState();
 
-        FragmentDialogDangXuatBinding dangXuatBinding = FragmentDialogDangXuatBinding.inflate(getLayoutInflater());
+        SharedPreferences sharedPreferences=getSharedPreferences("NGUOI_DUNG",MODE_PRIVATE);
+        ////gán thông tin vào header
+        View hearder=navigationView.inflateHeaderView(R.layout.draw_header);
+        TextView tvTen=hearder.findViewById(R.id.tv_avt);
+        TextView tvVitri=hearder.findViewById(R.id.tv_vitri);
+        tvTen.setText(sharedPreferences.getString("TENNGUOIDUNG",""));
+        tvVitri.setText(sharedPreferences.getString("LOAITAIKHOAN",""));
 
-
-        DrawHeaderBinding headerBinding=DrawHeaderBinding.inflate(getLayoutInflater());
-        Toast.makeText(this,headerBinding.tvAvt.getText(), Toast.LENGTH_SHORT).show();
 
 
 
@@ -90,7 +95,7 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
 
-            SharedPreferences sharedPreferences=getSharedPreferences("NGUOI_DUNG",MODE_PRIVATE);
+
 
 
             ///cho đăng xuất khi vừa mới đăng nhập

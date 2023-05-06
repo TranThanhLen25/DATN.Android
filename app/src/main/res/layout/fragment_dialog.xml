@@ -62,6 +62,7 @@
 
 
     <View
+        android:id="@+id/view_traphong"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/blue_mo"></View>
@@ -79,6 +80,7 @@
         android:textSize="@dimen/heading_2" />
 
     <View
+        android:id="@+id/vDoiPhong"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/blue_mo"></View>

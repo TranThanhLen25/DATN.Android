@@ -1,18 +1,31 @@
 package com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
-public class PhieuNhanChiTietDTO {
+public class PhieuNhanPhongChiTietDTO {
 
-
+    @SerializedName("phieuNhanPhongChiTietId")
     private long phieuNhanPhongChiTietId;
+
+    @SerializedName("phieuNhanId")
     private long phieuNhanId;
+    @SerializedName("phongId")
     private int phongId;
+    @SerializedName("soNguoi")
     private int soNguoi;
+    @SerializedName("trangThai")
     private int trangThai;
+    @SerializedName("thoiGianNhanPhong")
     private Date thoiGianNhanPhong;
+    @SerializedName("thoiGianTraPhong")
     private Date thoiGianTraPhong;
+    @SerializedName("donGia")
     private float donGia;
+
+    public PhieuNhanPhongChiTietDTO() {
+    }
 
     public long getPhieuNhanPhongChiTietId() {
         return phieuNhanPhongChiTietId;
@@ -75,18 +88,6 @@ public class PhieuNhanChiTietDTO {
     }
 
     public void setDonGia(float donGia) {
-        this.donGia = donGia;
-    }
-
-    public PhieuNhanChiTietDTO(long phieuNhanPhongChiTietId, long phieuNhanId, int phongId, int soNguoi, int trangThai, Date thoiGianNhanPhong, Date thoiGianTraPhong, float donGia) {
-
-        this.phieuNhanPhongChiTietId = phieuNhanPhongChiTietId;
-        this.phieuNhanId = phieuNhanId;
-        this.phongId = phongId;
-        this.soNguoi = soNguoi;
-        this.trangThai = trangThai;
-        this.thoiGianNhanPhong = thoiGianNhanPhong;
-        this.thoiGianTraPhong = thoiGianTraPhong;
         this.donGia = donGia;
     }
 }

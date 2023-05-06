@@ -1,8 +1,18 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.dangnhap;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
+import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseTokenDTO;
+
+import com.example.datnandroidquanlynhahangkhachsan.model.api.APIService;
+import com.example.datnandroidquanlynhahangkhachsan.model.api.IAPIServiceTokenRetrofit;
+
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class NguoiDungPresenter implements NguoiDungContract.Presenter {
     private final NguoiDungContract.View view;
@@ -38,6 +48,21 @@ public class NguoiDungPresenter implements NguoiDungContract.Presenter {
             @Override
             public void onError(String error) {
                 view.onLayNguoiDungIDError(error);
+            }
+        });
+    }
+
+    @Override
+    public void CapNhatNguoiDung(NguoiDungDTO NguoiDungDTO) {
+        nguoiDungModel.CapNhatNguoiDung(NguoiDungDTO, new INguoiDungModel.IOnCapNhatNguoiDungFinishedListener() {
+            @Override
+            public void onSuccess() {
+                view.onCapNhatNguoiDungSuccess();
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onCapNhatNguoiDungError(error);
             }
         });
     }

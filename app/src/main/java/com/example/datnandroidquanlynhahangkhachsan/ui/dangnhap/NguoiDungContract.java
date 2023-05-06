@@ -17,10 +17,16 @@ public interface NguoiDungContract {
         void onLayNguoiDungIDSuccess(List<NguoiDungDTO> lsNguoiDungID);
 
         void onLayNguoiDungIDError(String error);
+        
+        void onCapNhatNguoiDungSuccess();
+
+        void onCapNhatNguoiDungError(String error);
     }
 
     interface Presenter {
         void LayNguoiDung();
+
         void LayNguoiDungID(int nguoiDung);
-    }
-}
+
+        void CapNhatNguoiDung(NguoiDungDTO NguoiDungDTO);
+    }}

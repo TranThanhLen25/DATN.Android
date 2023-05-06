@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -99,6 +100,14 @@ public class Fragment_thongtincanhan extends Fragment {
             @Override
             public void onClick(View view) {
                 fragment = new fragment_chinhsuathongtincanhan();
+                replaceFragment(fragment);
+            }
+        });
+
+        thongtincanhanBinding.btnDoimatkhau.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fragment = new Fragment_doiMatKhau();
                 replaceFragment(fragment);
             }
         });

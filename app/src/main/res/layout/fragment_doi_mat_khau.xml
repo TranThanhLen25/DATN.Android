@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp"
+    tools:context=".Fragment_doiMatKhau">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctl_mkc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/tv_mkc"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:text="Nhập lại mật khẩu cũ"
+            android:textColor="@color/black"
+            android:textSize="@dimen/heading_2"
+            app:layout_constraintStart_toStartOf="@id/ctl_mkc"
+            app:layout_constraintTop_toTopOf="@id/ctl_mkc" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tip_mkc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="outline"
+            app:passwordToggleEnabled="true"
+            app:layout_constraintStart_toStartOf="@id/ctl_mkc"
+            app:layout_constraintTop_toBottomOf="@id/tv_mkc">
+
+            <EditText
+
+                android:id="@+id/et_mkc"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_edittext"
+                android:inputType="textPassword"
+                android:padding="0dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctl_mkm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:boxBackgroundMode="outline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ctl_mkc">
+
+
+        <TextView
+            android:id="@+id/tv_mkm"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:text="Nhập mật khẩu mới"
+            android:textColor="@color/black"
+            android:textSize="@dimen/heading_2"
+            app:layout_constraintStart_toStartOf="@id/ctl_mkm"
+            app:layout_constraintTop_toTopOf="@id/ctl_mkm" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tip_mkm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="outline"
+            app:passwordToggleEnabled="true"
+            app:layout_constraintStart_toStartOf="@id/ctl_mkm"
+            app:layout_constraintTop_toBottomOf="@id/tv_mkm">
+
+            <EditText
+                android:id="@+id/et_mkm"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+
+                android:background="@drawable/bg_edittext"
+                android:inputType="textPassword"
+                android:padding="0dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctl_nl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ctl_mkm">
+
+
+        <TextView
+            android:id="@+id/tv_nl"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:text="Nhập lại mật khẩu mới"
+            android:textColor="@color/black"
+            android:textSize="@dimen/heading_2"
+            app:layout_constraintStart_toStartOf="@id/ctl_nl"
+            app:layout_constraintTop_toTopOf="@id/ctl_nl" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tip_nl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundMode="outline"
+            app:passwordToggleEnabled="true"
+            app:layout_constraintStart_toStartOf="@id/ctl_nl"
+            app:layout_constraintTop_toBottomOf="@id/tv_nl">
+
+            <EditText
+                android:id="@+id/et_nl"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_edittext"
+                android:inputType="textPassword"
+                android:padding="0dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btn_luu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="73dp"
+        android:padding="8dp"
+        android:text="Lưu"
+        android:textAllCaps="false"
+        android:textSize="@dimen/heading_2"
+        app:layout_constraintEnd_toStartOf="@id/btn_thoat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ctl_nl"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btn_thoat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:padding="8dp"
+        android:text="Thoát"
+        android:textAllCaps="false"
+        android:textSize="@dimen/heading_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_luu"
+        app:layout_constraintTop_toBottomOf="@id/ctl_nl"
+
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

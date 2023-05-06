@@ -39,7 +39,7 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
         super.onCreate(savedInstanceState);
         lsNguoiDung = new ArrayList<>();
         dangNhapBinding = ActivityDangNhapBinding.inflate(getLayoutInflater());
-toolbarDrawerBinding=ActivityToolbarDrawerBinding.inflate(getLayoutInflater());
+        toolbarDrawerBinding=ActivityToolbarDrawerBinding.inflate(getLayoutInflater());
 
         nguoiDungPresenter = new NguoiDungPresenter(DangNhapActivity.this);
         nguoiDungPresenter.LayNguoiDung();
@@ -232,4 +232,9 @@ toolbarDrawerBinding=ActivityToolbarDrawerBinding.inflate(getLayoutInflater());
     public void onLayNguoiDungIDError(String error) {
 
     }
+    @Override
+    public void onCapNhatNguoiDungSuccess(){}
+
+    @Override
+    public void onCapNhatNguoiDungError(String error){}
 }

@@ -21,9 +21,9 @@ import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemDanhsachphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.ui.PhieuTraPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDoiPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuNhanPhongActivity;
-import com.example.datnandroidquanlynhahangkhachsan.ui.PhieuTraPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.chitietphong.ChiTietPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.ThemPhieuDatphongActivity;
 
@@ -38,6 +38,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
     private String loai;
     private int phongid;
     private int loaiphongid;
+    private int trangThai;
 
     private Context context;
     private List<LoaiPhongDTO> lsLoaiPhong;
@@ -82,17 +83,16 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         }
 
         ///xét trạng thái phòng theo màu
-        if (phong.getTrangThaiId() == 4)
-        {
+        if (phong.getTrangThaiId() == 4) {
             holder.itemDanhsachphongBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_color_conguoi);
-        } else if (phong.getTrangThaiId() == 3)
-        {
+        } else if (phong.getTrangThaiId() == 3) {
             holder.itemDanhsachphongBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_color_baotri);
-        } else if (phong.getTrangThaiId() == 2)
-        {
-            holder.itemDanhsachphongBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_color_dat);
-        } else
-        {
+        }
+//        else if (phong.getTrangThaiId() == 2)
+//        {
+//            holder.itemDanhsachphongBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_color_dat);
+//        }
+        else {
             holder.itemDanhsachphongBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_item);
         }
 
@@ -124,6 +124,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                         loai = lsLoaiPhong.get(i).getTenLoaiPhong().toString();
                         phongid=phong.getPhongId();
                         loaiphongid=lsLoaiPhong.get(i).getLoaiPhongId();
+                        trangThai=phong.getTrangThaiId();
                     }
 
                 }
@@ -178,7 +179,17 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         TextView chitiet = dialog.findViewById(R.id.tv_dia_chitietphong);
         TextView doiphong = dialog.findViewById(R.id.tv_dia_doiphong);
         TextView baotri = dialog.findViewById(R.id.tv_dia_baotri);
+        View vTraPhong=dialog.findViewById(R.id.view_traphong);
+        View vDoiPhong=dialog.findViewById(R.id.vDoiPhong);
+        ///nếu phòng ch cos người thì tắt chức năng trả và đổi
+        if(trangThai!=4)
+        {
+            traphong.setVisibility(View.GONE);
+            vTraPhong.setVisibility(View.GONE);
+            doiphong.setVisibility(View.GONE);
+            vDoiPhong.setVisibility(View.GONE);
 
+        }
         // sự kiện khi nhấn vào text trong dialog
         nhanphong.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -221,19 +232,30 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
             }
         });
 
+
         traphong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(dialog.getContext(), PhieuTraPhongActivity.class);
-                context.startActivity(intent);
-                SharedPreferences sharedPreferences = context.getSharedPreferences("GET_PHONGID", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putInt("PHONGID", phongid);
-                editor.commit();
-                dialog.dismiss();
 
+                if (trangThai == 4) {
+                    Intent intent = new Intent(dialog.getContext(), PhieuTraPhongActivity.class);
+                    context.startActivity(intent);
+                    SharedPreferences sharedPreferences = context.getSharedPreferences("GET _PHONGID", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("PHONGID", phongid);
+                    editor.commit();
+                    dialog.dismiss();
+                }
+                else {
+                    dialog.dismiss();
+
+                }
             }
+
+
         });
+
+
         doiphong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
