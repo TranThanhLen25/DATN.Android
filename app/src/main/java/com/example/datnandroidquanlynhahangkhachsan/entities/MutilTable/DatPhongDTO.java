@@ -2,16 +2,19 @@ package com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
 public class DatPhongDTO {
+    @SerializedName("phieuDatDTO")
     private PhieuDatDTO phieuDatDTO;
-    private List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTietDTOS;
+    @SerializedName("phieuDatPhongChiTiets")
+    private List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTiets;
 
-    public DatPhongDTO(PhieuDatDTO phieuDatDTO, List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTietDTOS) {
+    public DatPhongDTO(PhieuDatDTO phieuDatDTO, List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTiets) {
         this.phieuDatDTO = phieuDatDTO;
-        this.phieuDatPhongChiTietDTOS = phieuDatPhongChiTietDTOS;
+        this.phieuDatPhongChiTiets = phieuDatPhongChiTiets;
     }
 
     public PhieuDatDTO getPhieuDatDTO() {
@@ -22,11 +25,11 @@ public class DatPhongDTO {
         this.phieuDatDTO = phieuDatDTO;
     }
 
-    public List<PhieuDatPhongChiTietDTO> getPhieuDatPhongChiTietDTOS() {
-        return phieuDatPhongChiTietDTOS;
+    public List<PhieuDatPhongChiTietDTO> getPhieuDatPhongChiTiets() {
+        return phieuDatPhongChiTiets;
     }
 
-    public void setPhieuDatPhongChiTietDTOS(List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTietDTOS) {
-        this.phieuDatPhongChiTietDTOS = phieuDatPhongChiTietDTOS;
+    public void setPhieuDatPhongChiTiets(List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTiets) {
+        this.phieuDatPhongChiTiets = phieuDatPhongChiTiets;
     }
 }

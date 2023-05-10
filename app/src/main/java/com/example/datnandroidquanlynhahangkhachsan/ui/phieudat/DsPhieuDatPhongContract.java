@@ -1,5 +1,6 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.phieudat;
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
@@ -29,7 +30,7 @@ public interface DsPhieuDatPhongContract {
 
         void LayDanhSachPhieuDat(DieuKienLocPhieuDatDTO dieuKienLocPhieuDatDTO);
 
-        void ThemPhieuDatPhong(PhieuDatDTO phieuDatDTO);
+        void ThemPhieuDatPhong(DatPhongDTO datPhongDTO);
 
         void ThemPhieuDatPhongChiTiet(PhieuDatPhongChiTietDTO phieuDatPhongChiTietDTO);
     }

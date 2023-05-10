@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -38,9 +39,9 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
     private RecyclerView rscvDichVu;
 
     private List<DichVuDTO> dichVuDTOList;
-    private List<DichVuDTO> listDichVuBanDau;
-    private List<DichVuDTO> listDichVuCapNhat;
-    private List<DichVuDTO> listDichVuThem;
+//    private List<DichVuDTO> listDichVuBanDau;
+//    private List<DichVuDTO> listDichVuCapNhat;
+//    private List<DichVuDTO> listDichVuThem;
     private List<HangHoaDTO> hangHoaDTOList;
     private List<PhongDTO> lsPhong;
     private List<LoaiPhongDTO> lsLoaiPhong;
@@ -54,7 +55,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 
     Handler handler = new Handler();
     Runnable runnable;
-    int delay = 1000;
+    int delay = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,8 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
         ChiTietPhongBinding = ChiTietPhongBinding.inflate(getLayoutInflater());
         setContentView(ChiTietPhongBinding.getRoot());
 
+
+//        listDichVuBanDau = new ArrayList<>();
 
         LoaiPhongPresenter loaiPhongPresenter = new LoaiPhongPresenter(this);
         loaiPhongPresenter.LayLoaiPhong();
@@ -110,15 +113,20 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
         ChiTietPhongBinding.btnLuuChitietphong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for (int i = 0; i < dichVuDTOList.size(); i++) {
-                    for (int j = 0; j < listDichVuBanDau.size(); j++) {
-                        if (dichVuDTOList.get(i).getHangHoaId() == listDichVuBanDau.get(j).getHangHoaId()) {
-                            listDichVuCapNhat.add(dichVuDTOList.get(i));
-                        } else {
-                            listDichVuThem.add(dichVuDTOList.get(i));
-                        }
-                    }
-                }
+//                listDichVuCapNhat = new ArrayList<>();
+//                listDichVuThem = new ArrayList<>();
+//                String test = "";
+//                for (int i = 0; i < dichVuDTOList.size(); i++) {
+//                    for (int j = 0; j < listDichVuBanDau.size(); j++) {
+//                        if (dichVuDTOList.get(i).getHangHoaId() == listDichVuBanDau.get(j).getHangHoaId()) {
+//                            listDichVuCapNhat.add(dichVuDTOList.get(i));
+//                        } else {
+//                            listDichVuThem.add(dichVuDTOList.get(i));
+//                        }
+//                    }
+//                }
+//                test+=String.valueOf(listDichVuCapNhat.size());
+//                Toast.makeText(ChiTietPhongActivity.this, test, Toast.LENGTH_SHORT).show();
 
 
                 //xóa menu dư khi thoát
@@ -155,7 +163,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 
                 //lấy dữ liệu hàng hóa
                 hangHoaPresenter.LayDanhSachHangHoa2("");
-                if (count == 3) {
+                if (count == 10) {
                     handler.removeCallbacks(runnable);
                 }
             }
@@ -315,7 +323,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
     @Override
     public void onLayDanhSachDichVuSuccess(List<DichVuDTO> list) {
         dichVuDTOList = list;
-        listDichVuBanDau = dichVuDTOList;
+//        listDichVuBanDau = dichVuDTOList;
     }
 
     @Override

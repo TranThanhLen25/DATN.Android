@@ -55,7 +55,7 @@ public class DichVuModel implements IDichVuModel {
     }
 
     @Override
-    public void themDichVu(DichVuDTO dichVuDTO, IOnthemDichVuFinishedListener listener) {
+    public void themDichVu(List<DichVuDTO> dichVuDTO, IOnthemDichVuFinishedListener listener) {
         service = new APIService();
         service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
             @Override

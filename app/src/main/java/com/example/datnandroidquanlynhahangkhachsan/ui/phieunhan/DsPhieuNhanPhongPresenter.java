@@ -34,16 +34,16 @@ public class DsPhieuNhanPhongPresenter implements DsPhieuNhanPhongContract.Prese
 
     @Override
     public void ThemPhieuDatPhong(PhieuDatDTO phieuDatDTO) {
-        phieuDatModel.ThemPhieuDatPhong(phieuDatDTO, new IPhieuDatModel.IOnThemPhieuDatPhongFinishedListener() {
-            @Override
-            public void onSuccess() {
-                view.onThemPhieuDatPhongSuccess();
-            }
-
-            @Override
-            public void onError(String error) {
-                view.onThemPhieuDatPhongError(error);
-            }
-        });
+//        phieuDatModel.ThemPhieuDatPhong(phieuDatDTO, new IPhieuDatModel.IOnThemPhieuDatPhongFinishedListener() {
+//            @Override
+//            public void onSuccess() {
+//                view.onThemPhieuDatPhongSuccess();
+//            }
+//
+//            @Override
+//            public void onError(String error) {
+//                view.onThemPhieuDatPhongError(error);
+//            }
+//        });
     }
 }

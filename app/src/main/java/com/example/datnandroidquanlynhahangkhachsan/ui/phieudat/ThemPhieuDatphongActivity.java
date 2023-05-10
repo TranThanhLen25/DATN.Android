@@ -24,6 +24,7 @@ import com.example.datnandroidquanlynhahangkhachsan.adapter.LoaiPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemphieudatphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
@@ -71,6 +72,10 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
     private LoaiPhongAdapter loaiPhongAdapter;
     private RecyclerView rcv_LoaiPhong;
 
+    private DatPhongDTO datPhongDTO;
+    private PhieuDatDTO finalPhieuDatDTO;
+    private List<PhieuDatPhongChiTietDTO> finalListPhieuDatPhongChiTiet;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +90,7 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
 //                startActivity(intent);
 //            }
 //        });
-
+        finalListPhieuDatPhongChiTiet = new ArrayList<>();
 
         //quét qrcode
         activityThemphieudatphongBinding.BtnScanQRPhieudatphong.setOnClickListener(view -> {
@@ -203,9 +208,9 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
                 thoiGianTraPhong = ac.formatStringToDateUtil(thoiGianTra, "dd/MM/yyyy HH:mm");
             }
 
-            //thêm phiếu đặt phòng
-            phieuDatDTO = new PhieuDatDTO("PDP" + (lsPhieuDat.size() + 1), day, 1, 1, thoiGianNhanPhong, thoiGianTraPhong, "ghi chu", 1L, "đang đặt");
-            dsPhieuDatPhongPresenter.ThemPhieuDatPhong(phieuDatDTO);
+            //lấy dữ liệu phiếu đặt rồi thêm vào biến tạm
+            finalPhieuDatDTO = new PhieuDatDTO("PDP" + (lsPhieuDat.size() + 1), day, 1, 1, thoiGianNhanPhong, thoiGianTraPhong, "ghi chu", 1L, "đang đặt");
+
 
             //lấy dữ liệu khách hàng từ edittext
             //nếu quét qr thì có thêm các thông tin khác còn không thì vẫn lấy ít nhất 3 thông tin của khách
@@ -220,12 +225,12 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
             khachHangPresenter.ThemKhachHang(khachHangDTO);
 
             //kiểm tra số lượng phòng của mỗi loại
-            //loại nào số lượng lớn hơn 0 thì tạo mới phiếu đặt phòng chi tiết rồi thêm vào database
+            //loại nào số lượng lớn hơn 0 thì tạo mới phiếu đặt phòng chi tiết rồi thêm vào biến tạm
             for (int i = 0; i < soLuongLoaiPhong.soLuong.size(); i++) {
                 if (soLuongLoaiPhong.soLuong.get(i) > 0) {
-                    phieuDatPhongChiTietDTO = new PhieuDatPhongChiTietDTO(lsPhieuDat.get(lsPhieuDat.size() - 1).getPhieuDatID() + 1,
-                            i + 1, soLuongLoaiPhong.soLuong.get(i));
-                    dsPhieuDatPhongPresenter.ThemPhieuDatPhongChiTiet(phieuDatPhongChiTietDTO);
+                    phieuDatPhongChiTietDTO = new PhieuDatPhongChiTietDTO(i + 1, soLuongLoaiPhong.soLuong.get(i));
+                    finalListPhieuDatPhongChiTiet.add(phieuDatPhongChiTietDTO);
+                    //dsPhieuDatPhongPresenter.ThemPhieuDatPhongChiTiet(phieuDatPhongChiTietDTO);
                 }
                 //cập nhật trạng thái phòng
 //                phongDTO = new PhongDTO();
@@ -233,6 +238,10 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
 //                phongDTO.setTrangThaiId(2);
 //                phongPresenter.CapNhatTrangThaiPhong(phongDTO);
             }
+
+            //lấy dữ liệu tổng và thêm vào cơ sở dữ liệu
+            datPhongDTO = new DatPhongDTO(finalPhieuDatDTO, finalListPhieuDatPhongChiTiet);
+            dsPhieuDatPhongPresenter.ThemPhieuDatPhong(datPhongDTO);
 
             //sau khi thêm thì xóa dữ liệu của cái biến số lượng của mỗi loại phòng
             soLuongLoaiPhong.soLuong.clear();

@@ -16,9 +16,17 @@ public interface IDichVuModel {
         void onError(String error);
     }
 
-    void themDichVu(DichVuDTO dichVuDTO, IDichVuModel.IOnthemDichVuFinishedListener listener);
+    void themDichVu(List<DichVuDTO> dichVuDTO, IDichVuModel.IOnthemDichVuFinishedListener listener);
 
     interface IOnthemDichVuFinishedListener {
+        void onSuccess();
+
+        void onError(String error);
+    }
+
+    void capNhatDichVu(List<DichVuDTO> dichVuDTO, IDichVuModel.IOncapNhatDichVuFinishedListener listener);
+
+    interface IOncapNhatDichVuFinishedListener {
         void onSuccess();
 
         void onError(String error);
