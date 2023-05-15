@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -76,13 +75,11 @@ public class HangHoaAdapter extends RecyclerView.Adapter<HangHoaAdapter.HangHoaV
                 int colorId = viewColor.getColor();
                 if (colorId == -1) {
                     tempData.lsDichVu.add(HangHoa.getHangHoaId());
-                    //Toast.makeText(view.getContext(), "thêm", Toast.LENGTH_LONG).show();
                     holder.itemHanghoaDichvuBinding.ctlItem.setBackgroundColor(-12412);
                 } else {
                     for (int i = 0; i < tempData.lsDichVu.size(); i++) {
                         if (tempData.lsDichVu.get(i) == HangHoa.getHangHoaId()) {
                             tempData.lsDichVu.remove(i);
-                            //Toast.makeText(view.getContext(), "xóa", Toast.LENGTH_LONG).show();
                         }
                     }
                     holder.itemHanghoaDichvuBinding.ctlItem.setBackgroundColor(-1);

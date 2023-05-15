@@ -1,7 +1,6 @@
 package com.example.datnandroidquanlynhahangkhachsan.model.phieudat;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.ErrorMessageDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
@@ -62,12 +61,12 @@ public class PhieuDatModel implements IPhieuDatModel {
     }
 
     @Override
-    public void ThemPhieuDatPhong(DatPhongDTO datPhongDTO, IOnThemPhieuDatPhongFinishedListener listener) {
+    public void ThemPhieuDatPhong(PhieuDatDTO phieuDatDTO, IOnThemPhieuDatPhongFinishedListener listener) {
         service = new APIService();
         service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
             @Override
             public void onSuccess(ResponseTokenDTO itemToken) {
-                service.apiServiceRetrofit.ThemPhieuDatPhong(datPhongDTO).enqueue(new Callback<ResponseInfo>() {
+                service.apiServiceRetrofit.ThemPhieuDatPhong(phieuDatDTO).enqueue(new Callback<ResponseInfo>() {
                     @Override
                     public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
                         if (response.body() != null) {

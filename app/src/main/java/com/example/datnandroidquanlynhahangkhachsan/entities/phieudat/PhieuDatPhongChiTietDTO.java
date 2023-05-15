@@ -12,7 +12,8 @@ public class PhieuDatPhongChiTietDTO {
     @SerializedName("soLuong")
     public int SoLuong;
 
-    public PhieuDatPhongChiTietDTO(int loaiPhongId, int soLuong) {
+    public PhieuDatPhongChiTietDTO(long phieuDatId, int loaiPhongId, int soLuong) {
+        PhieuDatId = phieuDatId;
         LoaiPhongId = loaiPhongId;
         SoLuong = soLuong;
     }

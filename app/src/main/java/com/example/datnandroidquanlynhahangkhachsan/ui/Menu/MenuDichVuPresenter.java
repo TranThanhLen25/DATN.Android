@@ -8,12 +8,12 @@ import com.example.datnandroidquanlynhahangkhachsan.model.hanghoa.IHangHoaModel;
 
 import java.util.List;
 
-public class HangHoaPresenter implements HangHoaContract.Presenter {
+public class MenuDichVuPresenter implements MenuDichVuContract.Presenter {
 
-    private final HangHoaContract.View view;
+    private final MenuDichVuContract.View view;
     HangHoaModel hangHoaModel;
 
-    public HangHoaPresenter(HangHoaContract.View view) {
+    public MenuDichVuPresenter(MenuDichVuContract.View view) {
         this.view = view;
         this.hangHoaModel = new HangHoaModel();
     }

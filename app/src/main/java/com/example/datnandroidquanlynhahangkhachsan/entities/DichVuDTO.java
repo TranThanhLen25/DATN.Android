@@ -1,35 +1,40 @@
-package com.example.datnandroidquanlynhahangkhachsan.entities.DichVu;
-
-import com.google.gson.annotations.SerializedName;
+package com.example.datnandroidquanlynhahangkhachsan.entities;
 
 import java.util.Date;
 
 public class DichVuDTO {
-    @SerializedName("dichVuId")
     private long DichVuID;
-    @SerializedName("phongId")
     private int PhongID;
-    @SerializedName("hangHoaId")
+    private int BanID;
     private int HangHoaId;
-    @SerializedName("phieuNhanId")
     private long PhieuNhanID;
-    @SerializedName("soLuong")
-    private int SoLuong;
-    @SerializedName("donGia")
-    private int DonGia;
-    @SerializedName("thanhTien")
-    private int ThanhTien;
-    @SerializedName("ghiChu")
+    private float SoLuong;
+    private float DonGia;
+    private float ThanhTien;
     private String GhiChu;
-    @SerializedName("trangThai")
-    private String TrangThai;
-    @SerializedName("thoiGian")
+    private  String TrangThai;
     private Date ThoiGian;
 
-    public DichVuDTO(int phongID, int hangHoaId, int soLuong) {
+
+//    public DichVuDTO(int phongID, int banID, int hangHoaId, long phieuNhanID, float soLuong, float donGia, float thanhTien, String ghiChu, String trangThai, Date thoiGian) {
+//        PhongID = phongID;
+//        BanID = banID;
+//        HangHoaId = hangHoaId;
+//        PhieuNhanID = phieuNhanID;
+//        SoLuong = soLuong;
+//        DonGia = donGia;
+//        ThanhTien = thanhTien;
+//        GhiChu = ghiChu;
+//        TrangThai = trangThai;
+//        ThoiGian = thoiGian;
+//    }
+
+    public DichVuDTO(int phongID, int hangHoaId, float soLuong, float donGia, float thanhTien) {
         PhongID = phongID;
         HangHoaId = hangHoaId;
         SoLuong = soLuong;
+        DonGia = donGia;
+        ThanhTien = thanhTien;
     }
 
     public DichVuDTO() {
@@ -51,6 +56,13 @@ public class DichVuDTO {
         PhongID = phongID;
     }
 
+    public int getBanID() {
+        return BanID;
+    }
+
+    public void setBanID(int banID) {
+        BanID = banID;
+    }
 
     public int getHangHoaId() {
         return HangHoaId;
@@ -68,27 +80,27 @@ public class DichVuDTO {
         PhieuNhanID = phieuNhanID;
     }
 
-    public int getSoLuong() {
+    public float getSoLuong() {
         return SoLuong;
     }
 
-    public void setSoLuong(int soLuong) {
+    public void setSoLuong(float soLuong) {
         SoLuong = soLuong;
     }
 
-    public int getDonGia() {
+    public float getDonGia() {
         return DonGia;
     }
 
-    public void setDonGia(int donGia) {
+    public void setDonGia(float donGia) {
         DonGia = donGia;
     }
 
-    public int getThanhTien() {
+    public float getThanhTien() {
         return ThanhTien;
     }
 
-    public void setThanhTien(int thanhTien) {
+    public void setThanhTien(float thanhTien) {
         ThanhTien = thanhTien;
     }
 

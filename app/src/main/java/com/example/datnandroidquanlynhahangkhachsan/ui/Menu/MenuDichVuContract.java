@@ -5,7 +5,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 
 import java.util.List;
 
-public interface HangHoaContract {
+public interface MenuDichVuContract {
     interface View {
         void onLayDanhSachHangHoaSuccess(List<HangHoaDTO> list);
 

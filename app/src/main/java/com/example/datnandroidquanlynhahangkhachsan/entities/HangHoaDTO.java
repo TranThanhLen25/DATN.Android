@@ -30,10 +30,6 @@ public class HangHoaDTO {
         this.nhomHangHoa = nhomHangHoa;
     }
 
-    public HangHoaDTO() {
-
-    }
-
     public int getHangHoaId() {
         return hangHoaId;
     }
