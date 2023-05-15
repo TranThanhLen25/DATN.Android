@@ -25,11 +25,11 @@ import java.util.List;
  * Use the {@link fragment_menu_goimon#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragment_menu_goimon extends Fragment implements MenuDichVuContract.View{
+public class fragment_menu_goimon extends Fragment implements HangHoaContract.View{
     private RecyclerView rscvHangHoaGoiMon;
     private List<HangHoaDTO> lsHangHoa;
     private HangHoaAdapter hangHoaAdapter;
-    private MenuDichVuPresenter menuDichVuPresenter;
+    private HangHoaPresenter hangHoaPresenter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -82,8 +82,8 @@ public class fragment_menu_goimon extends Fragment implements MenuDichVuContract
         rscvHangHoaGoiMon = view.findViewById(R.id.rscv_hanghoa_goimon);
         lsHangHoa = new ArrayList<>();
         Date day = Calendar.getInstance().getTime();
-        menuDichVuPresenter = new MenuDichVuPresenter(this);
-        menuDichVuPresenter.LayDanhSachHangHoa2("Gọi món");
+        hangHoaPresenter = new HangHoaPresenter(this);
+        hangHoaPresenter.LayDanhSachHangHoa2("Gọi món");
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
         rscvHangHoaGoiMon.setLayoutManager(LinearLayoutManager);
         RecyclerView.ItemDecoration decoration = new DividerItemDecoration(this.getActivity(), DividerItemDecoration.VERTICAL);
