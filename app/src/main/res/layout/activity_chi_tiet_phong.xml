@@ -276,7 +276,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="4dp"
                         android:background="@color/grey"
-                        app:layout_constraintTop_toTopOf="@+id/layout_gachngang_2"></View>
+                        app:layout_constraintTop_toTopOf="@+id/layout_gachngang_2"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
