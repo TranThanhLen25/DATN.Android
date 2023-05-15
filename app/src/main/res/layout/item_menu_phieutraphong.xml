@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctl_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/img_itemdichvu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_laundry_machine"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_tendichvu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Giặt ủi"
+            android:textColor="@color/red"
+            android:textSize="@dimen/heading_2"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/img_itemdichvu"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_dongia_hanghoa_dichvu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="100.000đ"
+            android:textSize="@dimen/heading_2"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/img_itemdichvu"
+            app:layout_constraintTop_toBottomOf="@+id/tv_tendichvu" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_sl"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/ctl_item"
+            app:layout_constraintStart_toEndOf="@+id/tv_dongia_hanghoa_dichvu"
+
+            app:layout_constraintTop_toTopOf="@id/ctl_item">
+
+            <TextView
+                android:id="@+id/tv_sl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="SL"
+                android:textColor="@color/black"
+                android:textSize="@dimen/heading_2"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/ctl_sl"
+                app:layout_constraintTop_toTopOf="@id/ctl_sl"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/tv_soluong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="10"
+                android:textColor="@color/red"
+                android:textSize="@dimen/heading_2"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/tv_sl"
+                app:layout_constraintStart_toStartOf="@id/ctl_sl"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_thanhtien"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="30dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/ctl_item"
+            app:layout_constraintStart_toEndOf="@+id/ctl_sl"
+
+            app:layout_constraintTop_toTopOf="@id/ctl_item">
+
+            <TextView
+                android:id="@+id/tv_tt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Thành tiền"
+                android:textColor="@color/black"
+                android:textSize="@dimen/heading_2"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/ctl_thanhtien"
+                app:layout_constraintTop_toTopOf="@id/ctl_thanhtien"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/tv_thanhtien"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="1.000.000"
+                android:textColor="@color/red"
+                android:textSize="@dimen/heading_2"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/tv_tt"
+                app:layout_constraintStart_toStartOf="@id/ctl_thanhtien"
+                tools:ignore="MissingConstraints" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -1,20 +1,33 @@
 package com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class PhieuXuatDTO {
-
+    @SerializedName("phieuXuatId")
     private long phieuXuatId;
+    @SerializedName("khachHangId")
     private long khachHangId;
+    @SerializedName("soChungTu")
     private String soChungTu;
+    @SerializedName("phieuNhanId")
     private long phieuNhanId;
+    @SerializedName("ngayLap")
     private Date ngayLap;
+    @SerializedName("nguoiDungId")
     private int nguoiDungId;
+    @SerializedName("tongThanhTien")
     private float tongThanhTien;
+    @SerializedName("phuThu")
     private float phuThu;
+    @SerializedName("chietKhau")
     private float chietKhau;
+    @SerializedName("trangthai")
     private int trangthai;
+    @SerializedName("ghiChu")
     private String ghiChu;
+
 
     public long getPhieuXuatId() {
         return phieuXuatId;
@@ -116,5 +129,8 @@ public class PhieuXuatDTO {
         this.chietKhau = chietKhau;
         this.trangthai = trangthai;
         this.ghiChu = ghiChu;
+    }
+
+    public PhieuXuatDTO() {
     }
 }

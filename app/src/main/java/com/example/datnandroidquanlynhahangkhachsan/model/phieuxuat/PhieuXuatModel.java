@@ -22,7 +22,7 @@ public class PhieuXuatModel implements IPhieuXuatModel{
     private ErrorMessageDTO errorKiemTra;
 
     @Override
-    public void LayDanhSachPhieuXuat(DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO, IPhieuXuatModel.IOnLayDanhSachPhieuXuatFinishedListener listener) {
+    public void LayDanhSachPhieuXuat(DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO, IOnLayDanhSachPhieuXuatFinishedListener listener) {
         service = new APIService();
         service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
             @Override

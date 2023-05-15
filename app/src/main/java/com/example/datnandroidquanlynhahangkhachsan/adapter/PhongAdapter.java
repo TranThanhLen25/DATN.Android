@@ -189,9 +189,9 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
             doiphong.setVisibility(View.GONE);
             vDoiPhong.setVisibility(View.GONE);
 
-        }
+        } else
 //// nếu phòng đã có người thì không được chjọn nhận phòng
-        if (trangThai == 4) {
+        {
             nhanphong.setVisibility(View.GONE);
         }
         // sự kiện khi nhấn vào text trong dialog
@@ -244,9 +244,11 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                 if (trangThai == 4) {
                     Intent intent = new Intent(dialog.getContext(), PhieuTraPhongActivity.class);
                     context.startActivity(intent);
-                    SharedPreferences sharedPreferences = context.getSharedPreferences("GET _PHONGID", Context.MODE_PRIVATE);
+                    SharedPreferences sharedPreferences = context.getSharedPreferences("GET_PHONGID", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putInt("PHONGID", phongid);
+                    editor.putInt("SOPHONG",so);
+                    editor.putInt("GIA",gia);
                     editor.commit();
                     dialog.dismiss();
                 }
