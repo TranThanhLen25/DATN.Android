@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.DichVu;
 
-import com.example.datnandroidquanlynhahangkhachsan.entities.DichVuDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.DichVuDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.ListDichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.DichVu.DichVuModel;
 import com.example.datnandroidquanlynhahangkhachsan.model.DichVu.IDichVuModel;
 
@@ -27,6 +28,36 @@ public class DichVuPresenter implements DichVuContract.Presenter {
             @Override
             public void onError(String error) {
                 view.onLayDanhSachDichVuError(error);
+            }
+        });
+    }
+
+    @Override
+    public void themDichVu(ListDichVuDTO listDichVuDTO) {
+        dichVuModel.themDichVu(listDichVuDTO, new IDichVuModel.IOnthemDichVuFinishedListener() {
+            @Override
+            public void onSuccess() {
+                view.onthemDichVuSuccess();
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onthemDichVuError(error);
+            }
+        });
+    }
+
+    @Override
+    public void capNhatDichVu(ListDichVuDTO listDichVuDTO) {
+        dichVuModel.capNhatDichVu(listDichVuDTO, new IDichVuModel.IOncapNhatDichVuFinishedListener() {
+            @Override
+            public void onSuccess() {
+                view.oncapNhatDichVuSuccess();
+            }
+
+            @Override
+            public void onError(String error) {
+                view.oncapNhatDichVuError(error);
             }
         });
     }

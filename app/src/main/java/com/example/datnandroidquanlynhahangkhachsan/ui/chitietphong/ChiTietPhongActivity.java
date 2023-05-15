@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.datnandroidquanlynhahangkhachsan.adapter.MenuAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityChiTietPhongBinding;
-import com.example.datnandroidquanlynhahangkhachsan.entities.DichVuDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.DichVuDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.ListDichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
@@ -33,15 +33,18 @@ import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongPresen
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class ChiTietPhongActivity extends AppCompatActivity implements DichVuContract.View, HangHoaContract.View, ItemTouchHelperListener, PhongContract.View, LoaiPhongContract.View {
     private RecyclerView rscvDichVu;
 
     private List<DichVuDTO> dichVuDTOList;
-//    private List<DichVuDTO> listDichVuBanDau;
-//    private List<DichVuDTO> listDichVuCapNhat;
-//    private List<DichVuDTO> listDichVuThem;
+    private List<DichVuDTO> listDichVuBanDau;
+    private List<DichVuDTO> listDichVuCapNhat;
+    private List<DichVuDTO> listDichVuThem;
+    private ListDichVuDTO listDichVuDTO;
     private List<HangHoaDTO> hangHoaDTOList;
     private List<PhongDTO> lsPhong;
     private List<LoaiPhongDTO> lsLoaiPhong;
@@ -64,7 +67,9 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
         setContentView(ChiTietPhongBinding.getRoot());
 
 
-//        listDichVuBanDau = new ArrayList<>();
+        listDichVuBanDau = new ArrayList<>();
+        listDichVuCapNhat = new ArrayList<>();
+        listDichVuThem = new ArrayList<>();
 
         LoaiPhongPresenter loaiPhongPresenter = new LoaiPhongPresenter(this);
         loaiPhongPresenter.LayLoaiPhong();
@@ -113,20 +118,33 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
         ChiTietPhongBinding.btnLuuChitietphong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                listDichVuCapNhat = new ArrayList<>();
-//                listDichVuThem = new ArrayList<>();
-//                String test = "";
-//                for (int i = 0; i < dichVuDTOList.size(); i++) {
-//                    for (int j = 0; j < listDichVuBanDau.size(); j++) {
-//                        if (dichVuDTOList.get(i).getHangHoaId() == listDichVuBanDau.get(j).getHangHoaId()) {
-//                            listDichVuCapNhat.add(dichVuDTOList.get(i));
-//                        } else {
-//                            listDichVuThem.add(dichVuDTOList.get(i));
+                //listDichVuCapNhat = dichVuDTOList;
+                String test = "";
+//                for (int i = 0; i < listDichVuCapNhat.size(); i++) {
+//                    for (int j = 0; j < listDichVuThem.size(); j++) {
+//                        if (listDichVuCapNhat.get(i).getHangHoaId() == listDichVuThem.get(j).getHangHoaId()) {
+//                            listDichVuCapNhat.remove(i);
 //                        }
 //                    }
 //                }
-//                test+=String.valueOf(listDichVuCapNhat.size());
-//                Toast.makeText(ChiTietPhongActivity.this, test, Toast.LENGTH_SHORT).show();
+
+
+                listDichVuDTO = new ListDichVuDTO(dichVuDTOList);
+                //dichVuPresenter.themDichVu(listDichVuDTO);
+                dichVuPresenter.capNhatDichVu(listDichVuDTO);
+                test += String.valueOf(listDichVuDTO.getListDichVuCapNhat().size());
+//                test +=
+//                        " 1 " + listDichVuDTO.getListDichVuCapNhat().get(0).getDichVuID() +
+//                        " 2 " + listDichVuDTO.getListDichVuCapNhat().get(0).getPhongID() +
+//                        " 3 " + listDichVuDTO.getListDichVuCapNhat().get(0).getHangHoaId() +
+//                        " 4 " + listDichVuDTO.getListDichVuCapNhat().get(0).getPhieuNhanID() +
+//                        " 5 " + listDichVuDTO.getListDichVuCapNhat().get(0).getSoLuong() +
+//                        " 6 " + listDichVuDTO.getListDichVuCapNhat().get(0).getDonGia() +
+//                        " 7 " + listDichVuDTO.getListDichVuCapNhat().get(0).getThanhTien() +
+//                        " 8 " + listDichVuDTO.getListDichVuCapNhat().get(0).getGhiChu() +
+//                        " 9 " + listDichVuDTO.getListDichVuCapNhat().get(0).getTrangThai() +
+//                        " 10 " + listDichVuDTO.getListDichVuCapNhat().get(0).getThoiGian();
+                Toast.makeText(ChiTietPhongActivity.this, test, Toast.LENGTH_SHORT).show();
 
 
                 //xóa menu dư khi thoát
@@ -146,7 +164,8 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
         SharedPreferences sharedPreferences = getSharedPreferences("PHONG", MODE_PRIVATE);
         int phongID = sharedPreferences.getInt("PHONGID", 0);
         dichVuDTO.setPhongID(phongID);
-        dichVuDTO.setTrangThai("");
+        dichVuDTO.setTrangThai("chưa thanh toán");
+        dichVuDTO.setGhiChu("");
 
         hangHoaPresenter = new HangHoaPresenter(this);
 
@@ -219,7 +238,15 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
                         }
                     }
                     DichVuDTO dichVuDTO = new DichVuDTO(phongID, tempData.lsDichVu.get(i), 1);
+                    Date day = Calendar.getInstance().getTime();
+                    dichVuDTO.setDonGia(1);
+                    dichVuDTO.setThanhTien(1);
+                    dichVuDTO.setGhiChu("string");
+                    dichVuDTO.setTrangThai("chưa thanh toán");
+                    dichVuDTO.setThoiGian(day);
+                    dichVuDTO.setPhieuNhanID(0);
                     dichVuDTOList.add(dichVuDTO);
+                    listDichVuThem.add(dichVuDTO);
                 }
                 tempData.lsDichVu.clear();
                 menuAdapter = new MenuAdapter(dichVuDTOList, hangHoaDTOList);
@@ -251,6 +278,15 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
                     //thêm hàng hóa vào menu trong chi tiết phòng
                     DichVuDTO dichVuDTO = new DichVuDTO(phongID, tempData.lsDichVu.get(i), 1);
                     dichVuDTOList.add(dichVuDTO);
+
+                    Date day = Calendar.getInstance().getTime();
+                    dichVuDTO.setDonGia(1);
+                    dichVuDTO.setThanhTien(1);
+                    dichVuDTO.setGhiChu("string");
+                    dichVuDTO.setTrangThai("chưa thanh toán");
+                    dichVuDTO.setThoiGian(day);
+                    dichVuDTO.setPhieuNhanID(3);
+                    listDichVuThem.add(dichVuDTO);
                 }
                 tempData.lsDichVu.clear();
                 menuAdapter = new MenuAdapter(dichVuDTOList, hangHoaDTOList);
@@ -328,6 +364,26 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 
     @Override
     public void onLayDanhSachDichVuError(String error) {
+
+    }
+
+    @Override
+    public void onthemDichVuSuccess() {
+        Toast.makeText(ChiTietPhongActivity.this, "thêm dịch vụ thành công", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onthemDichVuError(String error) {
+        Toast.makeText(ChiTietPhongActivity.this, "thêm dịch vụ thất bại", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void oncapNhatDichVuSuccess() {
+
+    }
+
+    @Override
+    public void oncapNhatDichVuError(String error) {
 
     }
 }

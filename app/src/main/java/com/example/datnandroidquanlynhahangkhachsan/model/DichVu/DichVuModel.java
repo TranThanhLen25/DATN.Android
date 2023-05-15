@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.model.DichVu;
 
-import com.example.datnandroidquanlynhahangkhachsan.entities.DichVuDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.DichVuDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.ListDichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ErrorMessageDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
@@ -55,12 +56,40 @@ public class DichVuModel implements IDichVuModel {
     }
 
     @Override
-    public void themDichVu(List<DichVuDTO> dichVuDTO, IOnthemDichVuFinishedListener listener) {
+    public void themDichVu(ListDichVuDTO listDichVuDTO, IOnthemDichVuFinishedListener listener) {
         service = new APIService();
         service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
             @Override
             public void onSuccess(ResponseTokenDTO itemToken) {
-                service.apiServiceRetrofit.themDichVu(dichVuDTO).enqueue(new Callback<ResponseInfo>() {
+                service.apiServiceRetrofit.themDichVu(listDichVuDTO).enqueue(new Callback<ResponseInfo>() {
+                    @Override
+                    public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
+                        if (response.body() != null) {
+                            listener.onSuccess();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseInfo> call, Throwable t) {
+                        listener.onError(t.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+                listener.onError(error);
+            }
+        });
+    }
+
+    @Override
+    public void capNhatDichVu(ListDichVuDTO listDichVuDTO, IOncapNhatDichVuFinishedListener listener) {
+        service = new APIService();
+        service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
+            @Override
+            public void onSuccess(ResponseTokenDTO itemToken) {
+                service.apiServiceRetrofit.capNhatDichVu(listDichVuDTO).enqueue(new Callback<ResponseInfo>() {
                     @Override
                     public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
                         if (response.body() != null) {

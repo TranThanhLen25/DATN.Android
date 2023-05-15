@@ -1,4 +1,4 @@
-package com.example.datnandroidquanlynhahangkhachsan.entities;
+package com.example.datnandroidquanlynhahangkhachsan.entities.DichVu;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -9,8 +9,6 @@ public class DichVuDTO {
     private long DichVuID;
     @SerializedName("phongId")
     private int PhongID;
-    @SerializedName("banId")
-    private int BanID;
     @SerializedName("hangHoaId")
     private int HangHoaId;
     @SerializedName("phieuNhanId")
@@ -53,13 +51,6 @@ public class DichVuDTO {
         PhongID = phongID;
     }
 
-    public int getBanID() {
-        return BanID;
-    }
-
-    public void setBanID(int banID) {
-        BanID = banID;
-    }
 
     public int getHangHoaId() {
         return HangHoaId;
