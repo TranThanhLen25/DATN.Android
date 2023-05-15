@@ -1,39 +1,40 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan;
 
-import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
-import com.example.datnandroidquanlynhahangkhachsan.model.phieudat.IPhieuDatModel;
-import com.example.datnandroidquanlynhahangkhachsan.model.phieudat.PhieuDatModel;
+
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.model.phieunhan.PhieuNhanModel;
+import com.example.Nhannandroidquanlynhahangkhachsan.model.phieunhan.IPhieuNhanModel;
 
 import java.util.List;
 
 public class DsPhieuNhanPhongPresenter implements DsPhieuNhanPhongContract.Presenter {
     private final DsPhieuNhanPhongContract.View view;
-    PhieuDatModel phieuDatModel;
+    PhieuNhanModel phieuNhanModel;
 
     public DsPhieuNhanPhongPresenter(DsPhieuNhanPhongContract.View view) {
         this.view = view;
-        this.phieuDatModel = new PhieuDatModel();
+        this.phieuNhanModel = new PhieuNhanModel();
     }
 
 
     @Override
-    public void LayDanhSachPhieuDat(DieuKienLocPhieuDatDTO dieuKienLocPhieuDatDTO) {
-        phieuDatModel.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO, new IPhieuDatModel.IOnLayDanhSachPhieuDatFinishedListener() {
+    public void LayDanhSachPhieuNhan(DieuKienLocPhieuNhanDTO dieuKienLocPhieuNhanDTO) {
+        phieuNhanModel.LayDanhSachPhieuNhan(dieuKienLocPhieuNhanDTO, new IPhieuNhanModel.IOnLayDanhSachPhieuNhanFinishedListener() {
             @Override
-            public void onSuccess(List<PhieuDatDTO> listResult) {
-                view.onLayDanhSachPhieuDatSuccess(listResult);
+            public void onSuccess(List<PhieuNhanDTO> listResult) {
+                view.onLayDanhSachPhieuNhanSuccess(listResult);
             }
 
             @Override
             public void onError(String error) {
-                view.onLayDanhSachPhieuDatError(error);
+                view.onLayDanhSachPhieuNhanError(error);
             }
         });
     }
 
-    @Override
-    public void ThemPhieuDatPhong(PhieuDatDTO phieuDatDTO) {
+//    @Override
+//    public void ThemPhieuDatPhong(PhieuDatDTO phieuDatDTO) {
 //        phieuDatModel.ThemPhieuDatPhong(phieuDatDTO, new IPhieuDatModel.IOnThemPhieuDatPhongFinishedListener() {
 //            @Override
 //            public void onSuccess() {
@@ -45,5 +46,5 @@ public class DsPhieuNhanPhongPresenter implements DsPhieuNhanPhongContract.Prese
 //                view.onThemPhieuDatPhongError(error);
 //            }
 //        });
-    }
+//    }
 }

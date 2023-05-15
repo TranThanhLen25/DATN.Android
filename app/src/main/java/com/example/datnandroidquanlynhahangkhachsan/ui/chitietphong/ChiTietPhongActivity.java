@@ -39,7 +39,7 @@ import java.util.List;
 
 public class ChiTietPhongActivity extends AppCompatActivity implements DichVuContract.View, HangHoaContract.View, ItemTouchHelperListener, PhongContract.View, LoaiPhongContract.View {
     private RecyclerView rscvDichVu;
-
+    private DichVuDTO xoaTatCaMenu;
     private List<DichVuDTO> dichVuDTOList;
     private List<DichVuDTO> listDichVuBanDau;
     private List<DichVuDTO> listDichVuCapNhat;
@@ -70,6 +70,8 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
         listDichVuBanDau = new ArrayList<>();
         listDichVuCapNhat = new ArrayList<>();
         listDichVuThem = new ArrayList<>();
+        xoaTatCaMenu = new DichVuDTO();
+
 
         LoaiPhongPresenter loaiPhongPresenter = new LoaiPhongPresenter(this);
         loaiPhongPresenter.LayLoaiPhong();
@@ -128,7 +130,10 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 //                    }
 //                }
 
-
+                if (dichVuDTOList.size() == 0 && xoaTatCaMenu.getHangHoaId() > 0) {
+                    xoaTatCaMenu.setTrangThai("xóa tất cả");
+                    dichVuDTOList.add(xoaTatCaMenu);
+                }
                 listDichVuDTO = new ListDichVuDTO(dichVuDTOList);
                 //dichVuPresenter.themDichVu(listDichVuDTO);
                 dichVuPresenter.capNhatDichVu(listDichVuDTO);
@@ -157,6 +162,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 
         //khởi tạo list menu
         dichVuDTOList = new ArrayList<>();
+
 
         //lấy dữ liệu menu của phòng này;
         dichVuPresenter = new DichVuPresenter(this);
@@ -207,9 +213,11 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
     @Override
     protected void onResume() {
         super.onResume();
-
         //trường hợp menu trong chi tiết phòng đã có item
         if (dichVuDTOList.size() > 0) {
+
+            //trong trường hợp muốn xóa tất cả menu
+            xoaTatCaMenu = dichVuDTOList.get(0);
 
             //trong gọi menu có chọn ít nhất 1 item
             if (tempData.lsDichVu.size() > 0) {
@@ -295,6 +303,9 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 
             }
         }
+        if (dichVuDTOList.size() > 0) {
+            xoaTatCaMenu = dichVuDTOList.get(0);
+        }
     }
 
     @Override
@@ -359,6 +370,9 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
     @Override
     public void onLayDanhSachDichVuSuccess(List<DichVuDTO> list) {
         dichVuDTOList = list;
+        if (dichVuDTOList.size() > 0) {
+            xoaTatCaMenu = dichVuDTOList.get(0);
+        }
 //        listDichVuBanDau = dichVuDTOList;
     }
 
