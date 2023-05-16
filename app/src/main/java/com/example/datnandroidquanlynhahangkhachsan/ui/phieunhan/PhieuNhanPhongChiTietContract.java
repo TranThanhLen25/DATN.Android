@@ -9,13 +9,13 @@ import java.util.List;
 public interface PhieuNhanPhongChiTietContract {
 
     interface View {
-        void onCapNhatPhieuNhanPhongChiTietSuccess();
+            void onCapNhatPhieuNhanPhongChiTietSuccess();
 
-        void onCapNhatPhieuNhanPhongChiTietError(String error);
+            void onCapNhatPhieuNhanPhongChiTietError(String error);
 
-        void onLayDanhSachPhieuNhanPhongChiTietSuccess(List<PhieuNhanPhongChiTietDTO> list);
+            void onLayDanhSachPhieuNhanPhongChiTietSuccess(List<PhieuNhanPhongChiTietDTO> list);
 
-        void onLayDanhSachPhieuNhanPhongChiTietError(String error);
+            void onLayDanhSachPhieuNhanPhongChiTietError(String error);
 
     }
     interface Presenter {

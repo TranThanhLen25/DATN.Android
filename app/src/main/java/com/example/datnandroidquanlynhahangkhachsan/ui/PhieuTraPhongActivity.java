@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +19,8 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienL
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanPhongChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.MenuDichVuContract;
@@ -27,6 +30,8 @@ import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhon
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.PhieuNhanPhongChiTietContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.PhieuNhanPhongChiTietPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatConTract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatPresenter;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -38,12 +43,16 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNhanPhongChiTietContract.View, PhongContract.View, DsPhieuNhanPhongContract.View, KhachHangContract.View, MenuDichVuContract.View {
+public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNhanPhongChiTietContract.View, PhongContract.View,DsPhieuNhanPhongContract.View, KhachHangContract.View, PhieuXuatConTract.View {
     private List<PhieuNhanPhongChiTietDTO> lsPhieuNhanPhongChiTiet;
     private List<PhieuNhanDTO> lsPhieuNhan;
+    private PhieuXuatDTO phieuXuatDTO;
     private List<HangHoaDTO> lsHangHoa;
+    private List<PhieuXuatDTO> lsPhieuXuat;
     private PhongDTO phongDTO;
     private PhieuNhanPhongChiTietDTO phieuNhanPhongChiTietDTO;
+    private PhieuXuatPresenter phieuXuatPresenter;
+    private DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO;
     private List<KhachHangDTO> lsKhachHang;
     private RecyclerView rscv;
     private long PNCTid;
@@ -98,12 +107,14 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
         ActivityThemphieutraphongBinding phieuTraPhongBinding = ActivityThemphieutraphongBinding.inflate(getLayoutInflater());
         sharedPreferences = getSharedPreferences("GET_PHONGID", MODE_PRIVATE);
         sharedPreferences1 = getSharedPreferences("PNID", MODE_PRIVATE);
+        editor1=sharedPreferences1.edit();
 
 
         /// lấy id phòng đã được lưu
         phongid = sharedPreferences.getInt("PHONGID", 0);
 
         phieuNhanPhongChiTietDTO = new PhieuNhanPhongChiTietDTO();
+        lsPhieuNhanPhongChiTiet=new ArrayList<>();
 
         phongDTO = new PhongDTO();
 
@@ -118,7 +129,7 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
         dsPhieuNhanPhongPresenter.LayDanhSachPhieuNhan(dieuKienLocPhieuNhanDTO);
 
 
-        /// lấy list phiếu nhận chi tiết
+        /// lấy danh sách phiếu nhận chi tiết
         PhieuNhanPhongChiTietPresenter phieuNhanPhongChiTietPresenter = new PhieuNhanPhongChiTietPresenter(this);
         DieuKienLocPhieuNhanPhongChiTietDTO dieuKienLocPhieuNhanPhongChiTietDTO = new DieuKienLocPhieuNhanPhongChiTietDTO();
         phieuNhanPhongChiTietPresenter.LayDanhSachPhieuNhanPhongChiTiet(dieuKienLocPhieuNhanPhongChiTietDTO);
@@ -126,6 +137,15 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
         KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
         DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
         khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
+
+        ///Khai báo để lấy phiếu xuất
+        lsPhieuXuat=new ArrayList<>();
+        phieuXuatPresenter=new PhieuXuatPresenter(this);
+        DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO=new DieuKienLocPhieuXuatDTO();
+        phieuXuatPresenter.LayDanhSachPhieuXuat(dieuKienLocPhieuXuatDTO);
+
+        Toast.makeText(this, ""+lsPhieuXuat.size(), Toast.LENGTH_SHORT).show();
+
         phieuTraPhongBinding.toolbarPhieutraphong.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -146,6 +166,7 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
 
         /////gán giá trị vào textview
         phieuTraPhongBinding.tvPhongData.setText(String.valueOf(sharedPreferences.getInt("SOPHONG", 0)));
+
 
 
         /// cập nhật trạng thái phòng
@@ -169,6 +190,14 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
 
 
                 phieuNhanPhongChiTietPresenter.CapNhatPhieuNhanPhongChiTiet(phieuNhanPhongChiTietDTO);
+                ///Thêm phiếu xuất
+
+
+                phieuXuatDTO=new PhieuXuatDTO(sharedPreferences1.getLong("KHID", 0L),"PX"+(lsPhieuXuat.size()+1),
+                        sharedPreferences1.getLong("PNID", 0L),date,sharedPreferences1.getInt("NDID", 0),1111111,3,10,1,"Ghi chu");
+
+                phieuXuatPresenter.ThemPhieuXuat(phieuXuatDTO);
+
                 ///xóa id đã lưu
 
                 editor = sharedPreferences.edit();
@@ -191,7 +220,7 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
         super.onResume();
         phieuNhanPhongChiTietDTO = new PhieuNhanPhongChiTietDTO();
         lsPhieuNhan = new ArrayList<>();
-
+        lsKhachHang = new ArrayList<>();
         //// lấy ra ds PN
         DsPhieuNhanPhongPresenter dsPhieuNhanPhongPresenter = new DsPhieuNhanPhongPresenter(this);
         DieuKienLocPhieuNhanDTO dieuKienLocPhieuNhanDTO = new DieuKienLocPhieuNhanDTO();
@@ -203,7 +232,7 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
         DieuKienLocPhieuNhanPhongChiTietDTO dieuKienLocPhieuNhanPhongChiTietDTO = new DieuKienLocPhieuNhanPhongChiTietDTO();
         phieuNhanPhongChiTietPresenter.LayDanhSachPhieuNhanPhongChiTiet(dieuKienLocPhieuNhanPhongChiTietDTO);
 
-        lsKhachHang = new ArrayList<>();
+        /// lấy lại list khách hàng
         KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
         DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
         khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
@@ -216,17 +245,18 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
         /// lấy giá trị phongid gán cho PNCT
         for (int i = 0; i < lsPhieuNhanPhongChiTiet.size(); i++) {
             if (lsPhieuNhanPhongChiTiet.get(i).getPhongId() == phongid) {
-                PNCTid = Long.valueOf(lsPhieuNhanPhongChiTiet.get(i).getPhieuNhanId());
-
+                /// lấy id pnct
+                PNCTid = Long.valueOf(lsPhieuNhanPhongChiTiet.get(i).getPhieuNhanPhongChiTietId());
+                ///lấy id pn
+                PNid=Long.valueOf(lsPhieuNhanPhongChiTiet.get(i).getPhieuNhanId());
                 NGAYNHAN = lsPhieuNhanPhongChiTiet.get(i).getThoiGianNhanPhong();
                 NGAYTRA = lsPhieuNhanPhongChiTiet.get(i).getThoiGianTraPhong();
 
 
                 nhan = formatter.format(NGAYNHAN);
                 tra = formatter.format(date);
-                editor1 = sharedPreferences1.edit();
-                editor1.putLong("PNID", PNCTid);
-
+//                editor1 = sharedPreferences1.edit();
+                editor1.putLong("PNID", PNid);
                 editor1.commit();
 
 
@@ -260,6 +290,7 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
         TextView tong = findViewById(R.id.tv_tong);
         tong.setText(String.valueOf(giatien));
 
+
     }
 
     @Override
@@ -269,8 +300,9 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
         Long a = sharedPreferences1.getLong("PNID", 0L);
         for (int i = 0; i < lsPhieuNhan.size(); i++) {
             if (lsPhieuNhan.get(i).getPhieuNhanId() == a) {
-                editor1 = sharedPreferences1.edit();
+//                editor1 = sharedPreferences1.edit();
                 editor1.putLong("KHID", lsPhieuNhan.get(i).getKhachHangId());
+                editor1.putInt("NDID", lsPhieuNhan.get(i).getNguoiDungId());
                 editor1.commit();
 
             }
@@ -330,7 +362,7 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
     public void onLayDanhSachPhongError(String error) {
     }
 
-    //////////lấy danh sách theo loại phòng
+
     @Override
     public void onLayDanhSachPhong1gSuccess(List<PhongDTO> lsDanhSachPhong1g) {
     }
@@ -357,17 +389,22 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
     public void onLayDanhSachKhachHangError(String error) {
     }
 
-    @Override
-    public void onLayDanhSachHangHoaSuccess(List<HangHoaDTO> list) {
-        lsHangHoa = list;
-//      PhieuTraPhongAdapter phieuNhanPhongAdapter = new PhieuTraPhongAdapter(this);
-//        phieuNhanPhongAdapter.setData(lsHangHoa);
-//        rscv.setAdapter(phieuNhanPhongAdapter);
 
+
+
+    @Override
+    public void onThemPhieuXuatSuccess(){}
+
+    @Override
+    public void onThemPhieuXuatError(String error){}
+
+    @Override
+    public void onLayDanhSachPhieuXuatSuccess(List<PhieuXuatDTO> list){
+        lsPhieuXuat=list;
     }
 
     @Override
-    public void onLayDanhSachHangHoaError(String error) {
-    }
+    public void onLayDanhSachPhieuXuatError(String error){}
+
 
 }

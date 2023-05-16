@@ -1,8 +1,10 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat;
 
 
+
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatDTO;
+
 import com.example.datnandroidquanlynhahangkhachsan.model.phieuxuat.PhieuXuatModel;
 import com.example.datnandroidquanlynhahangkhachsan.model.phieuxuat.IPhieuXuatModel;
 import com.example.datnandroidquanlynhahangkhachsan.model.phieuxuat.PhieuXuatModel;
@@ -31,6 +33,20 @@ public class PhieuXuatPresenter implements PhieuXuatConTract.Presenter{
             @Override
             public void onError(String error) {
                 view.onLayDanhSachPhieuXuatError(error);
+            }
+        });
+    }
+    @Override
+    public void ThemPhieuXuat(PhieuXuatDTO phieuXuatDTO) {
+        phieuXuatModel.ThemPhieuXuat(phieuXuatDTO, new IPhieuXuatModel.IOnThemPhieuXuatFinishedListener() {
+            @Override
+            public void onSuccess() {
+                view.onThemPhieuXuatSuccess();
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onThemPhieuXuatError(error);
             }
         });
     }

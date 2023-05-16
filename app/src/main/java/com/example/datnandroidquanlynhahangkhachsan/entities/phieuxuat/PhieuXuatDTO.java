@@ -131,6 +131,19 @@ public class PhieuXuatDTO {
         this.ghiChu = ghiChu;
     }
 
+    public PhieuXuatDTO(long khachHangId, String soChungTu, long phieuNhanId, Date ngayLap, int nguoiDungId, float tongThanhTien, float phuThu, float chietKhau, int trangthai, String ghiChu) {
+        this.khachHangId = khachHangId;
+        this.soChungTu = soChungTu;
+        this.phieuNhanId = phieuNhanId;
+        this.ngayLap = ngayLap;
+        this.nguoiDungId = nguoiDungId;
+        this.tongThanhTien = tongThanhTien;
+        this.phuThu = phuThu;
+        this.chietKhau = chietKhau;
+        this.trangthai = trangthai;
+        this.ghiChu = ghiChu;
+    }
+
     public PhieuXuatDTO() {
     }
 }

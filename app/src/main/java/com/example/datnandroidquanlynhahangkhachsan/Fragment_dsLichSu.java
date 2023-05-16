@@ -98,6 +98,7 @@ public class Fragment_dsLichSu extends Fragment implements PhieuXuatConTract.Vie
 
         return phieuXuatBinding.getRoot();
     }
+    @Override
     public void onLayDanhSachPhieuXuatSuccess(List<PhieuXuatDTO> list) {
         phieuXuat = list;
         phieuXuatAdapter = new PhieuXuatAdapter(this);
@@ -108,7 +109,14 @@ public class Fragment_dsLichSu extends Fragment implements PhieuXuatConTract.Vie
     }
 
 
+    @Override
     public void onLayDanhSachPhieuXuatError(String error) {
     }
+
+    @Override
+    public void onThemPhieuXuatSuccess(){}
+
+    @Override
+    public void onThemPhieuXuatError(String error){}
 
 }
