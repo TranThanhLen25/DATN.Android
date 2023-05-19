@@ -19,7 +19,9 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienL
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
 
 import java.util.List;
@@ -111,6 +113,8 @@ public interface IAPIServiceRetrofit {
     @POST("/api/PhieuXuat/danhsach-PhieuXuat?")
     Call<ResponseDTO<List<PhieuXuatDTO>>>   layPhieuXuat(@Body DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO);
 
+    @POST("/api/PhieuXuatChiTiet/danhsach-phieuXuatChiTiet?")
+    Call<ResponseDTO<List<PhieuXuatChiTietDTO>>>   layPhieuXuatChiTiet(@Body DieuKienLocPhieuXuatChiTietDTO dieuKienLocPhieuXuatChiTietDTO);
 
     @POST("/api/PhieuNhanPhongChiTiet/capnhat-PhieuNhanPhongChiTiet")
     Call<ResponseInfo> capNhatPhieuNhanPhongChiTiet(@Body PhieuNhanPhongChiTietDTO phieuNhanPhongChiTietDTO);

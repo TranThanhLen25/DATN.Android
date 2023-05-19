@@ -28,6 +28,21 @@ public class PhieuXuatDTO {
     @SerializedName("ghiChu")
     private String ghiChu;
 
+    public PhieuXuatDTO(long khachHangId, String soChungTu, long phieuNhanId, Date ngayLap, int nguoiDungId, float tongThanhTien, float phuThu, float chietKhau, int trangthai, String ghiChu) {
+        this.khachHangId = khachHangId;
+        this.soChungTu = soChungTu;
+        this.phieuNhanId = phieuNhanId;
+        this.ngayLap = ngayLap;
+        this.nguoiDungId = nguoiDungId;
+        this.tongThanhTien = tongThanhTien;
+        this.phuThu = phuThu;
+        this.chietKhau = chietKhau;
+        this.trangthai = trangthai;
+        this.ghiChu = ghiChu;
+    }
+
+    public PhieuXuatDTO() {
+    }
 
     public long getPhieuXuatId() {
         return phieuXuatId;
@@ -115,35 +130,5 @@ public class PhieuXuatDTO {
 
     public void setGhiChu(String ghiChu) {
         this.ghiChu = ghiChu;
-    }
-
-    public PhieuXuatDTO(long phieuXuatId, long khachHangId, String soChungTu, long phieuNhanId, Date ngayLap, int nguoiDungId, float tongThanhTien, float phuThu, float chietKhau, int trangthai, String ghiChu) {
-        this.phieuXuatId = phieuXuatId;
-        this.khachHangId = khachHangId;
-        this.soChungTu = soChungTu;
-        this.phieuNhanId = phieuNhanId;
-        this.ngayLap = ngayLap;
-        this.nguoiDungId = nguoiDungId;
-        this.tongThanhTien = tongThanhTien;
-        this.phuThu = phuThu;
-        this.chietKhau = chietKhau;
-        this.trangthai = trangthai;
-        this.ghiChu = ghiChu;
-    }
-
-    public PhieuXuatDTO(long khachHangId, String soChungTu, long phieuNhanId, Date ngayLap, int nguoiDungId, float tongThanhTien, float phuThu, float chietKhau, int trangthai, String ghiChu) {
-        this.khachHangId = khachHangId;
-        this.soChungTu = soChungTu;
-        this.phieuNhanId = phieuNhanId;
-        this.ngayLap = ngayLap;
-        this.nguoiDungId = nguoiDungId;
-        this.tongThanhTien = tongThanhTien;
-        this.phuThu = phuThu;
-        this.chietKhau = chietKhau;
-        this.trangthai = trangthai;
-        this.ghiChu = ghiChu;
-    }
-
-    public PhieuXuatDTO() {
     }
 }

@@ -47,6 +47,15 @@ public class DieuKienLocPhieuXuatDTO {
         this.khachHangId = khachHangId;
         this.soChungTu = soChungTu;
     }
+
+    public DieuKienLocPhieuXuatDTO(String soChungTu) {
+        this.soChungTu=soChungTu;
+    }
+
+    public DieuKienLocPhieuXuatDTO(int trangthai) {
+        this.trangthai = trangthai;
+    }
+
     public DieuKienLocPhieuXuatDTO() {
     }
 }

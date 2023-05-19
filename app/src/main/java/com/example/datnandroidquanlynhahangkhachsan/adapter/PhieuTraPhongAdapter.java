@@ -3,10 +3,7 @@ package com.example.datnandroidquanlynhahangkhachsan.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,18 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemPhieutraphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
-import com.example.datnandroidquanlynhahangkhachsan.tempData.soLuongLoaiPhong;
-import com.example.datnandroidquanlynhahangkhachsan.ui.PhieuTraPhongActivity;
-import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.ThemPhieuDatphongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuTraPhongActivity;
 
-import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.PrimitiveIterator;
 
 public class PhieuTraPhongAdapter extends RecyclerView.Adapter<PhieuTraPhongAdapter.PhieuTraPhongViewHolder> {
     private List<HangHoaDTO> lsHangHoa;

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.PhieuTraPhongActivity"
+    tools:context=".ui.phieuxuat.PhieuTraPhongActivity"
     >
     <include
         android:layout_width="match_parent"
@@ -58,7 +58,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_tenphieu"
                         android:padding="10dp"
-                        android:text="@string/tv_phieutraphong"
+                        android:text="Phiếu trả phòng chi tiết"
                         android:textSize="@dimen/heading_2"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@id/chitietheaderphieutraphong"
@@ -424,7 +424,7 @@
             android:layout_marginBottom="7dp"
 
             android:padding="10dp"
-            android:text="Trả phong"
+            android:text="Trả phòng"
             android:textAllCaps="false"
             android:textSize="@dimen/heading_2"
             app:layout_constraintBottom_toBottomOf="@id/ctl_btn_bottom"

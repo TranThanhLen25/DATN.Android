@@ -132,4 +132,10 @@
     <!--    Dialog-->
     <string name="dialog_btn_ok">ĐỒNG Ý</string>
     <string name="dialog_btn_cancel">HỦY</string>
+
+    <!--    Dialog-->
+    <string name="thanhtoan">Thanh Toán</string>
+    <string name="thanhtoansau">Thanh toán sau</string>
+
+
 </resources>
