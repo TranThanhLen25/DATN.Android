@@ -129,6 +129,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 //                        }
 //                    }
 //                }
+                //
 
                 if (dichVuDTOList.size() == 0 && xoaTatCaMenu.getHangHoaId() > 0) {
                     xoaTatCaMenu.setTrangThai("xóa tất cả");
