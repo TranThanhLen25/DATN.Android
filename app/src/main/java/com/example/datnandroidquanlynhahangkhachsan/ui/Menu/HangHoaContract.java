@@ -14,7 +14,11 @@ public interface HangHoaContract {
 
     interface Presenter {
         ////void LayDanhSachHangHoa(DieuKienLocHangHoaDTO dieuKienLoc);
-//
+
+
+
+
+        
         void LayDanhSachHangHoa2(String NhomHangHoa);
     }
 }
