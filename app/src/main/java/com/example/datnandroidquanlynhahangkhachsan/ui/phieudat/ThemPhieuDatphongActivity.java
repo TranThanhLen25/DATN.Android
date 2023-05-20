@@ -20,7 +20,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.CaptureAct;
-import com.example.datnandroidquanlynhahangkhachsan.adapter.LoaiPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemphieudatphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
