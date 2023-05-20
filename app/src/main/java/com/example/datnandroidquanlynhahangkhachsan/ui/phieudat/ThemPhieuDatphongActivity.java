@@ -208,7 +208,7 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
                 thoiGianTraPhong = ac.formatStringToDateUtil(thoiGianTra, "dd/MM/yyyy HH:mm");
             }
 
-            //lấy dữ liệu phiếu đặt rồi thêm vào biến tạm
+           // //lấy dữ liệu phiếu đặt rồi thêm vào biến tạm
             finalPhieuDatDTO = new PhieuDatDTO("PDP" + (lsPhieuDat.size() + 1), day, 1, 1, thoiGianNhanPhong, thoiGianTraPhong, "ghi chu", 1L, "đang đặt");
 
 
