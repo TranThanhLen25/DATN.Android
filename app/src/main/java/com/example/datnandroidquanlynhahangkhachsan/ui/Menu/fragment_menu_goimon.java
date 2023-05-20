@@ -89,6 +89,8 @@ public class fragment_menu_goimon extends Fragment implements HangHoaContract.Vi
         RecyclerView.ItemDecoration decoration = new DividerItemDecoration(this.getActivity(), DividerItemDecoration.VERTICAL);
         rscvHangHoaGoiMon.addItemDecoration(decoration);
         return view;
+
+        
     }
     @Override
 
