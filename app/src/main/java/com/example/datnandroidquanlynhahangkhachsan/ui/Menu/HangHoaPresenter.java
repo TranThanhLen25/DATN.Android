@@ -32,11 +32,7 @@ public class HangHoaPresenter implements HangHoaContract.Presenter {
 //            }
 //        });
 //   }
-
-
-
-
-
+    
     @Override
     public void LayDanhSachHangHoa2(String NhomHangHoa) {
         hangHoaModel.LayDanhSachHangHoa2(NhomHangHoa, new IHangHoaModel.IOnLayDanhSachHangHoa2FinishedListener() {
