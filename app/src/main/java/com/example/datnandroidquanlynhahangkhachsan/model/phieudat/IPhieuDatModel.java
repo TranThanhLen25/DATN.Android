@@ -1,5 +1,6 @@
 package com.example.datnandroidquanlynhahangkhachsan.model.phieudat;
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
@@ -15,8 +16,8 @@ public interface IPhieuDatModel {
         void onError(String error);
     }
 
-    void ThemPhieuDatPhong(PhieuDatDTO phieuDatDTO, IPhieuDatModel.IOnThemPhieuDatPhongFinishedListener listener);
-
+    void ThemPhieuDatPhong(DatPhongDTO datPhongDTO, IPhieuDatModel.IOnThemPhieuDatPhongFinishedListener listener);
+//
     interface IOnThemPhieuDatPhongFinishedListener {
         void onSuccess();
 
