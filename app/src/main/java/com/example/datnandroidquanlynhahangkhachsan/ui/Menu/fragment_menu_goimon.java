@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.HangHoaAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 
 import java.util.ArrayList;
 import java.util.Calendar;

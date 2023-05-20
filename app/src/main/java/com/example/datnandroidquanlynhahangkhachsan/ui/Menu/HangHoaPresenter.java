@@ -2,6 +2,7 @@ package com.example.datnandroidquanlynhahangkhachsan.ui.Menu;
 
 
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.hanghoa.HangHoaModel;
 import com.example.datnandroidquanlynhahangkhachsan.model.hanghoa.IHangHoaModel;
 
