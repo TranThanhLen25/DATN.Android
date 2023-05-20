@@ -4,7 +4,6 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLo
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.phieudat.IPhieuDatModel;
-import com.example.datnandroidquanlynhahangkhachsan.model.phieudat.PhieuDatModel;
 
 import java.util.List;
 
