@@ -29,7 +29,7 @@ public class HangHoaDTO {
         this.trangThai = trangThai;
         this.nhomHangHoa = nhomHangHoa;
     }
-
+//
     public HangHoaDTO() {
 
     }
