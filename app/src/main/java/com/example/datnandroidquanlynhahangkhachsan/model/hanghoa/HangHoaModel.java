@@ -5,7 +5,6 @@ package com.example.datnandroidquanlynhahangkhachsan.model.hanghoa;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.DieuKienLocHangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ErrorMessageDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseTokenDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.APIService;

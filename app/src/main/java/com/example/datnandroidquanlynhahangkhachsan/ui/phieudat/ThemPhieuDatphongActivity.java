@@ -28,6 +28,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhong
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.lsChonPhong;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.soLuongLoaiPhong;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;

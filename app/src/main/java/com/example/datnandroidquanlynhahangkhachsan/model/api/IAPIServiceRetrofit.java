@@ -5,7 +5,6 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.DichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.ListDichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DieuKienLocHangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.GoiMonDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienLocKhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
@@ -18,6 +17,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDT
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanPhongChiTietDTO;
