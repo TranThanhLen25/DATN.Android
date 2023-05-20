@@ -12,7 +12,6 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityMainBinding;
 
 import com.example.datnandroidquanlynhahangkhachsan.ui.DangNhapActivity;
-import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.Fragment_dsPhieuDatPhong;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.Fragment_dsPhieuNhanPhong;
 
 public class MainActivity extends AppCompatActivity {

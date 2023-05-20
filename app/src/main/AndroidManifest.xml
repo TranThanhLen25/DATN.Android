@@ -55,9 +55,6 @@
             android:name=".ui.ThemPhieuNhanPhongActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.phieudat.ThemPhieuDatphongActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.chonphong.ChonPhongActivity"
             android:exported="false" />
         <activity

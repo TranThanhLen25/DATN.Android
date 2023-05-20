@@ -25,7 +25,6 @@ import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuTraPhongAc
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDoiPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuNhanPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.chitietphong.ChiTietPhongActivity;
-import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.ThemPhieuDatphongActivity;
 
 import java.text.DecimalFormat;
 import java.util.List;

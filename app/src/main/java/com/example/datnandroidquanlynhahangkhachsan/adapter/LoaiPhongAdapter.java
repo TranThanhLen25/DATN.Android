@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemChonloaiphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.soLuongLoaiPhong;
-import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.ThemPhieuDatphongActivity;
 
 import java.util.ArrayList;
 import java.util.List;
