@@ -43,7 +43,7 @@ public class FragmentMenuPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-////        return mTabCount;
+//        return mTabCount;
         return mFragmentList.size();
     }
 
