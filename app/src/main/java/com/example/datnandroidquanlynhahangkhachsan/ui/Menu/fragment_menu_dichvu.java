@@ -42,7 +42,7 @@ public class fragment_menu_dichvu extends Fragment implements MenuDichVuContract
     private String mParam2;
 
     public fragment_menu_dichvu() {
-        // Required empty public constructor
+      //  // Required empty public constructor
     }
 
     /**

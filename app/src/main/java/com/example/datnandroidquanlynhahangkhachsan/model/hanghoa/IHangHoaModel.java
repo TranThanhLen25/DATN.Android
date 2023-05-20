@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface IHangHoaModel {
     void LayDanhSachHangHoa(DieuKienLocHangHoaDTO dieuKienLoc, IOnLayDanhSachHangHoaFinishedListener listener);
-
+//
     interface IOnLayDanhSachHangHoaFinishedListener {
         void onSuccess(List<HangHoaDTO> listResult);
 

@@ -20,7 +20,7 @@ import retrofit2.Response;
 public class HangHoaModel implements IHangHoaModel{
     APIService service;
     private ErrorMessageDTO errorKiemTra;
-
+//
     @Override
     public void LayDanhSachHangHoa(DieuKienLocHangHoaDTO dieuKienLoc, IOnLayDanhSachHangHoaFinishedListener listener) {
         //Truoc khi goi api lay du lieu can phai dang nhap api de lay token

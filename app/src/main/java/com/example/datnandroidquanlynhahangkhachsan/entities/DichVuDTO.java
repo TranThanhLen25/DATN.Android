@@ -1,7 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.entities;
 
 import java.util.Date;
-
+//
 public class DichVuDTO {
     private long DichVuID;
     private int PhongID;
