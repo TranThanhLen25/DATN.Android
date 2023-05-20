@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface DsPhieuDatPhongContract {
     interface View {
-        //lấy danh sách phiếu đặt phòng
+       // //lấy danh sách phiếu đặt phòng
         void onLayDanhSachPhieuDatSuccess(List<PhieuDatDTO> list);
 
         void onLayDanhSachPhieuDatError(String error);
