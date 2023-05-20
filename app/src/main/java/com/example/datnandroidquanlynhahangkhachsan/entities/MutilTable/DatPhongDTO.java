@@ -16,7 +16,7 @@ public class DatPhongDTO {
         this.phieuDatDTO = phieuDatDTO;
         this.phieuDatPhongChiTiets = phieuDatPhongChiTiets;
     }
-
+//
     public PhieuDatDTO getPhieuDatDTO() {
         return phieuDatDTO;
     }
