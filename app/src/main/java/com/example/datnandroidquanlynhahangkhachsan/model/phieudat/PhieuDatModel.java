@@ -60,7 +60,7 @@ public class PhieuDatModel implements IPhieuDatModel {
             }
         });
     }
-
+//
     @Override
     public void ThemPhieuDatPhong(DatPhongDTO datPhongDTO, IOnThemPhieuDatPhongFinishedListener listener) {
         service = new APIService();
