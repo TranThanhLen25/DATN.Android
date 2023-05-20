@@ -10,7 +10,6 @@ import java.util.List;
 public class DichVuPresenter implements DichVuContract.Presenter {
     private final DichVuContract.View view;
     DichVuModel dichVuModel;
-    ///
 
     public DichVuPresenter(DichVuContract.View view) {
         this.view = view;

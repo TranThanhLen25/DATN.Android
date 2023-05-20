@@ -48,6 +48,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             if (dichvu.getHangHoaId() == lsHangHoa.get(i).getHangHoaId()) {
                 hangHoaDTO = lsHangHoa.get(i);
             }
+            //
         }
         holder.itemMenuBinding.tvTenmenu.setText(hangHoaDTO.getTenHangHoa());
         holder.itemMenuBinding.tvSoluongmenu.setText(" x" + String.valueOf(soLuong));

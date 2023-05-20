@@ -176,7 +176,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 
         hangHoaPresenter = new HangHoaPresenter(this);
 
-        //lấy dữ liệu menu mỗi giây
+        //lấy dữ liệu menu mỗi giây//
         handler.postDelayed(runnable = new Runnable() {
             int count = 0;
 

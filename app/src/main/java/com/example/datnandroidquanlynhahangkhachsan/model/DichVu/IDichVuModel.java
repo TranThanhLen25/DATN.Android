@@ -22,7 +22,6 @@ public interface IDichVuModel {
 
         void onError(String error);
     }
-    ///
 
     void capNhatDichVu(ListDichVuDTO listDichVuDTO, IDichVuModel.IOncapNhatDichVuFinishedListener listener);
 

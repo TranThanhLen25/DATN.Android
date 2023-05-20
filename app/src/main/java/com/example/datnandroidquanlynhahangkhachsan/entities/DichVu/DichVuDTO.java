@@ -3,7 +3,7 @@ package com.example.datnandroidquanlynhahangkhachsan.entities.DichVu;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
-
+//
 public class DichVuDTO {
     @SerializedName("dichVuId")
     private long DichVuID;

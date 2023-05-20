@@ -18,7 +18,7 @@ public class DanhSachMenuActivity extends AppCompatActivity {
     ActivityDanhsachmenuBinding danhsachmenuBinding;
     Fragment fragment = null;
     FragmentMenuPagerAdapter viewPageAdapter;
-
+//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

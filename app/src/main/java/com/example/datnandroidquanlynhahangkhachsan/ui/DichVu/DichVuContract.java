@@ -8,7 +8,6 @@ import java.util.List;
 public interface DichVuContract {
     interface View {
         //lấy danh sách dịch vụ kèm theo điều kiện lọc
-        //
         void onLayDanhSachDichVuSuccess(List<DichVuDTO> list);
 
         void onLayDanhSachDichVuError(String error);

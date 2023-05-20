@@ -18,7 +18,7 @@ import retrofit2.Response;
 public class DichVuModel implements IDichVuModel {
     APIService service;
     private ErrorMessageDTO errorKiemTra;
-
+//
     @Override
     public void LayDanhSachDichVu(DichVuDTO dichVuDTO, IOnLayDanhSachDichVuFinishedListener listener) {
         service = new APIService();

@@ -31,6 +31,7 @@ import java.util.List;
 
 public class HangHoaAdapter extends RecyclerView.Adapter<HangHoaAdapter.HangHoaViewHolder> {
     private List<HangHoaDTO> lsHangHoa;
+    //
     private Context context;
     private AppUtils appUtils;
 
