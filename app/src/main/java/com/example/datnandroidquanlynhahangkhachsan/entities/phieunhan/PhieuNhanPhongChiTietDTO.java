@@ -27,6 +27,15 @@ public class PhieuNhanPhongChiTietDTO {
     public PhieuNhanPhongChiTietDTO() {
     }
 
+    public PhieuNhanPhongChiTietDTO(int phongId, int soNguoi, int trangThai, Date thoiGianNhanPhong, Date thoiGianTraPhong, float donGia) {
+        this.phongId = phongId;
+        this.soNguoi = soNguoi;
+        this.trangThai = trangThai;
+        this.thoiGianNhanPhong = thoiGianNhanPhong;
+        this.thoiGianTraPhong = thoiGianTraPhong;
+        this.donGia = donGia;
+    }
+
     public long getPhieuNhanPhongChiTietId() {
         return phieuNhanPhongChiTietId;
     }

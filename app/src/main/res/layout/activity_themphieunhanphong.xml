@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ThemPhieuNhanPhongActivity">
+    tools:context=".ui.phieunhan.ThemPhieuNhanPhongActivity">
 
     <include
         android:id="@+id/toolbar_themphieunhanphong"
@@ -369,6 +369,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
+            android:id="@+id/btn_xacnhan_phieunhaphang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/action_nhanphong"

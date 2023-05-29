@@ -29,14 +29,13 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
-import com.example.datnandroidquanlynhahangkhachsan.tempData.lsChonPhong;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.soLuongLoaiPhong;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
-import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
-import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
@@ -120,7 +119,7 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
         rcv_LoaiPhong.setLayoutManager(LinearLayoutManager);
 
         //activityThemphieudatphongBinding.tvPhongDataPhieudatphong.setText("");
-        lsChonPhong.lsChonPhongDataInt = new ArrayList<>();
+//        lsChonPhong.lsChonPhongDataInt = new ArrayList<>();
         //khai báo presenter khách hàng
         khachHangPresenter = new KhachHangPresenter(this);
         activityThemphieudatphongBinding.toolbarPhieudatphong.icBack.setOnClickListener(new View.OnClickListener() {

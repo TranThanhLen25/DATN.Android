@@ -1,15 +1,12 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,9 +14,6 @@ import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuXuatAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsLichSuBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
-import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.DanhSachMenuActivity;
-import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuNhanPhongActivity;
-import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.Fragment_dsPhieuNhanPhong;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatConTract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatPresenter;
 

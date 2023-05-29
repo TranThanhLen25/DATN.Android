@@ -1,14 +1,14 @@
 package com.example.datnandroidquanlynhahangkhachsan.model.phieunhan;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.ErrorMessageDTO;
-
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.NhanPhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseTokenDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.APIService;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.IAPIServiceTokenRetrofit;
-import com.example.Nhannandroidquanlynhahangkhachsan.model.phieunhan.IPhieuNhanModel;
 
 import java.util.List;
 
@@ -55,6 +55,34 @@ public class PhieuNhanModel implements IPhieuNhanModel {
             @Override
             public void onError(String error) {
                 //Lay token loi => thong bao loi
+                listener.onError(error);
+            }
+        });
+    }
+
+    @Override
+    public void ThemPhieuNhanPhong(NhanPhongDTO nhanPhongDTO, IOnThemPhieuNhanPhongFinishedListener listener) {
+        service = new APIService();
+        service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
+            @Override
+            public void onSuccess(ResponseTokenDTO itemToken) {
+                service.apiServiceRetrofit.themPhieuNhan(nhanPhongDTO).enqueue(new Callback<ResponseInfo>() {
+                    @Override
+                    public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
+                        if (response.body() != null) {
+                            listener.onSuccess();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseInfo> call, Throwable t) {
+                        listener.onError(t.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
                 listener.onError(error);
             }
         });

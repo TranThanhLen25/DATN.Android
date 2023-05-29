@@ -4,19 +4,18 @@ import java.util.Date;
 
 public class PhieuNhanDTO {
 
-    private  Long phieuNhanId;
-    private  String soChungTu;
+    private Long phieuNhanId;
+    private String soChungTu;
     private Date ngayLap;
     private int nguoiDungId;
     private int loaiPhieuId;
-    private  Date ngayTra;
+    private Date ngayTra;
     private Long khachHangId;
     private String ghiChu;
     private String trangThai;
 
 
-    public PhieuNhanDTO(Long phieuNhanId, String soChungTu, Date ngayLap, int nguoiDungId, int loaiPhieuId, Date ngayTra, Long khachHangId, String ghiChu, String trangThai) {
-        this.phieuNhanId = phieuNhanId;
+    public PhieuNhanDTO(String soChungTu, Date ngayLap, int nguoiDungId, int loaiPhieuId, Date ngayTra, Long khachHangId, String ghiChu, String trangThai) {
         this.soChungTu = soChungTu;
         this.ngayLap = ngayLap;
         this.nguoiDungId = nguoiDungId;

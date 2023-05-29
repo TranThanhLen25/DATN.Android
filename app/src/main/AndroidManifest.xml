@@ -52,7 +52,7 @@
             android:stateNotNeeded="false"
             android:theme="@style/zxing_CaptureTheme" />
         <activity
-            android:name=".ui.ThemPhieuNhanPhongActivity"
+            android:name=".ui.phieunhan.ThemPhieuNhanPhongActivity"
             android:exported="false" />
         <activity
             android:name=".ui.phieudat.ThemPhieuDatphongActivity"

@@ -10,6 +10,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienL
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.NhanPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuNhapChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuNhapDTO;
@@ -138,5 +139,8 @@ public interface IAPIServiceRetrofit {
 
     @POST("/api/hanghoa/capnhat-dichvu")
     Call<ResponseInfo> capNhatDichVu(@Body ListDichVuDTO listDichVuDTO);
+
+    @POST("/api/PhieuNhan/them-PhieuNhan")
+    Call<ResponseInfo> themPhieuNhan(@Body NhanPhongDTO nhanPhongDTO);
 
 }

@@ -18,7 +18,6 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienL
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
-import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuNhanPhongActivity;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -134,6 +133,16 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
 
     @Override
     public void onLayDanhSachPhieuNhanError(String error) {
+    }
+
+    @Override
+    public void onThemPhieuNhanPhongSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuNhanPhongError(String error) {
+
     }
 
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
