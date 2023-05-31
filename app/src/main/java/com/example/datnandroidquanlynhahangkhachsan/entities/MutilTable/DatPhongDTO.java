@@ -1,5 +1,6 @@
 package com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable;
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 import com.google.gson.annotations.SerializedName;
@@ -12,9 +13,17 @@ public class DatPhongDTO {
     @SerializedName("phieuDatPhongChiTiets")
     private List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTiets;
 
+    private KhachHangDTO khachHang;
+
     public DatPhongDTO(PhieuDatDTO phieuDatDTO, List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTiets) {
         this.phieuDatDTO = phieuDatDTO;
         this.phieuDatPhongChiTiets = phieuDatPhongChiTiets;
+    }
+
+    public DatPhongDTO(PhieuDatDTO phieuDatDTO, List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTiets, KhachHangDTO khachHang) {
+        this.phieuDatDTO = phieuDatDTO;
+        this.phieuDatPhongChiTiets = phieuDatPhongChiTiets;
+        this.khachHang = khachHang;
     }
 
     public PhieuDatDTO getPhieuDatDTO() {

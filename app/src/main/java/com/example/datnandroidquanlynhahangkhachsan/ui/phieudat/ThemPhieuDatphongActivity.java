@@ -221,7 +221,7 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
             khachHangDTO.setCccd(CCCD);
             khachHangDTO.setTenKhachHang(Hoten);
             khachHangDTO.setSdt(sdt);
-            khachHangPresenter.ThemKhachHang(khachHangDTO);
+            //khachHangPresenter.ThemKhachHang(khachHangDTO);
 
             //kiểm tra số lượng phòng của mỗi loại
             //loại nào số lượng lớn hơn 0 thì tạo mới phiếu đặt phòng chi tiết rồi thêm vào biến tạm
@@ -239,7 +239,7 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
             }
 
             //lấy dữ liệu tổng và thêm vào cơ sở dữ liệu
-            datPhongDTO = new DatPhongDTO(finalPhieuDatDTO, finalListPhieuDatPhongChiTiet);
+            datPhongDTO = new DatPhongDTO(finalPhieuDatDTO, finalListPhieuDatPhongChiTiet, khachHangDTO);
             dsPhieuDatPhongPresenter.ThemPhieuDatPhong(datPhongDTO);
 
             //sau khi thêm thì xóa dữ liệu của cái biến số lượng của mỗi loại phòng
