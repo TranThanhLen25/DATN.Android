@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_item"
+    android:layout_margin="5dp"
     android:padding="10dp">
 
 
@@ -20,7 +21,7 @@
             android:id="@+id/tv_phong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Phong/Bàn: "
+            android:text="Phong:"
             android:textColor="@color/black"
             android:textSize="@dimen/heading_2"
             app:layout_constraintStart_toStartOf="@id/ctl_phong"
@@ -36,17 +37,29 @@
             android:textSize="@dimen/heading_2"
             app:layout_constraintStart_toEndOf="@id/tv_phong"
             app:layout_constraintTop_toTopOf="@id/ctl_phong" />
-
         <TextView
-            android:id="@+id/tv_loaiphong"
+            android:id="@+id/tv_gia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:text="layloaiphong"
+            android:text="Số ngày:"
             android:textColor="@color/black"
             android:textSize="@dimen/heading_2"
-            app:layout_constraintStart_toEndOf="@id/tv_so"
+            android:layout_marginStart="39dp"
+          app:layout_constraintStart_toEndOf="@+id/tv_so"
+            app:layout_constraintTop_toTopOf="@id/ctl_phong"/>
+
+        <TextView
+            android:id="@+id/tv_songay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="0 lấy dc"
+            android:textColor="@color/red"
+            android:textSize="@dimen/heading_2"
+            app:layout_constraintStart_toEndOf="@id/tv_gia"
             app:layout_constraintTop_toTopOf="@id/ctl_phong" />
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -59,40 +72,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ctl_phong">
 
+
+
         <TextView
-            android:id="@+id/tv_gia"
+            android:id="@+id/tv_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tv_gia"
+
+            android:text="Tổng:"
             android:textColor="@color/black"
             android:textSize="@dimen/heading_2"
             app:layout_constraintStart_toStartOf="@id/ctl_gia"
             app:layout_constraintTop_toTopOf="@id/ctl_gia" />
 
         <TextView
-            android:id="@+id/tv_dongia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:text="0 lấy dc"
-            android:textColor="@color/red"
-            android:textSize="@dimen/heading_2"
-            app:layout_constraintStart_toEndOf="@id/tv_gia"
-            app:layout_constraintTop_toTopOf="@id/ctl_gia" />
-
-        <TextView
-            android:id="@+id/tv_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:text="Menu: "
-            android:textColor="@color/black"
-            android:textSize="@dimen/heading_2"
-            app:layout_constraintStart_toEndOf="@+id/tv_dongia"
-            app:layout_constraintTop_toTopOf="@id/ctl_gia" />
-
-        <TextView
-            android:id="@+id/tv_dongiamenu"
+            android:id="@+id/tv_tongtien"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -102,17 +96,24 @@
             app:layout_constraintStart_toEndOf="@+id/tv_menu"
             app:layout_constraintTop_toTopOf="@id/ctl_gia" />
 
+        <TextView
+            android:id="@+id/tv_trangthai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="chưa thanh toán"
+            android:textSize="@dimen/heading_2"
+            android:layout_marginEnd="20dp"
+            android:textStyle="bold"
+            android:layout_marginStart="29dp"
+            app:layout_constraintEnd_toEndOf="@id/ctl_gia"
+
+            app:layout_constraintTop_toTopOf="@id/ctl_gia" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Spinner
-        android:id="@+id/spn_menu"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_margin="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ctl_gia"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

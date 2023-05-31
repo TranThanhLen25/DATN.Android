@@ -17,7 +17,7 @@ public class DsPhieuDatPhongPresenter implements DsPhieuDatPhongContract.Present
         this.view = view;
         this.phieuDatModel = new PhieuDatModel();
     }
-
+//
 
     @Override
     public void LayDanhSachPhieuDat(DieuKienLocPhieuDatDTO dieuKienLocPhieuDatDTO) {

@@ -7,10 +7,6 @@ import android.os.Bundle;
 
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityDanhsachmenuBinding;
-import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.FragmentMenuPagerAdapter;
-import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.fragment_menu_dichvu;
-import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.fragment_menu_douong;
-import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.fragment_menu_goimon;
 import com.google.android.material.tabs.TabLayout;
 
 public class DanhSachMenuActivity extends AppCompatActivity {

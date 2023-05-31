@@ -129,6 +129,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 //                        }
 //                    }
 //                }
+                //
 
                 if (dichVuDTOList.size() == 0 && xoaTatCaMenu.getHangHoaId() > 0) {
                     xoaTatCaMenu.setTrangThai("xóa tất cả");
@@ -175,7 +176,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 
         hangHoaPresenter = new HangHoaPresenter(this);
 
-        //lấy dữ liệu menu mỗi giây
+        //lấy dữ liệu menu mỗi giây//
         handler.postDelayed(runnable = new Runnable() {
             int count = 0;
 

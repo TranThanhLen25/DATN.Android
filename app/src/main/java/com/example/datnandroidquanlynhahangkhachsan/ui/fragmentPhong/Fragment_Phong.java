@@ -134,7 +134,7 @@ public class Fragment_Phong extends Fragment implements PhongContract.View, Loai
     @Override
     public void onLayDanhSachPhongError(String error) {
 
-        Toast.makeText(getContext(), "Lay du lieu that bai", Toast.LENGTH_LONG).show();
+
     }
     @Override
     public void onLayLoaiPhongSuccess(List<LoaiPhongDTO> list) {

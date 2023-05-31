@@ -1,19 +1,30 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuXuatAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsLichSuBinding;
+import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienLocKhachHangDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.DanhSachMenuActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuNhanPhongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.Fragment_dsPhieuNhanPhong;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatConTract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatPresenter;
 
@@ -25,7 +36,7 @@ import java.util.List;
  * Use the {@link Fragment_dsLichSu#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_dsLichSu extends Fragment implements PhieuXuatConTract.View {
+public class Fragment_dsLichSu extends Fragment implements PhieuXuatConTract.View, KhachHangContract.View {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,6 +50,7 @@ public class Fragment_dsLichSu extends Fragment implements PhieuXuatConTract.Vie
     private String mParam2;
     private FragmentDsLichSuBinding phieuXuatBinding;
     private List<PhieuXuatDTO> phieuXuat;
+    private List<KhachHangDTO> khachHang;
     private PhieuXuatAdapter phieuXuatAdapter;
     private RecyclerView recyclerView;
     public Fragment_dsLichSu() {
@@ -83,7 +95,18 @@ public class Fragment_dsLichSu extends Fragment implements PhieuXuatConTract.Vie
 
         PhieuXuatPresenter phieuXuatPresenter = new PhieuXuatPresenter(this);
         DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO = new DieuKienLocPhieuXuatDTO();
+//        dieuKienLocPhieuXuatDTO.setPhieuXuatId(0);
+//        dieuKienLocPhieuXuatDTO.setKhachHangId(0);
+        dieuKienLocPhieuXuatDTO.setTrangthai(1);
+       // dieuKienLocPhieuXuatDTO.setSoChungTu("");
         phieuXuatPresenter.LayDanhSachPhieuXuat(dieuKienLocPhieuXuatDTO);
+
+
+        khachHang=new ArrayList<>();
+        KhachHangPresenter khachHangPresenter=new KhachHangPresenter(this);
+        DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO=new DieuKienLocKhachHangDTO();
+        khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
+
 
         recyclerView = phieuXuatBinding.rscvDslichsu;
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
@@ -92,17 +115,52 @@ public class Fragment_dsLichSu extends Fragment implements PhieuXuatConTract.Vie
 
         return phieuXuatBinding.getRoot();
     }
+    @Override
     public void onLayDanhSachPhieuXuatSuccess(List<PhieuXuatDTO> list) {
         phieuXuat = list;
         phieuXuatAdapter = new PhieuXuatAdapter(this);
-        phieuXuatAdapter.setData(phieuXuat, getContext());
+        phieuXuatAdapter.setData(phieuXuat,khachHang, getContext());
         recyclerView.setAdapter(phieuXuatAdapter);
-        Toast.makeText(getContext(), "aaaaaaaaaaaaaaaaaaaaaaaaaaa", Toast.LENGTH_SHORT).show();
+
 
     }
 
 
+    @Override
     public void onLayDanhSachPhieuXuatError(String error) {
     }
+
+    @Override
+    public void onThemPhieuXuatSuccess(){}
+
+    @Override
+    public void onThemPhieuXuatError(String error){}
+
+    @Override
+    public void onThemKhachHangSuccess(){}
+
+    @Override
+    public void onThemKhachHangError(String error){}
+
+
+    @Override
+    public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list){
+
+        khachHang=list;
+        phieuXuatAdapter=new PhieuXuatAdapter(this);
+        phieuXuatAdapter.setData(phieuXuat,khachHang,getContext());
+        recyclerView.setAdapter(phieuXuatAdapter);
+
+
+    }
+
+    @Override
+    public void onLayDanhSachKhachHangError(String error){}
+
+    @Override
+    public void onLayDanhSachPhieuXuatChiTietSuccess(List<PhieuXuatChiTietDTO> list){}
+
+    @Override
+    public void onLayDanhSachPhieuXuatChiTietError(String error){}
 
 }

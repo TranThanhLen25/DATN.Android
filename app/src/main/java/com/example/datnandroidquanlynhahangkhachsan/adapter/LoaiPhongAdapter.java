@@ -22,7 +22,7 @@ public class LoaiPhongAdapter extends RecyclerView.Adapter<LoaiPhongAdapter.Loai
     List<LoaiPhongDTO> loaiPhongDTOList;
     private Context context;
 
-
+//
     public LoaiPhongAdapter(ThemPhieuDatphongActivity themPhieuDatphongActivity) {
     }
 

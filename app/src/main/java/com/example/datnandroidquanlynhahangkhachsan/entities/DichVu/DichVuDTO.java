@@ -115,4 +115,5 @@ public class DichVuDTO {
     public void setThoiGian(Date thoiGian) {
         ThoiGian = thoiGian;
     }
+    ///
 }

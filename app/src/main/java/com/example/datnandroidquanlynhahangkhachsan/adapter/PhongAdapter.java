@@ -21,11 +21,11 @@ import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemDanhsachphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
-import com.example.datnandroidquanlynhahangkhachsan.ui.PhieuTraPhongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.ThemPhieuDatphongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuTraPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDoiPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.ThemPhieuNhanPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.chitietphong.ChiTietPhongActivity;
-import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.ThemPhieuDatphongActivity;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -179,16 +179,20 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         TextView chitiet = dialog.findViewById(R.id.tv_dia_chitietphong);
         TextView doiphong = dialog.findViewById(R.id.tv_dia_doiphong);
         TextView baotri = dialog.findViewById(R.id.tv_dia_baotri);
-        View vTraPhong=dialog.findViewById(R.id.view_traphong);
-        View vDoiPhong=dialog.findViewById(R.id.vDoiPhong);
-        ///nếu phòng ch cos người thì tắt chức năng trả và đổi
-        if(trangThai!=4)
-        {
+        View vTraPhong = dialog.findViewById(R.id.view_traphong);
+        View vDoiPhong = dialog.findViewById(R.id.vDoiPhong);
+
+        ///nếu phòng ch có người thì tắt chức năng trả và đổi
+        if (trangThai != 4) {
             traphong.setVisibility(View.GONE);
             vTraPhong.setVisibility(View.GONE);
             doiphong.setVisibility(View.GONE);
             vDoiPhong.setVisibility(View.GONE);
 
+        } else
+//// nếu phòng đã có người thì không được chjọn nhận phòng
+        {
+            nhanphong.setVisibility(View.GONE);
         }
         // sự kiện khi nhấn vào text trong dialog
         nhanphong.setOnClickListener(new View.OnClickListener() {
@@ -240,9 +244,11 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                 if (trangThai == 4) {
                     Intent intent = new Intent(dialog.getContext(), PhieuTraPhongActivity.class);
                     context.startActivity(intent);
-                    SharedPreferences sharedPreferences = context.getSharedPreferences("GET _PHONGID", Context.MODE_PRIVATE);
+                    SharedPreferences sharedPreferences = context.getSharedPreferences("GET_PHONGID", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putInt("PHONGID", phongid);
+                    editor.putInt("SOPHONG",so);
+                    editor.putInt("GIA",gia);
                     editor.commit();
                     dialog.dismiss();
                 }

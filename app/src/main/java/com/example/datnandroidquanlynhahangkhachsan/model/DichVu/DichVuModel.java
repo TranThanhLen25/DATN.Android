@@ -18,7 +18,7 @@ import retrofit2.Response;
 public class DichVuModel implements IDichVuModel {
     APIService service;
     private ErrorMessageDTO errorKiemTra;
-
+//
     @Override
     public void LayDanhSachDichVu(DichVuDTO dichVuDTO, IOnLayDanhSachDichVuFinishedListener listener) {
         service = new APIService();
@@ -36,6 +36,7 @@ public class DichVuModel implements IDichVuModel {
 
                         //trong phan response (tra ve) cua api co body (noi dung)
                         //Ma o day minh quy uoc la tra ve ResponseDTO
+                        ///
                         //Sau do response.body().getData() de lay ra du lieu o truong data
                         List<DichVuDTO> listResult = response.body().getData();
                         listener.onSuccess(listResult);

@@ -17,7 +17,7 @@ public interface IPhieuDatModel {
     }
 
     void ThemPhieuDatPhong(DatPhongDTO datPhongDTO, IPhieuDatModel.IOnThemPhieuDatPhongFinishedListener listener);
-
+//
     interface IOnThemPhieuDatPhongFinishedListener {
         void onSuccess();
 

@@ -44,7 +44,7 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
     private String mParam2;
 
     public Fragment_dsPhieuDatPhong() {
-        // Required empty public constructor
+      ///  // Required empty public constructor
     }
 
     /**

@@ -24,7 +24,7 @@ public class PhieuDatPhongChiTietDTO {
     public void setPhieuDatPhongChiTietId(long phieuDatPhongChiTietId) {
         PhieuDatPhongChiTietId = phieuDatPhongChiTietId;
     }
-
+//
     public long getPhieuDatId() {
         return PhieuDatId;
     }

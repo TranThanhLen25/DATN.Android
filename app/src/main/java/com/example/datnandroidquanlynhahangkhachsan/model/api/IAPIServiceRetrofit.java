@@ -10,7 +10,6 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienL
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.NhanPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuNhapChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuNhapDTO;
@@ -24,7 +23,9 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienL
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
 
 import java.util.List;
@@ -127,7 +128,7 @@ public interface IAPIServiceRetrofit {
     Call<ResponseDTO<List<PhieuNhanPhongChiTietDTO>>>   layPhieuNhanPhongChiTiet(@Body DieuKienLocPhieuNhanPhongChiTietDTO dieuKienLocPhieuNhanPhongChiTietDTO);
 
 
-
+//
     @POST("/api/hanghoa/danhsach-GoiMon")
     Call<ResponseDTO<List<GoiMonDTO>>> layDanhSachGoiMon(@Body GoiMonDTO goiMonDTO);
 
@@ -140,7 +141,10 @@ public interface IAPIServiceRetrofit {
     @POST("/api/hanghoa/capnhat-dichvu")
     Call<ResponseInfo> capNhatDichVu(@Body ListDichVuDTO listDichVuDTO);
 
-    @POST("/api/PhieuNhan/them-PhieuNhan")
-    Call<ResponseInfo> themPhieuNhan(@Body NhanPhongDTO nhanPhongDTO);
+    @POST("/api/PhieuXuat/themphieuxuat")
+    Call<ResponseInfo> themPhieuXuat(@Body PhieuXuatDTO phieuXuatDTO);
+
+    @POST("/api/PhieuXuatChiTiet/danhsach-phieuXuatChiTiet?")
+    Call<ResponseDTO<List<PhieuXuatChiTietDTO>>>   layPhieuXuatChiTiet(@Body DieuKienLocPhieuXuatChiTietDTO dieuKienLocPhieuXuatChiTietDTO);
 
 }
