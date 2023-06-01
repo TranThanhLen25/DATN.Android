@@ -11,6 +11,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHang
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.NhanPhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.XuatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuNhapChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuNhapDTO;
@@ -142,13 +143,19 @@ public interface IAPIServiceRetrofit {
     @POST("/api/hanghoa/capnhat-dichvu")
     Call<ResponseInfo> capNhatDichVu(@Body ListDichVuDTO listDichVuDTO);
 
+    @POST("/api/PhieuNhan/them-PhieuNhan")
+    Call<ResponseInfo> themPhieuNhan(@Body NhanPhongDTO nhanPhongDTO);
+
     @POST("/api/PhieuXuat/themphieuxuat")
-    Call<ResponseInfo> themPhieuXuat(@Body PhieuXuatDTO phieuXuatDTO);
+    Call<ResponseInfo> themPhieuXuat(@Body XuatPhongDTO xuatPhongDTO);
 
     @POST("/api/PhieuXuatChiTiet/danhsach-phieuXuatChiTiet?")
     Call<ResponseDTO<List<PhieuXuatChiTietDTO>>>   layPhieuXuatChiTiet(@Body DieuKienLocPhieuXuatChiTietDTO dieuKienLocPhieuXuatChiTietDTO);
 
-    @POST("/api/PhieuNhan/them-PhieuNhan")
-    Call<ResponseInfo> themPhieuNhan(@Body NhanPhongDTO nhanPhongDTO);
+    @POST("/api/hanghoa/danhsachdv_theo_phieunhan?")
+    Call<ResponseDTO<List<DichVuDTO>>> layDvPn(@Body DichVuDTO dichVuDTO);
+
+    @POST("/api/PhieuXuatChiTiet/themphieuxuatCT")
+    Call<ResponseInfo> themPhieuXuatChiTiet(@Body PhieuXuatChiTietDTO phieuXuatChiTietDTO);
 
 }
