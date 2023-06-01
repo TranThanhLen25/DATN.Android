@@ -30,4 +30,11 @@ public interface IDichVuModel {
 
         void onError(String error);
     }
+    void LayDvPn(DichVuDTO dichVuDTO, IDichVuModel.IOnLayDvPnFinishedListener listener);
+
+    interface IOnLayDvPnFinishedListener {
+        void onSuccess(List<DichVuDTO> listResult);
+
+        void onError(String error);
+    }
 }

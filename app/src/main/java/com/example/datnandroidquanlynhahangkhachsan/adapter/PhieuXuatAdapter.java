@@ -87,6 +87,7 @@ public class PhieuXuatAdapter extends RecyclerView.Adapter<PhieuXuatAdapter.Phie
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, PhieuXuatActivity.class);
+
                 pxID = px.getPhieuXuatId();
 
                 for (int i = 0; i < khachHang.size(); i++) {
@@ -101,14 +102,18 @@ public class PhieuXuatAdapter extends RecyclerView.Adapter<PhieuXuatAdapter.Phie
                     }
                 }
 
+
+
                 SharedPreferences sharedPreferences = context.getSharedPreferences("PHIEUXUAT", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("TENKH", tenKH);
                 editor.putString("SDT", sdt);
                 editor.putString("CCCD", cccd);
                 editor.putLong("PXID", pxID);
+                editor.putLong("PNID",px.getPhieuNhanId());
                 editor.putString("SCT", sct);
                 editor.putString("NGAYLAP", ngay);
+                //editor.putFloat("TONGTIEN",px.getTongThanhTien());
                 editor.commit();
                 context.startActivity(intent);
 

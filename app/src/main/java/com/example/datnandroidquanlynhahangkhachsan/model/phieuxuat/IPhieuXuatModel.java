@@ -1,14 +1,11 @@
 package com.example.datnandroidquanlynhahangkhachsan.model.phieuxuat;
 
 
-
-import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
-
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.XuatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
-import com.example.datnandroidquanlynhahangkhachsan.model.KhachHang.IKhachHangModel;
 
 import java.util.List;
 
@@ -22,12 +19,22 @@ public interface IPhieuXuatModel {
     }
 
 
-    void ThemPhieuXuat(PhieuXuatDTO phieuXuatDTO, IOnThemPhieuXuatFinishedListener listener);
+    void ThemPhieuXuat(XuatPhongDTO xuatPhongDTO, IOnThemPhieuXuatFinishedListener listener);
+
     interface IOnThemPhieuXuatFinishedListener {
         void onSuccess();
 
         void onError(String error);
     }
+
+    void ThemPhieuXuatChiTiet(PhieuXuatChiTietDTO phieuXuatChiTietDTO, IOnThemPhieuXuatChiTietFinishedListener listener);
+
+    interface IOnThemPhieuXuatChiTietFinishedListener {
+        void onSuccess();
+
+        void onError(String error);
+    }
+
 
     void LayDanhSachPhieuXuatChiTiet(DieuKienLocPhieuXuatChiTietDTO dieuKienLocPhieuXuatChiTietDTO, IPhieuXuatModel.IOnLayDanhSachPhieuXuatChiTietFinishedListener listener);
 
@@ -36,4 +43,9 @@ public interface IPhieuXuatModel {
 
         void onError(String error);
     }
+
+
+
+
+
 }

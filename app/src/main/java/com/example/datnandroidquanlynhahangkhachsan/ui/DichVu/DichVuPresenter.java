@@ -31,7 +31,20 @@ public class DichVuPresenter implements DichVuContract.Presenter {
             }
         });
     }
+    @Override
+    public void LayDvPn(DichVuDTO dichVuDTO) {
+        dichVuModel.LayDvPn(dichVuDTO, new IDichVuModel.IOnLayDvPnFinishedListener() {
+            @Override
+            public void onSuccess(List<DichVuDTO> listResult) {
+                view.onLayDvPnSuccess(listResult);
+            }
 
+            @Override
+            public void onError(String error) {
+                view.onLayDvPnError(error);
+            }
+        });
+    }
     @Override
     public void themDichVu(ListDichVuDTO listDichVuDTO) {
         dichVuModel.themDichVu(listDichVuDTO, new IDichVuModel.IOnthemDichVuFinishedListener() {

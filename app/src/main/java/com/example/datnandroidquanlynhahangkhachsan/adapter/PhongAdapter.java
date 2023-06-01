@@ -21,6 +21,7 @@ import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemDanhsachphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.ThemPhieuDatphongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuTraPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDoiPhongActivity;
@@ -39,9 +40,11 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
     private int phongid;
     private int loaiphongid;
     private int trangThai;
+    private long phieunhanid;
 
     private Context context;
     private List<LoaiPhongDTO> lsLoaiPhong;
+    private List<PhieuNhanPhongChiTietDTO> phieuNhanPhongChiTietDTO;
     Fragment fragment = null;
 
 
@@ -55,10 +58,11 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
 
     }
 
-    public void setData(List<PhongDTO> lsPhong, Context context, List<LoaiPhongDTO> lsLoaiPhong) {
+    public void setData(List<PhongDTO> lsPhong, Context context, List<LoaiPhongDTO> lsLoaiPhong, List<PhieuNhanPhongChiTietDTO> phieuNhanPhongChiTietDTO) {
         this.lsPhong = lsPhong;
         this.context = context;
         this.lsLoaiPhong = lsLoaiPhong;
+        this.phieuNhanPhongChiTietDTO=phieuNhanPhongChiTietDTO;
         notifyDataSetChanged();
     }
 
@@ -126,8 +130,15 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                         loaiphongid=lsLoaiPhong.get(i).getLoaiPhongId();
                         trangThai=phong.getTrangThaiId();
                     }
-
                 }
+                for (int i=0;i<phieuNhanPhongChiTietDTO.size();i++)
+                {
+                    if(phieuNhanPhongChiTietDTO.get(i).getPhongId()==phongid)
+                    {
+                        phieunhanid=phieuNhanPhongChiTietDTO.get(i).getPhieuNhanId();
+                    }
+                }
+
                 openDialog();
             }
         });
@@ -249,6 +260,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                     editor.putInt("PHONGID", phongid);
                     editor.putInt("SOPHONG",so);
                     editor.putInt("GIA",gia);
+                    editor.putLong("PNID",phieunhanid);
                     editor.commit();
                     dialog.dismiss();
                 }

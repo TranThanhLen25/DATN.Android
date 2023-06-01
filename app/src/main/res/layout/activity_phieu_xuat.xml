@@ -21,6 +21,7 @@
         android:layout_height="0dp"
         android:padding="10dp"
 
+        app:layout_constraintBottom_toTopOf="@+id/ctl_btn_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_phieutraphong">
@@ -62,7 +63,7 @@
                         android:textSize="@dimen/heading_2"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@id/chitietheaderphieutraphong"
-                        app:layout_constraintTop_toTopOf="@id/chitietheaderphieutraphong"/>
+                        app:layout_constraintTop_toTopOf="@id/chitietheaderphieutraphong" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/tv_sct_phieutraphong"
@@ -78,8 +79,8 @@
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:text="Số chứng từ: "
-                            android:textSize="@dimen/heading_2"
                             android:textColor="@color/black"
+                            android:textSize="@dimen/heading_2"
 
                             app:layout_constraintStart_toStartOf="@id/tv_sct_phieutraphong"
                             app:layout_constraintTop_toTopOf="@id/tv_sct_phieutraphong" />
@@ -261,8 +262,6 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-
                     <View
                         android:id="@+id/view"
                         android:layout_width="match_parent"
@@ -279,64 +278,31 @@
                         android:layout_margin="10dp"
                         app:layout_constraintStart_toStartOf="@id/ctv_input_phieutraphong"
                         app:layout_constraintTop_toBottomOf="@id/view">
+
                         <ScrollView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:layout_constraintTop_toTopOf="@id/ctl_sd"
-                            app:layout_constraintEnd_toEndOf="@id/ctl_sd">
+                            app:layout_constraintEnd_toEndOf="@id/ctl_sd"
+                            app:layout_constraintTop_toTopOf="@id/ctl_sd">
 
 
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rscv_sudung"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintStart_toStartOf="@id/ctl_sd"
-                            app:layout_constraintTop_toTopOf="@id/ctl_sd" />
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rscv_sudung"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintStart_toStartOf="@id/ctl_sd"
+                                app:layout_constraintTop_toTopOf="@id/ctl_sd" />
                         </ScrollView>
                     </androidx.constraintlayout.widget.ConstraintLayout>
-<View
-    android:layout_width="match_parent"
-    android:layout_height="1dp"
-    android:background="@color/black"
 
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintBottom_toTopOf="@id/ctl_tong"
- />
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/ctl_tong"
+                    <View
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="5dp"
-                        android:padding="5dp"
-                        app:layout_constraintStart_toStartOf="@+id/ctv_input_phieutraphong"
-                        app:layout_constraintTop_toBottomOf="@id/ctl_sd">
+                        android:layout_height="1dp"
+                        android:background="@color/black"
 
-                        <TextView
-                            android:id="@+id/tv_thue"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:text="Tổng số ngày thuê:  "
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/heading_2"
-                            app:layout_constraintStart_toStartOf="@id/ctl_tong"
-                            app:layout_constraintTop_toTopOf="@id/ctl_tong"
-                            tools:ignore="MissingConstraints" />
+                        app:layout_constraintBottom_toTopOf="@id/ctl_tong"
+                        app:layout_constraintStart_toStartOf="parent" />
 
-                        <TextView
-                            android:id="@+id/tv_songaythue"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="15"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/heading_2"
-                            android:textStyle="bold"
-                            app:layout_constraintStart_toEndOf="@id/tv_thue"
-                            app:layout_constraintTop_toTopOf="@id/ctl_tong"
-                            tools:ignore="MissingConstraints" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

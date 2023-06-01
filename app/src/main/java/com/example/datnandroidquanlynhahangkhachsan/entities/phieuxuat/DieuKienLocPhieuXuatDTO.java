@@ -7,8 +7,6 @@ public class DieuKienLocPhieuXuatDTO {
     public long khachHangId;
     public String soChungTu;
 
-
-
     public int getTrangthai() {
         return trangthai;
     }
@@ -41,21 +39,13 @@ public class DieuKienLocPhieuXuatDTO {
         this.soChungTu = soChungTu;
     }
 
+    public DieuKienLocPhieuXuatDTO() {
+    }
+
     public DieuKienLocPhieuXuatDTO(int trangthai, long phieuXuatId, long khachHangId, String soChungTu) {
         this.trangthai = trangthai;
         this.phieuXuatId = phieuXuatId;
         this.khachHangId = khachHangId;
         this.soChungTu = soChungTu;
-    }
-
-    public DieuKienLocPhieuXuatDTO(String soChungTu) {
-        this.soChungTu=soChungTu;
-    }
-
-    public DieuKienLocPhieuXuatDTO(int trangthai) {
-        this.trangthai = trangthai;
-    }
-
-    public DieuKienLocPhieuXuatDTO() {
     }
 }

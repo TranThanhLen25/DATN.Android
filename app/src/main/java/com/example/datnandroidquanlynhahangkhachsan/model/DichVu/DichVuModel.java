@@ -111,4 +111,40 @@ public class DichVuModel implements IDichVuModel {
             }
         });
     }
+    @Override
+    public void LayDvPn(DichVuDTO dichVuDTO, IOnLayDvPnFinishedListener listener) {
+        service = new APIService();
+        service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
+            @Override
+            public void onSuccess(ResponseTokenDTO itemToken) {
+                service.apiServiceRetrofit.layDvPn(dichVuDTO).enqueue(new Callback<ResponseDTO<List<DichVuDTO>>>() {
+                    @Override
+                    public void onResponse(Call<ResponseDTO<List<DichVuDTO>>> call, Response<ResponseDTO<List<DichVuDTO>>> response) {
+                        errorKiemTra = service.getMessageResponse(response);
+                        if (errorKiemTra.getFlagException() || !errorKiemTra.getFlagSuccess()) {
+                            listener.onError(errorKiemTra.getErrorMessage());
+                            return;
+                        }
+
+                        //trong phan response (tra ve) cua api co body (noi dung)
+                        //Ma o day minh quy uoc la tra ve ResponseDTO
+                        ///
+                        //Sau do response.body().getData() de lay ra du lieu o truong data
+                        List<DichVuDTO> listResult = response.body().getData();
+                        listener.onSuccess(listResult);
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseDTO<List<DichVuDTO>>> call, Throwable t) {
+                        listener.onError(t.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        });
+    }
 }

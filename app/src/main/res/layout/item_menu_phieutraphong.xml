@@ -7,10 +7,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ctl_item"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:padding="10dp">
+        android:background="@drawable/bg_item"
+
+        android:padding="10dp"
+        android:layout_margin="10dp">
 
         <ImageView
             android:id="@+id/img_itemdichvu"
@@ -22,10 +25,11 @@
 
         <TextView
             android:id="@+id/tv_tendichvu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
             android:layout_marginLeft="20dp"
             android:text="Giặt ủi"
+            android:maxLines="1"
             android:textColor="@color/red"
             android:textSize="@dimen/heading_2"
             android:textStyle="bold"
@@ -47,11 +51,13 @@
             android:id="@+id/ctl_sl"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginStart="20dp"
+
+
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="@id/ctl_item"
-            app:layout_constraintStart_toEndOf="@+id/tv_dongia_hanghoa_dichvu"
 
+            app:layout_constraintStart_toEndOf="@id/tv_dongia_hanghoa_dichvu"
+            app:layout_constraintEnd_toStartOf="@id/ctl_thanhtien"
             app:layout_constraintTop_toTopOf="@id/ctl_item">
 
             <TextView
@@ -76,18 +82,18 @@
                 android:textColor="@color/red"
                 android:textSize="@dimen/heading_2"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/tv_sl"
                 app:layout_constraintStart_toStartOf="@id/ctl_sl"
+                app:layout_constraintTop_toBottomOf="@id/tv_sl"
                 tools:ignore="MissingConstraints" />
         </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ctl_thanhtien"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginStart="30dp"
+
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="@id/ctl_item"
-            app:layout_constraintStart_toEndOf="@+id/ctl_sl"
+            app:layout_constraintEnd_toEndOf="@id/ctl_item"
 
             app:layout_constraintTop_toTopOf="@id/ctl_item">
 

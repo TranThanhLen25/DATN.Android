@@ -21,12 +21,19 @@ public interface DichVuContract {
         void oncapNhatDichVuSuccess();
 
         void oncapNhatDichVuError(String error);
+        /// lay dv theo Pn
+
+        void onLayDvPnSuccess(List<DichVuDTO> list);
+
+        void onLayDvPnError(String error);
     }
 
     interface Presenter {
         //void LayDanhSachHangHoa(DieuKienLocHangHoaDTO dieuKienLoc);
 
         void LayDanhSachDichVu(DichVuDTO dichVuDTO);
+        void LayDvPn(DichVuDTO dichVuDTO);
+
 
         void themDichVu(ListDichVuDTO listDichVuDTO);
 

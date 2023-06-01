@@ -1,31 +1,39 @@
 package com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat;
 
+import com.google.gson.annotations.SerializedName;
+
 public class PhieuXuatChiTietDTO {
 
+
+    @SerializedName("phieuXuatChiTietId")
     private long phieuXuatChiTietId;
+
+    @SerializedName("phieuXuatId")
     private long phieuXuatId;
+
+    @SerializedName("hangHoaId")
     private int hangHoaId;
-    private int soLuong;
-    private int donGia;
-    private int thanhTien;
+
+    @SerializedName("soLuong")
+    private double soLuong;
+
+    @SerializedName("donGia")
+    private double donGia;
+
+    @SerializedName("thanhTien")
+    private double thanhTien;
+
+    @SerializedName("donViTinh")
     private String donViTinh;
+
+    @SerializedName("ghiChu")
     private String ghiChu;
 
+    @SerializedName("phieuNhanPhongChiTietId")
     private long phieuNhanPhongChiTietId;
-    private long phieuNhanBanChitietId;
 
-    public PhieuXuatChiTietDTO(long phieuXuatChiTietId, long phieuXuatId, int hangHoaId, int soLuong, int donGia, int thanhTien, String donViTinh, String ghiChu, long phieuNhanPhongChiTietId, long phieuNhanBanChitietId) {
-        this.phieuXuatChiTietId = phieuXuatChiTietId;
-        this.phieuXuatId = phieuXuatId;
-        this.hangHoaId = hangHoaId;
-        this.soLuong = soLuong;
-        this.donGia = donGia;
-        this.thanhTien = thanhTien;
-        this.donViTinh = donViTinh;
-        this.ghiChu = ghiChu;
-        this.phieuNhanPhongChiTietId = phieuNhanPhongChiTietId;
-        this.phieuNhanBanChitietId = phieuNhanBanChitietId;
-    }
+    @SerializedName("phieuNhanBanChiTietId")
+    private long phieuNhanBanChiTietId;
 
     public long getPhieuXuatChiTietId() {
         return phieuXuatChiTietId;
@@ -51,27 +59,27 @@ public class PhieuXuatChiTietDTO {
         this.hangHoaId = hangHoaId;
     }
 
-    public int getSoLuong() {
+    public double getSoLuong() {
         return soLuong;
     }
 
-    public void setSoLuong(int soLuong) {
+    public void setSoLuong(double soLuong) {
         this.soLuong = soLuong;
     }
 
-    public int getDonGia() {
+    public double getDonGia() {
         return donGia;
     }
 
-    public void setDonGia(int donGia) {
+    public void setDonGia(double donGia) {
         this.donGia = donGia;
     }
 
-    public int getThanhTien() {
+    public double getThanhTien() {
         return thanhTien;
     }
 
-    public void setThanhTien(int thanhTien) {
+    public void setThanhTien(double thanhTien) {
         this.thanhTien = thanhTien;
     }
 
@@ -99,11 +107,33 @@ public class PhieuXuatChiTietDTO {
         this.phieuNhanPhongChiTietId = phieuNhanPhongChiTietId;
     }
 
-    public long getPhieuNhanBanChitietId() {
-        return phieuNhanBanChitietId;
+    public long getPhieuNhanBanChiTietId() {
+        return phieuNhanBanChiTietId;
     }
 
-    public void setPhieuNhanBanChitietId(long phieuNhanBanChitietId) {
-        this.phieuNhanBanChitietId = phieuNhanBanChitietId;
+    public void setPhieuNhanBanChiTietId(long phieuNhanBanChiTietId) {
+        this.phieuNhanBanChiTietId = phieuNhanBanChiTietId;
+    }
+
+    public PhieuXuatChiTietDTO(long phieuXuatId, int hangHoaId, double soLuong, double donGia, double thanhTien, String donViTinh, String ghiChu, long phieuNhanPhongChiTietId) {
+        this.phieuXuatId = phieuXuatId;
+        this.hangHoaId = hangHoaId;
+        this.soLuong = soLuong;
+        this.donGia = donGia;
+        this.thanhTien = thanhTien;
+        this.donViTinh = donViTinh;
+        this.ghiChu = ghiChu;
+        this.phieuNhanPhongChiTietId = phieuNhanPhongChiTietId;
+
+    }
+
+    public PhieuXuatChiTietDTO(int hangHoaId, double soLuong, double donGia, double thanhTien, String donViTinh, String ghiChu, long phieuNhanPhongChiTietId) {
+        this.hangHoaId = hangHoaId;
+        this.soLuong = soLuong;
+        this.donGia = donGia;
+        this.thanhTien = thanhTien;
+        this.donViTinh = donViTinh;
+        this.ghiChu = ghiChu;
+        this.phieuNhanPhongChiTietId = phieuNhanPhongChiTietId;
     }
 }
