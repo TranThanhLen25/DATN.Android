@@ -2,6 +2,7 @@ package com.example.datnandroidquanlynhahangkhachsan.model.phieuxuat;
 
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.ErrorMessageDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.XuatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseTokenDTO;
@@ -23,12 +24,12 @@ public class PhieuXuatModel implements IPhieuXuatModel{
     private ErrorMessageDTO errorKiemTra;
 
     @Override
-    public void ThemPhieuXuat(PhieuXuatDTO phieuXuatDTO, IOnThemPhieuXuatFinishedListener listener) {
+    public void ThemPhieuXuat(XuatPhongDTO xuatPhongDTO, IOnThemPhieuXuatFinishedListener listener) {
         service = new APIService();
         service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
             @Override
             public void onSuccess(ResponseTokenDTO itemToken) {
-                service.apiServiceRetrofit.themPhieuXuat(phieuXuatDTO).enqueue(new Callback<ResponseInfo>() {
+                service.apiServiceRetrofit.themPhieuXuat(xuatPhongDTO).enqueue(new Callback<ResponseInfo>() {
                     @Override
                     public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
                         if (response.body() != null) {
@@ -49,6 +50,37 @@ public class PhieuXuatModel implements IPhieuXuatModel{
             }
         });
     }
+
+    @Override
+    public void ThemPhieuXuatChiTiet(PhieuXuatChiTietDTO phieuXuatChiTietDTO, IOnThemPhieuXuatChiTietFinishedListener listener) {
+        service = new APIService();
+        service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
+            @Override
+            public void onSuccess(ResponseTokenDTO itemToken) {
+                service.apiServiceRetrofit.themPhieuXuatChiTiet(phieuXuatChiTietDTO).enqueue(new Callback<ResponseInfo>() {
+                    @Override
+                    public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
+                        if (response.body() != null) {
+                            listener.onSuccess();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseInfo> call, Throwable t) {
+                        listener.onError(t.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+                listener.onError(error);
+            }
+        });
+    }
+
+
+
 
     @Override
     public void LayDanhSachPhieuXuat(DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO, IPhieuXuatModel.IOnLayDanhSachPhieuXuatFinishedListener listener) {

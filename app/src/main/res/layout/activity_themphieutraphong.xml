@@ -19,8 +19,10 @@
         android:id="@+id/scr_phieutraphong"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:padding="10dp"
+        android:layout_marginBottom="9dp"
 
+
+        app:layout_constraintBottom_toTopOf="@+id/ctl_btn_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_phieutraphong">
@@ -32,7 +34,8 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/scr_phieutraphong">
+
+            >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/headderphieutraphong"
@@ -62,7 +65,7 @@
                         android:textSize="@dimen/heading_2"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@id/chitietheaderphieutraphong"
-                        app:layout_constraintTop_toTopOf="@id/chitietheaderphieutraphong"/>
+                        app:layout_constraintTop_toTopOf="@id/chitietheaderphieutraphong" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/tv_phong_phieutraphong"
@@ -78,8 +81,8 @@
                             android:layout_height="wrap_content"
                             android:padding="10dp"
                             android:text="Phòng: "
-                            android:textSize="@dimen/heading_2"
                             android:textColor="@color/black"
+                            android:textSize="@dimen/heading_2"
 
                             app:layout_constraintStart_toStartOf="@id/tv_phong_phieutraphong"
                             app:layout_constraintTop_toTopOf="@id/tv_phong_phieutraphong" />
@@ -400,7 +403,7 @@
                 app:layout_constraintTop_toTopOf="@id/ctl_button" />
 
             <TextView
-                android:id="@+id/tv_tong"
+                android:id="@+id/tv_tongTien"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="123000"

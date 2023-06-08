@@ -22,6 +22,8 @@ import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatConTra
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatPresenter;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -86,12 +88,13 @@ public class Fragment_dsLichSu extends Fragment implements PhieuXuatConTract.Vie
         phieuXuatBinding=FragmentDsLichSuBinding.inflate(inflater,container,false);
         phieuXuat = new ArrayList<>();
 
+        phieuXuatBinding.iclAppback.icBack.setOnClickListener(view -> getActivity().onBackPressed());
+
         PhieuXuatPresenter phieuXuatPresenter = new PhieuXuatPresenter(this);
         DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO = new DieuKienLocPhieuXuatDTO();
-//        dieuKienLocPhieuXuatDTO.setPhieuXuatId(0);
-//        dieuKienLocPhieuXuatDTO.setKhachHangId(0);
+
         dieuKienLocPhieuXuatDTO.setTrangthai(1);
-       // dieuKienLocPhieuXuatDTO.setSoChungTu("");
+
         phieuXuatPresenter.LayDanhSachPhieuXuat(dieuKienLocPhieuXuatDTO);
 
 
@@ -105,6 +108,12 @@ public class Fragment_dsLichSu extends Fragment implements PhieuXuatConTract.Vie
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
         recyclerView.setLayoutManager(LinearLayoutManager);
 
+// Đảo ngược thứ tự của tập dữ liệu
+        Collections.reverse(phieuXuat);
+
+// Thông báo cho adapter về các thay đổi trong tập dữ liệu
+//       phieuXuatAdapter.notifyDataSetChanged();
+
 
         return phieuXuatBinding.getRoot();
     }
@@ -114,6 +123,10 @@ public class Fragment_dsLichSu extends Fragment implements PhieuXuatConTract.Vie
         phieuXuatAdapter = new PhieuXuatAdapter(this);
         phieuXuatAdapter.setData(phieuXuat,khachHang, getContext());
         recyclerView.setAdapter(phieuXuatAdapter);
+        // Đảo ngược thứ tự của tập dữ liệu
+        Collections.reverse(phieuXuat);
+        // Thông báo cho adapter về các thay đổi trong tập dữ liệu
+        phieuXuatAdapter.notifyDataSetChanged();
 
 
     }
@@ -155,5 +168,10 @@ public class Fragment_dsLichSu extends Fragment implements PhieuXuatConTract.Vie
 
     @Override
     public void onLayDanhSachPhieuXuatChiTietError(String error){}
+    @Override
+    public void onThemPhieuXuatChiTietSuccess(){}
+
+    @Override
+    public void onThemPhieuXuatChiTietError(String error){}
 
 }

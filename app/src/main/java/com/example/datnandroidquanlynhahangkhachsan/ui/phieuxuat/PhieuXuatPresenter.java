@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat;
 
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.XuatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatChiTietDTO;
@@ -51,8 +52,8 @@ public class PhieuXuatPresenter implements PhieuXuatConTract.Presenter{
     }
 
     @Override
-    public void ThemPhieuXuat(PhieuXuatDTO phieuXuatDTO) {
-        phieuXuatModel.ThemPhieuXuat(phieuXuatDTO, new IPhieuXuatModel.IOnThemPhieuXuatFinishedListener() {
+    public void ThemPhieuXuat(XuatPhongDTO xuatPhongDTO) {
+        phieuXuatModel.ThemPhieuXuat(xuatPhongDTO, new IPhieuXuatModel.IOnThemPhieuXuatFinishedListener() {
             @Override
             public void onSuccess() {
                 view.onThemPhieuXuatSuccess();
@@ -61,6 +62,21 @@ public class PhieuXuatPresenter implements PhieuXuatConTract.Presenter{
             @Override
             public void onError(String error) {
                 view.onThemPhieuXuatError(error);
+            }
+        });
+    }
+
+    @Override
+    public void ThemPhieuXuatChiTiet(PhieuXuatChiTietDTO phieuXuatChiTietDTO) {
+        phieuXuatModel.ThemPhieuXuatChiTiet(phieuXuatChiTietDTO, new IPhieuXuatModel.IOnThemPhieuXuatChiTietFinishedListener() {
+            @Override
+            public void onSuccess() {
+                view.onThemPhieuXuatChiTietSuccess();
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onThemPhieuXuatChiTietError(error);
             }
         });
     }

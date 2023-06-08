@@ -17,6 +17,14 @@
     <string name="action_traphong">Trả phòng</string>
     <string name="action_doiphong">Đổi phòng</string>
 
+    <!--  bottom_navban -->
+    <string name="action_danhsachban">Danh sách</string>
+    <string name="action_datban">Đặt bàn</string>
+    <string name="action_trangchuban">Trang chủ</string>
+    <string name="action_nhanban">Nhận bàn</string>
+    <string name="action_themban">Lịch sử</string>
+
+
     <!--  Trang chủ  -->
     <string name="tv_nhahang">Nhà Hàng</string>
     <string name="tv_khachsan">Khách sạn</string>

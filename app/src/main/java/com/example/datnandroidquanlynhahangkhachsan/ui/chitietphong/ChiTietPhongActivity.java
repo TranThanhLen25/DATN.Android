@@ -401,4 +401,15 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
     public void oncapNhatDichVuError(String error) {
 
     }
+    @Override
+    public  void onLayDvPnSuccess(List<DichVuDTO> list){}
+
+    @Override
+    public void onLayDvPnError(String error){}
+
+    @Override
+    public void onCapNhatDVSuccess(){}
+
+    @Override
+    public void onCapNhatDVError(String error){}
 }

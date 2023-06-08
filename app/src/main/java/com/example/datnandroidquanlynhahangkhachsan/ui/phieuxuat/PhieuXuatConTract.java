@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat;
 
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.XuatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatChiTietDTO;
@@ -14,6 +15,11 @@ public interface PhieuXuatConTract {
 
         void onThemPhieuXuatError(String error);
 
+        void onThemPhieuXuatChiTietSuccess();
+
+        void onThemPhieuXuatChiTietError(String error);
+
+
         void onLayDanhSachPhieuXuatSuccess(List<PhieuXuatDTO> list);
 
         void onLayDanhSachPhieuXuatError(String error);
@@ -23,13 +29,17 @@ public interface PhieuXuatConTract {
         void onLayDanhSachPhieuXuatChiTietError(String error);
 
 
+
     }
 
     interface Presenter {
-        void ThemPhieuXuat(PhieuXuatDTO PhieuXuatDTO);
+        void ThemPhieuXuat(XuatPhongDTO xuatPhongDTO);
+
+        void ThemPhieuXuatChiTiet(PhieuXuatChiTietDTO phieuXuatChiTietDTO);
         void LayDanhSachPhieuXuat(DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO);
 
         void LayDanhSachPhieuXuatChiTiet(DieuKienLocPhieuXuatChiTietDTO dieuKienLocPhieuXuatChiTietDTO);
+
 
     }
 }

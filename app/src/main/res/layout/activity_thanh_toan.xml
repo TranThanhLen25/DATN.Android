@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ThanhToanActivity">
+
+    <include
+        android:id="@+id/toolbar_thanhtoan"
+        layout="@layout/activity_appar_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctl_tenPhieu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/bg_tenphieu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_thanhtoan">
+
+        <TextView
+            android:id="@+id/tv_tenphieu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Phiếu thanh toán"
+            android:textSize="@dimen/heading_2"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctl_thongtin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ctl_tenPhieu">
+
+        <TextView
+            android:id="@+id/tv_ten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên khách hàng: "
+            android:textColor="@color/black"
+            android:textSize="@dimen/heading_2"
+            app:layout_constraintStart_toStartOf="@id/ctl_thongtin"
+            app:layout_constraintTop_toTopOf="@id/ctl_thongtin" />
+
+        <TextView
+            android:id="@+id/tv_tendata"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="abc: "
+            android:textColor="@color/black"
+            android:textSize="@dimen/heading_2"
+            app:layout_constraintStart_toEndOf="@id/tv_ten"
+            app:layout_constraintTop_toTopOf="@id/ctl_thongtin"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+    <View
+        android:id="@+id/viewtt"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ctl_thongtin" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctl_tt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewtt">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_thanhtoan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/ctl_tt"
+            app:layout_constraintTop_toTopOf="@id/ctl_tt">
+
+            <TextView
+                android:id="@+id/tv_thanhtoan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiền cần thanh toán"
+                android:textColor="@color/black"
+                android:textSize="@dimen/heading_3"
+                app:layout_constraintStart_toStartOf="@id/ctl_thanhtoan"
+                app:layout_constraintTop_toTopOf="@id/ctl_thanhtoan" />
+
+            <TextView
+                android:id="@+id/et_thanhtoan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+            android:text="1000000"
+      android:textSize="@dimen/heading_2"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/ctl_thanhtoan"
+                app:layout_constraintTop_toBottomOf="@id/tv_thanhtoan"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_dua"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@id/ctl_tt"
+            app:layout_constraintTop_toBottomOf="@id/ctl_thanhtoan"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/tv_dua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiền khách đưa"
+                android:textColor="@color/black"
+                android:textSize="@dimen/heading_3"
+                app:layout_constraintStart_toStartOf="@id/ctl_dua"
+                app:layout_constraintTop_toTopOf="@id/ctl_dua" />
+
+            <EditText
+                android:id="@+id/et_dua"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:inputType="number"
+                android:paddingStart="10dp"
+                android:background="@drawable/bg_edittext"
+                app:layout_constraintEnd_toEndOf="@id/ctl_dua"
+                app:layout_constraintStart_toStartOf="@id/ctl_dua"
+                app:layout_constraintTop_toBottomOf="@id/tv_dua"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_thoi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@id/ctl_tt"
+            app:layout_constraintTop_toBottomOf="@id/ctl_dua"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/tv_thoi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiền thối lại"
+                android:textColor="@color/black"
+                android:textSize="@dimen/heading_3"
+                app:layout_constraintStart_toStartOf="@id/ctl_thoi"
+                app:layout_constraintTop_toTopOf="@id/ctl_thoi" />
+
+            <TextView
+                android:id="@+id/tv_thoinew"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+               android:text="0"
+                android:textSize="@dimen/heading_2"
+                android:textColor="@color/black"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="@id/ctl_thoi"
+                app:layout_constraintStart_toStartOf="@id/ctl_thoi"
+                app:layout_constraintTop_toBottomOf="@id/tv_thoi"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctl_btn"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:id="@+id/view_btn"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            app:layout_constraintStart_toStartOf="@id/ctl_btn"
+            app:layout_constraintTop_toTopOf="@id/ctl_btn" />
+
+        <Button
+            android:id="@+id/btn_thanhtoan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thanh toán"
+            android:textAllCaps="false"
+            android:textSize="@dimen/heading_3"
+          android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="@id/ctl_btn"
+          app:layout_constraintTop_toTopOf="@id/ctl_btn"
+          app:layout_constraintBottom_toBottomOf="@id/ctl_btn"
+          android:layout_marginEnd="20dp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
