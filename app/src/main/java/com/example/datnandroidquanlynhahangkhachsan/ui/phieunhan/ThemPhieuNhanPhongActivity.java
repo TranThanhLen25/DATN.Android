@@ -7,6 +7,8 @@ import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -19,14 +21,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.datnandroidquanlynhahangkhachsan.CaptureAct;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemphieunhanphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.NhanPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.ChonPhongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
+import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -34,7 +40,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsPhieuNhanPhongContract.View, KhachHangContract.View {
+public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsPhieuNhanPhongContract.View, KhachHangContract.View , LoaiPhongContract.View {
     private ActivityThemphieunhanphongBinding themphieunhanphongBinding;
     private String thoiGianNhan;
     private String thoiGianTra;
@@ -45,6 +51,8 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
     private List<PhieuNhanPhongChiTietDTO> phieuNhanPhongChiTietDTOS;
     private DsPhieuNhanPhongPresenter dsPhieuNhanPhongPresenter;
     private KhachHangDTO khachHangDTO;
+    private LoaiPhongPresenter loaiPhongPresenter;
+    private List<LoaiPhongDTO> loaiPhongDTOList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +91,152 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
             @Override
             public void onClick(View v) {
                 OnclickThemPhieuNhan();
+            }
+        });
+        KiemTraDuLieuDauVao();
+        SetDuLieuNeuCo();
+    }
+
+    private void SetDuLieuNeuCo() {
+        if (tempData.tempDatakhachHangDTO != null) {
+            themphieunhanphongBinding.etHotenPhieunhanphong.setText(tempData.tempDatakhachHangDTO.getTenKhachHang());
+            if (tempData.tempDatakhachHangDTO.getCccd() != null) {
+                themphieunhanphongBinding.etCccdPhieunhanphong.setText(tempData.tempDatakhachHangDTO.getTenKhachHang());
+            }
+            themphieunhanphongBinding.etSdtPhieunhanphong.setText(tempData.tempDatakhachHangDTO.getSdt());
+        }
+//        if (tempData.datPhongDTO.getPhieuDatPhongChiTiets().size() > 0) {
+//            //lấy danh sách loại phòng
+//            loaiPhongDTOList = new ArrayList<>();
+//            loaiPhongPresenter = new LoaiPhongPresenter(this);
+//            loaiPhongPresenter.LayLoaiPhong();
+//
+//            String soLuongPhong = "";
+//            int loaiPhongID;
+//            for (int i = 0; i < tempData.datPhongDTO.getPhieuDatPhongChiTiets().size(); i++) {
+//                loaiPhongID=Integer.valueOf(tempData.datPhongDTO.getPhieuDatPhongChiTiets().get(i).getLoaiPhongId());
+//                for (int j=0;j<loaiPhongDTOList.size();j++){
+//                    if (loaiPhongID==loaiPhongDTOList.get())
+//                }
+//
+//                soLuongPhong+=String.valueOf(tempData.datPhongDTO.getPhieuDatPhongChiTiets().get(i).getSoLuong());
+//            }
+//
+//        }
+    }
+
+    private void KiemTraDuLieuDauVao() {
+
+        themphieunhanphongBinding.inputlayoutHotenPhieunhanphong.setHelperText("*lưu ý : Tên Khách Hàng là Bắt buộc");
+        themphieunhanphongBinding.etHotenPhieunhanphong.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                themphieunhanphongBinding.inputlayoutHotenPhieunhanphong.setHelperText("*lưu ý : Tên Khách Hàng là Bắt buộc");
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String input = s.toString();
+                if (input.length() > 0) {
+                    //themphieunhanphongBinding.inputlayoutHotenPhieunhanphong.setError("*lưu ý : Tên Khách Hàng là Bắt buộc");
+                    themphieunhanphongBinding.inputlayoutHotenPhieunhanphong.setHelperText("*lưu ý : Tên Khách Hàng là Bắt buộc");
+//                    Pattern pattern = Pattern.compile("abc");
+//                    Matcher matcher = pattern.matcher(input);
+//                    boolean hahaha= matcher.find();
+//                    if (hahaha){
+//                        themphieunhanphongBinding.inputlayoutHotenPhieudatphong.setHelperText("tốt");
+//                        themphieunhanphongBinding.inputlayoutHotenPhieudatphong.setError("");
+//                    }
+//                    else {
+//                        themphieunhanphongBinding.inputlayoutHotenPhieudatphong.setHelperText("");
+//                        themphieunhanphongBinding.inputlayoutHotenPhieudatphong.setError(":(");
+//                    }
+                } else {
+                    // themphieunhanphongBinding.inputlayoutHotenPhieunhanphong.setHelperText("*lưu ý : Tên Khách Hàng là Bắt buộc");
+                    //themphieunhanphongBinding.inputlayoutHotenPhieudatphong.getBackground().setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+                    themphieunhanphongBinding.inputlayoutHotenPhieunhanphong.setError("vui lòng nhập họ tên");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        themphieunhanphongBinding.etCccdPhieunhanphong.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String abc = String.valueOf(themphieunhanphongBinding.etCccdPhieunhanphong.getText());
+                if (abc.length() == 12) {
+                    themphieunhanphongBinding.inputlayoutCccdPhieudatphong.setHelperText("");
+                    themphieunhanphongBinding.inputlayoutCccdPhieudatphong.setError("");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        themphieunhanphongBinding.etCccdPhieunhanphong.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                String abc = String.valueOf(themphieunhanphongBinding.etCccdPhieunhanphong.getText());
+                if (hasFocus) {
+
+                } else {
+                    if (abc.length() < 12) {
+                        themphieunhanphongBinding.inputlayoutCccdPhieudatphong.setHelperText("");
+                        themphieunhanphongBinding.inputlayoutCccdPhieudatphong.setError("vui lòng nhập đủ cccd");
+                    } else {
+                        themphieunhanphongBinding.inputlayoutCccdPhieudatphong.setHelperText("");
+                        themphieunhanphongBinding.inputlayoutCccdPhieudatphong.setError("");
+                    }
+                }
+
+            }
+        });
+        themphieunhanphongBinding.etSdtPhieunhanphong.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String abc = String.valueOf(themphieunhanphongBinding.etSdtPhieunhanphong.getText());
+                if (abc.length() == 10) {
+                    themphieunhanphongBinding.inputlayoutSdtPhieunhanphong.setHelperText("");
+                    themphieunhanphongBinding.inputlayoutSdtPhieunhanphong.setError("");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        themphieunhanphongBinding.etSdtPhieunhanphong.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                String abc = String.valueOf(themphieunhanphongBinding.etSdtPhieunhanphong.getText());
+                if (b) {
+
+                } else {
+                    if (abc.length() < 10) {
+                        themphieunhanphongBinding.inputlayoutSdtPhieunhanphong.setHelperText("");
+                        themphieunhanphongBinding.inputlayoutSdtPhieunhanphong.setError("vui lòng nhập đủ số điện thoại");
+                    } else {
+                        themphieunhanphongBinding.inputlayoutSdtPhieunhanphong.setHelperText("");
+                        themphieunhanphongBinding.inputlayoutSdtPhieunhanphong.setError("");
+                    }
+                }
             }
         });
     }
@@ -135,7 +289,7 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
             dsPhieuNhanPhongPresenter.ThemPhieuNhanPhong(nhanPhongDTO);
 
             String a = String.valueOf(khachHangDTO.getTenKhachHang());
-            Toast.makeText(this, a, Toast.LENGTH_LONG).show();
+            // Toast.makeText(this, a, Toast.LENGTH_LONG).show();
             lsChonPhongDataInt.clear();
             onBackPressed();
         }
@@ -146,7 +300,7 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
         super.onResume();
         if (lsChonPhongDataInt.size() > 0) {
             String a = String.valueOf(lsChonPhongDataInt.size());
-            Toast.makeText(this, a, Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, a, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -330,6 +484,16 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
 
     @Override
     public void onThemPhieuNhanPhongError(String error) {
+
+    }
+
+    @Override
+    public void onLayLoaiPhongSuccess(List<LoaiPhongDTO> lsLoaiPhong) {
+        loaiPhongDTOList = lsLoaiPhong;
+    }
+
+    @Override
+    public void onLayLoaiPhongError(String error) {
 
     }
 }
