@@ -138,7 +138,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
                 listDichVuDTO = new ListDichVuDTO(dichVuDTOList);
                 //dichVuPresenter.themDichVu(listDichVuDTO);
                 dichVuPresenter.capNhatDichVu(listDichVuDTO);
-                test += String.valueOf(listDichVuDTO.getListDichVuCapNhat().size());
+             //   test += String.valueOf(listDichVuDTO.getListDichVuCapNhat().size());
 //                test +=
 //                        " 1 " + listDichVuDTO.getListDichVuCapNhat().get(0).getDichVuID() +
 //                        " 2 " + listDichVuDTO.getListDichVuCapNhat().get(0).getPhongID() +
@@ -150,7 +150,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 //                        " 8 " + listDichVuDTO.getListDichVuCapNhat().get(0).getGhiChu() +
 //                        " 9 " + listDichVuDTO.getListDichVuCapNhat().get(0).getTrangThai() +
 //                        " 10 " + listDichVuDTO.getListDichVuCapNhat().get(0).getThoiGian();
-                Toast.makeText(ChiTietPhongActivity.this, test, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ChiTietPhongActivity.this, test, Toast.LENGTH_SHORT).show();
 
 
                 //xóa menu dư khi thoát
