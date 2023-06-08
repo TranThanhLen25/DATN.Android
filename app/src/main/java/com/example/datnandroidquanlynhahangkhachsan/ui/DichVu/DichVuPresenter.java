@@ -74,4 +74,19 @@ public class DichVuPresenter implements DichVuContract.Presenter {
             }
         });
     }
+
+    @Override
+    public void CapNhatDV(DichVuDTO dichVuDTO) {
+        dichVuModel.CapNhatDV(dichVuDTO, new IDichVuModel.IOnCapNhatDVFinishedListener() {
+            @Override
+            public void onSuccess() {
+                view.onCapNhatDVSuccess();
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onCapNhatDVError(error);
+            }
+        });
+    }
 }

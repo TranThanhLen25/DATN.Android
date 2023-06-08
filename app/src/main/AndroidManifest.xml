@@ -17,6 +17,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Nav_Ban_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".ThanhToanActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.phieuxuat.PhieuXuatActivity"
             android:exported="false" />
         <activity

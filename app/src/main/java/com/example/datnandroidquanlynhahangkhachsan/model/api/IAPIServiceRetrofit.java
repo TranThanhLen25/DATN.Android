@@ -1,6 +1,8 @@
 package com.example.datnandroidquanlynhahangkhachsan.model.api;
 
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.BanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.LoaiBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.DichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.ListDichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DieuKienLocHangHoaDTO;
@@ -157,5 +159,15 @@ public interface IAPIServiceRetrofit {
 
     @POST("/api/PhieuXuatChiTiet/themphieuxuatCT")
     Call<ResponseInfo> themPhieuXuatChiTiet(@Body PhieuXuatChiTietDTO phieuXuatChiTietDTO);
+
+
+    @POST("/api/Ban/danhsach_ban")
+    Call<ResponseDTO<List<BanDTO>>> layDanhSachBan();
+
+    @POST("/api/LoaiBan/lay_ds_loaiban")
+    Call<ResponseDTO<List<LoaiBanDTO>>> layDanhSachLoaiBan();
+
+    @POST("/api/hanghoa/CapNhat-DV")
+    Call<ResponseInfo> capNhatDV(@Body DichVuDTO dichVuDTO);
 
 }

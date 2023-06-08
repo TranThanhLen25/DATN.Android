@@ -67,10 +67,10 @@ public class PhieuXuatAdapter extends RecyclerView.Adapter<PhieuXuatAdapter.Phie
         if (px == null) {
             return;
         }
-        DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+
         holder.phieuxuatBinding.tvSochungtuPhieudatphongData.setText(px.getSoChungTu());
         holder.phieuxuatBinding.tvThoigianlapphieuItemphieudatphongData.setText(AppUtils.formatDateToString(px.getNgayLap(), "dd/MM/yyyy HH:mm"));
-        holder.phieuxuatBinding.tvPhongItemphieudatphongData.setText(decimalFormat.format(px.getTongThanhTien()));
+        holder.phieuxuatBinding.tvPhongItemphieudatphongData.setVisibility(View.GONE);
 
         ngay = AppUtils.formatDateToString(px.getNgayLap(), "dd/MM/yyyy HH:mm");
         sct = px.getSoChungTu();

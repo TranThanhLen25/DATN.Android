@@ -2,6 +2,7 @@ package com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -17,9 +18,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.R;
+import com.example.datnandroidquanlynhahangkhachsan.ThanhToanActivity;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuTraPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemphieutraphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.DichVuDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.ListDichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienLocKhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
@@ -61,6 +64,8 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
     private List<HangHoaDTO> lsHangHoa;
     private List<DichVuDTO> lsDichVu;
     private List<PhieuXuatDTO> lsPhieuXuat;
+
+    private ListDichVuDTO listDichVuDTO;
 
     private List<KhachHangDTO> lsKhachHang;
 
@@ -247,6 +252,8 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
                 btnYes.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
+
                         phongDTO.setPhongId(phongid);
                         phongDTO.setTrangThaiId(1);
                         phongPresenter.CapNhatTrangThaiPhong(phongDTO);
@@ -259,6 +266,13 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
                         /// tự lấy ngày hiện tại
                         phieuNhanPhongChiTietDTO.setThoiGianTraPhong(date);
                         phieuNhanPhongChiTietPresenter.CapNhatPhieuNhanPhongChiTiet(phieuNhanPhongChiTietDTO);
+                        ///cap nhat DV
+                        for (int i=0;i<lsDichVu.size();i++)
+                        {
+                            dichVuDTO.setDichVuID(lsDichVu.get(i).getDichVuID());
+                            dichVuDTO.setTrangThai("da thanh toan");
+                            dichVuPresenter.CapNhatDV(dichVuDTO);
+                        }
 
                         ///Thêm phiếu xuất///và pxct
                         ////kiểm tra có px ch
@@ -327,7 +341,9 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
                         editor1.clear();
                         editor1.commit();
                         dialog.dismiss();
-                        onBackPressed();
+                        Intent intent=new Intent(PhieuTraPhongActivity.this, ThanhToanActivity.class);
+                        startActivity(intent);
+                ///        onBackPressed();
 
 
 
@@ -339,7 +355,12 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
                         phongDTO.setPhongId(phongid);
                         phongDTO.setTrangThaiId(1);
                         phongPresenter.CapNhatTrangThaiPhong(phongDTO);
-
+                        for (int i=0;i<lsDichVu.size();i++)
+                        {
+                            dichVuDTO.setDichVuID(lsDichVu.get(i).getDichVuID());
+                            dichVuDTO.setTrangThai("da thanh toan");
+                            dichVuPresenter.CapNhatDV(dichVuDTO);
+                        }
                         ////pnct
                         phieuNhanPhongChiTietDTO.setPhieuNhanPhongChiTietId(PNCTid);
                         // 4 :Đang thuê
@@ -381,7 +402,7 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
                                     , sharedPreferences1.getLong("PNID", 0L)
                                     , date
                                     , sharedPreferences1.getInt("NDID", 0)
-                                    , sharedPreferences1.getLong("TTIENSQL", 0L)
+                                    , 0L
                                     , 0
                                     , 0
                                     , 1
@@ -471,44 +492,39 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
                 PNCTid = Long.valueOf(lsPhieuNhanPhongChiTiet.get(i).getPhieuNhanPhongChiTietId());
                 ///lấy id pn
                 PNid=Long.valueOf(lsPhieuNhanPhongChiTiet.get(i).getPhieuNhanId());
-                NGAYNHAN = lsPhieuNhanPhongChiTiet.get(i).getThoiGianNhanPhong();
-                NGAYTRA = lsPhieuNhanPhongChiTiet.get(i).getThoiGianTraPhong();
 
+                NGAYNHAN = lsPhieuNhanPhongChiTiet.get(i).getThoiGianNhanPhong();
+                if(lsPhieuNhanPhongChiTiet.get(i).getTrangThai()==4)
+                {
+                    NGAYTRA = date;
+                }
+                else {
+                    NGAYTRA = lsPhieuNhanPhongChiTiet.get(i).getThoiGianTraPhong();
+                }
 
                 nhan = formatter.format(NGAYNHAN);
-                tra = formatter.format(date);
-                ngayTraLuu=formatter.format(NGAYTRA);
+                tra = formatter.format(NGAYTRA);
                 editor1.putLong("PNCTID", PNCTid);
                 editor1.putLong("PNID", PNid);
-
                 TextView tvt = findViewById(R.id.tv_ngaytra);
                 /// chuyển ngày sang LocalDate
                 vao = LocalDate.parse(nhan, fm);
-                ra = LocalDate.parse(today, fm);
-                raLuu=LocalDate.parse(ngayTraLuu,fm);
-                if (lsPhieuNhanPhongChiTiet.get(i).getTrangThai() == 4) {
+                ra = LocalDate.parse(tra, fm);
                     //ngày trả
-                    tvt.setText(today);
+                    tvt.setText(tra);
                     /// đếm số lượng ngày
                     SLNGAY = ra.toEpochDay() - vao.toEpochDay();
 
-                }
-                else {
-                    tvt.setText(ngayTraLuu);
-                    /// đếm số lượng ngày
-                    SLNGAY = raLuu.toEpochDay() - vao.toEpochDay();
-
+                ///ngày nhận
+                TextView tvn = findViewById(R.id.tv_ngaynhan);
+                tvn.setText(nhan);
                 }
 
             }
 
-        }
 
 
 
-        ///ngày nhận
-        TextView tvn = findViewById(R.id.tv_ngaynhan);
-        tvn.setText(nhan);
         ///số lượng ngày thuê
         TextView soluong = findViewById(R.id.tv_songaythue);
         soluong.setText(String.valueOf(SLNGAY));
@@ -551,6 +567,10 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
         for (int i = 0; i < lsKhachHang.size(); i++) {
             if (lsKhachHang.get(i).getKhachHangId() == kh) {
                 ten.setText(lsKhachHang.get(i).getTenKhachHang());
+                SharedPreferences sharedPreferences=getSharedPreferences("PHIEUXUAT",MODE_PRIVATE);
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+                editor.putString("TENKH",lsKhachHang.get(i).getTenKhachHang());
+                editor.commit();
                 cccd.setText(lsKhachHang.get(i).getCccd());
                 sdt.setText(lsKhachHang.get(i).getSdt());
 
@@ -578,12 +598,16 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
         DecimalFormat decimalFormat = new DecimalFormat("#,##0" + " đồng");
         ///tổng tiền
         TongTien = Long.valueOf(tienDV) + TT;
+        SharedPreferences sharedPreferences=getSharedPreferences("PHIEUXUAT",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
 
         giatien = decimalFormat.format(TongTien);
         TextView tv_tong = findViewById(R.id.tv_tongTien);
         tv_tong.setText(String.valueOf(giatien));
         editor1.putLong("TTIENSQL", TongTien);
         editor1.commit();
+        editor.putLong("TIENTHANHTOAN",TongTien);
+        editor.commit();
 
 
     }
@@ -687,13 +711,12 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
     @Override
     public void onThemPhieuXuatSuccess() {
 
-        Toast.makeText(this, "do tới đây rồi", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onThemPhieuXuatError(String error) {
 
-        Toast.makeText(this, "sai rồi", Toast.LENGTH_SHORT).show();
+
     }
 
 
@@ -751,6 +774,10 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
     @Override
     public void onLayDvPnError(String error) {
     }
+    @Override
+    public void onCapNhatDVSuccess(){}
 
+    @Override
+    public void onCapNhatDVError(String error){}
 
 }

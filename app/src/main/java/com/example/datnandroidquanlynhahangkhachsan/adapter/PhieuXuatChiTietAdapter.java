@@ -24,6 +24,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -123,24 +124,27 @@ public class PhieuXuatChiTietAdapter extends RecyclerView.Adapter<PhieuXuatChiTi
             }
         }
         DecimalFormat decimalFormat = new DecimalFormat("#,##0");
-
-        /// tổng tiền
-        for (int i = 0; i < lsPhieuXuatChiTiet.size(); i++) {
-            ////tong các phiếu xuất chi tiết
-            if (lsPhieuXuatChiTiet.get(i).getPhieuNhanPhongChiTietId() == pn.getPhieuNhanPhongChiTietId()) {
-                tongMenu = tongMenu + (lsPhieuXuatChiTiet.get(i).getThanhTien());
-
-            }
-        }
-
-
-
         ////lấy ngày nhận và trả
         NGAYNHAN = pn.getThoiGianNhanPhong();
         NGAYTRA = pn.getThoiGianTraPhong();
         /// format ngày và chuyển thành String
+
+        // lấy ngày hiện tại
+        Date date = Calendar.getInstance().getTime();
+
+        // Định dạng ngày hiển thị ra
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String today = formatter.format(date);
+
         Nhan = format.format(NGAYNHAN);
-        Tra = format.format(NGAYTRA);
+        if(pn.getTrangThai()==4)
+        {
+            Tra = format.format(date);
+        }
+        else {
+            Tra = format.format(NGAYTRA);
+        }
+
         /// chuyển kiểu qua LOcalDate để đếm
         vao = LocalDate.parse(Nhan, fm);
         ra = LocalDate.parse(Tra, fm);
@@ -154,9 +158,19 @@ public class PhieuXuatChiTietAdapter extends RecyclerView.Adapter<PhieuXuatChiTi
                 tongDay = songay * Long.valueOf(lsLoaiPhong.get(i).getDonGia());
             }
         }
-        ///tính tiền phòng và dịch vụ phòng
-        tongAll = tongMenu + Double.valueOf(tongDay);
+
+
+
+            for (int i = 0; i < lsPhieuXuatChiTiet.size(); i++) {
+                ////tong các phiếu xuất chi tiết
+                if (lsPhieuXuatChiTiet.get(i).getPhieuNhanPhongChiTietId()== pn.getPhieuNhanPhongChiTietId()) {
+                    tongMenu = tongMenu + (lsPhieuXuatChiTiet.get(i).getThanhTien());
+                }
+                tongAll = tongMenu + Double.valueOf(tongDay);
+
+            }
         holder.phieuXuatChiTietBinding.tvTongtien.setText(String.valueOf(decimalFormat.format(tongAll)));
+        tongMenu = 0;
 
 
         phieuXuatChiTietBinding.itemPhieuxuat.setOnClickListener(new View.OnClickListener() {

@@ -3,11 +3,13 @@ package com.example.datnandroidquanlynhahangkhachsan.model.DichVu;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.DichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.ListDichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ErrorMessageDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseTokenDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.APIService;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.IAPIServiceTokenRetrofit;
+import com.example.datnandroidquanlynhahangkhachsan.model.phong.IPhongModel;
 
 import java.util.List;
 
@@ -137,6 +139,32 @@ public class DichVuModel implements IDichVuModel {
                     @Override
                     public void onFailure(Call<ResponseDTO<List<DichVuDTO>>> call, Throwable t) {
                         listener.onError(t.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        });
+    }
+
+    @Override
+    public void CapNhatDV(DichVuDTO dichVuDTO, IDichVuModel.IOnCapNhatDVFinishedListener listener) {
+        service = new APIService();
+        service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
+            @Override
+            public void onSuccess(ResponseTokenDTO itemToken) {
+                service.apiServiceRetrofit.capNhatDV(dichVuDTO).enqueue(new Callback<ResponseInfo>() {
+                    @Override
+                    public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseInfo> call, Throwable t) {
+
                     }
                 });
             }

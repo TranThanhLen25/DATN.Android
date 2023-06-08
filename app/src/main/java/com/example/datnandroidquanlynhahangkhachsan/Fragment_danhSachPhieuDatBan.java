@@ -1,9 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -12,10 +10,10 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_trangchu#newInstance} factory method to
+ * Use the {@link Fragment_danhSachPhieuDatBan#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_trangchu extends Fragment {
+public class Fragment_danhSachPhieuDatBan extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +24,7 @@ public class Fragment_trangchu extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Fragment_trangchu() {
+    public Fragment_danhSachPhieuDatBan() {
         // Required empty public constructor
     }
 
@@ -36,11 +34,11 @@ public class Fragment_trangchu extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragment_trangchu.
+     * @return A new instance of fragment Fragment_danhSachPhieuDatBan.
      */
     // TODO: Rename and change types and number of parameters
-    public static Fragment_trangchu newInstance(String param1, String param2) {
-        Fragment_trangchu fragment = new Fragment_trangchu();
+    public static Fragment_danhSachPhieuDatBan newInstance(String param1, String param2) {
+        Fragment_danhSachPhieuDatBan fragment = new Fragment_danhSachPhieuDatBan();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,28 +58,7 @@ public class Fragment_trangchu extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_trangchu, container, false);
         // Inflate the layout for this fragment
-
-
-
-        ConstraintLayout btn_khachsan=view.findViewById(R.id.ctl_khachsan);
-        btn_khachsan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getActivity(),MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        ConstraintLayout btn_nhahang=view.findViewById(R.id.ctl_nhahang);
-        btn_nhahang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getActivity(), Nav_Ban_Activity.class);
-                startActivity(intent);
-            }
-        });
-        return view;
+        return inflater.inflate(R.layout.fragment_danh_sach_phieu_dat_ban, container, false);
     }
 }

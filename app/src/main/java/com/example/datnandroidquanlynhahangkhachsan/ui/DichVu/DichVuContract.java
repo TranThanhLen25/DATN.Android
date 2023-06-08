@@ -2,6 +2,7 @@ package com.example.datnandroidquanlynhahangkhachsan.ui.DichVu;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.DichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.ListDichVuDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 
 import java.util.List;
 
@@ -26,6 +27,10 @@ public interface DichVuContract {
         void onLayDvPnSuccess(List<DichVuDTO> list);
 
         void onLayDvPnError(String error);
+
+        void onCapNhatDVSuccess();
+
+        void onCapNhatDVError(String error);
     }
 
     interface Presenter {
@@ -38,5 +43,6 @@ public interface DichVuContract {
         void themDichVu(ListDichVuDTO listDichVuDTO);
 
         void capNhatDichVu(ListDichVuDTO listDichVuDTO);
+        void CapNhatDV(DichVuDTO dichVuDTO);
     }
 }

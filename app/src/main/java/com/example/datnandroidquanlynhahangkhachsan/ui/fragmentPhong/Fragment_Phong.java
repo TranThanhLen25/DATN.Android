@@ -50,7 +50,6 @@ public class Fragment_Phong extends Fragment implements PhongContract.View, Loai
     private PhongAdapter dsPhongAdapter;
     private PhongPresenter danhSachPhongPresenter;
     private LoaiPhongPresenter loaiPhongPresenter;
-    ;
     private FragmentDsPhongBinding fragmentDsPhongBinding;
 
 
@@ -106,8 +105,10 @@ public class Fragment_Phong extends Fragment implements PhongContract.View, Loai
         PhieuNhanPhongChiTietPresenter phieuNhanPhongChiTietPresenter=new PhieuNhanPhongChiTietPresenter(this);
         DieuKienLocPhieuNhanPhongChiTietDTO dieuKienLocPhieuNhanPhongChiTietDTO=new DieuKienLocPhieuNhanPhongChiTietDTO();
         phieuNhanPhongChiTietPresenter.LayDanhSachPhieuNhanPhongChiTiet(dieuKienLocPhieuNhanPhongChiTietDTO);
+
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this.getActivity(), 3);
         rscvDsPhong.setLayoutManager(gridLayoutManager);
+
         fragmentDsPhongBinding.iclAppback.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
