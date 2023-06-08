@@ -160,6 +160,8 @@ public interface IAPIServiceRetrofit {
     @POST("/api/PhieuXuatChiTiet/themphieuxuatCT")
     Call<ResponseInfo> themPhieuXuatChiTiet(@Body PhieuXuatChiTietDTO phieuXuatChiTietDTO);
 
+    @POST("/api/PhieuDatPhongChiTiet/layPhieuDatPhongChiTiet")
+    Call<ResponseDTO<List<PhieuDatPhongChiTietDTO>>>layPhieuDatPhongChiTiet(@Body PhieuDatDTO phieuDatDTO);
 
     @POST("/api/Ban/danhsach_ban")
     Call<ResponseDTO<List<BanDTO>>> layDanhSachBan();

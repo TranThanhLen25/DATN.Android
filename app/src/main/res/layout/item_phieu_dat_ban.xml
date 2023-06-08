@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_phieudatban"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctl_itemphieudatban"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_item"
+        android:layout_marginTop="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_header_itemphieudatban"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="@+id/ctl_itemphieudatban"
+            app:layout_constraintTop_toTopOf="@+id/ctl_itemphieudatban">
+
+            <TextView
+                android:id="@+id/tv_tenkhachhang_phieudatban_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lê Văn Vỹ"
+                android:textSize="@dimen/heading_2"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/ctl_header_itemphieudatban"
+                app:layout_constraintTop_toTopOf="@+id/ctl_header_itemphieudatban" />
+
+            <TextView
+                android:id="@+id/tv_sochungtu_phieudatban_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PDP1"
+                android:textColor="@color/red"
+                android:textSize="@dimen/heading_2"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/ctl_header_itemphieudatban"
+                app:layout_constraintTop_toTopOf="@+id/ctl_header_itemphieudatban" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_gachngang_itemphieudatban"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/ctl_itemphieudatban"
+            app:layout_constraintTop_toBottomOf="@+id/ctl_header_itemphieudatban">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey"
+                app:layout_constraintTop_toTopOf="@+id/layout_gachngang_itemphieudatban" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_main_itemphieudatban"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="@+id/ctl_itemphieudatban"
+            app:layout_constraintTop_toBottomOf="@+id/layout_gachngang_itemphieudatban">
+
+            <TextView
+                android:id="@+id/tv_sdt_itemphieudatban_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0123456789"
+                android:textSize="@dimen/heading_2"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/ctl_main_itemphieudatban"
+                app:layout_constraintTop_toTopOf="@+id/ctl_main_itemphieudatban" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctl_ban_itemphieudatban"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#06FF96"
+                app:layout_constraintEnd_toEndOf="@+id/ctl_main_itemphieudatban"
+                app:layout_constraintTop_toTopOf="@+id/ctl_main_itemphieudatban">
+
+                <TextView
+                    android:id="@+id/tv_ban_itemphieudatban_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="101"
+                    android:textSize="@dimen/heading_2"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.8"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_thoigianlapphieu_itemphieudatban"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/tv_thoigianlapphieu"
+                android:textSize="@dimen/heading_2"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/ctl_main_itemphieudatban"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sdt_itemphieudatban_data" />
+
+            <TextView
+                android:id="@+id/tv_thoigianlapphieu_itemphieudatban_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:text="12:30-05/03/2023"
+                android:textSize="@dimen/heading_2"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/tv_thoigianlapphieu_itemphieudatban"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sdt_itemphieudatban_data" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

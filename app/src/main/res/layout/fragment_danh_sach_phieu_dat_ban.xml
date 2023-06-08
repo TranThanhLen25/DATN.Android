@@ -1,14 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragment_danhSachPhieuDatBan">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <include
+        android:id="@id/icl_appbackpdp"
+        layout="@layout/activity_appar_back"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headderphieudatban"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/icl_appbackpdp">
+
+
+        <TextView
+
+            android:id="@+id/tv_phieudatban"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_tenphieu"
+            android:padding="10dp"
+            android:text="Danh sách phiếu đặt bàn"
+            android:textSize="@dimen/heading_2"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/headderphieudatban"
+            app:layout_constraintTop_toTopOf="@id/headderphieudatban" />
+
+        <include
+            android:id="@+id/icl_search_phieudatban"
+            layout="@layout/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content "
+
+
+            app:layout_constraintEnd_toEndOf="@id/headderphieudatban"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@id/headderphieudatban"
+            app:layout_constraintTop_toBottomOf="@+id/tv_phieudatban" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/scr_phieudatban"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="10dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headderphieudatban">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/phieudatban"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/scr_phieudatban">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mainphieudatban"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                app:layout_constraintEnd_toEndOf="@id/phieudatban"
+                app:layout_constraintStart_toStartOf="@id/phieudatban"
+                app:layout_constraintTop_toTopOf="@id/phieudatban">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintEnd_toEndOf="@+id/mainphieudatban"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"
+                    app:layout_constraintTop_toTopOf="@+id/mainphieudatban">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rscv_dsphieudatban"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fl_btn_themphieudat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:maxImageSize="56dp"
+        app:tint="@color/bluenhat"
+
+        tools:ignore="SpeakableTextPresentCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

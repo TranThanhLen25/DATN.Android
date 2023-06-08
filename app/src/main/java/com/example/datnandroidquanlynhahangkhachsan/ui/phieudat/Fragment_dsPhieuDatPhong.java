@@ -96,7 +96,7 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
         fragmentDsPhieuDatPhongBinding.flBtnThemphieudat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tempData.Check=false;
+                tempData.Check = false;
                 Intent intent = new Intent(getActivity(), ThemPhieuDatphongActivity.class);
                 startActivity(intent);
             }
