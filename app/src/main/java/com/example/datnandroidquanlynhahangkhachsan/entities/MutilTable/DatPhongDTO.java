@@ -15,6 +15,9 @@ public class DatPhongDTO {
 
     private KhachHangDTO khachHang;
 
+    public DatPhongDTO() {
+    }
+
     public DatPhongDTO(PhieuDatDTO phieuDatDTO, List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTiets) {
         this.phieuDatDTO = phieuDatDTO;
         this.phieuDatPhongChiTiets = phieuDatPhongChiTiets;
@@ -40,5 +43,13 @@ public class DatPhongDTO {
 
     public void setPhieuDatPhongChiTiets(List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTiets) {
         this.phieuDatPhongChiTiets = phieuDatPhongChiTiets;
+    }
+
+    public Boolean checkSoLuong() {
+        if (phieuDatPhongChiTiets.size() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

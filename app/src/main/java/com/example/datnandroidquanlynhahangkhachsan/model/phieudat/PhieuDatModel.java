@@ -60,7 +60,8 @@ public class PhieuDatModel implements IPhieuDatModel {
             }
         });
     }
-//
+
+    //
     @Override
     public void ThemPhieuDatPhong(DatPhongDTO datPhongDTO, IOnThemPhieuDatPhongFinishedListener listener) {
         service = new APIService();
@@ -112,7 +113,46 @@ public class PhieuDatModel implements IPhieuDatModel {
 
             @Override
             public void onError(String error) {
+//Lay token loi => thong bao loi
+                listener.onError(error);
+            }
+        });
+    }
 
+    @Override
+    public void LayPhieuDatPhongChiTiet(PhieuDatDTO phieuDatDTO, IOnLayPhieuDatPhongChiTietFinishedListener listener) {
+        service = new APIService();
+        service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
+            @Override
+            public void onSuccess(ResponseTokenDTO itemToken) {
+                service.apiServiceRetrofit.layPhieuDatPhongChiTiet(phieuDatDTO).enqueue(new Callback<ResponseDTO<List<PhieuDatPhongChiTietDTO>>>() {
+                    @Override
+                    public void onResponse(Call<ResponseDTO<List<PhieuDatPhongChiTietDTO>>> call, Response<ResponseDTO<List<PhieuDatPhongChiTietDTO>>> response) {
+                        //lay loi api tra ve (neu co)
+                        errorKiemTra = service.getMessageResponse(response);
+                        if (errorKiemTra.getFlagException() || !errorKiemTra.getFlagSuccess()) {
+                            listener.onError(errorKiemTra.getErrorMessage());
+                            return;
+                        }
+
+                        //trong phan response (tra ve) cua api co body (noi dung)
+                        //Ma o day minh quy uoc la tra ve ResponseDTO
+                        //Sau do response.body().getData() de lay ra du lieu o truong data
+                        List<PhieuDatPhongChiTietDTO> listResult = response.body().getData();
+                        listener.onSuccess(listResult);
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseDTO<List<PhieuDatPhongChiTietDTO>>> call, Throwable t) {
+                        listener.onError(t.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+//Lay token loi => thong bao loi
+                listener.onError(error);
             }
         });
     }

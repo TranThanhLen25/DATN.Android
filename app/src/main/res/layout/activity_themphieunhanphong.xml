@@ -136,15 +136,26 @@
                     app:layout_constraintTop_toTopOf="@+id/mainphieunhanphong"
                     tools:ignore="SpUsage" />
 
-                <EditText
-                    android:id="@+id/et_hoten_phieunhanphong"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputlayout_hoten_phieunhanphong"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:background="@drawable/bg_edittext"
-                    android:importantForAutofill="no"
-                    android:inputType="textPersonName"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_hoten"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="outline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_hoten">
+
+                    <EditText
+                        android:id="@+id/et_hoten_phieunhanphong"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_edittext"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:padding="0dp"
+                        app:layout_constraintTop_toBottomOf="parent"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <TextView
                     android:id="@+id/tv_cccd_phieunhanphong"
@@ -155,17 +166,32 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/textview_tk_mk"
                     app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
-                    app:layout_constraintTop_toBottomOf="@+id/et_hoten_phieunhanphong" />
+                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_hoten_phieunhanphong" />
 
-                <EditText
-                    android:id="@+id/et_cccd_phieunhanphong"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputlayout_cccd_phieudatphong"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:background="@drawable/bg_edittext"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_cccd_phieunhanphong"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="outline"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="12"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_cccd_phieunhanphong">
+
+                    <EditText
+                        android:id="@+id/et_cccd_phieunhanphong"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_edittext"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="12"
+                        android:maxLines="1"
+                        android:padding="0dp"
+                        app:layout_constraintTop_toBottomOf="parent"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <TextView
                     android:id="@+id/tv_sdt_phieunhanphong"
@@ -176,16 +202,30 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/textview_tk_mk"
                     app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
-                    app:layout_constraintTop_toBottomOf="@+id/et_cccd_phieunhanphong" />
+                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_cccd_phieudatphong" />
 
-                <EditText
-                    android:id="@+id/et_sdt_phieunhanphong"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputlayout_sdt_phieunhanphong"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:background="@drawable/bg_edittext"
-                    android:inputType="phone"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_sdt_phieunhanphong"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="outline"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="10"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_sdt_phieunhanphong">
+
+                    <EditText
+                        android:id="@+id/et_sdt_phieunhanphong"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_edittext"
+                        android:inputType="phone"
+                        android:maxLength="10"
+                        android:padding="0dp"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_sdt_phieunhanphong"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <TextView
                     android:id="@+id/tv_songuoi_phieunhanphong"
@@ -196,7 +236,7 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/textview_tk_mk"
                     app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
-                    app:layout_constraintTop_toBottomOf="@+id/et_sdt_phieunhanphong" />
+                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_sdt_phieunhanphong" />
 
                 <EditText
                     android:id="@+id/et_songuoi_phieunhanphong"
@@ -316,42 +356,42 @@
                         android:id="@+id/tv_phong_phieunhanphong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tv_phong"
+                        android:text="Nhấn để chọn phòng"
                         android:textSize="20dp"
                         app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieunhanphong"
                         app:layout_constraintStart_toEndOf="@+id/themphong_phieunhanphong"
                         app:layout_constraintTop_toTopOf="@+id/chonphong_phieunhanphong" />
 
-                    <TextView
-                        android:id="@+id/tv_phong_data_phieunhanphong"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="101"
-                        android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieunhanphong"
-                        app:layout_constraintStart_toEndOf="@+id/tv_phong_phieunhanphong"
-                        app:layout_constraintTop_toTopOf="@+id/chonphong_phieunhanphong" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_phong_data_phieunhanphong"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="101"-->
+<!--                        android:textSize="20sp"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieunhanphong"-->
+<!--                        app:layout_constraintStart_toEndOf="@+id/tv_phong_phieunhanphong"-->
+<!--                        app:layout_constraintTop_toTopOf="@+id/chonphong_phieunhanphong" />-->
 
-                    <TextView
-                        android:id="@+id/dongia"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/tv_gia"
-                        android:textColor="@color/red"
-                        android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieunhanphong"
-                        app:layout_constraintStart_toEndOf="@+id/themphong_phieunhanphong"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_phong_phieunhanphong" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/dongia"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/tv_gia"-->
+<!--                        android:textColor="@color/red"-->
+<!--                        android:textSize="20sp"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieunhanphong"-->
+<!--                        app:layout_constraintStart_toEndOf="@+id/themphong_phieunhanphong"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/tv_phong_phieunhanphong" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="300.000đ"
-                        android:textColor="@color/red"
-                        android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieunhanphong"
-                        app:layout_constraintStart_toEndOf="@+id/dongia"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_phong_phieunhanphong" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="300.000đ"-->
+<!--                        android:textColor="@color/red"-->
+<!--                        android:textSize="20sp"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@+id/chonphong_phieunhanphong"-->
+<!--                        app:layout_constraintStart_toEndOf="@+id/dongia"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/tv_phong_phieunhanphong" />-->
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

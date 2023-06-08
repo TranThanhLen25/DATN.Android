@@ -7,6 +7,8 @@ import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -19,14 +21,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.datnandroidquanlynhahangkhachsan.CaptureAct;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemphieunhanphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.NhanPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.ChonPhongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
+import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -34,23 +40,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsPhieuNhanPhongContract.View, KhachHangContract.View , LoaiPhongContract.View {
-=======
-public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsPhieuNhanPhongContract.View, KhachHangContract.View {
->>>>>>> parent of 0ac3321 (đã xong chi tiết phiếu đặt phòng và gàn dữ liệu bằng nút nhận phòng)
-=======
-public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsPhieuNhanPhongContract.View, KhachHangContract.View {
->>>>>>> parent of 0ac3321 (đã xong chi tiết phiếu đặt phòng và gàn dữ liệu bằng nút nhận phòng)
-=======
-public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsPhieuNhanPhongContract.View, KhachHangContract.View {
->>>>>>> parent of 0ac3321 (đã xong chi tiết phiếu đặt phòng và gàn dữ liệu bằng nút nhận phòng)
-=======
-public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsPhieuNhanPhongContract.View, KhachHangContract.View {
->>>>>>> parent of 0ac3321 (đã xong chi tiết phiếu đặt phòng và gàn dữ liệu bằng nút nhận phòng)
+public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsPhieuNhanPhongContract.View, KhachHangContract.View, LoaiPhongContract.View {
     private ActivityThemphieunhanphongBinding themphieunhanphongBinding;
     private String thoiGianNhan;
     private String thoiGianTra;
@@ -61,6 +51,8 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
     private List<PhieuNhanPhongChiTietDTO> phieuNhanPhongChiTietDTOS;
     private DsPhieuNhanPhongPresenter dsPhieuNhanPhongPresenter;
     private KhachHangDTO khachHangDTO;
+    private LoaiPhongPresenter loaiPhongPresenter;
+    private List<LoaiPhongDTO> loaiPhongDTOList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,10 +93,6 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
                 OnclickThemPhieuNhan();
             }
         });
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         KiemTraDuLieuDauVao();
         SetDuLieuNeuCo();
     }
@@ -126,14 +114,18 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
 //            String soLuongPhong = "";
 //            int loaiPhongID;
 //            for (int i = 0; i < tempData.datPhongDTO.getPhieuDatPhongChiTiets().size(); i++) {
-//                loaiPhongID=Integer.valueOf(tempData.datPhongDTO.getPhieuDatPhongChiTiets().get(i).getLoaiPhongId());
-//                for (int j=0;j<loaiPhongDTOList.size();j++){
-//                    if (loaiPhongID==loaiPhongDTOList.get())
+//                soLuongPhong += String.valueOf(i);
+//                loaiPhongID = Integer.valueOf(tempData.datPhongDTO.getPhieuDatPhongChiTiets().get(i).getLoaiPhongId());
+//                for (int j = 0; j < loaiPhongDTOList.size(); j++) {
+//                    if (loaiPhongID == loaiPhongDTOList.get(j).getLoaiPhongId()) {
+//                        soLuongPhong += String.valueOf(" " + loaiPhongDTOList.get(j).getTenLoaiPhong() + tempData.datPhongDTO.getPhieuDatPhongChiTiets().get(i).getSoLuong());
+//                        if (i < tempData.datPhongDTO.getPhieuDatPhongChiTiets().size() + 1) {
+//                            soLuongPhong += ", ";
+//                        }
+//                    }
 //                }
-//
-//                soLuongPhong+=String.valueOf(tempData.datPhongDTO.getPhieuDatPhongChiTiets().get(i).getSoLuong());
 //            }
-//
+//            themphieunhanphongBinding.tvPhongDataPhieunhanphong.setText(soLuongPhong);
 //        }
     }
 
@@ -251,14 +243,6 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
                 }
             }
         });
-=======
->>>>>>> parent of 0ac3321 (đã xong chi tiết phiếu đặt phòng và gàn dữ liệu bằng nút nhận phòng)
-=======
->>>>>>> parent of 0ac3321 (đã xong chi tiết phiếu đặt phòng và gàn dữ liệu bằng nút nhận phòng)
-=======
->>>>>>> parent of 0ac3321 (đã xong chi tiết phiếu đặt phòng và gàn dữ liệu bằng nút nhận phòng)
-=======
->>>>>>> parent of 0ac3321 (đã xong chi tiết phiếu đặt phòng và gàn dữ liệu bằng nút nhận phòng)
     }
 
     private void OnclickThemPhieuNhan() {
@@ -309,7 +293,7 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
             dsPhieuNhanPhongPresenter.ThemPhieuNhanPhong(nhanPhongDTO);
 
             String a = String.valueOf(khachHangDTO.getTenKhachHang());
-            Toast.makeText(this, a, Toast.LENGTH_LONG).show();
+            // Toast.makeText(this, a, Toast.LENGTH_LONG).show();
             lsChonPhongDataInt.clear();
             onBackPressed();
         }
@@ -320,7 +304,7 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
         super.onResume();
         if (lsChonPhongDataInt.size() > 0) {
             String a = String.valueOf(lsChonPhongDataInt.size());
-            Toast.makeText(this, a, Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, a, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -504,6 +488,16 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
 
     @Override
     public void onThemPhieuNhanPhongError(String error) {
+
+    }
+
+    @Override
+    public void onLayLoaiPhongSuccess(List<LoaiPhongDTO> lsLoaiPhong) {
+        loaiPhongDTOList = lsLoaiPhong;
+    }
+
+    @Override
+    public void onLayLoaiPhongError(String error) {
 
     }
 }
