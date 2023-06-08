@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface DsPhieuDatPhongContract {
     interface View {
-       // //lấy danh sách phiếu đặt phòng
+        // //lấy danh sách phiếu đặt phòng
         void onLayDanhSachPhieuDatSuccess(List<PhieuDatDTO> list);
 
         void onLayDanhSachPhieuDatError(String error);
@@ -23,6 +23,11 @@ public interface DsPhieuDatPhongContract {
         void onThemPhieuDatPhongChiTietSuccess();
 
         void onThemPhieuDatPhongChiTietError(String error);
+
+        //lấy phiếu đặt phòng chi tiết
+        void onLayPhieuDatPhongChiTietSuccess(List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTietDTOList);
+
+        void onLayPhieuDatPhongChiTietError(String error);
     }
 
     interface Presenter {
@@ -33,5 +38,6 @@ public interface DsPhieuDatPhongContract {
         void ThemPhieuDatPhong(DatPhongDTO datPhongDTO);
 
         void ThemPhieuDatPhongChiTiet(PhieuDatPhongChiTietDTO phieuDatPhongChiTietDTO);
+        void LayPhieuDatPhongChiTiet(PhieuDatDTO phieuDatDTO);
     }
 }

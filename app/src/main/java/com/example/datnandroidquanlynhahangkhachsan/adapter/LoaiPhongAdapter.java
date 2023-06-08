@@ -10,9 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.datnandroidquanlynhahangkhachsan.PhieuDatPhongChiTietActivity;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemChonloaiphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.soLuongLoaiPhong;
+import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.ThemPhieuDatphongActivity;
 
 import java.util.ArrayList;
@@ -21,9 +23,14 @@ import java.util.List;
 public class LoaiPhongAdapter extends RecyclerView.Adapter<LoaiPhongAdapter.LoaiPhongViewHolder> {
     List<LoaiPhongDTO> loaiPhongDTOList;
     private Context context;
+    private List<Integer> soLuongCoSan;
+    private List<Integer> iDLoaiPhongCoSan;
 
-//
+    //
     public LoaiPhongAdapter(ThemPhieuDatphongActivity themPhieuDatphongActivity) {
+    }
+
+    public LoaiPhongAdapter(PhieuDatPhongChiTietActivity phieuDatPhongChiTietActivity) {
     }
 
     public void setData(Context context, List<LoaiPhongDTO> loaiPhongDTOList) {
@@ -47,7 +54,6 @@ public class LoaiPhongAdapter extends RecyclerView.Adapter<LoaiPhongAdapter.Loai
 
     @Override
     public void onBindViewHolder(@NonNull LoaiPhongViewHolder holder, int position) {
-
         int index = position;
 
         LoaiPhongDTO loaiPhongDTO = loaiPhongDTOList.get((index));
@@ -55,30 +61,43 @@ public class LoaiPhongAdapter extends RecyclerView.Adapter<LoaiPhongAdapter.Loai
             return;
         }
         holder.tvtenloaiphong.setText(loaiPhongDTO.getTenLoaiPhong());
-        holder.tvsoluong.setText(String.valueOf("0"));
+        holder.tvsoluong.setText(String.valueOf(soLuongLoaiPhong.soLuong.get(index)));
 
-        //tăng số lượng phòng
-        holder.btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int soLuong = soLuongLoaiPhong.soLuong.get(index) + 1;
-                soLuongLoaiPhong.soLuong.set(index, soLuong);
-                holder.tvsoluong.setText(String.valueOf(soLuong));
+        //lấy số lượng loại phòng có sẵn dùng cho chi tiết
+        //if (tempData.datPhongDTO.getPhieuDatPhongChiTiets().size() > 0) {
+        if (tempData.Check == true) {
+            for (int i = 0; i < tempData.datPhongDTO.getPhieuDatPhongChiTiets().size(); i++) {
+                if (tempData.datPhongDTO.getPhieuDatPhongChiTiets().get(i).getLoaiPhongId() == loaiPhongDTO.getLoaiPhongId()) {
+                    holder.tvsoluong.setText(String.valueOf(tempData.datPhongDTO.getPhieuDatPhongChiTiets().get(i).getSoLuong()));
+                    // soLuongLoaiPhong.soLuong.set(index, tempData.datPhongDTO.getPhieuDatPhongChiTiets().get(i).getSoLuong());
+                }
             }
-        });
+        } else {
 
-        //giảm số lượng phòng
-        holder.btnMinus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (soLuongLoaiPhong.soLuong.get(index) > 0) {
-                    int soLuong = soLuongLoaiPhong.soLuong.get(index) - 1;
+            //tăng số lượng phòng
+            holder.btnAdd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int soLuong = soLuongLoaiPhong.soLuong.get(index) + 1;
                     soLuongLoaiPhong.soLuong.set(index, soLuong);
                     holder.tvsoluong.setText(String.valueOf(soLuong));
                 }
-            }
-        });
+            });
+
+            //giảm số lượng phòng
+            holder.btnMinus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (soLuongLoaiPhong.soLuong.get(index) > 0) {
+                        int soLuong = soLuongLoaiPhong.soLuong.get(index) - 1;
+                        soLuongLoaiPhong.soLuong.set(index, soLuong);
+                        holder.tvsoluong.setText(String.valueOf(soLuong));
+                    }
+                }
+            });
+        }
     }
+
 
     @Override
     public int getItemCount() {

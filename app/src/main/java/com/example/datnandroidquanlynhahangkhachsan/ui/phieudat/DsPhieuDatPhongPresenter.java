@@ -63,4 +63,19 @@ public class DsPhieuDatPhongPresenter implements DsPhieuDatPhongContract.Present
             }
         });
     }
+
+    @Override
+    public void LayPhieuDatPhongChiTiet(PhieuDatDTO phieuDatDTO) {
+        phieuDatModel.LayPhieuDatPhongChiTiet(phieuDatDTO, new IPhieuDatModel.IOnLayPhieuDatPhongChiTietFinishedListener() {
+            @Override
+            public void onSuccess(List<PhieuDatPhongChiTietDTO> listResult) {
+                view.onLayPhieuDatPhongChiTietSuccess(listResult);
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onLayPhieuDatPhongChiTietError(error);
+            }
+        });
+    }
 }

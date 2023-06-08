@@ -278,6 +278,8 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
 
     //xử lý dữ liệu người dùng nhập vào
     private void KiemTraDuLieuDauVao() {
+
+        activityThemphieudatphongBinding.inputlayoutHotenPhieudatphong.setHelperText("*lưu ý : Tên Khách Hàng là Bắt buộc");
         activityThemphieudatphongBinding.etHotenPhieudatphong.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -506,6 +508,16 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
     @Override
     public void onThemPhieuDatPhongChiTietError(String error) {
         //Toast.makeText(this, "Thêm phiếu đặt phòng chi tiết thất bại", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onLayPhieuDatPhongChiTietSuccess(List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTietDTOList) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatPhongChiTietError(String error) {
+
     }
 
     @Override

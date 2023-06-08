@@ -122,12 +122,34 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
         return fragmentDsPhieuNhanPhongBinding.getRoot();
     }
 
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        lsPhieuNhan = new ArrayList<>();
+//        ///lấy dữ liệu danh sách phiếu nhận
+//        DsPhieuNhanPhongPresenter phieuNhanPhongPresenter = new DsPhieuNhanPhongPresenter(this);
+//        DieuKienLocPhieuNhanDTO dieuKienLocPhieuNhanDTO = new DieuKienLocPhieuNhanDTO();
+//
+//        ////loại 3:phiếu nhận phòng
+//        dieuKienLocPhieuNhanDTO.setLoaiPhieu(3);
+//        phieuNhanPhongPresenter.LayDanhSachPhieuNhan(dieuKienLocPhieuNhanDTO);
+//
+//        ///lấy khách hàng
+//        lsKhachHang = new ArrayList<>();
+//        KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
+//        DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
+//        khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
+//        rscvPhieuNhanPhong = fragmentDsPhieuNhanPhongBinding.rscvDsphieunhanphong;
+//        LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
+//        rscvPhieuNhanPhong.setLayoutManager(LinearLayoutManager);
+//    }
+
     @Override
     public void onLayDanhSachPhieuNhanSuccess(List<PhieuNhanDTO> list) {
         lsPhieuNhan = list;
-        phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(this);
-        phieuNhanPhongAdapter.setData(lsPhieuNhan, lsKhachHang,getContext());
-        rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);
+//        phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(this);
+//        phieuNhanPhongAdapter.setData(lsPhieuNhan, lsKhachHang,getContext());
+//        rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);
         //Toast.makeText(getContext(), "Lấy danh sách phiếu đặt phòng thành công", Toast.LENGTH_LONG).show();
     }
 

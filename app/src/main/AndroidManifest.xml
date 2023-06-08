@@ -20,6 +20,9 @@
             android:name=".ui.phieuxuat.PhieuXuatActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.phieudat.ThemPhieuDatphongActivity"
+            android:exported="false" />
+        <activity
             android:name=".PhieuDatPhongChiTietActivity"
             android:exported="false" />
         <activity
