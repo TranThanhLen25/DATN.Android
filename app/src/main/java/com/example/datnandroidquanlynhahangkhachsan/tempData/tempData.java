@@ -1,23 +1,8 @@
 package com.example.datnandroidquanlynhahangkhachsan.tempData;
 
-import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
-
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class tempData {
-    public static Date day = Calendar.getInstance().getTime();
     //danh sách hàng hóa đang chọn trong menu
     public static List<Integer> lsDichVu;
-    public static DatPhongDTO datPhongDTO;
-    public static PhieuDatDTO phieuDatDTO;
-    //public static PhieuDatDTO phieuDatDTO1 = new PhieuDatDTO(1L,"1",day,1,1,day,day,"abc",1L,"abc");
-    public static List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTietDTOList;
-    public static KhachHangDTO tempDatakhachHangDTO;
-    public static List<Integer> soLuongPhongDaDats;
-    public static boolean Check = false;
 }

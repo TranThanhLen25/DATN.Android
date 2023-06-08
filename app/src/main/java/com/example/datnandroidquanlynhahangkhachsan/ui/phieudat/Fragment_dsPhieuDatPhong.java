@@ -13,14 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuDatPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsPhieuDatPhongBinding;
-import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienLocKhachHangDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
-import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
-import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
-import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -32,14 +26,13 @@ import java.util.List;
  * Use the {@link Fragment_dsPhieuDatPhong#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhongContract.View, KhachHangContract.View {
+public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhongContract.View {
     private RecyclerView rscvPhieuDatPhong;
     private List<PhieuDatDTO> lsPhieuDat;
     private PhieuDatPhongAdapter phieuDatPhongAdapter;
     private DsPhieuDatPhongPresenter dsPhieuDatPhongPresenter;
     private FragmentDsPhieuDatPhongBinding fragmentDsPhieuDatPhongBinding;
     DieuKienLocPhieuDatDTO dieuKienLocPhieuDatDTO;
-    private List<KhachHangDTO> lsKhachHang;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -51,7 +44,7 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
     private String mParam2;
 
     public Fragment_dsPhieuDatPhong() {
-        ///  // Required empty public constructor
+      ///  // Required empty public constructor
     }
 
     /**
@@ -96,18 +89,10 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
         fragmentDsPhieuDatPhongBinding.flBtnThemphieudat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tempData.Check=false;
                 Intent intent = new Intent(getActivity(), ThemPhieuDatphongActivity.class);
                 startActivity(intent);
             }
         });
-
-        ///lấy khách hàng
-        lsKhachHang = new ArrayList<>();
-        KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
-        DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
-        khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
-
         rscvPhieuDatPhong = fragmentDsPhieuDatPhongBinding.rscvDsphieudatphong;
         lsPhieuDat = new ArrayList<>();
         Date day = Calendar.getInstance().getTime();
@@ -122,32 +107,12 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
 
 
     }
-//
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        ///lấy khách hàng
-//        lsKhachHang = new ArrayList<>();
-//        KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
-//        DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
-//        khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
-//
-//        rscvPhieuDatPhong = fragmentDsPhieuDatPhongBinding.rscvDsphieudatphong;
-//        lsPhieuDat = new ArrayList<>();
-//        dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
-//        dieuKienLocPhieuDatDTO = new DieuKienLocPhieuDatDTO();
-//        dieuKienLocPhieuDatDTO.setLoaiPhieu(1);
-//        dieuKienLocPhieuDatDTO.setTrangThai("đang đặt");
-//        dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
-//        LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
-//        rscvPhieuDatPhong.setLayoutManager(LinearLayoutManager);
-//    }
 
     @Override
     public void onLayDanhSachPhieuDatSuccess(List<PhieuDatDTO> list) {
         lsPhieuDat = list;
         phieuDatPhongAdapter = new PhieuDatPhongAdapter(this);
-        phieuDatPhongAdapter.setData(getContext(), lsPhieuDat, lsKhachHang);
+        phieuDatPhongAdapter.setData(getContext(), lsPhieuDat);
         rscvPhieuDatPhong.setAdapter(phieuDatPhongAdapter);
         //Toast.makeText(getContext(), "Lấy danh sách phiếu đặt phòng thành công", Toast.LENGTH_LONG).show();
     }
@@ -174,37 +139,6 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
 
     @Override
     public void onThemPhieuDatPhongChiTietError(String error) {
-
-    }
-
-    @Override
-    public void onLayPhieuDatPhongChiTietSuccess(List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTietDTOList) {
-
-    }
-
-
-    @Override
-    public void onLayPhieuDatPhongChiTietError(String error) {
-
-    }
-
-    @Override
-    public void onThemKhachHangSuccess() {
-
-    }
-
-    @Override
-    public void onThemKhachHangError(String error) {
-
-    }
-
-    @Override
-    public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
-        lsKhachHang = list;
-    }
-
-    @Override
-    public void onLayDanhSachKhachHangError(String error) {
 
     }
 }

@@ -30,20 +30,6 @@
             app:layout_constraintStart_toStartOf="@id/ctl_itemchonphong"
             app:layout_constraintTop_toTopOf="@id/ctl_itemchonphong" />
 
-        <ImageView
-            android:id="@+id/img_khongchonphong"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="18dp"
-            android:src="@drawable/uncheck"
-            android:visibility="invisible"
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_so_chonphong"
-            app:layout_constraintStart_toStartOf="@id/ctl_itemchonphong"
-            app:layout_constraintTop_toTopOf="@id/ctl_itemchonphong" />
 
         <TextView
             android:id="@+id/tv_so_chonphong"

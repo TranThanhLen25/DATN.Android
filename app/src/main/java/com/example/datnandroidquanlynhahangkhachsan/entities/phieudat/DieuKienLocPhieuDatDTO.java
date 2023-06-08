@@ -1,17 +1,11 @@
 package com.example.datnandroidquanlynhahangkhachsan.entities.phieudat;
 
-import com.google.gson.annotations.SerializedName;
-
 public class DieuKienLocPhieuDatDTO {
-    @SerializedName("phieuDatId")
     public long phieuDatId;
-    @SerializedName("soChungTu")
     public String soChungTu;
-    @SerializedName("loaiPhieu")
     public int loaiPhieu;
-    @SerializedName("khachHangId")
     public long khachHangId;
-    @SerializedName("trangThai")
+
     public String TrangThai;
 
     public DieuKienLocPhieuDatDTO(long phieuDatId, String soChungTu, int loaiPhieu, long khachHangId, String trangThai) {

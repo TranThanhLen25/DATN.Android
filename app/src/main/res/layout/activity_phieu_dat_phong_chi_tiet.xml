@@ -358,6 +358,59 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
                     </LinearLayout>
+
+                    <ImageButton
+                        android:id="@+id/btn_themphong_phieudatphong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:padding="15dp"
+                        android:src="@drawable/ic_additem"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/chonloaiphong_phieudatphong"
+                        tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_phong_phieudatphong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_phong"
+                        android:textSize="20sp"
+                        app:layout_constraintTop_toTopOf="@id/chonloaiphong_phieudatphong"
+                        app:layout_constraintStart_toEndOf="@+id/btn_themphong_phieudatphong"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/tv_phong_data_phieudatphong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="101"
+                        android:textSize="20sp"
+                        app:layout_constraintTop_toTopOf="@id/chonloaiphong_phieudatphong"
+                       app:layout_constraintStart_toEndOf="@id/tv_phong_phieudatphong"
+
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/dongia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_gia"
+                        android:textColor="@color/red"
+                        android:textSize="20sp"
+
+                        app:layout_constraintStart_toEndOf="@+id/btn_themphong_phieudatphong"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_phong_phieudatphong" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="300.000đ"
+                        android:textColor="@color/red"
+                        android:textSize="20sp"
+
+                        app:layout_constraintStart_toEndOf="@+id/dongia"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_phong_phieudatphong" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -374,7 +427,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/btn_themphieunhanphong"
+            android:id="@+id/btn_themphieudatphong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/action_nhanphong"

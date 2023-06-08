@@ -31,12 +31,4 @@ public interface IPhieuDatModel {
 
         void onError(String error);
     }
-
-    void LayPhieuDatPhongChiTiet(PhieuDatDTO phieuDatDTO, IPhieuDatModel.IOnLayPhieuDatPhongChiTietFinishedListener listener);
-
-    interface IOnLayPhieuDatPhongChiTietFinishedListener {
-        void onSuccess(List<PhieuDatPhongChiTietDTO> listResult);
-
-        void onError(String error);
-    }
 }
