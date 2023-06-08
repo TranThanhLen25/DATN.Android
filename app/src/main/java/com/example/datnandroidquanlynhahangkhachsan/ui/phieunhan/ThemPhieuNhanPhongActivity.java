@@ -35,7 +35,11 @@ import java.util.List;
 import java.util.Locale;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsPhieuNhanPhongContract.View, KhachHangContract.View , LoaiPhongContract.View {
+=======
+public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsPhieuNhanPhongContract.View, KhachHangContract.View {
+>>>>>>> parent of 0ac3321 (đã xong chi tiết phiếu đặt phòng và gàn dữ liệu bằng nút nhận phòng)
 =======
 public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsPhieuNhanPhongContract.View, KhachHangContract.View {
 >>>>>>> parent of 0ac3321 (đã xong chi tiết phiếu đặt phòng và gàn dữ liệu bằng nút nhận phòng)
@@ -89,6 +93,7 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
                 OnclickThemPhieuNhan();
             }
         });
+<<<<<<< HEAD
 <<<<<<< HEAD
         KiemTraDuLieuDauVao();
         SetDuLieuNeuCo();
@@ -236,6 +241,8 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
                 }
             }
         });
+=======
+>>>>>>> parent of 0ac3321 (đã xong chi tiết phiếu đặt phòng và gàn dữ liệu bằng nút nhận phòng)
 =======
 >>>>>>> parent of 0ac3321 (đã xong chi tiết phiếu đặt phòng và gàn dữ liệu bằng nút nhận phòng)
     }
