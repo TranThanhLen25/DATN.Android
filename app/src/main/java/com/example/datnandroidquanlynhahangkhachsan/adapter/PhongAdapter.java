@@ -19,14 +19,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.datnandroidquanlynhahangkhachsan.Fragment_Phong;
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemDanhsachphongBinding;
+import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanPhongChiTietDTO;
-import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.ThemPhieuDatphongActivity;
-import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuTraPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.ThemPhieuDoiPhongActivity;
-import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.ThemPhieuNhanPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.chitietphong.ChiTietPhongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.ThemPhieuDatphongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.ThemPhieuNhanPhongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuTraPhongActivity;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -42,9 +44,23 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
     private int trangThai;
     private long phieunhanid;
 
+    private long khachhangid;
+
+    private int nguoidungid;
+
     private Context context;
     private List<LoaiPhongDTO> lsLoaiPhong;
+
+    private List<KhachHangDTO> lsKhachHang;
     private List<PhieuNhanPhongChiTietDTO> phieuNhanPhongChiTietDTO;
+
+    private List<PhieuNhanDTO> lsPhieuNhan;
+
+    private String ten;
+    private String cccd;
+    private String sdt;
+
+    private long pnct;
     Fragment fragment = null;
 
 
@@ -58,11 +74,13 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
 
     }
 
-    public void setData(List<PhongDTO> lsPhong, Context context, List<LoaiPhongDTO> lsLoaiPhong, List<PhieuNhanPhongChiTietDTO> phieuNhanPhongChiTietDTO) {
+    public void setData(List<PhieuNhanDTO> lsPhieuNhan, List<KhachHangDTO> lsKhachHang, List<PhongDTO> lsPhong, Context context, List<LoaiPhongDTO> lsLoaiPhong, List<PhieuNhanPhongChiTietDTO> phieuNhanPhongChiTietDTO) {
+        this.lsPhieuNhan = lsPhieuNhan;
+        this.lsKhachHang = lsKhachHang;
         this.lsPhong = lsPhong;
         this.context = context;
         this.lsLoaiPhong = lsLoaiPhong;
-        this.phieuNhanPhongChiTietDTO=phieuNhanPhongChiTietDTO;
+        this.phieuNhanPhongChiTietDTO = phieuNhanPhongChiTietDTO;
         notifyDataSetChanged();
     }
 
@@ -126,18 +144,34 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                         so = phong.getSoPhong();
                         gia = lsLoaiPhong.get(i).getDonGia();
                         loai = lsLoaiPhong.get(i).getTenLoaiPhong().toString();
-                        phongid=phong.getPhongId();
-                        loaiphongid=lsLoaiPhong.get(i).getLoaiPhongId();
-                        trangThai=phong.getTrangThaiId();
+                        phongid = phong.getPhongId();
+                        loaiphongid = lsLoaiPhong.get(i).getLoaiPhongId();
+                        trangThai = phong.getTrangThaiId();
                     }
                 }
-                for (int i=0;i<phieuNhanPhongChiTietDTO.size();i++)
-                {
-                    if(phieuNhanPhongChiTietDTO.get(i).getPhongId()==phongid)
-                    {
-                        phieunhanid=phieuNhanPhongChiTietDTO.get(i).getPhieuNhanId();
+                for (int i = 0; i < phieuNhanPhongChiTietDTO.size(); i++) {
+                    if (phieuNhanPhongChiTietDTO.get(i).getPhongId() == phongid) {
+                        phieunhanid = phieuNhanPhongChiTietDTO.get(i).getPhieuNhanId();
+                        pnct=phieuNhanPhongChiTietDTO.get(i).getPhieuNhanPhongChiTietId();
+
                     }
                 }
+
+                for (int i = 0; i < lsPhieuNhan.size(); i++) {
+                    if (lsPhieuNhan.get(i).getPhieuNhanId() == phieunhanid) {
+                        khachhangid = lsPhieuNhan.get(i).getKhachHangId();
+                        nguoidungid=lsPhieuNhan.get(i).getNguoiDungId();
+                    }
+                }
+                for (int i = 0; i < lsKhachHang.size(); i++) {
+                    if (lsKhachHang.get(i).getKhachHangId() == khachhangid) {
+                        ten = lsKhachHang.get(i).getTenKhachHang();
+                        cccd = lsKhachHang.get(i).getCccd();
+                        sdt = lsKhachHang.get(i).getSdt();
+                    }
+                }
+
+
 
                 openDialog();
             }
@@ -261,6 +295,12 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                     editor.putInt("SOPHONG",so);
                     editor.putInt("GIA",gia);
                     editor.putLong("PNID",phieunhanid);
+                    editor.putLong("KHID",khachhangid);
+                    editor.putString("TEN",ten);
+                    editor.putString("CCCD",cccd);
+                    editor.putString("SDT",sdt);
+                    editor.putInt("NGUOIDUNG",nguoidungid);
+                    editor.putLong("PNCT",pnct);
                     editor.commit();
                     dialog.dismiss();
                 }

@@ -73,7 +73,7 @@ public class PhieuXuatAdapter extends RecyclerView.Adapter<PhieuXuatAdapter.Phie
         holder.phieuxuatBinding.tvPhongItemphieudatphongData.setVisibility(View.GONE);
 
         ngay = AppUtils.formatDateToString(px.getNgayLap(), "dd/MM/yyyy HH:mm");
-        sct = px.getSoChungTu();
+
         for (int i = 0; i < khachHang.size(); i++) {
             if (px.getKhachHangId() == khachHang.get(i).getKhachHangId()) {
                 holder.phieuxuatBinding.tvTenkhachhangPhieudatphongData.setText(khachHang.get(i).getTenKhachHang());
@@ -104,15 +104,16 @@ public class PhieuXuatAdapter extends RecyclerView.Adapter<PhieuXuatAdapter.Phie
 
 
 
-                SharedPreferences sharedPreferences = context.getSharedPreferences("PHIEUXUAT", Context.MODE_PRIVATE);
+                SharedPreferences sharedPreferences = context.getSharedPreferences("GET_PHONGID", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("TENKH", tenKH);
+                editor.putString("TEN", tenKH);
                 editor.putString("SDT", sdt);
                 editor.putString("CCCD", cccd);
                 editor.putLong("PXID", pxID);
                 editor.putLong("PNID",px.getPhieuNhanId());
-                editor.putString("SCT", sct);
+                editor.putString("SCT", px.getSoChungTu());
                 editor.putString("NGAYLAP", ngay);
+                editor.putInt("NGUOIDUNG",px.getNguoiDungId());
                 //editor.putFloat("TONGTIEN",px.getTongThanhTien());
                 editor.commit();
                 context.startActivity(intent);

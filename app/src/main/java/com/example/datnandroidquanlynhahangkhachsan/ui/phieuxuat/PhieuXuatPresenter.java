@@ -1,11 +1,13 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat;
 
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.DichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.XuatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.model.DichVu.IDichVuModel;
 import com.example.datnandroidquanlynhahangkhachsan.model.phieuxuat.IPhieuXuatModel;
 import com.example.datnandroidquanlynhahangkhachsan.model.phieuxuat.PhieuXuatModel;
 
@@ -77,6 +79,20 @@ public class PhieuXuatPresenter implements PhieuXuatConTract.Presenter{
             @Override
             public void onError(String error) {
                 view.onThemPhieuXuatChiTietError(error);
+            }
+        });
+    }
+    @Override
+    public void CapNhatPX(PhieuXuatDTO phieuXuatDTO) {
+        phieuXuatModel.CapNhatPX(phieuXuatDTO, new IPhieuXuatModel.IOnCapNhatPXFinishedListener() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onError(String error) {
+
             }
         });
     }
