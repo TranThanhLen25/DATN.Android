@@ -103,5 +103,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     public void removeItem(int index) {
         lsdichvu.remove(index);
         notifyItemRemoved(index);
+        notifyDataSetChanged();
     }
 }

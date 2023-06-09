@@ -5,30 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:id="@+id/rel_delete"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/red">
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/rel_delete"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="@color/red">-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toStartOf="@+id/ic_delete"
-            android:text="delete"
-            android:textColor="@color/white"
-            android:textSize="@dimen/heading_2" />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_toStartOf="@+id/ic_delete"-->
+<!--            android:text="delete"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="@dimen/heading_2" />-->
 
-        <ImageView
-            android:id="@+id/ic_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="10dp"
-            android:src="@drawable/ic_trash" />
-    </RelativeLayout>
+<!--        <ImageView-->
+<!--            android:id="@+id/ic_delete"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:src="@drawable/ic_trash" />-->
+<!--    </RelativeLayout>-->
 
     <LinearLayout
         android:id="@+id/lnl_itemmenu"

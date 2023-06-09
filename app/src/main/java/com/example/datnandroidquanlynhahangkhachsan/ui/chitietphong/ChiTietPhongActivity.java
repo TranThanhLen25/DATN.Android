@@ -2,6 +2,7 @@ package com.example.datnandroidquanlynhahangkhachsan.ui.chitietphong;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -9,7 +10,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -138,7 +138,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
                 listDichVuDTO = new ListDichVuDTO(dichVuDTOList);
                 //dichVuPresenter.themDichVu(listDichVuDTO);
                 dichVuPresenter.capNhatDichVu(listDichVuDTO);
-             //   test += String.valueOf(listDichVuDTO.getListDichVuCapNhat().size());
+                //   test += String.valueOf(listDichVuDTO.getListDichVuCapNhat().size());
 //                test +=
 //                        " 1 " + listDichVuDTO.getListDichVuCapNhat().get(0).getDichVuID() +
 //                        " 2 " + listDichVuDTO.getListDichVuCapNhat().get(0).getPhongID() +
@@ -206,9 +206,29 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
         rscvDichVu.addItemDecoration(decoration);
 
 
-        ItemTouchHelper.Callback callback = new RecycleViewItemTouchHelper(this);
-        ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
-        touchHelper.attachToRecyclerView(rscvDichVu);
+//        ItemTouchHelper.Callback callback = new RecycleViewItemTouchHelper(this);
+//        ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+//        touchHelper.attachToRecyclerView(rscvDichVu);
+
+        RecycleViewItemTouchHelper recycleViewItemTouchHelper = new RecycleViewItemTouchHelper(this, rscvDichVu, 200) {
+
+            @Override
+            public void instantiateMyButton(RecyclerView.ViewHolder viewHolder, List<RecycleViewItemTouchHelper.MyButton> buffer) {
+                buffer.add(new MyButton(ChiTietPhongActivity.this,
+                        "Delete",
+                        30,
+                        0,
+                        Color.parseColor("#FF3c30"),
+                        new MyButtonClickListener() {
+                            @Override
+                            public void onClick(int pos) {
+                                //Toast.makeText(ChiTietPhongActivity.this, "Delete click", Toast.LENGTH_LONG).show();
+                                int position = viewHolder.getLayoutPosition();
+                                menuAdapter.removeItem(position);
+                            }
+                        }));
+            }
+        };
     }
 
     @Override
@@ -394,22 +414,27 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 
     @Override
     public void oncapNhatDichVuSuccess() {
-
+        Toast.makeText(ChiTietPhongActivity.this, "cập nhật dịch vụ thành công", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void oncapNhatDichVuError(String error) {
-
+        Toast.makeText(ChiTietPhongActivity.this, "cập nhật dịch vụ thất bại", Toast.LENGTH_SHORT).show();
     }
-    @Override
-    public  void onLayDvPnSuccess(List<DichVuDTO> list){}
 
     @Override
-    public void onLayDvPnError(String error){}
+    public void onLayDvPnSuccess(List<DichVuDTO> list) {
+    }
 
     @Override
-    public void onCapNhatDVSuccess(){}
+    public void onLayDvPnError(String error) {
+    }
 
     @Override
-    public void onCapNhatDVError(String error){}
+    public void onCapNhatDVSuccess() {
+    }
+
+    @Override
+    public void onCapNhatDVError(String error) {
+    }
 }
