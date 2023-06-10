@@ -1,42 +1,50 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_danhSachPhieuNhanBan#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class Fragment_danhSachPhieuNhanBan extends Fragment {
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuNhanBanAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDanhSachPhieuNhanBanBinding;
+import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienLocKhachHangDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhongPresenter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNhanPhongContract.View, KhachHangContract.View {
+
+    private RecyclerView rscvPhieuNhanBan;
+    private List<PhieuNhanDTO> lsPhieuNhan;
+    private List<KhachHangDTO> lsKhachHang;
+    private PhieuNhanBanAdapter phieuNhanBanAdapter;
+    private FragmentDanhSachPhieuNhanBanBinding fragmentDanhSachPhieuNhanBanBinding;
+
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
 
     public Fragment_danhSachPhieuNhanBan() {
-        // Required empty public constructor
+
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragment_danhSachPhieuNhanBan.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static Fragment_danhSachPhieuNhanBan newInstance(String param1, String param2) {
         Fragment_danhSachPhieuNhanBan fragment = new Fragment_danhSachPhieuNhanBan();
         Bundle args = new Bundle();
@@ -58,7 +66,87 @@ public class Fragment_danhSachPhieuNhanBan extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_danh_sach_phieu_nhan_ban, container, false);
+        super.onCreate(savedInstanceState);
+        fragmentDanhSachPhieuNhanBanBinding = fragmentDanhSachPhieuNhanBanBinding.inflate(inflater, container, false);
+
+        lsPhieuNhan = new ArrayList<>();
+        ///lấy dữ liệu danh sách phiếu nhận
+        DsPhieuNhanPhongPresenter phieuNhanPhongPresenter = new DsPhieuNhanPhongPresenter(this);
+        DieuKienLocPhieuNhanDTO dieuKienLocPhieuNhanDTO = new DieuKienLocPhieuNhanDTO();
+
+        ////loại 3:phiếu nhận phòng
+        dieuKienLocPhieuNhanDTO.setLoaiPhieu(4);
+        dieuKienLocPhieuNhanDTO.setTrangThai("đang nhận");
+        phieuNhanPhongPresenter.LayDanhSachPhieuNhan(dieuKienLocPhieuNhanDTO);
+
+        ///lấy khách hàng
+        lsKhachHang = new ArrayList<>();
+        KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
+        DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
+        khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
+
+        fragmentDanhSachPhieuNhanBanBinding.iclAppbackpnp.icBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
+
+        fragmentDanhSachPhieuNhanBanBinding.flBtnThemphieunhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), ThemPhieuNhanPhongActivity.class);
+//                startActivity(intent);
+            }
+        });
+        rscvPhieuNhanBan = fragmentDanhSachPhieuNhanBanBinding.rscvDsphieunhanban;
+        LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
+        rscvPhieuNhanBan.setLayoutManager(LinearLayoutManager);
+
+
+        return fragmentDanhSachPhieuNhanBanBinding.getRoot();
+    }
+
+    @Override
+    public void onThemKhachHangSuccess() {
+
+    }
+
+    @Override
+    public void onThemKhachHangError(String error) {
+
+    }
+
+    @Override
+    public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
+        lsKhachHang = list;
+        phieuNhanBanAdapter = new PhieuNhanBanAdapter(this);
+        phieuNhanBanAdapter.setData(lsPhieuNhan, lsKhachHang, getContext());
+        rscvPhieuNhanBan.setAdapter(phieuNhanBanAdapter);
+    }
+
+    @Override
+    public void onLayDanhSachKhachHangError(String error) {
+
+    }
+
+    @Override
+    public void onLayDanhSachPhieuNhanSuccess(List<PhieuNhanDTO> list) {
+        lsPhieuNhan = list;
+    }
+
+    @Override
+    public void onLayDanhSachPhieuNhanError(String error) {
+
+    }
+
+    @Override
+    public void onThemPhieuNhanPhongSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuNhanPhongError(String error) {
+
     }
 }

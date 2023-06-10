@@ -1,12 +1,19 @@
 package com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan;
 
+import com.google.gson.annotations.SerializedName;
+
 public class DieuKienLocPhieuNhanDTO {
+    @SerializedName("phieuNhanId")
     public long phieuNhanId;
+    @SerializedName("soChungTu")
     public String soChungTu;
+    @SerializedName("loaiPhieuId")
     public int loaiPhieu;
+    @SerializedName("khachHangId")
     public long khachHangId;
 
-    public String TrangThai;
+    @SerializedName("trangThai")
+    public String trangThai;
 
     public DieuKienLocPhieuNhanDTO() {
     }
@@ -16,7 +23,7 @@ public class DieuKienLocPhieuNhanDTO {
         this.soChungTu = soChungTu;
         this.loaiPhieu = loaiPhieu;
         this.khachHangId = khachHangId;
-        TrangThai = trangThai;
+        this.trangThai = trangThai;
     }
 
     public long getPhieuNhanId() {
@@ -52,10 +59,10 @@ public class DieuKienLocPhieuNhanDTO {
     }
 
     public String getTrangThai() {
-        return TrangThai;
+        return trangThai;
     }
 
     public void setTrangThai(String trangThai) {
-        TrangThai = trangThai;
+        trangThai = trangThai;
     }
 }

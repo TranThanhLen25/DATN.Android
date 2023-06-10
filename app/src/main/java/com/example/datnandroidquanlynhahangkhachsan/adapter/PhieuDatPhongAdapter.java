@@ -76,11 +76,12 @@ public class PhieuDatPhongAdapter extends RecyclerView.Adapter<PhieuDatPhongAdap
         if (PhieuDat == null) {
             return;
         }
-
-        holder.phieudatphongBinding.tvTenkhachhangPhieudatphongData.setText(String.valueOf(khachHangDTO.getTenKhachHang()));
-        holder.phieudatphongBinding.tvSdtItemphieudatphongData.setText(String.valueOf(khachHangDTO.getSdt()));
+        if (khachHangDTO != null) {
+            holder.phieudatphongBinding.tvTenkhachhangPhieudatphongData.setText(String.valueOf(khachHangDTO.getTenKhachHang()));
+            holder.phieudatphongBinding.tvSdtItemphieudatphongData.setText(String.valueOf(khachHangDTO.getSdt()));
+        }
         holder.phieudatphongBinding.tvSochungtuPhieudatphongData.setText(PhieuDat.getSoChungTu());
-        holder.phieudatphongBinding.tvThoigianlapphieuItemphieudatphong.setText(ac.formatDateToString(PhieuDat.getNgayLap(), "dd/MM/yyyy HH:mm:ss"));
+        holder.phieudatphongBinding.tvThoigianlapphieuItemphieudatphongData.setText(ac.formatDateToString(PhieuDat.getNgayLap(), "dd/MM/yyyy HH:mm:ss"));
         holder.phieudatphongBinding.tvPhongItemphieudatphongData.setText(String.valueOf(PhieuDat.getKhachHangID()));
         holder.phieudatphongBinding.itemPhieudatphong.setOnClickListener(new View.OnClickListener() {
             @Override

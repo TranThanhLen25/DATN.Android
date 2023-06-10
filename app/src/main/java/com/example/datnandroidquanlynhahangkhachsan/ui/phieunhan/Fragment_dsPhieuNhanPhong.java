@@ -89,6 +89,7 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
 
         ////loại 3:phiếu nhận phòng
         dieuKienLocPhieuNhanDTO.setLoaiPhieu(3);
+        dieuKienLocPhieuNhanDTO.setTrangThai("đang nhận");
         phieuNhanPhongPresenter.LayDanhSachPhieuNhan(dieuKienLocPhieuNhanDTO);
 
         ///lấy khách hàng

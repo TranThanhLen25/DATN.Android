@@ -55,10 +55,12 @@ public class PhieuDatBanAdapter extends RecyclerView.Adapter<PhieuDatBanAdapter.
         if (PhieuDat == null) {
             return;
         }
-        holder.itemPhieuDatBanBinding.tvTenkhachhangPhieudatbanData.setText(String.valueOf(khachHangDTO.getTenKhachHang()));
-        holder.itemPhieuDatBanBinding.tvSdtItemphieudatbanData.setText(String.valueOf(khachHangDTO.getSdt()));
+        if (khachHangDTO!=null){
+            holder.itemPhieuDatBanBinding.tvTenkhachhangPhieudatbanData.setText(String.valueOf(khachHangDTO.getTenKhachHang()));
+            holder.itemPhieuDatBanBinding.tvSdtItemphieudatbanData.setText(String.valueOf(khachHangDTO.getSdt()));
+        }
         holder.itemPhieuDatBanBinding.tvSochungtuPhieudatbanData.setText(PhieuDat.getSoChungTu());
-        holder.itemPhieuDatBanBinding.tvThoigianlapphieuItemphieudatban.setText(ac.formatDateToString(PhieuDat.getNgayLap(), "dd/MM/yyyy HH:mm:ss"));
+        holder.itemPhieuDatBanBinding.tvThoigianlapphieuItemphieudatbanData.setText(ac.formatDateToString(PhieuDat.getNgayLap(), "dd/MM/yyyy HH:mm:ss"));
         holder.itemPhieuDatBanBinding.tvBanItemphieudatbanData.setText(String.valueOf(PhieuDat.getKhachHangID()));
 
 //        holder.itemPhieuDatBanBinding.itemPhieudatban.setOnClickListener(new View.OnClickListener() {

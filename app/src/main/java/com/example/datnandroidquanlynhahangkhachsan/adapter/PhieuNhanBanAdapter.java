@@ -1,6 +1,5 @@
 package com.example.datnandroidquanlynhahangkhachsan.adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -8,26 +7,27 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.datnandroidquanlynhahangkhachsan.Fragment_danhSachPhieuNhanBan;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemPhieunhanphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
-import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.Fragment_dsPhieuNhanPhong;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 
 import java.util.List;
 
-public class PhieuNhanPhongAdapter extends RecyclerView.Adapter<PhieuNhanPhongAdapter.PhieuNhanPhongViewHolder> {
+public class PhieuNhanBanAdapter extends RecyclerView.Adapter<PhieuNhanBanAdapter.PhieuNhanBanViewHolder> {
+
     private List<PhieuNhanDTO> lsPhieuNhan;
     private List<KhachHangDTO> lsKhachHang;
     private AppUtils ac;
     private Context context;
 
-    public PhieuNhanPhongAdapter(List<PhieuNhanDTO> lsPhieuNhan) {
+    public PhieuNhanBanAdapter(List<PhieuNhanDTO> lsPhieuNhan) {
 
         this.lsPhieuNhan = lsPhieuNhan;
     }
 
-    public PhieuNhanPhongAdapter(Fragment_dsPhieuNhanPhong fragment_dsPhieuNhanPhong) {
+    public PhieuNhanBanAdapter(Fragment_danhSachPhieuNhanBan fragment_danhSachPhieuNhanBan) {
     }
 
     public void setData(List<PhieuNhanDTO> lsPhieuNhan, List<KhachHangDTO> lsKhachHang, Context context) {
@@ -39,14 +39,13 @@ public class PhieuNhanPhongAdapter extends RecyclerView.Adapter<PhieuNhanPhongAd
 
     @NonNull
     @Override
-    public PhieuNhanPhongViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PhieuNhanBanViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemPhieunhanphongBinding phieunhanphongBinding = ItemPhieunhanphongBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new PhieuNhanPhongViewHolder(phieunhanphongBinding);
+        return new PhieuNhanBanViewHolder(phieunhanphongBinding);
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull PhieuNhanPhongViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PhieuNhanBanViewHolder holder, int position) {
         PhieuNhanDTO phieuNhanDTO = lsPhieuNhan.get(position);
         if (phieuNhanDTO == null) {
             return;
@@ -62,7 +61,6 @@ public class PhieuNhanPhongAdapter extends RecyclerView.Adapter<PhieuNhanPhongAd
         holder.phieunhanphongBinding.tvThoigianlapphieuItemphieunhanphongData.setText(ac.formatDateToString(phieuNhanDTO.getNgayLap(), "dd/MM/yyyy HH:mm:ss"));
         holder.phieunhanphongBinding.tvPhongItemphieunhanphongData.setText(phieuNhanDTO.getSoChungTu());
 
-
     }
 
     @Override
@@ -73,11 +71,10 @@ public class PhieuNhanPhongAdapter extends RecyclerView.Adapter<PhieuNhanPhongAd
         return 0;
     }
 
-    class PhieuNhanPhongViewHolder extends RecyclerView.ViewHolder {
+    class PhieuNhanBanViewHolder extends RecyclerView.ViewHolder {
         private ItemPhieunhanphongBinding phieunhanphongBinding;
 
-        public PhieuNhanPhongViewHolder(@NonNull ItemPhieunhanphongBinding itemView) {
-
+        public PhieuNhanBanViewHolder(@NonNull ItemPhieunhanphongBinding itemView) {
             super(itemView.getRoot());
             this.phieunhanphongBinding = itemView;
         }
