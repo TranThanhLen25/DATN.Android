@@ -12,14 +12,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsPhongBinding;
+import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienLocKhachHangDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanPhongChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanPhongChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.PhieuNhanPhongChiTietContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.PhieuNhanPhongChiTietPresenter;
 
@@ -31,7 +39,7 @@ import java.util.List;
  * Use the {@link Fragment_Phong#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_Phong extends Fragment implements PhongContract.View, LoaiPhongContract.View,PhieuNhanPhongChiTietContract.View{
+public class Fragment_Phong extends Fragment implements PhongContract.View, LoaiPhongContract.View, PhieuNhanPhongChiTietContract.View, KhachHangContract.View, DsPhieuNhanPhongContract.View {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -46,6 +54,10 @@ public class Fragment_Phong extends Fragment implements PhongContract.View, Loai
     private List<PhongDTO> lsPhong;
     private List<LoaiPhongDTO> lsLoaiPhong;
     private List<PhieuNhanPhongChiTietDTO> phieuNhanPhongChiTietDTO;
+
+    private List<KhachHangDTO> lsKhachHang;
+
+    private List<PhieuNhanDTO> lsPhieuNhan;
 
     private PhongAdapter dsPhongAdapter;
     private PhongPresenter danhSachPhongPresenter;
@@ -97,14 +109,27 @@ public class Fragment_Phong extends Fragment implements PhongContract.View, Loai
         danhSachPhongPresenter = new PhongPresenter(this);
         danhSachPhongPresenter.LayDanhSachPhong();
         // lấy loại phòng
-        lsLoaiPhong=new ArrayList<>();
-       loaiPhongPresenter=new LoaiPhongPresenter(this);
-       loaiPhongPresenter.LayLoaiPhong();
-       /// lay PNP chi tiet
-        phieuNhanPhongChiTietDTO=new ArrayList<>();
-        PhieuNhanPhongChiTietPresenter phieuNhanPhongChiTietPresenter=new PhieuNhanPhongChiTietPresenter(this);
-        DieuKienLocPhieuNhanPhongChiTietDTO dieuKienLocPhieuNhanPhongChiTietDTO=new DieuKienLocPhieuNhanPhongChiTietDTO();
+        lsLoaiPhong = new ArrayList<>();
+        loaiPhongPresenter = new LoaiPhongPresenter(this);
+        loaiPhongPresenter.LayLoaiPhong();
+        /// lay PNP chi tiet
+        phieuNhanPhongChiTietDTO = new ArrayList<>();
+        PhieuNhanPhongChiTietPresenter phieuNhanPhongChiTietPresenter = new PhieuNhanPhongChiTietPresenter(this);
+        DieuKienLocPhieuNhanPhongChiTietDTO dieuKienLocPhieuNhanPhongChiTietDTO = new DieuKienLocPhieuNhanPhongChiTietDTO();
         phieuNhanPhongChiTietPresenter.LayDanhSachPhieuNhanPhongChiTiet(dieuKienLocPhieuNhanPhongChiTietDTO);
+////lay khach hang
+        lsKhachHang = new ArrayList<>();
+        ///lấy khách hàng
+        KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
+        DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
+        khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
+        ////lay phieu nhan
+        lsPhieuNhan = new ArrayList<>();
+        //// lấy ra ds PN
+        DsPhieuNhanPhongPresenter dsPhieuNhanPhongPresenter = new DsPhieuNhanPhongPresenter(this);
+        DieuKienLocPhieuNhanDTO dieuKienLocPhieuNhanDTO = new DieuKienLocPhieuNhanDTO();
+        dsPhieuNhanPhongPresenter.LayDanhSachPhieuNhan(dieuKienLocPhieuNhanDTO);
+
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this.getActivity(), 3);
         rscvDsPhong.setLayoutManager(gridLayoutManager);
@@ -139,7 +164,7 @@ public class Fragment_Phong extends Fragment implements PhongContract.View, Loai
     public void onLayDanhSachPhongSuccess(List<PhongDTO> list) {
         lsPhong = list;
         dsPhongAdapter = new PhongAdapter(this);
-        dsPhongAdapter.setData(lsPhong, getContext(),lsLoaiPhong,phieuNhanPhongChiTietDTO);
+        dsPhongAdapter.setData(lsPhieuNhan, lsKhachHang, lsPhong, getContext(), lsLoaiPhong, phieuNhanPhongChiTietDTO);
         rscvDsPhong.setAdapter(dsPhongAdapter);
     }
     @Override
@@ -151,7 +176,7 @@ public class Fragment_Phong extends Fragment implements PhongContract.View, Loai
     public void onLayLoaiPhongSuccess(List<LoaiPhongDTO> list) {
         lsLoaiPhong=list;
         dsPhongAdapter = new PhongAdapter(this);
-        dsPhongAdapter.setData(lsPhong, getContext(),lsLoaiPhong,phieuNhanPhongChiTietDTO);
+        dsPhongAdapter.setData(lsPhieuNhan, lsKhachHang,lsPhong, getContext(),lsLoaiPhong,phieuNhanPhongChiTietDTO);
         rscvDsPhong.setAdapter(dsPhongAdapter);
 
     }
@@ -186,16 +211,52 @@ public class Fragment_Phong extends Fragment implements PhongContract.View, Loai
 
     }
     @Override
-    public void onCapNhatPhieuNhanPhongChiTietSuccess(){}
+    public void onCapNhatPhieuNhanPhongChiTietSuccess() {
+    }
 
     @Override
-    public void onCapNhatPhieuNhanPhongChiTietError(String error){}
-
+    public void onCapNhatPhieuNhanPhongChiTietError(String error) {
+    }
 
 
     @Override
-    public void onLayDanhSachPhieuNhanPhongChiTietError(String error){}
+    public void onLayDanhSachPhieuNhanPhongChiTietError(String error) {
+    }
+
+    @Override
+    public void onThemKhachHangSuccess() {
+    }
+
+    @Override
+    public void onThemKhachHangError(String error) {
+    }
 
 
+    @Override
+    public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
+        lsKhachHang = list;
+        }
+
+    @Override
+    public void onLayDanhSachKhachHangError(String error) {
+    }
+
+    @Override
+    public void onLayDanhSachPhieuNhanSuccess(List<PhieuNhanDTO> list) {
+        lsPhieuNhan = list;
+    }
+
+    @Override
+    public void onLayDanhSachPhieuNhanError(String error) {
+    }
+
+    //thêm phiếu đặt phòng
+    @Override
+    public void onThemPhieuNhanPhongSuccess() {
+    }
+
+    @Override
+    public void onThemPhieuNhanPhongError(String error) {
+    }
 
 }

@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat;
 
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.DichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.XuatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatDTO;
@@ -28,6 +29,9 @@ public interface PhieuXuatConTract {
 
         void onLayDanhSachPhieuXuatChiTietError(String error);
 
+        void onCapNhatPXSuccess();
+
+        void onCapNhatPXError(String error);
 
 
     }
@@ -39,6 +43,8 @@ public interface PhieuXuatConTract {
         void LayDanhSachPhieuXuat(DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO);
 
         void LayDanhSachPhieuXuatChiTiet(DieuKienLocPhieuXuatChiTietDTO dieuKienLocPhieuXuatChiTietDTO);
+
+        void  CapNhatPX(PhieuXuatDTO phieuXuatDTO);
 
 
     }

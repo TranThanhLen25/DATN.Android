@@ -7,10 +7,13 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemPhieuxuatchitietBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
@@ -58,9 +61,11 @@ public class PhieuXuatChiTietAdapter extends RecyclerView.Adapter<PhieuXuatChiTi
 
     private double tongMenu = 0.0d;
 
-    private double tongCuoi = 0.0d;
+    private int tongCuoi = 0;
 
-    private double tongAll;
+    private double tongAll = 0.0d;
+
+    private double tongTienTT = 0.0d;
 
     private double tongThanhTien;
     private long tongDay;
@@ -103,7 +108,6 @@ public class PhieuXuatChiTietAdapter extends RecyclerView.Adapter<PhieuXuatChiTi
             return;
         }
         phong = pn.getPhongId();
-
         ///set trạng thai
         if (pn.getTrangThai() == 1) {
             holder.phieuXuatChiTietBinding.tvTrangthai.setText("Đã trả phòng");
@@ -121,6 +125,7 @@ public class PhieuXuatChiTietAdapter extends RecyclerView.Adapter<PhieuXuatChiTi
                 /// lây số phòng
                 holder.phieuXuatChiTietBinding.tvSo.setText(String.valueOf(lsPhong.get(i).getSoPhong()));
                 loaiphongid = lsPhong.get(i).getLoaiPhongId();
+
             }
         }
         DecimalFormat decimalFormat = new DecimalFormat("#,##0");
@@ -158,26 +163,38 @@ public class PhieuXuatChiTietAdapter extends RecyclerView.Adapter<PhieuXuatChiTi
                 tongDay = songay * Long.valueOf(lsLoaiPhong.get(i).getDonGia());
             }
         }
-
-
-
-            for (int i = 0; i < lsPhieuXuatChiTiet.size(); i++) {
-                ////tong các phiếu xuất chi tiết
-                if (lsPhieuXuatChiTiet.get(i).getPhieuNhanPhongChiTietId()== pn.getPhieuNhanPhongChiTietId()) {
-                    tongMenu = tongMenu + (lsPhieuXuatChiTiet.get(i).getThanhTien());
-                }
-                tongAll = tongMenu + Double.valueOf(tongDay);
-
+        int tem = 0;
+        for (int i = 0; i < lsPhieuXuatChiTiet.size(); i++) {
+            ////tong các phiếu xuất chi tiết
+            if (lsPhieuXuatChiTiet.get(i).getPhieuNhanPhongChiTietId()
+                    == pn.getPhieuNhanPhongChiTietId()) {
+                tongMenu = tongMenu + (lsPhieuXuatChiTiet.get(i).getThanhTien());
             }
-        holder.phieuXuatChiTietBinding.tvTongtien.setText(String.valueOf(decimalFormat.format(tongAll)));
-        tongMenu = 0;
+            tem++;
+        }
+
+        SharedPreferences sharedPreferences = context.getSharedPreferences("GET_PHONGID", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        if (tem == lsPhieuXuatChiTiet.size()) {
+            tongAll = tongMenu + Double.valueOf(tongDay);
+            holder.phieuXuatChiTietBinding.tvTongtien.setText(String.valueOf(decimalFormat.format(tongAll)));
+            tongMenu = 0;
+            ////luu tong hoa don
+          //  tongCuoi += tongAll;
+
+        }
+
+//// lấy được mà ch in ra dc
+    //            editor.putInt("TONGPX", tongCuoi);
+    //            editor.commit();
+
 
 
         phieuXuatChiTietBinding.itemPhieuxuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPreferences = context.getSharedPreferences("GET_PHONGID", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                editor.putLong("PNCT", pn.getPhieuNhanPhongChiTietId());
                 for (int i = 0; i < lsPhong.size(); i++) {
                     if (lsPhong.get(i).getPhongId() == pn.getPhongId()) {
                         loaiphongid = lsPhong.get(i).getLoaiPhongId();
@@ -189,11 +206,13 @@ public class PhieuXuatChiTietAdapter extends RecyclerView.Adapter<PhieuXuatChiTi
                         editor.putInt("GIA", lsLoaiPhong.get(i).getDonGia());
                     }
                 }
+                editor.putInt("TRANGTHAI", pn.getTrangThai());
                 editor.putInt("PHONGID", pn.getPhongId());
                 editor.putLong("PNID", pn.getPhieuNhanId());
                 editor.commit();
                 Intent intent = new Intent(context, PhieuTraPhongActivity.class);
                 context.startActivity(intent);
+
             }
         });
 

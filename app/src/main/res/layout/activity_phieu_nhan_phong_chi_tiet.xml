@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.PhieuTraPhongActivity"
-    >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.phieunhan.PhieuNhanPhongChiTietActivity">
     <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/toolbar_phieutraphong"
+        android:id="@+id/toolbar_pnct"
         layout="@layout/activity_appar_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +23,7 @@
         app:layout_constraintBottom_toTopOf="@+id/ctl_btn_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_phieutraphong">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_pnct">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/phieutraphong"
@@ -59,7 +58,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_tenphieu"
                         android:padding="10dp"
-                        android:text="Phiếu trả phòng"
+                        android:text="Phiếu nhận phòng"
                         android:textSize="@dimen/heading_2"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@id/chitietheaderphieutraphong"
@@ -86,7 +85,7 @@
                             app:layout_constraintTop_toTopOf="@id/tv_sct_phieutraphong" />
 
                         <TextView
-                            android:id="@+id/tv_sct_data"
+                            android:id="@+id/tv_sct_pnct"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="10dp"
@@ -144,7 +143,7 @@
                             app:layout_constraintTop_toTopOf="@+id/ctl_tenkh" />
 
                         <TextView
-                            android:id="@+id/et_hoten_phieutraphong"
+                            android:id="@+id/tv_hoten_pnct"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
@@ -180,7 +179,7 @@
                             tools:ignore="MissingConstraints" />
 
                         <TextView
-                            android:id="@+id/et_cccd_phieutraphong"
+                            android:id="@+id/tv_cccd_pnct"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
@@ -214,7 +213,7 @@
                             app:layout_constraintTop_toTopOf="@id/ctl_sdt" />
 
                         <TextView
-                            android:id="@+id/tv_sdtptp"
+                            android:id="@+id/tv_sdt_pnct"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
@@ -249,7 +248,7 @@
                             tools:ignore="MissingConstraints" />
 
                         <TextView
-                            android:id="@+id/tv_ngaynhan"
+                            android:id="@+id/tv_ngaynhan_pnct"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0101010101"
@@ -289,7 +288,7 @@
 
 
                             <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/rscv_sudung"
+                                android:id="@+id/rscv_pnct"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintStart_toStartOf="@id/ctl_sd"
@@ -328,63 +327,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@id/ctl_btn_bottom"
+            app:layout_constraintTop_toTopOf="@id/ctl_btn_bottom"
             app:layout_constraintStart_toStartOf="@id/ctl_btn_bottom"
-            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ExtraText">
 
             <TextView
                 android:id="@+id/tong"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Tổng Day: "
+                android:layout_marginStart="15dp"
+                android:text="Tổng: "
                 android:textColor="@color/black"
                 android:textSize="@dimen/heading_2"
+                app:layout_constraintBottom_toBottomOf="@id/ctl_button"
                 app:layout_constraintStart_toStartOf="@id/ctl_button"
                 app:layout_constraintTop_toTopOf="@id/ctl_button" />
 
             <TextView
-                android:id="@+id/tv_tong"
+                android:id="@+id/tv_tong_pnct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
-                android:layout_margin="10dp"
+                android:text="123000"
                 android:textColor="@color/red"
                 android:textSize="@dimen/heading_2"
-
+                app:layout_constraintBottom_toBottomOf="@id/ctl_button"
                 app:layout_constraintStart_toEndOf="@id/tong"
-                app:layout_constraintTop_toTopOf="@id/ctl_button" />
-
-            <TextView
-                android:id="@+id/tongdv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Tổng DV: "
-                android:textColor="@color/black"
-                android:textSize="@dimen/heading_2"
-                app:layout_constraintBottom_toBottomOf="@id/ctl_button"
-                app:layout_constraintStart_toStartOf="@id/ctl_button"
-                app:layout_constraintTop_toBottomOf="@id/tong" />
-
-            <TextView
-                android:id="@+id/tv_tongdv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:layout_margin="10dp"
-                android:textColor="@color/red"
-                android:textSize="@dimen/heading_2"
-                app:layout_constraintBottom_toBottomOf="@id/ctl_button"
-                app:layout_constraintStart_toEndOf="@id/tongdv"
-
+                app:layout_constraintTop_toTopOf="@id/ctl_button"
                 />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
-            android:id="@+id/btn_traPhong"
+            android:id="@+id/btn_pnct"
             android:layout_width="wrap_content"
 
             android:layout_height="wrap_content"

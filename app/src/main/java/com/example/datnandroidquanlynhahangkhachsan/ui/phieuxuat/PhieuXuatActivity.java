@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,6 +23,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.DichVu.DichVuContract;
@@ -51,6 +54,8 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
     private Context context;
 
     private List<DichVuDTO> lsDichVu;
+
+    private List<PhieuXuatDTO> lsPhieuXuat;
     private RecyclerView recyclerView;
 
     DateTimeFormatter fm = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -69,8 +74,12 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
     private DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
     long Ngay = 0;
     long tongTienNgay;
+
+    long tonghoadonNGAY;
     long tienDV;
+    long tienDVTong;
     long tongAll;
+    long tongAllPX;
     private Float tongTien;
 
 
@@ -86,7 +95,7 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityPhieuXuatBinding phieuXuatBinding = ActivityPhieuXuatBinding.inflate(getLayoutInflater());
-        SharedPreferences sharedPreferences = getSharedPreferences("PHIEUXUAT", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("GET_PHONGID", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         lsPhieuXuatCT = new ArrayList<>();
 
@@ -94,6 +103,7 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
         loaiPhong = new ArrayList<>();
         lsDichVu = new ArrayList<>();
         lsPhieuNhanCT = new ArrayList<>();
+        lsPhieuXuat=new ArrayList<>();
         /// lấy loại phòng
         LoaiPhongPresenter loaiPhongPresenter = new LoaiPhongPresenter(this);
         loaiPhongPresenter.LayLoaiPhong();
@@ -112,16 +122,19 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
         });
 
 
-        String ten = sharedPreferences.getString("TENKH", "");
+        String ten = sharedPreferences.getString("TEN", "");
         String cccd = sharedPreferences.getString("CCCD", "");
         String sdt = sharedPreferences.getString("SDT", "");
         String sct = sharedPreferences.getString("SCT", "");
         String ngay = sharedPreferences.getString("NGAYLAP", "");
         Long pxid = sharedPreferences.getLong("PXID", 0L);
         Long pnid = sharedPreferences.getLong("PNID", 0L);
+
+
+
         //// tính tổng tiền
         DecimalFormat decimalFormat = new DecimalFormat("#,##0");
-        phieuXuatBinding.tvTong.setText(String.valueOf(decimalFormat.format(sharedPreferences.getFloat("TONGTIEN", 0f))));
+        // phieuXuatBinding.tvTong.setText(String.valueOf(decimalFormat.format(sharedPreferences.getFloat("TONGTIEN", 0f))));
 
         phieuXuatBinding.etCccdPhieutraphong.setText(cccd);
         phieuXuatBinding.etHotenPhieutraphong.setText(ten);
@@ -129,10 +142,14 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
         phieuXuatBinding.tvSctData.setText(sct);
         phieuXuatBinding.tvNgaynhan.setText(ngay);
 
+
         ///lay Dv
         DichVuPresenter dichVuPresenter = new DichVuPresenter(this);
         DichVuDTO dichVuDTO = new DichVuDTO();
         dichVuDTO.setPhieuNhanID(sharedPreferences.getLong("PNID", 0L));
+        dichVuDTO.setGhiChu("");
+        dichVuDTO.setTrangThai("thanh");
+
         dichVuPresenter.LayDvPn(dichVuDTO);
 
         ///lấy danh sach phiếu xuất ct
@@ -140,6 +157,10 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
         DieuKienLocPhieuXuatChiTietDTO dieuKienLocPhieuXuatChiTietDTO = new DieuKienLocPhieuXuatChiTietDTO();
         dieuKienLocPhieuXuatChiTietDTO.setPhieuXuatId(pxid);
         phieuXuatPresenter.LayDanhSachPhieuXuatChiTiet(dieuKienLocPhieuXuatChiTietDTO);
+//// lấy phiếu xuất
+        DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO = new DieuKienLocPhieuXuatDTO();
+        dieuKienLocPhieuXuatDTO.setPhieuXuatId(sharedPreferences.getLong("PXID",0L));
+        phieuXuatPresenter.LayDanhSachPhieuXuat(dieuKienLocPhieuXuatDTO);
         ////lấy danh sach phiếu nhận chi tiết
         PhieuNhanPhongChiTietPresenter phieuNhanPhongChiTietPresenter = new PhieuNhanPhongChiTietPresenter(this);
         DieuKienLocPhieuNhanPhongChiTietDTO dieuKienLocPhieuNhanPhongChiTietDTO = new DieuKienLocPhieuNhanPhongChiTietDTO();
@@ -151,10 +172,47 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
         recyclerView = phieuXuatBinding.rscvSudung;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
+        PhieuXuatDTO phieuXuatDTO = new PhieuXuatDTO();
+        PhieuNhanPhongChiTietDTO phieuNhanPhongChiTietDTO=new PhieuNhanPhongChiTietDTO();
+        PhongDTO phongDTO=new PhongDTO();
+
+
+        Date date = Calendar.getInstance().getTime();
+
+
 
         phieuXuatBinding.btnTraPhong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                for(int i=0;i<lsPhieuNhanCT.size();i++)
+                {
+                    if(lsPhieuNhanCT.get(i).getTrangThai()!=2)
+                    {
+                        phieuNhanPhongChiTietDTO.setPhieuNhanPhongChiTietId(lsPhieuNhanCT.get(i).getPhieuNhanPhongChiTietId());
+                        phieuNhanPhongChiTietDTO.setTrangThai(2);
+                        if(lsPhieuNhanCT.get(i).getThoiGianTraPhong()==null)
+                        {
+                            phieuNhanPhongChiTietDTO.setThoiGianTraPhong(date);
+                        }
+                        else {
+                            phieuNhanPhongChiTietDTO.setThoiGianTraPhong(lsPhieuNhanCT.get(i).getThoiGianTraPhong());
+                        }
+                        phieuNhanPhongChiTietPresenter.CapNhatPhieuNhanPhongChiTiet(phieuNhanPhongChiTietDTO);
+                    }
+                    phongDTO.setPhongId(lsPhieuNhanCT.get(i).getPhongId());
+                    phongDTO.setTrangThaiId(1);
+                    phongPresenter.CapNhatTrangThaiPhong(phongDTO);
+
+                }
+
+
+                phieuXuatDTO.setPhieuXuatId(pxid);
+                phieuXuatDTO.setTrangthai(2);
+                phieuXuatDTO.setSoChungTu(sharedPreferences.getString("SCT",""));
+                phieuXuatDTO.setTongThanhTien(sharedPreferences.getLong("THD_NGAY", 0L)+ sharedPreferences.getLong("THD_DV", 0L));
+                phieuXuatPresenter.CapNhatPX(phieuXuatDTO);
+
                 Intent intent = new Intent(PhieuXuatActivity.this, ThanhToanActivity.class);
                 startActivity(intent);
             }
@@ -163,6 +221,16 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        lsDichVu=new ArrayList<>();
+        lsPhieuNhanCT=new ArrayList<>();
+
+
+
+    }
 
     @Override
     public void onLayDanhSachPhieuXuatChiTietSuccess(List<PhieuXuatChiTietDTO> list) {
@@ -170,6 +238,7 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
         PhieuXuatChiTietAdapter phieuXuatChiTietAdapter = new PhieuXuatChiTietAdapter(this);
         phieuXuatChiTietAdapter.setData(this, lsPhieuXuatCT, lsPhieuNhanCT, lsPhong, loaiPhong);
         recyclerView.setAdapter(phieuXuatChiTietAdapter);
+
 
 
     }
@@ -181,26 +250,17 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
         phieuXuatChiTietAdapter.setData(this, lsPhieuXuatCT, lsPhieuNhanCT, lsPhong, loaiPhong);
         recyclerView.setAdapter(phieuXuatChiTietAdapter);
 
-        for (int t=0;t<lsDichVu.size();t++)
-        {
-            for(int i=0;i<lsPhieuNhanCT.size();i++)
-            {
-                if (lsPhieuNhanCT.get(i).getTrangThai()!=2)
-                {
-                    tienDV = tienDV + (lsDichVu.get(t).getDonGia() * lsDichVu.get(t).getSoLuong());
-                }
-                else
-                {
-                    tienDV=0L;
-                }
-            }
-
-        }
-
+        Date date = Calendar.getInstance().getTime();
         for (int i = 0; i < lsPhieuNhanCT.size(); i++) {
-            if (lsPhieuNhanCT.get(i).getTrangThai()==2&&lsPhieuNhanCT.get(i).getTrangThai()==1) {
+            if (lsPhieuNhanCT.get(i).getTrangThai() != 2) {
                 NGAYNHAN = lsPhieuNhanCT.get(i).getThoiGianNhanPhong();
-                NGAYTRA = lsPhieuNhanCT.get(i).getThoiGianTraPhong();
+                if(lsPhieuNhanCT.get(i).getThoiGianTraPhong()==null)
+                {
+                   NGAYTRA=date;
+                }
+                else {
+                    NGAYTRA = lsPhieuNhanCT.get(i).getThoiGianTraPhong();
+                }
                 Nhan = format.format(NGAYNHAN);
 
                 Tra = format.format(NGAYTRA);
@@ -222,10 +282,16 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
                 }
 
             }
-            if(lsPhieuNhanCT.get(i).getTrangThai()==4)
-            {
+
+            if (lsPhieuNhanCT.get(i).getTrangThai() != 0) {
                 NGAYNHAN = lsPhieuNhanCT.get(i).getThoiGianNhanPhong();
-                NGAYTRA = date;
+                if(lsPhieuNhanCT.get(i).getThoiGianTraPhong()==null)
+                {
+                    NGAYTRA=date;
+                }
+                else {
+                    NGAYTRA = lsPhieuNhanCT.get(i).getThoiGianTraPhong();
+                }
                 Nhan = format.format(NGAYNHAN);
 
                 Tra = format.format(NGAYTRA);
@@ -240,26 +306,27 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
                         for (int f = 0; f < loaiPhong.size(); f++) {
 
                             if (lsPhong.get(a).getLoaiPhongId() == loaiPhong.get(f).getLoaiPhongId()) {
-                                tongTienNgay = tongTienNgay + Ngay * loaiPhong.get(f).getDonGia();
+                                tonghoadonNGAY = tonghoadonNGAY + Ngay * loaiPhong.get(f).getDonGia();
                             }
                         }
                     }
                 }
 
             }
-
 
         }
 
-        tongAll = tienDV + tongTienNgay;
         DecimalFormat decimalFormat = new DecimalFormat("#,##0");
         TextView tvTong = findViewById(R.id.tv_tong);
-        tvTong.setText(String.valueOf(decimalFormat.format(tongAll)));
-        SharedPreferences sharedPreferences = getSharedPreferences("PHIEUXUAT", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        tvTong.setText(String.valueOf(decimalFormat.format(tongTienNgay)));
 
-        editor.putLong("TIENTHANHTOAN", tongAll);
+        SharedPreferences sharedPreferences = getSharedPreferences("GET_PHONGID", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putLong("TT_NGAY", tongTienNgay);
+        editor.putLong("THD_NGAY", tonghoadonNGAY);
         editor.commit();
+
+
 
 
     }
@@ -267,6 +334,28 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
     @Override
     public void onLayDvPnSuccess(List<DichVuDTO> list) {
         lsDichVu = list;
+        SharedPreferences sharedPreferences = getSharedPreferences("GET_PHONGID", MODE_PRIVATE);
+
+
+        for (int t = 0; t < lsDichVu.size(); t++) {
+            if (lsDichVu.get(t).getTrangThai().equals("chua thanh toan")) {
+                /// sd cho phiếu nhận chưa thnah toán
+                tienDV = tienDV + (lsDichVu.get(t).getDonGia() * lsDichVu.get(t).getSoLuong());
+            }
+            /// sử dụng lưu TT phiếu Xuât
+            tienDVTong = tienDVTong + (lsDichVu.get(t).getDonGia() * lsDichVu.get(t).getSoLuong());
+
+        }
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putLong("TT_DV", tienDV);
+        editor.putLong("THD_DV", tienDVTong);
+        editor.commit();
+
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+        TextView tvTong = findViewById(R.id.tv_tongdv);
+        tvTong.setText(String.valueOf(decimalFormat.format(tienDV)));
 
 
 
@@ -373,6 +462,17 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
 
     @Override
     public void onLayDanhSachPhieuXuatSuccess(List<PhieuXuatDTO> list) {
+        lsPhieuXuat=list;
+
+        for (int i=0;i<lsPhieuXuat.size();i++)
+        {
+            if(lsPhieuXuat.get(i).getTrangthai()==2)
+            {
+                Button button=(Button) findViewById(R.id.btn_traPhong);
+                button.setVisibility(View.GONE);
+            }
+        }
+
     }
 
     @Override
@@ -400,4 +500,14 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
     public void onCapNhatDVError(String error) {
     }
 
+    @Override
+    public void onCapNhatPXSuccess() {
+
+
+    }
+
+    @Override
+    public void onCapNhatPXError(String error) {
+
+    }
 }

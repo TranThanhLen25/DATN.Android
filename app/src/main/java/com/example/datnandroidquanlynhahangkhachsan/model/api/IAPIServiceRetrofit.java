@@ -11,10 +11,16 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienLocKhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
+<<<<<<< Updated upstream
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.NhanPhongDTO;
+<<<<<<< Updated upstream
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.XuatPhongDTO;
+=======
+=======
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.XuatPhongDTO;
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuNhapChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhieuNhapDTO;
@@ -155,6 +161,7 @@ public interface IAPIServiceRetrofit {
     @POST("/api/PhieuXuatChiTiet/danhsach-phieuXuatChiTiet?")
     Call<ResponseDTO<List<PhieuXuatChiTietDTO>>>   layPhieuXuatChiTiet(@Body DieuKienLocPhieuXuatChiTietDTO dieuKienLocPhieuXuatChiTietDTO);
 
+<<<<<<< Updated upstream
     @POST("/api/hanghoa/danhsachdv_theo_phieunhan?")
     Call<ResponseDTO<List<DichVuDTO>>> layDvPn(@Body DichVuDTO dichVuDTO);
 
@@ -173,11 +180,19 @@ public interface IAPIServiceRetrofit {
     @POST("/api/hanghoa/CapNhat-DV")
     Call<ResponseInfo> capNhatDV(@Body DichVuDTO dichVuDTO);
 
-    @POST("/api/PhieuDat/them-PhieuDat-Ban")
-    Call<ResponseInfo> ThemPhieuDatBan(@Body DatBanDTO datBanDTO);
+    @POST("/api/PhieuXuat/CapNhat-PX")
+    Call<ResponseInfo> capNhatPX(@Body PhieuXuatDTO phieuXuatDTO);
+=======
+<<<<<<< Updated upstream
+    @POST("/api/PhieuNhan/them-PhieuNhan")
+    Call<ResponseInfo> themPhieuNhan(@Body NhanPhongDTO nhanPhongDTO);
 
-    ///lấy danh sách loại bàn
-    @POST("/api/LoaiPhong/danhsach-LoaiPhong")
-    Call<ResponseDTO<List<LoaiPhongDTO>>> layLoaiBan();
+=======
+    @POST("/api/hanghoa/danhsachdv_theo_phieunhan?")
+    Call<ResponseDTO<List<DichVuDTO>>> layDvPn(@Body DichVuDTO dichVuDTO);
 
+    @POST("/api/PhieuXuatChiTiet/themphieuxuatCT")
+    Call<ResponseInfo> themPhieuXuatChiTiet(@Body PhieuXuatChiTietDTO phieuXuatChiTietDTO);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 }

@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.model.phieuxuat;
 
 
+
 import com.example.datnandroidquanlynhahangkhachsan.entities.ErrorMessageDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.XuatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
@@ -10,6 +11,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienL
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.model.DichVu.IDichVuModel;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.APIService;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.IAPIServiceTokenRetrofit;
 
@@ -158,6 +160,30 @@ public class PhieuXuatModel implements IPhieuXuatModel{
             public void onError(String error) {
                 //Lay token loi => thong bao loi
                 listener.onError(error);
+            }
+        });
+    } @Override
+    public void CapNhatPX(PhieuXuatDTO PhieuXuatDTO, IPhieuXuatModel.IOnCapNhatPXFinishedListener listener) {
+        service = new APIService();
+        service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
+            @Override
+            public void onSuccess(ResponseTokenDTO itemToken) {
+                service.apiServiceRetrofit.capNhatPX(PhieuXuatDTO).enqueue(new Callback<ResponseInfo>() {
+                    @Override
+                    public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseInfo> call, Throwable t) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+
             }
         });
     }

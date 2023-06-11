@@ -91,10 +91,8 @@ public class Fragment_dsLichSu extends Fragment implements PhieuXuatConTract.Vie
         phieuXuatBinding.iclAppback.icBack.setOnClickListener(view -> getActivity().onBackPressed());
 
         PhieuXuatPresenter phieuXuatPresenter = new PhieuXuatPresenter(this);
-        DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO = new DieuKienLocPhieuXuatDTO();
-
-        dieuKienLocPhieuXuatDTO.setTrangthai(1);
-
+        DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO=new DieuKienLocPhieuXuatDTO();
+        dieuKienLocPhieuXuatDTO.setSoChungTu("PX");
         phieuXuatPresenter.LayDanhSachPhieuXuat(dieuKienLocPhieuXuatDTO);
 
 
@@ -173,5 +171,9 @@ public class Fragment_dsLichSu extends Fragment implements PhieuXuatConTract.Vie
 
     @Override
     public void onThemPhieuXuatChiTietError(String error){}
+    @Override
+    public void onCapNhatPXSuccess(){}
+    @Override
+    public void onCapNhatPXError(String error){}
 
 }
