@@ -1,5 +1,6 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.phieudat;
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
@@ -75,6 +76,21 @@ public class DsPhieuDatPhongPresenter implements DsPhieuDatPhongContract.Present
             @Override
             public void onError(String error) {
                 view.onLayPhieuDatPhongChiTietError(error);
+            }
+        });
+    }
+
+    @Override
+    public void ThemPhieuDatBan(DatBanDTO datBanDTO) {
+        phieuDatModel.ThemPhieuDatBan(datBanDTO, new IPhieuDatModel.IOnThemPhieuDatBanFinishedListener() {
+            @Override
+            public void onSuccess() {
+                view.onThemPhieuDatBanSuccess();
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onThemPhieuDatBanError(error);
             }
         });
     }

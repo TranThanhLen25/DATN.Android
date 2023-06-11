@@ -521,6 +521,16 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
     }
 
     @Override
+    public void onThemPhieuDatBanSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuDatBanError(String error) {
+
+    }
+
+    @Override
     public void onLayLoaiPhongSuccess(List<LoaiPhongDTO> lsLoaiPhong) {
         loaiPhongDTOList = lsLoaiPhong;
         loaiPhongAdapter = new LoaiPhongAdapter(this);

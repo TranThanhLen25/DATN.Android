@@ -22,7 +22,6 @@ import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContra
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.DsPhieuDatPhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.DsPhieuDatPhongPresenter;
-import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.ThemPhieuDatphongActivity;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -85,7 +84,7 @@ public class Fragment_danhSachPhieuDatBan extends Fragment implements DsPhieuDat
             @Override
             public void onClick(View view) {
                 tempData.Check = false;
-                Intent intent = new Intent(getActivity(), ThemPhieuDatphongActivity.class);
+                Intent intent = new Intent(getActivity(), activity_them_phieu_dat_ban.class);
                 startActivity(intent);
             }
         });
@@ -152,6 +151,16 @@ public class Fragment_danhSachPhieuDatBan extends Fragment implements DsPhieuDat
 
     @Override
     public void onLayPhieuDatPhongChiTietError(String error) {
+
+    }
+
+    @Override
+    public void onThemPhieuDatBanSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuDatBanError(String error) {
 
     }
 

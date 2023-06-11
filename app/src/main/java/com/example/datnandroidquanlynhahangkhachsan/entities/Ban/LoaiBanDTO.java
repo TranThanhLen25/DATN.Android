@@ -1,8 +1,13 @@
 package com.example.datnandroidquanlynhahangkhachsan.entities.Ban;
 
+import com.google.gson.annotations.SerializedName;
+
 public class LoaiBanDTO {
+    @SerializedName("loaiBanId")
     private int loaiBanId;
+    @SerializedName("tenLoaiBan")
     private String tenLoaiBan;
+    @SerializedName("soNguoiToiDa")
     private int soNguoiToiDa;
 
     public int getLoaiBanId() {

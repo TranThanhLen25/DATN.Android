@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.model.phieudat;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.ErrorMessageDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
@@ -152,6 +153,34 @@ public class PhieuDatModel implements IPhieuDatModel {
             @Override
             public void onError(String error) {
 //Lay token loi => thong bao loi
+                listener.onError(error);
+            }
+        });
+    }
+
+    @Override
+    public void ThemPhieuDatBan(DatBanDTO datBanDTO, IOnThemPhieuDatBanFinishedListener listener) {
+        service = new APIService();
+        service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
+            @Override
+            public void onSuccess(ResponseTokenDTO itemToken) {
+                service.apiServiceRetrofit.ThemPhieuDatBan(datBanDTO).enqueue(new Callback<ResponseInfo>() {
+                    @Override
+                    public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
+                        if (response.body() != null) {
+                            listener.onSuccess();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseInfo> call, Throwable t) {
+                        listener.onError(t.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
                 listener.onError(error);
             }
         });

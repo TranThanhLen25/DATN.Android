@@ -61,4 +61,9 @@ public class LoaiPhongModel implements ILoaiPhongModel {
             }
         });
     }
+
+    @Override
+    public void LayLoaiBan(IOnLayLoaiBanFinishedListener listener) {
+
+    }
 }

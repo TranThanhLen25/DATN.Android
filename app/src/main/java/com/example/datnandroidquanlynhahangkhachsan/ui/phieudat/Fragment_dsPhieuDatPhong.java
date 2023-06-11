@@ -189,6 +189,16 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
     }
 
     @Override
+    public void onThemPhieuDatBanSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuDatBanError(String error) {
+
+    }
+
+    @Override
     public void onThemKhachHangSuccess() {
 
     }

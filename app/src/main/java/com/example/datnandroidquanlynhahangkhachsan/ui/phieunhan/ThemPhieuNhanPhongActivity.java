@@ -288,7 +288,7 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
             khachHangDTO.setCccd(CCCD);
             khachHangDTO.setTenKhachHang(Hoten);
             khachHangDTO.setSdt(sdt);
-
+//
             nhanPhongDTO = new NhanPhongDTO(phieuNhanDTO, phieuNhanPhongChiTietDTOS, khachHangDTO);
             dsPhieuNhanPhongPresenter.ThemPhieuNhanPhong(nhanPhongDTO);
 

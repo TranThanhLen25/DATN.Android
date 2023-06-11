@@ -11,6 +11,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienLocKhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.NhanPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.XuatPhongDTO;
@@ -171,5 +172,12 @@ public interface IAPIServiceRetrofit {
 
     @POST("/api/hanghoa/CapNhat-DV")
     Call<ResponseInfo> capNhatDV(@Body DichVuDTO dichVuDTO);
+
+    @POST("/api/PhieuDat/them-PhieuDat-Ban")
+    Call<ResponseInfo> ThemPhieuDatBan(@Body DatBanDTO datBanDTO);
+
+    ///lấy danh sách loại bàn
+    @POST("/api/LoaiPhong/danhsach-LoaiPhong")
+    Call<ResponseDTO<List<LoaiPhongDTO>>> layLoaiBan();
 
 }

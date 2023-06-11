@@ -5,17 +5,17 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
 public class PhieuDatBanChiTietDTO {
-    @SerializedName("phieuDatId")
+    @SerializedName("phieuDatBanChiTietId")
     private Long PhieuDatBanChiTietId;
     @SerializedName("phieuDatId")
     private Long PhieuDatId;
-    @SerializedName("phieuDatId")
+    @SerializedName("banId")
     private int BanId;
-    @SerializedName("phieuDatId")
+    @SerializedName("soNguoi")
     private int SoNguoi;
-    @SerializedName("phieuDatId")
+    @SerializedName("thoiGianNhanDuKien")
     private Date ThoiGianNhanDuKien;
-    @SerializedName("phieuDatId")
+    @SerializedName("trangThai")
     private String TrangThai;
 
     public PhieuDatBanChiTietDTO() {

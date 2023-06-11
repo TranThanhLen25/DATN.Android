@@ -1,5 +1,6 @@
 package com.example.datnandroidquanlynhahangkhachsan.model.loaiphong;
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.LoaiBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 
 
@@ -13,6 +14,12 @@ public interface ILoaiPhongModel {
 
         void onError(String error);
     }
+    void LayLoaiBan(ILoaiPhongModel.IOnLayLoaiBanFinishedListener listener);
 
+    interface IOnLayLoaiBanFinishedListener {
+        void onSuccess(List<LoaiBanDTO> listResult);
+
+        void onError(String error);
+    }
 
 }

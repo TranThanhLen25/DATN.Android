@@ -17,6 +17,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.chonBan.activity_chon_ban"
+            android:exported="false" />
+        <activity
+            android:name=".activity_them_phieu_dat_ban"
+            android:exported="false" />
+        <activity
             android:name=".Nav_Ban_Activity"
             android:exported="false" />
         <activity

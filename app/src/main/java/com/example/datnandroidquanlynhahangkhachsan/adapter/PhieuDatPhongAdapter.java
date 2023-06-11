@@ -161,6 +161,16 @@ public class PhieuDatPhongAdapter extends RecyclerView.Adapter<PhieuDatPhongAdap
 
     }
 
+    @Override
+    public void onThemPhieuDatBanSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuDatBanError(String error) {
+
+    }
+
     class PhieuDatPhongViewHolder extends RecyclerView.ViewHolder {
         private ItemPhieudatphongBinding phieudatphongBinding;
 
