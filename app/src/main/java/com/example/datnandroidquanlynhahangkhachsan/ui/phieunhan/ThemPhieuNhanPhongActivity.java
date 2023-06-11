@@ -101,7 +101,7 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
         if (tempData.tempDatakhachHangDTO != null) {
             themphieunhanphongBinding.etHotenPhieunhanphong.setText(tempData.tempDatakhachHangDTO.getTenKhachHang());
             if (tempData.tempDatakhachHangDTO.getCccd() != null) {
-                themphieunhanphongBinding.etCccdPhieunhanphong.setText(tempData.tempDatakhachHangDTO.getTenKhachHang());
+                themphieunhanphongBinding.etCccdPhieunhanphong.setText(tempData.tempDatakhachHangDTO.getCccd());
             }
             themphieunhanphongBinding.etSdtPhieunhanphong.setText(tempData.tempDatakhachHangDTO.getSdt());
         }
