@@ -5,6 +5,7 @@ import static com.example.datnandroidquanlynhahangkhachsan.tempData.lsChonPhong.
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -12,6 +13,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AlertDialog;
@@ -29,6 +31,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatBa
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.chonBan.activity_chon_ban;
 import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.DsPhieuDatPhongContract;
@@ -37,6 +40,7 @@ import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -61,8 +65,8 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
     private LoaiBanAdapter loaiBanAdapter;
     private RecyclerView rcv_LoaiPhong;
     private DatBanDTO datBanDTO;
-    private PhieuDatDTO finalPhieuDatDTO;
-    private List<PhieuDatBanChiTietDTO> finalListPhieuDatBanChiTiet;
+    private PhieuDatDTO phieuDatDTO;
+    private List<PhieuDatBanChiTietDTO> ListPhieuDatBanChiTiet;
 
 
     @Override
@@ -76,6 +80,14 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
 
         KiemTraDuLieuDauVao();
         setThoiGianNhanMacDinh();
+
+        activityThemPhieuDatBanBinding.thembanPhieunhanban.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity_them_phieu_dat_ban.this, activity_chon_ban.class);
+                startActivity(intent);
+            }
+        });
         activityThemPhieuDatBanBinding.toolbarPhieudatban.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,8 +115,91 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
                 openDialogDateThoiGianTra();
             }
         });
+        activityThemPhieuDatBanBinding.btnThemphieudatban.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnclickThemPhieuDat();
+            }
+        });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (lsChonBanDataInt.size() > 0) {
+            String a = String.valueOf(lsChonBanDataInt.size());
+            Toast.makeText(this, a, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void OnclickThemPhieuDat() {
+        //kiểm tra dữ liệu trước khi thêm phiếu đặt phòng
+        if (activityThemPhieuDatBanBinding.etHotenPhieudatban.length() < 1
+                || activityThemPhieuDatBanBinding.etCccdPhieudatban.length() < 12
+                || activityThemPhieuDatBanBinding.etSdtPhieudatban.length() < 10
+                || thoiGianNhan == "") {
+            Toast.makeText(this, "vui lòng nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
+        } else {
+            Date thoiGianNhanPhong = ac.formatStringToDateUtil(thoiGianNhan, "dd/MM/yyyy HH:mm");
+            Date thoiGianTraPhong = null;
+            thoiGianTra = String.valueOf(activityThemPhieuDatBanBinding.etThoigiantraPhieudatban.getText());
+            if (thoiGianTra != null || thoiGianTra != "") {
+                thoiGianTraPhong = ac.formatStringToDateUtil(thoiGianTra, "dd/MM/yyyy HH:mm");
+            }
+            //lấy dữ liệu phiếu đặt rồi thêm vào biến tạm
+            //phieuNhanDTO = new PhieuNhanDTO("", thoiGianNhanPhong, 1, 3, thoiGianTraPhong, 1L, "", "đang nhận phòng");
+            phieuDatDTO = new PhieuDatDTO("",thoiGianNhanPhong,1,2,thoiGianNhanPhong,thoiGianTraPhong,"",1L,"đang đặt");
+
+            //tạo danh sách phiếu nhận chi tiết
+//            phieuNhanPhongChiTietDTOS = new ArrayList<>();
+//            for (int i = 0; i < lsChonPhongDataInt.size(); i++) {
+//                PhieuNhanPhongChiTietDTO phieuNhanPhongChiTietDTO = new PhieuNhanPhongChiTietDTO();
+//                phieuNhanPhongChiTietDTO.setPhieuNhanId(0);
+//                phieuNhanPhongChiTietDTO.setPhongId(lsChonPhongDataInt.get(i));
+//                phieuNhanPhongChiTietDTO.setSoNguoi(Integer.valueOf(String.valueOf(activityThemPhieuDatBanBinding.etSonguoiPhieunhanphong.getText())));
+//                phieuNhanPhongChiTietDTO.setTrangThai(4);
+//                phieuNhanPhongChiTietDTO.setThoiGianNhanPhong(thoiGianNhanPhong);
+//                phieuNhanPhongChiTietDTO.setThoiGianTraPhong(thoiGianTraPhong);
+//                phieuNhanPhongChiTietDTO.setDonGia(1);
+//                phieuNhanPhongChiTietDTOS.add(phieuNhanPhongChiTietDTO);
+//            }
+
+            lsphieuDatBanChiTietDTO=new ArrayList<>();
+            for (int i=0;i<lsChonBanDataInt.size();i++){
+                PhieuDatBanChiTietDTO phieuDatBanChiTietDTO1 = new PhieuDatBanChiTietDTO();
+                phieuDatBanChiTietDTO1.setPhieuDatId(0L);
+                phieuDatBanChiTietDTO1.setBanId(lsChonBanDataInt.get(i));
+                phieuDatBanChiTietDTO1.setSoNguoi(1);
+                phieuDatBanChiTietDTO1.setThoiGianNhanDuKien(thoiGianNhanPhong);
+                phieuDatBanChiTietDTO1.setTrangThai("đang đặt");
+                lsphieuDatBanChiTietDTO.add(phieuDatBanChiTietDTO1);
+            }
+
+            //tạo khách hàng
+
+            //lấy dữ liệu khách hàng từ edittext
+            //nếu quét qr thì có thêm các thông tin khác còn không thì vẫn lấy ít nhất 3 thông tin của khách
+            String sdt = String.valueOf(activityThemPhieuDatBanBinding.etSdtPhieudatban.getText());
+            String CCCD = String.valueOf(activityThemPhieuDatBanBinding.etCccdPhieudatban.getText());
+            String Hoten = String.valueOf(activityThemPhieuDatBanBinding.etHotenPhieudatban.getText());
+
+            //set dữ liệu khách hàng vào biến khách hàng và thêm khách hàng vào database
+            khachHangDTO.setCccd(CCCD);
+            khachHangDTO.setTenKhachHang(Hoten);
+            khachHangDTO.setSdt(sdt);
+//
+//            nhanPhongDTO = new NhanPhongDTO(phieuNhanDTO, phieuNhanPhongChiTietDTOS, khachHangDTO);
+//            dsPhieuNhanPhongPresenter.ThemPhieuNhanPhong(nhanPhongDTO);
+
+            datBanDTO = new DatBanDTO(phieuDatDTO,lsphieuDatBanChiTietDTO,khachHangDTO);
+            dsPhieuDatPhongPresenter.ThemPhieuDatBan(datBanDTO);
+
+            String a = String.valueOf(khachHangDTO.getTenKhachHang());
+            // Toast.makeText(this, a, Toast.LENGTH_LONG).show();
+            lsChonBanDataInt.clear();
+            onBackPressed();
+        }
+    }
 
     private void setThoiGianNhanMacDinh() {
         if (statcal.get(Calendar.DAY_OF_MONTH) < 10) {

@@ -12,6 +12,7 @@ import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemChonphongBin
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.BanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.LoaiBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.lsChonPhong;
+import com.example.datnandroidquanlynhahangkhachsan.ui.chonBan.activity_chon_ban;
 
 import java.util.List;
 
@@ -20,6 +21,9 @@ public class ChonBanAdapter extends RecyclerView.Adapter<ChonBanAdapter.ChonBanV
     private List<BanDTO> lsBan;
     private Context context;
     private List<LoaiBanDTO> lsLoaiBan;
+
+    public ChonBanAdapter(activity_chon_ban activity_chon_ban) {
+    }
 
     public void setData(List<BanDTO> lsBan, List<LoaiBanDTO> lsLoaiBan, Context context) {
         this.lsBan = lsBan;

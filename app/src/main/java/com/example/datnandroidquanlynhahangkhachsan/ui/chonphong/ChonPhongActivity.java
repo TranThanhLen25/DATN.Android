@@ -1,14 +1,14 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.chonphong;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.adapter.ChonPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityChonPhongBinding;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ChonPhongActivity extends AppCompatActivity implements PhongContract.View , LoaiPhongContract.View {
+public class ChonPhongActivity extends AppCompatActivity implements PhongContract.View, LoaiPhongContract.View {
     private List<PhongDTO> lsphong;
 
     private List<LoaiPhongDTO> lsloaiPhong;
@@ -57,11 +57,12 @@ public class ChonPhongActivity extends AppCompatActivity implements PhongContrac
         chonPhongBinding.incluChonphong.icBack.setOnClickListener(view -> onBackPressed());
     }
 
-   @Override
+    @Override
     public void onLayDanhSachPhong1gSuccess(List<PhongDTO> list) {
 
 
     }
+
     @Override
     public void onLayDanhSachPhong1gError(String error) {
         Toast.makeText(this, "Lay du lieu that bai", Toast.LENGTH_LONG).show();
@@ -81,6 +82,7 @@ public class ChonPhongActivity extends AppCompatActivity implements PhongContrac
     public void onLayDanhSachPhongError(String error) {
 
     }
+
     @Override
     public void onLayDanhSachPhongSuccess(List<PhongDTO> list) {
         lsphong = list;
@@ -88,16 +90,17 @@ public class ChonPhongActivity extends AppCompatActivity implements PhongContrac
         chonPhongAdapter.setData(lsphong, lsloaiPhong, context);
         rscv.setAdapter(chonPhongAdapter);
     }
-    //lấy danh sách loại phòng hiển thị và spinner
-        @Override
-        public void onLayLoaiPhongSuccess(List<LoaiPhongDTO> list) {
-            lsloaiPhong=list;
-        }
 
-        @Override
-        public void onLayLoaiPhongError(String error) {
-            Toast.makeText(this, "Lay du lieu that bai", Toast.LENGTH_LONG).show();
-        }
+    //lấy danh sách loại phòng hiển thị và spinner
+    @Override
+    public void onLayLoaiPhongSuccess(List<LoaiPhongDTO> list) {
+        lsloaiPhong = list;
+    }
+
+    @Override
+    public void onLayLoaiPhongError(String error) {
+        Toast.makeText(this, "Lay du lieu that bai", Toast.LENGTH_LONG).show();
+    }
 
 
 }
