@@ -30,7 +30,6 @@ public interface DsPhieuNhanPhongContract {
         void LayDanhSachPhieuNhan(DieuKienLocPhieuNhanDTO dieuKienLocPhieuNhanDTO);
 
         void ThemPhieuNhanPhong(NhanPhongDTO nhanPhongDTO);
-
         void ThemPhieuNhanBan(NhanBanDTO nhanBanDTO);
     }
 }

@@ -26,6 +26,7 @@ public interface IPhieuNhanModel {
 
         void onError(String error);
     }
+
     void ThemPhieuNhanBan(NhanBanDTO nhanBanDTO, IPhieuNhanModel.IOnThemPhieuNhanBanFinishedListener listener);
 
     interface IOnThemPhieuNhanBanFinishedListener {
@@ -33,4 +34,5 @@ public interface IPhieuNhanModel {
 
         void onError(String error);
     }
+
 }

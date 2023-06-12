@@ -530,11 +530,11 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
 
     @Override
     public void onThemPhieuDatBanSuccess() {
-
+        Toast.makeText(this, "thêm phiếu đặt bàn thành công", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onThemPhieuDatBanError(String error) {
-
+        Toast.makeText(this, "thêm phiếu đặt bàn thành công", Toast.LENGTH_LONG).show();
     }
 }
