@@ -128,6 +128,14 @@
     <string name="dialog_menu">Menu</string>
     <string name="dialog_dangxuat">Bạn thực sự muốn đăng xuất?</string>
 
+    <!--    dialog chuc nang bàn-->
+    <string name="dialog_nhanban">Nhận bàn</string>
+    <string name="dialog_datban">Đặt bàn</string>
+    <string name="dialog_chitietban">Chi tiết bàn</string>
+    <string name="dialog_traban">Trả bàn</string>
+    <string name="dialog_doiban">Đổi bàn</string>
+    <string name="dialog_baotriban">Bảo trì</string>
+
     <string name="error_msg_unknown">Đã xảy ra lỗi không mong muốn</string>
     <string name="error_msg_no_internet">Vui lòng kiểm tra kết nối và thử lại.</string>
     <string name="title_error_msg">Thông báo</string>

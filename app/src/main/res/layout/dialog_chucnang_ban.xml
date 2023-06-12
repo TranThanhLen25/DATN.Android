@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linea_dsphong"
+    android:layout_width="180dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    >
+
+
+    <TextView
+        android:id="@+id/tv_dia_nhanban"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+
+        android:gravity="start"
+        android:padding="10dp"
+        android:text="@string/dialog_nhanban"
+        android:textColor="@color/black"
+
+        android:textSize="@dimen/heading_2"
+        tools:ignore="MissingConstraints" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/blue_mo"
+
+        ></View>
+
+    <TextView
+        android:id="@+id/tv_dia_datban"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        android:gravity="start"
+        android:padding="10dp"
+        android:text="@string/dialog_datban"
+        android:textColor="@color/black"
+        android:textSize="@dimen/heading_2" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/blue_mo"></View>
+
+    <TextView
+        android:id="@+id/tv_dia_chitietban"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        android:gravity="start"
+        android:padding="10dp"
+        android:text="@string/dialog_chitietban"
+        android:textColor="@color/black"
+        android:textSize="@dimen/heading_2" />
+
+
+
+    <View
+        android:id="@+id/view_traban"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/blue_mo"></View>
+
+    <TextView
+        android:id="@+id/tv_dia_traban"
+        android:layout_width="match_parent"
+
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        android:gravity="start"
+        android:padding="10dp"
+        android:text="@string/dialog_traban"
+        android:textColor="@color/black"
+        android:textSize="@dimen/heading_2" />
+
+    <View
+        android:id="@+id/vDoiban"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/blue_mo"></View>
+
+    <TextView
+        android:id="@+id/tv_dia_doiban"
+        android:layout_width="match_parent"
+
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        android:gravity="start"
+        android:padding="10dp"
+        android:text="@string/dialog_doiban"
+        android:textColor="@color/black"
+        android:textSize="@dimen/heading_2" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/blue_mo"></View>
+
+    <TextView
+        android:id="@+id/tv_dia_baotriban"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        android:gravity="start"
+        android:padding="10dp"
+        android:text="@string/dialog_baotriban"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/heading_2" />
+
+
+</LinearLayout>
