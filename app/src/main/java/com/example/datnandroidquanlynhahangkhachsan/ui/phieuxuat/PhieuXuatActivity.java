@@ -149,7 +149,6 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
         dichVuDTO.setPhieuNhanID(sharedPreferences.getLong("PNID", 0L));
         dichVuDTO.setGhiChu("");
         dichVuDTO.setTrangThai("thanh");
-
         dichVuPresenter.LayDvPn(dichVuDTO);
 
         ///lấy danh sach phiếu xuất ct
@@ -157,7 +156,7 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
         DieuKienLocPhieuXuatChiTietDTO dieuKienLocPhieuXuatChiTietDTO = new DieuKienLocPhieuXuatChiTietDTO();
         dieuKienLocPhieuXuatChiTietDTO.setPhieuXuatId(pxid);
         phieuXuatPresenter.LayDanhSachPhieuXuatChiTiet(dieuKienLocPhieuXuatChiTietDTO);
-//// lấy phiếu xuất
+        //// lấy phiếu xuất khi đã có phiếu xuất r
         DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO = new DieuKienLocPhieuXuatDTO();
         dieuKienLocPhieuXuatDTO.setPhieuXuatId(sharedPreferences.getLong("PXID",0L));
         phieuXuatPresenter.LayDanhSachPhieuXuat(dieuKienLocPhieuXuatDTO);
@@ -185,6 +184,10 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
             @Override
             public void onClick(View view) {
 
+
+
+
+        //// cap nhat PNct
                 for(int i=0;i<lsPhieuNhanCT.size();i++)
                 {
                     if(lsPhieuNhanCT.get(i).getTrangThai()!=2)
@@ -200,18 +203,23 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
                         }
                         phieuNhanPhongChiTietPresenter.CapNhatPhieuNhanPhongChiTiet(phieuNhanPhongChiTietDTO);
                     }
+        /// cap nhat trang thai phong
                     phongDTO.setPhongId(lsPhieuNhanCT.get(i).getPhongId());
                     phongDTO.setTrangThaiId(1);
                     phongPresenter.CapNhatTrangThaiPhong(phongDTO);
 
                 }
 
-
+        /// cap nhat px
                 phieuXuatDTO.setPhieuXuatId(pxid);
                 phieuXuatDTO.setTrangthai(2);
                 phieuXuatDTO.setSoChungTu(sharedPreferences.getString("SCT",""));
                 phieuXuatDTO.setTongThanhTien(sharedPreferences.getLong("THD_NGAY", 0L)+ sharedPreferences.getLong("THD_DV", 0L));
                 phieuXuatPresenter.CapNhatPX(phieuXuatDTO);
+
+        ////tao Phieu xuat va Phieu xuat chi tiet
+
+
 
                 Intent intent = new Intent(PhieuXuatActivity.this, ThanhToanActivity.class);
                 startActivity(intent);
