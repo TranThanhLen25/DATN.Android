@@ -63,6 +63,6 @@ public class DieuKienLocPhieuNhanDTO {
     }
 
     public void setTrangThai(String trangThai) {
-        trangThai = trangThai;
+        this.trangThai = trangThai;
     }
 }

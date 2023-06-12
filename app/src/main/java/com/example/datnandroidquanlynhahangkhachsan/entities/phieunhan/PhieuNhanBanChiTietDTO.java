@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
 public class PhieuNhanBanChiTietDTO {
-    @SerializedName("phieuDatBanChiTietId")
+    @SerializedName("phieuNhanBanChiTietId")
     private Long PhieuDatBanChiTietId;
-    @SerializedName("phieuDatId")
-    private Long PhieuDatId;
+    @SerializedName("phieuNhanId")
+    private Long phieuNhanId;
     @SerializedName("banId")
     private int BanId;
     @SerializedName("soNguoi")
@@ -18,18 +18,9 @@ public class PhieuNhanBanChiTietDTO {
     @SerializedName("thoiGianTraBan")
     private Date ThoiGianTraBan;
     @SerializedName("trangThai")
-    private String TrangThai;
+    private int TrangThai;
 
     public PhieuNhanBanChiTietDTO() {
-    }
-
-    public PhieuNhanBanChiTietDTO(Long phieuDatId, int banId, int soNguoi, Date thoiGianNhanBan, Date thoiGianTraBan, String trangThai) {
-        PhieuDatId = phieuDatId;
-        BanId = banId;
-        SoNguoi = soNguoi;
-        ThoiGianNhanBan = thoiGianNhanBan;
-        ThoiGianTraBan = thoiGianTraBan;
-        TrangThai = trangThai;
     }
 
     public Long getPhieuDatBanChiTietId() {
@@ -40,12 +31,12 @@ public class PhieuNhanBanChiTietDTO {
         PhieuDatBanChiTietId = phieuDatBanChiTietId;
     }
 
-    public Long getPhieuDatId() {
-        return PhieuDatId;
+    public Long getPhieuNhanId() {
+        return phieuNhanId;
     }
 
-    public void setPhieuDatId(Long phieuDatId) {
-        PhieuDatId = phieuDatId;
+    public void setPhieuNhanId(long phieuNhanId) {
+        this.phieuNhanId = phieuNhanId;
     }
 
     public int getBanId() {
@@ -80,11 +71,15 @@ public class PhieuNhanBanChiTietDTO {
         ThoiGianTraBan = thoiGianTraBan;
     }
 
-    public String getTrangThai() {
+    public void setPhieuNhanId(Long phieuNhanId) {
+        this.phieuNhanId = phieuNhanId;
+    }
+
+    public int getTrangThai() {
         return TrangThai;
     }
 
-    public void setTrangThai(String trangThai) {
+    public void setTrangThai(int trangThai) {
         TrangThai = trangThai;
     }
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activityThemPhieuNhanBan">
     <include
-        android:id="@+id/toolbar_phieudatban"
+        android:id="@+id/toolbar_phieunhanban"
         layout="@layout/activity_appar_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,16 +15,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:id="@+id/scr_phieudatban"
+        android:id="@+id/scr_phieunhanban"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/footer_phieudatban"
+        app:layout_constraintBottom_toTopOf="@+id/footer_phieunhanban"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_phieudatban">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_phieunhanban">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/phieudatban"
+            android:id="@+id/phieunhanban"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:padding="10dp"
@@ -32,46 +32,46 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/scr_phieudatban">
+            app:layout_constraintTop_toTopOf="@+id/scr_phieunhanban">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/headderphieudatban"
+                android:id="@+id/headderphieunhanban"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="@id/phieudatban"
-                app:layout_constraintStart_toStartOf="@id/phieudatban"
-                app:layout_constraintTop_toTopOf="@+id/phieudatban">
+                app:layout_constraintEnd_toEndOf="@id/phieunhanban"
+                app:layout_constraintStart_toStartOf="@id/phieunhanban"
+                app:layout_constraintTop_toTopOf="@+id/phieunhanban">
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/chitietheaderphieudatban"
+                    android:id="@+id/chitietheaderphieunhanban"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintStart_toStartOf="@id/headderphieudatban"
-                    app:layout_constraintTop_toTopOf="@+id/headderphieudatban">
+                    app:layout_constraintStart_toStartOf="@id/headderphieunhanban"
+                    app:layout_constraintTop_toTopOf="@+id/headderphieunhanban">
 
                     <TextView
-                        android:id="@+id/tv_phieudatban"
+                        android:id="@+id/tv_phieunhanban"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_tenphieu"
                         android:padding="10dp"
-                        android:text="Phiếu đặt bàn"
+                        android:text="Phiếu nhận bàn"
                         android:textSize="@dimen/heading_2"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/chitietheaderphieudatban"
-                        app:layout_constraintTop_toTopOf="@id/chitietheaderphieudatban" />
+                        app:layout_constraintStart_toStartOf="@id/chitietheaderphieunhanban"
+                        app:layout_constraintTop_toTopOf="@id/chitietheaderphieunhanban" />
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/tv_sochungtu_phieudatban"
+                        android:id="@+id/tv_sochungtu_phieunhanban"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintStart_toStartOf="@id/chitietheaderphieudatban"
-                        app:layout_constraintTop_toBottomOf="@id/tv_phieudatban">
+                        app:layout_constraintStart_toStartOf="@id/chitietheaderphieunhanban"
+                        app:layout_constraintTop_toBottomOf="@id/tv_phieunhanban">
 
                         <TextView
                             android:id="@+id/tv_sochungtu"
@@ -82,8 +82,8 @@
                             android:textColor="@color/red"
                             android:textSize="@dimen/heading_2"
                             android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="@id/tv_sochungtu_phieudatban"
-                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_phieudatban" />
+                            app:layout_constraintStart_toStartOf="@id/tv_sochungtu_phieunhanban"
+                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_phieunhanban" />
 
                         <TextView
                             android:id="@+id/tv_sochungtu_data"
@@ -95,33 +95,33 @@
                             android:textSize="@dimen/heading_2"
                             android:textStyle="bold"
                             app:layout_constraintStart_toEndOf="@+id/tv_sochungtu"
-                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_phieudatban" />
+                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_phieunhanban" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <ImageButton
-                    android:id="@+id/BtnScanQR_phieudatban"
+                    android:id="@+id/BtnScanQR_phieunhanban"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:background="@color/white"
                     android:contentDescription="TODO"
                     android:src="@drawable/ic_qrcode"
-                    app:layout_constraintEnd_toEndOf="@id/headderphieudatban"
-                    app:layout_constraintStart_toEndOf="@id/chitietheaderphieudatban"
-                    app:layout_constraintTop_toTopOf="@id/headderphieudatban" />
+                    app:layout_constraintEnd_toEndOf="@id/headderphieunhanban"
+                    app:layout_constraintStart_toEndOf="@id/chitietheaderphieunhanban"
+                    app:layout_constraintTop_toTopOf="@id/headderphieunhanban" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/mainphieudatban"
+                android:id="@+id/mainphieunhanban"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="@id/phieudatban"
-                app:layout_constraintStart_toStartOf="@id/phieudatban"
-                app:layout_constraintTop_toBottomOf="@id/headderphieudatban">
+                app:layout_constraintEnd_toEndOf="@id/phieunhanban"
+                app:layout_constraintStart_toStartOf="@id/phieunhanban"
+                app:layout_constraintTop_toBottomOf="@id/headderphieunhanban">
 
                 <TextView
                     android:id="@+id/tv_hoten"
@@ -130,11 +130,11 @@
                     android:padding="8dp"
                     android:text="@string/tv_hoten"
                     android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"
-                    app:layout_constraintTop_toTopOf="@+id/mainphieudatban" />
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanban"
+                    app:layout_constraintTop_toTopOf="@+id/mainphieunhanban" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputlayout_hoten_phieudatban"
+                    android:id="@+id/inputlayout_hoten_phieunhanban"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:boxBackgroundMode="outline"
@@ -142,7 +142,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_hoten">
 
                     <EditText
-                        android:id="@+id/et_hoten_phieudatban"
+                        android:id="@+id/et_hoten_phieunhanban"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="@drawable/bg_edittext"
@@ -151,28 +151,28 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
-                    android:id="@+id/tv_cccd_phieudatban"
+                    android:id="@+id/tv_cccd_phieunhanban"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/tv_cccd"
                     android:textColor="@color/black"
 
-                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"
-                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_hoten_phieudatban" />
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanban"
+                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_hoten_phieunhanban" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputlayout_cccd_phieudatban"
+                    android:id="@+id/inputlayout_cccd_phieunhanban"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:counterEnabled="true"
                     app:boxBackgroundMode="outline"
                     app:counterMaxLength="12"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_cccd_phieudatban">
+                    app:layout_constraintTop_toBottomOf="@+id/tv_cccd_phieunhanban">
 
                     <EditText
-                        android:id="@+id/et_cccd_phieudatban"
+                        android:id="@+id/et_cccd_phieunhanban"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="@drawable/bg_edittext"
@@ -184,28 +184,28 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
-                    android:id="@+id/tv_sdt_phieudatban"
+                    android:id="@+id/tv_sdt_phieunhanban"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/tv_sdt"
                     android:textColor="@color/black"
 
-                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"
-                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_cccd_phieudatban" />
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanban"
+                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_cccd_phieunhanban" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputlayout_sdt_phieudatban"
+                    android:id="@+id/inputlayout_sdt_phieunhanban"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:counterEnabled="true"
                     app:counterMaxLength="10"
                     app:boxBackgroundMode="outline"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_sdt_phieudatban">
+                    app:layout_constraintTop_toBottomOf="@+id/tv_sdt_phieunhanban">
 
                     <EditText
-                        android:id="@+id/et_sdt_phieudatban"
+                        android:id="@+id/et_sdt_phieunhanban"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="@drawable/bg_edittext"
@@ -217,113 +217,113 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!--                <EditText-->
-                <!--                    android:id="@+id/et_sdt_phieudatban"-->
+                <!--                    android:id="@+id/et_sdt_phieunhanban"-->
                 <!--                    android:layout_width="match_parent"-->
                 <!--                    android:layout_height="48dp"-->
                 <!--                    android:background="@drawable/bg_edittext"-->
                 <!--                    android:inputType="phone"-->
-                <!--                    app:layout_constraintTop_toBottomOf="@+id/tv_sdt_phieudatban"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/tv_sdt_phieunhanban"-->
 
                 <!--                    tools:layout_editor_absoluteX="0dp" />-->
 
                 <!--                <TextView-->
-                <!--                    android:id="@+id/tv_songuoi_phieudatban"-->
+                <!--                    android:id="@+id/tv_songuoi_phieunhanban"-->
                 <!--                    android:layout_width="wrap_content"-->
                 <!--                    android:layout_height="wrap_content"-->
                 <!--                    android:padding="8dp"-->
                 <!--                    android:text="@string/tv_songuoi"-->
                 <!--                    android:textColor="@color/black"-->
 
-                <!--                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"-->
-                <!--                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_sdt_phieudatban" />-->
+                <!--                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanban"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_sdt_phieunhanban" />-->
 
                 <!--                <EditText-->
-                <!--                    android:id="@+id/et_songuoi_phieudatban"-->
+                <!--                    android:id="@+id/et_songuoi_phieunhanban"-->
                 <!--                    android:layout_width="100dp"-->
                 <!--                    android:layout_height="48dp"-->
                 <!--                    android:background="@drawable/bg_edittext"-->
                 <!--                    android:inputType="number"-->
-                <!--                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"-->
-                <!--                    app:layout_constraintTop_toBottomOf="@+id/tv_songuoi_phieudatban" />-->
+                <!--                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanban"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/tv_songuoi_phieunhanban" />-->
 
                 <TextView
-                    android:id="@+id/tv_thoigiannhan_phieudatban"
+                    android:id="@+id/tv_thoigiannhan_phieunhanban"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/tv_thoigiannhan"
                     android:textColor="@color/black"
 
-                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"
-                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_sdt_phieudatban" />
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanban"
+                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_sdt_phieunhanban" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/thoigiannhan_phieudatban"
+                    android:id="@+id/thoigiannhan_phieunhanban"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_thoigiannhan_phieudatban">
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanban"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_thoigiannhan_phieunhanban">
 
                     <EditText
-                        android:id="@+id/et_thoigiannhan_phieudatban"
+                        android:id="@+id/et_thoigiannhan_phieunhanban"
                         android:layout_width="320dp"
                         android:layout_height="48dp"
                         android:background="@drawable/bg_edittext"
-                        app:layout_constraintBottom_toBottomOf="@+id/thoigiannhan_phieudatban"
-                        app:layout_constraintStart_toStartOf="@+id/thoigiannhan_phieudatban"
-                        app:layout_constraintTop_toTopOf="@+id/thoigiannhan_phieudatban" />
+                        app:layout_constraintBottom_toBottomOf="@+id/thoigiannhan_phieunhanban"
+                        app:layout_constraintStart_toStartOf="@+id/thoigiannhan_phieunhanban"
+                        app:layout_constraintTop_toTopOf="@+id/thoigiannhan_phieunhanban" />
 
                     <ImageButton
-                        android:id="@+id/imgbtn_thoigiannhan_themphieudatban"
+                        android:id="@+id/imgbtn_thoigiannhan_themphieunhanban"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:minWidth="48dp"
                         android:minHeight="48dp"
                         android:src="@drawable/ic_calendar"
-                        app:layout_constraintEnd_toEndOf="@+id/thoigiannhan_phieudatban"
-                        app:layout_constraintStart_toEndOf="@id/et_thoigiannhan_phieudatban"
-                        app:layout_constraintTop_toTopOf="@+id/thoigiannhan_phieudatban" />
+                        app:layout_constraintEnd_toEndOf="@+id/thoigiannhan_phieunhanban"
+                        app:layout_constraintStart_toEndOf="@id/et_thoigiannhan_phieunhanban"
+                        app:layout_constraintTop_toTopOf="@+id/thoigiannhan_phieunhanban" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
-                    android:id="@+id/tv_thoigiantra_phieudatban"
+                    android:id="@+id/tv_thoigiantra_phieunhanban"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/tv_thoigiantra"
                     android:textColor="@color/black"
 
-                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"
-                    app:layout_constraintTop_toBottomOf="@+id/thoigiannhan_phieudatban" />
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanban"
+                    app:layout_constraintTop_toBottomOf="@+id/thoigiannhan_phieunhanban" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/thoigiantra_phieudatban"
+                    android:id="@+id/thoigiantra_phieunhanban"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_thoigiantra_phieudatban">
+                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanban"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_thoigiantra_phieunhanban">
 
                     <EditText
-                        android:id="@+id/et_thoigiantra_phieudatban"
+                        android:id="@+id/et_thoigiantra_phieunhanban"
                         android:layout_width="320dp"
                         android:layout_height="48dp"
                         android:background="@drawable/bg_edittext"
-                        app:layout_constraintBottom_toBottomOf="@+id/thoigiantra_phieudatban"
-                        app:layout_constraintStart_toStartOf="@+id/thoigiantra_phieudatban"
-                        app:layout_constraintTop_toTopOf="@+id/thoigiantra_phieudatban" />
+                        app:layout_constraintBottom_toBottomOf="@+id/thoigiantra_phieunhanban"
+                        app:layout_constraintStart_toStartOf="@+id/thoigiantra_phieunhanban"
+                        app:layout_constraintTop_toTopOf="@+id/thoigiantra_phieunhanban" />
 
                     <ImageButton
-                        android:id="@+id/imgbtn_thoigiantra_themphieudatban"
+                        android:id="@+id/imgbtn_thoigiantra_themphieunhanban"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:minWidth="48dp"
                         android:minHeight="48dp"
                         android:src="@drawable/ic_calendar"
-                        app:layout_constraintEnd_toEndOf="@+id/thoigiantra_phieudatban"
-                        app:layout_constraintStart_toEndOf="@id/et_thoigiantra_phieudatban"
-                        app:layout_constraintTop_toTopOf="@+id/thoigiantra_phieudatban" />
+                        app:layout_constraintEnd_toEndOf="@+id/thoigiantra_phieunhanban"
+                        app:layout_constraintStart_toEndOf="@id/et_thoigiantra_phieunhanban"
+                        app:layout_constraintTop_toTopOf="@+id/thoigiantra_phieunhanban" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -331,7 +331,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/thoigiantra_phieudatban">
+                    app:layout_constraintTop_toBottomOf="@+id/thoigiantra_phieunhanban">
 
                     <ImageButton
                         android:id="@+id/themban_phieunhanban"
@@ -390,7 +390,7 @@
     </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/footer_phieudatban"
+        android:id="@+id/footer_phieunhanban"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_nhahang_khachsan"
@@ -400,12 +400,12 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/btn_themphieudatban"
+            android:id="@+id/btn_themphieunhanban"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/action_datban"
-            app:layout_constraintBottom_toBottomOf="@+id/footer_phieudatban"
-            app:layout_constraintEnd_toEndOf="@+id/footer_phieudatban"
-            app:layout_constraintTop_toTopOf="@+id/footer_phieudatban" />
+            android:text="@string/action_nhanban"
+            app:layout_constraintBottom_toBottomOf="@+id/footer_phieunhanban"
+            app:layout_constraintEnd_toEndOf="@+id/footer_phieunhanban"
+            app:layout_constraintTop_toTopOf="@+id/footer_phieunhanban" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

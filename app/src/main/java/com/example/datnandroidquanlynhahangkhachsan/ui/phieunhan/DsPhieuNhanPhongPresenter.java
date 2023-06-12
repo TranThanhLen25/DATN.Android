@@ -65,6 +65,7 @@ public class DsPhieuNhanPhongPresenter implements DsPhieuNhanPhongContract.Prese
         });
     }
 
+
 //    @Override
 //    public void ThemPhieuDatPhong(PhieuDatDTO phieuDatDTO) {
 //        phieuDatModel.ThemPhieuDatPhong(phieuDatDTO, new IPhieuDatModel.IOnThemPhieuDatPhongFinishedListener() {

@@ -178,6 +178,7 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
 
     }
 
+
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
         lsKhachHang = list;
         phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(this);

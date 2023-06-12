@@ -3,12 +3,16 @@ package com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
 public class NhanBanDTO {
+    @SerializedName("phieuNhanDTO")
     PhieuNhanDTO phieuNhanDTO;
+    @SerializedName("phieuNhanBanChiTietDTOs")
     List<PhieuNhanBanChiTietDTO> phieuNhanBanChiTietDTOs;
+    @SerializedName("khachHang")
     KhachHangDTO khachHang;
 
     public NhanBanDTO() {
