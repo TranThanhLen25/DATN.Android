@@ -20,6 +20,7 @@ public class PhieuNhanBanAdapter extends RecyclerView.Adapter<PhieuNhanBanAdapte
     private List<PhieuNhanDTO> lsPhieuNhan;
     private List<KhachHangDTO> lsKhachHang;
     private AppUtils ac;
+    private KhachHangDTO khachHangDTO;
     private Context context;
 
     public PhieuNhanBanAdapter(List<PhieuNhanDTO> lsPhieuNhan) {
@@ -47,15 +48,21 @@ public class PhieuNhanBanAdapter extends RecyclerView.Adapter<PhieuNhanBanAdapte
     @Override
     public void onBindViewHolder(@NonNull PhieuNhanBanViewHolder holder, int position) {
         PhieuNhanDTO phieuNhanDTO = lsPhieuNhan.get(position);
+        if (lsKhachHang.size() > 0) {
+            for (int i = 0; i < lsKhachHang.size(); i++) {
+                if (lsKhachHang.get(i).getKhachHangId() == phieuNhanDTO.getKhachHangId()) {
+                    khachHangDTO = lsKhachHang.get(i);
+                }
+            }
+        }
         if (phieuNhanDTO == null) {
             return;
         }
-        for (int i = 0; i < lsKhachHang.size(); i++) {
-            if (phieuNhanDTO.getKhachHangId() == lsKhachHang.get(i).getKhachHangId()) {
-                holder.phieunhanphongBinding.tvTenkhachhangPhieunhanphongData.setText(lsKhachHang.get(i).getTenKhachHang());
-                holder.phieunhanphongBinding.tvSdtItemphieunhanphongData.setText(lsKhachHang.get(i).getSdt());
-            }
+        if (khachHangDTO == null) {
+            return;
         }
+        holder.phieunhanphongBinding.tvTenkhachhangPhieunhanphongData.setText(khachHangDTO.getTenKhachHang());
+        holder.phieunhanphongBinding.tvSdtItemphieunhanphongData.setText(khachHangDTO.getSdt());
 
         holder.phieunhanphongBinding.tvSochungtuPhieunhanphongData.setText(String.valueOf(phieuNhanDTO.getSoChungTu()));
         holder.phieunhanphongBinding.tvThoigianlapphieuItemphieunhanphongData.setText(ac.formatDateToString(phieuNhanDTO.getNgayLap(), "dd/MM/yyyy HH:mm:ss"));

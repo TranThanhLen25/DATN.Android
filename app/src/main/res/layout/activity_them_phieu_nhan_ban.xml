@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activityThemPhieuNhanBan">
+    <include
+        android:id="@+id/toolbar_phieudatban"
+        layout="@layout/activity_appar_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scr_phieudatban"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/footer_phieudatban"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_phieudatban">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/phieudatban"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="10dp"
+
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/scr_phieudatban">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/headderphieudatban"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/phieudatban"
+                app:layout_constraintStart_toStartOf="@id/phieudatban"
+                app:layout_constraintTop_toTopOf="@+id/phieudatban">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/chitietheaderphieudatban"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="@id/headderphieudatban"
+                    app:layout_constraintTop_toTopOf="@+id/headderphieudatban">
+
+                    <TextView
+                        android:id="@+id/tv_phieudatban"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_tenphieu"
+                        android:padding="10dp"
+                        android:text="Phiếu đặt bàn"
+                        android:textSize="@dimen/heading_2"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@id/chitietheaderphieudatban"
+                        app:layout_constraintTop_toTopOf="@id/chitietheaderphieudatban" />
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/tv_sochungtu_phieudatban"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintStart_toStartOf="@id/chitietheaderphieudatban"
+                        app:layout_constraintTop_toBottomOf="@id/tv_phieudatban">
+
+                        <TextView
+                            android:id="@+id/tv_sochungtu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:text="@string/tv_sochungtu"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/heading_2"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="@id/tv_sochungtu_phieudatban"
+                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_phieudatban" />
+
+                        <TextView
+                            android:id="@+id/tv_sochungtu_data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:text="@string/tv_PDP1"
+                            android:textColor="@color/red"
+                            android:textSize="@dimen/heading_2"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toEndOf="@+id/tv_sochungtu"
+                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_phieudatban" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageButton
+                    android:id="@+id/BtnScanQR_phieudatban"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:background="@color/white"
+                    android:contentDescription="TODO"
+                    android:src="@drawable/ic_qrcode"
+                    app:layout_constraintEnd_toEndOf="@id/headderphieudatban"
+                    app:layout_constraintStart_toEndOf="@id/chitietheaderphieudatban"
+                    app:layout_constraintTop_toTopOf="@id/headderphieudatban" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mainphieudatban"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/phieudatban"
+                app:layout_constraintStart_toStartOf="@id/phieudatban"
+                app:layout_constraintTop_toBottomOf="@id/headderphieudatban">
+
+                <TextView
+                    android:id="@+id/tv_hoten"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="@string/tv_hoten"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"
+                    app:layout_constraintTop_toTopOf="@+id/mainphieudatban" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputlayout_hoten_phieudatban"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="outline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_hoten">
+
+                    <EditText
+                        android:id="@+id/et_hoten_phieudatban"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_edittext"
+                        android:padding="0dp"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_cccd_phieudatban"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="@string/tv_cccd"
+                    android:textColor="@color/black"
+
+                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"
+                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_hoten_phieudatban" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputlayout_cccd_phieudatban"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:counterEnabled="true"
+                    app:boxBackgroundMode="outline"
+                    app:counterMaxLength="12"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_cccd_phieudatban">
+
+                    <EditText
+                        android:id="@+id/et_cccd_phieudatban"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_edittext"
+                        android:padding="0dp"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:maxLength="12"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/tv_sdt_phieudatban"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="@string/tv_sdt"
+                    android:textColor="@color/black"
+
+                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"
+                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_cccd_phieudatban" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputlayout_sdt_phieudatban"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="10"
+                    app:boxBackgroundMode="outline"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_sdt_phieudatban">
+
+                    <EditText
+                        android:id="@+id/et_sdt_phieudatban"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_edittext"
+                        android:inputType="phone"
+                        android:padding="0dp"
+                        android:maxLength="10"
+                        app:layout_constraintTop_toBottomOf="parent"
+                        tools:layout_editor_absoluteX="0dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--                <EditText-->
+                <!--                    android:id="@+id/et_sdt_phieudatban"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="48dp"-->
+                <!--                    android:background="@drawable/bg_edittext"-->
+                <!--                    android:inputType="phone"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/tv_sdt_phieudatban"-->
+
+                <!--                    tools:layout_editor_absoluteX="0dp" />-->
+
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tv_songuoi_phieudatban"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:padding="8dp"-->
+                <!--                    android:text="@string/tv_songuoi"-->
+                <!--                    android:textColor="@color/black"-->
+
+                <!--                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_sdt_phieudatban" />-->
+
+                <!--                <EditText-->
+                <!--                    android:id="@+id/et_songuoi_phieudatban"-->
+                <!--                    android:layout_width="100dp"-->
+                <!--                    android:layout_height="48dp"-->
+                <!--                    android:background="@drawable/bg_edittext"-->
+                <!--                    android:inputType="number"-->
+                <!--                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/tv_songuoi_phieudatban" />-->
+
+                <TextView
+                    android:id="@+id/tv_thoigiannhan_phieudatban"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="@string/tv_thoigiannhan"
+                    android:textColor="@color/black"
+
+                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"
+                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_sdt_phieudatban" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/thoigiannhan_phieudatban"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_thoigiannhan_phieudatban">
+
+                    <EditText
+                        android:id="@+id/et_thoigiannhan_phieudatban"
+                        android:layout_width="320dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_edittext"
+                        app:layout_constraintBottom_toBottomOf="@+id/thoigiannhan_phieudatban"
+                        app:layout_constraintStart_toStartOf="@+id/thoigiannhan_phieudatban"
+                        app:layout_constraintTop_toTopOf="@+id/thoigiannhan_phieudatban" />
+
+                    <ImageButton
+                        android:id="@+id/imgbtn_thoigiannhan_themphieudatban"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp"
+                        android:src="@drawable/ic_calendar"
+                        app:layout_constraintEnd_toEndOf="@+id/thoigiannhan_phieudatban"
+                        app:layout_constraintStart_toEndOf="@id/et_thoigiannhan_phieudatban"
+                        app:layout_constraintTop_toTopOf="@+id/thoigiannhan_phieudatban" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_thoigiantra_phieudatban"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="@string/tv_thoigiantra"
+                    android:textColor="@color/black"
+
+                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"
+                    app:layout_constraintTop_toBottomOf="@+id/thoigiannhan_phieudatban" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/thoigiantra_phieudatban"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_thoigiantra_phieudatban">
+
+                    <EditText
+                        android:id="@+id/et_thoigiantra_phieudatban"
+                        android:layout_width="320dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_edittext"
+                        app:layout_constraintBottom_toBottomOf="@+id/thoigiantra_phieudatban"
+                        app:layout_constraintStart_toStartOf="@+id/thoigiantra_phieudatban"
+                        app:layout_constraintTop_toTopOf="@+id/thoigiantra_phieudatban" />
+
+                    <ImageButton
+                        android:id="@+id/imgbtn_thoigiantra_themphieudatban"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp"
+                        android:src="@drawable/ic_calendar"
+                        app:layout_constraintEnd_toEndOf="@+id/thoigiantra_phieudatban"
+                        app:layout_constraintStart_toEndOf="@id/et_thoigiantra_phieudatban"
+                        app:layout_constraintTop_toTopOf="@+id/thoigiantra_phieudatban" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/chonban_phieunhanban"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/thoigiantra_phieudatban">
+
+                    <ImageButton
+                        android:id="@+id/themban_phieunhanban"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:padding="15dp"
+                        android:src="@drawable/ic_additem"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/chonban_phieunhanban"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                    <TextView
+                        android:id="@+id/tv_ban_phieunhanban"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nhấn để chọn phòng"
+                        android:textSize="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/chonban_phieunhanban"
+                        app:layout_constraintStart_toEndOf="@+id/themban_phieunhanban"
+                        app:layout_constraintTop_toTopOf="@+id/chonban_phieunhanban" />
+
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/tv_ban_data_phieunhanban"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:text="101"-->
+                    <!--                        android:textSize="20sp"-->
+                    <!--                        app:layout_constraintBottom_toBottomOf="@+id/chonban_phieunhanban"-->
+                    <!--                        app:layout_constraintStart_toEndOf="@+id/tv_ban_phieunhanban"-->
+                    <!--                        app:layout_constraintTop_toTopOf="@+id/chonban_phieunhanban" />-->
+
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/dongia"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:text="@string/tv_gia"-->
+                    <!--                        android:textColor="@color/red"-->
+                    <!--                        android:textSize="20sp"-->
+                    <!--                        app:layout_constraintBottom_toBottomOf="@+id/chonban_phieunhanban"-->
+                    <!--                        app:layout_constraintStart_toEndOf="@+id/themban_phieunhanban"-->
+                    <!--                        app:layout_constraintTop_toBottomOf="@+id/tv_ban_phieunhanban" />-->
+
+                    <!--                    <TextView-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:text="300.000đ"-->
+                    <!--                        android:textColor="@color/red"-->
+                    <!--                        android:textSize="20sp"-->
+                    <!--                        app:layout_constraintBottom_toBottomOf="@+id/chonban_phieunhanban"-->
+                    <!--                        app:layout_constraintStart_toEndOf="@+id/dongia"-->
+                    <!--                        app:layout_constraintTop_toBottomOf="@+id/tv_ban_phieunhanban" />-->
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/footer_phieudatban"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_nhahang_khachsan"
+        android:padding="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_themphieudatban"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/action_datban"
+            app:layout_constraintBottom_toBottomOf="@+id/footer_phieudatban"
+            app:layout_constraintEnd_toEndOf="@+id/footer_phieudatban"
+            app:layout_constraintTop_toTopOf="@+id/footer_phieudatban" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

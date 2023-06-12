@@ -492,6 +492,16 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
 
     }
 
+    @Override
+    public void onThemPhieuNhanBanSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuNhanBanError(String error) {
+
+    }
+
 
     @Override
     public void onThemPhieuXuatSuccess() {

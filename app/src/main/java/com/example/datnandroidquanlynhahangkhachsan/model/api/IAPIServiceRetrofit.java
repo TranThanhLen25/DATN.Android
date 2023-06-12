@@ -13,6 +13,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHang
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.NhanBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.NhanPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.XuatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
@@ -181,6 +182,7 @@ public interface IAPIServiceRetrofit {
     @POST("/api/PhieuDat/them-PhieuDat-Ban")
     Call<ResponseInfo> ThemPhieuDatBan(@Body DatBanDTO datBanDTO);
 
-
+    @POST("/api/PhieuNhan/them-PhieuNhan-Ban")
+    Call<ResponseInfo> ThemPhieuNhanBan(@Body NhanBanDTO nhanBanDTO);
 
 }

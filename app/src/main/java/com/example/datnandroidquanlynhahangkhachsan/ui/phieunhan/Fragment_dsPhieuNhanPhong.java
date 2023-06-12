@@ -168,6 +168,16 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
 
     }
 
+    @Override
+    public void onThemPhieuNhanBanSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuNhanBanError(String error) {
+
+    }
+
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
         lsKhachHang = list;
         phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(this);

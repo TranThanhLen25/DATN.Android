@@ -492,6 +492,16 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
     }
 
     @Override
+    public void onThemPhieuNhanBanSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuNhanBanError(String error) {
+
+    }
+
+    @Override
     public void onLayLoaiPhongSuccess(List<LoaiPhongDTO> lsLoaiPhong) {
         loaiPhongDTOList = lsLoaiPhong;
     }

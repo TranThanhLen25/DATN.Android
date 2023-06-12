@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.model.phieunhan;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.ErrorMessageDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.NhanBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.NhanPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
@@ -67,6 +68,34 @@ public class PhieuNhanModel implements IPhieuNhanModel {
             @Override
             public void onSuccess(ResponseTokenDTO itemToken) {
                 service.apiServiceRetrofit.themPhieuNhan(nhanPhongDTO).enqueue(new Callback<ResponseInfo>() {
+                    @Override
+                    public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
+                        if (response.body() != null) {
+                            listener.onSuccess();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseInfo> call, Throwable t) {
+                        listener.onError(t.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+                listener.onError(error);
+            }
+        });
+    }
+
+    @Override
+    public void ThemPhieuNhanBan(NhanBanDTO nhanBanDTO, IOnThemPhieuNhanBanFinishedListener listener) {
+        service = new APIService();
+        service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
+            @Override
+            public void onSuccess(ResponseTokenDTO itemToken) {
+                service.apiServiceRetrofit.ThemPhieuNhanBan(nhanBanDTO).enqueue(new Callback<ResponseInfo>() {
                     @Override
                     public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
                         if (response.body() != null) {
