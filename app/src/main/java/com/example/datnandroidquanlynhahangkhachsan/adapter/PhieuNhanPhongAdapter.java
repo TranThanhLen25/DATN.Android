@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemPhieunhanphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.Fragment_dsPhieuNhanPhong;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatActivity;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
@@ -26,6 +27,8 @@ import java.util.List;
 public class PhieuNhanPhongAdapter extends RecyclerView.Adapter<PhieuNhanPhongAdapter.PhieuNhanPhongViewHolder> {
     private List<PhieuNhanDTO> lsPhieuNhan;
     private List<KhachHangDTO> lsKhachHang;
+
+    private List<PhieuXuatDTO> lsPhieuXuat;
     private AppUtils ac;
     private Context context;
 
@@ -37,7 +40,8 @@ public class PhieuNhanPhongAdapter extends RecyclerView.Adapter<PhieuNhanPhongAd
     public PhieuNhanPhongAdapter(Fragment_dsPhieuNhanPhong fragment_dsPhieuNhanPhong) {
     }
 
-    public void setData(List<PhieuNhanDTO> lsPhieuNhan, List<KhachHangDTO> lsKhachHang, Context context) {
+    public void setData(List<PhieuXuatDTO> lsPhieuXuat, List<PhieuNhanDTO> lsPhieuNhan, List<KhachHangDTO> lsKhachHang, Context context) {
+      this.lsPhieuXuat=lsPhieuXuat;
         this.lsPhieuNhan = lsPhieuNhan;
         this.lsKhachHang = lsKhachHang;
         this.context = context;
@@ -78,6 +82,14 @@ public class PhieuNhanPhongAdapter extends RecyclerView.Adapter<PhieuNhanPhongAd
                         editor.putString("TEN",lsKhachHang.get(i).getTenKhachHang());
                         editor.putString("CCCD",lsKhachHang.get(i).getCccd());
                         editor.putString("SDT",lsKhachHang.get(i).getSdt());
+                        editor.putLong("KHID",lsKhachHang.get(i).getKhachHangId());
+                    }
+                }
+                for (int i=0;i<lsPhieuXuat.size();i++)
+                {
+                    if (lsPhieuXuat.get(i).getPhieuNhanId()== phieuNhanDTO.getPhieuNhanId())
+                    {
+                        editor.putLong("PXID",lsPhieuXuat.get(i).getPhieuXuatId());
                     }
                 }
                 editor.putString("SCT",phieuNhanDTO.getSoChungTu());

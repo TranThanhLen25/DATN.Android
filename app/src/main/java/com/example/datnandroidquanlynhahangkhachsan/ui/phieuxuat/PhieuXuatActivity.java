@@ -19,6 +19,7 @@ import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuXuatChiTietAdap
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityPhieuXuatBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.DichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.XuatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanPhongChiTietDTO;
@@ -90,6 +91,12 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
     DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     String today = formatter.format(date);
 
+    private PhieuXuatDTO tamPhieuXuatDTO;
+
+    private List<PhieuXuatChiTietDTO> tamlsPhieuXuatChiTiet;
+
+    private XuatPhongDTO xuatPhongDTO;
+    private int temp = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,12 +105,14 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
         SharedPreferences sharedPreferences = getSharedPreferences("GET_PHONGID", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         lsPhieuXuatCT = new ArrayList<>();
-
         lsPhong = new ArrayList<>();
         loaiPhong = new ArrayList<>();
         lsDichVu = new ArrayList<>();
         lsPhieuNhanCT = new ArrayList<>();
         lsPhieuXuat=new ArrayList<>();
+        tamlsPhieuXuatChiTiet = new ArrayList<>();
+
+
         /// lấy loại phòng
         LoaiPhongPresenter loaiPhongPresenter = new LoaiPhongPresenter(this);
         loaiPhongPresenter.LayLoaiPhong();
@@ -156,10 +165,14 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
         DieuKienLocPhieuXuatChiTietDTO dieuKienLocPhieuXuatChiTietDTO = new DieuKienLocPhieuXuatChiTietDTO();
         dieuKienLocPhieuXuatChiTietDTO.setPhieuXuatId(pxid);
         phieuXuatPresenter.LayDanhSachPhieuXuatChiTiet(dieuKienLocPhieuXuatChiTietDTO);
+
         //// lấy phiếu xuất khi đã có phiếu xuất r
         DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO = new DieuKienLocPhieuXuatDTO();
         dieuKienLocPhieuXuatDTO.setPhieuXuatId(sharedPreferences.getLong("PXID",0L));
         phieuXuatPresenter.LayDanhSachPhieuXuat(dieuKienLocPhieuXuatDTO);
+
+
+
         ////lấy danh sach phiếu nhận chi tiết
         PhieuNhanPhongChiTietPresenter phieuNhanPhongChiTietPresenter = new PhieuNhanPhongChiTietPresenter(this);
         DieuKienLocPhieuNhanPhongChiTietDTO dieuKienLocPhieuNhanPhongChiTietDTO = new DieuKienLocPhieuNhanPhongChiTietDTO();
@@ -179,13 +192,9 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
         Date date = Calendar.getInstance().getTime();
 
 
-
         phieuXuatBinding.btnTraPhong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
 
         //// cap nhat PNct
                 for(int i=0;i<lsPhieuNhanCT.size();i++)
@@ -210,15 +219,74 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
 
                 }
 
-        /// cap nhat px
+                /// cap nhat px
                 phieuXuatDTO.setPhieuXuatId(pxid);
                 phieuXuatDTO.setTrangthai(2);
-                phieuXuatDTO.setSoChungTu(sharedPreferences.getString("SCT",""));
-                phieuXuatDTO.setTongThanhTien(sharedPreferences.getLong("THD_NGAY", 0L)+ sharedPreferences.getLong("THD_DV", 0L));
+                phieuXuatDTO.setSoChungTu(sharedPreferences.getString("SCT", ""));
+                phieuXuatDTO.setTongThanhTien(sharedPreferences.getLong("THD_NGAY", 0L) + sharedPreferences.getLong("THD_DV", 0L));
                 phieuXuatPresenter.CapNhatPX(phieuXuatDTO);
 
-        ////tao Phieu xuat va Phieu xuat chi tiet
+                ////tao Phieu xuat va Phieu xuat chi tiet
 
+
+            //// có phiếu xuất r nên chỉ tạo pxct
+                for (int i = 0; i < lsPhieuXuat.size(); i++) {
+                    if (lsPhieuXuat.get(i).getPhieuNhanId() == sharedPreferences.getLong("PNID", 0L)) {
+                        for (int a = 0; a < lsDichVu.size(); a++) {
+                            if (lsDichVu.get(a).getTrangThai().equals("chua thanh toan")) {
+                                PhieuXuatChiTietDTO phieuXuatChiTietDTO = new PhieuXuatChiTietDTO(
+                                        lsPhieuXuat.get(i).getPhieuXuatId()
+                                        , lsDichVu.get(a).getHangHoaId()
+                                        , Double.valueOf(lsDichVu.get(a).getSoLuong())
+                                        , Double.valueOf(lsDichVu.get(a).getDonGia())
+                                        , Double.valueOf((lsDichVu.get(a).getSoLuong()) * (lsDichVu.get(a).getDonGia()))
+                                        , "", ""
+                                        , sharedPreferences.getLong("PNCT", 0L));
+                                phieuXuatPresenter.ThemPhieuXuatChiTiet(phieuXuatChiTietDTO);
+                                dichVuDTO.setDichVuID(lsDichVu.get(a).getDichVuID());
+                                dichVuDTO.setTrangThai("da thanh toan");
+                                dichVuPresenter.CapNhatDV(dichVuDTO);
+                            }
+
+                        }
+                    }
+                }
+
+
+                if (lsPhieuXuat.size() == 0) {
+                dieuKienLocPhieuXuatDTO.setSoChungTu("px");
+                phieuXuatPresenter.LayDanhSachPhieuXuat(dieuKienLocPhieuXuatDTO);
+                    Toast.makeText(PhieuXuatActivity.this, ""+lsPhieuXuat.size(), Toast.LENGTH_SHORT).show();
+
+                    tamPhieuXuatDTO = new PhieuXuatDTO(
+                            sharedPreferences.getLong("KHID", 0L)
+                            , "PX" + (lsPhieuXuat.size() + 1)
+                            , sharedPreferences.getLong("PNID", 0L)
+                            , date
+                            , sharedPreferences.getInt("NGUOIDUNG", 0)
+                            , sharedPreferences.getLong("THD_NGAY", 0L) + sharedPreferences.getLong("THD_DV", 0L)
+                            , 0
+                            , 0
+                            , 2
+                            , ""
+                    );
+                    for (int r = 0; r < lsDichVu.size(); r++) {
+                        for (int a = 0; a < lsPhieuNhanCT.size(); a++) {
+                            PhieuXuatChiTietDTO phieuXuatChiTietDTO = new PhieuXuatChiTietDTO(
+                                    lsDichVu.get(r).getHangHoaId()
+                                    , Double.valueOf(lsDichVu.get(r).getSoLuong())
+                                    , Double.valueOf(lsDichVu.get(r).getDonGia())
+                                    , Double.valueOf((lsDichVu.get(r).getSoLuong()) * (lsDichVu.get(r).getDonGia()))
+                                    , ""
+                                    , ""
+                                    , lsPhieuNhanCT.get(a).getPhieuNhanPhongChiTietId());
+                            tamlsPhieuXuatChiTiet.add(phieuXuatChiTietDTO);
+                        }
+
+                    }
+                    xuatPhongDTO = new XuatPhongDTO(tamPhieuXuatDTO, tamlsPhieuXuatChiTiet);
+                    phieuXuatPresenter.ThemPhieuXuat(xuatPhongDTO);
+                }
 
 
                 Intent intent = new Intent(PhieuXuatActivity.this, ThanhToanActivity.class);
@@ -480,6 +548,7 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
                 button.setVisibility(View.GONE);
             }
         }
+
 
     }
 
