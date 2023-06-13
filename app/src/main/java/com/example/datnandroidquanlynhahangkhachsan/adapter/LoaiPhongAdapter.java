@@ -66,6 +66,8 @@ public class LoaiPhongAdapter extends RecyclerView.Adapter<LoaiPhongAdapter.Loai
         //lấy số lượng loại phòng có sẵn dùng cho chi tiết
         //if (tempData.datPhongDTO.getPhieuDatPhongChiTiets().size() > 0) {
         if (tempData.Check == true) {
+            holder.btnAdd.setVisibility(View.GONE);
+            holder.btnMinus.setVisibility(View.GONE);
             for (int i = 0; i < tempData.datPhongDTO.getPhieuDatPhongChiTiets().size(); i++) {
                 if (tempData.datPhongDTO.getPhieuDatPhongChiTiets().get(i).getLoaiPhongId() == loaiPhongDTO.getLoaiPhongId()) {
                     holder.tvsoluong.setText(String.valueOf(tempData.datPhongDTO.getPhieuDatPhongChiTiets().get(i).getSoLuong()));

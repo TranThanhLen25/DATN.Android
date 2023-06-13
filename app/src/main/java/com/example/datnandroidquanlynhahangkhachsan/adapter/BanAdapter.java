@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.datnandroidquanlynhahangkhachsan.Fragment_danhSachBan;
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.activityThemPhieuNhanBan;
+import com.example.datnandroidquanlynhahangkhachsan.activity_ChiTietBan;
 import com.example.datnandroidquanlynhahangkhachsan.activity_them_phieu_dat_ban;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemDanhsachphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.BanDTO;
@@ -237,8 +238,8 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
         chitiet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(dialog.getContext(), ChiTietbanActivity.class);
-//                context.startActivity(intent);
+                Intent intent = new Intent(dialog.getContext(), activity_ChiTietBan.class);
+                context.startActivity(intent);
 
                 //// lưu lại thông tin phòng cần xem chi tiết
                 SharedPreferences sharedPreferences = context.getSharedPreferences("CHITIETBAN", Context.MODE_PRIVATE);

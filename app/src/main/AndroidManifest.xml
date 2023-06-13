@@ -20,6 +20,9 @@
             android:name=".ui.phieuxuat.PhieuTraBanActivity"
             android:exported="false" />
         <activity
+            android:name=".activity_ChiTietBan"
+            android:exported="false" />
+        <activity
             android:name=".activityThemPhieuNhanBan"
             android:exported="false" />
         <activity

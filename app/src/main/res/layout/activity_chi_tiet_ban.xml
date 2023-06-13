@@ -4,78 +4,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.chitietphong.ChiTietPhongActivity">
-
+    tools:context=".activity_ChiTietBan">
     <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/toolbar_chitietphong"
+        android:id="@+id/toolbar_chitietban"
         layout="@layout/activity_appar_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:id="@+id/scr_chitietphong"
+        android:id="@+id/scr_chitietban"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingStart="10dp"
         android:paddingTop="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/footer_chitietphong"
+        app:layout_constraintBottom_toTopOf="@+id/footer_chitietban"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_chitietphong">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_chitietban">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/chitietphong"
+            android:id="@+id/chitietban"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/scr_chitietphong">
+            app:layout_constraintTop_toTopOf="@+id/scr_chitietban">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/headderchitietphong"
+                android:id="@+id/headderchitietban"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="@id/chitietphong"
-                app:layout_constraintStart_toStartOf="@id/chitietphong"
-                app:layout_constraintTop_toTopOf="@+id/chitietphong">
+                app:layout_constraintEnd_toEndOf="@id/chitietban"
+                app:layout_constraintStart_toStartOf="@id/chitietban"
+                app:layout_constraintTop_toTopOf="@+id/chitietban">
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/chitietheaderchitietphong"
+                    android:id="@+id/chitietheaderchitietban"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintStart_toStartOf="@id/headderchitietphong"
-                    app:layout_constraintTop_toTopOf="@+id/headderchitietphong">
+                    app:layout_constraintStart_toStartOf="@id/headderchitietban"
+                    app:layout_constraintTop_toTopOf="@+id/headderchitietban">
 
                     <TextView
-                        android:id="@+id/tv_chitietphong"
+                        android:id="@+id/tv_chitietban"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_tenphieu"
                         android:padding="10dp"
-                        android:text="@string/tv_chitietphong"
+                        android:text="Chi tiết bàn"
                         android:textSize="@dimen/heading_2"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/chitietheaderchitietphong" />
+                        app:layout_constraintTop_toTopOf="@id/chitietheaderchitietban" />
 
                     <TextView
-                        android:id="@+id/tv_sophong"
+                        android:id="@+id/tv_soban"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
-                        android:text="@string/tv_sophong"
+                        android:text="Số bàn"
                         android:textColor="@color/black"
                         android:textSize="@dimen/heading_2"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toEndOf="@id/tv_chitietphong"
-                        app:layout_constraintTop_toTopOf="@id/chitietheaderchitietphong"/>
+                        app:layout_constraintStart_toEndOf="@id/tv_chitietban"
+                        app:layout_constraintTop_toTopOf="@id/chitietheaderchitietban"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -86,16 +85,16 @@
                         android:textColor="@color/red"
                         android:textSize="@dimen/heading_2"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toEndOf="@+id/tv_sophong"
-                        app:layout_constraintTop_toTopOf="@id/chitietheaderchitietphong"/>
+                        app:layout_constraintStart_toEndOf="@+id/tv_soban"
+                        app:layout_constraintTop_toTopOf="@id/chitietheaderchitietban"/>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/tv_sochungtu_chitietphong"
+                        android:id="@+id/tv_sochungtu_chitietban"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintStart_toStartOf="@id/chitietheaderchitietphong"
-                        app:layout_constraintTop_toBottomOf="@id/tv_chitietphong">
+                        app:layout_constraintStart_toStartOf="@id/chitietheaderchitietban"
+                        app:layout_constraintTop_toBottomOf="@id/tv_chitietban">
 
                         <TextView
                             android:id="@+id/tv_sochungtu"
@@ -106,8 +105,8 @@
                             android:textSize="@dimen/heading_2"
                             android:textColor="@color/black"
                             android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="@id/tv_sochungtu_chitietphong"
-                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_chitietphong"/>
+                            app:layout_constraintStart_toStartOf="@id/tv_sochungtu_chitietban"
+                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_chitietban"/>
 
                         <TextView
                             android:id="@+id/tv_giachitiet"
@@ -119,23 +118,23 @@
                             android:textColor="@color/red"
                             android:textSize="@dimen/heading_2"
                             android:textStyle="bold"
-                            app:layout_constraintStart_toEndOf="@+id/tv_loaiphong"
-                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_chitietphong"/>
+                            app:layout_constraintStart_toEndOf="@+id/tv_loaiban"
+                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_chitietban"/>
 
                         <TextView
-                            android:id="@+id/tv_loaiphong"
+                            android:id="@+id/tv_loaiban"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="10dp"
-                            android:text="@string/tv_loaiphong"
+                            android:text="Loại Bàn:"
                             android:textSize="@dimen/heading_2"
                             android:textStyle="bold"
                             android:textColor="@color/black"
-                            app:layout_constraintStart_toStartOf="@+id/tv_sochungtu_chitietphong"
+                            app:layout_constraintStart_toStartOf="@+id/tv_sochungtu_chitietban"
                             app:layout_constraintTop_toBottomOf="@+id/tv_sochungtu"/>
 
                         <TextView
-                            android:id="@+id/tv_loaiphongchitiet"
+                            android:id="@+id/tv_loaibanchitiet"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="10dp"
@@ -144,7 +143,7 @@
                             android:textColor="@color/red"
                             android:textSize="@dimen/heading_2"
                             android:textStyle="bold"
-                            app:layout_constraintStart_toEndOf="@+id/tv_loaiphong"
+                            app:layout_constraintStart_toEndOf="@+id/tv_loaiban"
                             app:layout_constraintTop_toBottomOf="@+id/tv_giachitiet"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -154,13 +153,13 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/mainchitietphong"
+                android:id="@+id/mainchitietban"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="@id/chitietphong"
-                app:layout_constraintStart_toStartOf="@id/chitietphong"
-                app:layout_constraintTop_toBottomOf="@id/headderchitietphong">
+                app:layout_constraintEnd_toEndOf="@id/chitietban"
+                app:layout_constraintStart_toStartOf="@id/chitietban"
+                app:layout_constraintTop_toBottomOf="@id/headderchitietban">
 
                 <TextView
                     android:id="@+id/tv_hoten"
@@ -170,11 +169,11 @@
                     android:text="@string/tv_hoten"
                     android:textColor="@color/black"
                     android:textSize="@dimen/textview_tk_mk"
-                    app:layout_constraintStart_toStartOf="@+id/mainchitietphong"
-                    app:layout_constraintTop_toTopOf="@+id/mainchitietphong"/>
+                    app:layout_constraintStart_toStartOf="@+id/mainchitietban"
+                    app:layout_constraintTop_toTopOf="@+id/mainchitietban"/>
 
                 <EditText
-                    android:id="@+id/et_hoten_chitietphong"
+                    android:id="@+id/et_hoten_chitietban"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@drawable/bg_edittext"
@@ -182,38 +181,38 @@
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
-                    android:id="@+id/tv_cccd_chitietphong"
+                    android:id="@+id/tv_cccd_chitietban"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/tv_ghichu"
                     android:textColor="@color/black"
                     android:textSize="@dimen/textview_tk_mk"
-                    app:layout_constraintStart_toStartOf="@+id/mainchitietphong"
-                    app:layout_constraintTop_toBottomOf="@+id/et_hoten_chitietphong"/>
+                    app:layout_constraintStart_toStartOf="@+id/mainchitietban"
+                    app:layout_constraintTop_toBottomOf="@+id/et_hoten_chitietban"/>
 
                 <EditText
-                    android:id="@+id/et_ghichu_chitietphong"
+                    android:id="@+id/et_ghichu_chitietban"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@drawable/bg_edittext"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_cccd_chitietphong"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_cccd_chitietban"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
-                    android:id="@+id/tv_csvc_chitietphong"
+                    android:id="@+id/tv_csvc_chitietban"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
-                    android:visibility="invisible"
                     android:text="@string/tv_csvc"
                     android:textColor="@color/black"
                     android:textSize="@dimen/textview_tk_mk"
-                    app:layout_constraintStart_toStartOf="@+id/mainchitietphong"
-                    app:layout_constraintTop_toBottomOf="@+id/et_ghichu_chitietphong"/>
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toStartOf="@+id/mainchitietban"
+                    app:layout_constraintTop_toBottomOf="@+id/et_ghichu_chitietban"/>
 
                 <TextView
-                    android:id="@+id/tv_csvc_data_chitietphong"
+                    android:id="@+id/tv_csvc_data_chitietban"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
@@ -221,15 +220,15 @@
                     android:text="máy lạnh, tủ lạnh,..."
                     android:textColor="@color/black"
                     android:textSize="@dimen/textview_tk_mk"
-                    app:layout_constraintStart_toEndOf="@+id/tv_csvc_chitietphong"
-                    app:layout_constraintTop_toBottomOf="@+id/et_ghichu_chitietphong"/>
+                    app:layout_constraintStart_toEndOf="@+id/tv_csvc_chitietban"
+                    app:layout_constraintTop_toBottomOf="@+id/et_ghichu_chitietban"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_gachngang_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="@+id/mainchitietphong"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_csvc_data_chitietphong">
+                    app:layout_constraintStart_toStartOf="@+id/mainchitietban"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_csvc_data_chitietban">
 
                     <View
                         android:layout_width="match_parent"
@@ -242,7 +241,7 @@
                     android:id="@+id/additem_dichvu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="@+id/mainchitietphong"
+                    app:layout_constraintStart_toStartOf="@+id/mainchitietban"
                     app:layout_constraintTop_toBottomOf="@id/layout_gachngang_1">
 
                     <ImageButton
@@ -250,7 +249,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:contentDescription="themphong"
+                        android:contentDescription="themban"
                         android:padding="15dp"
                         android:src="@drawable/ic_additem"
                         app:layout_constraintStart_toStartOf="@id/additem_dichvu"
@@ -271,7 +270,7 @@
                     android:id="@+id/layout_gachngang_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="@+id/mainchitietphong"
+                    app:layout_constraintStart_toStartOf="@+id/mainchitietban"
                     app:layout_constraintTop_toBottomOf="@+id/additem_dichvu">
 
                     <View
@@ -284,7 +283,7 @@
                 <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
                 <!--                    android:layout_width="match_parent"-->
                 <!--                    android:layout_height="wrap_content"-->
-                <!--                    app:layout_constraintStart_toStartOf="@+id/mainchitietphong"-->
+                <!--                    app:layout_constraintStart_toStartOf="@+id/mainchitietban"-->
                 <!--                    app:layout_constraintTop_toBottomOf="@+id/layout_gachngang_2">-->
 
                 <!--                    <androidx.recyclerview.widget.RecyclerView-->
@@ -297,11 +296,11 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    app:layout_constraintStart_toStartOf="@+id/mainchitietphong"
+                    app:layout_constraintStart_toStartOf="@+id/mainchitietban"
                     app:layout_constraintTop_toBottomOf="@+id/layout_gachngang_2">
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rscv_dichvu"
+                        android:id="@+id/rscv_goimon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layout_constraintStart_toStartOf="parent"
@@ -313,7 +312,7 @@
     </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/footer_chitietphong"
+        android:id="@+id/footer_chitietban"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_nhahang_khachsan"
@@ -323,36 +322,34 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/tv_tongtien_chitietphong"
+            android:id="@+id/tv_tongtien_chitietban"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tv_tong"
             android:textColor="@color/red"
-            android:visibility="invisible"
             android:textSize="@dimen/heading_2"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="@+id/footer_chitietphong"
-            app:layout_constraintStart_toStartOf="@+id/footer_chitietphong"/>
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="@+id/footer_chitietban"
+            app:layout_constraintStart_toStartOf="@+id/footer_chitietban"/>
         <TextView
-            android:id="@+id/tv_tongtien_data_chitietphong"
+            android:id="@+id/tv_tongtien_data_chitietban"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
             android:text="500.000đ"
+            android:visibility="invisible"
             android:textSize="@dimen/heading_2"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="@+id/footer_chitietphong"
-            app:layout_constraintStart_toEndOf="@+id/tv_tongtien_chitietphong"/>
+            app:layout_constraintTop_toTopOf="@+id/footer_chitietban"
+            app:layout_constraintStart_toEndOf="@+id/tv_tongtien_chitietban"/>
 
         <Button
-            android:id="@+id/btn_luu_chitietphong"
+            android:id="@+id/btn_luu_chitietban"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/action_luu"
-            app:layout_constraintBottom_toBottomOf="@+id/footer_chitietphong"
-            app:layout_constraintEnd_toEndOf="@+id/footer_chitietphong"
-            app:layout_constraintTop_toTopOf="@+id/footer_chitietphong"/>
+            app:layout_constraintBottom_toBottomOf="@+id/footer_chitietban"
+            app:layout_constraintEnd_toEndOf="@+id/footer_chitietban"
+            app:layout_constraintTop_toTopOf="@+id/footer_chitietban"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
