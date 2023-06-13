@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -118,12 +117,12 @@ public class Fragment_danhSachBan extends Fragment implements BanContract.View {
         BanAdapter banAdapter = new BanAdapter(this);
         banAdapter.setData(lsBan, lsLoaiBan, getContext());
         recyclerViewBan.setAdapter(banAdapter);
-        Toast.makeText(getActivity(), "aaaaaaaa", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "aaaaaaaa", Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public void onLayDanhSachLoaiBanError(String error) {
-        Toast.makeText(getActivity(), "ssssssss", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(getActivity(), "ssssssss", Toast.LENGTH_SHORT).show();
     }
 }
