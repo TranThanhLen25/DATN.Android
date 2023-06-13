@@ -170,6 +170,11 @@ public class Fragment_danhSachBan extends Fragment implements BanContract.View, 
     @Override
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
         lsKhachHang=list;
+        BanAdapter banAdapter = new BanAdapter(this);
+        banAdapter.setData(lsKhachHang,lsPNCT,lsPhieuNhan, lsBan, lsLoaiBan, getContext());
+        recyclerViewBan.setAdapter(banAdapter);
+
+
     }
 
     @Override
@@ -179,7 +184,12 @@ public class Fragment_danhSachBan extends Fragment implements BanContract.View, 
     //lấy danh sách phiếu nhận phòng
     @Override
     public void onLayDanhSachPhieuNhanSuccess(List<PhieuNhanDTO> list) {
+
         lsPhieuNhan=list;
+        BanAdapter banAdapter = new BanAdapter(this);
+        banAdapter.setData(lsKhachHang,lsPNCT,lsPhieuNhan, lsBan, lsLoaiBan, getContext());
+        recyclerViewBan.setAdapter(banAdapter);
+
     }
 
     @Override
@@ -224,9 +234,17 @@ public class Fragment_danhSachBan extends Fragment implements BanContract.View, 
     @Override
     public void onLayDanhSachPhieuNhanBanChiTietSuccess(List<PhieuNhanBanChiTietDTO> list){
         lsPNCT=list;
+        BanAdapter banAdapter = new BanAdapter(this);
+        banAdapter.setData(lsKhachHang,lsPNCT,lsPhieuNhan, lsBan, lsLoaiBan, getContext());
+        recyclerViewBan.setAdapter(banAdapter);
+
+
 
     }
 
     @Override
-    public void onLayDanhSachPhieuNhanBanChiTietError(String error){}
+    public void onLayDanhSachPhieuNhanBanChiTietError(String error){
+
+
+    }
 }
