@@ -17,6 +17,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanPhongChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
@@ -116,7 +117,7 @@ public class Fragment_Phong extends Fragment implements PhongContract.View, Loai
         PhieuNhanPhongChiTietPresenter phieuNhanPhongChiTietPresenter = new PhieuNhanPhongChiTietPresenter(this);
         DieuKienLocPhieuNhanPhongChiTietDTO dieuKienLocPhieuNhanPhongChiTietDTO = new DieuKienLocPhieuNhanPhongChiTietDTO();
         phieuNhanPhongChiTietPresenter.LayDanhSachPhieuNhanPhongChiTiet(dieuKienLocPhieuNhanPhongChiTietDTO);
-////lay khach hang
+        ////lay khach hang
         lsKhachHang = new ArrayList<>();
         ///lấy khách hàng
         KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
@@ -124,7 +125,6 @@ public class Fragment_Phong extends Fragment implements PhongContract.View, Loai
         khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
         ////lay phieu nhan
         lsPhieuNhan = new ArrayList<>();
-        //// lấy ra ds PN
         DsPhieuNhanPhongPresenter dsPhieuNhanPhongPresenter = new DsPhieuNhanPhongPresenter(this);
         DieuKienLocPhieuNhanDTO dieuKienLocPhieuNhanDTO = new DieuKienLocPhieuNhanDTO();
         dsPhieuNhanPhongPresenter.LayDanhSachPhieuNhan(dieuKienLocPhieuNhanDTO);
@@ -267,6 +267,10 @@ public class Fragment_Phong extends Fragment implements PhongContract.View, Loai
     public void onThemPhieuNhanBanError(String error) {
 
     }
+    @Override
+    public  void onLayDanhSachPhieuNhanBanChiTietSuccess(List<PhieuNhanBanChiTietDTO> list){}
 
+    @Override
+    public void onLayDanhSachPhieuNhanBanChiTietError(String error){}
 
 }

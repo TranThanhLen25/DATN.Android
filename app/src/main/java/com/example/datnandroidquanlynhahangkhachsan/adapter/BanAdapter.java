@@ -20,18 +20,22 @@ import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.activityThemPhieuNhanBan;
 import com.example.datnandroidquanlynhahangkhachsan.activity_ChiTietBan;
 import com.example.datnandroidquanlynhahangkhachsan.activity_them_phieu_dat_ban;
-
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemDanhsachphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.BanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.LoaiBanDTO;
-
-
+import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanBanChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuTraBanActivity;
 
 import java.util.List;
 
 public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
     private List<BanDTO> lsBan;
     private List<LoaiBanDTO> lsLoaiBan;
+    private List<PhieuNhanDTO> lsPhieuNhan;
+    private List<PhieuNhanBanChiTietDTO> lsPNBanCT;
+    private List<KhachHangDTO> lsKhachHang;
     private Context context;
 
     private int loaibanid;
@@ -39,8 +43,14 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
     private String tenban;
     private int songuoi;
     private String tenloaiban;
-
+    private long pnct;
+    private long pnid;
+    private long khachhang;
+    private int nguoidung;
     private int trangThai;
+    private String ten;
+    private String cccd;
+    private String sdt;
 
 
     public BanAdapter(List<BanDTO> lsBan) {
@@ -51,7 +61,10 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
 
     }
 
-    public void setData(List<BanDTO> lsBan, List<LoaiBanDTO> lsLoaiBan, Context context) {
+    public void setData(List<KhachHangDTO> lsKhachHang, List<PhieuNhanBanChiTietDTO> lsPNBanCT, List<PhieuNhanDTO> lsPhieuNhan, List<BanDTO> lsBan, List<LoaiBanDTO> lsLoaiBan, Context context) {
+        this.lsKhachHang = lsKhachHang;
+        this.lsPNBanCT = lsPNBanCT;
+        this.lsPhieuNhan = lsPhieuNhan;
         this.lsBan = lsBan;
         this.lsLoaiBan = lsLoaiBan;
         this.context = context;
@@ -76,7 +89,7 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
         if (banDTO == null) {
             return;
         }
-        trangThai = banDTO.getTrangThaiId();
+
         if (banDTO.getTrangThaiId() == 4) {
             holder.dsBanBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_color_conguoi);
         } else if (banDTO.getTrangThaiId() == 3) {
@@ -91,17 +104,48 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
                 holder.dsBanBinding.tvLoaiphong.setText(lsLoaiBan.get(i).getTenLoaiBan());
                 holder.dsBanBinding.tvGiatien.setText(String.valueOf(lsLoaiBan.get(i).getSoNguoiToiDa()));
                 songuoi=lsLoaiBan.get(i).getSoNguoiToiDa();
-                tenloaiban=lsLoaiBan.get(i).getTenLoaiBan();
+
             }
         }
         holder.dsBanBinding.tvSophong.setText(banDTO.getTenBan());
 
-        loaibanid = banDTO.getLoaiBanId();
-        banid = banDTO.getBanId();
-        tenban=banDTO.getTenBan();
+
+
+
        holder.dsBanBinding.itemDsphong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                trangThai = banDTO.getTrangThaiId();
+                loaibanid = banDTO.getLoaiBanId();
+                banid = banDTO.getBanId();
+                tenban=banDTO.getTenBan();
+
+                for (int i = 0; i < lsLoaiBan.size(); i++) {
+                    if (lsLoaiBan.get(i).getLoaiBanId() == banDTO.getLoaiBanId()) {
+                        tenloaiban=lsLoaiBan.get(i).getTenLoaiBan();
+                    }
+                }
+
+
+                for (int i = 0; i < lsPNBanCT.size(); i++) {
+                    if (lsPNBanCT.get(i).getBanId() == banid) {
+                        pnct = lsPNBanCT.get(i).getPhieuDatBanChiTietId();
+                        pnid = lsPNBanCT.get(i).getPhieuNhanId();
+                    }
+                }
+                for (int i = 0; i < lsPhieuNhan.size(); i++) {
+                    if (lsPhieuNhan.get(i).getPhieuNhanId() == pnid) {
+                        khachhang = lsPhieuNhan.get(i).getKhachHangId();
+                        nguoidung = lsPhieuNhan.get(i).getNguoiDungId();
+                    }
+                }
+                for (int i = 0; i < lsKhachHang.size(); i++) {
+                    if (lsKhachHang.get(i).getKhachHangId() == khachhang) {
+                        sdt = lsKhachHang.get(i).getSdt();
+                        cccd = lsKhachHang.get(i).getCccd();
+                        ten = lsKhachHang.get(i).getTenKhachHang();
+                    }
+                }
                 openDialog();
             }
         });
@@ -161,6 +205,7 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
         } else
 //// nếu phòng đã có người thì không được chjọn nhận phòng
         {
+
             nhanban.setVisibility(View.GONE);
         }
         // sự kiện khi nhấn vào text trong dialog
@@ -209,28 +254,25 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
             @Override
             public void onClick(View view) {
 
-                if (trangThai == 4) {
-//                    Intent intent = new Intent(dialog.getContext(), PhieuTrabanActivity.class);
-//                    context.startActivity(intent);
 //                    SharedPreferences sharedPreferences = context.getSharedPreferences("GET_BANID", Context.MODE_PRIVATE);
 //                    SharedPreferences.Editor editor = sharedPreferences.edit();
-//                    editor.putInt("banID", banid);
-//                    editor.putInt("SOban", so);
-//                    editor.putInt("GIA", gia);
-//                    editor.putLong("PNID", phieunhanid);
-//                    editor.putLong("KHID", khachhangid);
-//                    editor.putString("TEN", ten);
-//                    editor.putString("CCCD", cccd);
-//                    editor.putString("SDT", sdt);
-//                    editor.putInt("NGUOIDUNG", nguoidungid);
-//                    editor.putLong("PNCT", pnct);
+//                    editor.putInt("BANID", banid);
+//                    editor.putString("TENBAN",tenban );
+//                    editor.putLong("PNID",pnid );
+//                    editor.putLong("KHID",khachhang );
+//                    editor.putString("TEN",ten );
+//                    editor.putString("CCCD",cccd );
+//                    editor.putString("SDT",sdt );
+//                    editor.putInt("NGUOIDUNG",nguoidung );
+//                    editor.putLong("PNCT",pnct );
 //                    editor.commit();
 //                    dialog.dismiss();
-                } else {
+                    Intent intent = new Intent(dialog.getContext(), PhieuTraBanActivity.class);
+
                     dialog.dismiss();
 
                 }
-            }
+
 
 
         });

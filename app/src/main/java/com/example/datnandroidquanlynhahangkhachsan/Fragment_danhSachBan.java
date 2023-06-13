@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -14,8 +15,21 @@ import com.example.datnandroidquanlynhahangkhachsan.adapter.BanAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDanhSachBanBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.BanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.LoaiBanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienLocKhachHangDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanBanChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanBanChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Ban.BanContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Ban.BanPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.PhieuNhanPhongChiTietContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.PhieuNhanPhongChiTietPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +39,7 @@ import java.util.List;
  * Use the {@link Fragment_danhSachBan#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_danhSachBan extends Fragment implements BanContract.View {
+public class Fragment_danhSachBan extends Fragment implements BanContract.View, KhachHangContract.View, PhieuNhanPhongChiTietContract.View, DsPhieuNhanPhongContract.View {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,6 +53,9 @@ public class Fragment_danhSachBan extends Fragment implements BanContract.View {
     private RecyclerView recyclerViewBan;
     private List<BanDTO> lsBan;
     private List<LoaiBanDTO> lsLoaiBan;
+    private List<PhieuNhanDTO> lsPhieuNhan;
+    private List<PhieuNhanBanChiTietDTO> lsPNCT;
+    private List<KhachHangDTO> lsKhachHang;
     private Context context;
 
     public Fragment_danhSachBan() {
@@ -79,13 +96,28 @@ public class Fragment_danhSachBan extends Fragment implements BanContract.View {
         FragmentDanhSachBanBinding danhSachBanBinding = FragmentDanhSachBanBinding.inflate(getLayoutInflater());
         lsBan = new ArrayList<>();
         lsLoaiBan = new ArrayList<>();
+        lsPNCT=new ArrayList<>();
+        lsPhieuNhan=new ArrayList<>();
+        lsKhachHang=new ArrayList<>();
         ///laay Ban
         BanPresenter banPresenter = new BanPresenter(this);
         banPresenter.LayDanhSachBan();
-
         /// laay loai ban
         BanPresenter banPresenter1 = new BanPresenter(this);
         banPresenter1.LayDanhSachLoaiBan();
+        ///lay pnct
+        PhieuNhanPhongChiTietPresenter phieuNhanBanChiTietPresenter=new PhieuNhanPhongChiTietPresenter(this);
+        DieuKienLocPhieuNhanBanChiTietDTO dieuKienLocPhieuNhanBanChiTietDTO=new DieuKienLocPhieuNhanBanChiTietDTO();
+        phieuNhanBanChiTietPresenter.LayDanhSachPhieuNhanBanChiTiet(dieuKienLocPhieuNhanBanChiTietDTO);
+        ///lay pn
+        DsPhieuNhanPhongPresenter phieuNhanPhongPresenter=new DsPhieuNhanPhongPresenter(this);
+        DieuKienLocPhieuNhanDTO dieuKienLocPhieuNhanDTO=new DieuKienLocPhieuNhanDTO();
+        phieuNhanPhongPresenter.LayDanhSachPhieuNhan(dieuKienLocPhieuNhanDTO);
+        /// lay khach hang
+        KhachHangPresenter khachHangPresenter=new KhachHangPresenter(this);
+        DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO=new DieuKienLocKhachHangDTO();
+        khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
+
 
         recyclerViewBan = danhSachBanBinding.rscvDsban;
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this.getActivity(), 3);
@@ -103,7 +135,7 @@ public class Fragment_danhSachBan extends Fragment implements BanContract.View {
     public void onLayDanhSachBanSuccess(List<BanDTO> lsDanhSachBan) {
         lsBan = lsDanhSachBan;
         BanAdapter banAdapter = new BanAdapter(this);
-        banAdapter.setData(lsBan, lsLoaiBan, getContext());
+        banAdapter.setData(lsKhachHang,lsPNCT,lsPhieuNhan, lsBan, lsLoaiBan, getContext());
         recyclerViewBan.setAdapter(banAdapter);
     }
 
@@ -115,14 +147,86 @@ public class Fragment_danhSachBan extends Fragment implements BanContract.View {
     public void onLayDanhSachLoaiBanSuccess(List<LoaiBanDTO> list) {
         lsLoaiBan = list;
         BanAdapter banAdapter = new BanAdapter(this);
-        banAdapter.setData(lsBan, lsLoaiBan, getContext());
+        banAdapter.setData(lsKhachHang,lsPNCT,lsPhieuNhan, lsBan, lsLoaiBan, getContext());
         recyclerViewBan.setAdapter(banAdapter);
-        //Toast.makeText(getActivity(), "aaaaaaaa", Toast.LENGTH_SHORT).show();
+
 
     }
 
     @Override
     public void onLayDanhSachLoaiBanError(String error) {
-       // Toast.makeText(getActivity(), "ssssssss", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Lấy dữ liệu thất bại!!!", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onThemKhachHangSuccess() {
+    }
+
+    @Override
+    public void onThemKhachHangError(String error) {
+    }
+
+
+    @Override
+    public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
+        lsKhachHang=list;
+    }
+
+    @Override
+    public void onLayDanhSachKhachHangError(String error) {
+    }
+
+    //lấy danh sách phiếu nhận phòng
+    @Override
+    public void onLayDanhSachPhieuNhanSuccess(List<PhieuNhanDTO> list) {
+        lsPhieuNhan=list;
+    }
+
+    @Override
+    public void onLayDanhSachPhieuNhanError(String error) {
+    }
+
+    //thêm phiếu đặt phòng
+    @Override
+    public void onThemPhieuNhanPhongSuccess() {
+    }
+
+    @Override
+    public void onThemPhieuNhanPhongError(String error) {
+    }
+
+    //thêm phiếu nhận bàn
+    @Override
+    public void onThemPhieuNhanBanSuccess() {
+    }
+
+    @Override
+    public void onThemPhieuNhanBanError(String error) {
+    }
+
+    @Override
+    public void onCapNhatPhieuNhanPhongChiTietSuccess() {
+    }
+
+    @Override
+    public void onCapNhatPhieuNhanPhongChiTietError(String error) {
+    }
+
+    @Override
+    public void onLayDanhSachPhieuNhanPhongChiTietSuccess(List<PhieuNhanPhongChiTietDTO> list) {
+
+    }
+
+    @Override
+    public void onLayDanhSachPhieuNhanPhongChiTietError(String error) {
+    }
+
+    @Override
+    public void onLayDanhSachPhieuNhanBanChiTietSuccess(List<PhieuNhanBanChiTietDTO> list){
+        lsPNCT=list;
+
+    }
+
+    @Override
+    public void onLayDanhSachPhieuNhanBanChiTietError(String error){}
 }

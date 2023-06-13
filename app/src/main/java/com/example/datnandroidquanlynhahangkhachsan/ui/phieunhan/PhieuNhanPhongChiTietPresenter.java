@@ -1,8 +1,10 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan;
 
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanPhongChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanPhongChiTietDTO;
 
@@ -48,5 +50,20 @@ public class PhieuNhanPhongChiTietPresenter implements PhieuNhanPhongChiTietCont
                 view.onLayDanhSachPhieuNhanPhongChiTietError(error);
             }
         });
+    }
+
+        @Override
+        public void LayDanhSachPhieuNhanBanChiTiet(DieuKienLocPhieuNhanBanChiTietDTO phieuNhanBanChiTietDTO) {
+            phieuNhanPhongChiTietModel.LayDanhSachPhieuNhanBanChiTiet(phieuNhanBanChiTietDTO, new IPhieuNhanPhongChiTietModel.IOnLayDanhSachPhieuNhanBanChiTietFinishedListener() {
+                @Override
+                public void onSuccess(List<PhieuNhanBanChiTietDTO> listResult) {
+                    view.onLayDanhSachPhieuNhanBanChiTietSuccess(listResult);
+                }
+
+                @Override
+                public void onError(String error) {
+                    view.onLayDanhSachPhieuNhanBanChiTietError(error);
+                }
+            });
     }
 }
