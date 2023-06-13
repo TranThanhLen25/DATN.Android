@@ -25,8 +25,10 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanPhongChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatChiTietDTO;
@@ -184,5 +186,12 @@ public interface IAPIServiceRetrofit {
 
     @POST("/api/PhieuNhan/them-PhieuNhan-Ban")
     Call<ResponseInfo> ThemPhieuNhanBan(@Body NhanBanDTO nhanBanDTO);
+
+    //////
+
+
+    @POST("/api/PhieuNhanBanChiTiet/danhsach-phieunhanbanCT?")
+    Call<ResponseDTO<List<PhieuNhanBanChiTietDTO>>>layPhieuNhanBanChiTiet(@Body DieuKienLocPhieuNhanBanChiTietDTO dieuKienLocPhieuNhanBanChiTietDTO);
+
 
 }
