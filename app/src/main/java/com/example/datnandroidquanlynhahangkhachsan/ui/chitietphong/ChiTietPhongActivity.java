@@ -175,24 +175,30 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 
         hangHoaPresenter = new HangHoaPresenter(this);
 
+        //lấy dữ liệu menu
+        dichVuPresenter.LayDanhSachDichVu(dichVuDTO);
+
+        //lấy dữ liệu hàng hóa
+        hangHoaPresenter.LayDanhSachHangHoa2("");
+
         //lấy dữ liệu menu mỗi giây//
-        handler.postDelayed(runnable = new Runnable() {
-            int count = 0;
-
-            public void run() {
-                count++;
-                handler.postDelayed(runnable, delay);
-
-                //lấy dữ liệu menu
-                dichVuPresenter.LayDanhSachDichVu(dichVuDTO);
-
-                //lấy dữ liệu hàng hóa
-                hangHoaPresenter.LayDanhSachHangHoa2("");
-                if (count == 10) {
-                    handler.removeCallbacks(runnable);
-                }
-            }
-        }, delay);
+//        handler.postDelayed(runnable = new Runnable() {
+//            int count = 0;
+//
+//            public void run() {
+//                count++;
+//                handler.postDelayed(runnable, delay);
+//
+//                //lấy dữ liệu menu
+//                dichVuPresenter.LayDanhSachDichVu(dichVuDTO);
+//
+//                //lấy dữ liệu hàng hóa
+//                hangHoaPresenter.LayDanhSachHangHoa2("");
+//                if (count == 10) {
+//                    handler.removeCallbacks(runnable);
+//                }
+//            }
+//        }, delay);
 
 
 //        menuAdapter = new MenuAdapter(dichVuDTOList, hangHoaDTOList);
@@ -349,7 +355,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int position) {
-        menuAdapter.removeItem(viewHolder.getAdapterPosition());
+        //menuAdapter.removeItem(viewHolder.getAdapterPosition());
     }
 
 
@@ -394,6 +400,8 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
             xoaTatCaMenu = dichVuDTOList.get(0);
         }
 //        listDichVuBanDau = dichVuDTOList;
+        menuAdapter = new MenuAdapter(dichVuDTOList, hangHoaDTOList);
+        rscvDichVu.setAdapter(menuAdapter);
     }
 
     @Override
