@@ -21,10 +21,9 @@ public class MenuBanAdapter extends RecyclerView.Adapter<MenuBanAdapter.MenuBanV
     private List<HangHoaDTO> lsHangHoa;
     private HangHoaDTO hangHoaDTO;
 
-    public MenuBanAdapter(List<GoiMonDTO> lsGoiMon, List<HangHoaDTO> lsHangHoa, HangHoaDTO hangHoaDTO) {
+    public MenuBanAdapter(List<GoiMonDTO> lsGoiMon, List<HangHoaDTO> lsHangHoa) {
         this.lsGoiMon = lsGoiMon;
         this.lsHangHoa = lsHangHoa;
-        this.hangHoaDTO = hangHoaDTO;
     }
 
     @NonNull
@@ -101,6 +100,6 @@ public class MenuBanAdapter extends RecyclerView.Adapter<MenuBanAdapter.MenuBanV
     public void removeItem(int index) {
         lsGoiMon.remove(index);
         notifyItemRemoved(index);
-        notifyDataSetChanged();
+       // notifyDataSetChanged();
     }
 }

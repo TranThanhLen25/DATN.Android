@@ -1,11 +1,15 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.adapter.MenuBanAdapter;
@@ -17,9 +21,12 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.goiMon.GoiMonDTO;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Ban.BanContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Ban.BanPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.DanhSachMenuActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.HangHoaContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.HangHoaPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.chitietphong.ItemTouchHelperListener;
+import com.example.datnandroidquanlynhahangkhachsan.ui.chitietphong.MyButtonClickListener;
+import com.example.datnandroidquanlynhahangkhachsan.ui.chitietphong.RecycleViewItemTouchHelper;
 import com.example.datnandroidquanlynhahangkhachsan.ui.goiMon.goiMonContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.goiMon.goiMonPresenter;
 
@@ -28,7 +35,7 @@ import java.util.List;
 
 public class activity_ChiTietBan extends AppCompatActivity implements goiMonContract.View, HangHoaContract.View, ItemTouchHelperListener, BanContract.View {
 
-    private RecyclerView rscvDichVu;
+    private RecyclerView rscvGoiMon;
     private GoiMonDTO xoaTatCaMenu;
     private List<GoiMonDTO> goiMonDTOListHienThi;
     private List<GoiMonDTO> goiMonDTOListCapNhat;
@@ -79,7 +86,80 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
         //khởi tạo list hàng hóa id
         tempData.lsDichVu = new ArrayList<>();
 
+        activityChiTietBanBinding.imgMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity_ChiTietBan.this, DanhSachMenuActivity.class);
+                startActivity(intent);
+            }
+        });
+        rscvGoiMon = activityChiTietBanBinding.rscvGoimon;
 
+        //khởi tạo list menu
+        goiMonDTOListHienThi = new ArrayList<>();
+
+
+        //lấy dữ liệu menu của phòng này;
+        goiMonPresenter = new goiMonPresenter(this);
+        GoiMonDTO goiMonDTO = new GoiMonDTO();
+        SharedPreferences sharedPreferences = getSharedPreferences("CHITIETBAN", MODE_PRIVATE);
+        int banID = sharedPreferences.getInt("BANID", 0);
+        goiMonDTO.setBanId(banID);
+        goiMonDTO.setTrangThai("chưa thanh toán");
+        goiMonDTO.setGhiChu("");
+
+        hangHoaPresenter = new HangHoaPresenter(this);
+
+        LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this);
+        rscvGoiMon.setLayoutManager(LinearLayoutManager);
+        RecyclerView.ItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        rscvGoiMon.addItemDecoration(decoration);
+
+        //lấy dữ liệu menu
+        goiMonPresenter.LayDanhSachGoiMon(goiMonDTO);
+
+        //lấy dữ liệu hàng hóa
+        hangHoaPresenter.LayDanhSachHangHoa2("");
+
+
+        //lấy dữ liệu menu mỗi giây//
+//        handler.postDelayed(runnable = new Runnable() {
+//            int count = 0;
+//
+//            public void run() {
+//                count++;
+//                handler.postDelayed(runnable, delay);
+//
+//                //lấy dữ liệu menu
+//                goiMonPresenter.LayDanhSachGoiMon(goiMonDTO);
+//
+//                //lấy dữ liệu hàng hóa
+//                hangHoaPresenter.LayDanhSachHangHoa2("");
+//                if (count == 10) {
+//                    handler.removeCallbacks(runnable);
+//                }
+//            }
+//        }, delay);
+
+        RecycleViewItemTouchHelper recycleViewItemTouchHelper = new RecycleViewItemTouchHelper(this, rscvGoiMon, 300) {
+
+            @Override
+            public void instantiateMyButton(RecyclerView.ViewHolder viewHolder, List<RecycleViewItemTouchHelper.MyButton> buffer) {
+                buffer.add(new MyButton(activity_ChiTietBan.this,
+                        "Delete",
+                        30,
+                        0,
+                        Color.parseColor("#FF3c30"),
+                        new MyButtonClickListener() {
+                            @Override
+                            public void onClick(int pos) {
+                                //Toast.makeText(ChiTietPhongActivity.this, "Delete click", Toast.LENGTH_LONG).show();
+                                int position = viewHolder.getLayoutPosition();
+                                menuBanAdapter.removeItem(position);
+                            }
+                        }));
+            }
+        };
     }
 
     @Override
@@ -104,7 +184,10 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
 
     @Override
     public void onLayDanhSachHangHoaSuccess(List<HangHoaDTO> list) {
-
+        hangHoaDTOList = list;
+        menuBanAdapter =new MenuBanAdapter(goiMonDTOListHienThi,hangHoaDTOList);
+        rscvGoiMon.setAdapter(menuBanAdapter);
+        //Toast.makeText(this,String.valueOf(goiMonDTOListHienThi.size()), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -124,7 +207,13 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
 
     @Override
     public void onLayDanhSachGoiMonSuccess(List<GoiMonDTO> list) {
-
+        goiMonDTOListHienThi = list;
+        if (goiMonDTOListHienThi.size() > 0) {
+            xoaTatCaMenu = goiMonDTOListHienThi.get(0);
+        }
+        menuBanAdapter =new MenuBanAdapter(goiMonDTOListHienThi,hangHoaDTOList);
+        rscvGoiMon.setAdapter(menuBanAdapter);
+        //Toast.makeText(this,String.valueOf(goiMonDTOListHienThi.size()), Toast.LENGTH_SHORT).show();
     }
 
     @Override

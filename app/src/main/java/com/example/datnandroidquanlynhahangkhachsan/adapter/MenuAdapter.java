@@ -24,7 +24,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     public MenuAdapter(List<DichVuDTO> lsdichvu, List<HangHoaDTO> lsHangHoa) {
         this.lsdichvu = lsdichvu;
         this.lsHangHoa = lsHangHoa;
-        notifyDataSetChanged();
+        //notifyDataSetChanged();
     }
 
     @NonNull
@@ -103,6 +103,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     public void removeItem(int index) {
         lsdichvu.remove(index);
         notifyItemRemoved(index);
-        notifyDataSetChanged();
+      //  notifyDataSetChanged();
     }
 }

@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -210,7 +209,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 //        ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
 //        touchHelper.attachToRecyclerView(rscvDichVu);
 
-        RecycleViewItemTouchHelper recycleViewItemTouchHelper = new RecycleViewItemTouchHelper(this, rscvDichVu, 200) {
+        RecycleViewItemTouchHelper recycleViewItemTouchHelper = new RecycleViewItemTouchHelper(this, rscvDichVu, 300) {
 
             @Override
             public void instantiateMyButton(RecyclerView.ViewHolder viewHolder, List<RecycleViewItemTouchHelper.MyButton> buffer) {
@@ -404,22 +403,22 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 
     @Override
     public void onthemDichVuSuccess() {
-        Toast.makeText(ChiTietPhongActivity.this, "thêm dịch vụ thành công", Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(ChiTietPhongActivity.this, "thêm dịch vụ thành công", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onthemDichVuError(String error) {
-        Toast.makeText(ChiTietPhongActivity.this, "thêm dịch vụ thất bại", Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(ChiTietPhongActivity.this, "thêm dịch vụ thất bại", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void oncapNhatDichVuSuccess() {
-        Toast.makeText(ChiTietPhongActivity.this, "cập nhật dịch vụ thành công", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(ChiTietPhongActivity.this, "cập nhật dịch vụ thành công", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void oncapNhatDichVuError(String error) {
-        Toast.makeText(ChiTietPhongActivity.this, "cập nhật dịch vụ thất bại", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(ChiTietPhongActivity.this, "cập nhật dịch vụ thất bại", Toast.LENGTH_SHORT).show();
     }
 
     @Override
