@@ -1,9 +1,11 @@
 package com.example.datnandroidquanlynhahangkhachsan.model.goiMon;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.ErrorMessageDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseTokenDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.goiMon.GoiMonDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.goiMon.ListGoiMonDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.APIService;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.IAPIServiceTokenRetrofit;
 
@@ -55,12 +57,35 @@ public class GoiMonModel implements IGoiMonModel {
     }
 
     @Override
-    public void themGoiMon(GoiMonDTO goiMonDTO, IOnthemDichVuFinishedListener listener) {
+    public void themGoiMon(ListGoiMonDTO listGoiMonDTO, IOnthemDichVuFinishedListener listener) {
 
     }
 
     @Override
-    public void capNhatGoiMon(GoiMonDTO goiMonDTO, IOncapNhatDichVuFinishedListener listener) {
+    public void capNhatGoiMon(ListGoiMonDTO listGoiMonDTO, IOncapNhatDichVuFinishedListener listener) {
+        service = new APIService();
+        service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
+            @Override
+            public void onSuccess(ResponseTokenDTO itemToken) {
+                service.apiServiceRetrofit.capNhatGoiMon(listGoiMonDTO).enqueue(new Callback<ResponseInfo>() {
+                    @Override
+                    public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
+                        if (response.body() != null) {
+                            listener.onSuccess();
+                        }
+                    }
 
+                    @Override
+                    public void onFailure(Call<ResponseInfo> call, Throwable t) {
+                        listener.onError(t.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+                listener.onError(error);
+            }
+        });
     }
 }

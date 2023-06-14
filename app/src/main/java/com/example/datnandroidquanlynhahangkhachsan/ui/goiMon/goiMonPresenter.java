@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.goiMon;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.goiMon.GoiMonDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.goiMon.ListGoiMonDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.goiMon.GoiMonModel;
 import com.example.datnandroidquanlynhahangkhachsan.model.goiMon.IGoiMonModel;
 
@@ -26,6 +27,21 @@ public class goiMonPresenter implements goiMonContract.Presenter {
             @Override
             public void onError(String error) {
                 view.onLayDanhSachGoiMonError(error);
+            }
+        });
+    }
+
+    @Override
+    public void CapNhatGoiMon(ListGoiMonDTO listGoiMonDTO) {
+        goiMonModel.capNhatGoiMon(listGoiMonDTO, new IGoiMonModel.IOncapNhatDichVuFinishedListener() {
+            @Override
+            public void onSuccess() {
+                view.onCapNhatGoiMonSuccess();
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onCapNhatGoiMonError(error);
             }
         });
     }

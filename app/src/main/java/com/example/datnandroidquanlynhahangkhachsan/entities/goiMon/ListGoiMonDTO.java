@@ -2,15 +2,15 @@ package com.example.datnandroidquanlynhahangkhachsan.entities.goiMon;
 
 import java.util.List;
 
-public class ListGoiMon {
+public class ListGoiMonDTO {
     private List<GoiMonDTO> goiMonDTOsCapNhat;
 
 
-    public ListGoiMon(List<GoiMonDTO> goiMonDTOsCapNhat) {
+    public ListGoiMonDTO(List<GoiMonDTO> goiMonDTOsCapNhat) {
         this.goiMonDTOsCapNhat = goiMonDTOsCapNhat;
     }
 
-    public ListGoiMon() {
+    public ListGoiMonDTO() {
     }
 
     public List<GoiMonDTO> getGoiMonDTOsCapNhat() {

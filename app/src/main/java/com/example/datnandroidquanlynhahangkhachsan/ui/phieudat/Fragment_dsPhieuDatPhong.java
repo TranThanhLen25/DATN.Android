@@ -211,6 +211,9 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
     @Override
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
         lsKhachHang = list;
+        phieuDatPhongAdapter = new PhieuDatPhongAdapter(this);
+        phieuDatPhongAdapter.setData(getContext(), lsPhieuDat, lsKhachHang);
+        rscvPhieuDatPhong.setAdapter(phieuDatPhongAdapter);
     }
 
     @Override

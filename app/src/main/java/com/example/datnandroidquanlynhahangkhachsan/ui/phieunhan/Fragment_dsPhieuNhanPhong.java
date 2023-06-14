@@ -105,9 +105,9 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
         khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
 
 ///lay PX
-        lsPhieuXuat=new ArrayList<>();
-        PhieuXuatPresenter phieuXuatPresenter=new PhieuXuatPresenter(this);
-        DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO=new DieuKienLocPhieuXuatDTO();
+        lsPhieuXuat = new ArrayList<>();
+        PhieuXuatPresenter phieuXuatPresenter = new PhieuXuatPresenter(this);
+        DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO = new DieuKienLocPhieuXuatDTO();
         dieuKienLocPhieuXuatDTO.setSoChungTu("px");
         phieuXuatPresenter.LayDanhSachPhieuXuat(dieuKienLocPhieuXuatDTO);
         fragmentDsPhieuNhanPhongBinding.iclAppbackpnp.icBack.setOnClickListener(new View.OnClickListener() {
@@ -159,9 +159,9 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
     @Override
     public void onLayDanhSachPhieuNhanSuccess(List<PhieuNhanDTO> list) {
         lsPhieuNhan = list;
-//        phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(this);
-//        phieuNhanPhongAdapter.setData(lsPhieuNhan, lsKhachHang,getContext());
-//        rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);
+        phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(this);
+        phieuNhanPhongAdapter.setData(lsPhieuXuat, lsPhieuNhan, lsKhachHang, getContext());
+        rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);
         //Toast.makeText(getContext(), "Lấy danh sách phiếu đặt phòng thành công", Toast.LENGTH_LONG).show();
     }
 
@@ -193,7 +193,7 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
         lsKhachHang = list;
         phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(this);
-        phieuNhanPhongAdapter.setData(lsPhieuXuat,lsPhieuNhan, lsKhachHang,getContext());
+        phieuNhanPhongAdapter.setData(lsPhieuXuat, lsPhieuNhan, lsKhachHang, getContext());
         rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);
 
         //Toast.makeText(getContext(), "Lấy danh sách phiếu đặt phòng thành công", Toast.LENGTH_LONG).show();
@@ -212,11 +212,14 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
     public void onThemKhachHangError(String error) {
 
     }
-    @Override
-    public void onThemPhieuXuatSuccess(){}
 
     @Override
-    public void onThemPhieuXuatError(String error){}
+    public void onThemPhieuXuatSuccess() {
+    }
+
+    @Override
+    public void onThemPhieuXuatError(String error) {
+    }
 
     @Override
     public void onThemPhieuXuatChiTietSuccess() {
@@ -231,9 +234,9 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
 
     @Override
     public void onLayDanhSachPhieuXuatSuccess(List<PhieuXuatDTO> list) {
-        lsPhieuXuat=list;
+        lsPhieuXuat = list;
         phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(this);
-        phieuNhanPhongAdapter.setData(lsPhieuXuat,lsPhieuNhan, lsKhachHang,getContext());
+        phieuNhanPhongAdapter.setData(lsPhieuXuat, lsPhieuNhan, lsKhachHang, getContext());
         rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);
 
     }
@@ -259,6 +262,7 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
     }
 
     @Override
-    public void onCapNhatPXError(String error){}
+    public void onCapNhatPXError(String error) {
+    }
 
 }

@@ -134,6 +134,9 @@ public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNh
     @Override
     public void onLayDanhSachPhieuNhanSuccess(List<PhieuNhanDTO> list) {
         lsPhieuNhan = list;
+        phieuNhanBanAdapter = new PhieuNhanBanAdapter(this);
+        phieuNhanBanAdapter.setData(lsPhieuNhan, lsKhachHang, getContext());
+        rscvPhieuNhanBan.setAdapter(phieuNhanBanAdapter);
     }
 
     @Override

@@ -22,6 +22,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.goiMon.GoiMonDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.goiMon.ListGoiMonDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
@@ -139,6 +140,9 @@ public interface IAPIServiceRetrofit {
 //
     @POST("/api/hanghoa/danhsach-GoiMon")
     Call<ResponseDTO<List<GoiMonDTO>>> layDanhSachGoiMon(@Body GoiMonDTO goiMonDTO);
+
+    @POST("/api/hanghoa/capnhat-GoiMon")
+    Call<ResponseInfo> capNhatGoiMon(@Body ListGoiMonDTO listGoiMonDTO);
 
     @POST("/api/hanghoa/danhsach-dichvu")
     Call<ResponseDTO<List<DichVuDTO>>> layDanhSachDichVu(@Body DichVuDTO dichVuDTO);

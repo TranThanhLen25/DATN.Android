@@ -18,6 +18,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.BanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.LoaiBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.goiMon.GoiMonDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.goiMon.ListGoiMonDTO;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Ban.BanContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Ban.BanPresenter;
@@ -31,6 +32,8 @@ import com.example.datnandroidquanlynhahangkhachsan.ui.goiMon.goiMonContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.goiMon.goiMonPresenter;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class activity_ChiTietBan extends AppCompatActivity implements goiMonContract.View, HangHoaContract.View, ItemTouchHelperListener, BanContract.View {
@@ -38,7 +41,7 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
     private RecyclerView rscvGoiMon;
     private GoiMonDTO xoaTatCaMenu;
     private List<GoiMonDTO> goiMonDTOListHienThi;
-    private List<GoiMonDTO> goiMonDTOListCapNhat;
+    private ListGoiMonDTO goiMonDTOListCapNhat;
     private List<HangHoaDTO> hangHoaDTOList;
     private MenuBanAdapter menuBanAdapter;
     private ActivityChiTietBanBinding activityChiTietBanBinding;
@@ -59,7 +62,6 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
         setContentView(activityChiTietBanBinding.getRoot());
 
         goiMonDTOListHienThi = new ArrayList<>();
-        goiMonDTOListCapNhat = new ArrayList<>();
         hangHoaDTOList = new ArrayList<>();
         xoaTatCaMenu = new GoiMonDTO();
 
@@ -160,6 +162,108 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
                         }));
             }
         };
+
+        activityChiTietBanBinding.btnLuuChitietban.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (goiMonDTOListHienThi.size() == 0 && xoaTatCaMenu.getHangHoaId() > 0) {
+                    xoaTatCaMenu.setTrangThai("xóa tất cả");
+                    goiMonDTOListHienThi.add(xoaTatCaMenu);
+                }
+                goiMonDTOListCapNhat = new ListGoiMonDTO(goiMonDTOListHienThi);
+                goiMonPresenter.CapNhatGoiMon(goiMonDTOListCapNhat);
+
+                //xóa menu dư khi thoát
+                tempData.lsDichVu.clear();
+                onBackPressed();
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //trường hợp menu trong chi tiết phòng đã có item
+        if (goiMonDTOListHienThi.size() > 0) {
+
+            //trong trường hợp muốn xóa tất cả menu
+            xoaTatCaMenu = goiMonDTOListHienThi.get(0);
+
+            //trong gọi menu có chọn ít nhất 1 item
+            if (tempData.lsDichVu.size() > 0) {
+                SharedPreferences sharedPreferences = getSharedPreferences("CHITIETBAN", MODE_PRIVATE);
+                int banID = sharedPreferences.getInt("BANID", 0);
+                HangHoaDTO hangHoaDTO = new HangHoaDTO();
+
+                //kiểm tra menu được gọi đã có trong list menu trong chi tiết phòng hay chưa
+                //nếu đã có thì xóa trong list menu gọi và tăng menu trong chi tiết phòng thêm 1
+                for (int n = 0; n < goiMonDTOListHienThi.size(); n++) {
+                    for (int m = 0; m < tempData.lsDichVu.size(); m++) {
+                        if (goiMonDTOListHienThi.get(n).getHangHoaId() == tempData.lsDichVu.get(m)) {
+                            goiMonDTOListHienThi.get(n).setSoLuong(goiMonDTOListHienThi.get(n).getSoLuong() + 1);
+                            tempData.lsDichVu.remove(m);
+                        }
+                    }
+                }
+
+                //sau khi đã kiểm tra trùng menu ở trên
+                //thì thêm những menu chưa có trong menu chi tiết phòng vào
+                for (int i = 0; i < tempData.lsDichVu.size(); i++) {
+                    for (int j = 0; j < hangHoaDTOList.size(); j++) {
+                        if (hangHoaDTOList.get(j).getHangHoaId() == tempData.lsDichVu.get(i)) {
+                            hangHoaDTO = hangHoaDTOList.get(j);
+                            break;
+                        }
+                    }
+
+                    Date day = Calendar.getInstance().getTime();
+                    GoiMonDTO goiMonDTO = new GoiMonDTO(banID, tempData.lsDichVu.get(i),0,1,1,1,"","chưa thanh toán",day);
+                    goiMonDTOListHienThi.add(goiMonDTO);
+                   // listDichVuThem.add(dichVuDTO);
+                }
+                tempData.lsDichVu.clear();
+                menuBanAdapter = new MenuBanAdapter(goiMonDTOListHienThi, hangHoaDTOList);
+                rscvGoiMon.setAdapter(menuBanAdapter);
+            } else {
+
+            }
+        } else {
+            //menu chi tiết phòng đang trống
+
+            //trường hợp trong gọi menu > 0
+            if (tempData.lsDichVu.size() > 0) {
+                //dichVuDTOList.clear();
+
+                //lấy phòng id
+                SharedPreferences sharedPreferences = getSharedPreferences("CHITIETBAN", MODE_PRIVATE);
+                int banID = sharedPreferences.getInt("BANID", 0);
+
+                //khởi tạo hàng hóa, tìm lấy ra đơn giá
+                HangHoaDTO hangHoaDTO = new HangHoaDTO();
+                for (int i = 0; i < tempData.lsDichVu.size(); i++) {
+                    for (int j = 0; j < hangHoaDTOList.size(); j++) {
+                        if (hangHoaDTOList.get(j).getHangHoaId() == tempData.lsDichVu.get(i)) {
+                            hangHoaDTO = hangHoaDTOList.get(j);
+                            break;
+                        }
+                    }
+
+                    Date day = Calendar.getInstance().getTime();
+                    GoiMonDTO goiMonDTO = new GoiMonDTO(banID, tempData.lsDichVu.get(i),0,1,1,1,"","chưa thanh toán",day);
+                    goiMonDTOListHienThi.add(goiMonDTO);
+
+                }
+                tempData.lsDichVu.clear();
+                menuBanAdapter = new MenuBanAdapter(goiMonDTOListHienThi, hangHoaDTOList);
+                rscvGoiMon.setAdapter(menuBanAdapter);
+            } else {
+
+            }
+        }
+        if (goiMonDTOListHienThi.size() > 0) {
+            xoaTatCaMenu = goiMonDTOListHienThi.get(0);
+        }
+      //  Toast.makeText(this,String.valueOf(goiMonDTOListHienThi.size()), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -218,6 +322,16 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
 
     @Override
     public void onLayDanhSachGoiMonError(String error) {
+
+    }
+
+    @Override
+    public void onCapNhatGoiMonSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatGoiMonError(String error) {
 
     }
 }
