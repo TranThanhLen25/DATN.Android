@@ -319,7 +319,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
                     dichVuDTO.setGhiChu("string");
                     dichVuDTO.setTrangThai("chưa thanh toán");
                     dichVuDTO.setThoiGian(day);
-                    dichVuDTO.setPhieuNhanID(3);
+                    dichVuDTO.setPhieuNhanID(0);
                     listDichVuThem.add(dichVuDTO);
                 }
                 tempData.lsDichVu.clear();

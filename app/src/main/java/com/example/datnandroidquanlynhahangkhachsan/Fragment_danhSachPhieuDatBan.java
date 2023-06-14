@@ -177,6 +177,9 @@ public class Fragment_danhSachPhieuDatBan extends Fragment implements DsPhieuDat
     @Override
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
         lsKhachHang=list;
+        phieuDatBanAdapter = new PhieuDatBanAdapter(this);
+        phieuDatBanAdapter.setData(getContext(), lsPhieuDat, lsKhachHang);
+        rscvPhieuDatBan.setAdapter(phieuDatBanAdapter);
     }
 
     @Override
