@@ -43,6 +43,9 @@ public class MenuBanAdapter extends RecyclerView.Adapter<MenuBanAdapter.MenuBanV
         if (goiMonDTO == null) {
             return;
         }
+        if (hangHoaDTO==null){
+            return;
+        }
         for (int i = 0; i < lsHangHoa.size(); i++) {
             if (goiMonDTO.getHangHoaId() == lsHangHoa.get(i).getHangHoaId()) {
                 hangHoaDTO = lsHangHoa.get(i);
@@ -100,6 +103,6 @@ public class MenuBanAdapter extends RecyclerView.Adapter<MenuBanAdapter.MenuBanV
     public void removeItem(int index) {
         lsGoiMon.remove(index);
         notifyItemRemoved(index);
-       // notifyDataSetChanged();
+         notifyDataSetChanged();
     }
 }

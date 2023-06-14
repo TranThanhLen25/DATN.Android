@@ -44,6 +44,9 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         if (dichvu == null) {
             return;
         }
+        if (hangHoaDTO==null){
+            return;
+        }
         for (int i = 0; i < lsHangHoa.size(); i++) {
             if (dichvu.getHangHoaId() == lsHangHoa.get(i).getHangHoaId()) {
                 hangHoaDTO = lsHangHoa.get(i);
@@ -103,6 +106,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     public void removeItem(int index) {
         lsdichvu.remove(index);
         notifyItemRemoved(index);
-      //  notifyDataSetChanged();
+        notifyDataSetChanged();
     }
 }

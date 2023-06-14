@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.model.goiMon;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.goiMon.GoiMonDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.goiMon.ListGoiMonDTO;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public interface IGoiMonModel {
         void onError(String error);
     }
 
-    void themGoiMon(GoiMonDTO goiMonDTO, IGoiMonModel.IOnthemDichVuFinishedListener listener);
+    void themGoiMon(ListGoiMonDTO listGoiMonDTO, IGoiMonModel.IOnthemDichVuFinishedListener listener);
 
     interface IOnthemDichVuFinishedListener {
         void onSuccess();
@@ -21,7 +22,7 @@ public interface IGoiMonModel {
         void onError(String error);
     }
 
-    void capNhatGoiMon(GoiMonDTO goiMonDTO, IGoiMonModel.IOncapNhatDichVuFinishedListener listener);
+    void capNhatGoiMon(ListGoiMonDTO listGoiMonDTO, IGoiMonModel.IOncapNhatDichVuFinishedListener listener);
 
     interface IOncapNhatDichVuFinishedListener {
         void onSuccess();
