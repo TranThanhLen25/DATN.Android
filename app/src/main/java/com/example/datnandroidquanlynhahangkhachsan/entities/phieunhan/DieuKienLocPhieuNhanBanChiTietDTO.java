@@ -4,19 +4,19 @@ import com.google.gson.annotations.SerializedName;
 
 public class DieuKienLocPhieuNhanBanChiTietDTO {
 
-    private Long PhieuDatBanChiTietId;
+
+    private Long phieuNhanBanChiTietId;
 
     private Long phieuNhanId;
 
-    private int BanId;
+    private int banId;
 
-
-    public Long getPhieuDatBanChiTietId() {
-        return PhieuDatBanChiTietId;
+    public Long getPhieuNhanBanChiTietId() {
+        return phieuNhanBanChiTietId;
     }
 
-    public void setPhieuDatBanChiTietId(Long phieuDatBanChiTietId) {
-        PhieuDatBanChiTietId = phieuDatBanChiTietId;
+    public void setPhieuNhanBanChiTietId(Long phieuNhanBanChiTietId) {
+        this.phieuNhanBanChiTietId = phieuNhanBanChiTietId;
     }
 
     public Long getPhieuNhanId() {
@@ -28,10 +28,13 @@ public class DieuKienLocPhieuNhanBanChiTietDTO {
     }
 
     public int getBanId() {
-        return BanId;
+        return banId;
     }
 
     public void setBanId(int banId) {
-        BanId = banId;
+        this.banId = banId;
+    }
+
+    public DieuKienLocPhieuNhanBanChiTietDTO() {
     }
 }

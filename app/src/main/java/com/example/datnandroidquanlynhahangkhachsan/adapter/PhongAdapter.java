@@ -153,10 +153,8 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                     if (phieuNhanPhongChiTietDTO.get(i).getPhongId() == phongid) {
                         phieunhanid = phieuNhanPhongChiTietDTO.get(i).getPhieuNhanId();
                         pnct=phieuNhanPhongChiTietDTO.get(i).getPhieuNhanPhongChiTietId();
-
                     }
                 }
-
                 for (int i = 0; i < lsPhieuNhan.size(); i++) {
                     if (lsPhieuNhan.get(i).getPhieuNhanId() == phieunhanid) {
                         khachhangid = lsPhieuNhan.get(i).getKhachHangId();
@@ -170,8 +168,6 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                         sdt = lsKhachHang.get(i).getSdt();
                     }
                 }
-
-
 
                 openDialog();
             }
@@ -274,6 +270,9 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                 editor.putString("LOAIPHONG", loai);
                 editor.putInt("PHONGID", phongid);
                 editor.putInt("LOAIPHONGID", loaiphongid);
+                editor.putInt("TRANGTHAI", trangThai);
+                editor.putString("TEN",ten);
+
                 editor.commit();
 
                 dialog.dismiss();
@@ -292,15 +291,15 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                     SharedPreferences sharedPreferences = context.getSharedPreferences("GET_PHONGID", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putInt("PHONGID", phongid);
-                    editor.putInt("SOPHONG",so);
-                    editor.putInt("GIA",gia);
-                    editor.putLong("PNID",phieunhanid);
+                    editor.putInt("SOPHONG", so);
+                    editor.putInt("GIA", gia);
                     editor.putLong("KHID",khachhangid);
                     editor.putString("TEN",ten);
                     editor.putString("CCCD",cccd);
                     editor.putString("SDT",sdt);
+                    editor.putLong("PNID",phieunhanid);
                     editor.putInt("NGUOIDUNG",nguoidungid);
-                    editor.putLong("PNCT",pnct);
+                    editor.putInt("KTTHANHTOAN",1);
                     editor.commit();
                     dialog.dismiss();
                 }

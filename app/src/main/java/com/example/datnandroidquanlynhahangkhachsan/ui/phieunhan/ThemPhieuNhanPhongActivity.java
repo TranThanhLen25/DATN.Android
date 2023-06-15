@@ -514,4 +514,9 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
     public void onLayLoaiPhongError(String error) {
 
     }
+    @Override
+    public void onCapNhatPhieuNhanSuccess(){}
+
+    @Override
+    public void onCapNhatPhieuNhanError(String error){}
 }

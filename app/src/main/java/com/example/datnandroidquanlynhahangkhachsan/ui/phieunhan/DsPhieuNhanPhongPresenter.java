@@ -5,8 +5,10 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.NhanBanD
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.NhanPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.phieunhan.IPhieuNhanModel;
 import com.example.datnandroidquanlynhahangkhachsan.model.phieunhan.PhieuNhanModel;
+import com.example.datnandroidquanlynhahangkhachsan.model.phieuxuat.IPhieuXuatModel;
 
 import java.util.List;
 
@@ -65,19 +67,18 @@ public class DsPhieuNhanPhongPresenter implements DsPhieuNhanPhongContract.Prese
         });
     }
 
+    @Override
+    public void CapNhatPhieuNhan(PhieuNhanDTO phieuNhanDTO) {
+        phieuNhanModel.CapNhatPhieuNhan(phieuNhanDTO, new IPhieuNhanModel.IOnCapNhatPhieuNhanFinishedListener() {
+            @Override
+            public void onSuccess() {
 
-//    @Override
-//    public void ThemPhieuDatPhong(PhieuDatDTO phieuDatDTO) {
-//        phieuDatModel.ThemPhieuDatPhong(phieuDatDTO, new IPhieuDatModel.IOnThemPhieuDatPhongFinishedListener() {
-//            @Override
-//            public void onSuccess() {
-//                view.onThemPhieuDatPhongSuccess();
-//            }
-//
-//            @Override
-//            public void onError(String error) {
-//                view.onThemPhieuDatPhongError(error);
-//            }
-//        });
-//    }
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        });
+    }
 }

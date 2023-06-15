@@ -23,6 +23,11 @@ public interface DsPhieuNhanPhongContract {
         void onThemPhieuNhanBanSuccess();
 
         void onThemPhieuNhanBanError(String error);
+
+        void onCapNhatPhieuNhanSuccess();
+
+        void onCapNhatPhieuNhanError(String error);
+
     }
 
     interface Presenter {
@@ -31,5 +36,7 @@ public interface DsPhieuNhanPhongContract {
 
         void ThemPhieuNhanPhong(NhanPhongDTO nhanPhongDTO);
         void ThemPhieuNhanBan(NhanBanDTO nhanBanDTO);
+
+        void CapNhatPhieuNhan(PhieuNhanDTO phieuNhanDTO);
     }
 }

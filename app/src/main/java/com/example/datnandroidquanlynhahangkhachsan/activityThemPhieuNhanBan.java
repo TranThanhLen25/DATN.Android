@@ -541,6 +541,11 @@ public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPh
     public void onThemPhieuNhanBanError(String error) {
         Toast.makeText(this, "thêm phiếu nhận bàn thất bại", Toast.LENGTH_LONG).show();
     }
+    @Override
+    public void onCapNhatPhieuNhanSuccess(){}
+
+    @Override
+    public void onCapNhatPhieuNhanError(String error){}
 
 //    @Override
 //    public void onThemPhieuNhanBanSuccess() {

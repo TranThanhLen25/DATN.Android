@@ -154,7 +154,15 @@ public class PhieuXuatChiTietAdapter extends RecyclerView.Adapter<PhieuXuatChiTi
         vao = LocalDate.parse(Nhan, fm);
         ra = LocalDate.parse(Tra, fm);
         ////đếm ngày thuê
-        songay = ra.toEpochDay() - vao.toEpochDay();
+        if (ra.toEpochDay() - vao.toEpochDay()==0)
+        {
+            songay=1;
+        }
+        else
+        {
+            songay = ra.toEpochDay() - vao.toEpochDay();
+        }
+
         holder.phieuXuatChiTietBinding.tvSongay.setText(String.valueOf(songay));
 
         //// tính tiền tổng ngày ở
@@ -194,7 +202,12 @@ public class PhieuXuatChiTietAdapter extends RecyclerView.Adapter<PhieuXuatChiTi
             @Override
             public void onClick(View view) {
 
-                editor.putLong("PNCT", pn.getPhieuNhanPhongChiTietId());
+if(pn.getTrangThai()==4)
+    editor.putInt("KTTHANHTOAN",1);
+else
+{
+    editor.putInt("KTTHANHTOAN",9);
+}
                 for (int i = 0; i < lsPhong.size(); i++) {
                     if (lsPhong.get(i).getPhongId() == pn.getPhongId()) {
                         loaiphongid = lsPhong.get(i).getLoaiPhongId();
@@ -206,9 +219,8 @@ public class PhieuXuatChiTietAdapter extends RecyclerView.Adapter<PhieuXuatChiTi
                         editor.putInt("GIA", lsLoaiPhong.get(i).getDonGia());
                     }
                 }
-                editor.putInt("TRANGTHAI", pn.getTrangThai());
                 editor.putInt("PHONGID", pn.getPhongId());
-                editor.putLong("PNID", pn.getPhieuNhanId());
+
                 editor.commit();
                 Intent intent = new Intent(context, PhieuTraPhongActivity.class);
                 context.startActivity(intent);

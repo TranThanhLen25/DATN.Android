@@ -28,6 +28,9 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhan
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuTraBanActivity;
 
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
@@ -51,6 +54,8 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
     private String ten;
     private String cccd;
     private String sdt;
+
+    private String ngay;
 
 
     public BanAdapter(List<BanDTO> lsBan) {
@@ -126,11 +131,12 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
                     }
                 }
 
-
+                DateFormat fm=new SimpleDateFormat("dd/MM/yyyy");
                 for (int i = 0; i < lsPNBanCT.size(); i++) {
                     if (lsPNBanCT.get(i).getBanId() == banid) {
                         pnct = lsPNBanCT.get(i).getPhieuDatBanChiTietId();
                         pnid = lsPNBanCT.get(i).getPhieuNhanId();
+                        ngay=fm.format(lsPNBanCT.get(i).getThoiGianNhanBan())  ;
                     }
                 }
                 for (int i = 0; i < lsPhieuNhan.size(); i++) {
@@ -254,21 +260,22 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
             @Override
             public void onClick(View view) {
 
-//                    SharedPreferences sharedPreferences = context.getSharedPreferences("GET_BANID", Context.MODE_PRIVATE);
-//                    SharedPreferences.Editor editor = sharedPreferences.edit();
-//                    editor.putInt("BANID", banid);
-//                    editor.putString("TENBAN",tenban );
-//                    editor.putLong("PNID",pnid );
-//                    editor.putLong("KHID",khachhang );
-//                    editor.putString("TEN",ten );
-//                    editor.putString("CCCD",cccd );
-//                    editor.putString("SDT",sdt );
-//                    editor.putInt("NGUOIDUNG",nguoidung );
-//                    editor.putLong("PNCT",pnct );
-//                    editor.commit();
-//                    dialog.dismiss();
+                    SharedPreferences sharedPreferences = context.getSharedPreferences("GET_BANID", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt("BANID", banid);
+                    editor.putString("TENBAN",tenban );
+                    editor.putLong("PNID",pnid );
+                    editor.putLong("KHID",khachhang );
+                    editor.putString("TEN",ten );
+                    editor.putString("CCCD",cccd );
+                    editor.putString("SDT",sdt );
+                    editor.putInt("NGUOIDUNG",nguoidung );
+                    editor.putLong("PNCT",pnct );
+                    editor.putString("NGAYLAP", ngay);
+                    editor.commit();
+                    dialog.dismiss();
                     Intent intent = new Intent(dialog.getContext(), PhieuTraBanActivity.class);
-
+                    context.startActivity(intent);
                     dialog.dismiss();
 
                 }

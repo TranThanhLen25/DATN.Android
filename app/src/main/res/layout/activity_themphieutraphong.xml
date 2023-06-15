@@ -176,7 +176,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
-                            android:text="TenKhachHnag"
+                            android:text="Trần Thanh Lên"
                             android:textColor="@color/black"
                             android:textSize="@dimen/heading_2"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -212,7 +212,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
-                            android:text="000000000000"
+                            android:text="083202011501"
                             android:textColor="@color/black"
                             android:textSize="@dimen/heading_2"
                             app:layout_constraintStart_toEndOf="@id/tv_cccd_phieutraphong"
@@ -246,7 +246,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
-                            android:text="4110000000"
+                            android:text="0923645773"
                             android:textColor="@color/black"
                             android:textSize="@dimen/heading_2"
                             app:layout_constraintStart_toEndOf="@id/tv_sdt_tieude"
@@ -440,6 +440,8 @@
                 app:layout_constraintStart_toEndOf="@id/tong"
                 app:layout_constraintTop_toTopOf="@id/ctl_button"
             />
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -163,6 +163,10 @@ public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNh
     public void onThemPhieuNhanBanError(String error) {
 
     }
+    @Override
+    public void onCapNhatPhieuNhanSuccess(){}
 
+    @Override
+    public void onCapNhatPhieuNhanError(String error){}
 
 }

@@ -400,5 +400,22 @@
             app:layout_constraintEnd_toEndOf="@id/ctl_btn_bottom"
             app:layout_constraintTop_toTopOf="@id/ctl_btn_bottom" />
 
+        <TextView
+            android:id="@+id/tv_tongdaTT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="7dp"
+            android:padding="10dp"
+            android:textColor="@color/red"
+            android:text="Thanh toán"
+            android:textAllCaps="false"
+            android:textSize="@dimen/heading_2"
+
+            app:layout_constraintBottom_toBottomOf="@id/ctl_btn_bottom"
+            app:layout_constraintEnd_toEndOf="@id/ctl_btn_bottom"
+            app:layout_constraintTop_toTopOf="@id/ctl_btn_bottom" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
