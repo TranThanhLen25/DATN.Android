@@ -24,6 +24,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.NhanBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.chonBan.activity_chon_ban;
 import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
@@ -101,6 +102,7 @@ public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPh
         });
         KiemTraDuLieuDauVao();
         setThoiGianNhanMacDinh();
+        SetDuLieuNeuCo();
     }
 
     @Override
@@ -110,6 +112,41 @@ public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPh
             String a = String.valueOf(lsChonBanDataInt.size());
             Toast.makeText(this, a, Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void SetDuLieuNeuCo() {
+        if (tempData.tempDatakhachHangDTO != null) {
+            if (tempData.tempDatakhachHangDTO.getTenKhachHang()!=null){
+
+                activityThemPhieuNhanBanBinding.etHotenPhieunhanban.setText(tempData.tempDatakhachHangDTO.getTenKhachHang());
+            }
+            if (tempData.tempDatakhachHangDTO.getCccd() != null) {
+                activityThemPhieuNhanBanBinding.etCccdPhieunhanban.setText(tempData.tempDatakhachHangDTO.getCccd());
+            }
+            activityThemPhieuNhanBanBinding.etSdtPhieunhanban.setText(tempData.tempDatakhachHangDTO.getSdt());
+        }
+//        if (tempData.datPhongDTO.getPhieuDatPhongChiTiets().size() > 0) {
+//            //lấy danh sách loại phòng
+//            loaiPhongDTOList = new ArrayList<>();
+//            loaiPhongPresenter = new LoaiPhongPresenter(this);
+//            loaiPhongPresenter.LayLoaiPhong();
+//
+//            String soLuongPhong = "";
+//            int loaiPhongID;
+//            for (int i = 0; i < tempData.datPhongDTO.getPhieuDatPhongChiTiets().size(); i++) {
+//                soLuongPhong += String.valueOf(i);
+//                loaiPhongID = Integer.valueOf(tempData.datPhongDTO.getPhieuDatPhongChiTiets().get(i).getLoaiPhongId());
+//                for (int j = 0; j < loaiPhongDTOList.size(); j++) {
+//                    if (loaiPhongID == loaiPhongDTOList.get(j).getLoaiPhongId()) {
+//                        soLuongPhong += String.valueOf(" " + loaiPhongDTOList.get(j).getTenLoaiPhong() + tempData.datPhongDTO.getPhieuDatPhongChiTiets().get(i).getSoLuong());
+//                        if (i < tempData.datPhongDTO.getPhieuDatPhongChiTiets().size() + 1) {
+//                            soLuongPhong += ", ";
+//                        }
+//                    }
+//                }
+//            }
+//            themphieunhanphongBinding.tvPhongDataPhieunhanphong.setText(soLuongPhong);
+//        }
     }
 
     private void OnclickThemPhieuNhan() {

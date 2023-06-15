@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.tempData;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
@@ -14,10 +15,12 @@ public class tempData {
     //danh sách hàng hóa đang chọn trong menu
     public static List<Integer> lsDichVu;
     public static DatPhongDTO datPhongDTO;
+    public static DatBanDTO datBanDTO;
     public static PhieuDatDTO phieuDatDTO;
     //public static PhieuDatDTO phieuDatDTO1 = new PhieuDatDTO(1L,"1",day,1,1,day,day,"abc",1L,"abc");
     public static List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTietDTOList;
     public static KhachHangDTO tempDatakhachHangDTO;
     public static List<Integer> soLuongPhongDaDats;
     public static boolean Check = false;
+    public static boolean CheckChucNang = false;
 }

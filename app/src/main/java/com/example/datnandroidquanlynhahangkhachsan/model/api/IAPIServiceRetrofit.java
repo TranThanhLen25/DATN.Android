@@ -24,6 +24,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.goiMon.GoiMonDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.goiMon.ListGoiMonDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanBanChiTietDTO;
@@ -171,6 +172,9 @@ public interface IAPIServiceRetrofit {
 
     @POST("/api/PhieuDatPhongChiTiet/layPhieuDatPhongChiTiet")
     Call<ResponseDTO<List<PhieuDatPhongChiTietDTO>>>layPhieuDatPhongChiTiet(@Body PhieuDatDTO phieuDatDTO);
+
+    @POST("/api/PhieuDatBanChiTiet/layPhieuDatBanChiTiet")
+    Call<ResponseDTO<List<PhieuDatBanChiTietDTO>>>layPhieuDatBanChiTiet(@Body PhieuDatDTO phieuDatDTO);
 
     @POST("/api/Ban/danhsach_ban")
     Call<ResponseDTO<List<BanDTO>>> layDanhSachBan();

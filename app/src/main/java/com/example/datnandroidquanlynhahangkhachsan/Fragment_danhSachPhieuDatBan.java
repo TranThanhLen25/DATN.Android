@@ -15,6 +15,7 @@ import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDanhSach
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienLocKhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
@@ -84,6 +85,7 @@ public class Fragment_danhSachPhieuDatBan extends Fragment implements DsPhieuDat
             @Override
             public void onClick(View view) {
                 tempData.Check = false;
+                tempData.CheckChucNang = true;
                 Intent intent = new Intent(getActivity(), activity_them_phieu_dat_ban.class);
                 startActivity(intent);
             }
@@ -165,6 +167,16 @@ public class Fragment_danhSachPhieuDatBan extends Fragment implements DsPhieuDat
     }
 
     @Override
+    public void onLayPhieuDatBanChiTietSuccess(List<PhieuDatBanChiTietDTO> phieuDatPhongChiTietDTOList) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatBanChiTietError(String error) {
+
+    }
+
+    @Override
     public void onThemKhachHangSuccess() {
 
     }
@@ -176,7 +188,7 @@ public class Fragment_danhSachPhieuDatBan extends Fragment implements DsPhieuDat
 
     @Override
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
-        lsKhachHang=list;
+        lsKhachHang = list;
         phieuDatBanAdapter = new PhieuDatBanAdapter(this);
         phieuDatBanAdapter.setData(getContext(), lsPhieuDat, lsKhachHang);
         rscvPhieuDatBan.setAdapter(phieuDatBanAdapter);

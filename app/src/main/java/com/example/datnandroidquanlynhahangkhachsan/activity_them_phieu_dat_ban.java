@@ -30,6 +30,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLo
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.chonBan.activity_chon_ban;
 import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
@@ -91,6 +92,7 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
         activityThemPhieuDatBanBinding.toolbarPhieudatban.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                tempData.CheckChucNang = false;
                 lsChonBanDataInt.clear();
                 onBackPressed();
             }
@@ -196,6 +198,7 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
 
             String a = String.valueOf(khachHangDTO.getTenKhachHang());
             // Toast.makeText(this, a, Toast.LENGTH_LONG).show();
+            tempData.CheckChucNang = false;
             lsChonBanDataInt.clear();
             onBackPressed();
         }
@@ -536,5 +539,15 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
     @Override
     public void onThemPhieuDatBanError(String error) {
         Toast.makeText(this, "thêm phiếu đặt bàn thành công", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onLayPhieuDatBanChiTietSuccess(List<PhieuDatBanChiTietDTO> phieuDatPhongChiTietDTOList) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatBanChiTietError(String error) {
+
     }
 }

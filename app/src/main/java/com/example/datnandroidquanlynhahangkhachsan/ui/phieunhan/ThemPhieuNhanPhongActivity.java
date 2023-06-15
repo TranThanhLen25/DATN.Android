@@ -99,7 +99,10 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
 
     private void SetDuLieuNeuCo() {
         if (tempData.tempDatakhachHangDTO != null) {
-            themphieunhanphongBinding.etHotenPhieunhanphong.setText(tempData.tempDatakhachHangDTO.getTenKhachHang());
+            if (tempData.tempDatakhachHangDTO.getTenKhachHang()!=null){
+
+                themphieunhanphongBinding.etHotenPhieunhanphong.setText(tempData.tempDatakhachHangDTO.getTenKhachHang());
+            }
             if (tempData.tempDatakhachHangDTO.getCccd() != null) {
                 themphieunhanphongBinding.etCccdPhieunhanphong.setText(tempData.tempDatakhachHangDTO.getCccd());
             }
