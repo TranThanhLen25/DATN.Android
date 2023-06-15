@@ -247,4 +247,9 @@ public class Fragment_danhSachBan extends Fragment implements BanContract.View, 
 
 
     }
+    @Override
+    public void onCapNhatPhieuNhanSuccess(){}
+
+    @Override
+    public void onCapNhatPhieuNhanError(String error){}
 }

@@ -197,5 +197,7 @@ public interface IAPIServiceRetrofit {
     @POST("/api/PhieuNhanBanChiTiet/danhsach-phieunhanbanCT?")
     Call<ResponseDTO<List<PhieuNhanBanChiTietDTO>>>layPhieuNhanBanChiTiet(@Body DieuKienLocPhieuNhanBanChiTietDTO dieuKienLocPhieuNhanBanChiTietDTO);
 
+    @POST("/api/PhieuNhan/capnhat-PhieuNhan")
+    Call<ResponseInfo> capNhatPhieuNhan(@Body PhieuNhanDTO phieuNhanDTO);
 
 }

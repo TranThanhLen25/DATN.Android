@@ -264,5 +264,9 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
     @Override
     public void onCapNhatPXError(String error) {
     }
+    @Override
+    public void onCapNhatPhieuNhanSuccess(){}
 
+    @Override
+    public void onCapNhatPhieuNhanError(String error){}
 }

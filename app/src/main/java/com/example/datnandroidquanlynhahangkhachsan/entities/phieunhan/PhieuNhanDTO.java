@@ -26,6 +26,9 @@ public class PhieuNhanDTO {
         this.trangThai = trangThai;
     }
 
+    public PhieuNhanDTO() {
+    }
+
     public Long getPhieuNhanId() {
         return phieuNhanId;
     }
