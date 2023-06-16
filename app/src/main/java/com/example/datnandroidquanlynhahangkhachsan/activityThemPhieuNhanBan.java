@@ -231,7 +231,9 @@ public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPh
 
 
             lsChonBanDataInt.clear();
-            onBackPressed();
+          //  onBackPressed();
+            Intent i = new Intent(this, Nav_Ban_Activity.class);
+            startActivity(i);
         }
     }
 

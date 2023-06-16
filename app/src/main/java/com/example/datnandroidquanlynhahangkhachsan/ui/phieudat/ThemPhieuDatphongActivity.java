@@ -3,6 +3,7 @@ package com.example.datnandroidquanlynhahangkhachsan.ui.phieudat;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -20,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.CaptureAct;
+import com.example.datnandroidquanlynhahangkhachsan.MainActivity;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.LoaiPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemphieudatphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
@@ -245,7 +247,9 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
 
             //sau khi thêm thì xóa dữ liệu của cái biến số lượng của mỗi loại phòng
             soLuongLoaiPhong.soLuong.clear();
-            onBackPressed();
+            //onBackPressed();
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
         }
     }
 

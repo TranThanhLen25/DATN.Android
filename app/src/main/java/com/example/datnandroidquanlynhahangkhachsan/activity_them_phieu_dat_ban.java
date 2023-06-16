@@ -201,6 +201,8 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
             tempData.CheckChucNang = false;
             lsChonBanDataInt.clear();
             onBackPressed();
+            Intent i = new Intent(this, Nav_Ban_Activity.class);
+            startActivity(i);
         }
     }
 

@@ -19,6 +19,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.datnandroidquanlynhahangkhachsan.CaptureAct;
+import com.example.datnandroidquanlynhahangkhachsan.MainActivity;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemphieunhanphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
@@ -311,7 +312,9 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
             dsPhieuDatPhongPresenter.CapNhatPhieuDat(tempData.datPhongDTO.getPhieuDatDTO());
 
             lsChonPhongDataInt.clear();
-            onBackPressed();
+            //onBackPressed();
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
         }
     }
 
