@@ -210,6 +210,16 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
     }
 
     @Override
+    public void onCapNhatPhieuDatSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatPhieuDatError(String error) {
+
+    }
+
+    @Override
     public void onThemKhachHangSuccess() {
 
     }

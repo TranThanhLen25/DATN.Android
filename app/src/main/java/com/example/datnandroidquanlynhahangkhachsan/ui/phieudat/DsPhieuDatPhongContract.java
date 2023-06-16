@@ -42,6 +42,11 @@ public interface DsPhieuDatPhongContract {
         void onLayPhieuDatBanChiTietSuccess(List<PhieuDatBanChiTietDTO> phieuDatPhongChiTietDTOList);
 
         void onLayPhieuDatBanChiTietError(String error);
+
+        //cập nhật phiếu đặt
+        void onCapNhatPhieuDatSuccess();
+
+        void onCapNhatPhieuDatError(String error);
     }
 
     interface Presenter {
@@ -56,5 +61,6 @@ public interface DsPhieuDatPhongContract {
 
         void ThemPhieuDatBan(DatBanDTO datBanDTO);
         void LayPhieuDatBanChiTiet(PhieuDatDTO phieuDatDTO);
+        void CapNhatPhieuDat(PhieuDatDTO phieuDatDTO);
     }
 }

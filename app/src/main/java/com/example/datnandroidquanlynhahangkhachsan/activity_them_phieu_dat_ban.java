@@ -80,7 +80,7 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
 
 
         KiemTraDuLieuDauVao();
-        setThoiGianNhanMacDinh();
+        //setThoiGianNhanMacDinh();
 
         activityThemPhieuDatBanBinding.thembanPhieunhanban.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -548,6 +548,16 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
 
     @Override
     public void onLayPhieuDatBanChiTietError(String error) {
+
+    }
+
+    @Override
+    public void onCapNhatPhieuDatSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatPhieuDatError(String error) {
 
     }
 }

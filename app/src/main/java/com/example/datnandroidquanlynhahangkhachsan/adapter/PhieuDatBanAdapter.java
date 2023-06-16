@@ -170,6 +170,16 @@ public class PhieuDatBanAdapter extends RecyclerView.Adapter<PhieuDatBanAdapter.
 
     }
 
+    @Override
+    public void onCapNhatPhieuDatSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatPhieuDatError(String error) {
+
+    }
+
     public class PhieuDatBanViewHolder extends RecyclerView.ViewHolder {
         private ItemPhieuDatBanBinding itemPhieuDatBanBinding;
 

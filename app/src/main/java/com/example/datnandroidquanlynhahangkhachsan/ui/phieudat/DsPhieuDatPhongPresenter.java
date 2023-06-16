@@ -110,4 +110,19 @@ public class DsPhieuDatPhongPresenter implements DsPhieuDatPhongContract.Present
             }
         });
     }
+
+    @Override
+    public void CapNhatPhieuDat(PhieuDatDTO phieuDatDTO) {
+        phieuDatModel.CapNhatPhieuDat(phieuDatDTO, new IPhieuDatModel.IOnCapNhatPhieuDatFinishedListener() {
+            @Override
+            public void onSuccess() {
+                view.onCapNhatPhieuDatSuccess();
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onCapNhatPhieuDatError(error);
+            }
+        });
+    }
 }

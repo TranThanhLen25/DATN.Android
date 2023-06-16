@@ -56,4 +56,12 @@ public interface IPhieuDatModel {
 
         void onError(String error);
     }
+
+    void CapNhatPhieuDat(PhieuDatDTO phieuDatDTO, IPhieuDatModel.IOnCapNhatPhieuDatFinishedListener listener);
+    //
+    interface IOnCapNhatPhieuDatFinishedListener {
+        void onSuccess();
+
+        void onError(String error);
+    }
 }

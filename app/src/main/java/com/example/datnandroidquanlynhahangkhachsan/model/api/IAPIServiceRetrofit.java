@@ -204,4 +204,6 @@ public interface IAPIServiceRetrofit {
     @POST("/api/PhieuNhan/capnhat-PhieuNhan")
     Call<ResponseInfo> capNhatPhieuNhan(@Body PhieuNhanDTO phieuNhanDTO);
 
+    @POST("/api/PhieuDat/capnhat-PhieuDat")
+    Call<ResponseInfo> capNhatPhieuDat(@Body PhieuDatDTO phieuDatDTO);
 }

@@ -177,6 +177,16 @@ public class Fragment_danhSachPhieuDatBan extends Fragment implements DsPhieuDat
     }
 
     @Override
+    public void onCapNhatPhieuDatSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatPhieuDatError(String error) {
+
+    }
+
+    @Override
     public void onThemKhachHangSuccess() {
 
     }
