@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -23,17 +22,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
-import com.android.volley.Header;
-
-
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.DangNhapActivity;
-import com.example.datnandroidquanlynhahangkhachsan.ui.dangnhap.NguoiDungPresenter;
 import com.google.android.material.navigation.NavigationView;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -135,7 +127,7 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
                         vitri = R.id.dra_trangchu;
                         break;
                     case R.id.dra_nhaphang:
-                        temp = new Fragment_nhaphang();
+                        temp = new FragmentKhachHang();
                         menuItem.setChecked(false);
 
                         vitri = R.id.dra_nhaphang;
