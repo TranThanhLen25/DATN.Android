@@ -107,7 +107,7 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
 
     private void SetDuLieuNeuCo() {
         if (tempData.tempDatakhachHangDTO != null) {
-            if (tempData.tempDatakhachHangDTO.getTenKhachHang()!=null){
+            if (tempData.tempDatakhachHangDTO.getTenKhachHang() != null) {
 
                 themphieunhanphongBinding.etHotenPhieunhanphong.setText(tempData.tempDatakhachHangDTO.getTenKhachHang());
             }
@@ -306,10 +306,12 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
             String a = String.valueOf(khachHangDTO.getTenKhachHang());
             // Toast.makeText(this, a, Toast.LENGTH_LONG).show();
 
+            if (tempData.datPhongDTO != null) {
 
-            tempData.datPhongDTO.getPhieuDatDTO().setTrangThai("đã nhận phòng");
+                tempData.datPhongDTO.getPhieuDatDTO().setTrangThai("đã nhận phòng");
 
-            dsPhieuDatPhongPresenter.CapNhatPhieuDat(tempData.datPhongDTO.getPhieuDatDTO());
+                dsPhieuDatPhongPresenter.CapNhatPhieuDat(tempData.datPhongDTO.getPhieuDatDTO());
+            }
 
             lsChonPhongDataInt.clear();
             //onBackPressed();
@@ -530,11 +532,14 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
     public void onLayLoaiPhongError(String error) {
 
     }
-    @Override
-    public void onCapNhatPhieuNhanSuccess(){}
 
     @Override
-    public void onCapNhatPhieuNhanError(String error){}
+    public void onCapNhatPhieuNhanSuccess() {
+    }
+
+    @Override
+    public void onCapNhatPhieuNhanError(String error) {
+    }
 
     @Override
     public void onLayDanhSachPhieuDatSuccess(List<PhieuDatDTO> list) {

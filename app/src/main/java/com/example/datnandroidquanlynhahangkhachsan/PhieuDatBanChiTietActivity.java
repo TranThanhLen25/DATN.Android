@@ -60,8 +60,9 @@ public class PhieuDatBanChiTietActivity extends AppCompatActivity implements Kha
                 onBackPressed();
             }
         });
-
-        SetDuLieu();
+        if (tempData.datBanDTO!=null){
+            SetDuLieu();
+        }
         NhanBan();
     }
 

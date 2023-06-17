@@ -225,9 +225,13 @@ public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPh
             a+=nhanBanDTO.getPhieuNhanDTO().getTrangThai()+" "+nhanBanDTO.getPhieuNhanBanChiTietDTOs().size();
             //Toast.makeText(this, a, Toast.LENGTH_LONG).show();
 
-            tempData.datBanDTO.getPhieuDatDTO().setTrangThai("đã nhận phòng");
 
-            dsPhieuDatPhongPresenter.CapNhatPhieuDat(tempData.datBanDTO.getPhieuDatDTO());
+            if (tempData.datBanDTO!=null){
+
+                tempData.datBanDTO.getPhieuDatDTO().setTrangThai("đã nhận phòng");
+
+                dsPhieuDatPhongPresenter.CapNhatPhieuDat(tempData.datBanDTO.getPhieuDatDTO());
+            }
 
 
             lsChonBanDataInt.clear();

@@ -47,7 +47,9 @@ public class PhieuDatPhongChiTietActivity extends AppCompatActivity implements L
         setContentView(phieuDatPhongChiTietBinding.getRoot());
         //lấy loại phòng
         LayLoaiPhong();
-        SetDuLieu();
+        if (tempData.datPhongDTO!=null){
+            SetDuLieu();
+        }
         NhanPhong();
     }
 
