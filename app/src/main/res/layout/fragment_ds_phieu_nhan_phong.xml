@@ -39,16 +39,27 @@
 
             app:layout_constraintTop_toTopOf="@id/headderphieunhanphong" />
 
-        <include
-            android:id="@+id/icl_search_phieudatphong"
-            layout="@layout/search"
+
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content "
-
-
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="5dp"
             app:layout_constraintEnd_toEndOf="@id/headderphieunhanphong"
             app:layout_constraintStart_toStartOf="@id/headderphieunhanphong"
-            app:layout_constraintTop_toBottomOf="@+id/tv_phieunhanphong" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_phieunhanphong">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/Search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
+        </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView

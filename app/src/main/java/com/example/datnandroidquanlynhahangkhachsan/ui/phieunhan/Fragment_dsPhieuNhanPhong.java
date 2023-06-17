@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,6 +43,13 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
     private List<PhieuXuatDTO> lsPhieuXuat;
     private PhieuNhanPhongAdapter phieuNhanPhongAdapter;
     private FragmentDsPhieuNhanPhongBinding fragmentDsPhieuNhanPhongBinding;
+
+
+    private SearchView searchView;
+
+    private List<PhieuNhanDTO> searchList;
+
+    private List<KhachHangDTO> searchListKhachHang;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -130,6 +138,44 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
 
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
         rscvPhieuNhanPhong.setLayoutManager(LinearLayoutManager);
+
+
+        searchView = fragmentDsPhieuNhanPhongBinding.Search;
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchList = new ArrayList<>();
+                searchListKhachHang = new ArrayList<>();
+                if (query.length() > 0) {
+                    for (int i = 0; i < lsKhachHang.size(); i++) {
+                        if (lsKhachHang.get(i).getTenKhachHang().contains(query) || lsKhachHang.get(i).getSdt().contains(query)) {
+                            searchListKhachHang.add(lsKhachHang.get(i));
+                        }
+                    }
+                    for (int j = 0; j < searchListKhachHang.size(); j++) {
+                        for (int i = 0; i < lsPhieuNhan.size(); i++) {
+                            if (searchListKhachHang.get(j).getKhachHangId()==lsPhieuNhan.get(i).getKhachHangId()){
+                                searchList.add(lsPhieuNhan.get(i));
+                            }
+                        }
+                    }
+
+
+                    phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(Fragment_dsPhieuNhanPhong.this);
+                    phieuNhanPhongAdapter.setData(lsPhieuXuat, searchList, lsKhachHang, getContext());
+                    rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);
+                    //Toast.makeText(getContext(), String.valueOf(lsKhachHang.size()), Toast.LENGTH_LONG).show();
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+
 
         return fragmentDsPhieuNhanPhongBinding.getRoot();
     }

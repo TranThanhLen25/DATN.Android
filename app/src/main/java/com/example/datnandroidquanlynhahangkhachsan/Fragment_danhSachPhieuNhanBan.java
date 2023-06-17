@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,6 +34,11 @@ public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNh
     private PhieuNhanBanAdapter phieuNhanBanAdapter;
     private FragmentDanhSachPhieuNhanBanBinding fragmentDanhSachPhieuNhanBanBinding;
 
+    private SearchView searchView;
+
+    private List<PhieuNhanDTO> searchList;
+
+    private List<KhachHangDTO> searchListKhachHang;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -104,6 +110,42 @@ public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNh
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
         rscvPhieuNhanBan.setLayoutManager(LinearLayoutManager);
 
+
+
+        searchView = fragmentDanhSachPhieuNhanBanBinding.Search;
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchList = new ArrayList<>();
+                searchListKhachHang = new ArrayList<>();
+                if (query.length() > 0) {
+                    for (int i = 0; i < lsKhachHang.size(); i++) {
+                        if (lsKhachHang.get(i).getTenKhachHang().contains(query) || lsKhachHang.get(i).getSdt().contains(query)) {
+                            searchListKhachHang.add(lsKhachHang.get(i));
+                        }
+                    }
+                    for (int j = 0; j < searchListKhachHang.size(); j++) {
+                        for (int i = 0; i < lsPhieuNhan.size(); i++) {
+                            if (searchListKhachHang.get(j).getKhachHangId()==lsPhieuNhan.get(i).getKhachHangId()){
+                                searchList.add(lsPhieuNhan.get(i));
+                            }
+                        }
+                    }
+
+
+                    phieuNhanBanAdapter = new PhieuNhanBanAdapter(Fragment_danhSachPhieuNhanBan.this);
+                    phieuNhanBanAdapter.setData(searchList, lsKhachHang, getContext());
+                    rscvPhieuNhanBan.setAdapter(phieuNhanBanAdapter);
+                    //Toast.makeText(getContext(), String.valueOf(lsKhachHang.size()), Toast.LENGTH_LONG).show();
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
 
         return fragmentDanhSachPhieuNhanBanBinding.getRoot();
     }
