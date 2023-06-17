@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +26,8 @@ public class FragmentKhachHang extends Fragment implements KhachHangContract.Vie
     private FragmentKhachHangBinding fragmentKhachHangBinding;
     private KhachHangAdapter khachHangAdapter;
     private RecyclerView rscvPhieuDatBan;
+    private SearchView searchView;
+    private List<KhachHangDTO> searchList;
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -61,8 +63,8 @@ public class FragmentKhachHang extends Fragment implements KhachHangContract.Vie
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         fragmentKhachHangBinding = fragmentKhachHangBinding.inflate(inflater, container, false);
-
-        rscvPhieuDatBan=fragmentKhachHangBinding.rscvDsphieudatban;
+        searchView = fragmentKhachHangBinding.Search;
+        rscvPhieuDatBan = fragmentKhachHangBinding.rscvDsphieudatban;
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
         rscvPhieuDatBan.setLayoutManager(LinearLayoutManager);
         ///lấy khách hàng
@@ -70,11 +72,34 @@ public class FragmentKhachHang extends Fragment implements KhachHangContract.Vie
         KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
         DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
         khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchList = new ArrayList<>();
+                if (query.length()>0){
+                    for (int i=0;i<lsKhachHang.size();i++){
+                        if (lsKhachHang.get(i).getTenKhachHang().contains(query)||lsKhachHang.get(i).getSdt().contains(query)){
+                            KhachHangDTO khachHangDTO = lsKhachHang.get(i);
+                            searchList.add(khachHangDTO);
+                        }
+                    }
+                    khachHangAdapter = new KhachHangAdapter(FragmentKhachHang.this);
+                    khachHangAdapter.setData(getContext(), searchList);
+                    rscvPhieuDatBan.setAdapter(khachHangAdapter);
+                    //Toast.makeText(getContext(), String.valueOf(lsKhachHang.size()), Toast.LENGTH_LONG).show();
+                }
+                return false;
+            }
 
-
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
 
         return fragmentKhachHangBinding.getRoot();
     }
+
 
     @Override
     public void onThemKhachHangSuccess() {
@@ -92,7 +117,7 @@ public class FragmentKhachHang extends Fragment implements KhachHangContract.Vie
         khachHangAdapter = new KhachHangAdapter(this);
         khachHangAdapter.setData(getContext(), lsKhachHang);
         rscvPhieuDatBan.setAdapter(khachHangAdapter);
-        Toast.makeText(getContext(), String.valueOf(lsKhachHang.size()), Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(), String.valueOf(lsKhachHang.size()), Toast.LENGTH_LONG).show();
     }
 
     @Override
