@@ -130,7 +130,7 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
         super.onResume();
         if (lsChonBanDataInt.size() > 0) {
             String a = String.valueOf(lsChonBanDataInt.size());
-            Toast.makeText(this, a, Toast.LENGTH_LONG).show();
+          //  Toast.makeText(this, a, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -535,12 +535,12 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
 
     @Override
     public void onThemPhieuDatBanSuccess() {
-        Toast.makeText(this, "thêm phiếu đặt bàn thành công", Toast.LENGTH_LONG).show();
+       // Toast.makeText(this, "thêm phiếu đặt bàn thành công", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onThemPhieuDatBanError(String error) {
-        Toast.makeText(this, "thêm phiếu đặt bàn thành công", Toast.LENGTH_LONG).show();
+       // Toast.makeText(this, "thêm phiếu đặt bàn thành công", Toast.LENGTH_LONG).show();
     }
 
     @Override

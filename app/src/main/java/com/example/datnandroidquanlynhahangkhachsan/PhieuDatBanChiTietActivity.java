@@ -1,8 +1,14 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -17,16 +23,21 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.LoaiBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatBanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatBanChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Ban.BanContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Ban.BanPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.DsPhieuDatPhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.DsPhieuDatPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 
 import java.util.List;
 
-public class PhieuDatBanChiTietActivity extends AppCompatActivity implements KhachHangContract.View, BanContract.View {
+public class PhieuDatBanChiTietActivity extends AppCompatActivity implements KhachHangContract.View, BanContract.View, DsPhieuDatPhongContract.View {
 
     private RecyclerView recyclerView;
     ActivityPhieuDatBanChiTietBinding activityPhieuDatBanChiTietBinding;
@@ -39,6 +50,7 @@ public class PhieuDatBanChiTietActivity extends AppCompatActivity implements Kha
     private List<BanDTO> banDTOList;
     private List<LoaiBanDTO> loaiBanDTOList;
     private BanPresenter banPresenter;
+    private DsPhieuDatPhongPresenter dsPhieuDatPhongPresenter;
 
 
     @Override
@@ -46,6 +58,7 @@ public class PhieuDatBanChiTietActivity extends AppCompatActivity implements Kha
         super.onCreate(savedInstanceState);
         activityPhieuDatBanChiTietBinding = ActivityPhieuDatBanChiTietBinding.inflate(getLayoutInflater());
         setContentView(activityPhieuDatBanChiTietBinding.getRoot());
+        dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
 
         banPresenter = new BanPresenter(this);
         banPresenter.LayDanhSachBan();
@@ -64,7 +77,62 @@ public class PhieuDatBanChiTietActivity extends AppCompatActivity implements Kha
             SetDuLieu();
         }
         NhanBan();
+
+        activityPhieuDatBanChiTietBinding.btnHuydatphong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (tempData.datBanDTO != null) {
+
+                    DiaLogHuyDatPhong();
+
+//                    tempData.datBanDTO.getPhieuDatDTO().setTrangThai("đã hủy");
+//
+//                    dsPhieuDatPhongPresenter.CapNhatPhieuDat(tempData.datBanDTO.getPhieuDatDTO());
+//                    onBackPressed();
+                }
+            }
+        });
     }
+
+    private void DiaLogHuyDatPhong() {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_huy_dat_phong);
+        Window window = dialog.getWindow();
+        if (window == null) {
+            return;
+        }
+        TextView btnYes = dialog.findViewById(R.id.btn_yes);
+        TextView btnNo = dialog.findViewById(R.id.btn_no);
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                tempData.datBanDTO.getPhieuDatDTO().setTrangThai("đã hủy");
+
+                dsPhieuDatPhongPresenter.CapNhatPhieuDat(tempData.datBanDTO.getPhieuDatDTO());
+                dialog.dismiss();
+                onBackPressed();
+            }
+        });
+        btnNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                dialog.dismiss();
+
+
+            }
+        });
+
+
+        dialog.show();
+
+
+    }
+
 
     private void SetDuLieu() {
         activityPhieuDatBanChiTietBinding.tvSctPnct.setText(String.valueOf(tempData.datBanDTO.getPhieuDatDTO().getSoChungTu()));
@@ -144,6 +212,76 @@ public class PhieuDatBanChiTietActivity extends AppCompatActivity implements Kha
 
     @Override
     public void onLayDanhSachLoaiBanError(String error) {
+
+    }
+
+    @Override
+    public void onLayDanhSachPhieuDatSuccess(List<PhieuDatDTO> list) {
+
+    }
+
+    @Override
+    public void onLayDanhSachPhieuDatError(String error) {
+
+    }
+
+    @Override
+    public void onThemPhieuDatPhongSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuDatPhongError(String error) {
+
+    }
+
+    @Override
+    public void onThemPhieuDatPhongChiTietSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuDatPhongChiTietError(String error) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatPhongChiTietSuccess(List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTietDTOList) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatPhongChiTietError(String error) {
+
+    }
+
+    @Override
+    public void onThemPhieuDatBanSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuDatBanError(String error) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatBanChiTietSuccess(List<PhieuDatBanChiTietDTO> phieuDatPhongChiTietDTOList) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatBanChiTietError(String error) {
+
+    }
+
+    @Override
+    public void onCapNhatPhieuDatSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatPhieuDatError(String error) {
 
     }
 }

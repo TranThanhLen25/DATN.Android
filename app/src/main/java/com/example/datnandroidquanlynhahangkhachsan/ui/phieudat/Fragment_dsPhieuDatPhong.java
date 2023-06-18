@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
@@ -200,7 +199,7 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
 
     @Override
     public void onLayDanhSachPhieuDatError(String error) {
-        Toast.makeText(getContext(), "Lấy danh sách phiếu đặt phòng thất bại", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(), "Lấy danh sách phiếu đặt phòng thất bại", Toast.LENGTH_LONG).show();
     }
 
     @Override

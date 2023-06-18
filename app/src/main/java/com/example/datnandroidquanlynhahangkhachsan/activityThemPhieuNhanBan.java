@@ -117,7 +117,7 @@ public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPh
         super.onResume();
         if (lsChonBanDataInt.size() > 0) {
             String a = String.valueOf(lsChonBanDataInt.size());
-            Toast.makeText(this, a, Toast.LENGTH_LONG).show();
+           // Toast.makeText(this, a, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -553,12 +553,12 @@ public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPh
 
     @Override
     public void onThemPhieuNhanBanSuccess() {
-        Toast.makeText(this, "thêm phiếu nhận bàn thành công", Toast.LENGTH_LONG).show();
+       // Toast.makeText(this, "thêm phiếu nhận bàn thành công", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onThemPhieuNhanBanError(String error) {
-        Toast.makeText(this, "thêm phiếu nhận bàn thất bại", Toast.LENGTH_LONG).show();
+      //  Toast.makeText(this, "thêm phiếu nhận bàn thất bại", Toast.LENGTH_LONG).show();
     }
     @Override
     public void onCapNhatPhieuNhanSuccess(){}
