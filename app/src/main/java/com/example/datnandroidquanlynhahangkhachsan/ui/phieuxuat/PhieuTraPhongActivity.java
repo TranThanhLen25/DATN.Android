@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -44,8 +43,6 @@ import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhon
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.PhieuNhanPhongChiTietContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.PhieuNhanPhongChiTietPresenter;
 
-import org.w3c.dom.Text;
-
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -66,6 +63,8 @@ public class PhieuTraPhongActivity extends AppCompatActivity implements PhieuNha
     private ListDichVuDTO listDichVuDTO;
 
     private List<KhachHangDTO> lsKhachHang;
+
+    private  PhieuXuatDTO  phieuXuatDTO;
 
 
     private List<PhieuXuatChiTietDTO> lsPhieuXuatChiTiet;
@@ -149,13 +148,14 @@ private PhieuNhanDTO phieuNhanDTO;
         super.onCreate(savedInstanceState);
         ActivityThemphieutraphongBinding phieuTraPhongBinding = ActivityThemphieutraphongBinding.inflate(getLayoutInflater());
         sharedPreferences = getSharedPreferences("GET_PHONGID", MODE_PRIVATE);
-
-        DecimalFormat decimalFormat=new DecimalFormat("#,##0"+" đồng");
-        phieuTraPhongBinding.tvGiaPtp.setText(String.valueOf(decimalFormat.format(sharedPreferences.getInt("GIA",0))));
+        /////gán giá trị vào textview
+       DecimalFormat decimalFormat=new DecimalFormat("#,##0"+" đồng");
+       phieuTraPhongBinding.tvGiaPtp.setText(String.valueOf(decimalFormat.format(sharedPreferences.getInt("GIA",0))));
        phieuTraPhongBinding.tvHotenPtp.setText(sharedPreferences.getString("TEN",""));
        phieuTraPhongBinding.tvSdtptp.setText(sharedPreferences.getString("SDT",""));
        phieuTraPhongBinding.tvCccdPtp.setText(sharedPreferences.getString("CCCD",""));
 
+        phieuTraPhongBinding.tvPhongData.setText(String.valueOf(sharedPreferences.getInt("SOPHONG", 0)));
         sharedPreferences1 = getSharedPreferences("PNID", MODE_PRIVATE);
         editor1 = sharedPreferences1.edit();
 
@@ -163,7 +163,7 @@ private PhieuNhanDTO phieuNhanDTO;
         phongid = sharedPreferences.getInt("PHONGID", 0);
 
         phieuNhanPhongChiTietDTO = new PhieuNhanPhongChiTietDTO();
-
+phieuXuatDTO=new PhieuXuatDTO();
 
 
         lsPhieuNhanPhongChiTiet = new ArrayList<>();
@@ -205,21 +205,12 @@ private PhieuNhanDTO phieuNhanDTO;
         //// lay DV
         DichVuDTO dichVuDTO = new DichVuDTO();
         DichVuPresenter dichVuPresenter = new DichVuPresenter(this);
-        if(sharedPreferences.getInt("KTTHANHTOAN",0)==1)
-        {
+
             dichVuDTO.setPhongID(phongid);
             dichVuDTO.setGhiChu("");
             dichVuDTO.setTrangThai("chưa thanh toán");
             dichVuPresenter.LayDanhSachDichVu(dichVuDTO);
-        }
-        else {
-            dichVuDTO.setPhongID(sharedPreferences.getInt("PHONGID",0));
-            dichVuDTO.setPhieuNhanID(sharedPreferences.getLong("PNID", 0L));
-            dichVuDTO.setGhiChu("");
-            dichVuDTO.setTrangThai("đã thanh toán");
-            dichVuPresenter.LayDvPn(dichVuDTO);
-            phieuTraPhongBinding.btnTraPhong.setVisibility(View.GONE);
-        }
+
 
 
 
@@ -242,17 +233,16 @@ private PhieuNhanDTO phieuNhanDTO;
                 onBackPressed();
                 ///xóa dữ liệu khi trở về
 
-//                editor = sharedPreferences.edit();
-//                editor1 = sharedPreferences1.edit();
-//                editor.clear();
-//                editor.commit();
-//                editor1.clear();
-//                editor1.commit();
+                editor = sharedPreferences.edit();
+                editor1 = sharedPreferences1.edit();
+                editor.clear();
+                editor.commit();
+                editor1.clear();
+                editor1.commit();
             }
         });
 
-        /////gán giá trị vào textview
-        phieuTraPhongBinding.tvPhongData.setText(String.valueOf(sharedPreferences.getInt("SOPHONG", 0)));
+
 
         /// cập nhật trạng thái phòng
         PhongPresenter phongPresenter = new PhongPresenter(this);
@@ -322,6 +312,13 @@ private PhieuNhanDTO phieuNhanDTO;
                             phieuXuatPresenter.ThemPhieuXuatChiTiet(phieuXuatChiTietDTO);
                             temp = 0;
                         }
+                    /// cap nhat phieu xuat
+                        phieuXuatDTO.setPhieuXuatId(lsPhieuXuat.get(i).getPhieuXuatId());
+                        phieuXuatDTO.setTrangthai(1);
+                        phieuXuatDTO.setSoChungTu(lsPhieuXuat.get(i).getSoChungTu());
+                        phieuXuatDTO.setTongThanhTien(lsPhieuXuat.get(i).getTongThanhTien()+ sharedPreferences.getLong("TT_NGAY", 0L) + sharedPreferences.getLong("TT_DV", 0L));
+                        phieuXuatPresenter.CapNhatPX(phieuXuatDTO);
+
                     } else {
                         temp++;
                     }
@@ -334,7 +331,7 @@ private PhieuNhanDTO phieuNhanDTO;
                             , Pn
                             , date
                             , Ndid
-                            , 0L
+                            , sharedPreferences.getLong("TONGTIEN", 0L)+sharedPreferences.getLong("TT_DV",0L)
                             , 0
                             , 0
                             , 1
@@ -504,7 +501,7 @@ private PhieuNhanDTO phieuNhanDTO;
         ///format giá tiền
         DecimalFormat decimalFormat = new DecimalFormat("#,##0" + " đồng");
         ///tổng tiền
-        //TongTien =  ;
+
 
 
 
@@ -512,8 +509,8 @@ private PhieuNhanDTO phieuNhanDTO;
         TextView tv_tong = findViewById(R.id.tv_tongTien);
         tv_tong.setText(String.valueOf(decimalFormat.format(sharedPreferences.getLong("TONGTIEN", 0L)+Long.valueOf(tienDV))));
 
-        editor.putLong("TT_NGAY", TongTien);
-        editor.putLong("TT_DV", 0);
+        editor.putLong("TT_NGAY", sharedPreferences.getLong("TONGTIEN", 0L));
+        editor.putLong("TT_DV", tienDV);
         editor.commit();
 
     }

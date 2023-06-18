@@ -7,13 +7,10 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemPhieuxuatchitietBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
@@ -21,6 +18,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhan
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuTraPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatChiTietActivity;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -187,14 +185,8 @@ public class PhieuXuatChiTietAdapter extends RecyclerView.Adapter<PhieuXuatChiTi
             tongAll = tongMenu + Double.valueOf(tongDay);
             holder.phieuXuatChiTietBinding.tvTongtien.setText(String.valueOf(decimalFormat.format(tongAll)));
             tongMenu = 0;
-            ////luu tong hoa don
-          //  tongCuoi += tongAll;
-
         }
 
-//// lấy được mà ch in ra dc
-    //            editor.putInt("TONGPX", tongCuoi);
-    //            editor.commit();
 
 
 
@@ -202,12 +194,7 @@ public class PhieuXuatChiTietAdapter extends RecyclerView.Adapter<PhieuXuatChiTi
             @Override
             public void onClick(View view) {
 
-if(pn.getTrangThai()==4)
-    editor.putInt("KTTHANHTOAN",1);
-else
-{
-    editor.putInt("KTTHANHTOAN",9);
-}
+                editor.putLong("PNPCT", pn.getPhieuNhanPhongChiTietId());
                 for (int i = 0; i < lsPhong.size(); i++) {
                     if (lsPhong.get(i).getPhongId() == pn.getPhongId()) {
                         loaiphongid = lsPhong.get(i).getLoaiPhongId();
@@ -220,10 +207,24 @@ else
                     }
                 }
                 editor.putInt("PHONGID", pn.getPhongId());
+                editor.putLong("SONGAY",songay);
+                editor.putString("NGAYVAO",formatter.format(pn.getThoiGianNhanPhong()));
+
+                if(pn.getThoiGianTraPhong()!=null)
+                {
+                    editor.putString("NGAYRA",formatter.format(pn.getThoiGianTraPhong()));
+                }
+
 
                 editor.commit();
-                Intent intent = new Intent(context, PhieuTraPhongActivity.class);
-                context.startActivity(intent);
+
+                if (pn.getTrangThai() == 4) {
+                    Intent intent = new Intent(context, PhieuTraPhongActivity.class);
+                    context.startActivity(intent);
+                } else {
+                    Intent intent = new Intent(context, PhieuXuatChiTietActivity.class);
+                    context.startActivity(intent);
+                }
 
             }
         });
