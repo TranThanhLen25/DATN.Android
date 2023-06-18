@@ -3,6 +3,7 @@ package com.example.datnandroidquanlynhahangkhachsan.ui.phieudat;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.phieudat.IPhieuDatModel;
@@ -91,6 +92,36 @@ public class DsPhieuDatPhongPresenter implements DsPhieuDatPhongContract.Present
             @Override
             public void onError(String error) {
                 view.onThemPhieuDatBanError(error);
+            }
+        });
+    }
+
+    @Override
+    public void LayPhieuDatBanChiTiet(PhieuDatDTO phieuDatDTO) {
+        phieuDatModel.LayPhieuDatBanChiTiet(phieuDatDTO, new IPhieuDatModel.IOnLayPhieuDatBanChiTietFinishedListener() {
+            @Override
+            public void onSuccess(List<PhieuDatBanChiTietDTO> listResult) {
+                view.onLayPhieuDatBanChiTietSuccess(listResult);
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onLayPhieuDatBanChiTietError(error);
+            }
+        });
+    }
+
+    @Override
+    public void CapNhatPhieuDat(PhieuDatDTO phieuDatDTO) {
+        phieuDatModel.CapNhatPhieuDat(phieuDatDTO, new IPhieuDatModel.IOnCapNhatPhieuDatFinishedListener() {
+            @Override
+            public void onSuccess() {
+                view.onCapNhatPhieuDatSuccess();
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onCapNhatPhieuDatError(error);
             }
         });
     }

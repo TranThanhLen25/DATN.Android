@@ -95,6 +95,9 @@ public class ChonPhongActivity extends AppCompatActivity implements PhongContrac
     @Override
     public void onLayLoaiPhongSuccess(List<LoaiPhongDTO> list) {
         lsloaiPhong = list;
+        chonPhongAdapter = new ChonPhongAdapter(this);
+        chonPhongAdapter.setData(lsphong, lsloaiPhong, context);
+        rscv.setAdapter(chonPhongAdapter);
     }
 
     @Override

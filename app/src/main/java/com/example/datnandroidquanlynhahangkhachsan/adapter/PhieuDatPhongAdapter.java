@@ -14,6 +14,7 @@ import com.example.datnandroidquanlynhahangkhachsan.PhieuDatPhongChiTietActivity
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemPhieudatphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
@@ -168,6 +169,26 @@ public class PhieuDatPhongAdapter extends RecyclerView.Adapter<PhieuDatPhongAdap
 
     @Override
     public void onThemPhieuDatBanError(String error) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatBanChiTietSuccess(List<PhieuDatBanChiTietDTO> phieuDatPhongChiTietDTOList) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatBanChiTietError(String error) {
+
+    }
+
+    @Override
+    public void onCapNhatPhieuDatSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatPhieuDatError(String error) {
 
     }
 

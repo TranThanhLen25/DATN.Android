@@ -381,5 +381,15 @@
             app:layout_constraintBottom_toBottomOf="@+id/footer_phieudatphong"
             app:layout_constraintEnd_toEndOf="@+id/footer_phieudatphong"
             app:layout_constraintTop_toTopOf="@+id/footer_phieudatphong" />
+
+        <Button
+            android:id="@+id/btn_huydatphong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HỦY ĐẶT"
+            android:backgroundTint="@color/red"
+            app:layout_constraintBottom_toBottomOf="@+id/footer_phieudatphong"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/footer_phieudatphong" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,11 +22,17 @@ import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemPhie
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.NhanBanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatBanChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.chonBan.activity_chon_ban;
 import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.DsPhieuDatPhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.DsPhieuDatPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
@@ -39,8 +45,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPhieuNhanPhongContract.View, KhachHangContract.View, LoaiPhongContract.View{
+public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPhieuNhanPhongContract.View, KhachHangContract.View, LoaiPhongContract.View, DsPhieuDatPhongContract.View{
     private ActivityThemPhieuNhanBanBinding activityThemPhieuNhanBanBinding;
+    private DsPhieuDatPhongPresenter dsPhieuDatPhongPresenter;
     private String thoiGianNhan;
     private String thoiGianTra;
     private AppUtils ac;
@@ -57,6 +64,7 @@ public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPh
         activityThemPhieuNhanBanBinding = activityThemPhieuNhanBanBinding.inflate(getLayoutInflater());
         setContentView(activityThemPhieuNhanBanBinding.getRoot());
         dsPhieuNhanPhongPresenter = new DsPhieuNhanPhongPresenter(this);
+        dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
         khachHangDTO = new KhachHangDTO();
         activityThemPhieuNhanBanBinding.toolbarPhieunhanban.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +109,7 @@ public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPh
         });
         KiemTraDuLieuDauVao();
         setThoiGianNhanMacDinh();
+        SetDuLieuNeuCo();
     }
 
     @Override
@@ -108,8 +117,43 @@ public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPh
         super.onResume();
         if (lsChonBanDataInt.size() > 0) {
             String a = String.valueOf(lsChonBanDataInt.size());
-            Toast.makeText(this, a, Toast.LENGTH_LONG).show();
+           // Toast.makeText(this, a, Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void SetDuLieuNeuCo() {
+        if (tempData.tempDatakhachHangDTO != null) {
+            if (tempData.tempDatakhachHangDTO.getTenKhachHang()!=null){
+
+                activityThemPhieuNhanBanBinding.etHotenPhieunhanban.setText(tempData.tempDatakhachHangDTO.getTenKhachHang());
+            }
+            if (tempData.tempDatakhachHangDTO.getCccd() != null) {
+                activityThemPhieuNhanBanBinding.etCccdPhieunhanban.setText(tempData.tempDatakhachHangDTO.getCccd());
+            }
+            activityThemPhieuNhanBanBinding.etSdtPhieunhanban.setText(tempData.tempDatakhachHangDTO.getSdt());
+        }
+//        if (tempData.datPhongDTO.getPhieuDatPhongChiTiets().size() > 0) {
+//            //lấy danh sách loại phòng
+//            loaiPhongDTOList = new ArrayList<>();
+//            loaiPhongPresenter = new LoaiPhongPresenter(this);
+//            loaiPhongPresenter.LayLoaiPhong();
+//
+//            String soLuongPhong = "";
+//            int loaiPhongID;
+//            for (int i = 0; i < tempData.datPhongDTO.getPhieuDatPhongChiTiets().size(); i++) {
+//                soLuongPhong += String.valueOf(i);
+//                loaiPhongID = Integer.valueOf(tempData.datPhongDTO.getPhieuDatPhongChiTiets().get(i).getLoaiPhongId());
+//                for (int j = 0; j < loaiPhongDTOList.size(); j++) {
+//                    if (loaiPhongID == loaiPhongDTOList.get(j).getLoaiPhongId()) {
+//                        soLuongPhong += String.valueOf(" " + loaiPhongDTOList.get(j).getTenLoaiPhong() + tempData.datPhongDTO.getPhieuDatPhongChiTiets().get(i).getSoLuong());
+//                        if (i < tempData.datPhongDTO.getPhieuDatPhongChiTiets().size() + 1) {
+//                            soLuongPhong += ", ";
+//                        }
+//                    }
+//                }
+//            }
+//            themphieunhanphongBinding.tvPhongDataPhieunhanphong.setText(soLuongPhong);
+//        }
     }
 
     private void OnclickThemPhieuNhan() {
@@ -179,9 +223,21 @@ public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPh
 
             String a = String.valueOf(khachHangDTO.getTenKhachHang());
             a+=nhanBanDTO.getPhieuNhanDTO().getTrangThai()+" "+nhanBanDTO.getPhieuNhanBanChiTietDTOs().size();
-            Toast.makeText(this, a, Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, a, Toast.LENGTH_LONG).show();
+
+
+            if (tempData.datBanDTO!=null){
+
+                tempData.datBanDTO.getPhieuDatDTO().setTrangThai("đã nhận phòng");
+
+                dsPhieuDatPhongPresenter.CapNhatPhieuDat(tempData.datBanDTO.getPhieuDatDTO());
+            }
+
+
             lsChonBanDataInt.clear();
-            onBackPressed();
+          //  onBackPressed();
+            Intent i = new Intent(this, Nav_Ban_Activity.class);
+            startActivity(i);
         }
     }
 
@@ -497,18 +553,88 @@ public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPh
 
     @Override
     public void onThemPhieuNhanBanSuccess() {
-        Toast.makeText(this, "thêm phiếu nhận bàn thành công", Toast.LENGTH_LONG).show();
+       // Toast.makeText(this, "thêm phiếu nhận bàn thành công", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onThemPhieuNhanBanError(String error) {
-        Toast.makeText(this, "thêm phiếu nhận bàn thất bại", Toast.LENGTH_LONG).show();
+      //  Toast.makeText(this, "thêm phiếu nhận bàn thất bại", Toast.LENGTH_LONG).show();
     }
     @Override
     public void onCapNhatPhieuNhanSuccess(){}
 
     @Override
     public void onCapNhatPhieuNhanError(String error){}
+
+    @Override
+    public void onLayDanhSachPhieuDatSuccess(List<PhieuDatDTO> list) {
+
+    }
+
+    @Override
+    public void onLayDanhSachPhieuDatError(String error) {
+
+    }
+
+    @Override
+    public void onThemPhieuDatPhongSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuDatPhongError(String error) {
+
+    }
+
+    @Override
+    public void onThemPhieuDatPhongChiTietSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuDatPhongChiTietError(String error) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatPhongChiTietSuccess(List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTietDTOList) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatPhongChiTietError(String error) {
+
+    }
+
+    @Override
+    public void onThemPhieuDatBanSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuDatBanError(String error) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatBanChiTietSuccess(List<PhieuDatBanChiTietDTO> phieuDatPhongChiTietDTOList) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatBanChiTietError(String error) {
+
+    }
+
+    @Override
+    public void onCapNhatPhieuDatSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatPhieuDatError(String error) {
+
+    }
 
 //    @Override
 //    public void onThemPhieuNhanBanSuccess() {

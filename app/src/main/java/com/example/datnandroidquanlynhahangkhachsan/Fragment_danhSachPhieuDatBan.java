@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +16,7 @@ import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDanhSach
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienLocKhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
@@ -38,6 +40,12 @@ public class Fragment_danhSachPhieuDatBan extends Fragment implements DsPhieuDat
     private List<PhieuDatDTO> lsPhieuDat;
     private PhieuDatBanAdapter phieuDatBanAdapter;
     private DsPhieuDatPhongPresenter dsPhieuDatPhongPresenter;
+
+    private SearchView searchView;
+
+    private List<PhieuDatDTO> searchList;
+
+    private List<KhachHangDTO> searchListKhachHang;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -84,6 +92,7 @@ public class Fragment_danhSachPhieuDatBan extends Fragment implements DsPhieuDat
             @Override
             public void onClick(View view) {
                 tempData.Check = false;
+                tempData.CheckChucNang = true;
                 Intent intent = new Intent(getActivity(), activity_them_phieu_dat_ban.class);
                 startActivity(intent);
             }
@@ -105,6 +114,42 @@ public class Fragment_danhSachPhieuDatBan extends Fragment implements DsPhieuDat
         dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
         rscvPhieuDatBan.setLayoutManager(LinearLayoutManager);
+
+
+        searchView = fragmentDanhSachPhieuDatBanBinding.Search;
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchList = new ArrayList<>();
+                searchListKhachHang = new ArrayList<>();
+                if (query.length() > 0) {
+                    for (int i = 0; i < lsKhachHang.size(); i++) {
+                        if (lsKhachHang.get(i).getTenKhachHang().contains(query) || lsKhachHang.get(i).getSdt().contains(query)) {
+                            searchListKhachHang.add(lsKhachHang.get(i));
+                        }
+                    }
+                    for (int j = 0; j < searchListKhachHang.size(); j++) {
+                        for (int i = 0; i < lsPhieuDat.size(); i++) {
+                            if (searchListKhachHang.get(j).getKhachHangId()==lsPhieuDat.get(i).getKhachHangID()){
+                                searchList.add(lsPhieuDat.get(i));
+                            }
+                        }
+                    }
+
+
+                    phieuDatBanAdapter = new PhieuDatBanAdapter(Fragment_danhSachPhieuDatBan.this);
+                    phieuDatBanAdapter.setData(getContext(), searchList, lsKhachHang);
+                    rscvPhieuDatBan.setAdapter(phieuDatBanAdapter);
+                    //Toast.makeText(getContext(), String.valueOf(lsKhachHang.size()), Toast.LENGTH_LONG).show();
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
 
 
         return fragmentDanhSachPhieuDatBanBinding.getRoot();
@@ -165,6 +210,26 @@ public class Fragment_danhSachPhieuDatBan extends Fragment implements DsPhieuDat
     }
 
     @Override
+    public void onLayPhieuDatBanChiTietSuccess(List<PhieuDatBanChiTietDTO> phieuDatPhongChiTietDTOList) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatBanChiTietError(String error) {
+
+    }
+
+    @Override
+    public void onCapNhatPhieuDatSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatPhieuDatError(String error) {
+
+    }
+
+    @Override
     public void onThemKhachHangSuccess() {
 
     }
@@ -176,7 +241,7 @@ public class Fragment_danhSachPhieuDatBan extends Fragment implements DsPhieuDat
 
     @Override
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
-        lsKhachHang=list;
+        lsKhachHang = list;
         phieuDatBanAdapter = new PhieuDatBanAdapter(this);
         phieuDatBanAdapter.setData(getContext(), lsPhieuDat, lsKhachHang);
         rscvPhieuDatBan.setAdapter(phieuDatBanAdapter);

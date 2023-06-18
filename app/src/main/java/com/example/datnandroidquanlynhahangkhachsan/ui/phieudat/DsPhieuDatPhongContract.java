@@ -3,6 +3,7 @@ package com.example.datnandroidquanlynhahangkhachsan.ui.phieudat;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 
@@ -36,6 +37,16 @@ public interface DsPhieuDatPhongContract {
         void onThemPhieuDatBanSuccess();
 
         void onThemPhieuDatBanError(String error);
+
+        //lấy phiếu đặt bàn chi tiết
+        void onLayPhieuDatBanChiTietSuccess(List<PhieuDatBanChiTietDTO> phieuDatPhongChiTietDTOList);
+
+        void onLayPhieuDatBanChiTietError(String error);
+
+        //cập nhật phiếu đặt
+        void onCapNhatPhieuDatSuccess();
+
+        void onCapNhatPhieuDatError(String error);
     }
 
     interface Presenter {
@@ -49,5 +60,7 @@ public interface DsPhieuDatPhongContract {
         void LayPhieuDatPhongChiTiet(PhieuDatDTO phieuDatDTO);
 
         void ThemPhieuDatBan(DatBanDTO datBanDTO);
+        void LayPhieuDatBanChiTiet(PhieuDatDTO phieuDatDTO);
+        void CapNhatPhieuDat(PhieuDatDTO phieuDatDTO);
     }
 }

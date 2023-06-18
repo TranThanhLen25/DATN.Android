@@ -19,16 +19,22 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.datnandroidquanlynhahangkhachsan.CaptureAct;
+import com.example.datnandroidquanlynhahangkhachsan.MainActivity;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemphieunhanphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.NhanPhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatBanChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.chonphong.ChonPhongActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.DsPhieuDatPhongContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.DsPhieuDatPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
@@ -40,8 +46,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsPhieuNhanPhongContract.View, KhachHangContract.View, LoaiPhongContract.View {
+public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsPhieuNhanPhongContract.View, KhachHangContract.View, LoaiPhongContract.View, DsPhieuDatPhongContract.View {
     private ActivityThemphieunhanphongBinding themphieunhanphongBinding;
+    private DsPhieuDatPhongPresenter dsPhieuDatPhongPresenter;
     private String thoiGianNhan;
     private String thoiGianTra;
     private AppUtils ac;
@@ -60,6 +67,7 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
         themphieunhanphongBinding = themphieunhanphongBinding.inflate(getLayoutInflater());
         setContentView(themphieunhanphongBinding.getRoot());
         dsPhieuNhanPhongPresenter = new DsPhieuNhanPhongPresenter(this);
+        dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
         khachHangDTO = new KhachHangDTO();
         themphieunhanphongBinding.toolbarThemphieunhanphong.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +107,10 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
 
     private void SetDuLieuNeuCo() {
         if (tempData.tempDatakhachHangDTO != null) {
-            themphieunhanphongBinding.etHotenPhieunhanphong.setText(tempData.tempDatakhachHangDTO.getTenKhachHang());
+            if (tempData.tempDatakhachHangDTO.getTenKhachHang() != null) {
+
+                themphieunhanphongBinding.etHotenPhieunhanphong.setText(tempData.tempDatakhachHangDTO.getTenKhachHang());
+            }
             if (tempData.tempDatakhachHangDTO.getCccd() != null) {
                 themphieunhanphongBinding.etCccdPhieunhanphong.setText(tempData.tempDatakhachHangDTO.getCccd());
             }
@@ -294,8 +305,18 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
 
             String a = String.valueOf(khachHangDTO.getTenKhachHang());
             // Toast.makeText(this, a, Toast.LENGTH_LONG).show();
+
+            if (tempData.datPhongDTO != null) {
+
+                tempData.datPhongDTO.getPhieuDatDTO().setTrangThai("đã nhận phòng");
+
+                dsPhieuDatPhongPresenter.CapNhatPhieuDat(tempData.datPhongDTO.getPhieuDatDTO());
+            }
+
             lsChonPhongDataInt.clear();
-            onBackPressed();
+            //onBackPressed();
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
         }
     }
 
@@ -511,9 +532,82 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
     public void onLayLoaiPhongError(String error) {
 
     }
-    @Override
-    public void onCapNhatPhieuNhanSuccess(){}
 
     @Override
-    public void onCapNhatPhieuNhanError(String error){}
+    public void onCapNhatPhieuNhanSuccess() {
+    }
+
+    @Override
+    public void onCapNhatPhieuNhanError(String error) {
+    }
+
+    @Override
+    public void onLayDanhSachPhieuDatSuccess(List<PhieuDatDTO> list) {
+
+    }
+
+    @Override
+    public void onLayDanhSachPhieuDatError(String error) {
+
+    }
+
+    @Override
+    public void onThemPhieuDatPhongSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuDatPhongError(String error) {
+
+    }
+
+    @Override
+    public void onThemPhieuDatPhongChiTietSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuDatPhongChiTietError(String error) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatPhongChiTietSuccess(List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTietDTOList) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatPhongChiTietError(String error) {
+
+    }
+
+    @Override
+    public void onThemPhieuDatBanSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuDatBanError(String error) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatBanChiTietSuccess(List<PhieuDatBanChiTietDTO> phieuDatPhongChiTietDTOList) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatBanChiTietError(String error) {
+
+    }
+
+    @Override
+    public void onCapNhatPhieuDatSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatPhieuDatError(String error) {
+
+    }
 }

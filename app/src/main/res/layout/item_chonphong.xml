@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ctl_itemchonphong"
-        android:layout_width="105dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:background="@drawable/bg_item"

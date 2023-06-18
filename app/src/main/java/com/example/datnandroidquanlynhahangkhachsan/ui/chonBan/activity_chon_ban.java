@@ -70,6 +70,9 @@ public class activity_chon_ban extends AppCompatActivity implements BanContract.
     @Override
     public void onLayDanhSachLoaiBanSuccess(List<LoaiBanDTO> list) {
         lsLoaiBan = list;
+        chonBanAdapter = new ChonBanAdapter(this);
+        chonBanAdapter.setData(lsBan, lsLoaiBan, context);
+        rscv.setAdapter(chonBanAdapter);
     }
 
     @Override

@@ -82,6 +82,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
         ////gán thông tin vào textVIEW
         sharedPreferences = getSharedPreferences("PHONG", MODE_PRIVATE);
         ChiTietPhongBinding.tvLoaiphongchitiet.setText(sharedPreferences.getString("LOAIPHONG", ""));
+        ChiTietPhongBinding.etHotenChitietphong.setText(sharedPreferences.getString("TEN", ""));
         ChiTietPhongBinding.tvSo.setText(String.valueOf(sharedPreferences.getInt("SOPHONG", 0)));
 
         //// format lại giá tiền
@@ -110,8 +111,11 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
         ChiTietPhongBinding.imgMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ChiTietPhongActivity.this, DanhSachMenuActivity.class);
-                startActivity(intent);
+                int trangThaiID = sharedPreferences.getInt("TRANGTHAI", 0);
+                if (trangThaiID==4){
+                    Intent intent = new Intent(ChiTietPhongActivity.this, DanhSachMenuActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 

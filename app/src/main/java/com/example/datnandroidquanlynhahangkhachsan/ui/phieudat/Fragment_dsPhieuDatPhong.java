@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +16,7 @@ import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDsPhieuD
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienLocKhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
@@ -40,6 +41,12 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
     private FragmentDsPhieuDatPhongBinding fragmentDsPhieuDatPhongBinding;
     DieuKienLocPhieuDatDTO dieuKienLocPhieuDatDTO;
     private List<KhachHangDTO> lsKhachHang;
+
+    private SearchView searchView;
+
+    private List<PhieuDatDTO> searchList;
+
+    private List<KhachHangDTO> searchListKhachHang;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -118,6 +125,44 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
         dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
         rscvPhieuDatPhong.setLayoutManager(LinearLayoutManager);
+
+
+        searchView = fragmentDsPhieuDatPhongBinding.Search;
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchList = new ArrayList<>();
+                searchListKhachHang = new ArrayList<>();
+                if (query.length() > 0) {
+                    for (int i = 0; i < lsKhachHang.size(); i++) {
+                        if (lsKhachHang.get(i).getTenKhachHang().contains(query) || lsKhachHang.get(i).getSdt().contains(query)) {
+                            searchListKhachHang.add(lsKhachHang.get(i));
+                        }
+                    }
+                    for (int j = 0; j < searchListKhachHang.size(); j++) {
+                        for (int i = 0; i < lsPhieuDat.size(); i++) {
+                            if (searchListKhachHang.get(j).getKhachHangId()==lsPhieuDat.get(i).getKhachHangID()){
+                                searchList.add(lsPhieuDat.get(i));
+                            }
+                        }
+                    }
+
+
+                    phieuDatPhongAdapter = new PhieuDatPhongAdapter(Fragment_dsPhieuDatPhong.this);
+                    phieuDatPhongAdapter.setData(getContext(), searchList, lsKhachHang);
+                    rscvPhieuDatPhong.setAdapter(phieuDatPhongAdapter);
+                    //Toast.makeText(getContext(), String.valueOf(lsKhachHang.size()), Toast.LENGTH_LONG).show();
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+
         return fragmentDsPhieuDatPhongBinding.getRoot();
 
 
@@ -154,7 +199,7 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
 
     @Override
     public void onLayDanhSachPhieuDatError(String error) {
-        Toast.makeText(getContext(), "Lấy danh sách phiếu đặt phòng thất bại", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(), "Lấy danh sách phiếu đặt phòng thất bại", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -195,6 +240,26 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
 
     @Override
     public void onThemPhieuDatBanError(String error) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatBanChiTietSuccess(List<PhieuDatBanChiTietDTO> phieuDatPhongChiTietDTOList) {
+
+    }
+
+    @Override
+    public void onLayPhieuDatBanChiTietError(String error) {
+
+    }
+
+    @Override
+    public void onCapNhatPhieuDatSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatPhieuDatError(String error) {
 
     }
 

@@ -4,6 +4,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.ErrorMessageDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
@@ -165,6 +166,72 @@ public class PhieuDatModel implements IPhieuDatModel {
             @Override
             public void onSuccess(ResponseTokenDTO itemToken) {
                 service.apiServiceRetrofit.ThemPhieuDatBan(datBanDTO).enqueue(new Callback<ResponseInfo>() {
+                    @Override
+                    public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
+                        if (response.body() != null) {
+                            listener.onSuccess();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseInfo> call, Throwable t) {
+                        listener.onError(t.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+                listener.onError(error);
+            }
+        });
+    }
+
+    @Override
+    public void LayPhieuDatBanChiTiet(PhieuDatDTO phieuDatDTO, IOnLayPhieuDatBanChiTietFinishedListener listener) {
+        service = new APIService();
+        service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
+            @Override
+            public void onSuccess(ResponseTokenDTO itemToken) {
+                service.apiServiceRetrofit.layPhieuDatBanChiTiet(phieuDatDTO).enqueue(new Callback<ResponseDTO<List<PhieuDatBanChiTietDTO>>>() {
+                    @Override
+                    public void onResponse(Call<ResponseDTO<List<PhieuDatBanChiTietDTO>>> call, Response<ResponseDTO<List<PhieuDatBanChiTietDTO>>> response) {
+                        //lay loi api tra ve (neu co)
+                        errorKiemTra = service.getMessageResponse(response);
+                        if (errorKiemTra.getFlagException() || !errorKiemTra.getFlagSuccess()) {
+                            listener.onError(errorKiemTra.getErrorMessage());
+                            return;
+                        }
+
+                        //trong phan response (tra ve) cua api co body (noi dung)
+                        //Ma o day minh quy uoc la tra ve ResponseDTO
+                        //Sau do response.body().getData() de lay ra du lieu o truong data
+                        List<PhieuDatBanChiTietDTO> listResult = response.body().getData();
+                        listener.onSuccess(listResult);
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseDTO<List<PhieuDatBanChiTietDTO>>> call, Throwable t) {
+                        listener.onError(t.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+//Lay token loi => thong bao loi
+                listener.onError(error);
+            }
+        });
+    }
+
+    @Override
+    public void CapNhatPhieuDat(PhieuDatDTO phieuDatDTO, IOnCapNhatPhieuDatFinishedListener listener) {
+        service = new APIService();
+        service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
+            @Override
+            public void onSuccess(ResponseTokenDTO itemToken) {
+                service.apiServiceRetrofit.capNhatPhieuDat(phieuDatDTO).enqueue(new Callback<ResponseInfo>() {
                     @Override
                     public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
                         if (response.body() != null) {

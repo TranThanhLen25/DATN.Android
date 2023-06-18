@@ -17,10 +17,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ui.phieuxuat.PhieuXuatChiTietActivity"
+            android:name=".ActivityChiTietKhachHang"
             android:exported="false" />
         <activity
             android:name=".PhieuTraDaThanhToanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PhieuDatBanChiTietActivity"
             android:exported="false" />
         <activity
             android:name=".ui.phieuxuat.PhieuTraBanActivity"

@@ -4,20 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.phieudat.Fragment_dsPhieuDatPhong">
+    tools:context=".FragmentKhachHang">
 
-
-    <include
-        android:id="@id/icl_appbackpdp"
-        layout="@layout/activity_appar_back"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/headderphieudatphong"
+        android:id="@+id/headderphieudatban"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -25,21 +16,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/icl_appbackpdp">
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <TextView
 
-            android:id="@+id/tv_phieudatphong"
+            android:id="@+id/tv_phieudatban"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_tenphieu"
             android:padding="10dp"
-            android:text="@string/tv_dsphieudatphong"
+            android:text="Danh sách khách hàng"
             android:textSize="@dimen/heading_2"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/headderphieudatphong"
-            app:layout_constraintTop_toTopOf="@id/headderphieudatphong" />
+            app:layout_constraintStart_toStartOf="@id/headderphieudatban"
+            app:layout_constraintTop_toTopOf="@id/headderphieudatban" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -48,10 +39,9 @@
             android:layout_marginTop="10dp"
             app:cardCornerRadius="5dp"
             app:cardElevation="5dp"
-            app:layout_constraintEnd_toEndOf="@id/headderphieudatphong"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@id/headderphieudatphong"
-            app:layout_constraintTop_toBottomOf="@+id/tv_phieudatphong">
+            app:layout_constraintEnd_toEndOf="@id/headderphieudatban"
+            app:layout_constraintStart_toStartOf="@id/headderphieudatban"
+            app:layout_constraintTop_toBottomOf="@+id/tv_phieudatban">
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/Search"
@@ -64,45 +54,47 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
-        android:id="@+id/scr_phieudatphong"
+        android:id="@+id/scr_phieudatban"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="10dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headderphieudatphong">
+        app:layout_constraintTop_toBottomOf="@+id/headderphieudatban"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/phieudatphong"
+            android:id="@+id/phieudatban"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/scr_phieudatphong">
+            app:layout_constraintTop_toTopOf="@+id/scr_phieudatban">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/mainphieudatphong"
+                android:id="@+id/mainphieudatban"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
 
-                app:layout_constraintEnd_toEndOf="@id/phieudatphong"
-                app:layout_constraintStart_toStartOf="@id/phieudatphong"
-                app:layout_constraintTop_toTopOf="@id/phieudatphong">
+                app:layout_constraintEnd_toEndOf="@id/phieudatban"
+                app:layout_constraintStart_toStartOf="@id/phieudatban"
+                app:layout_constraintTop_toTopOf="@id/phieudatban">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    app:layout_constraintEnd_toEndOf="@+id/mainphieudatphong"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
-                    app:layout_constraintTop_toTopOf="@+id/mainphieudatphong">
+                    app:layout_constraintEnd_toEndOf="@+id/mainphieudatban"
+                    app:layout_constraintStart_toStartOf="@+id/mainphieudatban"
+                    app:layout_constraintTop_toTopOf="@+id/mainphieudatban">
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rscv_dsphieudatphong"
+                        android:id="@+id/rscv_dsphieudatban"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layout_constraintStart_toStartOf="parent"
@@ -113,21 +105,5 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fl_btn_themphieudat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:backgroundTint="@color/white"
-        android:src="@drawable/add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:maxImageSize="56dp"
-        app:tint="@color/bluenhat"
-
-        tools:ignore="SpeakableTextPresentCheck" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
