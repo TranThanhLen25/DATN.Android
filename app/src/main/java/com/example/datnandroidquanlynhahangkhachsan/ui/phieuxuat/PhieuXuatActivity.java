@@ -18,6 +18,7 @@ import com.example.datnandroidquanlynhahangkhachsan.ThanhToanActivity;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuXuatChiTietAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityPhieuXuatBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.DichVuDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.XuatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
@@ -31,6 +32,8 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuat
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.DichVu.DichVuContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.DichVu.DichVuPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.HangHoaContract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.HangHoaPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
@@ -50,11 +53,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatConTract.View, PhongContract.View, PhieuNhanPhongChiTietContract.View, LoaiPhongContract.View, DichVuContract.View, DsPhieuNhanPhongContract.View {
+public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatConTract.View, PhongContract.View, PhieuNhanPhongChiTietContract.View, LoaiPhongContract.View, DichVuContract.View, DsPhieuNhanPhongContract.View , HangHoaContract.View {
 
     private List<PhieuXuatChiTietDTO> lsPhieuXuatCT;
     private List<PhongDTO> lsPhong;
     private List<LoaiPhongDTO> loaiPhong;
+
+    private List<HangHoaDTO> lsHangHoa;
 
     private PhieuNhanDTO phieuNhanDTO;
 
@@ -120,6 +125,7 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
         lsPhieuNhanCT = new ArrayList<>();
         lsPhieuXuat = new ArrayList<>();
         tamlsPhieuXuatChiTiet = new ArrayList<>();
+        lsHangHoa=new ArrayList<>();
 
 
         phieuNhanDTO = new PhieuNhanDTO();
@@ -162,12 +168,14 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
         phieuXuatBinding.tvSdtptp.setText(sdt);
         phieuXuatBinding.tvSctData.setText(sct);
         phieuXuatBinding.tvNgaynhan.setText(ngay);
+///lay hang hoa
 
-
+        HangHoaPresenter hangHoaPresenter=new HangHoaPresenter(this);
+        hangHoaPresenter.LayDanhSachHangHoa2("");
         ///lay Dv
         DichVuPresenter dichVuPresenter = new DichVuPresenter(this);
         DichVuDTO dichVuDTO = new DichVuDTO();
-//        dichVuDTO.setPhieuNhanID(sharedPreferences.getLong("PNID",0L));
+//
         dichVuDTO.setGhiChu("");
         dichVuDTO.setTrangThai("thanh");
         dichVuPresenter.LayDanhSachDichVu(dichVuDTO);
@@ -221,19 +229,27 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
                         if (lsDichVu.get(a).getTrangThai().equals("chưa thanh toán")
                                 && lsDichVu.get(a).getPhongID() == lsPhieuNhanCT.get(i).getPhongId()
                                 && lsPhieuXuat.size() != 0) {
-                            PhieuXuatChiTietDTO phieuXuatChiTietDTO = new PhieuXuatChiTietDTO(
-                                    sharedPreferences.getLong("PXID",0L)
-                                    , lsDichVu.get(a).getHangHoaId()
-                                    , Double.valueOf(lsDichVu.get(a).getSoLuong())
-                                    , Double.valueOf(lsDichVu.get(a).getDonGia())
-                                    , Double.valueOf((lsDichVu.get(a).getSoLuong()) * (lsDichVu.get(a).getDonGia()))
-                                    , "", ""
-                                    , sharedPreferences.getLong("PNCT", 0L));
-                            phieuXuatPresenter.ThemPhieuXuatChiTiet(phieuXuatChiTietDTO);
-                            dichVuDTO.setDichVuID(lsDichVu.get(a).getDichVuID());
-                            dichVuDTO.setTrangThai("đã thanh toán");
-                            dichVuDTO.setPhieuNhanID(pnid);
-                            dichVuPresenter.CapNhatDV(dichVuDTO);
+                            for (int u=0;u<lsHangHoa.size();u++)
+                            {
+                                if(lsHangHoa.get(u).getHangHoaId()==lsDichVu.get(a).getHangHoaId())
+                                {
+                                    PhieuXuatChiTietDTO phieuXuatChiTietDTO = new PhieuXuatChiTietDTO(
+                                            sharedPreferences.getLong("PXID",0L)
+                                            , lsDichVu.get(a).getHangHoaId()
+                                            , Double.valueOf(lsDichVu.get(a).getSoLuong())
+                                            , Double.valueOf(lsHangHoa.get(u).getDonGia())
+                                            , Double.valueOf((lsDichVu.get(a).getSoLuong()) * (lsHangHoa.get(u).getDonGia()))
+                                            , "", ""
+                                            , sharedPreferences.getLong("PNCT", 0L));
+                                    /// tạo phiếu xuất chi tiết mới
+                                    phieuXuatPresenter.ThemPhieuXuatChiTiet(phieuXuatChiTietDTO);
+                                    dichVuDTO.setDichVuID(lsDichVu.get(a).getDichVuID());
+                                    dichVuDTO.setTrangThai("đã thanh toán");
+                                    dichVuDTO.setPhieuNhanID(pnid);
+                                    dichVuPresenter.CapNhatDV(dichVuDTO);
+                                }
+                            }
+
 
                         }
 
@@ -282,7 +298,7 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
                             , sharedPreferences.getLong("PNID", 0L)
                             , date
                             , sharedPreferences.getInt("NGUOIDUNG", 0)
-                            , sharedPreferences.getLong("THD_NGAY", 0L) + sharedPreferences.getLong("THD_DV", 0L)
+                            , sharedPreferences.getLong("TT_NGAY", 0L) + sharedPreferences.getLong("TT_DV", 0L)
                             , 0
                             , 0
                             , 2
@@ -294,20 +310,28 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
                                     lsDichVu.get(r).getPhongID() &&
                                     lsDichVu.get(r).getTrangThai().equals("chưa thanh toán"))
                             {
-                                PhieuXuatChiTietDTO phieuXuatChiTietDTO = new PhieuXuatChiTietDTO(
-                                        lsDichVu.get(r).getHangHoaId()
-                                        , Double.valueOf(lsDichVu.get(r).getSoLuong())
-                                        , Double.valueOf(lsDichVu.get(r).getDonGia())
-                                        , Double.valueOf((lsDichVu.get(r).getSoLuong()) * (lsDichVu.get(r).getDonGia()))
-                                        , ""
-                                        , ""
-                                        , lsPhieuNhanCT.get(a).getPhieuNhanPhongChiTietId());
-                                tamlsPhieuXuatChiTiet.add(phieuXuatChiTietDTO);
+                                for (int u=0;u<lsHangHoa.size();u++)
+                                {
+                                    if (lsHangHoa.get(u).getHangHoaId()==lsDichVu.get(r).getHangHoaId())
+                                    {
+                                        PhieuXuatChiTietDTO phieuXuatChiTietDTO = new PhieuXuatChiTietDTO(
+                                                lsDichVu.get(r).getHangHoaId()
+                                                , Double.valueOf(lsDichVu.get(r).getSoLuong())
+                                                , Double.valueOf(lsHangHoa.get(u).getDonGia())
+                                                , Double.valueOf((lsDichVu.get(r).getSoLuong()) * (lsHangHoa.get(u).getDonGia()))
+                                                , ""
+                                                , ""
+                                                , lsPhieuNhanCT.get(a).getPhieuNhanPhongChiTietId());
+                                        tamlsPhieuXuatChiTiet.add(phieuXuatChiTietDTO);
 
-                                    dichVuDTO.setDichVuID(lsDichVu.get(r).getDichVuID());
-                                    dichVuDTO.setTrangThai("đã thanh toán");
-                                    dichVuDTO.setPhieuNhanID(pnid);
-                                    dichVuPresenter.CapNhatDV(dichVuDTO);
+                                        dichVuDTO.setDichVuID(lsDichVu.get(r).getDichVuID());
+                                        dichVuDTO.setTrangThai("đã thanh toán");
+                                        dichVuDTO.setPhieuNhanID(pnid);
+                                        dichVuPresenter.CapNhatDV(dichVuDTO);
+                                    }
+                                }
+
+
 
                             }
 
@@ -342,9 +366,9 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
     public void onLayDanhSachPhieuXuatChiTietSuccess(List<PhieuXuatChiTietDTO> list) {
         lsPhieuXuatCT = list;
         PhieuXuatChiTietAdapter phieuXuatChiTietAdapter = new PhieuXuatChiTietAdapter(this);
-        phieuXuatChiTietAdapter.setData(this, lsPhieuXuatCT, lsPhieuNhanCT, lsPhong, loaiPhong);
+        phieuXuatChiTietAdapter.setData(this,lsDichVu,lsHangHoa, lsPhieuXuatCT, lsPhieuNhanCT, lsPhong, loaiPhong);
         recyclerView.setAdapter(phieuXuatChiTietAdapter);
-
+////undo tai day
 
 
     }
@@ -353,7 +377,7 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
     public void onLayDanhSachPhieuNhanPhongChiTietSuccess(List<PhieuNhanPhongChiTietDTO> list) {
         lsPhieuNhanCT = list;
         PhieuXuatChiTietAdapter phieuXuatChiTietAdapter = new PhieuXuatChiTietAdapter(this);
-        phieuXuatChiTietAdapter.setData(this, lsPhieuXuatCT, lsPhieuNhanCT, lsPhong, loaiPhong);
+        phieuXuatChiTietAdapter.setData(this,lsDichVu,lsHangHoa, lsPhieuXuatCT, lsPhieuNhanCT, lsPhong, loaiPhong);
         recyclerView.setAdapter(phieuXuatChiTietAdapter);
 
         Date date = Calendar.getInstance().getTime();
@@ -423,15 +447,15 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
                 }
 
 
-                for (int a = 0; a < lsPhong.size(); a++) {
-                    if (lsPhieuNhanCT.get(i).getPhongId() == lsPhong.get(a).getPhongId()) {
-                        for (int f = 0; f < loaiPhong.size(); f++) {
-                            if (lsPhong.get(a).getLoaiPhongId() == loaiPhong.get(f).getLoaiPhongId()) {
-                                tonghoadonNGAY = tonghoadonNGAY + Ngay * loaiPhong.get(f).getDonGia();
-                            }
-                        }
-                    }
-                }
+//                for (int a = 0; a < lsPhong.size(); a++) {
+//                    if (lsPhieuNhanCT.get(i).getPhongId() == lsPhong.get(a).getPhongId()) {
+//                        for (int f = 0; f < loaiPhong.size(); f++) {
+//                            if (lsPhong.get(a).getLoaiPhongId() == loaiPhong.get(f).getLoaiPhongId()) {
+//                                tonghoadonNGAY = tonghoadonNGAY + Ngay * loaiPhong.get(f).getDonGia();
+//                            }
+//                        }
+//                    }
+//                }
             }
 
 
@@ -445,7 +469,7 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
         SharedPreferences sharedPreferences = getSharedPreferences("GET_PHONGID", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putLong("TT_NGAY", tongTienNgay);
-        editor.putLong("THD_NGAY", tonghoadonNGAY);
+       // editor.putLong("THD_NGAY", tonghoadonNGAY);
         editor.commit();
 
 
@@ -465,7 +489,7 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
     public void onLayDanhSachPhongSuccess(List<PhongDTO> lsDanhSachPhong) {
         lsPhong = lsDanhSachPhong;
         PhieuXuatChiTietAdapter phieuXuatChiTietAdapter = new PhieuXuatChiTietAdapter(this);
-        phieuXuatChiTietAdapter.setData(this, lsPhieuXuatCT, lsPhieuNhanCT, lsPhong, loaiPhong);
+        phieuXuatChiTietAdapter.setData(this,lsDichVu,lsHangHoa, lsPhieuXuatCT, lsPhieuNhanCT, lsPhong, loaiPhong);
         recyclerView.setAdapter(phieuXuatChiTietAdapter);
 
 
@@ -475,25 +499,41 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
     public void onLayLoaiPhongSuccess(List<LoaiPhongDTO> lsLoaiPhong) {
         loaiPhong = lsLoaiPhong;
         PhieuXuatChiTietAdapter phieuXuatChiTietAdapter = new PhieuXuatChiTietAdapter(this);
-        phieuXuatChiTietAdapter.setData(this, lsPhieuXuatCT, lsPhieuNhanCT, lsPhong, loaiPhong);
+        phieuXuatChiTietAdapter.setData(this,lsDichVu,lsHangHoa, lsPhieuXuatCT, lsPhieuNhanCT, lsPhong, loaiPhong);
         recyclerView.setAdapter(phieuXuatChiTietAdapter);
 
     }
-
+    @Override
+    public void onLayDanhSachHangHoaSuccess(List<HangHoaDTO> list){
+        lsHangHoa=list;
+        PhieuXuatChiTietAdapter phieuXuatChiTietAdapter = new PhieuXuatChiTietAdapter(this);
+        phieuXuatChiTietAdapter.setData(this,lsDichVu,lsHangHoa, lsPhieuXuatCT, lsPhieuNhanCT, lsPhong, loaiPhong);
+        recyclerView.setAdapter(phieuXuatChiTietAdapter);
+    }
     @Override
     public void onLayDanhSachDichVuSuccess(List<DichVuDTO> list) {
         lsDichVu = list;
-
+        PhieuXuatChiTietAdapter phieuXuatChiTietAdapter = new PhieuXuatChiTietAdapter(this);
+        phieuXuatChiTietAdapter.setData(this,lsDichVu,lsHangHoa, lsPhieuXuatCT, lsPhieuNhanCT, lsPhong, loaiPhong);
+        recyclerView.setAdapter(phieuXuatChiTietAdapter);
         SharedPreferences sharedPreferences = getSharedPreferences("GET_PHONGID", MODE_PRIVATE);
         for (int i = 0; i < lsPhieuNhanCT.size(); i++) {
             for (int t = 0; t < lsDichVu.size(); t++) {
                 if (lsDichVu.get(t).getTrangThai().equals("chưa thanh toán") &&
                         lsPhieuNhanCT.get(i).getPhongId() == lsDichVu.get(t).getPhongID()) {
+
+                    for (int p=0;p<lsHangHoa.size();p++)
+                    {
+                        if(lsHangHoa.get(p).getHangHoaId()==lsDichVu.get(t).getHangHoaId())
+                        {
+                            tienDV = tienDV + (lsHangHoa.get(p).getDonGia() * lsDichVu.get(t).getSoLuong());
+                        }
+                    }
                     /// sd cho phiếu nhận chưa thnah toán
-                    tienDV = tienDV + (lsDichVu.get(t).getDonGia() * lsDichVu.get(t).getSoLuong());
+
                 }
                 /// sử dụng lưu TT phiếu Xuât
-                tienDVTong = tienDVTong + (lsDichVu.get(t).getDonGia() * lsDichVu.get(t).getSoLuong());
+//                tienDVTong = tienDVTong + (lsDichVu.get(t).getDonGia() * lsDichVu.get(t).getSoLuong());
             }
         }
 
@@ -501,7 +541,7 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putLong("TT_DV", tienDV);
-        editor.putLong("THD_DV", tienDVTong);
+      //  editor.putLong("THD_DV", tienDVTong);
         editor.commit();
 
         DecimalFormat decimalFormat = new DecimalFormat("#,##0");
@@ -510,6 +550,11 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
 
 
     }
+
+
+
+    @Override
+    public void onLayDanhSachHangHoaError(String error){}
 
     @Override
     public void onLayDanhSachDichVuError(String error) {

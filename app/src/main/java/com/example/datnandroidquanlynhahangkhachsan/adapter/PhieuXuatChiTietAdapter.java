@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemPhieuxuatchitietBinding;
+import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.DichVuDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanPhongChiTietDTO;
@@ -33,6 +35,9 @@ public class PhieuXuatChiTietAdapter extends RecyclerView.Adapter<PhieuXuatChiTi
     private List<PhieuXuatChiTietDTO> lsPhieuXuatChiTiet;
     private List<PhieuNhanPhongChiTietDTO> lsPhieuNhanChiTiet;
     private List<PhongDTO> lsPhong;
+    private List<HangHoaDTO> lsHangHoa;
+
+    private List<DichVuDTO> lsDichVu;
 
     private List<LoaiPhongDTO> lsLoaiPhong;
     private int phong;
@@ -78,9 +83,10 @@ public class PhieuXuatChiTietAdapter extends RecyclerView.Adapter<PhieuXuatChiTi
 
     }
 
-    public void setData(Context context, List<PhieuXuatChiTietDTO> lsPhieuXuatChiTiet, List<PhieuNhanPhongChiTietDTO> lsPhieuNhanChiTiet,
+    public void setData(Context context, List<DichVuDTO> lsDichVu, List<HangHoaDTO> lsHangHoa, List<PhieuXuatChiTietDTO> lsPhieuXuatChiTiet, List<PhieuNhanPhongChiTietDTO> lsPhieuNhanChiTiet,
                         List<PhongDTO> lsPhong, List<LoaiPhongDTO> lsLoaiPhong) {
-
+        this.lsDichVu = lsDichVu;
+        this.lsHangHoa = lsHangHoa;
         this.lsPhieuXuatChiTiet = lsPhieuXuatChiTiet;
         this.lsPhieuNhanChiTiet = lsPhieuNhanChiTiet;
         this.lsPhong = lsPhong;
@@ -169,12 +175,21 @@ public class PhieuXuatChiTietAdapter extends RecyclerView.Adapter<PhieuXuatChiTi
                 tongDay = songay * Long.valueOf(lsLoaiPhong.get(i).getDonGia());
             }
         }
-        int tem = 0;
+
+            int tem = 0;
         for (int i = 0; i < lsPhieuXuatChiTiet.size(); i++) {
             ////tong các phiếu xuất chi tiết
             if (lsPhieuXuatChiTiet.get(i).getPhieuNhanPhongChiTietId()
                     == pn.getPhieuNhanPhongChiTietId()) {
-                tongMenu = tongMenu + (lsPhieuXuatChiTiet.get(i).getThanhTien());
+
+                for (int a=0;a<lsHangHoa.size();a++)
+                {
+                    if(lsHangHoa.get(a).getHangHoaId()==lsPhieuXuatChiTiet.get(i).getHangHoaId())
+                    {
+                        tongMenu = tongMenu + (lsHangHoa.get(a).getDonGia()*lsPhieuXuatChiTiet.get(i).getSoLuong());
+                    }
+                }
+
             }
             tem++;
         }

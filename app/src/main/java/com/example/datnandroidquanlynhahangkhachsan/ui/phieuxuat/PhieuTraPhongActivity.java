@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -202,10 +203,13 @@ phieuXuatDTO=new PhieuXuatDTO();
         dieuKienLocPhieuNhanDTO.setTrangThai("đang nhận");
         dieuKienLocPhieuNhanDTO.setLoaiPhieu(3);
         phieuNhanPhongPresenter.LayDanhSachPhieuNhan(dieuKienLocPhieuNhanDTO);
+
+        ///lay hanghoa
+        HangHoaPresenter hangHoaPresenter = new HangHoaPresenter(this);
+        hangHoaPresenter.LayDanhSachHangHoa2("");
         //// lay DV
         DichVuDTO dichVuDTO = new DichVuDTO();
         DichVuPresenter dichVuPresenter = new DichVuPresenter(this);
-
             dichVuDTO.setPhongID(phongid);
             dichVuDTO.setGhiChu("");
             dichVuDTO.setTrangThai("chưa thanh toán");
@@ -214,9 +218,7 @@ phieuXuatDTO=new PhieuXuatDTO();
 
 
 
-        ///lay hanghoa
-        HangHoaPresenter hangHoaPresenter = new HangHoaPresenter(this);
-        hangHoaPresenter.LayDanhSachHangHoa2("");
+
         ///khach hang
 
         KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
@@ -233,12 +235,12 @@ phieuXuatDTO=new PhieuXuatDTO();
                 onBackPressed();
                 ///xóa dữ liệu khi trở về
 
-                editor = sharedPreferences.edit();
-                editor1 = sharedPreferences1.edit();
-                editor.clear();
-                editor.commit();
-                editor1.clear();
-                editor1.commit();
+//                editor = sharedPreferences.edit();
+//                editor1 = sharedPreferences1.edit();
+//                editor.clear();
+//                editor.commit();
+//                editor1.clear();
+//                editor1.commit();
             }
         });
 
@@ -301,16 +303,24 @@ phieuXuatDTO=new PhieuXuatDTO();
                 for (int i = 0; i < lsPhieuXuat.size(); i++) {
                     if (lsPhieuXuat.get(i).getPhieuNhanId() == Pn) {
                         for (int a = 0; a < lsDichVu.size(); a++) {
-                            PhieuXuatChiTietDTO phieuXuatChiTietDTO = new PhieuXuatChiTietDTO(
-                                    lsPhieuXuat.get(i).getPhieuXuatId()
-                                    , lsDichVu.get(a).getHangHoaId()
-                                    , Double.valueOf(lsDichVu.get(a).getSoLuong())
-                                    , Double.valueOf(lsDichVu.get(a).getDonGia())
-                                    , Double.valueOf((lsDichVu.get(a).getSoLuong()) * (lsDichVu.get(a).getDonGia()))
-                                    , "", ""
-                                    , Pnct);
-                            phieuXuatPresenter.ThemPhieuXuatChiTiet(phieuXuatChiTietDTO);
-                            temp = 0;
+                            for (int x=0;x<lsHangHoa.size();x++)
+                            {
+                                if(lsHangHoa.get(x).getHangHoaId()==lsDichVu.get(a).getHangHoaId())
+                                {
+                                    PhieuXuatChiTietDTO phieuXuatChiTietDTO = new PhieuXuatChiTietDTO(
+                                            lsPhieuXuat.get(i).getPhieuXuatId()
+                                            , lsDichVu.get(a).getHangHoaId()
+                                            , Double.valueOf(lsDichVu.get(a).getSoLuong())
+                                            , Double.valueOf(lsHangHoa.get(x).getDonGia())
+                                            , Double.valueOf((lsDichVu.get(a).getSoLuong()) * (lsHangHoa.get(x).getDonGia()))
+                                            , "", ""
+                                            , Pnct);
+                                    phieuXuatPresenter.ThemPhieuXuatChiTiet(phieuXuatChiTietDTO);
+                                    temp = 0;
+                                }
+                            }
+
+
                         }
                     /// cap nhat phieu xuat
                         phieuXuatDTO.setPhieuXuatId(lsPhieuXuat.get(i).getPhieuXuatId());
@@ -338,15 +348,22 @@ phieuXuatDTO=new PhieuXuatDTO();
                             , ""
                     );
                     for (int r = 0; r < lsDichVu.size(); r++) {
-                        phieuXuatChiTietDTO = new PhieuXuatChiTietDTO(
-                                lsDichVu.get(r).getHangHoaId()
-                                , Double.valueOf(lsDichVu.get(r).getSoLuong())
-                                , Double.valueOf(lsDichVu.get(r).getDonGia())
-                                , Double.valueOf((lsDichVu.get(r).getSoLuong()) * (lsDichVu.get(r).getDonGia()))
-                                , ""
-                                , ""
-                                , Pnct);
-                        tamlsPhieuXuatChiTiet.add(phieuXuatChiTietDTO);
+                        for (int a=0;a<lsHangHoa.size();a++)
+                        {
+                            if(lsHangHoa.get(a).getHangHoaId()==lsDichVu.get(r).getHangHoaId())
+                            {
+                                phieuXuatChiTietDTO = new PhieuXuatChiTietDTO(
+                                        lsDichVu.get(r).getHangHoaId()
+                                        , Double.valueOf(lsDichVu.get(r).getSoLuong())
+                                        , Double.valueOf(lsHangHoa.get(r).getDonGia())
+                                        , Double.valueOf((lsDichVu.get(r).getSoLuong()) * (lsHangHoa.get(a).getDonGia()))
+                                        , ""
+                                        , ""
+                                        , Pnct);
+                                tamlsPhieuXuatChiTiet.add(phieuXuatChiTietDTO);
+                            }
+                        }
+
                     }
                     xuatPhongDTO = new XuatPhongDTO(tamPhieuXuatDTO, tamlsPhieuXuatChiTiet);
                     phieuXuatPresenter.ThemPhieuXuat(xuatPhongDTO);
@@ -493,9 +510,20 @@ phieuXuatDTO=new PhieuXuatDTO();
         recyclerView.setAdapter(phieuTraPhongAdapter);
         sharedPreferences = getSharedPreferences("GET_PHONGID", MODE_PRIVATE);
         editor = sharedPreferences.edit();
-        for (int i = 0; i < lsDichVu.size(); i++) {
-            tienDV = tienDV + lsDichVu.get(i).getDonGia() * lsDichVu.get(i).getSoLuong();
+        for (int y=0;y<lsHangHoa.size();y++)
+        {
+            for (int i = 0; i < lsDichVu.size(); i++) {
+
+                if(lsDichVu.get(i).getHangHoaId()==lsHangHoa.get(y).getHangHoaId())
+                {
+                    tienDV = tienDV + lsHangHoa.get(y).getDonGia() * lsDichVu.get(i).getSoLuong();
+                }
+            }
         }
+
+
+
+
         /// tinh tong tien
         Long TT = sharedPreferences.getLong("TONGTIEN", 0L);
         ///format giá tiền
@@ -516,30 +544,6 @@ phieuXuatDTO=new PhieuXuatDTO();
     }
     @Override
     public void onLayDvPnSuccess(List<DichVuDTO> list) {
-        lsDichVu = list;
-
-        SharedPreferences sharedPreferences = getSharedPreferences("GET_PHONGID", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        phieuTraPhongAdapter = new PhieuTraPhongAdapter(this);
-        phieuTraPhongAdapter.setData(lsDichVu, context, lsHangHoa);
-        recyclerView.setAdapter(phieuTraPhongAdapter);
-        for (int i = 0; i < lsDichVu.size(); i++) {
-            tienDV = tienDV + lsDichVu.get(i).getDonGia() * lsDichVu.get(i).getSoLuong();
-        }
-        /// tinh tong tien
-        Long TT = sharedPreferences.getLong("TONGTIEN", 0L);
-        ///format giá tiền
-        DecimalFormat decimalFormat = new DecimalFormat("#,##0" + " đồng");
-        ///tổng tiền
-        TongTien = Long.valueOf(tienDV) + TT;
-
-        giatien = decimalFormat.format(TongTien);
-        TextView tv_tong = findViewById(R.id.tv_tongTien);
-        tv_tong.setText(String.valueOf(giatien));
-        editor.putLong("TT_NGAY", TongTien);
-        editor.putLong("TT_DV", 0);
-        editor.commit();
-
 
 
     }

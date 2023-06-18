@@ -91,6 +91,9 @@
             android:name=".ui.chonphong.ChonPhongActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.phieuxuat.PhieuXuatChiTietActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.DangNhapActivity"
             android:exported="true">
             <intent-filter>

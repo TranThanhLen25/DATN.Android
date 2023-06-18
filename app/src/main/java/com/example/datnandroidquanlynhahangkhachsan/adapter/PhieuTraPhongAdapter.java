@@ -54,13 +54,15 @@ public class PhieuTraPhongAdapter extends RecyclerView.Adapter<PhieuTraPhongAdap
         }
         DecimalFormat decimalFormat = new DecimalFormat("#,##0");
         holder.phieutraphongBinding.tvSoluong.setText(String.valueOf(dv.getSoLuong()));
-        holder.phieutraphongBinding.tvDongiaHanghoaDichvu.setText(String.valueOf(decimalFormat.format(dv.getDonGia())));
-        holder.phieutraphongBinding.tvThanhtien.setText(String.valueOf(decimalFormat.format(dv.getDonGia() * dv.getSoLuong())));
+
+
     for (int i=0;i<lsHangHoa.size();i++)
     {
         if(lsHangHoa.get(i).getHangHoaId()==dv.getHangHoaId())
         {
             holder.phieutraphongBinding.tvTendichvu.setText(lsHangHoa.get(i).getTenHangHoa());
+            holder.phieutraphongBinding.tvDongiaHanghoaDichvu.setText(String.valueOf(decimalFormat.format(lsHangHoa.get(i).getDonGia())));
+            holder.phieutraphongBinding.tvThanhtien.setText(String.valueOf(decimalFormat.format(lsHangHoa.get(i).getDonGia() * dv.getSoLuong())));
         }
     }
 
