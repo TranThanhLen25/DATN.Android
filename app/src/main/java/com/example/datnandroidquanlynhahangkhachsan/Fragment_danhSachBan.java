@@ -252,4 +252,15 @@ public class Fragment_danhSachBan extends Fragment implements BanContract.View, 
 
     @Override
     public void onCapNhatPhieuNhanError(String error){}
+    @Override
+    public void onCapNhatTrangThaiBanSuccess(){}
+
+    @Override
+    public void onCapNhatTrangThaiBanError(String error){}
+
+    @Override
+    public void onCapNhatPhieuNhanBanChiTietSuccess(){}
+
+    @Override
+    public void onCapNhatPhieuNhanBanChiTietError(String error){}
 }

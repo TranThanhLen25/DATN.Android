@@ -136,4 +136,27 @@ public class PhieuXuatChiTietDTO {
         this.ghiChu = ghiChu;
         this.phieuNhanPhongChiTietId = phieuNhanPhongChiTietId;
     }
+
+    public PhieuXuatChiTietDTO(int hangHoaId, double soLuong, double donGia, double thanhTien, String donViTinh, String ghiChu, long phieuNhanPhongChiTietId, long phieuNhanBanChiTietId) {
+        this.hangHoaId = hangHoaId;
+        this.soLuong = soLuong;
+        this.donGia = donGia;
+        this.thanhTien = thanhTien;
+        this.donViTinh = donViTinh;
+        this.ghiChu = ghiChu;
+        this.phieuNhanPhongChiTietId = phieuNhanPhongChiTietId;
+        this.phieuNhanBanChiTietId = phieuNhanBanChiTietId;
+    }
+
+    public PhieuXuatChiTietDTO(long phieuXuatId, int hangHoaId, double soLuong, double donGia, double thanhTien, String donViTinh, String ghiChu, long phieuNhanPhongChiTietId, long phieuNhanBanChiTietId) {
+        this.phieuXuatId = phieuXuatId;
+        this.hangHoaId = hangHoaId;
+        this.soLuong = soLuong;
+        this.donGia = donGia;
+        this.thanhTien = thanhTien;
+        this.donViTinh = donViTinh;
+        this.ghiChu = ghiChu;
+        this.phieuNhanPhongChiTietId = phieuNhanPhongChiTietId;
+        this.phieuNhanBanChiTietId = phieuNhanBanChiTietId;
+    }
 }

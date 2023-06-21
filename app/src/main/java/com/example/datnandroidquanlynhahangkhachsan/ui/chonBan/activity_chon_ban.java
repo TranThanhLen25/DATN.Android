@@ -89,4 +89,9 @@ public class activity_chon_ban extends AppCompatActivity implements BanContract.
     public void onLayLoaiPhongError(String error) {
 
     }
+    @Override
+    public void onCapNhatTrangThaiBanSuccess(){}
+
+    @Override
+    public void onCapNhatTrangThaiBanError(String error){}
 }

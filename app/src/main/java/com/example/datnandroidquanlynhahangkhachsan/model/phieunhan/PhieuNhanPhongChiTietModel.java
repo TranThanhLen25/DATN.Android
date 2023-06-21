@@ -128,4 +128,30 @@ public class PhieuNhanPhongChiTietModel implements IPhieuNhanPhongChiTietModel {
             }
         });
     }
+
+    @Override
+    public void CapNhatPhieuNhanBanChiTiet(PhieuNhanBanChiTietDTO phieuNhanBanChiTietDTO, IOnCapNhatPhieuNhanBanChiTietFinishedListener listener) {
+        service = new APIService();
+        service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
+            @Override
+            public void onSuccess(ResponseTokenDTO itemToken) {
+                service.apiServiceRetrofit.capNhatPhieuNhanBanChiTiet(phieuNhanBanChiTietDTO).enqueue(new Callback<ResponseInfo>() {
+                    @Override
+                    public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseInfo> call, Throwable t) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        });
+    }
 }

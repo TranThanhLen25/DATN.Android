@@ -1,93 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.phieuxuat.PhieuTraBanActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.phieuxuat.PhieuXuatBanActivity"
+    >
     <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/toolbar_phieutraban"
+        android:id="@+id/toolbar_phieutraphong"
         layout="@layout/activity_appar_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:id="@+id/scr_phieutraban"
+        android:id="@+id/scr_phieutraphong"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="9dp"
-
+        android:padding="10dp"
 
         app:layout_constraintBottom_toTopOf="@+id/ctl_btn_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_phieutraban">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_phieutraphong">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/phieutraban"
+            android:id="@+id/phieutraphong"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-
-            >
+            app:layout_constraintTop_toTopOf="@+id/scr_phieutraphong">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/headderphieutraban"
+                android:id="@+id/headderphieutraphong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="@id/phieutraban"
-                app:layout_constraintStart_toStartOf="@id/phieutraban"
-                app:layout_constraintTop_toTopOf="@+id/phieutraban">
+                app:layout_constraintEnd_toEndOf="@id/phieutraphong"
+                app:layout_constraintStart_toStartOf="@id/phieutraphong"
+                app:layout_constraintTop_toTopOf="@+id/phieutraphong">
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/chitietheaderphieutraban"
+                    android:id="@+id/chitietheaderphieutraphong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintStart_toStartOf="@id/headderphieutraban"
-                    app:layout_constraintTop_toTopOf="@+id/headderphieutraban">
+                    app:layout_constraintStart_toStartOf="@id/headderphieutraphong"
+                    app:layout_constraintTop_toTopOf="@+id/headderphieutraphong">
 
                     <TextView
-                        android:id="@+id/tv_phieutraban"
+                        android:id="@+id/tv_phieutraphong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_tenphieu"
                         android:padding="10dp"
-                        android:text="Phiếu trả bàn chi tiết"
+                        android:text="Phiếu nhận/ trả bàn"
                         android:textSize="@dimen/heading_2"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@id/chitietheaderphieutraban"
-                        app:layout_constraintTop_toTopOf="@id/chitietheaderphieutraban" />
+                        app:layout_constraintStart_toStartOf="@id/chitietheaderphieutraphong"
+                        app:layout_constraintTop_toTopOf="@id/chitietheaderphieutraphong" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/tv_ban_phieutraban"
+                        android:id="@+id/tv_sct_phieutraphong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintStart_toStartOf="@id/chitietheaderphieutraban"
-                        app:layout_constraintTop_toBottomOf="@id/tv_phieutraban">
+                        app:layout_constraintStart_toStartOf="@id/chitietheaderphieutraphong"
+                        app:layout_constraintTop_toBottomOf="@id/tv_phieutraphong">
 
                         <TextView
-                            android:id="@+id/tv_ban"
+                            android:id="@+id/tv_sct"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="10dp"
-                            android:text="Bàn: "
+                            android:text="Số chứng từ: "
                             android:textColor="@color/black"
                             android:textSize="@dimen/heading_2"
 
-                            app:layout_constraintStart_toStartOf="@id/tv_ban_phieutraban"
-                            app:layout_constraintTop_toTopOf="@id/tv_ban_phieutraban" />
+                            app:layout_constraintStart_toStartOf="@id/tv_sct_phieutraphong"
+                            app:layout_constraintTop_toTopOf="@id/tv_sct_phieutraphong" />
 
                         <TextView
-                            android:id="@+id/tv_ban_data"
+                            android:id="@+id/tv_sct_data"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="10dp"
@@ -95,10 +94,10 @@
                             android:textColor="@color/red"
                             android:textSize="@dimen/heading_2"
                             android:textStyle="bold"
-                            app:layout_constraintStart_toEndOf="@+id/tv_ban"
+                            app:layout_constraintEnd_toEndOf="parent"
 
-                            app:layout_constraintTop_toTopOf="@id/tv_ban_phieutraban" />
-
+                            app:layout_constraintStart_toEndOf="@+id/tv_sct"
+                            app:layout_constraintTop_toTopOf="@id/tv_sct_phieutraphong" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -109,28 +108,28 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/mainphieutraban"
+                android:id="@+id/mainphieutraphong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/phieutraban"
-                app:layout_constraintStart_toStartOf="@id/phieutraban"
-                app:layout_constraintTop_toBottomOf="@id/headderphieutraban">
+                app:layout_constraintEnd_toEndOf="@id/phieutraphong"
+                app:layout_constraintStart_toStartOf="@id/phieutraphong"
+                app:layout_constraintTop_toBottomOf="@id/headderphieutraphong">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/ctv_input_phieutraban"
+                    android:id="@+id/ctv_input_phieutraphong"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieutraban"
-                    app:layout_constraintTop_toTopOf="@+id/mainphieutraban">
+                    app:layout_constraintStart_toStartOf="@+id/mainphieutraphong"
+                    app:layout_constraintTop_toTopOf="@+id/mainphieutraphong">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/ctl_tenkh"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="@id/ctv_input_phieutraban"
-                        app:layout_constraintTop_toBottomOf="@id/tv_ban_phieutraban"
+                        app:layout_constraintStart_toStartOf="@id/ctv_input_phieutraphong"
+                        app:layout_constraintTop_toBottomOf="@id/tv_sct_phieutraphong"
                         tools:ignore="NotSibling">
 
                         <TextView
@@ -145,7 +144,7 @@
                             app:layout_constraintTop_toTopOf="@+id/ctl_tenkh" />
 
                         <TextView
-                            android:id="@+id/tv_hoten_ptp"
+                            android:id="@+id/et_hoten_phieutraphong"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
@@ -164,11 +163,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
-                        app:layout_constraintStart_toStartOf="@id/ctv_input_phieutraban"
+                        app:layout_constraintStart_toStartOf="@id/ctv_input_phieutraphong"
                         app:layout_constraintTop_toBottomOf="@+id/ctl_tenkh">
 
                         <TextView
-                            android:id="@+id/tv_cccd_phieutraban"
+                            android:id="@+id/tv_cccd_phieutraphong"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
 
@@ -181,14 +180,14 @@
                             tools:ignore="MissingConstraints" />
 
                         <TextView
-                            android:id="@+id/tv_cccd_ptp"
+                            android:id="@+id/et_cccd_phieutraphong"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:text="000000000000"
                             android:textColor="@color/black"
                             android:textSize="@dimen/heading_2"
-                            app:layout_constraintStart_toEndOf="@id/tv_cccd_phieutraban"
+                            app:layout_constraintStart_toEndOf="@id/tv_cccd_phieutraphong"
 
                             app:layout_constraintTop_toTopOf="@id/ctl_cccd"
 
@@ -201,7 +200,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
-                        app:layout_constraintStart_toStartOf="@id/ctv_input_phieutraban"
+                        app:layout_constraintStart_toStartOf="@id/ctv_input_phieutraphong"
                         app:layout_constraintTop_toBottomOf="@id/ctl_cccd">
 
                         <TextView
@@ -234,7 +233,7 @@
                         android:layout_marginStart="10dp"
                         android:background="@drawable/bg_item"
                         android:padding="5dp"
-                        app:layout_constraintStart_toStartOf="@+id/ctv_input_phieutraban"
+                        app:layout_constraintStart_toStartOf="@+id/ctv_input_phieutraphong"
                         app:layout_constraintTop_toBottomOf="@id/ctl_sdt">
 
                         <TextView
@@ -242,7 +241,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
-                            android:text="Ngày:  "
+                            android:text="Ngày lập:  "
                             android:textColor="@color/black"
                             android:textSize="@dimen/heading_2"
                             app:layout_constraintStart_toStartOf="@id/ctl_ngaynhan"
@@ -263,36 +262,44 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-
-
                     <View
                         android:id="@+id/view"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="5dp"
                         android:background="@color/black"
-                        app:layout_constraintStart_toStartOf="@id/ctv_input_phieutraban"
+                        app:layout_constraintStart_toStartOf="@id/ctv_input_phieutraphong"
                         app:layout_constraintTop_toBottomOf="@id/ctl_ngaynhan" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/ctl_sd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        app:layout_constraintStart_toStartOf="@id/ctv_input_phieutraban"
-                        app:layout_constraintTop_toBottomOf="@id/view"
-                        app:layout_constraintBottom_toBottomOf="@id/rscv_sudung"
-                        >
+                        android:layout_margin="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/ctv_input_phieutraphong"
+                        app:layout_constraintTop_toBottomOf="@id/view">
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rscv_sudung"
+                        <ScrollView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:layout_constraintStart_toStartOf="@id/ctl_sd"
-                            app:layout_constraintTop_toTopOf="@id/ctl_sd" />
+                            app:layout_constraintEnd_toEndOf="@id/ctl_sd"
+                            app:layout_constraintTop_toTopOf="@id/ctl_sd">
 
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rscv_sudung"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintStart_toStartOf="@id/ctl_sd"
+                                app:layout_constraintTop_toTopOf="@id/ctl_sd" />
+                        </ScrollView>
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -303,7 +310,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ctl_btn_bottom"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -321,39 +328,40 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@id/ctl_btn_bottom"
-            app:layout_constraintTop_toTopOf="@id/ctl_btn_bottom"
             app:layout_constraintStart_toStartOf="@id/ctl_btn_bottom"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ExtraText">
 
             <TextView
                 android:id="@+id/tong"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="Tổng: "
+                android:layout_margin="10dp"
+                android:text="Tổng DV: "
                 android:textColor="@color/black"
                 android:textSize="@dimen/heading_2"
-                app:layout_constraintBottom_toBottomOf="@id/ctl_button"
                 app:layout_constraintStart_toStartOf="@id/ctl_button"
                 app:layout_constraintTop_toTopOf="@id/ctl_button" />
 
             <TextView
-                android:id="@+id/tv_tongTienptb"
+                android:id="@+id/tv_tongPXB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="123000"
+                android:text="0"
+                android:layout_margin="10dp"
                 android:textColor="@color/red"
                 android:textSize="@dimen/heading_2"
-                app:layout_constraintBottom_toBottomOf="@id/ctl_button"
+
                 app:layout_constraintStart_toEndOf="@id/tong"
-                app:layout_constraintTop_toTopOf="@id/ctl_button"
-                />
+                app:layout_constraintTop_toTopOf="@id/ctl_button" />
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
-            android:id="@+id/btn_traban"
+            android:id="@+id/btn_traPhong"
             android:layout_width="wrap_content"
 
             android:layout_height="wrap_content"
@@ -365,6 +373,23 @@
             android:text="Thanh toán"
             android:textAllCaps="false"
             android:textSize="@dimen/heading_2"
+            app:layout_constraintBottom_toBottomOf="@id/ctl_btn_bottom"
+            app:layout_constraintEnd_toEndOf="@id/ctl_btn_bottom"
+            app:layout_constraintTop_toTopOf="@id/ctl_btn_bottom" />
+
+        <TextView
+            android:id="@+id/tv_tongdathanhtoan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="7dp"
+            android:padding="10dp"
+            android:textColor="@color/red"
+            android:text="Thanh toán"
+            android:textAllCaps="false"
+            android:textSize="@dimen/heading_2"
+
             app:layout_constraintBottom_toBottomOf="@id/ctl_btn_bottom"
             app:layout_constraintEnd_toEndOf="@id/ctl_btn_bottom"
             app:layout_constraintTop_toTopOf="@id/ctl_btn_bottom" />

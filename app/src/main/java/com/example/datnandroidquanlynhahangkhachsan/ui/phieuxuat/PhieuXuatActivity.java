@@ -168,7 +168,7 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
         phieuXuatBinding.tvSdtptp.setText(sdt);
         phieuXuatBinding.tvSctData.setText(sct);
         phieuXuatBinding.tvNgaynhan.setText(ngay);
-///lay hang hoa
+        ///lay hang hoa
 
         HangHoaPresenter hangHoaPresenter=new HangHoaPresenter(this);
         hangHoaPresenter.LayDanhSachHangHoa2("");
@@ -240,7 +240,8 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
                                             , Double.valueOf(lsHangHoa.get(u).getDonGia())
                                             , Double.valueOf((lsDichVu.get(a).getSoLuong()) * (lsHangHoa.get(u).getDonGia()))
                                             , "", ""
-                                            , sharedPreferences.getLong("PNCT", 0L));
+                                            , lsPhieuNhanCT.get(i).getPhieuNhanPhongChiTietId(),1L
+                                    );
                                     /// tạo phiếu xuất chi tiết mới
                                     phieuXuatPresenter.ThemPhieuXuatChiTiet(phieuXuatChiTietDTO);
                                     dichVuDTO.setDichVuID(lsDichVu.get(a).getDichVuID());
@@ -321,7 +322,8 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
                                                 , Double.valueOf((lsDichVu.get(r).getSoLuong()) * (lsHangHoa.get(u).getDonGia()))
                                                 , ""
                                                 , ""
-                                                , lsPhieuNhanCT.get(a).getPhieuNhanPhongChiTietId());
+                                                , lsPhieuNhanCT.get(a).getPhieuNhanPhongChiTietId(),1L
+                                        );
                                         tamlsPhieuXuatChiTiet.add(phieuXuatChiTietDTO);
 
                                         dichVuDTO.setDichVuID(lsDichVu.get(r).getDichVuID());
@@ -725,4 +727,9 @@ DecimalFormat decimalFormat=new DecimalFormat("#,##0"+" đồng");
     @Override
     public void onCapNhatPhieuNhanError(String error) {
     }
+    @Override
+    public  void onCapNhatPhieuNhanBanChiTietSuccess(){}
+
+    @Override
+    public  void onCapNhatPhieuNhanBanChiTietError(String error){}
 }

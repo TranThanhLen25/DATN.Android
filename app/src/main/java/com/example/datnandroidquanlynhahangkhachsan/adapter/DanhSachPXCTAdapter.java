@@ -13,6 +13,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.DichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuTraPhongActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatBanChiTietActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatChiTietActivity;
 
 import java.text.DecimalFormat;
@@ -30,6 +31,9 @@ private List<HangHoaDTO> lsHangHoa;
     }
 
     public DanhSachPXCTAdapter(PhieuXuatChiTietActivity phieuXuatChiTietActivity) {
+    }
+
+    public DanhSachPXCTAdapter(PhieuXuatBanChiTietActivity phieuXuatBanChiTietActivity) {
     }
 
     public void setData(List<HangHoaDTO>lsHangHoa, Context context, List<PhieuXuatChiTietDTO> lsPhieuXuatChiTiet) {

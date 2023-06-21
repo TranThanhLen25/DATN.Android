@@ -334,4 +334,15 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
     public void onCapNhatGoiMonError(String error) {
 
     }
+    @Override
+    public void onCapNhatGMSuccess(){}
+
+    @Override
+    public void onCapNhatGMError(String error){}
+
+    @Override
+    public void onCapNhatTrangThaiBanSuccess(){}
+
+    @Override
+    public void onCapNhatTrangThaiBanError(String error){}
 }

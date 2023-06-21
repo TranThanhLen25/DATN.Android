@@ -32,4 +32,12 @@ public interface IPhieuNhanPhongChiTietModel {
 
         void onError(String error);
     }
+
+    void CapNhatPhieuNhanBanChiTiet(PhieuNhanBanChiTietDTO phieuNhanBanChiTietDTO, IPhieuNhanPhongChiTietModel.IOnCapNhatPhieuNhanBanChiTietFinishedListener listener);
+
+    interface IOnCapNhatPhieuNhanBanChiTietFinishedListener {
+        void onSuccess();
+
+        void onError(String error);
+    }
 }

@@ -182,7 +182,9 @@ phieuXuatDTO=new PhieuXuatDTO();
         lsPhieuXuatChiTiet = new ArrayList<>();
 
         tamlsPhieuXuatChiTiet = new ArrayList<>();
+
         lsKhachHang = new ArrayList<>();
+
         phieuNhanDTO=new PhieuNhanDTO();
 
         /// lấy danh sách phiếu nhận chi tiết
@@ -293,7 +295,6 @@ phieuXuatDTO=new PhieuXuatDTO();
                     dichVuDTO.setPhieuNhanID(sharedPreferences.getLong("PNID",0L));
                     dichVuDTO.setDichVuID(lsDichVu.get(a).getDichVuID());
                     dichVuDTO.setTrangThai("đã thanh toán");
-
                     dichVuPresenter.CapNhatDV(dichVuDTO);
                 }
                 ///Thêm phiếu xuất///và pxct
@@ -314,7 +315,7 @@ phieuXuatDTO=new PhieuXuatDTO();
                                             , Double.valueOf(lsHangHoa.get(x).getDonGia())
                                             , Double.valueOf((lsDichVu.get(a).getSoLuong()) * (lsHangHoa.get(x).getDonGia()))
                                             , "", ""
-                                            , Pnct);
+                                            , Pnct,1L);
                                     phieuXuatPresenter.ThemPhieuXuatChiTiet(phieuXuatChiTietDTO);
                                     temp = 0;
                                 }
@@ -359,7 +360,7 @@ phieuXuatDTO=new PhieuXuatDTO();
                                         , Double.valueOf((lsDichVu.get(r).getSoLuong()) * (lsHangHoa.get(a).getDonGia()))
                                         , ""
                                         , ""
-                                        , Pnct);
+                                        , Pnct,1L);
                                 tamlsPhieuXuatChiTiet.add(phieuXuatChiTietDTO);
                             }
                         }
@@ -733,4 +734,10 @@ phieuXuatDTO=new PhieuXuatDTO();
 
     @Override
     public void onCapNhatPhieuNhanError(String error){}
+
+    @Override
+    public  void onCapNhatPhieuNhanBanChiTietSuccess(){}
+
+    @Override
+    public  void onCapNhatPhieuNhanBanChiTietError(String error){}
 }

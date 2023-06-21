@@ -206,4 +206,17 @@ public interface IAPIServiceRetrofit {
 
     @POST("/api/PhieuDat/capnhat-PhieuDat")
     Call<ResponseInfo> capNhatPhieuDat(@Body PhieuDatDTO phieuDatDTO);
+
+
+
+    ////
+
+    @POST("/api/hanghoa/CapNhat-GM")
+    Call<ResponseInfo> capNhatGM(@Body GoiMonDTO goiMonDTO);
+
+    @POST("/api/Ban/CapNhat-Ban")
+    Call<ResponseInfo> capNhatTrangThaiBan(@Body BanDTO banDTO);
+
+    @POST("/api/PhieuNhanBanChiTiet/capnhat-PhieuNhanBanChiTiet")
+    Call<ResponseInfo> capNhatPhieuNhanBanChiTiet(@Body PhieuNhanBanChiTietDTO phieuNhanBanChiTietDTO);
 }

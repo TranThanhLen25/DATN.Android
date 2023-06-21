@@ -10,14 +10,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.datnandroidquanlynhahangkhachsan.Fragment_danhSachLichSuBan;
 import com.example.datnandroidquanlynhahangkhachsan.Fragment_dsLichSu;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemPhieudatphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatBanActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatActivity;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 public class PhieuXuatAdapter extends RecyclerView.Adapter<PhieuXuatAdapter.PhieuXuatViewHolder> {
@@ -34,12 +35,16 @@ public class PhieuXuatAdapter extends RecyclerView.Adapter<PhieuXuatAdapter.Phie
     private long pxID;
     private String sct;
 
+
     private String ngay;
 
 
     public PhieuXuatAdapter(List<PhieuXuatDTO> phieuXuat) {
         this.phieuXuat = phieuXuat;
 
+    }
+
+    public PhieuXuatAdapter(Fragment_danhSachLichSuBan fragment_danhSachLichSuBan) {
     }
 
     public PhieuXuatAdapter(Fragment_dsLichSu fragment_dsLichSu) {
@@ -72,7 +77,7 @@ public class PhieuXuatAdapter extends RecyclerView.Adapter<PhieuXuatAdapter.Phie
         holder.phieuxuatBinding.tvThoigianlapphieuItemphieudatphongData.setText(AppUtils.formatDateToString(px.getNgayLap(), "dd/MM/yyyy HH:mm"));
         holder.phieuxuatBinding.tvPhongItemphieudatphongData.setVisibility(View.GONE);
 
-        ngay = AppUtils.formatDateToString(px.getNgayLap(), "dd/MM/yyyy HH:mm");
+        ngay = AppUtils.formatDateToString(px.getNgayLap(), "dd/MM/yyyy");
 
         for (int i = 0; i < khachHang.size(); i++) {
             if (px.getKhachHangId() == khachHang.get(i).getKhachHangId()) {
@@ -86,7 +91,6 @@ public class PhieuXuatAdapter extends RecyclerView.Adapter<PhieuXuatAdapter.Phie
         phieuxuatBinding.itemPhieudatphong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, PhieuXuatActivity.class);
 
                 pxID = px.getPhieuXuatId();
 
@@ -97,26 +101,47 @@ public class PhieuXuatAdapter extends RecyclerView.Adapter<PhieuXuatAdapter.Phie
                         tenKH = khachHang.get(i).getTenKhachHang();
                         sdt = khachHang.get(i).getSdt();
                         cccd = khachHang.get(i).getCccd();
-
-
                     }
                 }
-
-
-
                 SharedPreferences sharedPreferences = context.getSharedPreferences("GET_PHONGID", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("TEN", tenKH);
                 editor.putString("SDT", sdt);
                 editor.putString("CCCD", cccd);
                 editor.putLong("PXID", pxID);
-                editor.putLong("PNID",px.getPhieuNhanId());
+                editor.putLong("PNID", px.getPhieuNhanId());
                 editor.putString("SCT", px.getSoChungTu());
                 editor.putString("NGAYLAP", ngay);
-                editor.putInt("NGUOIDUNG",px.getNguoiDungId());
-                //editor.putFloat("TONGTIEN",px.getTongThanhTien());
+                editor.putInt("NGUOIDUNG", px.getNguoiDungId());
+
                 editor.commit();
-                context.startActivity(intent);
+                SharedPreferences sharedPreferences1 = context.getSharedPreferences("GET_BANID", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor1 = sharedPreferences1.edit();
+                editor1.putString("TEN", tenKH);
+                editor1.putString("SDT", sdt);
+                editor1.putString("CCCD", cccd);
+                editor1.putLong("PXID", pxID);
+                editor1.putLong("PNID", px.getPhieuNhanId());
+                editor1.putString("SCT", px.getSoChungTu());
+                editor1.putString("NGAYLAP", ngay);
+                editor1.putInt("NGUOIDUNG", px.getNguoiDungId());
+                editor1.putLong("KHID", px.getKhachHangId());
+                editor1.commit();
+
+
+
+
+                /////cắt chuỗi để so sánh
+                String a = px.getSoChungTu();
+                String b = a.substring(0, 2);
+                if (b.equals("PX")) {
+                    Intent intent = new Intent(context, PhieuXuatActivity.class);
+                    context.startActivity(intent);
+                } else {
+                    Intent intent = new Intent(context, PhieuXuatBanActivity.class);
+                    context.startActivity(intent);
+                }
+
 
             }
         });

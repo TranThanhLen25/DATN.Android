@@ -1,11 +1,13 @@
 package com.example.datnandroidquanlynhahangkhachsan.model.goiMon;
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.DichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ErrorMessageDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseTokenDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.goiMon.GoiMonDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.goiMon.ListGoiMonDTO;
+import com.example.datnandroidquanlynhahangkhachsan.model.DichVu.IDichVuModel;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.APIService;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.IAPIServiceTokenRetrofit;
 
@@ -85,6 +87,32 @@ public class GoiMonModel implements IGoiMonModel {
             @Override
             public void onError(String error) {
                 listener.onError(error);
+            }
+        });
+    }
+
+    @Override
+    public void CapNhatGM(GoiMonDTO goiMonDTO, IGoiMonModel.IOnCapNhatGMFinishedListener listener) {
+        service = new APIService();
+        service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
+            @Override
+            public void onSuccess(ResponseTokenDTO itemToken) {
+                service.apiServiceRetrofit.capNhatGM(goiMonDTO).enqueue(new Callback<ResponseInfo>() {
+                    @Override
+                    public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseInfo> call, Throwable t) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+
             }
         });
     }

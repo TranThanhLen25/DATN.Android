@@ -17,6 +17,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.phieuxuat.PhieuXuatBanChiTietActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.phieuxuat.PhieuXuatBanActivity"
+            android:exported="false" />
+        <activity
             android:name=".ActivityChiTietKhachHang"
             android:exported="false" />
         <activity

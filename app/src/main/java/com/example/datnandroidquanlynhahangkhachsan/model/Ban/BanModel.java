@@ -3,10 +3,13 @@ package com.example.datnandroidquanlynhahangkhachsan.model.Ban;
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.LoaiBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ErrorMessageDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.BanDTO;
+
+import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseTokenDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.APIService;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.IAPIServiceTokenRetrofit;
+
 
 
 import java.util.List;
@@ -100,6 +103,32 @@ public class BanModel implements BanIModel{
             public void onError(String error) {
                 //Lay token loi => thong bao loi
                 listener.onError(error);
+            }
+        });
+    }
+
+    @Override
+    public void CapNhatTrangThaiBan(BanDTO BanDTO, BanIModel.IOnCapNhatTrangThaiBanFinishedListener listener) {
+        service = new APIService();
+        service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
+            @Override
+            public void onSuccess(ResponseTokenDTO itemToken) {
+                service.apiServiceRetrofit.capNhatTrangThaiBan(BanDTO).enqueue(new Callback<ResponseInfo>() {
+                    @Override
+                    public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseInfo> call, Throwable t) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+
             }
         });
     }

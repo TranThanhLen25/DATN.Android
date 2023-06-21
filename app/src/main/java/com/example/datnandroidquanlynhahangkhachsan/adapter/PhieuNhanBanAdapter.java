@@ -1,7 +1,10 @@
 package com.example.datnandroidquanlynhahangkhachsan.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,8 +14,12 @@ import com.example.datnandroidquanlynhahangkhachsan.Fragment_danhSachPhieuNhanBa
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemPhieunhanphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatBanActivity;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class PhieuNhanBanAdapter extends RecyclerView.Adapter<PhieuNhanBanAdapter.PhieuNhanBanViewHolder> {
@@ -67,6 +74,52 @@ public class PhieuNhanBanAdapter extends RecyclerView.Adapter<PhieuNhanBanAdapte
         holder.phieunhanphongBinding.tvSochungtuPhieunhanphongData.setText(String.valueOf(phieuNhanDTO.getSoChungTu()));
         holder.phieunhanphongBinding.tvThoigianlapphieuItemphieunhanphongData.setText(ac.formatDateToString(phieuNhanDTO.getNgayLap(), "dd/MM/yyyy HH:mm:ss"));
         holder.phieunhanphongBinding.tvPhongItemphieunhanphongData.setText(phieuNhanDTO.getSoChungTu());
+        holder.phieunhanphongBinding.itemPhieuNhanPhong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sharedPreferences= context.getSharedPreferences("GET_PHONGID",Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor=sharedPreferences.edit();
+
+                SharedPreferences sharedPreferences1= context.getSharedPreferences("GET_BANID",Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor1=sharedPreferences1.edit();
+
+                for (int i = 0; i < lsKhachHang.size(); i++) {
+                    if (phieuNhanDTO.getKhachHangId() == lsKhachHang.get(i).getKhachHangId()) {
+                        editor.putString("TEN",lsKhachHang.get(i).getTenKhachHang());
+                        editor.putString("CCCD",lsKhachHang.get(i).getCccd());
+                        editor.putString("SDT",lsKhachHang.get(i).getSdt());
+                        editor.putLong("KHID",lsKhachHang.get(i).getKhachHangId());
+                        /// su cho ban
+
+                        editor1.putString("TEN",lsKhachHang.get(i).getTenKhachHang());
+                        editor1.putString("CCCD",lsKhachHang.get(i).getCccd());
+                        editor1.putString("SDT",lsKhachHang.get(i).getSdt());
+                        editor1.putLong("KHID",lsKhachHang.get(i).getKhachHangId());
+                    }
+                }
+
+                DateFormat dateFormat=new SimpleDateFormat("dd/MM/yyyy");
+                Date ngay=phieuNhanDTO.getNgayLap();
+
+                editor.putString("SCT",phieuNhanDTO.getSoChungTu());
+                editor.putString("NGAYLAP",String.valueOf(dateFormat.format(ngay)) );
+                editor.putLong("PNID", phieuNhanDTO.getPhieuNhanId());
+                editor.putInt("NGUOIDUNG",phieuNhanDTO.getNguoiDungId());
+                editor.commit();
+                /// sử dụng cho bàn
+
+                editor1.putString("SCT",phieuNhanDTO.getSoChungTu());
+                editor1.putString("NGAYLAP",String.valueOf(dateFormat.format(ngay)) );
+                editor1.putLong("PNID", phieuNhanDTO.getPhieuNhanId());
+                editor1.putInt("NGUOIDUNG",phieuNhanDTO.getNguoiDungId());
+                editor1.commit();
+
+
+
+                Intent intent=new Intent(context, PhieuXuatBanActivity.class);
+                context.startActivity(intent);
+            }
+        });
 
     }
 

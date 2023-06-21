@@ -16,9 +16,17 @@ public interface goiMonContract {
         void onCapNhatGoiMonSuccess();
 
         void onCapNhatGoiMonError(String error);
+
+        void onCapNhatGMSuccess();
+
+        void onCapNhatGMError(String error);
     }
+
     interface Presenter {
         void LayDanhSachGoiMon(GoiMonDTO goiMonDTO);
+
         void CapNhatGoiMon(ListGoiMonDTO listGoiMonDTO);
+
+        void CapNhatGM(GoiMonDTO goiMonDTO);
     }
 }
