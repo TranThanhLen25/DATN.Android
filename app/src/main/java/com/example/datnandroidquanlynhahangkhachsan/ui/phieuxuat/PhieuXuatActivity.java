@@ -269,7 +269,7 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
                     }
                     /// cap nhat trang thai phong
                     phongDTO.setPhongId(lsPhieuNhanCT.get(i).getPhongId());
-                    phongDTO.setTrangThaiId(1);
+                    phongDTO.setTrangThaiId(3);
                     phongPresenter.CapNhatTrangThaiPhong(phongDTO);
 
                 }
