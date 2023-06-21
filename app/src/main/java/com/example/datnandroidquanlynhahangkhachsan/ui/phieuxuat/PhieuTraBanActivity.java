@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,7 +24,6 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.XuatPhon
 import com.example.datnandroidquanlynhahangkhachsan.entities.goiMon.GoiMonDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanPhongChiTietDTO;
@@ -360,6 +358,12 @@ public class PhieuTraBanActivity extends AppCompatActivity implements HangHoaCon
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putLong("TT_DV", tongtien);
         editor.commit();
+
+        SharedPreferences sharedPreferences1 = getSharedPreferences("GET_PHONGID", MODE_PRIVATE);
+        SharedPreferences.Editor editor1 = sharedPreferences1.edit();
+        editor1.putLong("TT_DV", tongtien);
+        editor1.commit();
+
         DecimalFormat decimalFormat = new DecimalFormat("#,##0" + " đồng");
         TextView tong = findViewById(R.id.tv_tongTienptb);
         tong.setText(String.valueOf(decimalFormat.format(tongtien)));
@@ -482,7 +486,7 @@ public class PhieuTraBanActivity extends AppCompatActivity implements HangHoaCon
     public void onLayDanhSachPhieuXuatChiTietSuccess(List<PhieuXuatChiTietDTO> list) {
     }
 
-    @Override
+   @Override
     public void onLayDanhSachPhieuXuatChiTietError(String error) {
     }
 
