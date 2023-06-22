@@ -344,9 +344,10 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
                     phieuXuatPresenter.ThemPhieuXuat(xuatPhongDTO);
                 }
 
-
                 Intent intent = new Intent(PhieuXuatActivity.this, ThanhToanActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
+                finish();
             }
         });
         setContentView(phieuXuatBinding.getRoot());

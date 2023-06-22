@@ -1,7 +1,6 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.dangnhap;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
 
 import java.util.List;
 
@@ -17,10 +16,15 @@ public interface NguoiDungContract {
         void onLayNguoiDungIDSuccess(List<NguoiDungDTO> lsNguoiDungID);
 
         void onLayNguoiDungIDError(String error);
-        
+
         void onCapNhatNguoiDungSuccess();
 
         void onCapNhatNguoiDungError(String error);
+
+
+        void onThemNguoiDungSuccess();
+
+        void onThemNguoiDungError(String error);
     }
 
     interface Presenter {
@@ -29,4 +33,7 @@ public interface NguoiDungContract {
         void LayNguoiDungID(int nguoiDung);
 
         void CapNhatNguoiDung(NguoiDungDTO NguoiDungDTO);
+
+        void ThemNguoiDung(NguoiDungDTO nguoiDungDTO);
+
     }}

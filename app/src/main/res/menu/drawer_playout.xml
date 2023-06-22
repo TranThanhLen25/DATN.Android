@@ -22,6 +22,10 @@
         android:icon="@drawable/ic_bieudo"
         android:title="@string/action_thongke"></item>
     <item
+        android:id="@+id/dra_nhanvien"
+        android:icon="@drawable/group"
+        android:title="Nhân viên"></item>
+    <item
         android:id="@+id/dra_thongtincanhan"
         android:icon="@drawable/ic_infor"
         android:title="@string/action_thongtincanhan"></item>

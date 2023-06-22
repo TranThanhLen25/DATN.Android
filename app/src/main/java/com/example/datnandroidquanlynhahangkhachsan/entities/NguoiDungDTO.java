@@ -47,7 +47,19 @@ public class NguoiDungDTO {
         this.trangThai = trangThai;
     }
 
-    public NguoiDungDTO(String sdt,String diaChi) {
+    public NguoiDungDTO(String tenNguoiDung, String sdt, String cccd, String gioiTinh, String diaChi, String loaiTaiKhoan, String taiKhoan, String matKhau, int trangThai) {
+        this.tenNguoiDung = tenNguoiDung;
+        this.sdt = sdt;
+        this.cccd = cccd;
+        this.gioiTinh = gioiTinh;
+        this.diaChi = diaChi;
+        this.loaiTaiKhoan = loaiTaiKhoan;
+        this.taiKhoan = taiKhoan;
+        this.matKhau = matKhau;
+        this.trangThai = trangThai;
+    }
+
+    public NguoiDungDTO(String sdt, String diaChi) {
         this.sdt = sdt;
         this.diaChi = diaChi;
     }

@@ -326,7 +326,9 @@ public class PhieuXuatBanActivity extends AppCompatActivity implements PhieuXuat
 
 
                 Intent intent = new Intent(PhieuXuatBanActivity.this, ThanhToanActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
+                finish();
             }
         });
         setContentView(phieuXuatBinding.getRoot());

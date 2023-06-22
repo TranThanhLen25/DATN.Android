@@ -254,4 +254,9 @@ doiMatKhauBinding.btnThoat.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onCapNhatNguoiDungError(String error) {
     }
+    @Override
+    public void onThemNguoiDungSuccess(){}
+
+    @Override
+    public void onThemNguoiDungError(String error){}
 }
