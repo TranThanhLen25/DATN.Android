@@ -194,8 +194,7 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
         editor.putString("LOAITAIKHOAN", loaitaikhoan);
         editor.putBoolean("REMEMBER", status);
 
-        Toast.makeText(DangNhapActivity.this, "luu usernam va pas", Toast.LENGTH_LONG).show();
-        //Lưu lại
+       //Lưu lại
         editor.commit();
     }
 
@@ -220,7 +219,7 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
 
     @Override
     public void onLayNguoiDungError(String error) {
-        Toast.makeText(this, "Lay du lieu that bai", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Lấy dữ liệu thất bại!!!", Toast.LENGTH_LONG).show();
     }
 
     @Override

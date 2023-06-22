@@ -2,15 +2,11 @@ package com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan;
 
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanBanChiTietDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanBanChiTietDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanPhongChiTietDTO;
-
 import com.example.datnandroidquanlynhahangkhachsan.model.phieunhan.IPhieuNhanPhongChiTietModel;
 import com.example.datnandroidquanlynhahangkhachsan.model.phieunhan.PhieuNhanPhongChiTietModel;
-import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.PhieuNhanPhongChiTietContract;
 
 import java.util.List;
 
@@ -65,5 +61,20 @@ public class PhieuNhanPhongChiTietPresenter implements PhieuNhanPhongChiTietCont
                     view.onLayDanhSachPhieuNhanBanChiTietError(error);
                 }
             });
+        }
+
+    @Override
+    public void CapNhatPhieuNhanBanChiTiet(PhieuNhanBanChiTietDTO phieuNhanBanChiTietDTO) {
+        phieuNhanPhongChiTietModel.CapNhatPhieuNhanBanChiTiet(phieuNhanBanChiTietDTO, new IPhieuNhanPhongChiTietModel.IOnCapNhatPhieuNhanBanChiTietFinishedListener() {
+            @Override
+            public void onSuccess() {
+                view.onCapNhatPhieuNhanBanChiTietSuccess();
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onCapNhatPhieuNhanBanChiTietError(error);
+            }
+        });
     }
 }

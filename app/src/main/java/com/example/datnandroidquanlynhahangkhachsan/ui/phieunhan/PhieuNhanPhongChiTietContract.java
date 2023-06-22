@@ -13,20 +13,28 @@ public interface PhieuNhanPhongChiTietContract {
     interface View {
             void onCapNhatPhieuNhanPhongChiTietSuccess();
 
-            void onCapNhatPhieuNhanPhongChiTietError(String error);
+        void onCapNhatPhieuNhanPhongChiTietError(String error);
 
-            void onLayDanhSachPhieuNhanPhongChiTietSuccess(List<PhieuNhanPhongChiTietDTO> list);
+        void onLayDanhSachPhieuNhanPhongChiTietSuccess(List<PhieuNhanPhongChiTietDTO> list);
 
-            void onLayDanhSachPhieuNhanPhongChiTietError(String error);
+        void onLayDanhSachPhieuNhanPhongChiTietError(String error);
 
         void onLayDanhSachPhieuNhanBanChiTietSuccess(List<PhieuNhanBanChiTietDTO> list);
 
         void onLayDanhSachPhieuNhanBanChiTietError(String error);
 
+        void onCapNhatPhieuNhanBanChiTietSuccess();
+
+        void onCapNhatPhieuNhanBanChiTietError(String error);
+
     }
+
     interface Presenter {
         void CapNhatPhieuNhanPhongChiTiet(PhieuNhanPhongChiTietDTO phieuNhanPhongChiTietDTO);
+
         void LayDanhSachPhieuNhanPhongChiTiet(DieuKienLocPhieuNhanPhongChiTietDTO phieuNhanPhongChiTietDTO);
+
         void LayDanhSachPhieuNhanBanChiTiet(DieuKienLocPhieuNhanBanChiTietDTO phieuNhanBanChiTietDTO);
+        void CapNhatPhieuNhanBanChiTiet(PhieuNhanBanChiTietDTO phieuNhanBanChiTietDTO);
     }
 }

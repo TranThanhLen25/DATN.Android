@@ -209,6 +209,43 @@ public class PhieuXuatChiTietAdapter extends RecyclerView.Adapter<PhieuXuatChiTi
             @Override
             public void onClick(View view) {
 
+                ////lấy ngày nhận và trả
+                NGAYNHAN = pn.getThoiGianNhanPhong();
+                NGAYTRA = pn.getThoiGianTraPhong();
+                /// format ngày và chuyển thành String
+
+                // lấy ngày hiện tại
+                Date date = Calendar.getInstance().getTime();
+
+                // Định dạng ngày hiển thị ra
+                DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                String today = formatter.format(date);
+
+                Nhan = format.format(NGAYNHAN);
+                if(pn.getTrangThai()==4)
+                {
+                    Tra = format.format(date);
+                }
+                else {
+                    Tra = format.format(NGAYTRA);
+                }
+
+                /// chuyển kiểu qua LOcalDate để đếm
+                vao = LocalDate.parse(Nhan, fm);
+                ra = LocalDate.parse(Tra, fm);
+                ////đếm ngày thuê
+                if (ra.toEpochDay() - vao.toEpochDay()==0)
+                {
+                    songay=1;
+                }
+                else
+                {
+                    songay = ra.toEpochDay() - vao.toEpochDay();
+                }
+
+
+
+
                 editor.putLong("PNPCT", pn.getPhieuNhanPhongChiTietId());
                 for (int i = 0; i < lsPhong.size(); i++) {
                     if (lsPhong.get(i).getPhongId() == pn.getPhongId()) {
@@ -233,7 +270,7 @@ public class PhieuXuatChiTietAdapter extends RecyclerView.Adapter<PhieuXuatChiTi
 
                 editor.commit();
 
-                if (pn.getTrangThai() == 4) {
+                if (pn.getTrangThai() == 4||pn.getTrangThai()==1) {
                     Intent intent = new Intent(context, PhieuTraPhongActivity.class);
                     context.startActivity(intent);
                 } else {

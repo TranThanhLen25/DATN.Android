@@ -284,4 +284,10 @@ public class PhieuDatBanChiTietActivity extends AppCompatActivity implements Kha
     public void onCapNhatPhieuDatError(String error) {
 
     }
+
+    @Override
+    public void onCapNhatTrangThaiBanSuccess(){}
+
+    @Override
+    public void onCapNhatTrangThaiBanError(String error){}
 }

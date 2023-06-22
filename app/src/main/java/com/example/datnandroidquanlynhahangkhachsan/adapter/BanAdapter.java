@@ -137,6 +137,7 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
                         pnct = lsPNBanCT.get(i).getPhieuDatBanChiTietId();
                         pnid = lsPNBanCT.get(i).getPhieuNhanId();
                         ngay=fm.format(lsPNBanCT.get(i).getThoiGianNhanBan())  ;
+
                     }
                 }
                 for (int i = 0; i < lsPhieuNhan.size(); i++) {

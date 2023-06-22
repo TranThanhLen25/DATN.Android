@@ -1,17 +1,20 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.Ban;
 
+
+
+
+
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.BanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.LoaiBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.Ban.BanIModel;
 import com.example.datnandroidquanlynhahangkhachsan.model.Ban.BanModel;
-
 
 import java.util.List;
 
 public class BanPresenter implements BanContract.Presenter {
 
     private final BanContract.View view;
-    BanModel BanModel;
+BanModel BanModel;
 
     public BanPresenter(BanContract.View view) {
         this.view = view;
@@ -49,6 +52,21 @@ public class BanPresenter implements BanContract.Presenter {
         }
 
         );
+    }
+
+    @Override
+    public void CapNhatTrangThaiBan(BanDTO BanDTO) {
+        BanModel.CapNhatTrangThaiBan(BanDTO, new BanIModel.IOnCapNhatTrangThaiBanFinishedListener() {
+            @Override
+            public void onSuccess() {
+                view.onCapNhatTrangThaiBanSuccess();
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onCapNhatTrangThaiBanError(error);
+            }
+        });
     }
 
 }

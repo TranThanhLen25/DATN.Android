@@ -1,5 +1,8 @@
 package com.example.datnandroidquanlynhahangkhachsan.model.Ban;
 
+
+
+
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.BanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.LoaiBanDTO;
 
@@ -12,13 +15,25 @@ public interface BanIModel {
 
     interface IOnLayDanhSachBanFinishedListener {
         void onSuccess(List<BanDTO> listResult);
+
         void onError(String error);
 
 
-    }  interface IOnLayDanhSachLoaiBanFinishedListener {
+    }
+
+    interface IOnLayDanhSachLoaiBanFinishedListener {
         void onSuccess(List<LoaiBanDTO> listResult);
+
         void onError(String error);
 
 
+    }
+
+    void CapNhatTrangThaiBan(BanDTO BanDTO, BanIModel.IOnCapNhatTrangThaiBanFinishedListener listener);
+
+    interface IOnCapNhatTrangThaiBanFinishedListener {
+        void onSuccess();
+
+        void onError(String error);
     }
 }

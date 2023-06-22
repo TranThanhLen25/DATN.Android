@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_phieuxuatban"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_item"
+    android:layout_margin="5dp"
+    android:padding="10dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctl_phong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_phong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/heading_2"
+            app:layout_constraintStart_toStartOf="@id/ctl_phong"
+            app:layout_constraintTop_toTopOf="@id/ctl_phong" />
+
+        <TextView
+            android:id="@+id/tv_so"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="123"
+            android:textColor="@color/red"
+            android:textSize="@dimen/heading_2"
+            app:layout_constraintStart_toEndOf="@id/tv_phong"
+            app:layout_constraintTop_toTopOf="@id/ctl_phong" />
+        <TextView
+            android:id="@+id/tv_gia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loại:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/heading_2"
+            android:layout_marginStart="39dp"
+            app:layout_constraintStart_toEndOf="@+id/tv_so"
+            app:layout_constraintTop_toTopOf="@id/ctl_phong"/>
+
+        <TextView
+            android:id="@+id/tv_songay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="0 lấy dc"
+            android:textColor="@color/red"
+            android:textSize="@dimen/heading_2"
+            app:layout_constraintStart_toEndOf="@id/tv_gia"
+            app:layout_constraintTop_toTopOf="@id/ctl_phong" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctl_gia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ctl_phong">
+
+
+
+        <TextView
+            android:id="@+id/tv_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Tổng:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/heading_2"
+            app:layout_constraintStart_toStartOf="@id/ctl_gia"
+            app:layout_constraintTop_toTopOf="@id/ctl_gia" />
+
+        <TextView
+            android:id="@+id/tv_tongtien"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="baonhieu"
+            android:textColor="@color/red"
+            android:textSize="@dimen/heading_2"
+            app:layout_constraintStart_toEndOf="@+id/tv_menu"
+            app:layout_constraintTop_toTopOf="@id/ctl_gia" />
+
+        <TextView
+            android:id="@+id/tv_trangthai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="chưa thanh toán"
+            android:textSize="17dp"
+            android:layout_marginEnd="15dp"
+            android:textStyle="bold"
+            android:layout_marginStart="29dp"
+            app:layout_constraintEnd_toEndOf="@id/ctl_gia"
+
+            app:layout_constraintTop_toTopOf="@id/ctl_gia" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

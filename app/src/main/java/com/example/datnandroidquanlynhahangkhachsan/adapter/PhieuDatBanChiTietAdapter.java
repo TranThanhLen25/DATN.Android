@@ -121,6 +121,12 @@ public class PhieuDatBanChiTietAdapter extends RecyclerView.Adapter<PhieuDatBanC
 
     }
 
+    @Override
+    public void onCapNhatTrangThaiBanSuccess(){}
+
+    @Override
+    public void onCapNhatTrangThaiBanError(String error){}
+
     class PhieuXuatChiTietViewHolder extends RecyclerView.ViewHolder {
         private ItemPhieuxuatchitietBinding phieuXuatChiTietBinding;
 
