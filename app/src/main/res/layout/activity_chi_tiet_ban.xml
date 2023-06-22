@@ -351,5 +351,15 @@
             app:layout_constraintBottom_toBottomOf="@+id/footer_chitietban"
             app:layout_constraintEnd_toEndOf="@+id/footer_chitietban"
             app:layout_constraintTop_toTopOf="@+id/footer_chitietban"/>
+
+        <Button
+            android:id="@+id/btn_baotri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bảo trì"
+            android:backgroundTint="#C5732C"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
