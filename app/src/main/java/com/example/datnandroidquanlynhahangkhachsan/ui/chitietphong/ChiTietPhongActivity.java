@@ -124,7 +124,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
         //khởi tạo list hàng hóa id
         tempData.lsDichVu = new ArrayList<>();
 
-        ChiTietPhongBinding.imgMenu.setOnClickListener(new View.OnClickListener() {
+            ChiTietPhongBinding.imgMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int trangThaiID = sharedPreferences.getInt("TRANGTHAI", 0);
