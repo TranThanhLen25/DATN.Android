@@ -75,10 +75,16 @@ public class FragmentKhachHang extends Fragment implements KhachHangContract.Vie
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
                 searchList = new ArrayList<>();
-                if (query.length()>0){
+                if (newText.length()>0){
                     for (int i=0;i<lsKhachHang.size();i++){
-                        if (lsKhachHang.get(i).getTenKhachHang().contains(query)||lsKhachHang.get(i).getSdt().contains(query)){
+                        if (lsKhachHang.get(i).getTenKhachHang().contains(newText)||lsKhachHang.get(i).getSdt().contains(newText)){
                             KhachHangDTO khachHangDTO = lsKhachHang.get(i);
                             searchList.add(khachHangDTO);
                         }
@@ -88,11 +94,6 @@ public class FragmentKhachHang extends Fragment implements KhachHangContract.Vie
                     rscvPhieuDatBan.setAdapter(khachHangAdapter);
                     //Toast.makeText(getContext(), String.valueOf(lsKhachHang.size()), Toast.LENGTH_LONG).show();
                 }
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
                 return false;
             }
         });
