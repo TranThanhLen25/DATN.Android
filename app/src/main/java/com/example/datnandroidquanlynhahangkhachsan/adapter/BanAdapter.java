@@ -29,7 +29,6 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhan
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuTraBanActivity;
 
 import java.text.DateFormat;
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -45,6 +44,7 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
     private int banid;
     private String tenban;
     private int songuoi;
+    private int trangThaiBanId;
     private String tenloaiban;
     private long pnct;
     private long pnid;
@@ -81,7 +81,7 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
     public BanAdapter.BanViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //hiện dialog
 
-      ItemDanhsachphongBinding   dsBanBinding = ItemDanhsachphongBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        ItemDanhsachphongBinding dsBanBinding = ItemDanhsachphongBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
 
 
         return new BanViewHolder(dsBanBinding);
@@ -108,35 +108,34 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
             if (lsLoaiBan.get(i).getLoaiBanId() == banDTO.getLoaiBanId()) {
                 holder.dsBanBinding.tvLoaiphong.setText(lsLoaiBan.get(i).getTenLoaiBan());
                 holder.dsBanBinding.tvGiatien.setText(String.valueOf(lsLoaiBan.get(i).getSoNguoiToiDa()));
-                songuoi=lsLoaiBan.get(i).getSoNguoiToiDa();
+                songuoi = lsLoaiBan.get(i).getSoNguoiToiDa();
 
             }
         }
         holder.dsBanBinding.tvSophong.setText(banDTO.getTenBan());
 
 
-
-
-       holder.dsBanBinding.itemDsphong.setOnClickListener(new View.OnClickListener() {
+        holder.dsBanBinding.itemDsphong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 trangThai = banDTO.getTrangThaiId();
                 loaibanid = banDTO.getLoaiBanId();
                 banid = banDTO.getBanId();
-                tenban=banDTO.getTenBan();
+                tenban = banDTO.getTenBan();
+                trangThaiBanId = banDTO.getTrangThaiId();
 
                 for (int i = 0; i < lsLoaiBan.size(); i++) {
                     if (lsLoaiBan.get(i).getLoaiBanId() == banDTO.getLoaiBanId()) {
-                        tenloaiban=lsLoaiBan.get(i).getTenLoaiBan();
+                        tenloaiban = lsLoaiBan.get(i).getTenLoaiBan();
                     }
                 }
 
-                DateFormat fm=new SimpleDateFormat("dd/MM/yyyy");
+                DateFormat fm = new SimpleDateFormat("dd/MM/yyyy");
                 for (int i = 0; i < lsPNBanCT.size(); i++) {
                     if (lsPNBanCT.get(i).getBanId() == banid) {
                         pnct = lsPNBanCT.get(i).getPhieuDatBanChiTietId();
                         pnid = lsPNBanCT.get(i).getPhieuNhanId();
-                        ngay=fm.format(lsPNBanCT.get(i).getThoiGianNhanBan())  ;
+                        ngay = fm.format(lsPNBanCT.get(i).getThoiGianNhanBan());
 
                     }
                 }
@@ -246,10 +245,11 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
                 SharedPreferences sharedPreferences = context.getSharedPreferences("CHITIETBAN", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt("LOAIBANID", loaibanid);
-                editor.putInt("BANID",banid );
-                editor.putString("TENBAN",tenban );
+                editor.putInt("BANID", banid);
+                editor.putString("TENBAN", tenban);
                 editor.putInt("SONGUOI", songuoi);
-                editor.putString("TENLOAIBAN",tenloaiban );
+                editor.putString("TENLOAIBAN", tenloaiban);
+                editor.putInt("TRANGTHAI", trangThaiBanId);
                 editor.commit();
                 dialog.dismiss();
 
@@ -261,26 +261,25 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
             @Override
             public void onClick(View view) {
 
-                    SharedPreferences sharedPreferences = context.getSharedPreferences("GET_BANID", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putInt("BANID", banid);
-                    editor.putString("TENBAN",tenban );
-                    editor.putLong("PNID",pnid );
-                    editor.putLong("KHID",khachhang );
-                    editor.putString("TEN",ten );
-                    editor.putString("CCCD",cccd );
-                    editor.putString("SDT",sdt );
-                    editor.putInt("NGUOIDUNG",nguoidung );
-                    editor.putLong("PNCT",pnct );
-                    editor.putString("NGAYLAP", ngay);
-                    editor.commit();
-                    dialog.dismiss();
-                    Intent intent = new Intent(dialog.getContext(), PhieuTraBanActivity.class);
-                    context.startActivity(intent);
-                    dialog.dismiss();
+                SharedPreferences sharedPreferences = context.getSharedPreferences("GET_BANID", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("BANID", banid);
+                editor.putString("TENBAN", tenban);
+                editor.putLong("PNID", pnid);
+                editor.putLong("KHID", khachhang);
+                editor.putString("TEN", ten);
+                editor.putString("CCCD", cccd);
+                editor.putString("SDT", sdt);
+                editor.putInt("NGUOIDUNG", nguoidung);
+                editor.putLong("PNCT", pnct);
+                editor.putString("NGAYLAP", ngay);
+                editor.commit();
+                dialog.dismiss();
+                Intent intent = new Intent(dialog.getContext(), PhieuTraBanActivity.class);
+                context.startActivity(intent);
+                dialog.dismiss();
 
-                }
-
+            }
 
 
         });

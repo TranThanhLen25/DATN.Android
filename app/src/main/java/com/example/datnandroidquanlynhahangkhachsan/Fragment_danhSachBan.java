@@ -132,6 +132,17 @@ public class Fragment_danhSachBan extends Fragment implements BanContract.View, 
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        ///laay Ban
+        BanPresenter banPresenter = new BanPresenter(this);
+        banPresenter.LayDanhSachBan();
+        /// laay loai ban
+        BanPresenter banPresenter1 = new BanPresenter(this);
+        banPresenter1.LayDanhSachLoaiBan();
+    }
+
+    @Override
     public void onLayDanhSachBanSuccess(List<BanDTO> lsDanhSachBan) {
         lsBan = lsDanhSachBan;
         BanAdapter banAdapter = new BanAdapter(this);

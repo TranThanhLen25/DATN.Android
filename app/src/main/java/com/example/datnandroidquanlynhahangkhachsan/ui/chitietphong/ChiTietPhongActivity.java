@@ -1,17 +1,23 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.chitietphong;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.MenuAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityChiTietPhongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.DichVuDTO;
@@ -52,8 +58,9 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
     private HangHoaPresenter hangHoaPresenter;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-
+    private PhongDTO phongDTO;
     private DichVuPresenter dichVuPresenter;
+    private PhongPresenter phongPresenter;
 
     Handler handler = new Handler();
     Runnable runnable;
@@ -70,12 +77,13 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
         listDichVuCapNhat = new ArrayList<>();
         listDichVuThem = new ArrayList<>();
         xoaTatCaMenu = new DichVuDTO();
+        phongDTO = new PhongDTO();
 
 
         LoaiPhongPresenter loaiPhongPresenter = new LoaiPhongPresenter(this);
         loaiPhongPresenter.LayLoaiPhong();
 
-        PhongPresenter phongPresenter = new PhongPresenter(this);
+        phongPresenter = new PhongPresenter(this);
         phongPresenter.LayDanhSachPhong();
 
 
@@ -90,6 +98,14 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
         String formattedNumber = decimalFormat.format(sharedPreferences.getInt("GIA", 0));
         ChiTietPhongBinding.tvGiachitiet.setText(formattedNumber + " đồng");
 
+        //chỉnh trạng thái bảo trì phòng
+        ChiTietPhongBinding.btnBaotri.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DiaLogBaoTri();
+
+            }
+        });
 
         ChiTietPhongBinding.toolbarChitietphong.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,11 +124,11 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
         //khởi tạo list hàng hóa id
         tempData.lsDichVu = new ArrayList<>();
 
-        ChiTietPhongBinding.imgMenu.setOnClickListener(new View.OnClickListener() {
+            ChiTietPhongBinding.imgMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int trangThaiID = sharedPreferences.getInt("TRANGTHAI", 0);
-                if (trangThaiID==4){
+                if (trangThaiID == 4) {
                     Intent intent = new Intent(ChiTietPhongActivity.this, DanhSachMenuActivity.class);
                     startActivity(intent);
                 }
@@ -238,6 +254,59 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
                         }));
             }
         };
+    }
+
+
+
+    private void DiaLogBaoTri() {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_huy_dat_phong);
+        Window window = dialog.getWindow();
+        if (window == null) {
+            return;
+        }
+        TextView btnYes = dialog.findViewById(R.id.btn_yes);
+        TextView btnNo = dialog.findViewById(R.id.btn_no);
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int trangThaiID = sharedPreferences.getInt("TRANGTHAI", 0);
+                if (trangThaiID != 3) {
+                    int phongID = sharedPreferences.getInt("PHONGID", 0);
+                    phongDTO.setPhongId(phongID);
+                    phongDTO.setTrangThaiId(3);
+                    phongPresenter.CapNhatTrangThaiPhong(phongDTO);
+                    dialog.dismiss();
+                    onBackPressed();
+                }
+                else {
+                    int phongID = sharedPreferences.getInt("PHONGID", 0);
+                    phongDTO.setPhongId(phongID);
+                    phongDTO.setTrangThaiId(1);
+                    phongPresenter.CapNhatTrangThaiPhong(phongDTO);
+                    dialog.dismiss();
+                    onBackPressed();
+                }
+
+            }
+        });
+        btnNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                dialog.dismiss();
+
+
+            }
+        });
+
+
+        dialog.show();
+
+
     }
 
     @Override
@@ -415,22 +484,22 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 
     @Override
     public void onthemDichVuSuccess() {
-      //  Toast.makeText(ChiTietPhongActivity.this, "thêm dịch vụ thành công", Toast.LENGTH_SHORT).show();
+        //  Toast.makeText(ChiTietPhongActivity.this, "thêm dịch vụ thành công", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onthemDichVuError(String error) {
-      //  Toast.makeText(ChiTietPhongActivity.this, "thêm dịch vụ thất bại", Toast.LENGTH_SHORT).show();
+        //  Toast.makeText(ChiTietPhongActivity.this, "thêm dịch vụ thất bại", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void oncapNhatDichVuSuccess() {
-       // Toast.makeText(ChiTietPhongActivity.this, "cập nhật dịch vụ thành công", Toast.LENGTH_SHORT).show();
+        // Toast.makeText(ChiTietPhongActivity.this, "cập nhật dịch vụ thành công", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void oncapNhatDichVuError(String error) {
-       // Toast.makeText(ChiTietPhongActivity.this, "cập nhật dịch vụ thất bại", Toast.LENGTH_SHORT).show();
+        // Toast.makeText(ChiTietPhongActivity.this, "cập nhật dịch vụ thất bại", Toast.LENGTH_SHORT).show();
     }
 
     @Override

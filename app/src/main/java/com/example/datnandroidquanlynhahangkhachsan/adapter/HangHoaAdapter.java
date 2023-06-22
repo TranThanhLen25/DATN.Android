@@ -1,13 +1,10 @@
 package com.example.datnandroidquanlynhahangkhachsan.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,15 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemHanghoaDichvuBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
-
-
-import com.example.datnandroidquanlynhahangkhachsan.tempData.lsChonPhong;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.fragment_menu_dichvu;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.fragment_menu_douong;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.fragment_menu_goimon;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
-
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -69,6 +62,14 @@ public class HangHoaAdapter extends RecyclerView.Adapter<HangHoaAdapter.HangHoaV
         NumberFormat formatter = new DecimalFormat("#,###");
         holder.itemHanghoaDichvuBinding.tvTendichvu.setText(HangHoa.getTenHangHoa());
         holder.itemHanghoaDichvuBinding.tvDongiaHanghoaDichvu.setText(String.valueOf(formatter.format(HangHoa.getDonGia()) + " VNĐ"));
+        if (HangHoa.getNhomHangHoa().equals("Gọi món")){
+            holder.itemHanghoaDichvuBinding.imgItemdichvu.setImageResource(R.drawable.ic_goimon);
+        }
+        else {
+            if (HangHoa.getNhomHangHoa().equals("Đồ uống")){
+                holder.itemHanghoaDichvuBinding.imgItemdichvu.setImageResource(R.drawable.ic_douong);
+            }
+        }
         holder.itemHanghoaDichvuBinding.ctlItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -315,8 +315,16 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
 
             lsChonPhongDataInt.clear();
             //onBackPressed();
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
+
+            //cũ
+//            Intent i = new Intent(this, MainActivity.class);
+//            startActivity(i);
+
+            //mới
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(intent);
+            finish();
         }
     }
 

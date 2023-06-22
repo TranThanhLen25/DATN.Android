@@ -144,11 +144,17 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
                 searchList = new ArrayList<>();
                 searchListKhachHang = new ArrayList<>();
-                if (query.length() > 0) {
+                if (newText.length() > 0) {
                     for (int i = 0; i < lsKhachHang.size(); i++) {
-                        if (lsKhachHang.get(i).getTenKhachHang().contains(query) || lsKhachHang.get(i).getSdt().contains(query)) {
+                        if (lsKhachHang.get(i).getTenKhachHang().contains(newText) || lsKhachHang.get(i).getSdt().contains(newText)) {
                             searchListKhachHang.add(lsKhachHang.get(i));
                         }
                     }
@@ -166,11 +172,6 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
                     rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);
                     //Toast.makeText(getContext(), String.valueOf(lsKhachHang.size()), Toast.LENGTH_LONG).show();
                 }
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
                 return false;
             }
         });
