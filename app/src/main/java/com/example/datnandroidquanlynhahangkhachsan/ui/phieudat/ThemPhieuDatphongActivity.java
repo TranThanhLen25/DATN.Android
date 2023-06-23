@@ -250,8 +250,13 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
             soLuongLoaiPhong.soLuong.clear();
             tempData.tempDatakhachHangDTO = new KhachHangDTO();
             //onBackPressed();
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
+//            Intent i = new Intent(this, MainActivity.class);
+//            startActivity(i);
+
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(intent);
+            finish();
         }
     }
 

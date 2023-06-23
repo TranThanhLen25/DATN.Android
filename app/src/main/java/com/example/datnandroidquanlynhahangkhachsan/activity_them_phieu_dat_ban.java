@@ -202,8 +202,13 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
             lsChonBanDataInt.clear();
             tempData.tempDatakhachHangDTO =new KhachHangDTO();
             onBackPressed();
-            Intent i = new Intent(this, Nav_Ban_Activity.class);
-            startActivity(i);
+//            Intent i = new Intent(this, Nav_Ban_Activity.class);
+//            startActivity(i);
+
+            Intent intent = new Intent(this, Nav_Ban_Activity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(intent);
+            finish();
         }
     }
 
