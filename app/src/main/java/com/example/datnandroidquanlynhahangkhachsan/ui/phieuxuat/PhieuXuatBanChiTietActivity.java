@@ -1,19 +1,18 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.DanhSachPXCTAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityPhieuXuatBanChiTietBinding;
-import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityPhieuXuatChiTietBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatChiTietDTO;
@@ -150,6 +149,26 @@ public class PhieuXuatBanChiTietActivity extends AppCompatActivity implements Ph
 
     @Override
     public void onLayDanhSachHangHoaError(String error) {
+    }
+
+    @Override
+    public void onThemHangHoaSuccess() {
+
+    }
+
+    @Override
+    public void onThemHangHoaError(String error) {
+
+    }
+
+    @Override
+    public void onXoaHangHoaSuccess() {
+
+    }
+
+    @Override
+    public void onXoaHangHoaError(String error) {
+
     }
 
 

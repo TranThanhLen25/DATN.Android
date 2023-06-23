@@ -10,11 +10,24 @@ public interface HangHoaContract {
         void onLayDanhSachHangHoaSuccess(List<HangHoaDTO> list);
 
         void onLayDanhSachHangHoaError(String error);
+
+
+        //thêm hàng hóa
+        void onThemHangHoaSuccess();
+
+        void onThemHangHoaError(String error);
+
+        //xóa hàng hóa
+        void onXoaHangHoaSuccess();
+
+        void onXoaHangHoaError(String error);
     }
 
     interface Presenter {
         ////void LayDanhSachHangHoa(DieuKienLocHangHoaDTO dieuKienLoc);
 
         void LayDanhSachHangHoa2(String NhomHangHoa);
+        void themHangHoa(HangHoaDTO hangHoaDTO);
+        void xoaHangHoa(int hangHoaID);
     }
 }

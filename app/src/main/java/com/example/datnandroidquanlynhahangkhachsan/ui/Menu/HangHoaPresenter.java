@@ -1,7 +1,6 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.Menu;
 
 
-
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.hanghoa.HangHoaModel;
 import com.example.datnandroidquanlynhahangkhachsan.model.hanghoa.IHangHoaModel;
@@ -32,7 +31,7 @@ public class HangHoaPresenter implements HangHoaContract.Presenter {
 //            }
 //        });
 //   }
-    
+
     @Override
     public void LayDanhSachHangHoa2(String NhomHangHoa) {
         hangHoaModel.LayDanhSachHangHoa2(NhomHangHoa, new IHangHoaModel.IOnLayDanhSachHangHoa2FinishedListener() {
@@ -44,6 +43,36 @@ public class HangHoaPresenter implements HangHoaContract.Presenter {
             @Override
             public void onError(String error) {
                 view.onLayDanhSachHangHoaError(error);
+            }
+        });
+    }
+
+    @Override
+    public void themHangHoa(HangHoaDTO hangHoaDTO) {
+        hangHoaModel.themHangHoa(hangHoaDTO, new IHangHoaModel.IOnThemHangHoaFinishedListener() {
+            @Override
+            public void onSuccess() {
+                view.onThemHangHoaSuccess();
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onThemHangHoaError(error);
+            }
+        });
+    }
+
+    @Override
+    public void xoaHangHoa(int hangHoaID) {
+        hangHoaModel.xoaHangHoa(hangHoaID, new IHangHoaModel.IOnXoaHangHoaFinishedListener() {
+            @Override
+            public void onSuccess() {
+                view.onXoaHangHoaSuccess();
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onXoaHangHoaError(error);
             }
         });
     }

@@ -233,7 +233,7 @@ public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPh
                 dsPhieuDatPhongPresenter.CapNhatPhieuDat(tempData.datBanDTO.getPhieuDatDTO());
             }
 
-
+            tempData.tempDatakhachHangDTO =new KhachHangDTO();
             lsChonBanDataInt.clear();
           //  onBackPressed();
             Intent i = new Intent(this, Nav_Ban_Activity.class);

@@ -1,8 +1,6 @@
 package com.example.datnandroidquanlynhahangkhachsan.model.hanghoa;
 
 
-
-
 import com.example.datnandroidquanlynhahangkhachsan.entities.DieuKienLocHangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 
@@ -21,6 +19,22 @@ public interface IHangHoaModel {
 
     interface IOnLayDanhSachHangHoa2FinishedListener {
         void onSuccess(List<HangHoaDTO> listResult);
+
+        void onError(String error);
+    }
+
+    void themHangHoa(HangHoaDTO hangHoaDTO, IOnThemHangHoaFinishedListener listener);
+
+    interface IOnThemHangHoaFinishedListener {
+        void onSuccess();
+
+        void onError(String error);
+    }
+
+    void xoaHangHoa(int hangHoaID, IOnXoaHangHoaFinishedListener listener);
+
+    interface IOnXoaHangHoaFinishedListener {
+        void onSuccess();
 
         void onError(String error);
     }

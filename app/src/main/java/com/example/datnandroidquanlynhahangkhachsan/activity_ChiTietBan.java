@@ -98,6 +98,7 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
         activityChiTietBanBinding.imgMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                tempData.CheckChucNang=true;
                 int trangThaiID = sharedPreferences.getInt("TRANGTHAI", 0);
                 if (trangThaiID == 4) {
                     Intent intent = new Intent(activity_ChiTietBan.this, DanhSachMenuActivity.class);
@@ -254,6 +255,7 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
     @Override
     protected void onResume() {
         super.onResume();
+        tempData.CheckChucNang=false;
         //trường hợp menu trong chi tiết phòng đã có item
         if (goiMonDTOListHienThi.size() > 0) {
 
@@ -367,6 +369,26 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
 
     @Override
     public void onLayDanhSachHangHoaError(String error) {
+
+    }
+
+    @Override
+    public void onThemHangHoaSuccess() {
+
+    }
+
+    @Override
+    public void onThemHangHoaError(String error) {
+
+    }
+
+    @Override
+    public void onXoaHangHoaSuccess() {
+
+    }
+
+    @Override
+    public void onXoaHangHoaError(String error) {
 
     }
 

@@ -62,33 +62,40 @@ public class HangHoaAdapter extends RecyclerView.Adapter<HangHoaAdapter.HangHoaV
         NumberFormat formatter = new DecimalFormat("#,###");
         holder.itemHanghoaDichvuBinding.tvTendichvu.setText(HangHoa.getTenHangHoa());
         holder.itemHanghoaDichvuBinding.tvDongiaHanghoaDichvu.setText(String.valueOf(formatter.format(HangHoa.getDonGia()) + " VNĐ"));
-        if (HangHoa.getNhomHangHoa().equals("Gọi món")){
+        if (HangHoa.getNhomHangHoa().equals("Gọi món")) {
             holder.itemHanghoaDichvuBinding.imgItemdichvu.setImageResource(R.drawable.ic_goimon);
-        }
-        else {
-            if (HangHoa.getNhomHangHoa().equals("Đồ uống")){
+        } else {
+            if (HangHoa.getNhomHangHoa().equals("Đồ uống")) {
                 holder.itemHanghoaDichvuBinding.imgItemdichvu.setImageResource(R.drawable.ic_douong);
+            } else {
+                holder.itemHanghoaDichvuBinding.imgItemdichvu.setImageResource(R.drawable.ic_laundry_machine);
             }
         }
         holder.itemHanghoaDichvuBinding.ctlItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ColorDrawable viewColor = (ColorDrawable) holder.itemHanghoaDichvuBinding.ctlItem.getBackground();
-                int colorId = viewColor.getColor();
-                if (colorId == -1) {
-                    tempData.lsDichVu.add(HangHoa.getHangHoaId());
-                    //Toast.makeText(view.getContext(), "thêm", Toast.LENGTH_LONG).show();
-                    holder.itemHanghoaDichvuBinding.ctlItem.setBackgroundColor(-12412);
-                } else {
-                    for (int i = 0; i < tempData.lsDichVu.size(); i++) {
-                        if (tempData.lsDichVu.get(i) == HangHoa.getHangHoaId()) {
-                            tempData.lsDichVu.remove(i);
-                            //Toast.makeText(view.getContext(), "xóa", Toast.LENGTH_LONG).show();
+
+                if (tempData.CheckChucNang == true) {
+                    ColorDrawable viewColor = (ColorDrawable) holder.itemHanghoaDichvuBinding.ctlItem.getBackground();
+                    int colorId = viewColor.getColor();
+                    if (colorId == -1) {
+                        tempData.lsDichVu.add(HangHoa.getHangHoaId());
+                        //Toast.makeText(view.getContext(), "thêm", Toast.LENGTH_LONG).show();
+                        holder.itemHanghoaDichvuBinding.ctlItem.setBackgroundColor(-12412);
+                    } else {
+                        for (int i = 0; i < tempData.lsDichVu.size(); i++) {
+                            if (tempData.lsDichVu.get(i) == HangHoa.getHangHoaId()) {
+                                tempData.lsDichVu.remove(i);
+                                //Toast.makeText(view.getContext(), "xóa", Toast.LENGTH_LONG).show();
+                            }
                         }
+                        holder.itemHanghoaDichvuBinding.ctlItem.setBackgroundColor(-1);
                     }
-                    holder.itemHanghoaDichvuBinding.ctlItem.setBackgroundColor(-1);
+                } else {
+
                 }
             }
+
         });
     }
 

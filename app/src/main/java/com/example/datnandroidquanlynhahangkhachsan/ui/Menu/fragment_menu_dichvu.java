@@ -102,4 +102,24 @@ public class fragment_menu_dichvu extends Fragment implements HangHoaContract.Vi
     public void onLayDanhSachHangHoaError(String error) {
         Toast.makeText(getContext(), "Lay du lieu that bai", Toast.LENGTH_LONG).show();
     }
+
+    @Override
+    public void onThemHangHoaSuccess() {
+
+    }
+
+    @Override
+    public void onThemHangHoaError(String error) {
+
+    }
+
+    @Override
+    public void onXoaHangHoaSuccess() {
+
+    }
+
+    @Override
+    public void onXoaHangHoaError(String error) {
+
+    }
 }

@@ -419,6 +419,26 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 
     }
 
+    @Override
+    public void onThemHangHoaSuccess() {
+
+    }
+
+    @Override
+    public void onThemHangHoaError(String error) {
+
+    }
+
+    @Override
+    public void onXoaHangHoaSuccess() {
+
+    }
+
+    @Override
+    public void onXoaHangHoaError(String error) {
+
+    }
+
 
     @Override
     public void itemTouchOnMove(int oldposition, int newPosition) {

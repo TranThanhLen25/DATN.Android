@@ -314,6 +314,7 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
             }
 
             lsChonPhongDataInt.clear();
+            tempData.tempDatakhachHangDTO = new KhachHangDTO();
             //onBackPressed();
 
             //cũ

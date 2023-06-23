@@ -32,7 +32,7 @@
     <!--  Drawer_layout  -->
     <string name="action_nhaphang">Khách hàng</string>
     <string name="action_kho">Quản lý kho</string>
-    <string name="action_thongke">Thống kê</string>
+    <string name="action_thongke">Quản Lý Menu</string>
     <string name="action_thongtincanhan">Thông tin cá nhân</string>
     <string name="action_dangxguat">Đăng xuất</string>
     <!--phiếu trả phòng-->

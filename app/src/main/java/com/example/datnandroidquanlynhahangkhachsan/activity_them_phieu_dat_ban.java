@@ -200,6 +200,7 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
             // Toast.makeText(this, a, Toast.LENGTH_LONG).show();
             tempData.CheckChucNang = false;
             lsChonBanDataInt.clear();
+            tempData.tempDatakhachHangDTO =new KhachHangDTO();
             onBackPressed();
             Intent i = new Intent(this, Nav_Ban_Activity.class);
             startActivity(i);
