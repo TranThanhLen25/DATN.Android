@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -64,6 +65,7 @@ public class Fragment_Phong extends Fragment implements PhongContract.View, Loai
     private LoaiPhongPresenter loaiPhongPresenter;
     private FragmentDsPhongBinding fragmentDsPhongBinding;
 
+    private List<PhongDTO> searchPhong;
 
     public Fragment_Phong() {
         // Required empty public constructor
@@ -139,6 +141,34 @@ public class Fragment_Phong extends Fragment implements PhongContract.View, Loai
                 getActivity().onBackPressed();
             }
         });
+        SearchView searchView=fragmentDsPhongBinding.iclSearch.search;
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchPhong=new ArrayList<>();
+
+                if(newText.length()>0)
+                {
+           for (int i=0;i< lsPhong.size();i++)
+           {
+               if(String.valueOf(lsPhong.get(i).getSoPhong()).contains(newText) )
+               {
+                   searchPhong.add(lsPhong.get(i));
+               }
+           }
+                    dsPhongAdapter = new PhongAdapter(Fragment_Phong.this);
+                    dsPhongAdapter.setData(lsPhieuNhan, lsKhachHang, searchPhong, getContext(), lsLoaiPhong, phieuNhanPhongChiTietDTO);
+                    rscvDsPhong.setAdapter(dsPhongAdapter);
+                }
+                return false;
+            }
+        });
+
         return fragmentDsPhongBinding.getRoot();
 
 

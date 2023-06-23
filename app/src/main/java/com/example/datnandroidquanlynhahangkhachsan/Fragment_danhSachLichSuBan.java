@@ -2,6 +2,7 @@ package com.example.datnandroidquanlynhahangkhachsan;
 
 import android.os.Bundle;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -49,6 +50,11 @@ public class Fragment_danhSachLichSuBan extends Fragment implements PhieuXuatCon
 
     private List<PhieuXuatDTO> phieuXuat;
     private List<KhachHangDTO> khachHang;
+
+    private List<KhachHangDTO> search_KH;
+
+    private List<PhieuXuatDTO> search_PX;
+
     private PhieuXuatAdapter phieuXuatAdapter;
     private RecyclerView recyclerView;
     public Fragment_danhSachLichSuBan() {
@@ -114,6 +120,45 @@ public class Fragment_danhSachLichSuBan extends Fragment implements PhieuXuatCon
 
 // Thông báo cho adapter về các thay đổi trong tập dữ liệu
 //       phieuXuatAdapter.notifyDataSetChanged();
+
+        SearchView searchView=phieuXuatBinding.iclSearch.search;
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                search_PX=new ArrayList<>();
+                search_KH=new ArrayList<>();
+                if (newText.length()>0)
+                {
+                    for (int i=0;i< khachHang.size();i++)
+                    {
+                        if(khachHang.get(i).getTenKhachHang().toUpperCase().contains(newText.toUpperCase())||
+                                khachHang.get(i).getSdt().contains(newText))
+                        {
+                            search_KH.add(khachHang.get(i));
+                        }
+                    }
+                    for (int y=0;y<search_KH.size();y++)
+                    {
+                        for (int a=0;a<phieuXuat.size();a++)
+                        {
+                            if (search_KH.get(y).getKhachHangId()==phieuXuat.get(a).getKhachHangId())
+                            {
+                                search_PX.add(phieuXuat.get(a));
+                            }
+                        }
+                    }
+                    phieuXuatAdapter =new PhieuXuatAdapter(Fragment_danhSachLichSuBan.this);
+                    phieuXuatAdapter.setData(search_PX,khachHang,getContext());
+                    recyclerView.setAdapter(phieuXuatAdapter);
+                }
+                return false;
+            }
+        });
 
 
         return phieuXuatBinding.getRoot();

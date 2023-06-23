@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -51,7 +52,9 @@ public class Fragment_danhSachBan extends Fragment implements BanContract.View, 
     private String mParam2;
 
     private RecyclerView recyclerViewBan;
+
     private List<BanDTO> lsBan;
+    private List<BanDTO> search_Ban;
     private List<LoaiBanDTO> lsLoaiBan;
     private List<PhieuNhanDTO> lsPhieuNhan;
     private List<PhieuNhanBanChiTietDTO> lsPNCT;
@@ -128,6 +131,38 @@ public class Fragment_danhSachBan extends Fragment implements BanContract.View, 
                 getActivity().onBackPressed();
             }
         });
+
+        SearchView searchView=danhSachBanBinding.iclSearchban.search;
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                search_Ban=new ArrayList<>();
+                if(newText.length()>0)
+                {
+                    for (int i=0;i< lsBan.size();i++)
+                    {
+                        if (lsBan.get(i).getTenBan().toUpperCase().contains(newText.toUpperCase()))
+                        {
+                            search_Ban.add(lsBan.get(i));
+                        }
+                    }
+
+                    BanAdapter banAdapter = new BanAdapter(Fragment_danhSachBan.this);
+                    banAdapter.setData(lsKhachHang,lsPNCT,lsPhieuNhan, search_Ban, lsLoaiBan, getContext());
+                    recyclerViewBan.setAdapter(banAdapter);
+                }
+                return false;
+            }
+        });
+
+
         return danhSachBanBinding.getRoot();
     }
 

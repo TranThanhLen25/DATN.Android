@@ -2,14 +2,15 @@ package com.example.datnandroidquanlynhahangkhachsan;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import androidx.appcompat.widget.SearchView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.adapter.NguoiDungAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentNhanVienBinding;
@@ -38,7 +39,11 @@ public class Fragment_nhanVien extends Fragment implements NguoiDungContract.Vie
     private String mParam2;
 
     private List<NguoiDungDTO> lsNguoiDung;
+    private List<NguoiDungDTO> search_NguoiDung;
     private RecyclerView recyclerView;
+    private SearchView searchView;
+
+    private NguoiDungAdapter nguoiDungAdapter;
 
     public Fragment_nhanVien() {
         // Required empty public constructor
@@ -76,56 +81,87 @@ public class Fragment_nhanVien extends Fragment implements NguoiDungContract.Vie
                              Bundle savedInstanceState) {
         FragmentNhanVienBinding nhanVienBinding=FragmentNhanVienBinding.inflate(inflater,container,false);
         lsNguoiDung=new ArrayList<>();
+
         /// lay Ds nguoi dung
-        NguoiDungPresenter nguoiDungPresenter=new NguoiDungPresenter(this);
+        NguoiDungPresenter nguoiDungPresenter = new NguoiDungPresenter(this);
         nguoiDungPresenter.LayNguoiDung();
-// Đảo ngược thứ tự của tập dữ liệu
-        Collections.reverse(lsNguoiDung);
+
         nhanVienBinding.flBtnNhanvien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getActivity(),ThemNhanVien_Activity.class);
+                Intent intent = new Intent(getActivity(), ThemNhanVien_Activity.class);
                 startActivity(intent);
             }
         });
-
-         recyclerView=nhanVienBinding.rscvDsnhanvien;
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this.getActivity());
+        searchView = nhanVienBinding.iclSearch.search;
+        recyclerView = nhanVienBinding.rscvDsnhanvien;
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
+
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                search_NguoiDung = new ArrayList<>();
+                if (newText.length() > 0) {
+                    for (int i = 0; i <lsNguoiDung.size(); i++) {
+                        if (lsNguoiDung.get(i).getTenNguoiDung().toUpperCase().contains(newText.toUpperCase())||
+                        lsNguoiDung.get(i).getDiaChi().toUpperCase().contains(newText.toUpperCase())||
+                        lsNguoiDung.get(i).getSdt().contains(newText))
+                        {
+                            NguoiDungDTO nguoiDungDTO=lsNguoiDung.get(i);
+
+                            search_NguoiDung.add(nguoiDungDTO);
+                        }
+                    }
+                     nguoiDungAdapter = new NguoiDungAdapter(Fragment_nhanVien.this);
+                    nguoiDungAdapter.setData(getActivity(), search_NguoiDung);
+                    recyclerView.setAdapter(nguoiDungAdapter);
+                }
+
+                return false;
+            }
+        });
+
         return nhanVienBinding.getRoot();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        lsNguoiDung=new ArrayList<>();
-        /// lay Ds nguoi dung
-        NguoiDungPresenter nguoiDungPresenter=new NguoiDungPresenter(this);
-        nguoiDungPresenter.LayNguoiDung();
+        lsNguoiDung = new ArrayList<>();
         // Đảo ngược thứ tự của tập dữ liệu
         Collections.reverse(lsNguoiDung);
+        /// lay Ds nguoi dung
+        NguoiDungPresenter nguoiDungPresenter = new NguoiDungPresenter(this);
+        nguoiDungPresenter.LayNguoiDung();
     }
 
-    /// lấy danh sách người dùng
-   @Override
-   public void onLayNguoiDungSuccess(List<NguoiDungDTO> lsNguoiDung){
-        lsNguoiDung=lsNguoiDung;
-       NguoiDungAdapter nguoiDungAdapter=new NguoiDungAdapter(this);
-       nguoiDungAdapter.setData(getContext(),lsNguoiDung);
-       recyclerView.setAdapter(nguoiDungAdapter);
-
-
-   }
+    @Override
+    public void onLayNguoiDungSuccess(List<NguoiDungDTO> lsNguoiDung) {
+        lsNguoiDung = lsNguoiDung;
+         nguoiDungAdapter = new NguoiDungAdapter(this);
+        nguoiDungAdapter.setData(getContext(), lsNguoiDung);
+        recyclerView.setAdapter(nguoiDungAdapter);
+    }
 
     @Override
-    public void onLayNguoiDungError(String error){}
+    public void onLayNguoiDungError(String error) {
+    }
 
     /// lấy người dùng theo id
     @Override
-    public void onLayNguoiDungIDSuccess(List<NguoiDungDTO> lsNguoiDungID){}
+    public void onLayNguoiDungIDSuccess(List<NguoiDungDTO> lsNguoiDungID) {
+    }
 
     @Override
-    public void onLayNguoiDungIDError(String error){}
+    public void onLayNguoiDungIDError(String error) {
+    }
 
     @Override
     public void onCapNhatNguoiDungSuccess(){}

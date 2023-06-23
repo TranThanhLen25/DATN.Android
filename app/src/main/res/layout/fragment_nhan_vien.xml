@@ -32,26 +32,15 @@
             app:layout_constraintStart_toStartOf="@id/headdernhanvien"
             app:layout_constraintTop_toTopOf="@id/headdernhanvien" />
 
-        <androidx.cardview.widget.CardView
+
+        <include
+            android:id="@+id/icl_Search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="10dp"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="5dp"
-            app:layout_constraintEnd_toEndOf="@id/headdernhanvien"
-            app:layout_constraintStart_toStartOf="@id/headdernhanvien"
-            app:layout_constraintTop_toBottomOf="@+id/tv_nhanvien">
-
-            <include
-                android:id="@+id/Search"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/search"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
-        </androidx.cardview.widget.CardView>
+            layout="@layout/search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_nhanvien" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
@@ -88,7 +77,7 @@ app:layout_constraintBottom_toBottomOf="parent"
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="match_parent"
                     app:layout_constraintEnd_toEndOf="@+id/mainnhanvien"
                     app:layout_constraintStart_toStartOf="@+id/mainnhanvien"
                     app:layout_constraintTop_toTopOf="@+id/mainnhanvien">
