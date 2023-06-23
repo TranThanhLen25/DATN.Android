@@ -82,6 +82,13 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
         MenuItem menuItem = menu.findItem(R.id.dra_trangchu);
         menuItem.setChecked(true);
 
+        MenuItem dra_nhanVien=menu.findItem(R.id.dra_nhanvien);
+        if(sharedPreferences.getString("LOAITAIKHOAN","").equals("Nhân viên lễ tân"))
+        {
+            dra_nhanVien.setVisible(false);
+        }
+
+
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -142,6 +149,14 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
                         menuItem.setChecked(false);
                         vitri = R.id.dra_thongke;
                         break;
+
+                    case R.id.dra_nhanvien:
+                        temp = new Fragment_nhanVien();
+                        menuItem.setChecked(false);
+                        vitri = R.id.dra_nhanvien;
+                        break;
+
+
                     case R.id.dra_thongtincanhan:
                         temp = new Fragment_thongtincanhan();
                         menuItem.setChecked(false);

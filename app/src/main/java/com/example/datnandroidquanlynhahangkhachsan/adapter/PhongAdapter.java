@@ -219,7 +219,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         TextView traphong = dialog.findViewById(R.id.tv_dia_traphong);
         TextView chitiet = dialog.findViewById(R.id.tv_dia_chitietphong);
         TextView doiphong = dialog.findViewById(R.id.tv_dia_doiphong);
-        TextView baotri = dialog.findViewById(R.id.tv_dia_baotri);
+        //TextView baotri = dialog.findViewById(R.id.tv_dia_baotri);
         View vTraPhong = dialog.findViewById(R.id.view_traphong);
         View vDoiPhong = dialog.findViewById(R.id.vDoiPhong);
 
@@ -323,15 +323,15 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
 
             }
         });
-        baotri.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                dialog.dismiss();
-
-            }
-        });
+//        baotri.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//
+//                dialog.dismiss();
+//
+//            }
+//        });
         dialog.show();
 
 

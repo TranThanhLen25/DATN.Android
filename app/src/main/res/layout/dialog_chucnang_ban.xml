@@ -97,22 +97,7 @@ android:visibility="visible"
         android:textColor="@color/black"
         android:textSize="@dimen/heading_2" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/blue_mo"></View>
 
-    <TextView
-        android:id="@+id/tv_dia_baotriban"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/white"
-        android:gravity="start"
-        android:padding="10dp"
-        android:text="@string/dialog_baotriban"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="@dimen/heading_2" />
 
 
 </LinearLayout>

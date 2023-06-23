@@ -197,7 +197,7 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
         TextView traban = dialog.findViewById(R.id.tv_dia_traban);
         TextView chitiet = dialog.findViewById(R.id.tv_dia_chitietban);
         TextView doiban = dialog.findViewById(R.id.tv_dia_doiban);
-        TextView baotri = dialog.findViewById(R.id.tv_dia_baotriban);
+//        TextView baotri = dialog.findViewById(R.id.tv_dia_baotriban);
         View vTraban = dialog.findViewById(R.id.view_traban);
         View vDoiban = dialog.findViewById(R.id.vDoiban);
 
@@ -295,15 +295,15 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
 
             }
         });
-        baotri.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                dialog.dismiss();
-
-            }
-        });
+//        baotri.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//
+//                dialog.dismiss();
+//
+//            }
+//        });
         dialog.show();
 
 

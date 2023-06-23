@@ -114,6 +114,7 @@ public class fragment_chinhsuathongtincanhan extends Fragment implements NguoiDu
                     nguoiDungDTO.setNguoiDungId(sharedPreferences.getInt("ID", 0));
                     ///lưu sdt lại và csdl
                     nguoiDungDTO.setSdt(chinhsuathongtincanhanBinding.etSdtctchinhsua.getText().toString());
+
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     // gán địa chỉ vào file NGUOI_DUNG tạm
                     editor.putString("SDT", chinhsuathongtincanhanBinding.etSdtctchinhsua.getText().toString());
@@ -163,4 +164,9 @@ public class fragment_chinhsuathongtincanhan extends Fragment implements NguoiDu
     @Override
     public void onCapNhatNguoiDungError(String error) {
     }
+    @Override
+    public void onThemNguoiDungSuccess(){}
+
+    @Override
+    public void onThemNguoiDungError(String error){}
 }

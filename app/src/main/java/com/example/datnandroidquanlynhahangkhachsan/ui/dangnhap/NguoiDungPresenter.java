@@ -1,9 +1,11 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.dangnhap;
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseTokenDTO;
 
+import com.example.datnandroidquanlynhahangkhachsan.model.KhachHang.IKhachHangModel;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.APIService;
 import com.example.datnandroidquanlynhahangkhachsan.model.api.IAPIServiceTokenRetrofit;
 
@@ -66,4 +68,20 @@ public class NguoiDungPresenter implements NguoiDungContract.Presenter {
             }
         });
     }
+
+    @Override
+    public void ThemNguoiDung(NguoiDungDTO nguoiDungDTO) {
+        nguoiDungModel.themNguoiDung(nguoiDungDTO, new INguoiDungModel.IOnThemNguoiDungFinishedListener() {
+            @Override
+            public void onSuccess() {
+                view.onThemNguoiDungSuccess();
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onThemNguoiDungError(error);
+            }
+        });
+    }
+
 }

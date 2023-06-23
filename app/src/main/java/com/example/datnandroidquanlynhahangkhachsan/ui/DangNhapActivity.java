@@ -212,8 +212,6 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
     public void onLayNguoiDungSuccess(List<NguoiDungDTO> list) {
         lsNguoiDung = list;
 
-        Toast.makeText(this, "lay du lieu thanh cong", Toast.LENGTH_LONG).show();
-
 
     }
 
@@ -236,4 +234,10 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
 
     @Override
     public void onCapNhatNguoiDungError(String error){}
+
+    @Override
+    public void onThemNguoiDungSuccess(){}
+
+    @Override
+    public void onThemNguoiDungError(String error){}
 }
