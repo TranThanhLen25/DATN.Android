@@ -129,6 +129,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
             public void onClick(View view) {
                 int trangThaiID = sharedPreferences.getInt("TRANGTHAI", 0);
                 if (trangThaiID == 4) {
+                    tempData.CheckChucNang=true;
                     Intent intent = new Intent(ChiTietPhongActivity.this, DanhSachMenuActivity.class);
                     startActivity(intent);
                 }
@@ -261,7 +262,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
     private void DiaLogBaoTri() {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_huy_dat_phong);
+        dialog.setContentView(R.layout.dialog_bao_tri_ban);
         Window window = dialog.getWindow();
         if (window == null) {
             return;
@@ -416,6 +417,36 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 
     @Override
     public void onLayDanhSachHangHoaError(String error) {
+
+    }
+
+    @Override
+    public void onThemHangHoaSuccess() {
+
+    }
+
+    @Override
+    public void onThemHangHoaError(String error) {
+
+    }
+
+    @Override
+    public void onXoaHangHoaSuccess() {
+
+    }
+
+    @Override
+    public void onXoaHangHoaError(String error) {
+
+    }
+
+    @Override
+    public void onCapNhatHangHoaSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatHangHoaError(String error) {
 
     }
 

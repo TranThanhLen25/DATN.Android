@@ -224,4 +224,13 @@ public interface IAPIServiceRetrofit {
     @POST("/api/NguoiDung/Them-NguoiDung")
     Call<ResponseInfo> themNguoiDung(@Body NguoiDungDTO nguoiDungDTO);
 
+    @POST("/api/hanghoa/them-hanghoa")
+    Call<ResponseInfo> themHangHoa(@Body HangHoaDTO hangHoaDTO);
+
+    @POST("/api/hanghoa/xoa-hanghoa")
+    Call<ResponseInfo> xoaHangHoa(@Query("HangHoa") int id);
+
+    @POST("/api/hanghoa/capnhat-hanghoa")
+    Call<ResponseInfo> capNhatHangHoa(@Body HangHoaDTO hangHoaDTO);
+
 }

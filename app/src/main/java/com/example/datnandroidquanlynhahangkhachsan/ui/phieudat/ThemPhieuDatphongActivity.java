@@ -33,6 +33,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatBa
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.soLuongLoaiPhong;
+import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongContract;
@@ -247,9 +248,15 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
 
             //sau khi thêm thì xóa dữ liệu của cái biến số lượng của mỗi loại phòng
             soLuongLoaiPhong.soLuong.clear();
+            tempData.tempDatakhachHangDTO = new KhachHangDTO();
             //onBackPressed();
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
+//            Intent i = new Intent(this, MainActivity.class);
+//            startActivity(i);
+
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(intent);
+            finish();
         }
     }
 

@@ -83,9 +83,11 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
         menuItem.setChecked(true);
 
         MenuItem dra_nhanVien=menu.findItem(R.id.dra_nhanvien);
+        MenuItem dra_thongke=menu.findItem(R.id.dra_thongke);
         if(sharedPreferences.getString("LOAITAIKHOAN","").equals("Nhân viên lễ tân"))
         {
             dra_nhanVien.setVisible(false);
+            dra_thongke.setVisible(false);
         }
 
 
@@ -145,7 +147,7 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
                         vitri = R.id.dra_kho;
                         break;
                     case R.id.dra_thongke:
-                        temp = new Fragment_thongke();
+                        temp = new Fragment_QuanLyHangHoa();
                         menuItem.setChecked(false);
                         vitri = R.id.dra_thongke;
                         break;

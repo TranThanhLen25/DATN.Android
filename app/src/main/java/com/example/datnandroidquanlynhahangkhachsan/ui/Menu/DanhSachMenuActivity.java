@@ -1,12 +1,14 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.Menu;
 
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.os.Bundle;
-
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityDanhsachmenuBinding;
+import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
 import com.google.android.material.tabs.TabLayout;
 
 public class DanhSachMenuActivity extends AppCompatActivity {
@@ -20,7 +22,13 @@ public class DanhSachMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         danhsachmenuBinding = ActivityDanhsachmenuBinding.inflate(getLayoutInflater());
         setContentView(danhsachmenuBinding.getRoot());
-        danhsachmenuBinding.incluMenu.icBack.setOnClickListener(view -> onBackPressed());
+        danhsachmenuBinding.incluMenu.icBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tempData.CheckChucNang=false;
+                onBackPressed();
+            }
+        });
         setupViewPager();
     }
 
