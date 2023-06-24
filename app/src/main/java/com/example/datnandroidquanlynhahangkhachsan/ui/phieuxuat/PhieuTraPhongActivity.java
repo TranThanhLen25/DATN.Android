@@ -270,7 +270,7 @@ phieuXuatDTO=new PhieuXuatDTO();
                 TextView btnNo = dialog.findViewById(R.id.btn_no);
                 TextView text = dialog.findViewById(R.id.tv_dangxuat);
                 text.setText("Bạn muốn thanh toán ngay ?");
-                btnNo.setText("Để sau");
+                btnNo.setText("Trả sau");
                 btnYes.setText("Thanh toán");
                 window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

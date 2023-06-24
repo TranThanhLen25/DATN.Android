@@ -257,7 +257,23 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
 
                     }
 
-                    if (lsPhieuNhanCT.get(i).getTrangThai() != 2) {
+                    if (lsPhieuNhanCT.get(i).getTrangThai() ==4) {
+                        phieuNhanPhongChiTietDTO.setPhieuNhanPhongChiTietId(lsPhieuNhanCT.get(i).getPhieuNhanPhongChiTietId());
+                        phieuNhanPhongChiTietDTO.setTrangThai(2);
+                        if (lsPhieuNhanCT.get(i).getThoiGianTraPhong() == null) {
+                            phieuNhanPhongChiTietDTO.setThoiGianTraPhong(date);
+                        } else {
+                            phieuNhanPhongChiTietDTO.setThoiGianTraPhong(lsPhieuNhanCT.get(i).getThoiGianTraPhong());
+                        }
+                        phieuNhanPhongChiTietPresenter.CapNhatPhieuNhanPhongChiTiet(phieuNhanPhongChiTietDTO);
+
+                        /// cap nhat trang thai phong
+                        phongDTO.setPhongId(lsPhieuNhanCT.get(i).getPhongId());
+                        phongDTO.setTrangThaiId(3);
+                        phongPresenter.CapNhatTrangThaiPhong(phongDTO);
+                    }
+
+                    if (lsPhieuNhanCT.get(i).getTrangThai() ==1) {
                         phieuNhanPhongChiTietDTO.setPhieuNhanPhongChiTietId(lsPhieuNhanCT.get(i).getPhieuNhanPhongChiTietId());
                         phieuNhanPhongChiTietDTO.setTrangThai(2);
                         if (lsPhieuNhanCT.get(i).getThoiGianTraPhong() == null) {
@@ -267,10 +283,8 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
                         }
                         phieuNhanPhongChiTietPresenter.CapNhatPhieuNhanPhongChiTiet(phieuNhanPhongChiTietDTO);
                     }
-                    /// cap nhat trang thai phong
-                    phongDTO.setPhongId(lsPhieuNhanCT.get(i).getPhongId());
-                    phongDTO.setTrangThaiId(3);
-                    phongPresenter.CapNhatTrangThaiPhong(phongDTO);
+
+
 
                 }
 

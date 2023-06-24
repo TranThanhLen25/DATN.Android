@@ -62,6 +62,7 @@ private int tienDua;
             @Override
             public void onClick(View view) {
                 onBackPressed();
+                onBackPressed();
                 finish();
 
 
