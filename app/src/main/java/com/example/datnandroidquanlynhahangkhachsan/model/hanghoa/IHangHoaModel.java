@@ -38,4 +38,12 @@ public interface IHangHoaModel {
 
         void onError(String error);
     }
+
+    void capNhatHangHoa(HangHoaDTO hangHoaDTO, IOnCapNhatHangHoaFinishedListener listener);
+
+    interface IOnCapNhatHangHoaFinishedListener {
+        void onSuccess();
+
+        void onError(String error);
+    }
 }

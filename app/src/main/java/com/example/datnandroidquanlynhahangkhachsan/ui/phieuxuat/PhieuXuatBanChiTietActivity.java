@@ -171,5 +171,15 @@ public class PhieuXuatBanChiTietActivity extends AppCompatActivity implements Ph
 
     }
 
+    @Override
+    public void onCapNhatHangHoaSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatHangHoaError(String error) {
+
+    }
+
 
 }

@@ -230,4 +230,7 @@ public interface IAPIServiceRetrofit {
     @POST("/api/hanghoa/xoa-hanghoa")
     Call<ResponseInfo> xoaHangHoa(@Query("HangHoa") int id);
 
+    @POST("/api/hanghoa/capnhat-hanghoa")
+    Call<ResponseInfo> capNhatHangHoa(@Body HangHoaDTO hangHoaDTO);
+
 }

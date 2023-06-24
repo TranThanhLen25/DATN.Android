@@ -57,4 +57,28 @@ public class HangHoaDTO {
     public String getNhomHangHoa() {
         return nhomHangHoa;
     }
+
+    public void setHangHoaId(int hangHoaId) {
+        this.hangHoaId = hangHoaId;
+    }
+
+    public void setMaHangHoa(String maHangHoa) {
+        this.maHangHoa = maHangHoa;
+    }
+
+    public void setTenHangHoa(String tenHangHoa) {
+        this.tenHangHoa = tenHangHoa;
+    }
+
+    public void setDonGia(int donGia) {
+        this.donGia = donGia;
+    }
+
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public void setNhomHangHoa(String nhomHangHoa) {
+        this.nhomHangHoa = nhomHangHoa;
+    }
 }

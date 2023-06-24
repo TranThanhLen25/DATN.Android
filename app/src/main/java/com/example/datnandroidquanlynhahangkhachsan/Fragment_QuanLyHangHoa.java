@@ -1,5 +1,6 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,7 +77,13 @@ public class Fragment_QuanLyHangHoa extends Fragment implements HangHoaContract.
         lsHangHoa = new ArrayList<>();
         HangHoaPresenter hangHoaPresenter = new HangHoaPresenter(this);
         hangHoaPresenter.LayDanhSachHangHoa2("");
-
+        fragmentQuanLyHangHoaBinding.flBtnThemphieudat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ActivityThemHangHoa.class);
+                startActivity(intent);
+            }
+        });
         return fragmentQuanLyHangHoaBinding.getRoot();
     }
 
@@ -110,6 +117,16 @@ public class Fragment_QuanLyHangHoa extends Fragment implements HangHoaContract.
 
     @Override
     public void onXoaHangHoaError(String error) {
+
+    }
+
+    @Override
+    public void onCapNhatHangHoaSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatHangHoaError(String error) {
 
     }
 }

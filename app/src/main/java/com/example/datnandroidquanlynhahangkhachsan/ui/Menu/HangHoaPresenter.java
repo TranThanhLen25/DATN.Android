@@ -76,4 +76,19 @@ public class HangHoaPresenter implements HangHoaContract.Presenter {
             }
         });
     }
+
+    @Override
+    public void capNhatHangHoa(HangHoaDTO hangHoaDTO) {
+        hangHoaModel.capNhatHangHoa(hangHoaDTO, new IHangHoaModel.IOnCapNhatHangHoaFinishedListener() {
+            @Override
+            public void onSuccess() {
+                view.onCapNhatHangHoaSuccess();
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onCapNhatHangHoaError(error);
+            }
+        });
+    }
 }

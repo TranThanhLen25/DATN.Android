@@ -169,4 +169,14 @@ public class PhieuXuatChiTietActivity extends AppCompatActivity implements Phieu
 
     }
 
+    @Override
+    public void onCapNhatHangHoaSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatHangHoaError(String error) {
+
+    }
+
 }

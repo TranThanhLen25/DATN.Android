@@ -640,6 +640,16 @@ dialog.dismiss();
     }
 
     @Override
+    public void onCapNhatHangHoaSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatHangHoaError(String error) {
+
+    }
+
+    @Override
     public void onThemKhachHangSuccess() {
     }
 

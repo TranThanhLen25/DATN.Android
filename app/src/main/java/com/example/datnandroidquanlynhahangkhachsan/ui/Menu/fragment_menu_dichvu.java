@@ -122,4 +122,14 @@ public class fragment_menu_dichvu extends Fragment implements HangHoaContract.Vi
     public void onXoaHangHoaError(String error) {
 
     }
+
+    @Override
+    public void onCapNhatHangHoaSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatHangHoaError(String error) {
+
+    }
 }

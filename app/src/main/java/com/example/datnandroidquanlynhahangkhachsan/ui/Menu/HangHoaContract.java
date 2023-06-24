@@ -21,6 +21,11 @@ public interface HangHoaContract {
         void onXoaHangHoaSuccess();
 
         void onXoaHangHoaError(String error);
+
+        //cập nhật hàng hóa
+        void onCapNhatHangHoaSuccess();
+
+        void onCapNhatHangHoaError(String error);
     }
 
     interface Presenter {
@@ -29,5 +34,6 @@ public interface HangHoaContract {
         void LayDanhSachHangHoa2(String NhomHangHoa);
         void themHangHoa(HangHoaDTO hangHoaDTO);
         void xoaHangHoa(int hangHoaID);
+        void capNhatHangHoa(HangHoaDTO hangHoaDTO);
     }
 }

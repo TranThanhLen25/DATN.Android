@@ -395,6 +395,16 @@ public class PhieuTraBanActivity extends AppCompatActivity implements HangHoaCon
     }
 
     @Override
+    public void onCapNhatHangHoaSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatHangHoaError(String error) {
+
+    }
+
+    @Override
     public void onLayDanhSachGoiMonError(String error) {
     }
 

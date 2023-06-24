@@ -101,6 +101,7 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
                 tempData.CheckChucNang=true;
                 int trangThaiID = sharedPreferences.getInt("TRANGTHAI", 0);
                 if (trangThaiID == 4) {
+                    tempData.CheckChucNang=true;
                     Intent intent = new Intent(activity_ChiTietBan.this, DanhSachMenuActivity.class);
                     startActivity(intent);
                 }
@@ -389,6 +390,16 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
 
     @Override
     public void onXoaHangHoaError(String error) {
+
+    }
+
+    @Override
+    public void onCapNhatHangHoaSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatHangHoaError(String error) {
 
     }
 

@@ -129,6 +129,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
             public void onClick(View view) {
                 int trangThaiID = sharedPreferences.getInt("TRANGTHAI", 0);
                 if (trangThaiID == 4) {
+                    tempData.CheckChucNang=true;
                     Intent intent = new Intent(ChiTietPhongActivity.this, DanhSachMenuActivity.class);
                     startActivity(intent);
                 }
@@ -436,6 +437,16 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
 
     @Override
     public void onXoaHangHoaError(String error) {
+
+    }
+
+    @Override
+    public void onCapNhatHangHoaSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatHangHoaError(String error) {
 
     }
 
