@@ -201,7 +201,7 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
     private void DiaLogBaoTri() {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_huy_dat_phong);
+        dialog.setContentView(R.layout.dialog_bao_tri_ban);
         Window window = dialog.getWindow();
         if (window == null) {
             return;
