@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,7 +23,6 @@ import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatConTra
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatPresenter;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -48,6 +48,13 @@ public class Fragment_dsLichSu extends Fragment implements PhieuXuatConTract.Vie
     private List<KhachHangDTO> khachHang;
     private PhieuXuatAdapter phieuXuatAdapter;
     private RecyclerView recyclerView;
+
+    private SearchView searchView;
+
+    private List<KhachHangDTO> search_KH;
+
+    private List<PhieuXuatDTO> search_PX;
+
     public Fragment_dsLichSu() {
         // Required empty public constructor
     }
@@ -91,26 +98,65 @@ public class Fragment_dsLichSu extends Fragment implements PhieuXuatConTract.Vie
         phieuXuatBinding.iclAppback.icBack.setOnClickListener(view -> getActivity().onBackPressed());
 
         PhieuXuatPresenter phieuXuatPresenter = new PhieuXuatPresenter(this);
-        DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO=new DieuKienLocPhieuXuatDTO();
+        DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO = new DieuKienLocPhieuXuatDTO();
         dieuKienLocPhieuXuatDTO.setSoChungTu("PX");
         phieuXuatPresenter.LayDanhSachPhieuXuat(dieuKienLocPhieuXuatDTO);
 
 
-        khachHang=new ArrayList<>();
-        KhachHangPresenter khachHangPresenter=new KhachHangPresenter(this);
-        DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO=new DieuKienLocKhachHangDTO();
+        khachHang = new ArrayList<>();
+        KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
+        DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
         khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
 
 
+        searchView = phieuXuatBinding.iclSearch.search;
         recyclerView = phieuXuatBinding.rscvDslichsu;
         LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
         recyclerView.setLayoutManager(LinearLayoutManager);
+
 
 // Đảo ngược thứ tự của tập dữ liệu
         Collections.reverse(phieuXuat);
 
 // Thông báo cho adapter về các thay đổi trong tập dữ liệu
 //       phieuXuatAdapter.notifyDataSetChanged();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                search_PX=new ArrayList<>();
+                search_KH=new ArrayList<>();
+                if (newText.length()>0)
+                {
+                    for (int i=0;i< khachHang.size();i++)
+                    {
+                        if(khachHang.get(i).getTenKhachHang().toUpperCase().contains(newText.toUpperCase())||
+                        khachHang.get(i).getSdt().contains(newText))
+                        {
+                            search_KH.add(khachHang.get(i));
+                        }
+                    }
+                    for (int y=0;y<search_KH.size();y++)
+                    {
+                        for (int a=0;a<phieuXuat.size();a++)
+                        {
+                            if (search_KH.get(y).getKhachHangId()==phieuXuat.get(a).getKhachHangId())
+                            {
+                                search_PX.add(phieuXuat.get(a));
+                            }
+                        }
+                    }
+                    phieuXuatAdapter =new PhieuXuatAdapter(Fragment_dsLichSu.this);
+                    phieuXuatAdapter.setData(search_PX,khachHang,getContext());
+                    recyclerView.setAdapter(phieuXuatAdapter);
+                }
+                return false;
+            }
+        });
 
 
         return phieuXuatBinding.getRoot();

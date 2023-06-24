@@ -86,7 +86,7 @@ public class ThemNhanVien_Activity extends AppCompatActivity implements NguoiDun
 
                 } else {
                     if (tvTK.length() < 12) {
-                        nhanVienBinding.inputlayoutCccdNhanVien.setError("Vui lòng nhập đầy đủ ký tự cccd(=12)");
+                        nhanVienBinding.inputlayoutCccdNhanVien.setError("Vui lòng nhập đầy đủ ký tự cccd( cccd= 12)");
                         nhanVienBinding.inputlayoutCccdNhanVien.setHelperText("");
                     } else {
                         nhanVienBinding.inputlayoutCccdNhanVien.setError("");
@@ -95,6 +95,50 @@ public class ThemNhanVien_Activity extends AppCompatActivity implements NguoiDun
                 }
             }
         });
+
+        nhanVienBinding.etSdtNhanVien.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String input = charSequence.toString();
+                if (input.length() > 0) {
+                    nhanVienBinding.inputlayoutSdtNhanVien.setError("");
+                } else {
+                    nhanVienBinding.inputlayoutSdtNhanVien.setHelperText("");
+                    nhanVienBinding.inputlayoutSdtNhanVien.setError("Vui lòng nhập số điện thoại");
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        nhanVienBinding.etSdtNhanVien.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                String tvTK = String.valueOf(nhanVienBinding.etSdtNhanVien.getText());
+                if (b) {
+
+                } else {
+                    if (tvTK.length() < 10) {
+                        nhanVienBinding.inputlayoutSdtNhanVien.setError("Vui lòng nhập đầy đủ số điện thoại( sdt= 10)");
+                        nhanVienBinding.inputlayoutSdtNhanVien.setHelperText("");
+                    } else {
+                        nhanVienBinding.inputlayoutSdtNhanVien.setError("");
+                        nhanVienBinding.inputlayoutSdtNhanVien.setHelperText("");
+                    }
+                }
+            }
+        });
+
+
+
         nhanVienBinding.etTkNhanVien.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -126,7 +170,7 @@ public class ThemNhanVien_Activity extends AppCompatActivity implements NguoiDun
 
                 } else {
                     if (tvTK.length() < 8) {
-                        nhanVienBinding.inputlayoutTkNhanVien.setError("Vui lòng nhập đầy đủ ký tự( TK >=8) ");
+                        nhanVienBinding.inputlayoutTkNhanVien.setError("Vui lòng nhập đầy đủ ký tự( tài khoản>= 8) ");
                         nhanVienBinding.inputlayoutTkNhanVien.setHelperText("");
                     } else {
                         nhanVienBinding.inputlayoutTkNhanVien.setError("");
@@ -150,7 +194,7 @@ public class ThemNhanVien_Activity extends AppCompatActivity implements NguoiDun
                     nhanVienBinding.inputlayoutMkNhanVien.setError("");
                 } else {
                     nhanVienBinding.inputlayoutMkNhanVien.setHelperText("");
-                    nhanVienBinding.inputlayoutMkNhanVien.setError("Vui lòng nhập mật khẩu cho tài khoản(MK >=8)");
+                    nhanVienBinding.inputlayoutMkNhanVien.setError("Vui lòng nhập mật khẩu cho tài khoản( mật khẩu>=8)");
                 }
 
             }
@@ -168,7 +212,7 @@ public class ThemNhanVien_Activity extends AppCompatActivity implements NguoiDun
 
                 } else {
                     if (tvTK.length() < 8) {
-                        nhanVienBinding.inputlayoutMkNhanVien.setError("Vui lòng nhập đầy đủ ký tự (>=8)");
+                        nhanVienBinding.inputlayoutMkNhanVien.setError("Vui lòng nhập đầy đủ ký tự( mật khẩu>=8)");
                         nhanVienBinding.inputlayoutMkNhanVien.setHelperText("");
                     } else {
                         nhanVienBinding.inputlayoutMkNhanVien.setError("");
@@ -188,13 +232,7 @@ public class ThemNhanVien_Activity extends AppCompatActivity implements NguoiDun
             @Override
             public void onClick(View view) {
 
-                if (nhanVienBinding.etSdtNhanVien.getText().length() == 10)
-                {
-                    sdt = nhanVienBinding.etSdtNhanVien.getText().toString();
-                } else
-                {
-                    sdt = "Chưa có số điện thoại";
-                }
+
                 if (nhanVienBinding.etQqNhanVien.getText().length() > 0)
                 {
                     diachi = nhanVienBinding.etQqNhanVien.getText().toString();
@@ -229,6 +267,7 @@ public class ThemNhanVien_Activity extends AppCompatActivity implements NguoiDun
                     if(
                        nhanVienBinding.etHotenNhanVien.getText().length()>5
                     && nhanVienBinding.etCccdNhanVien.getText().length()==12
+                    && nhanVienBinding.etSdtNhanVien.getText().length()==10
                     && nhanVienBinding.etTkNhanVien.getText().length()>7
                     && nhanVienBinding.etMkNhanVien.getText().length()>7
                     && !nhanVienBinding.etCccdNhanVien.getText().toString().equals(nguoiDungDTO.get(i).getCccd())
@@ -241,7 +280,7 @@ public class ThemNhanVien_Activity extends AppCompatActivity implements NguoiDun
                 {
                     NguoiDungDTO nguoiDung = new NguoiDungDTO(
                             nhanVienBinding.etHotenNhanVien.getText().toString()
-                            ,sdt
+                            ,nhanVienBinding.etSdtNhanVien.getText().toString()
                             , nhanVienBinding.etCccdNhanVien.getText().toString()
                             , gioitinh
                             , diachi

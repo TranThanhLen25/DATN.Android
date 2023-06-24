@@ -4,26 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp">
-
-    <EditText
-        android:id="@+id/et_search"
+    android:paddingTop="10dp">
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/bg_edittext"
-        android:drawableLeft="@drawable/search"
-        android:hint="Tìm kiếm "
-        android:paddingStart="10dp"
-        android:maxLines="1"
-        android:inputType="text"
+        app:iconifiedByDefault="false"
+        app:queryBackground="@null"
+        app:searchIcon="@drawable/search"
+        app:submitBackground="@null"
+        app:queryHint="Tìm kiếm"
+        tools:ignore="MissingConstraints" />
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
 
-    </EditText>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
