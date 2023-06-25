@@ -690,6 +690,16 @@ dialog.dismiss();
     }
 
     @Override
+    public void onDoiPhongSuccess() {
+
+    }
+
+    @Override
+    public void onDoiPhongError(String error) {
+
+    }
+
+    @Override
     public void onLayDanhSachPhongSuccess(List<PhongDTO> lsDanhSachPhong) {
     }
 

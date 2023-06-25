@@ -79,6 +79,16 @@ public class ChonPhongActivity extends AppCompatActivity implements PhongContrac
     }
 
     @Override
+    public void onDoiPhongSuccess() {
+
+    }
+
+    @Override
+    public void onDoiPhongError(String error) {
+
+    }
+
+    @Override
     public void onLayDanhSachPhongError(String error) {
 
     }

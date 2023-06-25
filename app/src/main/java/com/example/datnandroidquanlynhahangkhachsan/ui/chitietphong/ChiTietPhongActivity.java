@@ -78,6 +78,8 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
         listDichVuThem = new ArrayList<>();
         xoaTatCaMenu = new DichVuDTO();
         phongDTO = new PhongDTO();
+        dichVuDTOList = new ArrayList<>();
+        hangHoaDTOList = new ArrayList<>();
 
 
         LoaiPhongPresenter loaiPhongPresenter = new LoaiPhongPresenter(this);
@@ -124,12 +126,12 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
         //khởi tạo list hàng hóa id
         tempData.lsDichVu = new ArrayList<>();
 
-            ChiTietPhongBinding.imgMenu.setOnClickListener(new View.OnClickListener() {
+        ChiTietPhongBinding.imgMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int trangThaiID = sharedPreferences.getInt("TRANGTHAI", 0);
                 if (trangThaiID == 4) {
-                    tempData.CheckChucNang=true;
+                    tempData.CheckChucNang = true;
                     Intent intent = new Intent(ChiTietPhongActivity.this, DanhSachMenuActivity.class);
                     startActivity(intent);
                 }
@@ -258,7 +260,6 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
     }
 
 
-
     private void DiaLogBaoTri() {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -282,8 +283,7 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
                     phongPresenter.CapNhatTrangThaiPhong(phongDTO);
                     dialog.dismiss();
                     onBackPressed();
-                }
-                else {
+                } else {
                     int phongID = sharedPreferences.getInt("PHONGID", 0);
                     phongDTO.setPhongId(phongID);
                     phongDTO.setTrangThaiId(1);
@@ -411,8 +411,10 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
     @Override
     public void onLayDanhSachHangHoaSuccess(List<HangHoaDTO> list) {
         hangHoaDTOList = list;
-        menuAdapter = new MenuAdapter(dichVuDTOList, hangHoaDTOList);
-        rscvDichVu.setAdapter(menuAdapter);
+        if (dichVuDTOList.size() > 0) {
+            menuAdapter = new MenuAdapter(dichVuDTOList, hangHoaDTOList);
+            rscvDichVu.setAdapter(menuAdapter);
+        }
     }
 
     @Override
@@ -498,14 +500,26 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
     }
 
     @Override
+    public void onDoiPhongSuccess() {
+
+    }
+
+    @Override
+    public void onDoiPhongError(String error) {
+
+    }
+
+    @Override
     public void onLayDanhSachDichVuSuccess(List<DichVuDTO> list) {
         dichVuDTOList = list;
         if (dichVuDTOList.size() > 0) {
             xoaTatCaMenu = dichVuDTOList.get(0);
         }
 //        listDichVuBanDau = dichVuDTOList;
-        menuAdapter = new MenuAdapter(dichVuDTOList, hangHoaDTOList);
-        rscvDichVu.setAdapter(menuAdapter);
+        if (hangHoaDTOList.size() > 0) {
+            menuAdapter = new MenuAdapter(dichVuDTOList, hangHoaDTOList);
+            rscvDichVu.setAdapter(menuAdapter);
+        }
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong;
 
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DoiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.model.phong.PhongModel;
 import com.example.datnandroidquanlynhahangkhachsan.model.phong.IPhongModel;
@@ -59,6 +60,21 @@ public class PhongPresenter implements PhongContract.Presenter {
             @Override
             public void onError(String error) {
                 view.onCapNhatTrangThaiPhongError(error);
+            }
+        });
+    }
+
+    @Override
+    public void DoiPhong(DoiPhongDTO doiPhongDTO) {
+        phongModel.DoiPhong(doiPhongDTO, new IPhongModel.IOnDoiPhongFinishedListener() {
+            @Override
+            public void onSuccess() {
+                view.onDoiPhongSuccess();
+            }
+
+            @Override
+            public void onError(String error) {
+                view.onDoiPhongError(error);
             }
         });
     }

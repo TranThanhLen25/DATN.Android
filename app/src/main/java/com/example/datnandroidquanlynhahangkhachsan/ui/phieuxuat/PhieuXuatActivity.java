@@ -654,6 +654,16 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
     }
 
     @Override
+    public void onDoiPhongSuccess() {
+
+    }
+
+    @Override
+    public void onDoiPhongError(String error) {
+
+    }
+
+    @Override
     public void onThemPhieuXuatSuccess() {
     }
 

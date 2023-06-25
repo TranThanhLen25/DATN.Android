@@ -608,6 +608,16 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
     }
 
     @Override
+    public void onDoiPhongSuccess() {
+
+    }
+
+    @Override
+    public void onDoiPhongError(String error) {
+
+    }
+
+    @Override
     public void onThemKhachHangSuccess() {
        // Toast.makeText(this, "Thêm khách hàng thành công", Toast.LENGTH_LONG).show();
     }
