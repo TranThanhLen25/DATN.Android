@@ -13,9 +13,9 @@
         android:title="@string/action_nhaphang"></item>
     <item
         android:id="@+id/dra_kho"
-        android:icon="@drawable/ic_kho"
+        android:icon="@drawable/ic_bieudo"
 
-        android:title="@string/action_kho"
+        android:title="Doanh thu"
         ></item>
     <item
         android:id="@+id/dra_thongke"
