@@ -26,6 +26,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.LoaiBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.ui.PhieuDoiBanActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuTraBanActivity;
 
 import java.text.DateFormat;
@@ -288,8 +289,8 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
         doiban.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(dialog.getContext(), ThemPhieuDoibanActivity.class);
-//                context.startActivity(intent);
+               Intent intent = new Intent(dialog.getContext(), PhieuDoiBanActivity.class);
+                context.startActivity(intent);
 
                 dialog.dismiss();
 

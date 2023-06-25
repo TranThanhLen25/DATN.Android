@@ -265,7 +265,6 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
                             phieuNhanPhongChiTietDTO.setThoiGianTraPhong(lsPhieuNhanCT.get(i).getThoiGianTraPhong());
                         }
                         phieuNhanPhongChiTietPresenter.CapNhatPhieuNhanPhongChiTiet(phieuNhanPhongChiTietDTO);
-
                         /// cap nhat trang thai phong
                         phongDTO.setPhongId(lsPhieuNhanCT.get(i).getPhongId());
                         phongDTO.setTrangThaiId(3);
