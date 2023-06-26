@@ -510,6 +510,16 @@ public class PhieuXuatBanActivity extends AppCompatActivity implements PhieuXuat
     }
 
     @Override
+    public void onDoiBanSuccess() {
+
+    }
+
+    @Override
+    public void onDoiBanError(String error) {
+
+    }
+
+    @Override
     public void onCapNhatPhieuNhanPhongChiTietSuccess() {
     }
 

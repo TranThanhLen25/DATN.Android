@@ -290,4 +290,14 @@ public class PhieuDatBanChiTietActivity extends AppCompatActivity implements Kha
 
     @Override
     public void onCapNhatTrangThaiBanError(String error){}
+
+    @Override
+    public void onDoiBanSuccess() {
+
+    }
+
+    @Override
+    public void onDoiBanError(String error) {
+
+    }
 }
