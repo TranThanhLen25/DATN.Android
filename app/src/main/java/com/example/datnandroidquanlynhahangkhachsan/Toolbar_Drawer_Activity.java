@@ -142,7 +142,7 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
                         vitri = R.id.dra_nhaphang;
                         break;
                     case R.id.dra_kho:
-                        temp = new Fragment_quanlykho();
+                        temp = new Fragment_doanhthu();
                         menuItem.setChecked(false);
                         vitri = R.id.dra_kho;
                         break;

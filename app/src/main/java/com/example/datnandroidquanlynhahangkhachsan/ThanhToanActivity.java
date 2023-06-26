@@ -23,12 +23,8 @@ private int tienDua;
         SharedPreferences sharedPreferences = getSharedPreferences("GET_PHONGID", MODE_PRIVATE);
         thanhToanBinding.tvTendata.setText(sharedPreferences.getString("TEN", ""));
 
-        thanhToanBinding.toolbarThanhtoan.icBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+        thanhToanBinding.toolbarThanhtoan.icBack.setVisibility(View.GONE);
+
 
         DecimalFormat decimalFormat = new DecimalFormat("#,##0");
 
@@ -61,6 +57,7 @@ private int tienDua;
         thanhToanBinding.btnThanhtoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                onBackPressed();
                 onBackPressed();
                 finish();
 

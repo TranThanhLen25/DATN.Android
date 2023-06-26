@@ -135,8 +135,6 @@ public class Fragment_nhanVien extends Fragment implements NguoiDungContract.Vie
     public void onResume() {
         super.onResume();
         lsNguoiDung = new ArrayList<>();
-        // Đảo ngược thứ tự của tập dữ liệu
-        Collections.reverse(lsNguoiDung);
         /// lay Ds nguoi dung
         NguoiDungPresenter nguoiDungPresenter = new NguoiDungPresenter(this);
         nguoiDungPresenter.LayNguoiDung();
