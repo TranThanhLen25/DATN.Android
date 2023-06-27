@@ -173,7 +173,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="@string/tv_hoten"
+                android:text="Lý do"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textview_tk_mk"
                 app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
@@ -186,7 +186,6 @@
                 android:layout_height="48dp"
                 android:background="@drawable/bg_edittext"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName"
                 app:layout_constraintTop_toBottomOf="@+id/tv_hoten"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -195,7 +194,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="@string/tv_cccd"
+                android:text="Ghi chú"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textview_tk_mk"
                 app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
@@ -207,7 +206,6 @@
                 android:layout_height="48dp"
                 android:background="@drawable/bg_edittext"
                 android:importantForAutofill="no"
-                android:inputType="number"
                 app:layout_constraintTop_toBottomOf="@+id/tv_cccd_phieunhanphong"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -237,6 +235,7 @@
         tools:ignore="MissingConstraints">
 
         <Button
+            android:id="@+id/btn_doiban"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Đổi bàn"

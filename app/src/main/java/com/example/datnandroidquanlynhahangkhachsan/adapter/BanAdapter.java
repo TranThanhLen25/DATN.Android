@@ -292,6 +292,17 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
                Intent intent = new Intent(dialog.getContext(), PhieuDoiBanActivity.class);
                 context.startActivity(intent);
 
+                //// lưu lại thông tin phòng cần xem chi tiết
+                SharedPreferences sharedPreferences = context.getSharedPreferences("CHITIETBAN", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("LOAIBANID", loaibanid);
+                editor.putInt("BANID", banid);
+                editor.putString("TENBAN", tenban);
+                editor.putInt("SONGUOI", songuoi);
+                editor.putString("TENLOAIBAN", tenloaiban);
+                editor.putInt("TRANGTHAI", trangThaiBanId);
+                editor.commit();
+
                 dialog.dismiss();
 
             }
