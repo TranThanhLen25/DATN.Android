@@ -18,10 +18,9 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.goiMon.GoiMonDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatChiTietDTO;
-import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatBanActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuTraBanActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatBanActivity;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatBanChiTietActivity;
-import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatChiTietActivity;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -81,6 +80,7 @@ public class PhieuXuatBanChiTietAdapter extends RecyclerView.Adapter<PhieuXuatBa
         }
         ///set trạng thai
         DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+
         if (pn.getTrangThai() == 2) {
             holder.phieuXuatChiTietBinding.tvTrangthai.setText("Đã thanh toán");
             holder.phieuXuatChiTietBinding.tvTrangthai.setTextColor(Color.GREEN);
@@ -95,6 +95,23 @@ public class PhieuXuatBanChiTietAdapter extends RecyclerView.Adapter<PhieuXuatBa
 
 
         }
+        if (pn.getTrangThai() == 1) {
+            holder.phieuXuatChiTietBinding.tvTrangthai.setText("Chờ thanh toán");
+            holder.phieuXuatChiTietBinding.tvTrangthai.setTextColor(Color.BLUE);
+            for (int i = 0; i < lsGoiMon.size(); i++) {
+                if (lsGoiMon.get(i).getBanId() == pn.getBanId() && lsGoiMon.get(i).getTrangThai().equals("chờ thanh toán")) {
+                    for (int a = 0; a < lsHangHoa.size(); a++) {
+                        if (lsHangHoa.get(a).getHangHoaId() == lsGoiMon.get(i).getHangHoaId()) {
+                            tongtien = tongtien + lsHangHoa.get(a).getDonGia() * lsGoiMon.get(i).getSoLuong();
+                        }
+                    }
+                }
+            }
+            holder.phieuXuatChiTietBinding.tvTongtien.setText(String.valueOf(decimalFormat.format(tongtien)));
+            tongtien = 0;
+        }
+
+
         if (pn.getTrangThai() == 4) {
             holder.phieuXuatChiTietBinding.tvTrangthai.setText("Đang sử dụng");
             holder.phieuXuatChiTietBinding.tvTrangthai.setTextColor(Color.RED);
@@ -140,18 +157,26 @@ public class PhieuXuatBanChiTietAdapter extends RecyclerView.Adapter<PhieuXuatBa
                     }
 
                 }
-                editor.putLong("PNCT",pn.getPhieuDatBanChiTietId());
-                DateFormat dateFormat=new SimpleDateFormat("dd/MM/yyyy");
+                editor.putLong("PNCT", pn.getPhieuDatBanChiTietId());
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 editor.commit();
 
+                if (pn.getTrangThai() == 4) {
+                    editor.putInt("KTTT", 4);
+                    editor.commit();
 
-                if (pn.getTrangThai()==4)
-                {
-                    Intent intent=new Intent(context, PhieuTraBanActivity.class);
-                    context.startActivity(intent);
                 }
-                else
-                {
+                if (pn.getTrangThai() == 1) {
+                    editor.putInt("KTTT", 1);
+                    editor.commit();
+
+                }
+
+                if (pn.getTrangThai() == 4 || pn.getTrangThai() == 1) {
+
+                    Intent intent = new Intent(context, PhieuTraBanActivity.class);
+                    context.startActivity(intent);
+                } else {
                     Intent intent = new Intent(context, PhieuXuatBanChiTietActivity.class);
                     context.startActivity(intent);
                 }

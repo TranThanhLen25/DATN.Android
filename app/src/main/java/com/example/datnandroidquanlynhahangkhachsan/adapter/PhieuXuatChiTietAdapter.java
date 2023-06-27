@@ -114,7 +114,7 @@ public class PhieuXuatChiTietAdapter extends RecyclerView.Adapter<PhieuXuatChiTi
         phong = pn.getPhongId();
         ///set trạng thai
         if (pn.getTrangThai() == 1) {
-            holder.phieuXuatChiTietBinding.tvTrangthai.setText("Đã trả phòng");
+            holder.phieuXuatChiTietBinding.tvTrangthai.setText("Chờ thanh toán");
             holder.phieuXuatChiTietBinding.tvTrangthai.setTextColor(Color.BLUE);
         } else if (pn.getTrangThai() == 4) {
             holder.phieuXuatChiTietBinding.tvTrangthai.setText("Đang sử dụng");
@@ -265,6 +265,15 @@ public class PhieuXuatChiTietAdapter extends RecyclerView.Adapter<PhieuXuatChiTi
                 if(pn.getThoiGianTraPhong()!=null)
                 {
                     editor.putString("NGAYRA",formatter.format(pn.getThoiGianTraPhong()));
+                }
+
+                if(pn.getTrangThai()==1)
+                {
+                    editor.putInt("KTTHANHTOAN",1);
+                }
+                if(pn.getTrangThai()==4)
+                {
+                    editor.putInt("KTTHANHTOAN",4);
                 }
 
 

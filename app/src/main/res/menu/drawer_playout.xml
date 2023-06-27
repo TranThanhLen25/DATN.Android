@@ -19,7 +19,7 @@
         ></item>
     <item
         android:id="@+id/dra_thongke"
-        android:icon="@drawable/ic_bieudo"
+        android:icon="@drawable/ic_bieudoo"
         android:title="@string/action_thongke"></item>
     <item
         android:id="@+id/dra_nhanvien"

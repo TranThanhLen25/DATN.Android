@@ -59,8 +59,8 @@ public class PhieuTraBanAdapter extends RecyclerView.Adapter<PhieuTraBanAdapter.
             if(lsHangHoa.get(i).getHangHoaId()== gm.getHangHoaId())
             {
                 holder.phieutraBanBinding.tvTendichvu.setText(lsHangHoa.get(i).getTenHangHoa());
-                holder.phieutraBanBinding.tvDongiaHanghoaDichvu.setText(String.valueOf(lsHangHoa.get(i).getDonGia()) );
-                holder.phieutraBanBinding.tvThanhtien.setText(String.valueOf(lsHangHoa.get(i).getDonGia()*gm.getSoLuong()) );
+                holder.phieutraBanBinding.tvDongiaHanghoaDichvu.setText(String.valueOf(decimalFormat.format(lsHangHoa.get(i).getDonGia()) ) );
+                holder.phieutraBanBinding.tvThanhtien.setText(String.valueOf(decimalFormat.format(lsHangHoa.get(i).getDonGia()*gm.getSoLuong())));
             }
         }
         holder.phieutraBanBinding.tvSoluong.setText(String.valueOf(gm.getSoLuong()));

@@ -57,6 +57,7 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
     private String sdt;
 
     private String ngay;
+    private int ktTrangThai;
 
 
     public BanAdapter(List<BanDTO> lsBan) {
@@ -153,6 +154,8 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
                         ten = lsKhachHang.get(i).getTenKhachHang();
                     }
                 }
+                ktTrangThai=4;
+
                 openDialog();
             }
         });
@@ -274,6 +277,7 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
                 editor.putInt("NGUOIDUNG", nguoidung);
                 editor.putLong("PNCT", pnct);
                 editor.putString("NGAYLAP", ngay);
+                editor.putInt("KTTT",ktTrangThai);
                 editor.commit();
                 dialog.dismiss();
                 Intent intent = new Intent(dialog.getContext(), PhieuTraBanActivity.class);

@@ -213,13 +213,29 @@ phieuXuatDTO=new PhieuXuatDTO();
         ///lay hanghoa
         HangHoaPresenter hangHoaPresenter = new HangHoaPresenter(this);
         hangHoaPresenter.LayDanhSachHangHoa2("");
+
         //// lay DV
+
+
         DichVuDTO dichVuDTO = new DichVuDTO();
         DichVuPresenter dichVuPresenter = new DichVuPresenter(this);
+        if(sharedPreferences.getInt("KTTHANHTOAN",0)==4)
+        {
             dichVuDTO.setPhongID(phongid);
             dichVuDTO.setGhiChu("");
             dichVuDTO.setTrangThai("chưa thanh toán");
             dichVuPresenter.LayDanhSachDichVu(dichVuDTO);
+        }       //// lay DV
+        if(sharedPreferences.getInt("KTTHANHTOAN",0)==1)
+        {
+
+            dichVuDTO.setPhongID(phongid);
+            dichVuDTO.setGhiChu("");
+            dichVuDTO.setTrangThai("chờ thanh toán");
+            dichVuPresenter.LayDanhSachDichVu(dichVuDTO);
+        }
+
+
 
 
 
@@ -276,9 +292,12 @@ phieuXuatDTO=new PhieuXuatDTO();
                 btnYes.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        phongDTO.setPhongId(phongid);
-                        phongDTO.setTrangThaiId(3);
-                        phongPresenter.CapNhatTrangThaiPhong(phongDTO);
+                        if (sharedPreferences.getInt("KTTHANHTOAN",0)==4) {
+                            phongDTO.setPhongId(phongid);
+                            phongDTO.setTrangThaiId(3);
+                            phongPresenter.CapNhatTrangThaiPhong(phongDTO);
+                        }
+
                         ////lay thong tin tu Phieu nhan CT
                         /// cap nhat PNCT
                         for (int i = 0; i < lsPhieuNhanPhongChiTiet.size(); i++) {
@@ -367,7 +386,7 @@ phieuXuatDTO=new PhieuXuatDTO();
                         if (temp == lsPhieuXuat.size()) {
                             tamPhieuXuatDTO = new PhieuXuatDTO(
                                     KHid
-                                    , "PX" + (lsPhieuXuat.size() + 1)
+                                    , "PX" + (Pn + 1)
                                     , Pn
                                     , date
                                     , Ndid
@@ -402,21 +421,34 @@ phieuXuatDTO=new PhieuXuatDTO();
 
                         ///xóa id đã lưu
 
-dialog.dismiss();
+                        dialog.dismiss();
                         Intent intent = new Intent(PhieuTraPhongActivity.this, ThanhToanActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                         startActivity(intent);
                         finish();
                     }
                 });
+
+
+
                 btnNo.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
-                        phongDTO.setPhongId(phongid);
-                        phongDTO.setTrangThaiId(3);
-                        phongPresenter.CapNhatTrangThaiPhong(phongDTO);
+                        if (sharedPreferences.getInt("KTTHANHTOAN",0)==4) {
+                            phongDTO.setPhongId(phongid);
+                            phongDTO.setTrangThaiId(3);
+                            phongPresenter.CapNhatTrangThaiPhong(phongDTO);
+                        }
                         ////lay thong tin tu Phieu nhan CT
+
+                        ///cap nhat DV
+                        for (int a = 0; a < lsDichVu.size(); a++) {
+                            dichVuDTO.setPhieuNhanID(sharedPreferences.getLong("PNID",0L));
+                            dichVuDTO.setDichVuID(lsDichVu.get(a).getDichVuID());
+                            dichVuDTO.setTrangThai("chờ thanh toán");
+                            dichVuPresenter.CapNhatDV(dichVuDTO);
+                        }
+
                         /// cap nhat PNCT
                         for (int i = 0; i < lsPhieuNhanPhongChiTiet.size(); i++) {
                             if (lsPhieuNhanPhongChiTiet.get(i).getPhongId() == phongid) {
@@ -494,10 +526,11 @@ dialog.dismiss();
                 editor.putLong("PN", lsPhieuNhanPhongChiTiet.get(i).getPhieuNhanId());
                 editor.commit();
                 NGAYNHAN = lsPhieuNhanPhongChiTiet.get(i).getThoiGianNhanPhong();
-                if (lsPhieuNhanPhongChiTiet.get(i).getTrangThai() == 4) {
+
+                if (lsPhieuNhanPhongChiTiet.get(i).getThoiGianTraPhong()==null) {
                     NGAYTRA =date;
                 }
-                if(lsPhieuNhanPhongChiTiet.get(i).getTrangThai()==1) {
+                else {
                     NGAYTRA = lsPhieuNhanPhongChiTiet.get(i).getThoiGianTraPhong();
                 }
                 nhan = formatter.format(NGAYNHAN);

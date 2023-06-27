@@ -299,7 +299,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                     editor.putString("SDT",sdt);
                     editor.putLong("PNID",phieunhanid);
                     editor.putInt("NGUOIDUNG",nguoidungid);
-                    editor.putInt("KTTHANHTOAN",1);
+                    editor.putInt("KTTHANHTOAN",4);
                     editor.commit();
                     dialog.dismiss();
                 }

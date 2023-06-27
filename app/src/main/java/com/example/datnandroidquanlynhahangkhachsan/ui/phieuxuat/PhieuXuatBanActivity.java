@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -147,17 +148,7 @@ public class PhieuXuatBanActivity extends AppCompatActivity implements PhieuXuat
         banPresenter.LayDanhSachLoaiBan();
 
 
-        ///lay hang hoa
 
-        HangHoaPresenter hangHoaPresenter = new HangHoaPresenter(this);
-        hangHoaPresenter.LayDanhSachHangHoa2("");
-
-        /// lay Gọi món
-        goiMonPresenter goiMonPresenter = new goiMonPresenter(this);
-        GoiMonDTO goiMonDTO = new GoiMonDTO();
-        goiMonDTO.setTrangThai("thanh");
-        goiMonDTO.setGhiChu("");
-        goiMonPresenter.LayDanhSachGoiMon(goiMonDTO);
 
         ///lấy danh sach phiếu xuất ct
         PhieuXuatPresenter phieuXuatPresenter = new PhieuXuatPresenter(this);
@@ -179,6 +170,18 @@ public class PhieuXuatBanActivity extends AppCompatActivity implements PhieuXuat
 
         ///
 
+        ///lay hang hoa
+
+        HangHoaPresenter hangHoaPresenter = new HangHoaPresenter(this);
+        hangHoaPresenter.LayDanhSachHangHoa2("");
+
+        /// lay Gọi món
+        goiMonPresenter goiMonPresenter = new goiMonPresenter(this);
+        GoiMonDTO goiMonDTO = new GoiMonDTO();
+        goiMonDTO.setTrangThai("thanh");
+        goiMonDTO.setGhiChu("");
+        goiMonPresenter.LayDanhSachGoiMon(goiMonDTO);
+
         recyclerView = phieuXuatBinding.rscvSudung;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -199,33 +202,38 @@ public class PhieuXuatBanActivity extends AppCompatActivity implements PhieuXuat
                 phieuNhanDTO.setNgayTra(date);
                 phieuNhanDTO.setTrangThai("đã trả");
                 phieuNhanPhongPresenter.CapNhatPhieuNhan(phieuNhanDTO);
-                
-                //// cap nhat PNct
+
+                //// cap nhat PNct và tạo PXCT
                 for (int i = 0; i < lsPhieuNhanCT.size(); i++) {
                     for (int a = 0; a < lsGoiMon.size(); a++) {
-                        if (lsGoiMon.get(a).getTrangThai().equals("chưa thanh toán")
+                        if ((lsGoiMon.get(a).getTrangThai().equals("chưa thanh toán")
                                 && lsGoiMon.get(a).getBanId() == lsPhieuNhanCT.get(i).getBanId()
                                 && lsPhieuXuat.size() != 0
-                                && lsPhieuNhanCT.get(i).getTrangThai()==4) {
+                                && lsPhieuNhanCT.get(i).getTrangThai() == 4)
 
-                            for (int u=0;u<lsHangHoa.size();u++)
-                            {
-                                if(lsHangHoa.get(u).getHangHoaId()==lsGoiMon.get(a).getHangHoaId())
-                                {
+                                || (lsGoiMon.get(a).getTrangThai().equals("chờ thanh toán")
+                                && lsPhieuNhanCT.get(i).getPhieuNhanId() == lsGoiMon.get(a).getPhieuNhanId()
+                                && lsGoiMon.get(a).getBanId() == lsPhieuNhanCT.get(i).getBanId()
+                                && lsPhieuXuat.size() != 0
+                        )) {
+                            Toast.makeText(PhieuXuatBanActivity.this, "bla bla", Toast.LENGTH_SHORT).show();
+                            for (int u = 0; u < lsHangHoa.size(); u++) {
+                                if (lsHangHoa.get(u).getHangHoaId() == lsGoiMon.get(a).getHangHoaId()) {
                                     PhieuXuatChiTietDTO phieuXuatChiTietDTO = new PhieuXuatChiTietDTO(
                                             pxid
                                             , lsGoiMon.get(a).getHangHoaId()
                                             , Double.valueOf(lsGoiMon.get(a).getSoLuong())
                                             , Double.valueOf(lsHangHoa.get(u).getDonGia())
                                             , Double.valueOf(lsGoiMon.get(a).getSoLuong() * lsHangHoa.get(u).getDonGia())
-                                            , "", "",1L
+                                            , "", "", 1L
                                             , lsPhieuNhanCT.get(i).getPhieuDatBanChiTietId()
                                     );
                                     /// tạo phiếu xuất chi tiết mới
                                     phieuXuatPresenter.ThemPhieuXuatChiTiet(phieuXuatChiTietDTO);
-
+                                    // cap nhat GM
                                     goiMonDTO.setGoiMonId(lsGoiMon.get(a).getGoiMonId());
                                     goiMonDTO.setGhiChu("");
+                                    goiMonDTO.setPhieuNhanId(pnid);
                                     goiMonDTO.setTrangThai("đã thanh toán");
                                     goiMonPresenter.CapNhatGM(goiMonDTO);
                                 }
@@ -247,10 +255,15 @@ public class PhieuXuatBanActivity extends AppCompatActivity implements PhieuXuat
                         }
                         phieuNhanPhongChiTietPresenter.CapNhatPhieuNhanBanChiTiet(phieuNhanBanChiTietDTO);
                     }
-                    /// cap nhat trang thai ban
-                    banDTO.setBanId(lsPhieuNhanCT.get(i).getBanId());
-                    banDTO.setTrangThaiId(1);
-                    banPresenter.CapNhatTrangThaiBan(banDTO);
+
+                    if(lsPhieuNhanCT.get(i).getTrangThai() ==4)
+                    {
+                        /// cap nhat trang thai ban
+                        banDTO.setBanId(lsPhieuNhanCT.get(i).getBanId());
+                        banDTO.setTrangThaiId(3);
+                        banPresenter.CapNhatTrangThaiBan(banDTO);
+                    }
+
 
                 }
 
@@ -288,20 +301,23 @@ public class PhieuXuatBanActivity extends AppCompatActivity implements PhieuXuat
                     );
                     for (int r = 0; r < lsGoiMon.size(); r++) {
                         for (int a = 0; a < lsPhieuNhanCT.size(); a++) {
-                            if (lsPhieuNhanCT.get(a).getBanId() == lsGoiMon.get(r).getBanId() &&
-                                    lsGoiMon.get(r).getTrangThai().equals("chưa thanh toán"))
-                            {
-                                for (int u=0;u<lsHangHoa.size();u++)
-                                {
-                                    if (lsHangHoa.get(u).getHangHoaId()==lsGoiMon.get(r).getHangHoaId())
-                                    {
+                            if ((lsPhieuNhanCT.get(a).getBanId() == lsGoiMon.get(r).getBanId() &&
+                                    lsGoiMon.get(r).getTrangThai().equals("chưa thanh toán")
+                                    && lsPhieuNhanCT.get(a).getTrangThai() == 4)
+                                    || (lsGoiMon.get(r).getTrangThai().equals("chờ thanh toán")
+                                    && lsPhieuNhanCT.get(a).getPhieuNhanId() == lsGoiMon.get(r).getPhieuNhanId()
+                                    && lsGoiMon.get(r).getBanId() == lsPhieuNhanCT.get(a).getBanId()
+
+                            )) {
+                                for (int u = 0; u < lsHangHoa.size(); u++) {
+                                    if (lsHangHoa.get(u).getHangHoaId() == lsGoiMon.get(r).getHangHoaId()) {
                                         PhieuXuatChiTietDTO phieuXuatChiTietDTO = new PhieuXuatChiTietDTO(
                                                 lsGoiMon.get(r).getHangHoaId()
                                                 , Double.valueOf(lsGoiMon.get(r).getSoLuong())
                                                 , Double.valueOf(lsHangHoa.get(u).getDonGia())
                                                 , Double.valueOf((lsGoiMon.get(r).getSoLuong()) * (lsHangHoa.get(u).getDonGia()))
                                                 , ""
-                                                , "",1L
+                                                , "", 1L
                                                 , lsPhieuNhanCT.get(a).getPhieuDatBanChiTietId()
                                         );
                                         tamlsPhieuXuatChiTiet.add(phieuXuatChiTietDTO);
@@ -309,6 +325,7 @@ public class PhieuXuatBanActivity extends AppCompatActivity implements PhieuXuat
                                         goiMonDTO.setGoiMonId(lsGoiMon.get(r).getGoiMonId());
                                         goiMonDTO.setTrangThai("đã thanh toán");
                                         goiMonDTO.setPhieuNhanId(pnid);
+                                        goiMonDTO.setGhiChu("");
                                         goiMonPresenter.CapNhatGM(goiMonDTO);
                                     }
                                 }
@@ -371,40 +388,35 @@ public class PhieuXuatBanActivity extends AppCompatActivity implements PhieuXuat
         PhieuXuatBanChiTietAdapter phieuXuatBanChiTietAdapter = new PhieuXuatBanChiTietAdapter(this);
         phieuXuatBanChiTietAdapter.setData(this,lsLoaiBan, lsGoiMon, lsHangHoa, lsPhieuXuatCT, lsPhieuNhanCT, lsBan);
         recyclerView.setAdapter(phieuXuatBanChiTietAdapter);
-        //  Toast.makeText(this, "Danh sách gọi món "+lsGoiMon.size(), Toast.LENGTH_SHORT).show();
 
         SharedPreferences sharedPreferences = getSharedPreferences("GET_PHONGID", MODE_PRIVATE);
         for (int i = 0; i < lsPhieuNhanCT.size(); i++) {
             for (int t = 0; t < lsGoiMon.size(); t++) {
-                if (lsGoiMon.get(t).getTrangThai().equals("chưa thanh toán") &&
-                        lsPhieuNhanCT.get(i).getBanId() == lsGoiMon.get(t).getBanId()&&lsPhieuNhanCT.get(i).getTrangThai()==4) {
+                if ((lsGoiMon.get(t).getTrangThai().equals("chưa thanh toán") &&
+                        lsPhieuNhanCT.get(i).getBanId() == lsGoiMon.get(t).getBanId()
+                        && lsPhieuNhanCT.get(i).getTrangThai() == 4)
+                        || (lsGoiMon.get(t).getTrangThai().equals("chờ thanh toán") &&
+                        lsPhieuNhanCT.get(i).getBanId() == lsGoiMon.get(t).getBanId()
+                        && lsPhieuNhanCT.get(i).getPhieuNhanId() == lsGoiMon.get(t).getPhieuNhanId())
 
-                    for (int p=0;p<lsHangHoa.size();p++)
-                    {
-                        if(lsHangHoa.get(p).getHangHoaId()==lsGoiMon.get(t).getHangHoaId())
-                        {
+                ) {
+                    for (int p = 0; p < lsHangHoa.size(); p++) {
+                        if (lsHangHoa.get(p).getHangHoaId() == lsGoiMon.get(t).getHangHoaId()) {
                             tienDV = tienDV + (lsHangHoa.get(p).getDonGia() * lsGoiMon.get(t).getSoLuong());
                         }
                     }
-                    /// sd cho phiếu nhận chưa thnah toán
 
                 }
-                /// sử dụng lưu TT phiếu Xuât
-//                tienDVTong = tienDVTong + (lsDichVu.get(t).getDonGia() * lsDichVu.get(t).getSoLuong());
             }
         }
-
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        editor.putLong("TT_DV", tienDV);
-        //  editor.putLong("THD_DV", tienDVTong);
-        editor.commit();
 
         DecimalFormat decimalFormat = new DecimalFormat("#,##0");
         TextView tvTong = findViewById(R.id.tv_tongPXB);
         tvTong.setText(String.valueOf(decimalFormat.format(tienDV)));
-        // Toast.makeText(this, ""+tienDV, Toast.LENGTH_SHORT).show();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putLong("TT_DV", tienDV);
+        editor.commit();
+
 
     }
     @Override
