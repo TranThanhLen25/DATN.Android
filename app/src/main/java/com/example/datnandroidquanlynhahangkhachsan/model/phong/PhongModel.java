@@ -3,6 +3,7 @@ package com.example.datnandroidquanlynhahangkhachsan.model.phong;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.ErrorMessageDTO;
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DoiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.ResponseInfo;
 import com.example.datnandroidquanlynhahangkhachsan.entities.api.ResponseDTO;
@@ -127,6 +128,34 @@ public class PhongModel implements IPhongModel {
             @Override
             public void onError(String error) {
 
+            }
+        });
+    }
+
+    @Override
+    public void DoiPhong(DoiPhongDTO doiPhongDTO, IOnDoiPhongFinishedListener listener) {
+        service=new APIService();
+        service.getAccessToken(new IAPIServiceTokenRetrofit.IOnGetAccessTokenFinishedListener() {
+            @Override
+            public void onSuccess(ResponseTokenDTO itemToken) {
+                service.apiServiceRetrofit.doiPhong(doiPhongDTO).enqueue(new Callback<ResponseInfo>() {
+                    @Override
+                    public void onResponse(Call<ResponseInfo> call, Response<ResponseInfo> response) {
+                        if (response.body() != null) {
+                            listener.onSuccess();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseInfo> call, Throwable t) {
+                        listener.onError(t.getMessage());
+                    }
+                });
+            }
+
+            @Override
+            public void onError(String error) {
+                listener.onError(error);
             }
         });
     }

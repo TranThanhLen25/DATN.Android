@@ -2,7 +2,7 @@ package com.example.datnandroidquanlynhahangkhachsan.ui.Ban;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.BanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.LoaiBanDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DoiBanDTO;
 
 import java.util.List;
 
@@ -20,6 +20,11 @@ public interface BanContract {
         void onCapNhatTrangThaiBanSuccess();
 
         void onCapNhatTrangThaiBanError(String error);
+
+        //đổi bàn
+        void onDoiBanSuccess();
+
+        void onDoiBanError(String error);
     }
 
     interface Presenter {
@@ -30,5 +35,6 @@ public interface BanContract {
         void LayDanhSachLoaiBan();
 
         void CapNhatTrangThaiBan(BanDTO banDTO);
+        void DoiBan(DoiBanDTO doiBanDTO);
     }
 }

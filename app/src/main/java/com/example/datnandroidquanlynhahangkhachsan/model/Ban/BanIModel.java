@@ -5,6 +5,7 @@ package com.example.datnandroidquanlynhahangkhachsan.model.Ban;
 
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.BanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.LoaiBanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DoiBanDTO;
 
 import java.util.List;
 
@@ -32,6 +33,14 @@ public interface BanIModel {
     void CapNhatTrangThaiBan(BanDTO BanDTO, BanIModel.IOnCapNhatTrangThaiBanFinishedListener listener);
 
     interface IOnCapNhatTrangThaiBanFinishedListener {
+        void onSuccess();
+
+        void onError(String error);
+    }
+
+    void DoiBan(DoiBanDTO doiBanDTO, BanIModel.IOnDoiBanFinishedListener listener);
+
+    interface IOnDoiBanFinishedListener {
         void onSuccess();
 
         void onError(String error);

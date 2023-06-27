@@ -118,7 +118,7 @@
                     android:id="@+id/tv_doiphong_data_vitribandau"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="101"
+                    android:text=""
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@+id/ctl_doiphong_vitribandau"
                     app:layout_constraintStart_toEndOf="@+id/tv_doiphong_vitribandau"
@@ -173,7 +173,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="@string/tv_hoten"
+                android:text="*Lý Do"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textview_tk_mk"
                 app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
@@ -181,12 +181,11 @@
                 tools:ignore="SpUsage" />
 
             <EditText
-                android:id="@+id/et_hoten_phieunhanphong"
+                android:id="@+id/et_lydo"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@drawable/bg_edittext"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName"
                 app:layout_constraintTop_toBottomOf="@+id/tv_hoten"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -195,19 +194,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:text="@string/tv_cccd"
+                android:text="Ghi chú"
                 android:textColor="@color/black"
                 android:textSize="@dimen/textview_tk_mk"
                 app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
-                app:layout_constraintTop_toBottomOf="@+id/et_hoten_phieunhanphong" />
+                app:layout_constraintTop_toBottomOf="@+id/et_lydo" />
 
             <EditText
-                android:id="@+id/et_cccd_phieunhanphong"
+                android:id="@+id/et_ghichu"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@drawable/bg_edittext"
                 android:importantForAutofill="no"
-                android:inputType="number"
                 app:layout_constraintTop_toBottomOf="@+id/tv_cccd_phieunhanphong"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -237,6 +235,7 @@
         tools:ignore="MissingConstraints">
 
         <Button
+            android:id="@+id/btn_doiphong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/action_doiphong"

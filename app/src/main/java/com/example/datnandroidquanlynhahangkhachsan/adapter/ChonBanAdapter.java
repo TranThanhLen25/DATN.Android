@@ -101,44 +101,73 @@ public class ChonBanAdapter extends RecyclerView.Adapter<ChonBanAdapter.ChonBanV
         else {
             if (phong.getTrangThaiId() != 4 && phong.getTrangThaiId() != 3) {
 
+                if (tempData.checkDoiBan==true){
 
-                // xét trạng thái dấu tick
-                holder.chonphongBinding.ctlItemchonphong.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        if (holder.chonphongBinding.imgChonphong.getVisibility() == View.GONE) {
+                    if (tempData.doiBan != null) {
+                        if (tempData.doiBan.getBanId() == phong.getBanId()) {
                             holder.chonphongBinding.imgChonphong.setVisibility(View.VISIBLE);
+                        }
+                    }
 
-                            lsChonPhong.lsChonBanDataInt.add(phong.getBanId());
-                            int temp = 0;
-                            for (int i = 0; i < lsChonPhong.lsChonBanDataInt.size(); i++) {
-                                for (int j = i + 1; j < lsChonPhong.lsChonBanDataInt.size(); j++) {
-                                    if (lsChonPhong.lsChonBanDataInt.get(i) == lsChonPhong.lsChonBanDataInt.get(j)) {
-                                        lsChonPhong.lsChonBanDataInt.remove(j);
+
+                    // xét trạng thái dấu tick
+                    holder.chonphongBinding.ctlItemchonphong.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+
+                            if (holder.chonphongBinding.imgChonphong.getVisibility() == View.GONE) {
+                                if (tempData.doiBan == null) {
+                                    holder.chonphongBinding.imgChonphong.setVisibility(View.VISIBLE);
+                                    tempData.doiBan = phong;
+                                }
+                            } else {
+                                holder.chonphongBinding.imgChonphong.setVisibility(View.GONE);
+                                tempData.doiBan = null;
+                            }
+                        }
+                    });
+                }
+                else {
+
+                    // xét trạng thái dấu tick
+                    holder.chonphongBinding.ctlItemchonphong.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            if (holder.chonphongBinding.imgChonphong.getVisibility() == View.GONE) {
+                                holder.chonphongBinding.imgChonphong.setVisibility(View.VISIBLE);
+
+                                lsChonPhong.lsChonBanDataInt.add(phong.getBanId());
+                                int temp = 0;
+                                for (int i = 0; i < lsChonPhong.lsChonBanDataInt.size(); i++) {
+                                    for (int j = i + 1; j < lsChonPhong.lsChonBanDataInt.size(); j++) {
+                                        if (lsChonPhong.lsChonBanDataInt.get(i) == lsChonPhong.lsChonBanDataInt.get(j)) {
+                                            lsChonPhong.lsChonBanDataInt.remove(j);
+                                        }
+                                    }
+                                }
+
+
+                            } else {
+                                holder.chonphongBinding.imgChonphong.setVisibility(View.GONE);
+                                for (int i = 0; i < lsChonPhong.lsChonBanDataInt.size(); i++) {
+                                    if (phong.getBanId() == lsChonPhong.lsChonBanDataInt.get(i)) {
+                                        lsChonPhong.lsChonBanDataInt.remove(i);
                                     }
                                 }
                             }
-
-
-                        } else {
-                            holder.chonphongBinding.imgChonphong.setVisibility(View.GONE);
-                            for (int i = 0; i < lsChonPhong.lsChonBanDataInt.size(); i++) {
-                                if (phong.getBanId() == lsChonPhong.lsChonBanDataInt.get(i)) {
-                                    lsChonPhong.lsChonBanDataInt.remove(i);
-                                }
-                            }
                         }
-                    }
-                });
-                //set trạng thái về ban đầu
+                    });
+                    //set trạng thái về ban đầu
 //        for (int i = 0; i < lsChonPhong.lsChonBanDataInt.size(); i++) {
 //                holder.chonphongBinding.imgChonphong.setVisibility(View.GONE);
 //        }
-                //set trạng thái đã được chọn
-                for (int i = 0; i < lsChonPhong.lsChonBanDataInt.size(); i++) {
-                    if (phong.getBanId() == lsChonPhong.lsChonBanDataInt.get(i)) {
-                        holder.chonphongBinding.imgChonphong.setVisibility(View.VISIBLE);
+                    //set trạng thái đã được chọn
+                    for (int i = 0; i < lsChonPhong.lsChonBanDataInt.size(); i++) {
+                        if (phong.getBanId() == lsChonPhong.lsChonBanDataInt.get(i)) {
+                            holder.chonphongBinding.imgChonphong.setVisibility(View.VISIBLE);
+                        }
                     }
                 }
             } else {

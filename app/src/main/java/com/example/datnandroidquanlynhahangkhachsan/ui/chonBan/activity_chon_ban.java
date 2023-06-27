@@ -94,4 +94,14 @@ public class activity_chon_ban extends AppCompatActivity implements BanContract.
 
     @Override
     public void onCapNhatTrangThaiBanError(String error){}
+
+    @Override
+    public void onDoiBanSuccess() {
+
+    }
+
+    @Override
+    public void onDoiBanError(String error) {
+
+    }
 }

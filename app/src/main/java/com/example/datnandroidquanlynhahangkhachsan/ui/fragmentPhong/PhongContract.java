@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong;
 
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DoiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 
 import java.util.List;
@@ -22,7 +23,10 @@ public interface PhongContract {
 
         void onCapNhatTrangThaiPhongError(String error);
 
+        //đổi phòng
+        void onDoiPhongSuccess();
 
+        void onDoiPhongError(String error);
     }
 
     interface Presenter {
@@ -33,6 +37,7 @@ public interface PhongContract {
         void LayDanhSachPhong1g(int id, int trangThaiId);
 
         void CapNhatTrangThaiPhong(PhongDTO phongDTO);
+        void DoiPhong(DoiPhongDTO doiPhongDTO);
 
     }
 }

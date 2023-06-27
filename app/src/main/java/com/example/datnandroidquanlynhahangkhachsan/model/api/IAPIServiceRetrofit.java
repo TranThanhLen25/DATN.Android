@@ -12,6 +12,8 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHang
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DoiBanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DoiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.NhanBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.NhanPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.XuatPhongDTO;
@@ -232,5 +234,11 @@ public interface IAPIServiceRetrofit {
 
     @POST("/api/hanghoa/capnhat-hanghoa")
     Call<ResponseInfo> capNhatHangHoa(@Body HangHoaDTO hangHoaDTO);
+
+    @POST("/api/Phong/Doi-Phong")
+    Call<ResponseInfo> doiPhong(@Body DoiPhongDTO doiPhongDTO);
+
+    @POST("/api/Ban/Doi-Ban")
+    Call<ResponseInfo> doiBan(@Body DoiBanDTO doiBanDTO);
 
 }

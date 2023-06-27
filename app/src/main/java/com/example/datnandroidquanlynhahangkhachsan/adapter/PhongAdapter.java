@@ -319,6 +319,20 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                 Intent intent = new Intent(dialog.getContext(), ThemPhieuDoiPhongActivity.class);
                 context.startActivity(intent);
 
+                //// lưu lại thông tin phòng cần xem chi tiết
+                SharedPreferences sharedPreferences = context.getSharedPreferences("PHONG", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("SOPHONG", so);
+                editor.putInt("GIA", gia);
+                editor.putString("LOAIPHONG", loai);
+                editor.putInt("PHONGID", phongid);
+                editor.putInt("LOAIPHONGID", loaiphongid);
+                editor.putInt("TRANGTHAI", trangThai);
+                editor.putString("TEN",ten);
+
+                editor.commit();
+
+
                 dialog.dismiss();
 
             }

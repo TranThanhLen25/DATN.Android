@@ -19,7 +19,6 @@ import com.example.datnandroidquanlynhahangkhachsan.adapter.LoaiPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityPhieuDatPhongChiTietBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
@@ -52,8 +51,8 @@ public class PhieuDatPhongChiTietActivity extends AppCompatActivity implements L
         phieuDatPhongChiTietBinding.toolbarPhieudatphong.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tempData.datPhongDTO = new DatPhongDTO();
-                tempData.tempDatakhachHangDTO = new KhachHangDTO();
+                tempData.datPhongDTO = null;
+                tempData.tempDatakhachHangDTO = null;
                 onBackPressed();
             }
         });

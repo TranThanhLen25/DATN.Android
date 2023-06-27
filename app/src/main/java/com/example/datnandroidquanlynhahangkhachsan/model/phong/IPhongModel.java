@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.model.phong;
 
 
+import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DoiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
 
 
@@ -29,6 +30,14 @@ public interface IPhongModel {
     void CapNhatTrangThaiPhong(PhongDTO phongDTO, IPhongModel.IOnCapNhatTrangThaiPhongFinishedListener listener);
 
     interface IOnCapNhatTrangThaiPhongFinishedListener {
+        void onSuccess();
+
+        void onError(String error);
+    }
+
+    void DoiPhong(DoiPhongDTO doiPhongDTO, IPhongModel.IOnDoiPhongFinishedListener listener);
+
+    interface IOnDoiPhongFinishedListener {
         void onSuccess();
 
         void onError(String error);

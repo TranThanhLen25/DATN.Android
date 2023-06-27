@@ -22,7 +22,6 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.BanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.LoaiBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
-import com.example.datnandroidquanlynhahangkhachsan.entities.MutilTable.DatBanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatBanChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.PhieuDatPhongChiTietDTO;
@@ -68,8 +67,8 @@ public class PhieuDatBanChiTietActivity extends AppCompatActivity implements Kha
         activityPhieuDatBanChiTietBinding.toolbarPnct.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tempData.datBanDTO = new DatBanDTO();
-                tempData.tempDatakhachHangDTO = new KhachHangDTO();
+                tempData.datBanDTO = null;
+                tempData.tempDatakhachHangDTO = null;
                 onBackPressed();
             }
         });
@@ -290,4 +289,14 @@ public class PhieuDatBanChiTietActivity extends AppCompatActivity implements Kha
 
     @Override
     public void onCapNhatTrangThaiBanError(String error){}
+
+    @Override
+    public void onDoiBanSuccess() {
+
+    }
+
+    @Override
+    public void onDoiBanError(String error) {
+
+    }
 }

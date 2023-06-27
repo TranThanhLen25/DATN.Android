@@ -239,6 +239,17 @@ public class Fragment_Phong extends Fragment implements PhongContract.View, Loai
     public void onCapNhatTrangThaiPhongError(String error) {
 
     }
+
+    @Override
+    public void onDoiPhongSuccess() {
+
+    }
+
+    @Override
+    public void onDoiPhongError(String error) {
+
+    }
+
     @Override
     public void onCapNhatPhieuNhanPhongChiTietSuccess() {
     }
