@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_tenphieu"
                 android:padding="10dp"
-                android:text="Phiếu đặt bàn"
+                android:text="Thêm Hàng Hóa"
                 android:textSize="@dimen/heading_2"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/chitietheaderphieudatban"
