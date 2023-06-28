@@ -22,6 +22,10 @@
         android:icon="@drawable/ic_bieudoo"
         android:title="@string/action_thongke"></item>
     <item
+        android:id="@+id/dra_bill"
+        android:icon="@drawable/ic_bill"
+        android:title="Phiếu thu"></item>
+    <item
         android:id="@+id/dra_nhanvien"
         android:icon="@drawable/group"
         android:title="Nhân viên"></item>

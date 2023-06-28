@@ -151,6 +151,11 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
                         menuItem.setChecked(false);
                         vitri = R.id.dra_thongke;
                         break;
+                    case R.id.dra_bill:
+                        temp = new Fragment_PhieuThu();
+                        menuItem.setChecked(false);
+                        vitri = R.id.dra_bill;
+                        break;
 
                     case R.id.dra_nhanvien:
                         temp = new Fragment_nhanVien();
