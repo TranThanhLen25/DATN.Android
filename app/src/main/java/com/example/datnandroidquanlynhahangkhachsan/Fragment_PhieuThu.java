@@ -110,7 +110,7 @@ public class Fragment_PhieuThu extends Fragment implements PhieuThuContract.View
                 return false;
             }
         });
-        Collections.reverse(lsPhieuThu);
+
         return phieuthuBinding.getRoot();
     }
 @Override
@@ -119,6 +119,10 @@ public class Fragment_PhieuThu extends Fragment implements PhieuThuContract.View
     PhieuThuAdapter phieuThuAdapter=new PhieuThuAdapter(this);
     phieuThuAdapter.setData(getContext(),lsPhieuThu);
     rscvPT.setAdapter(phieuThuAdapter);
+    // Đảo ngược thứ tự của tập dữ liệu
+    Collections.reverse(lsPhieuThu);
+    // Thông báo cho adapter về các thay đổi trong tập dữ liệu
+    phieuThuAdapter.notifyDataSetChanged();
 }
 
     @Override

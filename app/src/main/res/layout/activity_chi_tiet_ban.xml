@@ -73,8 +73,8 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/heading_2"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toEndOf="@id/tv_chitietban"
-                        app:layout_constraintTop_toTopOf="@id/chitietheaderchitietban"/>
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_chitietban"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -86,7 +86,7 @@
                         android:textSize="@dimen/heading_2"
                         android:textStyle="bold"
                         app:layout_constraintStart_toEndOf="@+id/tv_soban"
-                        app:layout_constraintTop_toTopOf="@id/chitietheaderchitietban"/>
+                        app:layout_constraintTop_toBottomOf="@id/tv_chitietban"/>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/tv_sochungtu_chitietban"
@@ -94,32 +94,8 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         app:layout_constraintStart_toStartOf="@id/chitietheaderchitietban"
-                        app:layout_constraintTop_toBottomOf="@id/tv_chitietban">
+                        app:layout_constraintTop_toBottomOf="@id/tv_soban">
 
-                        <TextView
-                            android:id="@+id/tv_sochungtu"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:text="@string/tv_gia"
-                            android:textSize="@dimen/heading_2"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="@id/tv_sochungtu_chitietban"
-                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_chitietban"/>
-
-                        <TextView
-                            android:id="@+id/tv_giachitiet"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:text="300.000đ"
-                            android:layout_marginStart="18dp"
-                            android:textColor="@color/red"
-                            android:textSize="@dimen/heading_2"
-                            android:textStyle="bold"
-                            app:layout_constraintStart_toEndOf="@+id/tv_loaiban"
-                            app:layout_constraintTop_toTopOf="@id/tv_sochungtu_chitietban"/>
 
                         <TextView
                             android:id="@+id/tv_loaiban"
@@ -131,7 +107,7 @@
                             android:textStyle="bold"
                             android:textColor="@color/black"
                             app:layout_constraintStart_toStartOf="@+id/tv_sochungtu_chitietban"
-                            app:layout_constraintTop_toBottomOf="@+id/tv_sochungtu"/>
+                            app:layout_constraintTop_toTopOf="@+id/tv_sochungtu_chitietban"/>
 
                         <TextView
                             android:id="@+id/tv_loaibanchitiet"

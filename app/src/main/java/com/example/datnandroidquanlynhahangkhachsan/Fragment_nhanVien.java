@@ -146,6 +146,8 @@ public class Fragment_nhanVien extends Fragment implements NguoiDungContract.Vie
          nguoiDungAdapter = new NguoiDungAdapter(this);
         nguoiDungAdapter.setData(getContext(), lsNguoiDung);
         recyclerView.setAdapter(nguoiDungAdapter);
+        Collections.reverse(lsNguoiDung);
+        nguoiDungAdapter.notifyDataSetChanged();
     }
 
     @Override
