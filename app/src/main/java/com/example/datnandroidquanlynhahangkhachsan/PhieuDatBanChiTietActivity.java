@@ -112,6 +112,7 @@ public class PhieuDatBanChiTietActivity extends AppCompatActivity implements Kha
                 tempData.datBanDTO.getPhieuDatDTO().setTrangThai("đã hủy");
 
                 dsPhieuDatPhongPresenter.CapNhatPhieuDat(tempData.datBanDTO.getPhieuDatDTO());
+                tempData.tempDatakhachHangDTO=null;
                 dialog.dismiss();
                 onBackPressed();
             }
