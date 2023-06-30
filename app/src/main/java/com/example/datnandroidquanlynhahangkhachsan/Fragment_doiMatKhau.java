@@ -199,6 +199,7 @@ doiMatKhauBinding.btnThoat.setOnClickListener(new View.OnClickListener() {
                     nguoiDungDTO.setNguoiDungId(sharedPreferences.getInt("ID", 0));
                     nguoiDungDTO.setMatKhau(doiMatKhauBinding.etMkm.getText().toString());
                     nguoiDungDTO.setSdt(sharedPreferences.getString("SDT", ""));
+                    nguoiDungDTO.setCccd(sharedPreferences.getString("CCCD", ""));
                     nguoiDungDTO.setDiaChi(sharedPreferences.getString("DIACHI", ""));
                     nguoiDungPresenter.CapNhatNguoiDung(nguoiDungDTO);
 

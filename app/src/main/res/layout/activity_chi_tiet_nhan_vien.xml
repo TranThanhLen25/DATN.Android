@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity_ChiTiet_NhanVien">
+
+    <include
+        android:id="@+id/toolbar_tk"
+        layout="@layout/activity_appar_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctl_tenPhieu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/bg_tenphieu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_tk">
+
+        <TextView
+            android:id="@+id/tv_tenphieu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Thông tin nhân viên "
+            android:textSize="@dimen/heading_2"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints,TextSizeCheck,TextSizeCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/scr_ttnv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/ctl_tenPhieu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+       >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:id="@+id/ctl_scr">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctl_sct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ctl_scr">
+
+                <TextView
+                    android:id="@+id/tv_tennv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tên nhân viên: "
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="@id/ctl_sct"
+                    app:layout_constraintTop_toTopOf="@id/ctl_sct" />
+
+                <TextView
+                    android:id="@+id/tv_tendata"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Trần Văn A"
+                    android:textSize="@dimen/heading_2"
+                    android:textColor="@color/black"
+
+                    app:layout_constraintStart_toEndOf="@id/tv_tennv"
+                    app:layout_constraintTop_toTopOf="@id/ctl_sct"
+                    tools:ignore="MissingConstraints" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctl_sodt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ctl_sct">
+
+                <TextView
+                    android:id="@+id/tv_sodt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SDT: "
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    app:layout_constraintStart_toStartOf="@id/ctl_sodt"
+                    app:layout_constraintTop_toTopOf="@id/ctl_sodt" />
+
+                <TextView
+                    android:id="@+id/tv_sodtdata"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="0932653447"
+android:textColor="@color/black"
+                    android:textSize="@dimen/heading_2"
+                    android:textStyle="italic"
+                    app:layout_constraintStart_toEndOf="@id/tv_sodt"
+                    app:layout_constraintTop_toTopOf="@id/ctl_sodt"
+                    tools:ignore="MissingConstraints" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctl_canccd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ctl_sodt">
+
+                <TextView
+                    android:id="@+id/tv_gt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CCCD: "
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    app:layout_constraintStart_toStartOf="@id/ctl_canccd"
+                    app:layout_constraintTop_toTopOf="@id/ctl_canccd" />
+
+                <TextView
+                    android:id="@+id/tv_gtdata"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="083635201259"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/heading_2"
+                    android:textStyle="italic"
+                    app:layout_constraintStart_toEndOf="@id/tv_gt"
+                    app:layout_constraintTop_toTopOf="@id/ctl_canccd"
+                    tools:ignore="MissingConstraints" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctl_gioitinh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ctl_canccd">
+
+                <TextView
+                    android:id="@+id/tv_cc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giới tính: "
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    app:layout_constraintStart_toStartOf="@id/ctl_gioitinh"
+                    app:layout_constraintTop_toTopOf="@id/ctl_gioitinh" />
+
+                <TextView
+                    android:id="@+id/tv_ccdata"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Nam"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/heading_2"
+
+                    app:layout_constraintStart_toEndOf="@id/tv_cc"
+                    app:layout_constraintTop_toTopOf="@id/ctl_gioitinh"
+                    tools:ignore="MissingConstraints" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctl_quequan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ctl_gioitinh">
+
+                <TextView
+                    android:id="@+id/tv_qq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Địa chỉ: "
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="@id/ctl_quequan"
+                    app:layout_constraintTop_toTopOf="@id/ctl_quequan" />
+
+                <TextView
+                    android:id="@+id/tv_qqdata"
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="51A, Nguyễn Thị Thập, Tân Phú, Q7"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/heading_2"
+
+                    app:layout_constraintStart_toEndOf="@id/tv_qq"
+                    app:layout_constraintTop_toTopOf="@id/ctl_quequan"
+                    tools:ignore="MissingConstraints" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <View
+                android:id="@+id/viewtt"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp"
+                android:background="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ctl_quequan" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctl_tt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewtt">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctl_tk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/ctl_tt"
+                    app:layout_constraintTop_toTopOf="@id/ctl_tt">
+
+                    <TextView
+                        android:id="@+id/tv_tk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tài khoản"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        app:layout_constraintStart_toStartOf="@id/ctl_tk"
+                        app:layout_constraintTop_toTopOf="@id/ctl_tk" />
+
+                    <TextView
+                        android:id="@+id/et_tktt"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_edittext"
+                        android:padding="5dp"
+                        android:text="tranvana25"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/heading_2"
+
+                        app:layout_constraintStart_toStartOf="@id/ctl_tk"
+                        app:layout_constraintTop_toBottomOf="@id/tv_tk"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctl_mk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="15dp"
+                    app:layout_constraintStart_toStartOf="@id/ctl_tt"
+                    app:layout_constraintTop_toBottomOf="@id/ctl_tk"
+                    tools:ignore="MissingConstraints">
+
+                    <TextView
+                        android:id="@+id/tv_mk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mật khẩu"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        app:layout_constraintStart_toStartOf="@id/ctl_mk"
+                        app:layout_constraintTop_toTopOf="@id/ctl_mk" />
+
+                    <TextView
+                        android:id="@+id/et_mktt"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_edittext"
+
+                        android:padding="5dp"
+                        android:text="12345678"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/heading_2"
+                        android:textStyle="italic|bold"
+
+
+                        app:layout_constraintStart_toStartOf="@id/ctl_mk"
+                        app:layout_constraintTop_toBottomOf="@id/tv_mk"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nhân viên lễ tân "
+        android:textColor="@color/bluenhat"
+        android:textSize="@dimen/heading_2"
+        android:textStyle="italic|bold"
+       android:layout_margin="20dp"
+        android:id="@+id/cv"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_tk"
+        app:layout_constraintStart_toEndOf="@id/ctl_tenPhieu"
+ />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -91,7 +91,7 @@ public class fragment_chinhsuathongtincanhan extends Fragment implements NguoiDu
 
         chinhsuathongtincanhanBinding.tvGtchinhsua.setText(sharedPreferences.getString("GIOITINH", ""));
 
-        chinhsuathongtincanhanBinding.tvCccdchinhsua.setText(sharedPreferences.getString("CCCD", ""));
+        chinhsuathongtincanhanBinding.etCCCD.setText(sharedPreferences.getString("CCCD", ""));
 
         chinhsuathongtincanhanBinding.tvCvchinhsua.setText(sharedPreferences.getString("LOAITAIKHOAN", ""));
 
@@ -107,6 +107,7 @@ public class fragment_chinhsuathongtincanhan extends Fragment implements NguoiDu
             public void onClick(View view) {
 
                 if (chinhsuathongtincanhanBinding.etSdtctchinhsua.getText().length() == 10 &&
+                        chinhsuathongtincanhanBinding.etCCCD.getText().length() == 12 &&
                         !(chinhsuathongtincanhanBinding.etQqchinhsua.getText().toString().equals(""))) {
 
 
@@ -125,6 +126,8 @@ public class fragment_chinhsuathongtincanhan extends Fragment implements NguoiDu
                     nguoiDungDTO.setDiaChi(chinhsuathongtincanhanBinding.etQqchinhsua.getText().toString());
                     ///mật khẩu giữ nguyên
                     nguoiDungDTO.setMatKhau(sharedPreferences.getString("PASSWORD", ""));
+
+                    nguoiDungDTO.setCccd(chinhsuathongtincanhanBinding.etCCCD.getText().toString());
 
 
                     nguoiDungPresenter.CapNhatNguoiDung(nguoiDungDTO);

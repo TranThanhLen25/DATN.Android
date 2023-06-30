@@ -7,77 +7,16 @@
     tools:context=".Fragment_thongtincanhan">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/ctl_thongtincanhan"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/nen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/img_thongtincanhan"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="40dp"
-            android:src="@drawable/man"
-            app:layout_constraintStart_toStartOf="@id/ctl_thongtincanhan"
-            app:layout_constraintTop_toTopOf="@id/ctl_thongtincanhan">
-
-        </ImageView>
-
-        <TextView
-            android:id="@+id/tv_ten_thongticanhan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="55dp"
-            android:text="Tran Thanh Len"
-            android:layout_marginStart="20dp"
-            android:textColor="@color/black"
-            android:textSize="@dimen/heading_1"
-            app:layout_constraintStart_toEndOf="@id/img_thongtincanhan"
-
-            app:layout_constraintTop_toTopOf="@id/ctl_thongtincanhan" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="45dp"
-            android:text="nhan vien le tan"
-            android:textSize="15dp"
-            android:id="@+id/tv_chucvuthongtincanhan"
-            android:layout_marginStart="25dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_ten_thongticanhan"
-            app:layout_constraintStart_toEndOf="@+id/img_thongtincanhan"
-
-
-            app:layout_constraintTop_toTopOf="@id/tv_ten_thongticanhan"
-            tools:ignore="TextSizeCheck" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <View
-        android:id="@+id/view_thongtincanhan"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/bluenhat"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ctl_thongtincanhan">
-
-    </View>
 
     <ScrollView
         android:id="@+id/scr_suathongtincanhan"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_thongtincanhan"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -89,28 +28,88 @@
             app:layout_constraintTop_toBottomOf="@id/view_thongtincanhan">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctl_thongtincanhan"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/nen"
+                app:layout_constraintEnd_toEndOf="@+id/ctl_lon"
+                app:layout_constraintStart_toStartOf="@+id/ctl_lon"
+                app:layout_constraintTop_toTopOf="@+id/ctl_lon">
+
+                <ImageView
+                    android:id="@+id/img_thongtincanhan"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="40dp"
+                    android:src="@drawable/man"
+                    app:layout_constraintStart_toStartOf="@id/ctl_thongtincanhan"
+                    app:layout_constraintTop_toTopOf="@id/ctl_thongtincanhan">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/tv_ten_thongticanhan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="55dp"
+                    android:text="Tran Thanh Len"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/heading_1"
+                    app:layout_constraintStart_toEndOf="@id/img_thongtincanhan"
+
+                    app:layout_constraintTop_toTopOf="@id/ctl_thongtincanhan" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="45dp"
+                    android:text="nhan vien le tan"
+                    android:textSize="15dp"
+                    android:id="@+id/tv_chucvuthongtincanhan"
+                    android:layout_marginStart="25dp"
+                    app:layout_constraintTop_toBottomOf="@id/tv_ten_thongticanhan"
+                    app:layout_constraintStart_toEndOf="@+id/img_thongtincanhan"
+
+
+                    app:layout_constraintTop_toTopOf="@id/tv_ten_thongticanhan"
+                    tools:ignore="TextSizeCheck" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/view_thongtincanhan"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/bluenhat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ctl_thongtincanhan">
+
+            </View>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/ctl_tieudechinhsua"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-
-
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toStartOf="@+id/ctl_chitietchinhsua"
 
                 app:layout_constraintStart_toStartOf="@id/ctl_lon"
-                app:layout_constraintTop_toTopOf="@id/ctl_lon"
+                app:layout_constraintTop_toBottomOf="@id/view_thongtincanhan"
                 tools:ignore="MissingConstraints">
 
                 <TextView
                     android:id="@+id/tv_tkchinhsua"
-                    android:layout_width="200dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:paddingStart="40dp"
+
                     android:text="@string/tv_tai_khoan"
                     android:textColor="@color/black"
-                    android:textSize="18dp"
+                    android:textSize="17dp"
                     app:layout_constraintStart_toStartOf="@id/ctl_tieudechinhsua"
                     app:layout_constraintTop_toTopOf="@id/ctl_tieudechinhsua">
 
@@ -119,13 +118,13 @@
 
                 <TextView
                     android:id="@+id/tv_sdtchinhsua"
-                    android:layout_width="200dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:paddingStart="40dp"
+
                     android:text="@string/tv_so_dien_thoai"
                     android:textColor="@color/black"
-                    android:textSize="18dp"
+                    android:textSize="17dp"
                     app:layout_constraintStart_toStartOf="@id/ctl_tieudechinhsua"
                     app:layout_constraintTop_toBottomOf="@id/tv_tkchinhsua"
                     tools:ignore="MissingConstraints">
@@ -135,13 +134,13 @@
 
                 <TextView
                     android:id="@+id/tv_quequanchinhsua"
-                    android:layout_width="200dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:paddingStart="40dp"
+
                     android:text="@string/tv_que_quan"
                     android:textColor="@color/black"
-                    android:textSize="18dp"
+                    android:textSize="17dp"
                     app:layout_constraintStart_toStartOf="@id/ctl_tieudechinhsua"
                     app:layout_constraintTop_toBottomOf="@id/tv_sdtchinhsua">
 
@@ -150,13 +149,13 @@
 
                 <TextView
                     android:id="@+id/tv_gioitinhchinhsua"
-                    android:layout_width="200dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:paddingStart="40dp"
+
                     android:text="@string/tv_gioi_tinh"
                     android:textColor="@color/black"
-                    android:textSize="18dp"
+                    android:textSize="17dp"
                     app:layout_constraintStart_toStartOf="@id/ctl_tieudechinhsua"
                     app:layout_constraintTop_toBottomOf="@id/tv_quequanchinhsua"
                     tools:ignore="MissingConstraints">
@@ -166,13 +165,13 @@
 
                 <TextView
                     android:id="@+id/tv_cancuoccongdanchinhsua"
-                    android:layout_width="200dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:paddingStart="40dp"
+
                     android:text="@string/tv_can_cuoc_cong_dan"
                     android:textColor="@color/black"
-                    android:textSize="18dp"
+                    android:textSize="17dp"
                     app:layout_constraintStart_toStartOf="@id/ctl_tieudechinhsua"
                     app:layout_constraintTop_toBottomOf="@id/tv_gioitinhchinhsua"
                     tools:ignore="MissingConstraints">
@@ -182,13 +181,13 @@
 
                 <TextView
                     android:id="@+id/tv_chucvuchinhsua"
-                    android:layout_width="200dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:paddingStart="40dp"
+
                     android:text="@string/tv_chuc_vu"
                     android:textColor="@color/black"
-                    android:textSize="18dp"
+                    android:textSize="17dp"
                     app:layout_constraintStart_toStartOf="@id/ctl_tieudechinhsua"
                     app:layout_constraintTop_toBottomOf="@id/tv_cancuoccongdanchinhsua"
 
@@ -205,7 +204,8 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="@id/ctl_lon"
                 app:layout_constraintStart_toEndOf="@id/ctl_tieudechinhsua"
-                app:layout_constraintTop_toTopOf="@id/ctl_lon"
+                app:layout_constraintTop_toBottomOf="@id/view_thongtincanhan"
+                android:paddingEnd="5dp"
                 tools:ignore="NotSibling">
 
                 <TextView
@@ -215,13 +215,14 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="30dp"
                     android:text="thanhlen25"
+                    android:textColor="@color/black"
                     android:textSize="18sp"
                     app:layout_constraintStart_toStartOf="@id/ctl_chitietchinhsua"
                     app:layout_constraintTop_toTopOf="@id/ctl_chitietchinhsua" />
 
                 <EditText
                     android:id="@+id/et_sdtctchinhsua"
-                    android:layout_width="190dp"
+                    android:layout_width="230dp"
                     android:layout_height="35dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="28dp"
@@ -257,31 +258,39 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="40dp"
                     android:text="Nam"
+                    android:textColor="@color/black"
                     android:textSize="18dp"
                     app:layout_constraintStart_toStartOf="@id/ctl_chitietchinhsua"
                     app:layout_constraintTop_toBottomOf="@id/et_qqchinhsua" />
 
-                <TextView
-                    android:id="@+id/tv_cccdchinhsua"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+
+                <EditText
+                    android:id="@+id/etCCCD"
+                    android:layout_width="230dp"
+                    android:layout_height="35dp"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="40dp"
-                    android:text="321820199"
-                    android:textSize="18dp"
+                    android:layout_marginTop="30dp"
+                    android:autofillHints=""
+                    android:background="@drawable/bg_edittext"
+                    android:inputType="text"
+                    android:maxLength="12"
+                    android:paddingStart="5dp"
                     app:layout_constraintStart_toStartOf="@id/ctl_chitietchinhsua"
-                    app:layout_constraintTop_toBottomOf="@id/tv_gtchinhsua" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_gtchinhsua"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
 
                 <TextView
                     android:id="@+id/tv_cvchinhsua"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="35dp"
                     android:text="Nhân viên lễ tân"
                     android:textSize="18dp"
+                    android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="@id/ctl_chitietchinhsua"
-                    app:layout_constraintTop_toBottomOf="@id/tv_cccdchinhsua" />
+                    app:layout_constraintTop_toBottomOf="@id/etCCCD" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
