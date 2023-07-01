@@ -58,7 +58,8 @@ private List<HangHoaDTO> lsHangHoa;
             return;
         }
         DecimalFormat decimalFormat = new DecimalFormat("#,##0");
-        holder.danhSachPXCTBinding.tvSoluong.setText(String.valueOf(pxct.getSoLuong()));
+        DecimalFormat fm= new DecimalFormat("#.#");
+        holder.danhSachPXCTBinding.tvSoluong.setText(String.valueOf(fm.format(pxct.getSoLuong()) ));
         holder.danhSachPXCTBinding.tvDongiaHanghoaDichvu.setText(String.valueOf(decimalFormat.format(pxct.getDonGia())));
         holder.danhSachPXCTBinding.tvThanhtien.setText(String.valueOf(decimalFormat.format(pxct.getThanhTien())));
         for (int i=0;i<lsHangHoa.size();i++)

@@ -50,7 +50,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ctl_sl"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
 
 
             android:orientation="vertical"
@@ -58,19 +58,20 @@
 
             app:layout_constraintStart_toEndOf="@id/tv_dongia_hanghoa_dichvu"
             app:layout_constraintEnd_toStartOf="@id/ctl_thanhtien"
-            app:layout_constraintTop_toTopOf="@id/ctl_item">
+            android:layout_marginBottom="3.5dp"
+            >
 
             <TextView
                 android:id="@+id/tv_sl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="SL"
+                android:text="SL:"
                 android:textColor="@color/black"
                 android:textSize="@dimen/heading_2"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/ctl_sl"
-                app:layout_constraintTop_toTopOf="@id/ctl_sl"
+              app:layout_constraintBottom_toBottomOf="@id/ctl_sl"
                 tools:ignore="MissingConstraints" />
 
             <TextView
@@ -82,27 +83,27 @@
                 android:textColor="@color/red"
                 android:textSize="@dimen/heading_2"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/ctl_sl"
-                app:layout_constraintTop_toBottomOf="@id/tv_sl"
+               app:layout_constraintStart_toEndOf="@id/tv_sl"
+                app:layout_constraintBottom_toBottomOf="@id/ctl_sl"
                 tools:ignore="MissingConstraints" />
         </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ctl_thanhtien"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
 
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="@id/ctl_item"
             app:layout_constraintEnd_toEndOf="@id/ctl_item"
-
-            app:layout_constraintTop_toTopOf="@id/ctl_item">
+            android:layout_marginBottom="4.2dp"
+           >
 
             <TextView
                 android:id="@+id/tv_tt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="Thành tiền"
+
                 android:textColor="@color/black"
                 android:textSize="@dimen/heading_2"
                 android:textStyle="bold"

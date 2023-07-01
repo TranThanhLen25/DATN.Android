@@ -252,6 +252,7 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
                 editor.putInt("BANID", banid);
                 editor.putString("TENBAN", tenban);
                 editor.putInt("SONGUOI", songuoi);
+                editor.putString("TEN", ten);
                 editor.putString("TENLOAIBAN", tenloaiban);
                 editor.putInt("TRANGTHAI", trangThaiBanId);
                 editor.commit();

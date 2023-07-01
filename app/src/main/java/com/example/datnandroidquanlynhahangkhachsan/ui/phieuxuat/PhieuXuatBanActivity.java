@@ -216,7 +216,7 @@ public class PhieuXuatBanActivity extends AppCompatActivity implements PhieuXuat
                                 && lsGoiMon.get(a).getBanId() == lsPhieuNhanCT.get(i).getBanId()
                                 && lsPhieuXuat.size() != 0
                         )) {
-                            Toast.makeText(PhieuXuatBanActivity.this, "bla bla", Toast.LENGTH_SHORT).show();
+
                             for (int u = 0; u < lsHangHoa.size(); u++) {
                                 if (lsHangHoa.get(u).getHangHoaId() == lsGoiMon.get(a).getHangHoaId()) {
                                     PhieuXuatChiTietDTO phieuXuatChiTietDTO = new PhieuXuatChiTietDTO(
@@ -366,7 +366,7 @@ public class PhieuXuatBanActivity extends AppCompatActivity implements PhieuXuat
         PhieuXuatBanChiTietAdapter phieuXuatBanChiTietAdapter = new PhieuXuatBanChiTietAdapter(this);
         phieuXuatBanChiTietAdapter.setData(this,lsLoaiBan, lsGoiMon, lsHangHoa, lsPhieuXuatCT, lsPhieuNhanCT, lsBan);
         recyclerView.setAdapter(phieuXuatBanChiTietAdapter);
-      //  Toast.makeText(this, "Phiếu xuất "+lsPhieuXuat.size(), Toast.LENGTH_SHORT).show();
+
 
         Button button=(Button) findViewById(R.id.btn_traPhong);
         TextView textView=findViewById(R.id.tv_tongdathanhtoan);
@@ -425,7 +425,7 @@ public class PhieuXuatBanActivity extends AppCompatActivity implements PhieuXuat
         PhieuXuatBanChiTietAdapter phieuXuatBanChiTietAdapter = new PhieuXuatBanChiTietAdapter(this);
         phieuXuatBanChiTietAdapter.setData(this,lsLoaiBan, lsGoiMon, lsHangHoa, lsPhieuXuatCT, lsPhieuNhanCT, lsBan);
         recyclerView.setAdapter(phieuXuatBanChiTietAdapter);
-      //  Toast.makeText(this, "Phiếu xuất chi tiết "+lsPhieuXuatCT.size(), Toast.LENGTH_SHORT).show();
+
 
     }
 
@@ -436,7 +436,7 @@ public class PhieuXuatBanActivity extends AppCompatActivity implements PhieuXuat
         PhieuXuatBanChiTietAdapter phieuXuatBanChiTietAdapter = new PhieuXuatBanChiTietAdapter(this);
         phieuXuatBanChiTietAdapter.setData(this,lsLoaiBan, lsGoiMon, lsHangHoa, lsPhieuXuatCT, lsPhieuNhanCT, lsBan);
         recyclerView.setAdapter(phieuXuatBanChiTietAdapter);
-      //  Toast.makeText(this, "Danh sách bàn "+lsBan.size(), Toast.LENGTH_SHORT).show();
+
 
     }
 
@@ -446,7 +446,7 @@ public class PhieuXuatBanActivity extends AppCompatActivity implements PhieuXuat
         PhieuXuatBanChiTietAdapter phieuXuatBanChiTietAdapter = new PhieuXuatBanChiTietAdapter(this);
         phieuXuatBanChiTietAdapter.setData(this,lsLoaiBan, lsGoiMon, lsHangHoa, lsPhieuXuatCT, lsPhieuNhanCT, lsBan);
         recyclerView.setAdapter(phieuXuatBanChiTietAdapter);
-      // Toast.makeText(this, "Phiếu nhận bàn chi tiết  "+lsPhieuNhanCT.size(), Toast.LENGTH_SHORT).show();
+
 
     }
 
@@ -457,7 +457,7 @@ public class PhieuXuatBanActivity extends AppCompatActivity implements PhieuXuat
         PhieuXuatBanChiTietAdapter phieuXuatBanChiTietAdapter = new PhieuXuatBanChiTietAdapter(this);
         phieuXuatBanChiTietAdapter.setData(this,lsLoaiBan, lsGoiMon, lsHangHoa, lsPhieuXuatCT, lsPhieuNhanCT, lsBan);
         recyclerView.setAdapter(phieuXuatBanChiTietAdapter);
-      //  Toast.makeText(this, "Loại bàn "+lsLoaiBan.size(), Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -466,7 +466,7 @@ public class PhieuXuatBanActivity extends AppCompatActivity implements PhieuXuat
         PhieuXuatBanChiTietAdapter phieuXuatBanChiTietAdapter = new PhieuXuatBanChiTietAdapter(this);
         phieuXuatBanChiTietAdapter.setData(this,lsLoaiBan, lsGoiMon, lsHangHoa, lsPhieuXuatCT, lsPhieuNhanCT, lsBan);
         recyclerView.setAdapter(phieuXuatBanChiTietAdapter);
-        //  Toast.makeText(this, "Loại bàn "+lsLoaiBan.size(), Toast.LENGTH_SHORT).show();
+
     }
     @Override
     public void onThemPhieuXuatSuccess() {
