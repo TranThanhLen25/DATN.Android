@@ -351,7 +351,7 @@
                         android:id="@+id/tv_ban_phieunhanban"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nhấn để chọn phòng"
+                        android:text="Nhấn để chọn bàn"
                         android:textSize="20dp"
                         app:layout_constraintBottom_toBottomOf="@+id/chonban_phieunhanban"
                         app:layout_constraintStart_toEndOf="@+id/themban_phieunhanban"
