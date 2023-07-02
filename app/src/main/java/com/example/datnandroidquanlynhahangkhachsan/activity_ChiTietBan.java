@@ -77,6 +77,7 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
         sharedPreferences = getSharedPreferences("CHITIETBAN", MODE_PRIVATE);
         activityChiTietBanBinding.tvLoaibanchitiet.setText(String.valueOf(sharedPreferences.getString("TENLOAIBAN", "")));
         activityChiTietBanBinding.tvSo.setText(String.valueOf(sharedPreferences.getString("TENBAN", "")));
+        activityChiTietBanBinding.etHotenChitietban.setText(sharedPreferences.getString("TEN",""));
 
 
         activityChiTietBanBinding.toolbarChitietban.icBack.setOnClickListener(new View.OnClickListener() {

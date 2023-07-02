@@ -271,7 +271,14 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                 editor.putInt("PHONGID", phongid);
                 editor.putInt("LOAIPHONGID", loaiphongid);
                 editor.putInt("TRANGTHAI", trangThai);
-                editor.putString("TEN",ten);
+                if(trangThai==4)
+                {
+                    editor.putString("TEN",ten);
+                }
+               else
+                {
+                    editor.putString("TEN","");
+                }
 
                 editor.commit();
 
