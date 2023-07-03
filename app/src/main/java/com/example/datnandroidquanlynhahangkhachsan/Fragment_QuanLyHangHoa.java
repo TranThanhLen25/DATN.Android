@@ -1,10 +1,15 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.TextView;
 
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
@@ -17,6 +22,8 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
 import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.HangHoaContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Menu.HangHoaPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.chitietphong.MyButtonClickListener;
+import com.example.datnandroidquanlynhahangkhachsan.ui.chitietphong.RecycleViewItemTouchHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +38,13 @@ public class Fragment_QuanLyHangHoa extends Fragment implements HangHoaContract.
     private FragmentQuanLyHangHoaBinding fragmentQuanLyHangHoaBinding;
     private HangHoaAdapter hangHoaAdapter;
     private RecyclerView recyclerView;
+    private HangHoaDTO hangHoaDTO;
+    int position;
+    private HangHoaPresenter hangHoaPresenter=new HangHoaPresenter(this);
+
     private SearchView searchView;
     private List<HangHoaDTO> searchList;
+
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -84,7 +96,66 @@ public class Fragment_QuanLyHangHoa extends Fragment implements HangHoaContract.
                 startActivity(intent);
             }
         });
+
+        RecycleViewItemTouchHelper recycleViewItemTouchHelper = new RecycleViewItemTouchHelper(getContext(), recyclerView, 300) {
+
+            @Override
+            public void instantiateMyButton(RecyclerView.ViewHolder viewHolder, List<RecycleViewItemTouchHelper.MyButton> buffer) {
+                buffer.add(new MyButton(getContext(),
+                        "Delete",
+                        30,
+                        0,
+                        Color.parseColor("#FF3c30"),
+                        new MyButtonClickListener() {
+                            @Override
+                            public void onClick(int pos) {
+                                //Toast.makeText(ChiTietPhongActivity.this, "Delete click", Toast.LENGTH_LONG).show();
+                                position = viewHolder.getLayoutPosition();
+                                DiaLogHuyDatPhong();
+//                                hangHoaAdapter.removeItem(position);
+                            }
+                        }));
+            }
+        };
         return fragmentQuanLyHangHoaBinding.getRoot();
+    }
+
+    private void DiaLogHuyDatPhong() {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_ngung_kinh_doanh);
+        Window window = dialog.getWindow();
+        if (window == null) {
+            return;
+        }
+        TextView btnYes = dialog.findViewById(R.id.btn_yes);
+        TextView btnNo = dialog.findViewById(R.id.btn_no);
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hangHoaDTO=lsHangHoa.get(position);
+                hangHoaDTO.setTrangThai("Ngừng kinh doanh");
+                hangHoaAdapter.removeItem(position);
+                hangHoaPresenter.capNhatHangHoa(hangHoaDTO);
+                dialog.dismiss();
+            }
+        });
+        btnNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                dialog.dismiss();
+
+
+            }
+        });
+
+
+        dialog.show();
+
+
     }
 
     @Override

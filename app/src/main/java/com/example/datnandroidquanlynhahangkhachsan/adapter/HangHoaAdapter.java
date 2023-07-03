@@ -101,13 +101,17 @@ public class HangHoaAdapter extends RecyclerView.Adapter<HangHoaAdapter.HangHoaV
                     }
                 } else {
                     hangHoaDTO=HangHoa;
-                    DiaLogHuyDatPhong();
+                    //DiaLogHuyDatPhong();
                 }
             }
 
         });
     }
-
+    public void removeItem(int index) {
+        lsHangHoa.remove(index);
+        notifyItemRemoved(index);
+        //notifyDataSetChanged();
+    }
 
     private void DiaLogHuyDatPhong() {
         final Dialog dialog = new Dialog(context);
