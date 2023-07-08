@@ -68,10 +68,21 @@ public class ThanhToanActivity extends AppCompatActivity implements PhieuThuCont
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 //// tính tiền thừa khi khác đưa dư
-                Long a = Long.parseLong(charSequence.toString());
-                Long chage = a - tienTT;
-               thanhToanBinding.tvThoinew.setText(String.valueOf(decimalFormat.format(chage))+" đồng");
-                thoi=Float.valueOf(String.valueOf(chage));
+
+                if (thanhToanBinding.etDua.getText().length()==0)
+                {
+
+                    thanhToanBinding.tvThoinew.setText(String.valueOf(decimalFormat.format(0))+" đồng");
+                    thoi=0;
+
+                } else
+                {
+                    Long a = Long.parseLong(charSequence.toString());
+                    Long chage = a - tienTT;
+                    thanhToanBinding.tvThoinew.setText(String.valueOf(decimalFormat.format(chage))+" đồng");
+                    thoi=Float.valueOf(String.valueOf(chage));
+                }
+
             }
 
             @Override
