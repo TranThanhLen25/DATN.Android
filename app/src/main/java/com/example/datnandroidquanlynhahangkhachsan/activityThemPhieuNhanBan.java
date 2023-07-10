@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -45,7 +46,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPhieuNhanPhongContract.View, KhachHangContract.View, LoaiPhongContract.View, DsPhieuDatPhongContract.View{
+public class activityThemPhieuNhanBan extends AppCompatActivity implements DsPhieuNhanPhongContract.View, KhachHangContract.View, LoaiPhongContract.View, DsPhieuDatPhongContract.View {
     private ActivityThemPhieuNhanBanBinding activityThemPhieuNhanBanBinding;
     private DsPhieuDatPhongPresenter dsPhieuDatPhongPresenter;
     private String thoiGianNhan;
@@ -103,7 +104,7 @@ public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPh
         activityThemPhieuNhanBanBinding.btnThemphieunhanban.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // onclickThemPhieuNhanBan();
+                // onclickThemPhieuNhanBan();
                 OnclickThemPhieuNhan();
             }
         });
@@ -117,13 +118,36 @@ public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPh
         super.onResume();
         if (lsChonBanDataInt.size() > 0) {
             String a = String.valueOf(lsChonBanDataInt.size());
-           // Toast.makeText(this, a, Toast.LENGTH_LONG).show();
+            // Toast.makeText(this, a, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void onCheckboxClicked(View view) {
+        // Is the view now checked?
+        boolean checked = ((CheckBox) view).isChecked();
+
+        // Check which checkbox was clicked
+        switch (view.getId()) {
+            case R.id.checkbox_khachvanglai:
+                if (checked) {
+                    activityThemPhieuNhanBanBinding.etHotenPhieunhanban.setText("Khách vãng lai");
+                    activityThemPhieuNhanBanBinding.etCccdPhieunhanban.setText("000000000000");
+                    activityThemPhieuNhanBanBinding.etSdtPhieunhanban.setText("0000000000");
+                } else {
+                    activityThemPhieuNhanBanBinding.etHotenPhieunhanban.setText("");
+                    activityThemPhieuNhanBanBinding.etCccdPhieunhanban.setText("");
+                    activityThemPhieuNhanBanBinding.etSdtPhieunhanban.setText("");
+                }
+                // Remove the meat
+                break;
+
+            // TODO: Veggie sandwich
         }
     }
 
     private void SetDuLieuNeuCo() {
         if (tempData.tempDatakhachHangDTO != null) {
-            if (tempData.tempDatakhachHangDTO.getTenKhachHang()!=null){
+            if (tempData.tempDatakhachHangDTO.getTenKhachHang() != null) {
 
                 activityThemPhieuNhanBanBinding.etHotenPhieunhanban.setText(tempData.tempDatakhachHangDTO.getTenKhachHang());
             }
@@ -222,20 +246,20 @@ public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPh
             dsPhieuNhanPhongPresenter.ThemPhieuNhanBan(nhanBanDTO);
 
             String a = String.valueOf(khachHangDTO.getTenKhachHang());
-            a+=nhanBanDTO.getPhieuNhanDTO().getTrangThai()+" "+nhanBanDTO.getPhieuNhanBanChiTietDTOs().size();
+            a += nhanBanDTO.getPhieuNhanDTO().getTrangThai() + " " + nhanBanDTO.getPhieuNhanBanChiTietDTOs().size();
             //Toast.makeText(this, a, Toast.LENGTH_LONG).show();
 
 
-            if (tempData.datBanDTO!=null){
+            if (tempData.datBanDTO != null) {
 
                 tempData.datBanDTO.getPhieuDatDTO().setTrangThai("đã nhận phòng");
 
                 dsPhieuDatPhongPresenter.CapNhatPhieuDat(tempData.datBanDTO.getPhieuDatDTO());
             }
 
-            tempData.tempDatakhachHangDTO =new KhachHangDTO();
+            tempData.tempDatakhachHangDTO = new KhachHangDTO();
             lsChonBanDataInt.clear();
-          //  onBackPressed();
+            //  onBackPressed();
 //            Intent i = new Intent(this, Nav_Ban_Activity.class);
 //            startActivity(i);
 
@@ -558,18 +582,21 @@ public class activityThemPhieuNhanBan extends AppCompatActivity  implements DsPh
 
     @Override
     public void onThemPhieuNhanBanSuccess() {
-       // Toast.makeText(this, "thêm phiếu nhận bàn thành công", Toast.LENGTH_LONG).show();
+        // Toast.makeText(this, "thêm phiếu nhận bàn thành công", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onThemPhieuNhanBanError(String error) {
-      //  Toast.makeText(this, "thêm phiếu nhận bàn thất bại", Toast.LENGTH_LONG).show();
+        //  Toast.makeText(this, "thêm phiếu nhận bàn thất bại", Toast.LENGTH_LONG).show();
     }
-    @Override
-    public void onCapNhatPhieuNhanSuccess(){}
 
     @Override
-    public void onCapNhatPhieuNhanError(String error){}
+    public void onCapNhatPhieuNhanSuccess() {
+    }
+
+    @Override
+    public void onCapNhatPhieuNhanError(String error) {
+    }
 
     @Override
     public void onLayDanhSachPhieuDatSuccess(List<PhieuDatDTO> list) {
