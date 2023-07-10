@@ -79,6 +79,7 @@ public class PhieuThuAdapter extends RecyclerView.Adapter<PhieuThuAdapter.PhieuT
                 editor.putString("DUA",String.valueOf(decimalFormat.format(PhieuThu.getSoTienKhachDua())));
                 editor.putString("THOI",String.valueOf(decimalFormat.format(PhieuThu.getSoTienTraLaiKhach())));
                 editor.putString("GHICHU",PhieuThu.getGhiChu());
+                editor.putString("PT",PhieuThu.getPhuongThucThanhToan());
                 editor.commit();
                 Intent intent=new Intent(context, Activity_Chitiet_PhieuThu.class);
                 context.startActivity(intent);

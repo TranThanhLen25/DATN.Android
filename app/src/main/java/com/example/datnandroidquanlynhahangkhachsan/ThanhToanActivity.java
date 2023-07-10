@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -34,6 +35,7 @@ public class ThanhToanActivity extends AppCompatActivity implements PhieuThuCont
 
     float dua;
     float thoi;
+    String Pttt = "Tiền mặt";
 
 
     @Override
@@ -91,31 +93,37 @@ public class ThanhToanActivity extends AppCompatActivity implements PhieuThuCont
             }
         });
 
+        thanhToanBinding.tienmat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /// tên PTTT
+                Pttt = "Tiền mặt";
+                /// xét màu khi chọn
+                thanhToanBinding.chuyenkhoan.setTextColor(Color.GRAY);
+                thanhToanBinding.tienmat.setTextColor(Color.BLACK);
+
+            }
+        });
+
         thanhToanBinding.btnThanhtoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(thanhToanBinding.etDua.getText().length()>0)
-                {
-                    dua= Float.valueOf( thanhToanBinding.etDua.getText().toString());
-                }
-                else
-                {
-                    dua=0f;
+                if (thanhToanBinding.etDua.getText().length() > 0) {
+                    dua = Float.valueOf(thanhToanBinding.etDua.getText().toString());
+                } else {
+                    dua = 0f;
                 }
 
-                if(dua < tienTT)
-                {
+                if (dua < tienTT) {
                     Toast.makeText(ThanhToanActivity.this, "Vui lòng thanh toán đủ tiền!", Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
+                } else {
                     phieuThuDTO = new PhieuThuDTO(
                             "PT" + (lsPhieuThu.size() + 1),
                             date,
                             tienTT,
                             dua,
                             thoi,
-                            "Tiền mặt",
+                            Pttt,
                             "",
                             sharedPreferences.getLong("PNID", 0L),
                             thanhToanBinding.etGhichu.getText().toString()
@@ -125,7 +133,6 @@ public class ThanhToanActivity extends AppCompatActivity implements PhieuThuCont
                     onBackPressed();
                     finish();
                 }
-
 
 
             }

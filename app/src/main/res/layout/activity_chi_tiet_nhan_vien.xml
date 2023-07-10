@@ -159,7 +159,7 @@ android:textColor="@color/black"
                     android:layout_height="wrap_content"
                     android:text="Giới tính: "
                     android:textColor="@color/black"
-                    android:textSize="17dp"
+                    android:textSize="18dp"
                     app:layout_constraintStart_toStartOf="@id/ctl_gioitinh"
                     app:layout_constraintTop_toTopOf="@id/ctl_gioitinh" />
 
@@ -169,6 +169,7 @@ android:textColor="@color/black"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:text="Nam"
+                    android:paddingBottom="2dp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/heading_2"
 

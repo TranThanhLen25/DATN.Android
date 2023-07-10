@@ -3,6 +3,7 @@ package com.example.datnandroidquanlynhahangkhachsan.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,11 +54,29 @@ public class NguoiDungAdapter extends RecyclerView.Adapter<NguoiDungAdapter.Nguo
             return;
         }
         holder.itemPhieuDatBanBinding.tvTenkhachhangPhieudatbanData.setText(nguoiDung.getTenNguoiDung());
+        holder.itemPhieuDatBanBinding.tvTenkhachhangPhieudatbanData.setTextColor(Color.BLACK);
         holder.itemPhieuDatBanBinding.tvSdtItemphieudatbanData.setText(nguoiDung.getSdt());
+        holder.itemPhieuDatBanBinding.tvSdtItemphieudatbanData.setTextColor(Color.BLACK);
         holder.itemPhieuDatBanBinding.tvThoigianlapphieuItemphieudatbanData.setText(nguoiDung.getDiaChi());
+        if(nguoiDung.getDiaChi().equals("Chưa có địa chỉ"))
+        {
+            holder.itemPhieuDatBanBinding.tvThoigianlapphieuItemphieudatbanData.setTextColor(Color.GRAY);
+
+        }
+        else
+        {
+            holder.itemPhieuDatBanBinding.tvThoigianlapphieuItemphieudatbanData.setTextColor(Color.BLACK);
+        }
         holder.itemPhieuDatBanBinding.tvThoigianlapphieuItemphieudatban.setText("Địa chỉ: ");
+        holder.itemPhieuDatBanBinding.tvThoigianlapphieuItemphieudatban.setTextColor(Color.BLACK);
         holder.itemPhieuDatBanBinding.tvSochungtuPhieudatbanData.setText(nguoiDung.getCccd());
-        holder.itemPhieuDatBanBinding.tvBanItemphieudatbanData.setText(nguoiDung.getTaiKhoan());
+
+
+
+//        holder.itemPhieuDatBanBinding.tvBanItemphieudatbanData.setText(nguoiDung.getTaiKhoan());
+//        holder.itemPhieuDatBanBinding.ctlBanItemphieudatban.setBackgroundColor(Color.WHITE);
+//        holder.itemPhieuDatBanBinding.tvBanItemphieudatbanData.setTextColor(Color.BLUE);
+        holder.itemPhieuDatBanBinding.tvBanItemphieudatbanData.setVisibility(View.GONE);
 
         holder.itemPhieuDatBanBinding.itemPhieudatban.setOnClickListener(new View.OnClickListener() {
             @Override

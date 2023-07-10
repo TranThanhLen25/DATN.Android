@@ -22,6 +22,7 @@ public class Activity_Chitiet_PhieuThu extends AppCompatActivity {
         chitietPhieuThuBinding.etThanhtoantt.setText(sharedPreferences.getString("TIENNHAN",""));
         chitietPhieuThuBinding.tvThoinewtt.setText(sharedPreferences.getString("THOI",""));
         chitietPhieuThuBinding.etGhichutt.setText(sharedPreferences.getString("GHICHU",""));
+        chitietPhieuThuBinding.tvPhuongthuc.setText(sharedPreferences.getString("PT",""));
         chitietPhieuThuBinding.toolbarThanhtoan.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
