@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
@@ -12,25 +13,33 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuNhanBanAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuNhanPhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDanhSachPhieuNhanBanBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienLocKhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatConTract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNhanPhongContract.View, KhachHangContract.View {
+public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNhanPhongContract.View, KhachHangContract.View, PhieuXuatConTract.View {
 
     private RecyclerView rscvPhieuNhanBan;
     private List<PhieuNhanDTO> lsPhieuNhan;
     private List<KhachHangDTO> lsKhachHang;
+
+    private List<PhieuXuatDTO> lsPhieuXuat;
     private PhieuNhanBanAdapter phieuNhanBanAdapter;
     private FragmentDanhSachPhieuNhanBanBinding fragmentDanhSachPhieuNhanBanBinding;
 
@@ -92,6 +101,16 @@ public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNh
         DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
         khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
 
+        ///lay PX
+        lsPhieuXuat = new ArrayList<>();
+        PhieuXuatPresenter phieuXuatPresenter = new PhieuXuatPresenter(this);
+        DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO = new DieuKienLocPhieuXuatDTO();
+        dieuKienLocPhieuXuatDTO.setSoChungTu("pb");
+        phieuXuatPresenter.LayDanhSachPhieuXuat(dieuKienLocPhieuXuatDTO);
+
+
+
+
         fragmentDanhSachPhieuNhanBanBinding.iclAppbackpnp.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,7 +159,7 @@ public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNh
 
 
                     phieuNhanBanAdapter = new PhieuNhanBanAdapter(Fragment_danhSachPhieuNhanBan.this);
-                    phieuNhanBanAdapter.setData(searchList, lsKhachHang, getContext());
+                    phieuNhanBanAdapter.setData(lsPhieuXuat ,searchList,  lsKhachHang, getContext());
                     rscvPhieuNhanBan.setAdapter(phieuNhanBanAdapter);
                     //Toast.makeText(getContext(), String.valueOf(lsKhachHang.size()), Toast.LENGTH_LONG).show();
                 }
@@ -149,6 +168,13 @@ public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNh
         });
 
         return fragmentDanhSachPhieuNhanBanBinding.getRoot();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        PhieuNhanBanAdapter banAdapter=new PhieuNhanBanAdapter(this);
+        banAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -165,7 +191,7 @@ public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNh
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
         lsKhachHang = list;
         phieuNhanBanAdapter = new PhieuNhanBanAdapter(this);
-        phieuNhanBanAdapter.setData(lsPhieuNhan, lsKhachHang, getContext());
+        phieuNhanBanAdapter.setData(lsPhieuXuat, lsPhieuNhan, lsKhachHang, getContext());
         rscvPhieuNhanBan.setAdapter(phieuNhanBanAdapter);
     }
 
@@ -178,8 +204,63 @@ public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNh
     public void onLayDanhSachPhieuNhanSuccess(List<PhieuNhanDTO> list) {
         lsPhieuNhan = list;
         phieuNhanBanAdapter = new PhieuNhanBanAdapter(this);
-        phieuNhanBanAdapter.setData(lsPhieuNhan, lsKhachHang, getContext());
+        phieuNhanBanAdapter.setData(lsPhieuXuat, lsPhieuNhan, lsKhachHang, getContext());
         rscvPhieuNhanBan.setAdapter(phieuNhanBanAdapter);
+    }
+
+
+
+    @Override
+    public void onThemPhieuXuatSuccess() {
+    }
+
+    @Override
+    public void onThemPhieuXuatError(String error) {
+    }
+
+    @Override
+    public void onThemPhieuXuatChiTietSuccess() {
+
+    }
+
+    @Override
+    public void onThemPhieuXuatChiTietError(String error) {
+
+    }
+
+
+    @Override
+    public void onLayDanhSachPhieuXuatSuccess(List<PhieuXuatDTO> list) {
+        lsPhieuXuat = list;
+        phieuNhanBanAdapter = new PhieuNhanBanAdapter(this);
+        phieuNhanBanAdapter.setData(lsPhieuXuat, lsPhieuNhan, lsKhachHang, getContext());
+        rscvPhieuNhanBan.setAdapter(phieuNhanBanAdapter);
+
+
+    }
+
+    @Override
+    public void onLayDanhSachPhieuXuatError(String error) {
+
+    }
+
+    @Override
+    public void onLayDanhSachPhieuXuatChiTietSuccess(List<PhieuXuatChiTietDTO> list) {
+
+    }
+
+    @Override
+    public void onLayDanhSachPhieuXuatChiTietError(String error) {
+
+    }
+
+    @Override
+    public void onCapNhatPXSuccess() {
+
+    }
+
+    @Override
+    public void onCapNhatPXError(String error) {
     }
 
     @Override

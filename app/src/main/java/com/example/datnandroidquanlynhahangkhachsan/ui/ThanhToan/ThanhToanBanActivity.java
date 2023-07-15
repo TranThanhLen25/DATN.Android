@@ -309,7 +309,7 @@ public class ThanhToanBanActivity extends AppCompatActivity implements PhieuThuC
                             phieuNhanDTO.setPhieuNhanId(Pn);
                             phieuNhanDTO.setSoChungTu(lsPhieuNhan.get(i).getSoChungTu());
                             phieuNhanDTO.setNgayTra(date);
-                            phieuNhanDTO.setTrangThai("đã trả");
+                            phieuNhanDTO.setTrangThai("đang nhận phòng");
                             phieuNhanPhongPresenter.CapNhatPhieuNhan(phieuNhanDTO);
                             KHid = lsPhieuNhan.get(i).getKhachHangId();
                             Ndid = lsPhieuNhan.get(i).getNguoiDungId();
@@ -397,7 +397,7 @@ public class ThanhToanBanActivity extends AppCompatActivity implements PhieuThuC
                     editor.apply();
 
                     Intent intent = new Intent(ThanhToanBanActivity.this, Toolbar_Drawer_Activity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();
 

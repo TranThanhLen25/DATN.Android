@@ -186,11 +186,17 @@ public class Fragment_Phong extends Fragment implements PhongContract.View, Loai
     public void onResume() {
         super.onResume();
 
+
+        lsPhong = new ArrayList<>();
+        lsLoaiPhong = new ArrayList<>();
         danhSachPhongPresenter = new PhongPresenter(this);
         danhSachPhongPresenter.LayDanhSachPhong();
         // lấy loại phòng
-        loaiPhongPresenter=new LoaiPhongPresenter(this);
+        loaiPhongPresenter = new LoaiPhongPresenter(this);
         loaiPhongPresenter.LayLoaiPhong();
+
+       PhongAdapter phongAdapter=new PhongAdapter(this);
+       phongAdapter.notifyDataSetChanged();
 
     }
 

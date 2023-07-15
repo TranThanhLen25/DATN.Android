@@ -118,6 +118,8 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
         DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO = new DieuKienLocPhieuXuatDTO();
         dieuKienLocPhieuXuatDTO.setSoChungTu("px");
         phieuXuatPresenter.LayDanhSachPhieuXuat(dieuKienLocPhieuXuatDTO);
+
+
         fragmentDsPhieuNhanPhongBinding.iclAppbackpnp.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -202,6 +204,14 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
 //        LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
 //        rscvPhieuNhanPhong.setLayoutManager(LinearLayoutManager);
 //    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        PhieuNhanPhongAdapter pn=new PhieuNhanPhongAdapter(this);
+        pn.notifyDataSetChanged();
+    }
 
     @Override
     public void onLayDanhSachPhieuNhanSuccess(List<PhieuNhanDTO> list) {

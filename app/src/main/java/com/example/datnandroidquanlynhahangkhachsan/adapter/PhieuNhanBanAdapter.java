@@ -14,6 +14,7 @@ import com.example.datnandroidquanlynhahangkhachsan.Fragment_danhSachPhieuNhanBa
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ItemPhieunhanphongBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatBanActivity;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 
@@ -26,6 +27,7 @@ public class PhieuNhanBanAdapter extends RecyclerView.Adapter<PhieuNhanBanAdapte
 
     private List<PhieuNhanDTO> lsPhieuNhan;
     private List<KhachHangDTO> lsKhachHang;
+    private List<PhieuXuatDTO> lsPhieuXuat;
     private AppUtils ac;
     private KhachHangDTO khachHangDTO;
     private Context context;
@@ -38,7 +40,8 @@ public class PhieuNhanBanAdapter extends RecyclerView.Adapter<PhieuNhanBanAdapte
     public PhieuNhanBanAdapter(Fragment_danhSachPhieuNhanBan fragment_danhSachPhieuNhanBan) {
     }
 
-    public void setData(List<PhieuNhanDTO> lsPhieuNhan, List<KhachHangDTO> lsKhachHang, Context context) {
+    public void setData(List<PhieuXuatDTO> lsPhieuXuat,  List<PhieuNhanDTO> lsPhieuNhan, List<KhachHangDTO> lsKhachHang, Context context) {
+       this.lsPhieuXuat=lsPhieuXuat;
         this.lsPhieuNhan = lsPhieuNhan;
         this.lsKhachHang = lsKhachHang;
         this.context = context;
@@ -95,6 +98,14 @@ public class PhieuNhanBanAdapter extends RecyclerView.Adapter<PhieuNhanBanAdapte
                         editor1.putString("CCCD",lsKhachHang.get(i).getCccd());
                         editor1.putString("SDT",lsKhachHang.get(i).getSdt());
                         editor1.putLong("KHID",lsKhachHang.get(i).getKhachHangId());
+                    }
+                }
+
+                for (int i=0;i<lsPhieuXuat.size();i++)
+                {
+                    if (lsPhieuXuat.get(i).getPhieuNhanId()== phieuNhanDTO.getPhieuNhanId())
+                    {
+                        editor.putLong("PXID",lsPhieuXuat.get(i).getPhieuXuatId());
                     }
                 }
 

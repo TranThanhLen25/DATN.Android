@@ -170,11 +170,15 @@ public class Fragment_danhSachBan extends Fragment implements BanContract.View, 
     public void onResume() {
         super.onResume();
         ///laay Ban
+        lsBan = new ArrayList<>();
+        lsLoaiBan = new ArrayList<>();
         BanPresenter banPresenter = new BanPresenter(this);
         banPresenter.LayDanhSachBan();
         /// laay loai ban
         BanPresenter banPresenter1 = new BanPresenter(this);
         banPresenter1.LayDanhSachLoaiBan();
+        BanAdapter banAdapter=new BanAdapter(this);
+        banAdapter.notifyDataSetChanged();
     }
 
     @Override

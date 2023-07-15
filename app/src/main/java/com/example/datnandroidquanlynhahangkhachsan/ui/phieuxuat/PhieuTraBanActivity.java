@@ -211,7 +211,7 @@ public class PhieuTraBanActivity extends AppCompatActivity implements HangHoaCon
                     public void onClick(View view) {
                         if (sharedPreferences.getInt("KTTT", 0) == 4) {
                             banDTO.setBanId(sharedPreferences.getInt("BANID", 0));
-                            banDTO.setTrangThaiId(3);
+                            banDTO.setTrangThaiId(1002);
                             banPresenter.CapNhatTrangThaiBan(banDTO);
                         }
                         /// cap nhat PNCT

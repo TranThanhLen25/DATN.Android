@@ -316,7 +316,7 @@ phieuXuatDTO=new PhieuXuatDTO();
                     public void onClick(View view) {
                         if (sharedPreferences.getInt("KTTHANHTOAN",0)==4) {
                             phongDTO.setPhongId(phongid);
-                            phongDTO.setTrangThaiId(3);
+                            phongDTO.setTrangThaiId(1002);
                             phongPresenter.CapNhatTrangThaiPhong(phongDTO);
                         }
                         ////lay thong tin tu Phieu nhan CT

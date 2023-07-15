@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.Toolbar_Drawer_Activity;
+import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuXuatChiTietAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThanhToanBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.DichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
@@ -408,7 +409,13 @@ public class ThanhToanTatCaActivity extends AppCompatActivity implements PhieuTh
                                 ) {
                                     for (int u = 0; u < lsHangHoa.size(); u++) {
                                         if (lsHangHoa.get(u).getHangHoaId() == lsDichVu.get(r).getHangHoaId()) {
-                                            PhieuXuatChiTietDTO phieuXuatChiTietDTO = new PhieuXuatChiTietDTO(lsDichVu.get(r).getHangHoaId(), Double.valueOf(lsDichVu.get(r).getSoLuong()), Double.valueOf(lsHangHoa.get(u).getDonGia()), Double.valueOf((lsDichVu.get(r).getSoLuong()) * (lsHangHoa.get(u).getDonGia())), "", "", lsPhieuNhanCT.get(a).getPhieuNhanPhongChiTietId(), 1L);
+                                            PhieuXuatChiTietDTO phieuXuatChiTietDTO = new PhieuXuatChiTietDTO(
+                                                    lsDichVu.get(r).getHangHoaId()
+                                                    , Double.valueOf(lsDichVu.get(r).getSoLuong())
+                                                    , Double.valueOf(lsHangHoa.get(u).getDonGia())
+                                                    , Double.valueOf((lsDichVu.get(r).getSoLuong()) * (lsHangHoa.get(u).getDonGia()))
+                                                    , "", ""
+                                                    , lsPhieuNhanCT.get(a).getPhieuNhanPhongChiTietId(), 1L);
                                             tamlsPhieuXuatChiTiet.add(phieuXuatChiTietDTO);
 
                                             dichVuDTO.setDichVuID(lsDichVu.get(r).getDichVuID());
@@ -430,7 +437,7 @@ public class ThanhToanTatCaActivity extends AppCompatActivity implements PhieuTh
                     editor.clear();
                     editor.apply();
                     Intent intent=new Intent(ThanhToanTatCaActivity.this, Toolbar_Drawer_Activity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();
 
@@ -453,6 +460,91 @@ public class ThanhToanTatCaActivity extends AppCompatActivity implements PhieuTh
     @Override
     public void onLayDanhSachPhieuNhanPhongChiTietSuccess(List<PhieuNhanPhongChiTietDTO> list) {
         lsPhieuNhanCT = list;
+
+
+        Date date = Calendar.getInstance().getTime();
+
+        for (int i = 0; i < lsPhieuNhanCT.size(); i++) {
+            if (lsPhieuNhanCT.get(i).getTrangThai() != 2) {
+                NGAYNHAN = lsPhieuNhanCT.get(i).getThoiGianNhanPhong();
+
+                if(lsPhieuNhanCT.get(i).getThoiGianTraPhong()==null)
+                {
+                    NGAYTRA=date;
+                }
+                else {
+                    NGAYTRA = lsPhieuNhanCT.get(i).getThoiGianTraPhong();
+                }
+                Nhan = format.format(NGAYNHAN);
+                Tra = format.format(NGAYTRA);
+
+                vao = LocalDate.parse(Nhan, fm);
+                ra = LocalDate.parse(Tra, fm);
+
+                if(ra.toEpochDay() - vao.toEpochDay()==0)
+                {
+                    Ngay =1 ;
+                }
+                else
+                {
+                    Ngay =ra.toEpochDay() - vao.toEpochDay() ;
+                }
+
+                for (int a = 0; a < lsPhong.size(); a++) {
+
+                    if (lsPhieuNhanCT.get(i).getPhongId() == lsPhong.get(a).getPhongId()) {
+
+                        for (int f = 0; f < loaiPhong.size(); f++) {
+
+                            if (lsPhong.get(a).getLoaiPhongId() == loaiPhong.get(f).getLoaiPhongId()) {
+                                tongTienNgay = tongTienNgay + Ngay * loaiPhong.get(f).getDonGia();
+
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            if (lsPhieuNhanCT.get(i).getTrangThai() != 0) {
+                NGAYNHAN = lsPhieuNhanCT.get(i).getThoiGianNhanPhong();
+                if(lsPhieuNhanCT.get(i).getThoiGianTraPhong()==null)
+                {
+                    NGAYTRA=date;
+                }
+                else {
+                    NGAYTRA = lsPhieuNhanCT.get(i).getThoiGianTraPhong();
+                }
+                Nhan = format.format(NGAYNHAN);
+                Tra = format.format(NGAYTRA);
+                vao = LocalDate.parse(Nhan, fm);
+                ra = LocalDate.parse(Tra, fm);
+                if(ra.toEpochDay() - vao.toEpochDay()==0)
+                {
+                    Ngay =1 ;
+                }
+                else
+                {
+                    Ngay =ra.toEpochDay() - vao.toEpochDay() ;
+                }
+
+
+
+            }
+
+
+
+        }
+
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+
+
+        SharedPreferences sharedPreferences = getSharedPreferences("GET_PHONGID", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putLong("TT_NGAY", tongTienNgay);
+        // editor.putLong("THD_NGAY", tonghoadonNGAY);
+        editor.commit();
+
 
 
     }
@@ -486,6 +578,39 @@ public class ThanhToanTatCaActivity extends AppCompatActivity implements PhieuTh
     @Override
     public void onLayDanhSachDichVuSuccess(List<DichVuDTO> list) {
         lsDichVu = list;
+
+        SharedPreferences sharedPreferences = getSharedPreferences("GET_PHONGID", MODE_PRIVATE);
+        for (int i = 0; i < lsPhieuNhanCT.size(); i++) {
+            for (int t = 0; t < lsDichVu.size(); t++) {
+
+                if ((lsDichVu.get(t).getTrangThai().equals("chưa thanh toán")
+                        && lsPhieuNhanCT.get(i).getPhongId() == lsDichVu.get(t).getPhongID()
+                        &&lsPhieuNhanCT.get(i).getTrangThai()==4)
+                        || (lsDichVu.get(t).getTrangThai().equals("chờ thanh toán")
+                        && lsDichVu.get(t).getPhieuNhanID() == lsPhieuNhanCT.get(i).getPhieuNhanId()
+                        && lsPhieuNhanCT.get(i).getPhongId() == lsDichVu.get(t).getPhongID())) {
+
+                    for (int p = 0; p < lsHangHoa.size(); p++) {
+
+                        if (lsHangHoa.get(p).getHangHoaId() == lsDichVu.get(t).getHangHoaId()) {
+
+                            tienDV = tienDV + (lsHangHoa.get(p).getDonGia() * lsDichVu.get(t).getSoLuong());
+                        }
+                    }
+
+                }
+
+            }
+        }
+
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putLong("TT_DV", tienDV);
+        editor.commit();
+
+
+
 
 
     }

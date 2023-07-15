@@ -16,6 +16,7 @@ import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDoiMatKh
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.dangnhap.NguoiDungContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.dangnhap.NguoiDungPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class Fragment_doiMatKhau extends Fragment implements NguoiDungContract.V
     private NguoiDungDTO nguoiDungDTO;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+    private AppUtils appUtils;
 
     public Fragment_doiMatKhau() {
         // Required empty public constructor
