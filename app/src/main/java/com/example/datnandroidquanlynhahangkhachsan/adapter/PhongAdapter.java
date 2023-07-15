@@ -112,9 +112,13 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         }
 
         /// đổi màu cho dọn phòng
-        else if (phong.getTrangThaiId() == 5)
+        else if (phong.getTrangThaiId() == 1002)
         {
             holder.itemDanhsachphongBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_color_dat);
+        }
+        else if (phong.getTrangThaiId() == 1003)
+        {
+            holder.itemDanhsachphongBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_color_ban);
         }
         else {
             holder.itemDanhsachphongBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_item);
