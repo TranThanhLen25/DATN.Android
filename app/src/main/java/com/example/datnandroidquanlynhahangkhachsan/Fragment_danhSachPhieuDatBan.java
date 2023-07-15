@@ -27,6 +27,7 @@ import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.DsPhieuDatPhongP
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -157,8 +158,31 @@ public class Fragment_danhSachPhieuDatBan extends Fragment implements DsPhieuDat
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        ///lấy khách hàng
+        lsKhachHang = new ArrayList<>();
+        KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
+        DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
+        khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
+
+        rscvPhieuDatBan = fragmentDanhSachPhieuDatBanBinding.rscvDsphieudatban;
+        lsPhieuDat = new ArrayList<>();
+        Date day = Calendar.getInstance().getTime();
+        dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
+        dieuKienLocPhieuDatDTO = new DieuKienLocPhieuDatDTO();
+        dieuKienLocPhieuDatDTO.setLoaiPhieu(2);
+        dieuKienLocPhieuDatDTO.setTrangThai("đang đặt");
+        dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
+        LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
+        rscvPhieuDatBan.setLayoutManager(LinearLayoutManager);
+    }
+
+    @Override
     public void onLayDanhSachPhieuDatSuccess(List<PhieuDatDTO> list) {
         lsPhieuDat = list;
+        // Đảo ngược thứ tự của tập dữ liệu
+        Collections.reverse(lsPhieuDat);
         phieuDatBanAdapter = new PhieuDatBanAdapter(this);
         phieuDatBanAdapter.setData(getContext(), lsPhieuDat, lsKhachHang);
         rscvPhieuDatBan.setAdapter(phieuDatBanAdapter);

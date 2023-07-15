@@ -6,6 +6,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -261,7 +262,8 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
         if (themphieunhanphongBinding.etHotenPhieunhanphong.length() < 1
                 || themphieunhanphongBinding.etCccdPhieunhanphong.length() < 12
                 || themphieunhanphongBinding.etSdtPhieunhanphong.length() < 10
-                || thoiGianNhan == "") {
+                || thoiGianNhan == ""
+                || lsChonPhongDataInt.size() == 0) {
             Toast.makeText(this, "vui lòng nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
         } else {
             Date thoiGianNhanPhong = ac.formatStringToDateUtil(thoiGianNhan, "dd/MM/yyyy HH:mm");
@@ -270,8 +272,11 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
             if (thoiGianTra != null || thoiGianTra != "") {
                 thoiGianTraPhong = ac.formatStringToDateUtil(thoiGianTra, "dd/MM/yyyy HH:mm");
             }
+
+            SharedPreferences sharedPreferences = getSharedPreferences("NGUOI_DUNG", MODE_PRIVATE);
+            int nguoiDungID = sharedPreferences.getInt("ID", 0);
             //lấy dữ liệu phiếu đặt rồi thêm vào biến tạm
-            phieuNhanDTO = new PhieuNhanDTO("", thoiGianNhanPhong, 1, 3, thoiGianTraPhong, 1L, "", "đang nhận phòng");
+            phieuNhanDTO = new PhieuNhanDTO("", thoiGianNhanPhong, nguoiDungID, 3, thoiGianTraPhong, 1L, "", "đang nhận phòng");
 
             //tạo danh sách phiếu nhận chi tiết
             phieuNhanPhongChiTietDTOS = new ArrayList<>();
@@ -345,9 +350,9 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
             thoiGianNhan = String.valueOf(statcal.get(Calendar.DAY_OF_MONTH)) + "/";
         }
         if (statcal.get(Calendar.MONTH) < 10) {
-            thoiGianNhan += "0" + String.valueOf(statcal.get(Calendar.MONTH)) + "/" + String.valueOf(statcal.get(Calendar.YEAR));
+            thoiGianNhan += "0" + String.valueOf(statcal.get(Calendar.MONTH) + 1) + "/" + String.valueOf(statcal.get(Calendar.YEAR));
         } else {
-            thoiGianNhan += String.valueOf(statcal.get(Calendar.MONTH)) + "/" + String.valueOf(statcal.get(Calendar.YEAR));
+            thoiGianNhan += String.valueOf(statcal.get(Calendar.MONTH) + 1) + "/" + String.valueOf(statcal.get(Calendar.YEAR));
         }
         if (statcal.get(Calendar.HOUR) < 10) {
             thoiGianNhan += " 0" + String.valueOf(statcal.get(Calendar.HOUR)) + ":";

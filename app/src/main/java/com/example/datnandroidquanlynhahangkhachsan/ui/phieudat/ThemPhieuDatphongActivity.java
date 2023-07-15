@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -211,8 +212,12 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
                 thoiGianTraPhong = ac.formatStringToDateUtil(thoiGianTra, "dd/MM/yyyy HH:mm");
             }
 
-           // //lấy dữ liệu phiếu đặt rồi thêm vào biến tạm
-            finalPhieuDatDTO = new PhieuDatDTO("PDP" + (lsPhieuDat.size() + 1), day, 1, 1, thoiGianNhanPhong, thoiGianTraPhong, "ghi chu", 1L, "đang đặt");
+            SharedPreferences sharedPreferences = getSharedPreferences("NGUOI_DUNG", MODE_PRIVATE);
+            int nguoiDungID = sharedPreferences.getInt("ID", 0);
+
+
+            // //lấy dữ liệu phiếu đặt rồi thêm vào biến tạm
+            finalPhieuDatDTO = new PhieuDatDTO("PDP" + (lsPhieuDat.size() + 1), day, nguoiDungID, 1, thoiGianNhanPhong, thoiGianTraPhong, "ghi chu", 1L, "đang đặt");
 
 
             //lấy dữ liệu khách hàng từ edittext
@@ -242,21 +247,27 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
 //                phongPresenter.CapNhatTrangThaiPhong(phongDTO);
             }
 
-            //lấy dữ liệu tổng và thêm vào cơ sở dữ liệu
-            datPhongDTO = new DatPhongDTO(finalPhieuDatDTO, finalListPhieuDatPhongChiTiet, khachHangDTO);
-            dsPhieuDatPhongPresenter.ThemPhieuDatPhong(datPhongDTO);
+            if (finalListPhieuDatPhongChiTiet.size() == 0) {
+                Toast.makeText(this, "vui lòng nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
+            } else {
+                //lấy dữ liệu tổng và thêm vào cơ sở dữ liệu
+                datPhongDTO = new DatPhongDTO(finalPhieuDatDTO, finalListPhieuDatPhongChiTiet, khachHangDTO);
+                dsPhieuDatPhongPresenter.ThemPhieuDatPhong(datPhongDTO);
 
-            //sau khi thêm thì xóa dữ liệu của cái biến số lượng của mỗi loại phòng
-            soLuongLoaiPhong.soLuong.clear();
-            tempData.tempDatakhachHangDTO = new KhachHangDTO();
-            //onBackPressed();
+                //sau khi thêm thì xóa dữ liệu của cái biến số lượng của mỗi loại phòng
+                soLuongLoaiPhong.soLuong.clear();
+                tempData.tempDatakhachHangDTO = new KhachHangDTO();
+                //onBackPressed();
 //            Intent i = new Intent(this, MainActivity.class);
 //            startActivity(i);
 
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-            startActivity(intent);
-            finish();
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+                finish();
+            }
+
+
         }
     }
 
@@ -571,7 +582,7 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
         rcv_LoaiPhong.addItemDecoration(decoration);
         rcv_LoaiPhong.setAdapter(loaiPhongAdapter);
 
-      //  Toast.makeText(this, "lấy loại phòng thành công", Toast.LENGTH_LONG).show();
+        //  Toast.makeText(this, "lấy loại phòng thành công", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -619,20 +630,21 @@ public class ThemPhieuDatphongActivity extends AppCompatActivity implements DsPh
 
     @Override
     public void onThemKhachHangSuccess() {
-       // Toast.makeText(this, "Thêm khách hàng thành công", Toast.LENGTH_LONG).show();
+        // Toast.makeText(this, "Thêm khách hàng thành công", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onThemKhachHangError(String error) {
-      //  Toast.makeText(this, "Thêm khách hàng thất bại", Toast.LENGTH_LONG).show();
+        //  Toast.makeText(this, "Thêm khách hàng thất bại", Toast.LENGTH_LONG).show();
     }
+
     @Override
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
-       // Toast.makeText(this, "Thêm khách hàng thành công", Toast.LENGTH_LONG).show();
+        // Toast.makeText(this, "Thêm khách hàng thành công", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onLayDanhSachKhachHangError(String error) {
-       // Toast.makeText(this, "Thêm khách hàng thất bại", Toast.LENGTH_LONG).show();
+        // Toast.makeText(this, "Thêm khách hàng thất bại", Toast.LENGTH_LONG).show();
     }
 }
