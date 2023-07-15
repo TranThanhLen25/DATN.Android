@@ -24,6 +24,7 @@ import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContra
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatConTract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -184,27 +185,7 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
         return fragmentDsPhieuNhanPhongBinding.getRoot();
     }
 
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        lsPhieuNhan = new ArrayList<>();
-//        ///lấy dữ liệu danh sách phiếu nhận
-//        DsPhieuNhanPhongPresenter phieuNhanPhongPresenter = new DsPhieuNhanPhongPresenter(this);
-//        DieuKienLocPhieuNhanDTO dieuKienLocPhieuNhanDTO = new DieuKienLocPhieuNhanDTO();
-//
-//        ////loại 3:phiếu nhận phòng
-//        dieuKienLocPhieuNhanDTO.setLoaiPhieu(3);
-//        phieuNhanPhongPresenter.LayDanhSachPhieuNhan(dieuKienLocPhieuNhanDTO);
-//
-//        ///lấy khách hàng
-//        lsKhachHang = new ArrayList<>();
-//        KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
-//        DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
-//        khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
-//        rscvPhieuNhanPhong = fragmentDsPhieuNhanPhongBinding.rscvDsphieunhanphong;
-//        LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
-//        rscvPhieuNhanPhong.setLayoutManager(LinearLayoutManager);
-//    }
+
 
 
     @Override
@@ -261,6 +242,7 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
 
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
         lsKhachHang = list;
+        tempData.khachHangDTOList=lsKhachHang;
         phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(this);
         phieuNhanPhongAdapter.setData(lsPhieuXuat, lsPhieuNhan, lsKhachHang, getContext());
         rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);

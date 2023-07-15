@@ -26,7 +26,7 @@ import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhon
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatConTract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatPresenter;
-
+import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -199,6 +199,8 @@ public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNh
     @Override
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
         lsKhachHang = list;
+
+        tempData.khachHangDTOList=lsKhachHang;
         phieuNhanBanAdapter = new PhieuNhanBanAdapter(this);
         phieuNhanBanAdapter.setData(lsPhieuXuat, lsPhieuNhan, lsKhachHang, getContext());
         rscvPhieuNhanBan.setAdapter(phieuNhanBanAdapter);
