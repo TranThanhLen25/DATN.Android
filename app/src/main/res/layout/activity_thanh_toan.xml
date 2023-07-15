@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ThanhToanActivity">
+>
 
     <include
         android:id="@+id/toolbar_thanhtoan"
@@ -15,10 +15,11 @@
     <ScrollView
         android:id="@+id/scr"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar_thanhtoan"
+        app:layout_constraintBottom_toTopOf="@id/ctl_btn"
        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -289,6 +290,10 @@
                 android:layout_marginTop="5dp"
                 android:inputType="number"
                 android:paddingStart="10dp"
+                android:drawableEnd="@drawable/money"
+                android:paddingEnd="10dp"
+                android:hint="0"
+                android:letterSpacing="0.1"
                 app:layout_constraintEnd_toEndOf="@id/ctl_dua"
                 app:layout_constraintStart_toStartOf="@id/ctl_dua"
                 app:layout_constraintTop_toBottomOf="@id/tv_dua"
@@ -358,9 +363,10 @@
                 android:layout_marginTop="5dp"
                 android:inputType="text"
                 android:maxLength="50"
-
+                android:drawableEnd="@drawable/dollar"
                 android:maxLines="3"
                 android:padding="8dp"
+                android:paddingEnd="10dp"
                 android:paddingStart="10dp"
                 app:layout_constraintEnd_toEndOf="@id/ctl_ghichu"
                 app:layout_constraintStart_toStartOf="@id/ctl_ghichu"

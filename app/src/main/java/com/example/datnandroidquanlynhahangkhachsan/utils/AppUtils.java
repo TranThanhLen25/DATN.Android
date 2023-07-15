@@ -406,4 +406,10 @@ public class AppUtils {
         }
         return type;
     }
+    public static boolean ktnhap(String str) {
+        Pattern pattern = Pattern.compile("[^A-Za-z0-9]");
+        String p = "" + str;
+        Matcher matcher = pattern.matcher(p);
+        return matcher.find();
+    }
 }

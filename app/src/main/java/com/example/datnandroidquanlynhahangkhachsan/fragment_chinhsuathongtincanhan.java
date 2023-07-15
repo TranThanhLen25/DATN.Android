@@ -89,7 +89,7 @@ public class fragment_chinhsuathongtincanhan extends Fragment implements NguoiDu
         chinhsuathongtincanhanBinding.etQqchinhsua.setText(sharedPreferences.getString("DIACHI", ""));
 
 
-        chinhsuathongtincanhanBinding.tvGtchinhsua.setText(sharedPreferences.getString("GIOITINH", ""));
+//        chinhsuathongtincanhanBinding.tvGtchinhsua.setText(sharedPreferences.getString("GIOITINH", ""));
 
         chinhsuathongtincanhanBinding.etCCCD.setText(sharedPreferences.getString("CCCD", ""));
 
