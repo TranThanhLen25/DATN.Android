@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.ThanhToan;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.R;
+import com.example.datnandroidquanlynhahangkhachsan.Toolbar_Drawer_Activity;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThanhToanBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.DichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.HangHoaDTO;
@@ -347,7 +349,7 @@ public class ThanhToanTatCaActivity extends AppCompatActivity implements PhieuTh
                             phieuNhanPhongChiTietPresenter.CapNhatPhieuNhanPhongChiTiet(phieuNhanPhongChiTietDTO);
                             /// cap nhat trang thai phong
                             phongDTO.setPhongId(lsPhieuNhanCT.get(i).getPhongId());
-                            phongDTO.setTrangThaiId(3);
+                            phongDTO.setTrangThaiId(1002);
                             phongPresenter.CapNhatTrangThaiPhong(phongDTO);
                         }
 
@@ -427,7 +429,11 @@ public class ThanhToanTatCaActivity extends AppCompatActivity implements PhieuTh
                     }
                     editor.clear();
                     editor.apply();
-                    onBackPressed();
+                    Intent intent=new Intent(ThanhToanTatCaActivity.this, Toolbar_Drawer_Activity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                    startActivity(intent);
+                    finish();
+
 
                 }
             }
@@ -625,7 +631,7 @@ public class ThanhToanTatCaActivity extends AppCompatActivity implements PhieuTh
     @Override
     public void onLayDanhSachPhieuXuatSuccess(List<PhieuXuatDTO> list) {
         lsPhieuXuat = list;
-        Toast.makeText(ThanhToanTatCaActivity.this, ""+lsPhieuXuat.size(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(ThanhToanTatCaActivity.this, ""+lsPhieuXuat.size(), Toast.LENGTH_SHORT).show();
 
     }
 

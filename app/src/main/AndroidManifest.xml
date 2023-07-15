@@ -20,10 +20,10 @@
             android:name=".ui.ThanhToan.ThanhToanTatCaActivity"
             android:exported="false" />
         <activity
-            android:name=".ThanhToanBanActivity"
+            android:name=".ui.ThanhToan.ThanhToanBanActivity"
             android:exported="false" />
         <activity
-            android:name=".ThanhToanTatCaActivity"
+            android:name=".ui.ThanhToan.ThanhToanTatCaBanActivity"
             android:exported="false" />
         <activity
             android:name=".Activity_ChiTiet_NhanVien"
