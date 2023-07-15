@@ -70,7 +70,7 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
     private PhieuDatDTO phieuDatDTO;
     private List<PhieuDatBanChiTietDTO> ListPhieuDatBanChiTiet;
 
-
+    private KhachHangDTO khachHangCu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,6 +124,9 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
                 OnclickThemPhieuDat();
             }
         });
+
+        //khách hàng cũ
+        khachHangCu = new KhachHangDTO();
     }
 
     @Override
@@ -341,6 +344,17 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
                     } else {
                         activityThemPhieuDatBanBinding.inputlayoutCccdPhieudatban.setHelperText("");
                         activityThemPhieuDatBanBinding.inputlayoutCccdPhieudatban.setError("");
+                    }
+                    for (int i = 0; i < tempData.khachHangDTOList.size(); i++) {
+                        if (tempData.khachHangDTOList.get(i).getCccd().equals(abc)) {
+                            khachHangCu = tempData.khachHangDTOList.get(i);
+                            break;
+                        }
+                    }
+                    if (khachHangCu.getTenKhachHang() != null) {
+                        activityThemPhieuDatBanBinding.etHotenPhieudatban.setText(khachHangCu.getTenKhachHang());
+                        activityThemPhieuDatBanBinding.etSdtPhieudatban.setText(khachHangCu.getSdt());
+                        //Toast.makeText(activity_them_phieu_dat_ban.this, khachHangCu.getNoiThuongTru(), Toast.LENGTH_LONG).show();
                     }
                 }
 

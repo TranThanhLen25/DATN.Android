@@ -173,21 +173,30 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
     @Override
     public void onResume() {
         super.onResume();
-        ///lấy khách hàng
-        lsKhachHang = new ArrayList<>();
-        KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
-        DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
-        khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
 
-        rscvPhieuDatPhong = fragmentDsPhieuDatPhongBinding.rscvDsphieudatphong;
-        lsPhieuDat = new ArrayList<>();
-        dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
-        dieuKienLocPhieuDatDTO = new DieuKienLocPhieuDatDTO();
-        dieuKienLocPhieuDatDTO.setLoaiPhieu(1);
-        dieuKienLocPhieuDatDTO.setTrangThai("đang đặt");
-        dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
-        LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
-        rscvPhieuDatPhong.setLayoutManager(LinearLayoutManager);
+        try {
+            Thread.sleep(100);
+            ///lấy khách hàng
+            lsKhachHang = new ArrayList<>();
+            KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
+            DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
+            khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
+
+            rscvPhieuDatPhong = fragmentDsPhieuDatPhongBinding.rscvDsphieudatphong;
+            lsPhieuDat = new ArrayList<>();
+            dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
+            dieuKienLocPhieuDatDTO = new DieuKienLocPhieuDatDTO();
+            dieuKienLocPhieuDatDTO.setLoaiPhieu(1);
+            dieuKienLocPhieuDatDTO.setTrangThai("đang đặt");
+            dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
+            LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
+            rscvPhieuDatPhong.setLayoutManager(LinearLayoutManager);
+
+
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override
@@ -280,8 +289,7 @@ public class Fragment_dsPhieuDatPhong extends Fragment implements DsPhieuDatPhon
     @Override
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
         lsKhachHang = list;
-        // Đảo ngược thứ tự của tập dữ liệu
-        Collections.reverse(lsKhachHang);
+        tempData.khachHangDTOList=lsKhachHang;
         phieuDatPhongAdapter = new PhieuDatPhongAdapter(this);
         phieuDatPhongAdapter.setData(getContext(), lsPhieuDat, lsKhachHang);
         rscvPhieuDatPhong.setAdapter(phieuDatPhongAdapter);
