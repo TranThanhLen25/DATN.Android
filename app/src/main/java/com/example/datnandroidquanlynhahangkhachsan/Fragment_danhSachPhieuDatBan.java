@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
@@ -160,22 +161,32 @@ public class Fragment_danhSachPhieuDatBan extends Fragment implements DsPhieuDat
     @Override
     public void onResume() {
         super.onResume();
-        ///lấy khách hàng
-        lsKhachHang = new ArrayList<>();
-        KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
-        DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
-        khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
 
-        rscvPhieuDatBan = fragmentDanhSachPhieuDatBanBinding.rscvDsphieudatban;
-        lsPhieuDat = new ArrayList<>();
-        Date day = Calendar.getInstance().getTime();
-        dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
-        dieuKienLocPhieuDatDTO = new DieuKienLocPhieuDatDTO();
-        dieuKienLocPhieuDatDTO.setLoaiPhieu(2);
-        dieuKienLocPhieuDatDTO.setTrangThai("đang đặt");
-        dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
-        LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
-        rscvPhieuDatBan.setLayoutManager(LinearLayoutManager);
+        try {
+            Thread.sleep(100);
+            ///lấy khách hàng
+            lsKhachHang = new ArrayList<>();
+            KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
+            DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
+            khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
+
+            rscvPhieuDatBan = fragmentDanhSachPhieuDatBanBinding.rscvDsphieudatban;
+            LinearLayoutManager LinearLayoutManager = new LinearLayoutManager(this.getActivity());
+            rscvPhieuDatBan.setLayoutManager(LinearLayoutManager);
+            lsPhieuDat = new ArrayList<>();
+            Date day = Calendar.getInstance().getTime();
+            dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
+            dieuKienLocPhieuDatDTO = new DieuKienLocPhieuDatDTO();
+            dieuKienLocPhieuDatDTO.setLoaiPhieu(2);
+            dieuKienLocPhieuDatDTO.setTrangThai("đang đặt");
+            dsPhieuDatPhongPresenter.LayDanhSachPhieuDat(dieuKienLocPhieuDatDTO);
+
+
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 
     @Override
@@ -186,7 +197,7 @@ public class Fragment_danhSachPhieuDatBan extends Fragment implements DsPhieuDat
         phieuDatBanAdapter = new PhieuDatBanAdapter(this);
         phieuDatBanAdapter.setData(getContext(), lsPhieuDat, lsKhachHang);
         rscvPhieuDatBan.setAdapter(phieuDatBanAdapter);
-        //Toast.makeText(getContext(), "Lấy danh sách phiếu đặt phòng thành công", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getContext(), String.valueOf(lsPhieuDat.size()), Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -267,6 +278,7 @@ public class Fragment_danhSachPhieuDatBan extends Fragment implements DsPhieuDat
     @Override
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
         lsKhachHang = list;
+        tempData.khachHangDTOList=lsKhachHang;
         phieuDatBanAdapter = new PhieuDatBanAdapter(this);
         phieuDatBanAdapter.setData(getContext(), lsPhieuDat, lsKhachHang);
         rscvPhieuDatBan.setAdapter(phieuDatBanAdapter);

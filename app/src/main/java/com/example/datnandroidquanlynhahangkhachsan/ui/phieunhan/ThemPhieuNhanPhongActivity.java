@@ -61,7 +61,7 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
     private KhachHangDTO khachHangDTO;
     private LoaiPhongPresenter loaiPhongPresenter;
     private List<LoaiPhongDTO> loaiPhongDTOList;
-
+    private KhachHangDTO khachHangCu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,6 +139,8 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
 //            }
 //            themphieunhanphongBinding.tvPhongDataPhieunhanphong.setText(soLuongPhong);
 //        }
+        //khách hàng cũ
+        khachHangCu = new KhachHangDTO();
     }
 
     private void KiemTraDuLieuDauVao() {
@@ -213,6 +215,17 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
                     } else {
                         themphieunhanphongBinding.inputlayoutCccdPhieudatphong.setHelperText("");
                         themphieunhanphongBinding.inputlayoutCccdPhieudatphong.setError("");
+                    }
+                    for (int i = 0; i < tempData.khachHangDTOList.size(); i++) {
+                        if (tempData.khachHangDTOList.get(i).getCccd().equals(abc)) {
+                            khachHangCu = tempData.khachHangDTOList.get(i);
+                            break;
+                        }
+                    }
+                    if (khachHangCu.getTenKhachHang() != null) {
+                        themphieunhanphongBinding.etHotenPhieunhanphong.setText(khachHangCu.getTenKhachHang());
+                        themphieunhanphongBinding.etSdtPhieunhanphong.setText(khachHangCu.getSdt());
+                        //Toast.makeText(ThemPhieuDatphongActivity.this, khachHangCu.getNoiThuongTru(), Toast.LENGTH_LONG).show();
                     }
                 }
 

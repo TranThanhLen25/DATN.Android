@@ -25,6 +25,8 @@ public class tempData {
     public static List<PhieuDatPhongChiTietDTO> phieuDatPhongChiTietDTOList;
     public static KhachHangDTO tempDatakhachHangDTO;
     public static List<Integer> soLuongPhongDaDats;
+
+    public static List<KhachHangDTO> khachHangDTOList;
     public static boolean Check = false;
     public static boolean CheckChucNang = false;
     public static boolean checkDoiPhong = false;

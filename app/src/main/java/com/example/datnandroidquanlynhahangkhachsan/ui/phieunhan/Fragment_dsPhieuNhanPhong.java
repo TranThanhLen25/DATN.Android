@@ -20,6 +20,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhan
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatConTract;
@@ -262,8 +263,7 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
 
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
         lsKhachHang = list;
-        // Đảo ngược thứ tự của tập dữ liệu
-        Collections.reverse(lsKhachHang);
+        tempData.khachHangDTOList=lsKhachHang;
         phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(this);
         phieuNhanPhongAdapter.setData(lsPhieuXuat, lsPhieuNhan, lsKhachHang, getContext());
         rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);

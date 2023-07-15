@@ -17,6 +17,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienL
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.tempData.tempData;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhongContract;
@@ -184,6 +185,7 @@ public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNh
     @Override
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
         lsKhachHang = list;
+        tempData.khachHangDTOList=lsKhachHang;
         phieuNhanBanAdapter = new PhieuNhanBanAdapter(this);
         phieuNhanBanAdapter.setData(lsPhieuNhan, lsKhachHang, getContext());
         rscvPhieuNhanBan.setAdapter(phieuNhanBanAdapter);
