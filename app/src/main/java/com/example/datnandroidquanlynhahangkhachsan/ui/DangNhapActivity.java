@@ -16,7 +16,7 @@ import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityToolbarD
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.dangnhap.NguoiDungContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.dangnhap.NguoiDungPresenter;
-import com.google.gson.Gson;
+import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +28,10 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
     private ActivityDangNhapBinding dangNhapBinding;
     private String LuuThongTin = "taikhoan and matkhau";
     private Boolean save = false;
-    String username="";
-   ActivityToolbarDrawerBinding toolbarDrawerBinding;
 
+    private AppUtils appUtils;
+    String username = "";
+    ActivityToolbarDrawerBinding toolbarDrawerBinding;
 
 
     @Override
@@ -54,11 +55,14 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String input = charSequence.toString();
-                if (input.length() > 0) {
-                    dangNhapBinding.titleTk.setError("");
-                } else {
+                boolean kt = appUtils.ktnhap(input);
+                if (kt) {
                     dangNhapBinding.titleTk.setHelperText("");
-                    dangNhapBinding.titleTk.setError("Vui lòng nhập tài khoản");
+                    dangNhapBinding.titleTk.setError("Vui lòng nhập tên tài khoản( A-Za-z0-9, 8 ký tự trở lên)");
+
+                } else {
+                    dangNhapBinding.titleTk.setError("");
+
                 }
 
             }
@@ -75,8 +79,8 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
                 if (b) {
 
                 } else {
-                    if (tvTK.length() < 8) {
-                        dangNhapBinding.titleTk.setError("Vui lòng nhập đủ tên tài khoản");
+                    if (tvTK.length() < 8 || appUtils.ktnhap(tvTK)) {
+                        dangNhapBinding.titleTk.setError("Vui lòng nhập tên tài khoản( A-Za-z0-9, 8 ký tự trở lên)");
                         dangNhapBinding.titleTk.setHelperText("");
                     } else {
                         dangNhapBinding.titleTk.setError("");
@@ -95,10 +99,11 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String input = charSequence.toString();
-                if (input.length() > 0) {
+                boolean kt=appUtils.ktnhap(input);
+                if (!kt) {
                     dangNhapBinding.titleMk.setError("");
                 } else {
-                    dangNhapBinding.titleMk.setError("Vui lòng nhập mật khẩu");
+                    dangNhapBinding.titleMk.setError("Vui lòng nhập mật khẩu( A-Za-z0-9, 8 ký tự trở lên)");
                     dangNhapBinding.titleMk.setHelperText("");
                 }
 
@@ -116,8 +121,8 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
                 if (b) {
 
                 } else {
-                    if (tvMK.length() < 8) {
-                        dangNhapBinding.titleMk.setError("Vui lòng nhập đủ ký tự");
+                    if (tvMK.length() < 8 || appUtils.ktnhap(tvMK)) {
+                        dangNhapBinding.titleMk.setError("Vui lòng nhập mật khẩu( A-Za-z0-9, 8 ký tự trở lên)");
                         dangNhapBinding.titleMk.setHelperText("");
                     } else {
                         dangNhapBinding.titleMk.setError("");
@@ -134,8 +139,7 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
                     if (dangNhapBinding.etTaikhoan.getText().toString().equals(lsNguoiDung.get(i).getTaiKhoan())
                             && dangNhapBinding.etMatkhau.getText().toString().equals(lsNguoiDung.get(i).getMatKhau())) {
 
-                        Intent intent = new Intent(DangNhapActivity.this, Toolbar_Drawer_Activity.class);
-                        startActivity(intent);
+
 
                         rememberUser(
                                 dangNhapBinding.etTaikhoan.getText().toString(),
@@ -148,7 +152,12 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
                                 lsNguoiDung.get(i).getDiaChi(),
                                 lsNguoiDung.get(i).getLoaiTaiKhoan(),
                                 true);
-                        save = true;
+                                 save = true;
+
+                        Intent intent = new Intent(DangNhapActivity.this, Toolbar_Drawer_Activity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        finish();
 
                     }
                 }
@@ -160,6 +169,7 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
 
         if (check() == 1) {
             Intent intent = new Intent(DangNhapActivity.this, Toolbar_Drawer_Activity.class);
+
             startActivity(intent);
         }
         setContentView(dangNhapBinding.getRoot());
@@ -194,7 +204,7 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
         editor.putString("LOAITAIKHOAN", loaitaikhoan);
         editor.putBoolean("REMEMBER", status);
 
-       //Lưu lại
+        //Lưu lại
         editor.commit();
     }
 
@@ -229,15 +239,21 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
     public void onLayNguoiDungIDError(String error) {
 
     }
-    @Override
-    public void onCapNhatNguoiDungSuccess(){}
 
     @Override
-    public void onCapNhatNguoiDungError(String error){}
+    public void onCapNhatNguoiDungSuccess() {
+    }
 
     @Override
-    public void onThemNguoiDungSuccess(){}
+    public void onCapNhatNguoiDungError(String error) {
+    }
 
     @Override
-    public void onThemNguoiDungError(String error){}
+    public void onThemNguoiDungSuccess() {
+    }
+
+    @Override
+    public void onThemNguoiDungError(String error) {
+    }
 }
+

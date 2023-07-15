@@ -85,13 +85,13 @@ public class PhieuNhanPhongAdapter extends RecyclerView.Adapter<PhieuNhanPhongAd
                         editor.putLong("KHID",lsKhachHang.get(i).getKhachHangId());
                     }
                 }
-//                for (int i=0;i<lsPhieuXuat.size();i++)
-//                {
-//                    if (lsPhieuXuat.get(i).getPhieuNhanId()== phieuNhanDTO.getPhieuNhanId())
-//                    {
-//                        editor.putLong("PXID",lsPhieuXuat.get(i).getPhieuXuatId());
-//                    }
-//                }
+                for (int i=0;i<lsPhieuXuat.size();i++)
+                {
+                    if (lsPhieuXuat.get(i).getPhieuNhanId()== phieuNhanDTO.getPhieuNhanId())
+                    {
+                        editor.putLong("PXID",lsPhieuXuat.get(i).getPhieuXuatId());
+                    }
+                }
                 editor.putString("SCT",phieuNhanDTO.getSoChungTu());
                 DateFormat dateFormat=new SimpleDateFormat("dd/MM/yyyy");
                 Date ngay=phieuNhanDTO.getNgayLap();

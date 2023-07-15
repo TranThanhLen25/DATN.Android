@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.R;
-import com.example.datnandroidquanlynhahangkhachsan.ThanhToanActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.ThanhToan.ThanhToanActivity;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuTraBanAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityPhieuTraBanBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.BanDTO;

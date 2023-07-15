@@ -7,14 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.R;
-import com.example.datnandroidquanlynhahangkhachsan.ThanhToanActivity;
+import com.example.datnandroidquanlynhahangkhachsan.ui.ThanhToan.ThanhToanActivity;
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuXuatBanChiTietAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityPhieuXuatBanBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.BanDTO;
