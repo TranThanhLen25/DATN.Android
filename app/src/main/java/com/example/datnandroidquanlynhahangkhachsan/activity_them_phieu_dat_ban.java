@@ -6,6 +6,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -75,8 +76,8 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
         super.onCreate(savedInstanceState);
         activityThemPhieuDatBanBinding = activityThemPhieuDatBanBinding.inflate(getLayoutInflater());
         setContentView(activityThemPhieuDatBanBinding.getRoot());
-        dsPhieuDatPhongPresenter=new DsPhieuDatPhongPresenter(this);
-        khachHangDTO=new KhachHangDTO();
+        dsPhieuDatPhongPresenter = new DsPhieuDatPhongPresenter(this);
+        khachHangDTO = new KhachHangDTO();
 
 
         KiemTraDuLieuDauVao();
@@ -130,7 +131,7 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
         super.onResume();
         if (lsChonBanDataInt.size() > 0) {
             String a = String.valueOf(lsChonBanDataInt.size());
-          //  Toast.makeText(this, a, Toast.LENGTH_LONG).show();
+            //  Toast.makeText(this, a, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -139,7 +140,8 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
         if (activityThemPhieuDatBanBinding.etHotenPhieudatban.length() < 1
                 || activityThemPhieuDatBanBinding.etCccdPhieudatban.length() < 12
                 || activityThemPhieuDatBanBinding.etSdtPhieudatban.length() < 10
-                || thoiGianNhan == "") {
+                || thoiGianNhan == ""
+                || lsChonBanDataInt.size() == 0) {
             Toast.makeText(this, "vui lòng nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
         } else {
             Date thoiGianNhanPhong = ac.formatStringToDateUtil(thoiGianNhan, "dd/MM/yyyy HH:mm");
@@ -150,7 +152,10 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
             }
             //lấy dữ liệu phiếu đặt rồi thêm vào biến tạm
             //phieuNhanDTO = new PhieuNhanDTO("", thoiGianNhanPhong, 1, 3, thoiGianTraPhong, 1L, "", "đang nhận phòng");
-            phieuDatDTO = new PhieuDatDTO("",thoiGianNhanPhong,1,2,thoiGianNhanPhong,thoiGianTraPhong,"",1L,"đang đặt");
+
+            SharedPreferences sharedPreferences = getSharedPreferences("NGUOI_DUNG", MODE_PRIVATE);
+            int nguoiDungID = sharedPreferences.getInt("ID", 0);
+            phieuDatDTO = new PhieuDatDTO("", thoiGianNhanPhong, nguoiDungID, 2, thoiGianNhanPhong, thoiGianTraPhong, "", 1L, "đang đặt");
 
             //tạo danh sách phiếu nhận chi tiết
 //            phieuNhanPhongChiTietDTOS = new ArrayList<>();
@@ -166,8 +171,8 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
 //                phieuNhanPhongChiTietDTOS.add(phieuNhanPhongChiTietDTO);
 //            }
 
-            lsphieuDatBanChiTietDTO=new ArrayList<>();
-            for (int i=0;i<lsChonBanDataInt.size();i++){
+            lsphieuDatBanChiTietDTO = new ArrayList<>();
+            for (int i = 0; i < lsChonBanDataInt.size(); i++) {
                 PhieuDatBanChiTietDTO phieuDatBanChiTietDTO1 = new PhieuDatBanChiTietDTO();
                 phieuDatBanChiTietDTO1.setPhieuDatId(0L);
                 phieuDatBanChiTietDTO1.setBanId(lsChonBanDataInt.get(i));
@@ -193,14 +198,14 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
 //            nhanPhongDTO = new NhanPhongDTO(phieuNhanDTO, phieuNhanPhongChiTietDTOS, khachHangDTO);
 //            dsPhieuNhanPhongPresenter.ThemPhieuNhanPhong(nhanPhongDTO);
 
-            datBanDTO = new DatBanDTO(phieuDatDTO,lsphieuDatBanChiTietDTO,khachHangDTO);
+            datBanDTO = new DatBanDTO(phieuDatDTO, lsphieuDatBanChiTietDTO, khachHangDTO);
             dsPhieuDatPhongPresenter.ThemPhieuDatBan(datBanDTO);
 
             String a = String.valueOf(khachHangDTO.getTenKhachHang());
             // Toast.makeText(this, a, Toast.LENGTH_LONG).show();
             tempData.CheckChucNang = false;
             lsChonBanDataInt.clear();
-            tempData.tempDatakhachHangDTO =new KhachHangDTO();
+            tempData.tempDatakhachHangDTO = new KhachHangDTO();
             onBackPressed();
 //            Intent i = new Intent(this, Nav_Ban_Activity.class);
 //            startActivity(i);
@@ -541,12 +546,12 @@ public class activity_them_phieu_dat_ban extends AppCompatActivity implements Ds
 
     @Override
     public void onThemPhieuDatBanSuccess() {
-       // Toast.makeText(this, "thêm phiếu đặt bàn thành công", Toast.LENGTH_LONG).show();
+        // Toast.makeText(this, "thêm phiếu đặt bàn thành công", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onThemPhieuDatBanError(String error) {
-       // Toast.makeText(this, "thêm phiếu đặt bàn thành công", Toast.LENGTH_LONG).show();
+        // Toast.makeText(this, "thêm phiếu đặt bàn thành công", Toast.LENGTH_LONG).show();
     }
 
     @Override

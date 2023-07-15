@@ -6,6 +6,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -185,7 +186,8 @@ public class activityThemPhieuNhanBan extends AppCompatActivity implements DsPhi
         if (activityThemPhieuNhanBanBinding.etHotenPhieunhanban.length() < 1
                 || activityThemPhieuNhanBanBinding.etCccdPhieunhanban.length() < 12
                 || activityThemPhieuNhanBanBinding.etSdtPhieunhanban.length() < 10
-                || thoiGianNhan == "") {
+                || thoiGianNhan == ""
+                || lsChonBanDataInt.size() == 0) {
             Toast.makeText(this, "vui lòng nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
         } else {
             Date thoiGianNhanPhong = ac.formatStringToDateUtil(thoiGianNhan, "dd/MM/yyyy HH:mm");
@@ -194,8 +196,11 @@ public class activityThemPhieuNhanBan extends AppCompatActivity implements DsPhi
             if (thoiGianTra != null || thoiGianTra != "") {
                 thoiGianTraPhong = ac.formatStringToDateUtil(thoiGianTra, "dd/MM/yyyy HH:mm");
             }
+
+            SharedPreferences sharedPreferences = getSharedPreferences("NGUOI_DUNG", MODE_PRIVATE);
+            int nguoiDungID = sharedPreferences.getInt("ID", 0);
             //lấy dữ liệu phiếu đặt rồi thêm vào biến tạm
-            phieuNhanDTO = new PhieuNhanDTO("", thoiGianNhanPhong, 1, 4, thoiGianTraPhong, 1L, "", "đang nhận bàn");
+            phieuNhanDTO = new PhieuNhanDTO("", thoiGianNhanPhong, nguoiDungID, 4, thoiGianTraPhong, 1L, "", "đang nhận bàn");
             //phieuDatDTO = new PhieuDatDTO("",thoiGianNhanPhong,1,2,thoiGianNhanPhong,thoiGianTraPhong,"",1L,"đang đặt");
 
             //tạo danh sách phiếu nhận chi tiết
@@ -393,9 +398,9 @@ public class activityThemPhieuNhanBan extends AppCompatActivity implements DsPhi
             thoiGianNhan = String.valueOf(statcal.get(Calendar.DAY_OF_MONTH)) + "/";
         }
         if (statcal.get(Calendar.MONTH) < 10) {
-            thoiGianNhan += "0" + String.valueOf(statcal.get(Calendar.MONTH)) + "/" + String.valueOf(statcal.get(Calendar.YEAR));
+            thoiGianNhan += "0" + String.valueOf(statcal.get(Calendar.MONTH) + 1) + "/" + String.valueOf(statcal.get(Calendar.YEAR));
         } else {
-            thoiGianNhan += String.valueOf(statcal.get(Calendar.MONTH)) + "/" + String.valueOf(statcal.get(Calendar.YEAR));
+            thoiGianNhan += String.valueOf(statcal.get(Calendar.MONTH) + 1) + "/" + String.valueOf(statcal.get(Calendar.YEAR));
         }
         if (statcal.get(Calendar.HOUR) < 10) {
             thoiGianNhan += " 0" + String.valueOf(statcal.get(Calendar.HOUR)) + ":";
