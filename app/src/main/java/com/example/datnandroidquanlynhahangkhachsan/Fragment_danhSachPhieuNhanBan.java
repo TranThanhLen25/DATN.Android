@@ -17,17 +17,22 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienL
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.DieuKienLocPhieuXuatDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatChiTietDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieuxuat.PhieuXuatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatConTract;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieuxuat.PhieuXuatPresenter;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 
-public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNhanPhongContract.View, KhachHangContract.View {
+public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNhanPhongContract.View, KhachHangContract.View, PhieuXuatConTract.View {
 
     private RecyclerView rscvPhieuNhanBan;
     private List<PhieuNhanDTO> lsPhieuNhan;
@@ -36,6 +41,7 @@ public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNh
     private FragmentDanhSachPhieuNhanBanBinding fragmentDanhSachPhieuNhanBanBinding;
 
     private SearchView searchView;
+    private List<PhieuXuatDTO> lsPhieuXuat;
 
     private List<PhieuNhanDTO> searchList;
 
@@ -93,6 +99,14 @@ public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNh
         DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
         khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
 
+        ///lay PX
+        lsPhieuXuat = new ArrayList<>();
+        PhieuXuatPresenter phieuXuatPresenter = new PhieuXuatPresenter(this);
+        DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO = new DieuKienLocPhieuXuatDTO();
+        dieuKienLocPhieuXuatDTO.setSoChungTu("pb");
+        phieuXuatPresenter.LayDanhSachPhieuXuat(dieuKienLocPhieuXuatDTO);
+
+
         fragmentDanhSachPhieuNhanBanBinding.iclAppbackpnp.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,7 +147,7 @@ public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNh
                     }
                     for (int j = 0; j < searchListKhachHang.size(); j++) {
                         for (int i = 0; i < lsPhieuNhan.size(); i++) {
-                            if (searchListKhachHang.get(j).getKhachHangId()==lsPhieuNhan.get(i).getKhachHangId()){
+                            if (searchListKhachHang.get(j).getKhachHangId() == lsPhieuNhan.get(i).getKhachHangId()) {
                                 searchList.add(lsPhieuNhan.get(i));
                             }
                         }
@@ -141,7 +155,8 @@ public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNh
 
 
                     phieuNhanBanAdapter = new PhieuNhanBanAdapter(Fragment_danhSachPhieuNhanBan.this);
-                    phieuNhanBanAdapter.setData(searchList, lsKhachHang, getContext());
+
+                    phieuNhanBanAdapter.setData(lsPhieuXuat, searchList, lsKhachHang, getContext());
                     rscvPhieuNhanBan.setAdapter(phieuNhanBanAdapter);
                     //Toast.makeText(getContext(), String.valueOf(lsKhachHang.size()), Toast.LENGTH_LONG).show();
                 }
@@ -185,9 +200,55 @@ public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNh
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
         lsKhachHang = list;
         phieuNhanBanAdapter = new PhieuNhanBanAdapter(this);
-        phieuNhanBanAdapter.setData(lsPhieuNhan, lsKhachHang, getContext());
+        phieuNhanBanAdapter.setData(lsPhieuXuat, lsPhieuNhan, lsKhachHang, getContext());
         rscvPhieuNhanBan.setAdapter(phieuNhanBanAdapter);
     }
+
+
+    @Override
+    public void onThemPhieuXuatSuccess() {
+    }
+
+    @Override
+    public void onThemPhieuXuatError(String error) {
+    }
+
+    @Override
+    public void onThemPhieuXuatChiTietSuccess() {
+    }
+
+    @Override
+    public void onThemPhieuXuatChiTietError(String error) {
+    }
+
+    @Override
+    public void onLayDanhSachPhieuXuatSuccess(List<PhieuXuatDTO> list) {
+        lsPhieuXuat = list;
+        phieuNhanBanAdapter = new PhieuNhanBanAdapter(this);
+        phieuNhanBanAdapter.setData(lsPhieuXuat, lsPhieuNhan, lsKhachHang, getContext());
+        rscvPhieuNhanBan.setAdapter(phieuNhanBanAdapter);
+    }
+
+    @Override
+    public void onLayDanhSachPhieuXuatError(String error) {
+    }
+
+    @Override
+    public void onLayDanhSachPhieuXuatChiTietSuccess(List<PhieuXuatChiTietDTO> list) {
+    }
+
+    @Override
+    public void onLayDanhSachPhieuXuatChiTietError(String error) {
+    }
+
+    @Override
+    public void onCapNhatPXSuccess() {
+    }
+
+    @Override
+    public void onCapNhatPXError(String error) {
+    }
+
 
     @Override
     public void onLayDanhSachKhachHangError(String error) {
@@ -200,7 +261,7 @@ public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNh
         // Đảo ngược thứ tự của tập dữ liệu
         Collections.reverse(lsPhieuNhan);
         phieuNhanBanAdapter = new PhieuNhanBanAdapter(this);
-        phieuNhanBanAdapter.setData(lsPhieuNhan, lsKhachHang, getContext());
+        phieuNhanBanAdapter.setData(lsPhieuXuat, lsPhieuNhan, lsKhachHang, getContext());
         rscvPhieuNhanBan.setAdapter(phieuNhanBanAdapter);
     }
 

@@ -14,6 +14,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.datnandroidquanlynhahangkhachsan.MainActivity;
+import com.example.datnandroidquanlynhahangkhachsan.Nav_Ban_Activity;
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.Toolbar_Drawer_Activity;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThanhToanBinding;
@@ -396,8 +398,8 @@ public class ThanhToanBanActivity extends AppCompatActivity implements PhieuThuC
                     editor.clear();
                     editor.apply();
 
-                    Intent intent = new Intent(ThanhToanBanActivity.this, Toolbar_Drawer_Activity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    Intent intent = new Intent(ThanhToanBanActivity.this, Nav_Ban_Activity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();
 

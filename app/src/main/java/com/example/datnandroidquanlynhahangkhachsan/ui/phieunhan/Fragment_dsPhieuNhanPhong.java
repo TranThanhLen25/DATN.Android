@@ -119,6 +119,8 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
         DieuKienLocPhieuXuatDTO dieuKienLocPhieuXuatDTO = new DieuKienLocPhieuXuatDTO();
         dieuKienLocPhieuXuatDTO.setSoChungTu("px");
         phieuXuatPresenter.LayDanhSachPhieuXuat(dieuKienLocPhieuXuatDTO);
+
+
         fragmentDsPhieuNhanPhongBinding.iclAppbackpnp.icBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -211,12 +213,10 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
         ///lấy dữ liệu danh sách phiếu nhận
         DsPhieuNhanPhongPresenter phieuNhanPhongPresenter = new DsPhieuNhanPhongPresenter(this);
         DieuKienLocPhieuNhanDTO dieuKienLocPhieuNhanDTO = new DieuKienLocPhieuNhanDTO();
-
         ////loại 3:phiếu nhận phòng
         dieuKienLocPhieuNhanDTO.setLoaiPhieu(3);
         dieuKienLocPhieuNhanDTO.setTrangThai("đang nhận");
         phieuNhanPhongPresenter.LayDanhSachPhieuNhan(dieuKienLocPhieuNhanDTO);
-
         ///lấy khách hàng
         lsKhachHang = new ArrayList<>();
         KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
@@ -232,7 +232,6 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
         phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(this);
         phieuNhanPhongAdapter.setData(lsPhieuXuat, lsPhieuNhan, lsKhachHang, getContext());
         rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);
-        //Toast.makeText(getContext(), "Lấy danh sách phiếu đặt phòng thành công", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -262,8 +261,6 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
 
     public void onLayDanhSachKhachHangSuccess(List<KhachHangDTO> list) {
         lsKhachHang = list;
-        // Đảo ngược thứ tự của tập dữ liệu
-        Collections.reverse(lsKhachHang);
         phieuNhanPhongAdapter = new PhieuNhanPhongAdapter(this);
         phieuNhanPhongAdapter.setData(lsPhieuXuat, lsPhieuNhan, lsKhachHang, getContext());
         rscvPhieuNhanPhong.setAdapter(phieuNhanPhongAdapter);

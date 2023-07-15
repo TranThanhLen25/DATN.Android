@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.datnandroidquanlynhahangkhachsan.MainActivity;
 import com.example.datnandroidquanlynhahangkhachsan.R;
 import com.example.datnandroidquanlynhahangkhachsan.Toolbar_Drawer_Activity;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThanhToanBinding;
@@ -442,8 +443,8 @@ public class ThanhToanActivity extends AppCompatActivity implements PhieuThuCont
                     editor1.clear();
                     editor1.apply();
                     ///xóa id đã lưu
-                    Intent intent=new Intent(ThanhToanActivity.this, Toolbar_Drawer_Activity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    Intent intent=new Intent(ThanhToanActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();
 
