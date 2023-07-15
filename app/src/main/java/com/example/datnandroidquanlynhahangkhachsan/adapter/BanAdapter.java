@@ -101,7 +101,15 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
             holder.dsBanBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_color_conguoi);
         } else if (banDTO.getTrangThaiId() == 3) {
             holder.dsBanBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_color_baotri);
-        } else {
+        }
+        else if (banDTO.getTrangThaiId() == 1002) {
+            holder.dsBanBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_color_dat);
+        }
+        else if (banDTO.getTrangThaiId() == 1003) {
+            holder.dsBanBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_color_ban);
+        }
+
+        else {
             holder.dsBanBinding.ctlDsphong.setBackgroundResource(R.drawable.bg_item);
         }
 

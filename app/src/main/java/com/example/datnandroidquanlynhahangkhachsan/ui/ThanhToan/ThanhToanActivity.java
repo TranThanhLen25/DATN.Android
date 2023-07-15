@@ -1,6 +1,7 @@
 package com.example.datnandroidquanlynhahangkhachsan.ui.ThanhToan;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.datnandroidquanlynhahangkhachsan.R;
+import com.example.datnandroidquanlynhahangkhachsan.Toolbar_Drawer_Activity;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThanhToanBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.DichVuDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.DichVu.ListDichVuDTO;
@@ -343,7 +345,7 @@ public class ThanhToanActivity extends AppCompatActivity implements PhieuThuCont
 
                     if (sharedPreferences.getInt("KTTHANHTOAN", 0) == 4) {
                         phongDTO.setPhongId(phongid);
-                        phongDTO.setTrangThaiId(3);
+                        phongDTO.setTrangThaiId(1002);
                         phongPresenter.CapNhatTrangThaiPhong(phongDTO);
                     }
 
@@ -435,14 +437,17 @@ public class ThanhToanActivity extends AppCompatActivity implements PhieuThuCont
                         phieuXuatPresenter.ThemPhieuXuat(xuatPhongDTO);
                     }
 
-
-                    ///xóa id đã lưu
-
                     editor.clear();
                     editor.apply();
                     editor1.clear();
                     editor1.apply();
-                    onBackPressed();
+                    ///xóa id đã lưu
+                    Intent intent=new Intent(ThanhToanActivity.this, Toolbar_Drawer_Activity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                    startActivity(intent);
+                    finish();
+
+
                 }
             }
         });
