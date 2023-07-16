@@ -363,6 +363,16 @@
             app:layout_constraintBottom_toBottomOf="@+id/footer_chitietphong"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/footer_chitietphong"/>
+        <Button
+            android:id="@+id/btn_donphong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dọn phòng"
+            android:backgroundTint="#C5732C"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_baotri"
+            app:layout_constraintEnd_toStartOf="@+id/btn_luu_chitietphong"
+            app:layout_constraintTop_toTopOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

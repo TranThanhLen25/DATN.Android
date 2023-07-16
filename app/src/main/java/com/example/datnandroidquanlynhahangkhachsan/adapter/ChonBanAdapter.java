@@ -99,7 +99,7 @@ public class ChonBanAdapter extends RecyclerView.Adapter<ChonBanAdapter.ChonBanV
             }
         }
         else {
-            if (phong.getTrangThaiId() != 4 && phong.getTrangThaiId() != 3) {
+            if (phong.getTrangThaiId() != 4 && phong.getTrangThaiId() != 3 && phong.getTrangThaiId()!=1002) {
 
                 if (tempData.checkDoiBan==true){
 
