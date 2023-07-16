@@ -340,10 +340,10 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <Button
-            android:id="@+id/btn_dangban"
+            android:id="@+id/btn_donphong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bận"
+            android:text="Dọn phòng"
             android:backgroundTint="#C5732C"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btn_baotri"

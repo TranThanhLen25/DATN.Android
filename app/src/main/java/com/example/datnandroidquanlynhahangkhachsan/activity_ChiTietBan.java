@@ -77,7 +77,7 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
         sharedPreferences = getSharedPreferences("CHITIETBAN", MODE_PRIVATE);
         activityChiTietBanBinding.tvLoaibanchitiet.setText(String.valueOf(sharedPreferences.getString("TENLOAIBAN", "")));
         activityChiTietBanBinding.tvSo.setText(String.valueOf(sharedPreferences.getString("TENBAN", "")));
-        activityChiTietBanBinding.etHotenChitietban.setText(sharedPreferences.getString("TEN",""));
+        activityChiTietBanBinding.etHotenChitietban.setText(sharedPreferences.getString("TEN", ""));
 
 
         activityChiTietBanBinding.toolbarChitietban.icBack.setOnClickListener(new View.OnClickListener() {
@@ -99,10 +99,10 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
         activityChiTietBanBinding.imgMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tempData.CheckChucNang=true;
+                tempData.CheckChucNang = true;
                 int trangThaiID = sharedPreferences.getInt("TRANGTHAI", 0);
                 if (trangThaiID == 4) {
-                    tempData.CheckChucNang=true;
+                    tempData.CheckChucNang = true;
                     Intent intent = new Intent(activity_ChiTietBan.this, DanhSachMenuActivity.class);
                     startActivity(intent);
                 }
@@ -197,15 +197,20 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
                 DiaLogBaoTri();
             }
         });
-        activityChiTietBanBinding.btnDangban.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DiaLogDangBan();
-            }
-        });
+        int trangThaiID = sharedPreferences.getInt("TRANGTHAI", 0);
+        if (trangThaiID == 1002) {
+            activityChiTietBanBinding.btnDonphong.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DiaLogDonPhong();
+                }
+            });
+        } else {
+            activityChiTietBanBinding.btnDonphong.setVisibility(View.GONE);
+        }
     }
 
-    private void DiaLogDangBan() {
+    private void DiaLogDonPhong() {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_bao_tri_ban);
@@ -220,28 +225,12 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
         btnYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 int trangThaiID = sharedPreferences.getInt("TRANGTHAI", 0);
-
-
-                if (trangThaiID != 1003) {
-
-                    banDTO.setBanId(sharedPreferences.getInt("BANID", 0));
-                    banDTO.setTrangThaiId(1003);
-                    banPresenter.CapNhatTrangThaiBan(banDTO);
-
-
-                    dialog.dismiss();
-                    onBackPressed();
-                } else {
-                    banDTO.setBanId(sharedPreferences.getInt("BANID", 0));
-                    banDTO.setTrangThaiId(1);
-                    banPresenter.CapNhatTrangThaiBan(banDTO);
-                    dialog.dismiss();
-                    onBackPressed();
-                }
-
+                banDTO.setBanId(sharedPreferences.getInt("BANID", 0));
+                banDTO.setTrangThaiId(1);
+                banPresenter.CapNhatTrangThaiBan(banDTO);
+                dialog.dismiss();
+                onBackPressed();
             }
         });
         btnNo.setOnClickListener(new View.OnClickListener() {
@@ -259,6 +248,7 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
 
 
     }
+
     private void DiaLogBaoTri() {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -317,7 +307,7 @@ public class activity_ChiTietBan extends AppCompatActivity implements goiMonCont
     @Override
     protected void onResume() {
         super.onResume();
-        tempData.CheckChucNang=false;
+        tempData.CheckChucNang = false;
         //trường hợp menu trong chi tiết phòng đã có item
         if (goiMonDTOListHienThi.size() > 0) {
 

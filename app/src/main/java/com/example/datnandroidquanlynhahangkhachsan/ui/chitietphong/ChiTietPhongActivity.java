@@ -257,8 +257,57 @@ public class ChiTietPhongActivity extends AppCompatActivity implements DichVuCon
                         }));
             }
         };
+        int trangThaiID = sharedPreferences.getInt("TRANGTHAI", 0);
+        if (trangThaiID == 1002) {
+            ChiTietPhongBinding.btnDonphong.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DiaLogDonPhong();
+                }
+            });
+        } else {
+            ChiTietPhongBinding.btnDonphong.setVisibility(View.GONE);
+        }
     }
 
+    private void DiaLogDonPhong() {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_bao_tri_ban);
+        Window window = dialog.getWindow();
+        if (window == null) {
+            return;
+        }
+        TextView btnYes = dialog.findViewById(R.id.btn_yes);
+        TextView btnNo = dialog.findViewById(R.id.btn_no);
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int trangThaiID = sharedPreferences.getInt("TRANGTHAI", 0);
+                phongDTO.setPhongId(sharedPreferences.getInt("PHONGID", 0));
+                phongDTO.setTrangThaiId(1);
+                phongPresenter.CapNhatTrangThaiPhong(phongDTO);
+                dialog.dismiss();
+                onBackPressed();
+            }
+        });
+        btnNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                dialog.dismiss();
+
+
+            }
+        });
+
+
+        dialog.show();
+
+
+    }
 
     private void DiaLogBaoTri() {
         final Dialog dialog = new Dialog(this);
