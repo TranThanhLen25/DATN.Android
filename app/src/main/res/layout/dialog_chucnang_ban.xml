@@ -9,45 +9,6 @@
     android:layout_gravity="center"
     >
 
-
-    <TextView
-        android:id="@+id/tv_dia_nhanban"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/white"
-
-        android:gravity="start"
-        android:padding="10dp"
-        android:text="@string/dialog_nhanban"
-        android:textColor="@color/black"
-
-        android:textSize="@dimen/heading_2"
-        tools:ignore="MissingConstraints" />
-
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/blue_mo"
-
-        ></View>
-
-    <TextView
-        android:id="@+id/tv_dia_datban"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/white"
-        android:gravity="start"
-        android:padding="10dp"
-        android:text="@string/dialog_datban"
-        android:textColor="@color/black"
-        android:textSize="@dimen/heading_2" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/blue_mo"></View>
-
     <TextView
         android:id="@+id/tv_dia_chitietban"
         android:layout_width="match_parent"
@@ -66,11 +27,10 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/blue_mo"></View>
-
     <TextView
         android:id="@+id/tv_dia_traban"
         android:layout_width="match_parent"
-android:visibility="visible"
+        android:visibility="visible"
         android:layout_height="50dp"
         android:backgroundTint="@color/white"
         android:gravity="start"
@@ -96,6 +56,50 @@ android:visibility="visible"
         android:text="@string/dialog_doiban"
         android:textColor="@color/black"
         android:textSize="@dimen/heading_2" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/blue_mo"></View>
+
+    <TextView
+        android:id="@+id/tv_dia_nhanban"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+
+        android:gravity="start"
+        android:padding="10dp"
+        android:text="@string/dialog_nhanban"
+        android:textColor="@color/black"
+
+        android:textSize="@dimen/heading_2"
+        tools:ignore="MissingConstraints" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/blue_mo"
+android:id="@+id/viewnb"
+        ></View>
+
+    <TextView
+        android:id="@+id/tv_dia_datban"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        android:gravity="start"
+        android:padding="10dp"
+        android:text="@string/dialog_datban"
+        android:textColor="@color/black"
+        android:textSize="@dimen/heading_2" />
+
+
+
+
+
+
 
 
 

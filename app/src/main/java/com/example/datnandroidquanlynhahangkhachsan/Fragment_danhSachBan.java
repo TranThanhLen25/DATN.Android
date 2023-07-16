@@ -55,6 +55,8 @@ public class Fragment_danhSachBan extends Fragment implements BanContract.View, 
 
     private List<BanDTO> lsBan;
     private List<BanDTO> search_Ban;
+
+    private List<LoaiBanDTO> search_LoaiBan;
     private List<LoaiBanDTO> lsLoaiBan;
     private List<PhieuNhanDTO> lsPhieuNhan;
     private List<PhieuNhanBanChiTietDTO> lsPNCT;
@@ -144,8 +146,11 @@ public class Fragment_danhSachBan extends Fragment implements BanContract.View, 
             public boolean onQueryTextChange(String newText) {
 
                 search_Ban=new ArrayList<>();
+
                 if(newText.length()>0)
                 {
+
+
                     for (int i=0;i< lsBan.size();i++)
                     {
                         if (lsBan.get(i).getTenBan().toUpperCase().contains(newText.toUpperCase()))

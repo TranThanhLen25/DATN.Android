@@ -40,10 +40,8 @@ public class Fragment_nhanVien extends Fragment implements NguoiDungContract.Vie
 
     private List<NguoiDungDTO> lsNguoiDung;
     private List<NguoiDungDTO> search_NguoiDung;
-    private RecyclerView recyclerView;
-    private SearchView searchView;
+    private RecyclerView rccwND;
 
-    private NguoiDungAdapter nguoiDungAdapter;
 
     public Fragment_nhanVien() {
         // Required empty public constructor
@@ -80,26 +78,19 @@ public class Fragment_nhanVien extends Fragment implements NguoiDungContract.Vie
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         FragmentNhanVienBinding nhanVienBinding=FragmentNhanVienBinding.inflate(inflater,container,false);
-        lsNguoiDung=new ArrayList<>();
 
         /// lay Ds nguoi dung
+        lsNguoiDung=new ArrayList<>();
         NguoiDungPresenter nguoiDungPresenter = new NguoiDungPresenter(this);
         nguoiDungPresenter.LayNguoiDung();
 
-        nhanVienBinding.flBtnNhanvien.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ThemNhanVien_Activity.class);
-                startActivity(intent);
-            }
-        });
-        searchView = nhanVienBinding.iclSearch.search;
-        recyclerView = nhanVienBinding.rscvDsnhanvien;
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this.getActivity());
-        recyclerView.setLayoutManager(linearLayoutManager);
 
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        rccwND = nhanVienBinding.rscvDsnhanvien;
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        rccwND.setLayoutManager(linearLayoutManager);
+
+        nhanVienBinding.iclSearchnv.search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -107,27 +98,32 @@ public class Fragment_nhanVien extends Fragment implements NguoiDungContract.Vie
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                search_NguoiDung = new ArrayList<>();
-                if (newText.length() > 0) {
-                    for (int i = 0; i <lsNguoiDung.size(); i++) {
-                        if (lsNguoiDung.get(i).getTenNguoiDung().toUpperCase().contains(newText.toUpperCase())||
-                        lsNguoiDung.get(i).getDiaChi().toUpperCase().contains(newText.toUpperCase())||
-                        lsNguoiDung.get(i).getSdt().contains(newText))
+                search_NguoiDung=new ArrayList<>();
+                if(newText.length()>0)
+                {
+                    for (NguoiDungDTO nguoiDungDTO:lsNguoiDung)
+                    {
+                        if(nguoiDungDTO.getTenNguoiDung().toUpperCase().contains(newText.toUpperCase()))
                         {
-                            NguoiDungDTO nguoiDungDTO=lsNguoiDung.get(i);
-
                             search_NguoiDung.add(nguoiDungDTO);
                         }
                     }
-                     nguoiDungAdapter = new NguoiDungAdapter(Fragment_nhanVien.this);
-                    nguoiDungAdapter.setData(getActivity(), search_NguoiDung);
-                    recyclerView.setAdapter(nguoiDungAdapter);
+                    NguoiDungAdapter  nguoiDungAdapter = new NguoiDungAdapter(Fragment_nhanVien.this);
+                    nguoiDungAdapter.setData( search_NguoiDung,getContext());
+                    rccwND .setAdapter(nguoiDungAdapter);
                 }
-
-                return false;
+                return true;
             }
         });
 
+        ///thêm NV
+        nhanVienBinding.flBtnNhanvien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), ThemNhanVien_Activity.class);
+                startActivity(intent);
+            }
+        });
         return nhanVienBinding.getRoot();
     }
 
@@ -135,17 +131,22 @@ public class Fragment_nhanVien extends Fragment implements NguoiDungContract.Vie
     public void onResume() {
         super.onResume();
         lsNguoiDung = new ArrayList<>();
+        NguoiDungAdapter nguoiDungAdapter=new NguoiDungAdapter(Fragment_nhanVien.this);
         /// lay Ds nguoi dung
-        NguoiDungPresenter nguoiDungPresenter = new NguoiDungPresenter(this);
+
+        NguoiDungPresenter nguoiDungPresenter = new NguoiDungPresenter(Fragment_nhanVien.this);
         nguoiDungPresenter.LayNguoiDung();
+
+        nguoiDungAdapter.notifyDataSetChanged();
+
     }
 
     @Override
     public void onLayNguoiDungSuccess(List<NguoiDungDTO> lsNguoiDung) {
         lsNguoiDung = lsNguoiDung;
-         nguoiDungAdapter = new NguoiDungAdapter(this);
-        nguoiDungAdapter.setData(getContext(), lsNguoiDung);
-        recyclerView.setAdapter(nguoiDungAdapter);
+        NguoiDungAdapter  nguoiDungAdapter = new NguoiDungAdapter(this);
+        nguoiDungAdapter.setData( lsNguoiDung,getContext());
+        rccwND.setAdapter(nguoiDungAdapter);
         Collections.reverse(lsNguoiDung);
         nguoiDungAdapter.notifyDataSetChanged();
     }

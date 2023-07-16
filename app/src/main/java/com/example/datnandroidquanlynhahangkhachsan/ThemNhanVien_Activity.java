@@ -1,6 +1,5 @@
 package com.example.datnandroidquanlynhahangkhachsan;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,7 +12,10 @@ import com.example.datnandroidquanlynhahangkhachsan.databinding.ActivityThemNhan
 import com.example.datnandroidquanlynhahangkhachsan.entities.NguoiDungDTO;
 import com.example.datnandroidquanlynhahangkhachsan.ui.dangnhap.NguoiDungContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.dangnhap.NguoiDungPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +26,7 @@ public class ThemNhanVien_Activity extends AppCompatActivity implements NguoiDun
     private String sdt;
     private String diachi;
     private String gioitinh;
+    private AppUtils appUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,26 @@ public class ThemNhanVien_Activity extends AppCompatActivity implements NguoiDun
 
             }
         });
+
+        nhanVienBinding.etHotenNhanVien.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                String tvHT = String.valueOf(nhanVienBinding.etHotenNhanVien.getText());
+                if (b) {
+
+                } else {
+                    if (tvHT.length()<5) {
+                        nhanVienBinding.inputlayoutHotenNhanVien.setError("Vui lòng nhập đầy đủ họ và tên");
+                        nhanVienBinding.inputlayoutHotenNhanVien.setHelperText("");
+                    } else {
+                        nhanVienBinding.inputlayoutHotenNhanVien.setError("");
+                        nhanVienBinding.inputlayoutHotenNhanVien.setHelperText("");
+                    }
+                }
+            }
+        });
+
+
         nhanVienBinding.etCccdNhanVien.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -148,11 +171,12 @@ public class ThemNhanVien_Activity extends AppCompatActivity implements NguoiDun
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String input = charSequence.toString();
-                if (input.length() > 0) {
-                    nhanVienBinding.inputlayoutTkNhanVien.setError("");
-                } else {
+                if (input.length() <7||appUtils.ktnhap(input)) {
                     nhanVienBinding.inputlayoutTkNhanVien.setHelperText("");
-                    nhanVienBinding.inputlayoutTkNhanVien.setError("Vui lòng thêm tên tài khoản để tạo mới");
+                    nhanVienBinding.inputlayoutTkNhanVien.setError("Vui lòng nhập đúng định dạng( A-Z, a-z,0-9, trên 7 ký tự)");
+                } else {
+                    nhanVienBinding.inputlayoutTkNhanVien.setError("");
+
                 }
 
             }
@@ -169,8 +193,8 @@ public class ThemNhanVien_Activity extends AppCompatActivity implements NguoiDun
                 if (b) {
 
                 } else {
-                    if (tvTK.length() < 8) {
-                        nhanVienBinding.inputlayoutTkNhanVien.setError("Vui lòng nhập đầy đủ ký tự( tài khoản>= 8) ");
+                    if (tvTK.length() < 8||appUtils.ktnhap(tvTK)) {
+                        nhanVienBinding.inputlayoutTkNhanVien.setError("Vui lòng nhập đúng định dạng( A-Z, a-z,0-9, trên 7 ký tự)");
                         nhanVienBinding.inputlayoutTkNhanVien.setHelperText("");
                     } else {
                         nhanVienBinding.inputlayoutTkNhanVien.setError("");
@@ -190,12 +214,14 @@ public class ThemNhanVien_Activity extends AppCompatActivity implements NguoiDun
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String input = charSequence.toString();
-                if (input.length() > 0) {
-                    nhanVienBinding.inputlayoutMkNhanVien.setError("");
-                } else {
+                if (input.length() <8||appUtils.ktnhap(input)) {
                     nhanVienBinding.inputlayoutMkNhanVien.setHelperText("");
-                    nhanVienBinding.inputlayoutMkNhanVien.setError("Vui lòng nhập mật khẩu cho tài khoản( mật khẩu>=8)");
-                }
+                    nhanVienBinding.inputlayoutMkNhanVien.setError("Vui lòng nhập đúng định dạng( A-Z, a-z,0-9, trên 7 ký tự)");
+
+
+                } else {
+                    nhanVienBinding.inputlayoutMkNhanVien.setError("");
+                     }
 
             }
 
@@ -211,8 +237,8 @@ public class ThemNhanVien_Activity extends AppCompatActivity implements NguoiDun
                 if (b) {
 
                 } else {
-                    if (tvTK.length() < 8) {
-                        nhanVienBinding.inputlayoutMkNhanVien.setError("Vui lòng nhập đầy đủ ký tự( mật khẩu>=8)");
+                    if (tvTK.length() < 8||appUtils.ktnhap(tvTK)) {
+                        nhanVienBinding.inputlayoutMkNhanVien.setError("Vui lòng nhập đúng định dạng( A-Z, a-z,0-9, trên 7 ký tự)");
                         nhanVienBinding.inputlayoutMkNhanVien.setHelperText("");
                     } else {
                         nhanVienBinding.inputlayoutMkNhanVien.setError("");
@@ -264,13 +290,22 @@ public class ThemNhanVien_Activity extends AppCompatActivity implements NguoiDun
                     {
                         nhanVienBinding.inputlayoutTkNhanVien.setError("Tài khoản đã tồn tại");
                     }
+                    if(nhanVienBinding.etSdtNhanVien.getText().toString().equals(nguoiDungDTO.get(i).getSdt()))
+                    {
+                        nhanVienBinding.inputlayoutSdtNhanVien.setError("Số điện thoại đã tồn tại");
+                    }
                     if(
                        nhanVienBinding.etHotenNhanVien.getText().length()>5
                     && nhanVienBinding.etCccdNhanVien.getText().length()==12
                     && nhanVienBinding.etSdtNhanVien.getText().length()==10
                     && nhanVienBinding.etTkNhanVien.getText().length()>7
                     && nhanVienBinding.etMkNhanVien.getText().length()>7
+                               //kiểm trả TK,Mk có khoản trống k
+                    && (!(appUtils.ktnhap(String.valueOf(nhanVienBinding.etTkNhanVien.getText()))))
+                    && (!(appUtils.ktnhap(String.valueOf(nhanVienBinding.etMkNhanVien.getText()))))
+
                     && !nhanVienBinding.etCccdNhanVien.getText().toString().equals(nguoiDungDTO.get(i).getCccd())
+                    && !nhanVienBinding.etSdtNhanVien.getText().toString().equals(nguoiDungDTO.get(i).getSdt())
                     && !nhanVienBinding.etTkNhanVien.getText().toString().equals(nguoiDungDTO.get(i).getTaiKhoan()))
                     {
                         dem++;
@@ -286,11 +321,13 @@ public class ThemNhanVien_Activity extends AppCompatActivity implements NguoiDun
                             , diachi
                             , "Nhân viên lễ tân"
                             , nhanVienBinding.etTkNhanVien.getText().toString()
-                            , nhanVienBinding.etMkNhanVien.getText().toString(), 1);
+                            , md5(nhanVienBinding.etMkNhanVien.getText().toString())
+                            , 1);
 
                     nguoiDungPresenter.ThemNguoiDung(nguoiDung);
-                   onBackPressed();
                     Toast.makeText(ThemNhanVien_Activity.this, "Thêm tài khoản thành công", Toast.LENGTH_SHORT).show();
+                   onBackPressed();
+
                 }
 
 
@@ -341,5 +378,29 @@ public class ThemNhanVien_Activity extends AppCompatActivity implements NguoiDun
 
     @Override
     public void onThemNguoiDungError(String error) {
+    }
+
+    ////Mã hóa mật khẩu MD5
+    public static String md5(String text) {
+        MessageDigest digest = null;
+        try {
+            digest = MessageDigest.getInstance("md5");
+            byte[] result = digest.digest(text.getBytes());
+            StringBuffer sb = new StringBuffer();
+            for (byte b : result) {
+                int number = b & 0xff;
+                String hex = Integer.toHexString(number);
+                if (hex.length() == 1) {
+                    sb.append("0" + hex);
+                } else {
+                    sb.append(hex);
+                }
+            }
+
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 }

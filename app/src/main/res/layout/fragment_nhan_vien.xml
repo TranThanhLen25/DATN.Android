@@ -34,7 +34,7 @@
 
 
         <include
-            android:id="@+id/icl_Search"
+            android:id="@+id/icl_Searchnv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             layout="@layout/search"

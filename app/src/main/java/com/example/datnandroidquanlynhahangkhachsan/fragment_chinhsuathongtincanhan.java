@@ -35,6 +35,7 @@ public class fragment_chinhsuathongtincanhan extends Fragment implements NguoiDu
 
     private NguoiDungDTO nguoiDungDTO;
     private NguoiDungPresenter nguoiDungPresenter;
+    private String gioitinh;
     FragmentChinhsuathongtincanhanBinding chinhsuathongtincanhanBinding;
 
     public fragment_chinhsuathongtincanhan() {
@@ -89,7 +90,7 @@ public class fragment_chinhsuathongtincanhan extends Fragment implements NguoiDu
         chinhsuathongtincanhanBinding.etQqchinhsua.setText(sharedPreferences.getString("DIACHI", ""));
 
 
-//        chinhsuathongtincanhanBinding.tvGtchinhsua.setText(sharedPreferences.getString("GIOITINH", ""));
+        // chinhsuathongtincanhanBinding.tvGtchinhsua.setText(sharedPreferences.getString("GIOITINH", ""));
 
         chinhsuathongtincanhanBinding.etCCCD.setText(sharedPreferences.getString("CCCD", ""));
 
@@ -100,8 +101,19 @@ public class fragment_chinhsuathongtincanhan extends Fragment implements NguoiDu
         chinhsuathongtincanhanBinding.tvChucvuthongtincanhan.setText(sharedPreferences.getString("LOAITAIKHOAN", ""));
 
 
+        if (sharedPreferences.getString("GIOITINH", "").equals("Nam")) {
+            chinhsuathongtincanhanBinding.gtNam.setChecked(true);
+        } else if (sharedPreferences.getString("GIOITINH", "").equals("Nữ")) {
+            chinhsuathongtincanhanBinding.gtNu.setChecked(true);
+
+        } else {
+            chinhsuathongtincanhanBinding.gtKhac.setChecked(true);
+        }
+
+
         nguoiDungPresenter = new NguoiDungPresenter(this);
         nguoiDungDTO = new NguoiDungDTO();
+
         chinhsuathongtincanhanBinding.btnLuuthongtincanhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,6 +121,14 @@ public class fragment_chinhsuathongtincanhan extends Fragment implements NguoiDu
                 if (chinhsuathongtincanhanBinding.etSdtctchinhsua.getText().length() == 10 &&
                         chinhsuathongtincanhanBinding.etCCCD.getText().length() == 12 &&
                         !(chinhsuathongtincanhanBinding.etQqchinhsua.getText().toString().equals(""))) {
+
+                    if (chinhsuathongtincanhanBinding.gtNam.isChecked() == true) {
+                        gioitinh = "Nam";
+                    } else if (chinhsuathongtincanhanBinding.gtNu.isChecked() == true) {
+                        gioitinh = "Nữ";
+                    } else {
+                        gioitinh = "Khác";
+                    }
 
 
                     ///lấy người dùng id
@@ -126,15 +146,15 @@ public class fragment_chinhsuathongtincanhan extends Fragment implements NguoiDu
                     nguoiDungDTO.setDiaChi(chinhsuathongtincanhanBinding.etQqchinhsua.getText().toString());
                     ///mật khẩu giữ nguyên
                     nguoiDungDTO.setMatKhau(sharedPreferences.getString("PASSWORD", ""));
-
+                    nguoiDungDTO.setGioiTinh(gioitinh);
                     nguoiDungDTO.setCccd(chinhsuathongtincanhanBinding.etCCCD.getText().toString());
-
-
                     nguoiDungPresenter.CapNhatNguoiDung(nguoiDungDTO);
+                    editor.putString("GIOITINH", gioitinh);
+                    editor.apply();
                     Toast.makeText(getContext(), "Chỉnh sửa thông tin thành công", Toast.LENGTH_SHORT).show();
                     getActivity().onBackPressed();
                 } else {
-                    Toast.makeText(getContext(), "Vui lòng nhập thông tin", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 }
             }
         });

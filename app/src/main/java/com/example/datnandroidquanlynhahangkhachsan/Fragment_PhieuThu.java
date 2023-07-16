@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhieuThuAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentPhieuthuBinding;
@@ -37,7 +38,8 @@ public class Fragment_PhieuThu extends Fragment implements PhieuThuContract.View
     private String mParam1;
     private String mParam2;
 
-    private List<PhieuThuDTO> lsPhieuThu;private List<PhieuThuDTO> searchPT;
+    private List<PhieuThuDTO> lsPhieuThu;
+    private List<PhieuThuDTO> searchPT;
 
     private RecyclerView rscvPT;
 
@@ -75,12 +77,16 @@ public class Fragment_PhieuThu extends Fragment implements PhieuThuContract.View
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         FragmentPhieuthuBinding phieuthuBinding=FragmentPhieuthuBinding.inflate(inflater,container,false);
+        /// lay phieu thu
         lsPhieuThu=new ArrayList<>();
         PhieuThuPresenter phieuThuPresenter=new PhieuThuPresenter(this);
         phieuThuPresenter.LayDanhSachPhieuThu();
-        rscvPT=phieuthuBinding.rscvDsPhieuThu;
 
+        //
+        rscvPT=phieuthuBinding.rscvDsPhieuThu;
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext());
         rscvPT.setLayoutManager(linearLayoutManager);
         phieuthuBinding.iclSearch.search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -103,11 +109,12 @@ public class Fragment_PhieuThu extends Fragment implements PhieuThuContract.View
                             searchPT.add(lsPhieuThu.get(i));
                         }
                     }
+
                     PhieuThuAdapter phieuThuAdapter=new PhieuThuAdapter(Fragment_PhieuThu.this);
                     phieuThuAdapter.setData(getContext(),searchPT);
                     rscvPT.setAdapter(phieuThuAdapter);
                 }
-                return false;
+                return true;
             }
         });
 

@@ -187,7 +187,7 @@
                         android:text="1000000"
                         android:textColor="@color/black"
                         android:textSize="@dimen/heading_2"
-                        android:textStyle="bold|italic"
+                        android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@id/ctl_thanhtoan"
                         app:layout_constraintTop_toBottomOf="@id/tv_thanhtoan"
                         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -212,7 +212,7 @@
                     android:text="Phương thức thanh toán:"
                     android:textColor="@color/black"
                     android:textSize="18dp"
-                    android:textStyle="italic"
+
                     app:layout_constraintStart_toStartOf="@id/ctl_tt"
                     app:layout_constraintTop_toTopOf="@id/vtt" />
 
@@ -339,7 +339,7 @@
                 android:text="0"
                 android:textColor="@color/black"
                 android:textSize="@dimen/heading_2"
-                android:textStyle="italic"
+
                 app:layout_constraintEnd_toEndOf="@id/ctl_thoi"
                 app:layout_constraintStart_toStartOf="@id/ctl_thoi"
                 app:layout_constraintTop_toBottomOf="@id/tv_thoi"

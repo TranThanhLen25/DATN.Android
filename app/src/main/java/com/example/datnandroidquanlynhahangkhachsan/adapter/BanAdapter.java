@@ -212,6 +212,7 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
 //        TextView baotri = dialog.findViewById(R.id.tv_dia_baotriban);
         View vTraban = dialog.findViewById(R.id.view_traban);
         View vDoiban = dialog.findViewById(R.id.vDoiban);
+        View view=dialog.findViewById(R.id.viewnb);
 
         ///nếu phòng ch có người thì tắt chức năng trả và đổi
         if (trangThai != 4) {
@@ -225,6 +226,7 @@ public class BanAdapter extends RecyclerView.Adapter<BanAdapter.BanViewHolder> {
         {
 
             nhanban.setVisibility(View.GONE);
+            view.setVisibility(View.GONE);
         }
         // sự kiện khi nhấn vào text trong dialog
         nhanban.setOnClickListener(new View.OnClickListener() {

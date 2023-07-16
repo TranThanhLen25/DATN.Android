@@ -228,6 +228,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         //TextView baotri = dialog.findViewById(R.id.tv_dia_baotri);
         View vTraPhong = dialog.findViewById(R.id.view_traphong);
         View vDoiPhong = dialog.findViewById(R.id.vDoiPhong);
+        View view=dialog.findViewById(R.id.viewnp);
 
         ///nếu phòng ch có người thì tắt chức năng trả và đổi
         if (trangThai != 4) {
@@ -240,6 +241,8 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
 //// nếu phòng đã có người thì không được chjọn nhận phòng
         {
             nhanphong.setVisibility(View.GONE);
+            view.setVisibility(View.GONE);
+
         }
         // sự kiện khi nhấn vào text trong dialog
         nhanphong.setOnClickListener(new View.OnClickListener() {

@@ -18,6 +18,8 @@ import com.example.datnandroidquanlynhahangkhachsan.ui.dangnhap.NguoiDungContrac
 import com.example.datnandroidquanlynhahangkhachsan.ui.dangnhap.NguoiDungPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.utils.AppUtils;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -135,11 +137,12 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
         dangNhapBinding.btnDangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String MK=dangNhapBinding.etMatkhau.getText().toString();
+
                 for (int i = 0; i < lsNguoiDung.size(); i++) {
                     if (dangNhapBinding.etTaikhoan.getText().toString().equals(lsNguoiDung.get(i).getTaiKhoan())
-                            && dangNhapBinding.etMatkhau.getText().toString().equals(lsNguoiDung.get(i).getMatKhau())) {
-
-
+                            && md5(MK).equals(lsNguoiDung.get(i).getMatKhau())) {
 
                         rememberUser(
                                 dangNhapBinding.etTaikhoan.getText().toString(),
@@ -155,7 +158,7 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
                                  save = true;
 
                         Intent intent = new Intent(DangNhapActivity.this, Toolbar_Drawer_Activity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         finish();
 
@@ -254,6 +257,30 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
 
     @Override
     public void onThemNguoiDungError(String error) {
+    }
+
+    ////Mã hóa mật khẩu MD5
+    public static String md5(String text) {
+        MessageDigest digest = null;
+        try {
+            digest = MessageDigest.getInstance("md5");
+            byte[] result = digest.digest(text.getBytes());
+            StringBuffer sb = new StringBuffer();
+            for (byte b : result) {
+                int number = b & 0xff;
+                String hex = Integer.toHexString(number);
+                if (hex.length() == 1) {
+                    sb.append("0" + hex);
+                } else {
+                    sb.append(hex);
+                }
+            }
+
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 }
 

@@ -231,21 +231,21 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        /// xử lí nút back của điện thoại
-        new AlertDialog.Builder(this)
-                .setMessage("Bạn có muốn thoát ứng dụng không?").setPositiveButton("Có", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                  moveTaskToBack(true);
-                  dialog.dismiss();
-
-                    }
-                })
-                .setNegativeButton("Không", null)
-                .show();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        /// xử lí nút back của điện thoại
+//        new AlertDialog.Builder(this)
+//                .setMessage("Bạn có muốn thoát ứng dụng không?").setPositiveButton("Có", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                  moveTaskToBack(true);
+//                  dialog.dismiss();
+//
+//                    }
+//                })
+//                .setNegativeButton("Không", null)
+//                .show();
+//    }
 
 
 

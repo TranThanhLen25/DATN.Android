@@ -9,45 +9,6 @@
     android:layout_gravity="center"
   >
 
-
-    <TextView
-        android:id="@+id/tv_dia_nhanphong"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/white"
-
-        android:gravity="start"
-        android:padding="10dp"
-        android:text="@string/dialog_nhanphong"
-        android:textColor="@color/black"
-
-        android:textSize="@dimen/heading_2"
-        tools:ignore="MissingConstraints" />
-
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/blue_mo"
-
-        ></View>
-
-    <TextView
-        android:id="@+id/tv_dia_datphong"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/white"
-        android:gravity="start"
-        android:padding="10dp"
-        android:text="@string/dialog_datphong"
-        android:textColor="@color/black"
-        android:textSize="@dimen/heading_2" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/blue_mo"></View>
-
     <TextView
         android:id="@+id/tv_dia_chitietphong"
         android:layout_width="match_parent"
@@ -66,7 +27,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/blue_mo"></View>
-
     <TextView
         android:id="@+id/tv_dia_traphong"
         android:layout_width="match_parent"
@@ -96,6 +56,49 @@
         android:text="@string/dialog_doiphong"
         android:textColor="@color/black"
         android:textSize="@dimen/heading_2" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/blue_mo"></View>
+
+    <TextView
+        android:id="@+id/tv_dia_nhanphong"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+
+        android:gravity="start"
+        android:padding="10dp"
+        android:text="@string/dialog_nhanphong"
+        android:textColor="@color/black"
+
+        android:textSize="@dimen/heading_2"
+        tools:ignore="MissingConstraints" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/blue_mo"
+        android:id="@+id/viewnp"
+
+        ></View>
+
+    <TextView
+        android:id="@+id/tv_dia_datphong"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/white"
+        android:gravity="start"
+        android:padding="10dp"
+        android:text="@string/dialog_datphong"
+        android:textColor="@color/black"
+        android:textSize="@dimen/heading_2" />
+
+
+
+
 
 
 
