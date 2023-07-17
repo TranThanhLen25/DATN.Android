@@ -129,9 +129,9 @@
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:text="@string/tv_hoten"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="@+id/mainphieunhanban"
-                    app:layout_constraintTop_toTopOf="@+id/mainphieunhanban" />
+                    android:textColor="@color/black"  app:layout_constraintStart_toStartOf="@+id/mainphieunhanban"
+                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_cccd_phieunhanban"
+                    />
                 <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -148,7 +148,7 @@
                     android:layout_height="wrap_content"
                     app:boxBackgroundMode="outline"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/checkbox_khachvanglai">
+                    app:layout_constraintTop_toBottomOf="@+id/tv_hoten">
 
                     <EditText
                         android:id="@+id/et_hoten_phieunhanban"
@@ -168,7 +168,9 @@
                     android:textColor="@color/black"
 
                     app:layout_constraintStart_toStartOf="@+id/mainphieunhanban"
-                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_hoten_phieunhanban" />
+                    app:layout_constraintTop_toTopOf="@+id/mainphieunhanban"
+
+                  />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputlayout_cccd_phieunhanban"
@@ -178,7 +180,7 @@
                     app:counterEnabled="true"
                     app:boxBackgroundMode="outline"
                     app:counterMaxLength="12"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_cccd_phieunhanban">
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox_khachvanglai">
 
                     <EditText
                         android:id="@+id/et_cccd_phieunhanban"
@@ -201,7 +203,7 @@
                     android:textColor="@color/black"
 
                     app:layout_constraintStart_toStartOf="@+id/mainphieunhanban"
-                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_cccd_phieunhanban" />
+                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_hoten_phieunhanban" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputlayout_sdt_phieunhanban"

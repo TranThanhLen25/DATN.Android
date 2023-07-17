@@ -131,6 +131,7 @@ public class Fragment_dsPhieuNhanPhong extends Fragment implements DsPhieuNhanPh
         fragmentDsPhieuNhanPhongBinding.flBtnThemphieunhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                tempData.tempDatakhachHangDTO=new KhachHangDTO();
                 Intent intent = new Intent(getActivity(), ThemPhieuNhanPhongActivity.class);
                 startActivity(intent);
             }
