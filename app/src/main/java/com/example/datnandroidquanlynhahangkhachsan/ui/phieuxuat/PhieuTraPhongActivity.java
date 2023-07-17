@@ -368,25 +368,35 @@ phieuXuatDTO=new PhieuXuatDTO();
     @Override
     protected void onResume() {
         super.onResume();
-        lsPhieuNhanPhongChiTiet = new ArrayList<>();
-        /// lấy danh sách phiếu nhận chi tiết
-        PhieuNhanPhongChiTietPresenter phieuNhanPhongChiTietPresenter = new PhieuNhanPhongChiTietPresenter(this);
-        DieuKienLocPhieuNhanPhongChiTietDTO dieuKienLocPhieuNhanPhongChiTietDTO = new DieuKienLocPhieuNhanPhongChiTietDTO();
-        phieuNhanPhongChiTietPresenter.LayDanhSachPhieuNhanPhongChiTiet(dieuKienLocPhieuNhanPhongChiTietDTO);
-        //// lay DV
-        lsDichVu = new ArrayList<>();
-        lsPhieuNhan=new ArrayList<>();
-        /// lay phieu nhan
-        DsPhieuNhanPhongPresenter phieuNhanPhongPresenter = new DsPhieuNhanPhongPresenter(this);
-        DieuKienLocPhieuNhanDTO dieuKienLocPhieuNhanDTO = new DieuKienLocPhieuNhanDTO();
-        dieuKienLocPhieuNhanDTO.setTrangThai("đang nhận");
-        dieuKienLocPhieuNhanDTO.setLoaiPhieu(3);
-        phieuNhanPhongPresenter.LayDanhSachPhieuNhan(dieuKienLocPhieuNhanDTO);
-        ///khach hang
-        lsKhachHang=new ArrayList<>();
-        KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
-        DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
-        khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
+
+        try {
+            Thread.sleep(200);
+            lsPhieuNhanPhongChiTiet = new ArrayList<>();
+            /// lấy danh sách phiếu nhận chi tiết
+            PhieuNhanPhongChiTietPresenter phieuNhanPhongChiTietPresenter = new PhieuNhanPhongChiTietPresenter(this);
+            DieuKienLocPhieuNhanPhongChiTietDTO dieuKienLocPhieuNhanPhongChiTietDTO = new DieuKienLocPhieuNhanPhongChiTietDTO();
+            phieuNhanPhongChiTietPresenter.LayDanhSachPhieuNhanPhongChiTiet(dieuKienLocPhieuNhanPhongChiTietDTO);
+            //// lay DV
+            lsDichVu = new ArrayList<>();
+            lsPhieuNhan=new ArrayList<>();
+            /// lay phieu nhan
+            DsPhieuNhanPhongPresenter phieuNhanPhongPresenter = new DsPhieuNhanPhongPresenter(this);
+            DieuKienLocPhieuNhanDTO dieuKienLocPhieuNhanDTO = new DieuKienLocPhieuNhanDTO();
+            dieuKienLocPhieuNhanDTO.setTrangThai("đang nhận");
+            dieuKienLocPhieuNhanDTO.setLoaiPhieu(3);
+            phieuNhanPhongPresenter.LayDanhSachPhieuNhan(dieuKienLocPhieuNhanDTO);
+            ///khach hang
+            lsKhachHang=new ArrayList<>();
+            KhachHangPresenter khachHangPresenter = new KhachHangPresenter(this);
+            DieuKienLocKhachHangDTO dieuKienLocKhachHangDTO = new DieuKienLocKhachHangDTO();
+            khachHangPresenter.LayDanhSachKhachHang(dieuKienLocKhachHangDTO);
+
+
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+
 
 
 
@@ -485,24 +495,34 @@ phieuXuatDTO=new PhieuXuatDTO();
         recyclerView.setAdapter(phieuTraPhongAdapter);
         sharedPreferences = getSharedPreferences("GET_PHONGID", MODE_PRIVATE);
         editor = sharedPreferences.edit();
-        for (int y=0;y<lsHangHoa.size();y++)
-        {
-            for (int i = 0; i < lsDichVu.size(); i++) {
+        try {
+            Thread.sleep(200);
+            for (int y=0;y<lsHangHoa.size();y++)
+            {
+                for (int i = 0; i < lsDichVu.size(); i++) {
 
-                if(lsDichVu.get(i).getHangHoaId()==lsHangHoa.get(y).getHangHoaId())
-                {
-                    tienDV = tienDV + lsHangHoa.get(y).getDonGia() * lsDichVu.get(i).getSoLuong();
+                    if(lsDichVu.get(i).getHangHoaId()==lsHangHoa.get(y).getHangHoaId())
+                    {
+                        tienDV = tienDV + lsHangHoa.get(y).getDonGia() * lsDichVu.get(i).getSoLuong();
+                    }
                 }
             }
+
+            /// tinh tong tien
+            Long TT = sharedPreferences.getLong("TONGTIEN", 0L);
+            ///format giá tiền
+            DecimalFormat decimalFormat = new DecimalFormat("#,##0" + " đồng");
+            ///tổng tiền
+            giatien = decimalFormat.format(TongTien);
+            TextView tv_tong = findViewById(R.id.tv_tongTien);
+            tv_tong.setText(String.valueOf(decimalFormat.format(sharedPreferences.getLong("TONGTIEN", 0L)+Long.valueOf(tienDV))));
+
+        }catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
-        /// tinh tong tien
-        Long TT = sharedPreferences.getLong("TONGTIEN", 0L);
-        ///format giá tiền
-        DecimalFormat decimalFormat = new DecimalFormat("#,##0" + " đồng");
-        ///tổng tiền
-        giatien = decimalFormat.format(TongTien);
-        TextView tv_tong = findViewById(R.id.tv_tongTien);
-        tv_tong.setText(String.valueOf(decimalFormat.format(sharedPreferences.getLong("TONGTIEN", 0L)+Long.valueOf(tienDV))));
+
+
+
         editor.putLong("TT_NGAY", sharedPreferences.getLong("TONGTIEN", 0L));
         editor.putLong("TT_DV", tienDV);
         editor.commit();

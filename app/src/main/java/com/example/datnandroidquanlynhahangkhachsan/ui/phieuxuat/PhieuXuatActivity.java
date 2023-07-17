@@ -385,28 +385,35 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
     public void onLayDanhSachDichVuSuccess(List<DichVuDTO> list) {
         lsDichVu = list;
         SharedPreferences sharedPreferences = getSharedPreferences("GET_PHONGID", MODE_PRIVATE);
-        for (int i = 0; i < lsPhieuNhanCT.size(); i++) {
-            for (int t = 0; t < lsDichVu.size(); t++) {
+       try {
+           Thread.sleep(200);
+           for (int i = 0; i < lsPhieuNhanCT.size(); i++) {
+               for (int t = 0; t < lsDichVu.size(); t++) {
 
-                if ((lsDichVu.get(t).getTrangThai().equals("chưa thanh toán")
-                        && lsPhieuNhanCT.get(i).getPhongId() == lsDichVu.get(t).getPhongID()
-                        &&lsPhieuNhanCT.get(i).getTrangThai()==4)
-                        || (lsDichVu.get(t).getTrangThai().equals("chờ thanh toán")
-                        && lsDichVu.get(t).getPhieuNhanID() == lsPhieuNhanCT.get(i).getPhieuNhanId()
-                        && lsPhieuNhanCT.get(i).getPhongId() == lsDichVu.get(t).getPhongID())) {
+                   if ((lsDichVu.get(t).getTrangThai().equals("chưa thanh toán")
+                           && lsPhieuNhanCT.get(i).getPhongId() == lsDichVu.get(t).getPhongID()
+                           &&lsPhieuNhanCT.get(i).getTrangThai()==4)
+                           || (lsDichVu.get(t).getTrangThai().equals("chờ thanh toán")
+                           && lsDichVu.get(t).getPhieuNhanID() == lsPhieuNhanCT.get(i).getPhieuNhanId()
+                           && lsPhieuNhanCT.get(i).getPhongId() == lsDichVu.get(t).getPhongID())) {
 
-                    for (int p = 0; p < lsHangHoa.size(); p++) {
+                       for (int p = 0; p < lsHangHoa.size(); p++) {
 
-                        if (lsHangHoa.get(p).getHangHoaId() == lsDichVu.get(t).getHangHoaId()) {
+                           if (lsHangHoa.get(p).getHangHoaId() == lsDichVu.get(t).getHangHoaId()) {
 
-                            tienDV = tienDV + (lsHangHoa.get(p).getDonGia() * lsDichVu.get(t).getSoLuong());
-                        }
-                    }
+                               tienDV = tienDV + (lsHangHoa.get(p).getDonGia() * lsDichVu.get(t).getSoLuong());
+                           }
+                       }
 
-                }
+                   }
 
-            }
-        }
+               }
+           }
+
+       } catch (InterruptedException e) {
+           throw new RuntimeException(e);
+       }
+
 
         DecimalFormat decimalFormat = new DecimalFormat("#,##0");
         TextView tvTong = findViewById(R.id.tv_tongdv);
