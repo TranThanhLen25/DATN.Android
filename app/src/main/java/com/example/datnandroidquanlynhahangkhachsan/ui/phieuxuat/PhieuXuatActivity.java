@@ -227,7 +227,12 @@ public class PhieuXuatActivity extends AppCompatActivity implements PhieuXuatCon
 
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        PhieuXuatChiTietAdapter phieuXuatChiTietAdapter=new PhieuXuatChiTietAdapter(PhieuXuatActivity.this);
+        phieuXuatChiTietAdapter.notifyDataSetChanged();
+    }
 
     @Override
     public void onLayDanhSachPhieuXuatChiTietSuccess(List<PhieuXuatChiTietDTO> list) {
