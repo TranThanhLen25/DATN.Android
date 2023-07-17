@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.adapter.BanAdapter;
+import com.example.datnandroidquanlynhahangkhachsan.adapter.PhongAdapter;
 import com.example.datnandroidquanlynhahangkhachsan.databinding.FragmentDanhSachBanBinding;
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.BanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.Ban.LoaiBanDTO;
@@ -27,6 +28,8 @@ import com.example.datnandroidquanlynhahangkhachsan.ui.Ban.BanContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.Ban.BanPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.KhachHang.KhachHangPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.PhieuNhanPhongChiTietContract;
@@ -174,16 +177,28 @@ public class Fragment_danhSachBan extends Fragment implements BanContract.View, 
     @Override
     public void onResume() {
         super.onResume();
-        ///laay Ban
-        lsBan = new ArrayList<>();
-        lsLoaiBan = new ArrayList<>();
-        BanPresenter banPresenter = new BanPresenter(this);
-        banPresenter.LayDanhSachBan();
-        /// laay loai ban
-        BanPresenter banPresenter1 = new BanPresenter(this);
-        banPresenter1.LayDanhSachLoaiBan();
-        BanAdapter banAdapter=new BanAdapter(this);
-        banAdapter.notifyDataSetChanged();
+
+
+        try {
+            Thread.sleep(100);
+            ///laay Ban
+            lsBan = new ArrayList<>();
+            lsLoaiBan = new ArrayList<>();
+            BanPresenter banPresenter = new BanPresenter(this);
+            banPresenter.LayDanhSachBan();
+            /// laay loai ban
+            BanPresenter banPresenter1 = new BanPresenter(this);
+            banPresenter1.LayDanhSachLoaiBan();
+            BanAdapter banAdapter=new BanAdapter(this);
+            banAdapter.notifyDataSetChanged();
+
+
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+
+
     }
 
     @Override

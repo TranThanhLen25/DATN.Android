@@ -133,7 +133,7 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/textview_tk_mk"
                     app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
-                    app:layout_constraintTop_toTopOf="@+id/mainphieunhanphong"
+                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_cccd_phieudatphong"
                     tools:ignore="SpUsage" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -166,7 +166,7 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/textview_tk_mk"
                     app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
-                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_hoten_phieunhanphong" />
+                    app:layout_constraintTop_toTopOf="@+id/mainphieunhanphong" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputlayout_cccd_phieudatphong"
@@ -202,7 +202,7 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/textview_tk_mk"
                     app:layout_constraintStart_toStartOf="@+id/mainphieunhanphong"
-                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_cccd_phieudatphong" />
+                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_hoten_phieunhanphong" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputlayout_sdt_phieunhanphong"

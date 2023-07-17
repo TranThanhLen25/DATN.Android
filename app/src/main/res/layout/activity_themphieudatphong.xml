@@ -131,8 +131,9 @@
                     android:padding="8dp"
                     android:text="@string/tv_hoten"
                     android:textColor="@color/black"
+
                     app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
-                    app:layout_constraintTop_toTopOf="@+id/mainphieudatphong" />
+                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_cccd_phieudatphong" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputlayout_hoten_phieudatphong"
@@ -158,9 +159,8 @@
                     android:padding="8dp"
                     android:text="@string/tv_cccd"
                     android:textColor="@color/black"
-
                     app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
-                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_hoten_phieudatphong" />
+                    app:layout_constraintTop_toTopOf="@+id/mainphieudatphong" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputlayout_cccd_phieudatphong"
@@ -193,7 +193,7 @@
                     android:textColor="@color/black"
 
                     app:layout_constraintStart_toStartOf="@+id/mainphieudatphong"
-                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_cccd_phieudatphong" />
+                    app:layout_constraintTop_toBottomOf="@+id/inputlayout_hoten_phieudatphong" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputlayout_sdt_phieudatphong"
