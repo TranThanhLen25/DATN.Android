@@ -117,6 +117,7 @@ public class Fragment_danhSachPhieuNhanBan extends Fragment implements DsPhieuNh
         fragmentDanhSachPhieuNhanBanBinding.flBtnThemphieunhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                tempData.tempDatakhachHangDTO=new KhachHangDTO();
                 Intent intent = new Intent(getActivity(), activityThemPhieuNhanBan.class);
                 startActivity(intent);
             }

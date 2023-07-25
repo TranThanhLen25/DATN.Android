@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -48,6 +49,9 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
     private MenuItem vitri;
 
     private List<NguoiDungDTO> lsNguoiDung;
+
+    private long backPressedTime;
+    private Toast mToat;
 
 
     @Override
@@ -246,7 +250,6 @@ public class Toolbar_Drawer_Activity extends AppCompatActivity {
 //                .setNegativeButton("Không", null)
 //                .show();
 //    }
-
 
 
 

@@ -146,7 +146,7 @@ public class DangNhapActivity extends AppCompatActivity implements NguoiDungCont
 
                         rememberUser(
                                 dangNhapBinding.etTaikhoan.getText().toString(),
-                                dangNhapBinding.etMatkhau.getText().toString(),
+                                md5(dangNhapBinding.etMatkhau.getText().toString()),
                                 lsNguoiDung.get(i).getNguoiDungId(),
                                 lsNguoiDung.get(i).getTenNguoiDung(),
                                 lsNguoiDung.get(i).getSdt(),

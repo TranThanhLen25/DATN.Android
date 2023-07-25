@@ -276,6 +276,7 @@ public class ThemPhieuNhanPhongActivity extends AppCompatActivity implements DsP
                 || themphieunhanphongBinding.etCccdPhieunhanphong.length() < 12
                 || themphieunhanphongBinding.etSdtPhieunhanphong.length() < 10
                 || thoiGianNhan == ""
+                || themphieunhanphongBinding.etSonguoiPhieunhanphong.length()==0
                 || lsChonPhongDataInt.size() == 0) {
             Toast.makeText(this, "vui lòng nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
         } else {

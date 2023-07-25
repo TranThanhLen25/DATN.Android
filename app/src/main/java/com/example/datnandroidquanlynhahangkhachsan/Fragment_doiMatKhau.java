@@ -139,7 +139,6 @@ public class Fragment_doiMatKhau extends Fragment implements NguoiDungContract.V
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String input = charSequence.toString();
                 if (appUtils.ktnhap(input)) {
-
                     doiMatKhauBinding.tipNl.setError("Hãy nhập đủ và đúng định dạng (A-Z,a-z,0-9, trên 7 ký tự)");
                     doiMatKhauBinding.tipNl.setHelperText("");
 
@@ -192,13 +191,21 @@ public class Fragment_doiMatKhau extends Fragment implements NguoiDungContract.V
             @Override
             public void onFocusChange(View view, boolean b) {
                 String nl = String.valueOf(doiMatKhauBinding.etNl.getText());
-                if (nl.length() < 8 || appUtils.ktnhap(nl)) {
-                    doiMatKhauBinding.tipNl.setError("Hãy nhập đủ và đúng định dạng (A-Z,a-z,0-9, trên 7 ký tự)");
-                    doiMatKhauBinding.tipNl.setHelperText("");
-                } else {
-                    doiMatKhauBinding.tipNl.setError("");
-                    doiMatKhauBinding.tipNl.setHelperText("");
+
+                if(b)
+                {
+
                 }
+                else {
+                    if (nl.length() < 8 || appUtils.ktnhap(nl)) {
+                        doiMatKhauBinding.tipNl.setError("Hãy nhập đủ và đúng định dạng (A-Z,a-z,0-9, trên 7 ký tự)");
+                        doiMatKhauBinding.tipNl.setHelperText("");
+                    } else {
+                        doiMatKhauBinding.tipNl.setError("");
+                        doiMatKhauBinding.tipNl.setHelperText("");
+                    }
+                }
+
             }
         });
 
@@ -216,8 +223,6 @@ public class Fragment_doiMatKhau extends Fragment implements NguoiDungContract.V
         doiMatKhauBinding.btnLuu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-            //    Toast.makeText(getContext(), "" + md5(doiMatKhauBinding.etMkc.getText().toString()), Toast.LENGTH_SHORT).show();
 
                 //// lấy mật khẩu củ nhập vào
                 String MKc = doiMatKhauBinding.etMkc.getText().toString();

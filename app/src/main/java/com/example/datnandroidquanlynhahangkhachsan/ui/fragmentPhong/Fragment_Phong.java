@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datnandroidquanlynhahangkhachsan.adapter.PhongAdapter;
@@ -16,6 +17,7 @@ import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.DieuKienL
 import com.example.datnandroidquanlynhahangkhachsan.entities.KhachHang.KhachHangDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.LoaiPhongDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.PhongDTO;
+import com.example.datnandroidquanlynhahangkhachsan.entities.phieudat.DieuKienLocPhieuDatDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.DieuKienLocPhieuNhanPhongChiTietDTO;
 import com.example.datnandroidquanlynhahangkhachsan.entities.phieunhan.PhieuNhanBanChiTietDTO;
@@ -27,6 +29,7 @@ import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongContra
 import com.example.datnandroidquanlynhahangkhachsan.ui.fragmentPhong.PhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.loaiphong.LoaiPhongPresenter;
+import com.example.datnandroidquanlynhahangkhachsan.ui.phieudat.DsPhieuDatPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhongContract;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.DsPhieuNhanPhongPresenter;
 import com.example.datnandroidquanlynhahangkhachsan.ui.phieunhan.PhieuNhanPhongChiTietContract;
@@ -185,18 +188,24 @@ public class Fragment_Phong extends Fragment implements PhongContract.View, Loai
     @Override
     public void onResume() {
         super.onResume();
+        try {
+            Thread.sleep(100);
+            lsPhong = new ArrayList<>();
+            lsLoaiPhong = new ArrayList<>();
+            danhSachPhongPresenter = new PhongPresenter(this);
+            danhSachPhongPresenter.LayDanhSachPhong();
+            // lấy loại phòng
+            loaiPhongPresenter = new LoaiPhongPresenter(this);
+            loaiPhongPresenter.LayLoaiPhong();
+
+            PhongAdapter phongAdapter=new PhongAdapter(this);
+            phongAdapter.notifyDataSetChanged();
 
 
-        lsPhong = new ArrayList<>();
-        lsLoaiPhong = new ArrayList<>();
-        danhSachPhongPresenter = new PhongPresenter(this);
-        danhSachPhongPresenter.LayDanhSachPhong();
-        // lấy loại phòng
-        loaiPhongPresenter = new LoaiPhongPresenter(this);
-        loaiPhongPresenter.LayLoaiPhong();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
-       PhongAdapter phongAdapter=new PhongAdapter(this);
-       phongAdapter.notifyDataSetChanged();
 
     }
 

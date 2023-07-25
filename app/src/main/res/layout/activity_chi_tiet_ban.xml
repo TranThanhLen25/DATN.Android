@@ -343,7 +343,7 @@
             android:id="@+id/btn_donphong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dọn phòng"
+            android:text="Dọn bàn"
             android:backgroundTint="#C5732C"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btn_baotri"
