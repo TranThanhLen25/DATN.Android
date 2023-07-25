@@ -60,6 +60,26 @@ public class ChonPhongAdapter extends RecyclerView.Adapter<ChonPhongAdapter.Chon
         if (phong == null) {
             return;
         }
+
+        if (phong.getTrangThaiId() == 1) {
+            holder.phongTrong = true;
+        } else {
+            holder.phongTrong = false;
+        }
+
+        if (holder.phongTrong) {
+            holder.chonphongBinding.imgKhongchonphong.setVisibility(View.GONE);
+        } else {
+            holder.chonphongBinding.imgKhongchonphong.setVisibility(View.VISIBLE);
+        }
+
+        if (holder.phongDangChon){
+            holder.chonphongBinding.imgChonphong.setVisibility(View.VISIBLE);
+        }
+        else {
+            holder.chonphongBinding.imgChonphong.setVisibility(View.GONE);
+        }
+
         holder.chonphongBinding.tvSoChonphong.setText(String.valueOf(phong.getSoPhong()));
         for (int i = 0; i < lsLoaiPhong.size(); i++) {
             if (phong.getLoaiPhongId() == lsLoaiPhong.get(i).getLoaiPhongId()) {
@@ -67,7 +87,7 @@ public class ChonPhongAdapter extends RecyclerView.Adapter<ChonPhongAdapter.Chon
             }
         }
 
-        holder.chonphongBinding.imgChonphong.setVisibility(View.GONE);
+        //holder.chonphongBinding.imgChonphong.setVisibility(View.GONE);
 
         if (phong.getTrangThaiId() == 1) {
             if (tempData.checkDoiPhong == true) {
@@ -135,6 +155,7 @@ public class ChonPhongAdapter extends RecyclerView.Adapter<ChonPhongAdapter.Chon
                 for (int i = 0; i < lsChonPhong.lsChonPhongDataInt.size(); i++) {
                     if (phong.getPhongId() == lsChonPhong.lsChonPhongDataInt.get(i)) {
                         holder.chonphongBinding.imgChonphong.setVisibility(View.VISIBLE);
+                        holder.phongDangChon = true;
                     }
                 }
             }
@@ -157,13 +178,16 @@ public class ChonPhongAdapter extends RecyclerView.Adapter<ChonPhongAdapter.Chon
     class ChonPhongViewHolder extends RecyclerView.ViewHolder {
 
         private ItemChonphongBinding chonphongBinding;
+        private Boolean phongTrong;
+        private Boolean phongDangChon;
 
         public ChonPhongViewHolder(@NonNull ItemChonphongBinding dsPhong) {
 
 
             super(dsPhong.getRoot());
             this.chonphongBinding = dsPhong;
-
+            phongTrong = true;
+            phongDangChon = false;
 
         }
     }

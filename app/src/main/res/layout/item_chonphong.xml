@@ -24,6 +24,7 @@
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="18dp"
             android:src="@drawable/check"
+            android:visibility="invisible"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_so_chonphong"
